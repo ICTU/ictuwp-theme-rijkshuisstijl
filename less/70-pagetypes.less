@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.9.5
-// * @desc.   Bugfixes. Dossier-overzichtspagina.
+// * @version 0.10.3
+// * @desc.   Icon voor PDF document op zoekresultaten toegevoegd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -80,6 +80,135 @@
     }
   }
 
+
+  #cardflex_tab1 {
+    overflow: hidden;
+  }
+  #filterselector {
+    overflow: hidden;
+    margin-bottom: 1em;
+  }
+      
+  #mixitupfilterlist {
+    
+    li:before {
+      color: @a_color_default;
+      top: 12px;
+    }
+    
+    &.unfiltered {
+
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+
+      li, div {
+  	    flex-grow: 1;
+        float: left;
+        flex-basis: @flexbasis_fourcols;
+        max-width: @flexbasis_fourcols;
+        overflow: hidden;
+        
+        span {
+          .visuallyhidden();
+        }
+        
+        a, & {
+          line-height: 1.4;
+        }
+        
+        a {
+          text-decoration: none;
+          display: inline-block;
+          overflow: hidden;
+          margin-top: .2em;
+          margin-right: .2em;
+          padding-right: .75em;
+          
+          &:focus,
+          &:active,
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        &.i-have-kids {
+          width: 100%;
+          max-width: 100%;
+          clear: both;
+          flex-basis: 100%;
+          padding-left: 0;
+          padding-right: 0;
+          margin-bottom: 1em;
+          border-bottom: 1px solid @grijs;
+          
+          &:before {
+            content: '';
+            width: 0;
+          }
+
+          ul.children {
+          
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+
+            li {
+              flex-grow: 1;
+              float: left;
+              flex-basis: @flexbasis_fourcols;
+              max-width: @flexbasis_fourcols;
+              overflow: hidden;
+            }              
+          }
+
+          .i-have-kids {
+            width: 100%;
+            max-width: 100%;
+            clear: both;
+            flex-basis: 100%;
+            border-bottom-style: none;
+            padding-top: 0;
+            margin-top: 0;
+          }          
+        }          
+      }
+    }
+    
+    &.filtered {
+      
+      
+      li:before {
+        content: '';
+      }
+      li,div {
+        &:not([style*="display: block"]) {
+          .visuallyhidden();
+        }
+        &[style*="display: block"] {
+          .visuallyvisual();
+
+          span {
+            .visuallyvisual();
+            display: block;
+            clear: both;
+            padding: 0 0 1em 0 !important;
+
+            margin-bottom: 1em;
+            border-bottom: 1px solid @lichtgrijs;
+
+            @media only screen and (min-width: ( @break_fullwidth ) ) {
+              width: 66%;
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+//========================================================================================================
+
   @media only screen and (min-width: ( @break_fullwidth ) ) {
     .flexbox {
       .home,
@@ -102,7 +231,7 @@
           .visuallyhidden();
         }
       }
-      .topicSearchWrapper + .dossier_overzicht_filter_plus {
+      .topicSearchWrapper + .dossier_overzicht_filter_as_list_plus {
         width: 50%;
         float: left;
         clear: right;
@@ -129,11 +258,9 @@
           li {
             width: 100%;
             float: none;
-//            border: 1px solid red;
             overflow: hidden;
             a {
               display: block;
-//              border: 1px solid green;
             }
           }
           
@@ -150,14 +277,16 @@
 
           ul.links {
             overflow: hidden;
-            margin: 1em 0;
+            margin: 0 0;
           }
           
         }        
       }
     }
   }  
-  
+
+//========================================================================================================
+
   .page-template-page_show-child-pages {
     .content {
       section {
@@ -172,7 +301,7 @@
   }
 
   .error404,
-  .page-template-page_showalldossiers,
+//  .page-template-page_showalldossiers,
   .page-template-page_sitemap {
     .site-inner {
       ul, ol {
@@ -187,47 +316,48 @@
     }
   }
 
-  @media only screen and (min-width: ( @break_tablet ) ) {
-    .error404,
-    .page-template-page_showalldossiers,
-    .page-template-page_sitemap {
-      .site-inner {
-        ul, ol {
+//========================================================================================================
 
-          li {
-            margin-bottom: 0;
-            
-            a {
-              text-decoration: none;
-              &:hover,
-              &:focus,
-              &:active {
-                text-decoration: underline;
-              }
+  @media only screen and (min-width: ( @break_tablet ) ) {
+    .error404 .site-inner,
+//    .page-template-page_showalldossiers,
+    .page-template-page_sitemap .site-inner {
+      ul, ol {
+
+        li {
+          margin-bottom: 0;
+          
+          a {
+            text-decoration: none;
+            &:hover,
+            &:focus,
+            &:active {
+              text-decoration: underline;
             }
           }
-          ul, ol {
-            margin-top: 0;
-          }
         }
-        .category,
-        .dossiers {
-          display: flex;
-          flex-wrap: wrap;
-          li {
-            flex-basis: 50%;
-            padding-right: 1em;
-            padding-bottom: .5em;
-          }
+        ul, ol {
+          margin-top: 0;
+        }
+      }
+      .category,
+      .dossiers {
+        display: flex;
+        flex-wrap: wrap;
+        li {
+          flex-basis: 50%;
+          padding-right: 1em;
+          padding-bottom: .5em;
         }
       }
     }
   }
 
-  
+//========================================================================================================
+
   @media only screen and (min-width: ( @break_fullwidth ) ) {
     .error404,
-    .page-template-page_showalldossiers,
+//    .page-template-page_showalldossiers,
     .page-template-page_sitemap {
       .category,
       .dossiers {
@@ -238,6 +368,8 @@
       }
     }
   }
+
+//========================================================================================================
 
   .page-template-page_search,
   .search {
@@ -293,9 +425,17 @@
     }   
   
     .attachment.pdf {
-      border-color: @warning;      
-      &.pdf {
-        border-color: @communicatiekleur_lichtst;      
+
+      a p {
+        padding-left: 1.5em;
+        background-image: url('images/icon-document.svg');
+        background-position: left center;
+        background-repeat: no-repeat;
+        
+        &.meta {
+          padding-left: 0;
+          background: none;
+        }
       }
     }
   }

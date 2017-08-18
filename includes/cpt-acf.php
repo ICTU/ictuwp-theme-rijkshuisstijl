@@ -11,8 +11,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 0.9.5
- * @desc.   Bugfixes. Dossier-overzichtspagina.
+ * @version 0.9.6
+ * @desc.   Filter op onderwerppagina.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -798,10 +798,8 @@ if( function_exists('acf_add_local_field_group') ):
     				'id' => '',
     			),
     			'choices' => array (
-    				'dossier_overzicht_filter_as_list' => '(dossier_overzicht_filter_as_list) Kort: toon alle dossiers maar alleen de titel',
-    				'dossier_overzicht_filter_as_list_plus' => '(dossier_overzicht_filter_as_list_plus) Kort: de dossiers die hieronder geselecteerd zijn apart en som daarna alle andere dossiers kort op',
-    				'dossier_overzicht_filter_uitgebreid' => '(dossier_overzicht_filter_uitgebreid) Met beschrijving: toon alle dossiers en bijbehorende beschrijving',
-    				'dossier_overzicht_filter_uitgebreid_plus' => '(dossier_overzicht_filter_uitgebreid_plus) Met beschrijving &amp; filter: Toon alleen de dossiers die hieronder geselecteerd zijn',
+    				'dossier_overzicht_filter_as_list' => 'Alle dossiers in een lijst',
+    				'dossier_overzicht_filter_as_list_plus' => 'Filter en uitgelichte onderwerpen + alle dossiers in een lijst',
     			),
     			'allow_null' => 0,
     			'other_choice' => 0,
@@ -841,13 +839,6 @@ if( function_exists('acf_add_local_field_group') ):
         					'field' => 'field_58382ce90bcd4',
         					'operator' => '==',
       						'value' => 'dossier_overzicht_filter_as_list_plus',
-        				),
-        			),
-        			array (
-        				array (
-        					'field' => 'field_58382ce90bcd4',
-        					'operator' => '==',
-      						'value' => 'dossier_overzicht_filter_uitgebreid_plus',
         				),
         			),
     			),

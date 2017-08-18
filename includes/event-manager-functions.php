@@ -211,8 +211,8 @@ function gc_wbvb_event_get_programma() {
     // loop through the rows of data
     while ( have_rows('programmaonderdelen') ) : the_row();
     
-      $programmaonderdeel_tijd            = strip_tags( get_sub_field('programmaonderdeel_tijd'), '<br>' );
-      $programmaonderdeel_beschrijving    = strip_tags( get_sub_field('programmaonderdeel_beschrijving'), '<br>' );
+      $programmaonderdeel_tijd            = wp_strip_all_tags( get_sub_field('programmaonderdeel_tijd'), '<br>' );
+      $programmaonderdeel_beschrijving    = wp_strip_all_tags( get_sub_field('programmaonderdeel_beschrijving'), '<br>' );
       
       $programmaonderdeel_beschrijving = '<span class="beschrijving">' . $programmaonderdeel_beschrijving . '</span>';
       
@@ -251,8 +251,8 @@ function gc_wbvb_post_get_links() {
     // loop through the rows of data
     while ( have_rows('event_post_links_collection') ) : the_row();
       
-      $event_link_url         = strip_tags( get_sub_field('event_post_link_url'), '' );
-      $event_link_linktekst   = strip_tags( get_sub_field('event_post_link_linktekst'), '' );
+      $event_link_url         = wp_strip_all_tags( get_sub_field('event_post_link_url'), '' );
+      $event_link_linktekst   = wp_strip_all_tags( get_sub_field('event_post_link_linktekst'), '' );
       
       if ( !$event_link_linktekst ) {
         $event_link_linktekst = gc_wbvb_clean_url( $event_link_url );

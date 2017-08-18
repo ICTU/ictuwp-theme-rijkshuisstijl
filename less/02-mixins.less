@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.9.1
-// * @desc.   Grootte van headers aangepast.
+// * @version 0.10.2
+// * @desc.   Icon external link. Filterform aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -41,6 +41,8 @@
 @widget-area:           ( @break_tablet - ( @logowidth + @padding + 5px ) );
 @search_submit_width:   70px;
 
+@filter_submit_width:   42px;
+
 @sidebar_width:         310px;
 @break_fullwidth:       1200px;
 @break_tablet:          650px;
@@ -49,7 +51,7 @@
 @logowidth:             450px;
 @logoheight:            92px;
 
-@padding:               1em;
+@padding:               16px;
 @contentpadding:        @padding;
 
 @position_navbar:       180px;
@@ -382,6 +384,23 @@
 .semitransbackground() {
   background-color: @wit;
   background-color: rgba(red(@grijs_1), green(@grijs_1), blue(@grijs_1), 0.8);
+}
+
+//=========================================================================================================
+
+.externallink() {
+  /* ====== */
+  a.external:after {
+    content: ' ';
+    display: inline-block;
+    .iconaddfill('../images/icon-externe-link.svg', @blauw3);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    float: right;
+  }
+  
 }
 
 //=========================================================================================================

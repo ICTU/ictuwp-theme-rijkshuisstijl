@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 0.9.5
- * @desc.   Bugfixes. Dossier-overzichtspagina.
+ * @version 0.10.3
+ * @desc.   Icon voor PDF document op zoekresultaten toegevoegd.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "0.9.5" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Bugfixes. Dossier-overzichtspagina." );
+define( 'CHILD_THEME_VERSION',              "0.10.3" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Icon voor PDF document op zoekresultaten toegevoegd." );
 define( 'SHOW_CSS_DEBUG',                   false );
 
 if ( SHOW_CSS_DEBUG && WP_DEBUG ) {
@@ -34,7 +34,7 @@ else {
   define( 'DO_MINIFY_JS',                   true );
 }
 
-define( 'ID_ZOEKEN',                        'rhswp-searchform' );
+define( 'ID_ZOEKEN',                        'rhswp-searchform-nav-primary' );
 define( 'GC_TWITTERACCOUNT',                'digioverheid' );
 define( 'SOC_MED_NO',                       'socmed_nee' );
 define( 'SOC_MED_YES',                      'socmed_ja' );
@@ -236,6 +236,24 @@ add_action( 'genesis_loop', 'rhswp_add_title_to_blog_page', 1 );
 // ** Prevent Genesis Accessible from hooking
 
 remove_action ( 'genesis_before_header', 'genwpacc_skip_links' );
+
+//========================================================================================================
+
+// add tag support to pages
+add_action('init', 'rhswp_page_tag_support');
+
+function rhswp_page_tag_support() {
+  register_taxonomy_for_object_type('post_tag', 'page');
+}
+
+//========================================================================================================
+
+// ensure all tags are included in queries
+add_action('pre_get_posts', 'rhswp_page_tag_support_query');
+
+function rhswp_page_tag_support_query($wp_query) {
+  if ($wp_query->get('tag')) $wp_query->set('post_type', 'any');
+}
 
 //========================================================================================================
 
@@ -1035,22 +1053,42 @@ function rhswp_get_sitemap_content() {
 //========================================================================================================
 
 class rhswp_custom_walker_for_taxonomies extends Walker_Category {
+  
   function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
 
     extract($args);
     
     $cat_name     = esc_attr( $category->name );
-		$value        =  wp_strip_all_tags( get_term_meta( $category->term_id, 'headline', true ) );
+    $excerpt      = esc_attr( wp_strip_all_tags( $category->description ) );
 
-		if ( $value ) {
-			$cat_name .= ' (' . strip_tags( strval( $value ) ) . ')';
+		$headline   =  get_term_meta( $category->term_id, 'headline', true );
+
+    if ( isset( $headline[0] ) && ( strlen( $headline[0] ) > 0 ) ) {
+      if ( is_array( $headline ) ) {
+      	$headline = strval( $headline[0] );
+      }
+      else {
+      	$headline = strval( $headline );
+      }
+			$cat_name .= ' - ' . wp_strip_all_tags( $headline );
 		}
 
-//    $cat_name = apply_filters( 'list_cats', $cat_name, $category );
+    if ( $excerpt ) {
+
+      if ( is_array( $excerpt ) ) {
+      	$excerpt = strval( $excerpt[0] );
+      }
+      else {
+      	$excerpt = strval( $excerpt );
+      }
+      
+    	$excerpt  =  wp_strip_all_tags( $excerpt );
+    }
+
 
     $link = '<a href="' . esc_url( get_term_link($category) ) . '" ';
-      $link .= '>';
-      $link .= $cat_name . '</a>';
+    $link .= '>';
+    $link .= $cat_name . '</a>';
     
     if ( !empty($show_count) )
       $link .= ' (' . intval($category->count) . ')';
@@ -1073,7 +1111,11 @@ class rhswp_custom_walker_for_taxonomies extends Walker_Category {
         }
         
         $output .=  ' class="' . $class . '"';
+//        $output .= ' data-mixible data-titel="' . strtolower( $cat_name ) . '"';
+        $output .= ' data-mixible data-titel="' . strtolower( $cat_name ) . ' ' . strtolower( $excerpt ) . '"';
         $output .= ">$link\n";
+        $output .= '<span class="excerpt">' . $excerpt . "</span>\n";
+        
       }
       else {
         $output .= "\t$link<br />\n";
@@ -1701,9 +1743,23 @@ function rhswp_append_site_logo() {
 
 //========================================================================================================
 
-function rhswp_show_customtax_terms( $taxonomy = 'category', $title = '', $dosection = true ) {
+function rhswp_show_customtax_terms( $taxonomy = 'category', $title = '', $dosection = true, $cssclasses = '', $containerid = '' ) {
   $sectionstart = '<section>';
   $sectionend   = '</section>';
+  
+  if ( $cssclasses ) {
+    $cssclasses = ' class="' . strtolower($taxonomy) . ' ' . $cssclasses . '"';
+  }
+  else {
+    $cssclasses = ' class="' . strtolower($taxonomy) . '"';
+  }
+  
+  if ( $containerid ) {
+    $containerid = ' id="' . $containerid . '"';
+  }
+  else {
+    $containerid = '';
+  }
   
   if ( !$dosection ) {
     $sectionstart = '';
@@ -1737,7 +1793,7 @@ function rhswp_show_customtax_terms( $taxonomy = 'category', $title = '', $dosec
           echo '<h2>' . $title . '</h2>';
         }
     
-        echo '<ul class="' . strtolower($taxonomy) . '">';
+        echo '<ul' . $cssclasses . '' . $containerid . '>';
         echo $terms;
         echo '</ul>';
     
@@ -1970,19 +2026,20 @@ function rhswp_write_extra_contentblokken() {
 
         foreach( $contentblokken as $row ) {
   
-          $titel                  = esc_html( $row['extra_contentblok_title'] );
-          $type_block             = esc_html( $row['extra_contentblok_type_block'] );
           $algemeen_links         = $row['extra_contentblok_algemeen_links'];
           $select_dossiers_list   = $row['select_dossiers_list'];
           $selected_content       = $row['select_berichten_paginas'];
           $selected_content_full  = $row['select_berichten_paginas_toon_samenvatting'];
-          $categoriefilter        = esc_html( $row['extra_contentblok_categoriefilter'] );
           $chosen_category        = $row['extra_contentblok_chosen_category'];
-          $maxnr_posts            = esc_html( $row['extra_contentblok_maxnr_posts'] );
-          $with_featured_image    = esc_html( $row['extra_contentblok_maxnr_posts_with_featured_image'] );
+          $titel                  = esc_html( $row['extra_contentblok_title'] );
+          $type_block             = $row['extra_contentblok_type_block'];
+          $categoriefilter        = $row['extra_contentblok_categoriefilter'];
+          $maxnr_posts            = $row['extra_contentblok_maxnr_posts'];
+          $with_featured_image    = $row['extra_contentblok_maxnr_posts_with_featured_image'];
 
           $currentpage            = '';
           $currentsite            = '';
+
 
           if ( 'algemeen' == $type_block ) {
 
@@ -2052,7 +2109,8 @@ function rhswp_write_extra_contentblokken() {
             else {
               // dus $selected_content_full == 'ja'
 
-            $postcounter = 0;
+              $postcounter = 0;
+            
               foreach ( $selected_content as $post ) {
                 
                 setup_postdata($post);                
@@ -2091,7 +2149,6 @@ function rhswp_write_extra_contentblokken() {
             }
 
             echo '</div>';
-            
           }
           elseif ( 'berichten' == $type_block ) {
             // dus $type_block != 'algemeen' && $type_block != 'berichten_paginas'
@@ -3006,29 +3063,15 @@ add_action( 'wp_enqueue_scripts', 'rhswp_add_blog_archive_css' );
 function rhswp_add_blog_archive_css() {
 
   global $imgbreakpoints;
-  $blogberichten_css   = '';
+
+  $blogberichten_css   = ".entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]) {    
+    padding-right: 1em;
+    background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link.svg');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: .75em .75em;
+  }";
   
-/*  $blogberichten_css   = '
-a[href^="http://"]:not([href*="' . $_SERVER["HTTP_HOST"] . '"]),
-a[href^="http://"]:not([href*="www.' . $_SERVER["HTTP_HOST"] . '"]),
-a[href^="https://"]:not([href*="' . $_SERVER["HTTP_HOST"] . '"]),
-a[href^="https://"]:not([href*="www.' . $_SERVER["HTTP_HOST"] . '"]),
-a[href^="//"]:not([href*="' . $_SERVER["HTTP_HOST"] . '"]), {
-  background: red; color: white;
-}';
-
-  $blogberichten_css   = 'a[href*="//"]:not([href*="' . $_SERVER["HTTP_HOST"] . '"]):after {   content: \' \';
-  display: inline-block;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2226px%22%20height%3D%2226px%22%20viewBox%3D%220%200%2026%2026%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2045%20(43475)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Eicon-externe-link%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-externe-link%22%20transform%3D%22translate(-5.000000%2C%20-5.000000)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%222013-externe-link%22%20transform%3D%22translate(0.000000%2C%200.145087)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22_x36_4px_Boxes%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Rectangle-path%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2236%22%20height%3D%2236%22%3E%3C%2Frect%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Production%22%20transform%3D%22translate(5.062500%2C%205.062500)%22%20fill-rule%3D%22nonzero%22%20fill%3D%22black%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M25.231725%2C2.878425%20C25.0389563%2C1.71883125%2024.1567312%2C0.83660625%2022.996575%2C0.643275%20C19.6435688%2C0.08431875%2014.0547938%2C0.08431875%2012.9375%2C0.08431875%20C11.8202063%2C0.08431875%206.23143125%2C0.08431875%202.878425%2C0.643275%20C1.71826875%2C0.83660625%200.83604375%2C1.71883125%200.643275%2C2.878425%20C0.0846%2C6.23143125%200.0846%2C11.819925%200.0846%2C12.9375%20C0.0846%2C14.055075%200.0846%2C19.6435688%200.643275%2C22.996575%20C0.83604375%2C24.1561688%201.71826875%2C25.0383938%202.878425%2C25.231725%20C6.23143125%2C25.7906813%2011.8202063%2C25.7906813%2012.9375%2C25.7906813%20C14.0547938%2C25.7906813%2019.6435688%2C25.7906813%2022.996575%2C25.231725%20C24.1567312%2C25.0383938%2025.0389563%2C24.1561688%2025.231725%2C22.996575%20C25.7903437%2C19.6435688%2025.7903437%2C14.055075%2025.7903437%2C12.9375%20C25.7903437%2C9.58280625%2025.7903437%2C6.23143125%2025.231725%2C2.878425%20Z%20M21.5958375%2C5.86861875%20L20.400525%2C16.0284938%20C20.3203125%2C16.7094%2019.7693438%2C17.2380938%2019.0854563%2C17.2891688%20C19.049175%2C17.291925%2019.0135125%2C17.2933313%2018.9772313%2C17.2933313%20C18.337275%2C17.2933313%2017.7681938%2C16.8653812%2017.5968%2C16.23915%20L16.9445813%2C13.85505%20C16.9445813%2C13.85505%2018.3954938%2C10.89405%2018.5141813%2C10.6523438%20C18.623025%2C10.4306625%2018.4725%2C10.3910625%2018.4719937%2C10.39095%20L11.3659312%2C17.4968438%20C10.5540188%2C18.3089813%209.6103125%2C17.849475%208.81870625%2C17.0570813%20C8.025525%2C16.2646875%207.5663%2C15.3204187%208.37815625%2C14.5085625%20L13.5403875%2C9.346275%20L9.63556875%2C8.27791875%20C8.97418125%2C8.0971875%208.53419375%2C7.472925%208.58526875%2C6.78954375%20C8.63690625%2C6.1059375%209.16531875%2C5.55440625%209.84594375%2C5.474475%20L20.0061%2C4.2791625%20C20.442825%2C4.227525%2020.8767938%2C4.37889375%2021.1860563%2C4.6886625%20C21.4963875%2C4.9984875%2021.6469125%2C5.4333%2021.5958375%2C5.86861875%20Z%22%20id%3D%22Shape%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
-  background-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
-  background-size: contain;
-  float: right;
- }';
-*/
-
-
   $countertje   = 0;
 
   if ( have_posts() ) : 

@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 0.9.5
-  Version description: 0.9.5 - Bugfixes. Dossier-overzichtspagina.
+  Version: 0.10.3
+  Version description: 0.10.3 - Icon voor PDF document op zoekresultaten toegevoegd.
   Text Domain: wp-rijkshuisstijl
   
   Template: genesis
@@ -685,7 +685,7 @@ Accessibility Extra's
 /* Hide visually but not from screen readers and keyboard users */
 .screen-reader-text,
 .screen-reader-text span,
-.search-form label {
+.search-form .search-form-label {
 	position: absolute;
 	left: -1000em;
 	top: -1000em;
@@ -1167,7 +1167,7 @@ p.debugstring + p.debugstring {
 /* Text meant only for screen readers */
 .screen-reader-text span,
 .screen-reader-shortcut,
-.search-form label,
+.search-form .search-form-label,
 .genesis-sidebar-title  {
 	position: absolute !important;
 	clip: rect(0, 0, 0, 0);
@@ -1271,3 +1271,7 @@ nav.nav-primary .menu-item.js-menu-open > ul.sub-menu {
   clear: both;
   padding: .5em .7em;
 }
+
+.externallink();
+
+

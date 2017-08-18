@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.7.25
-// * @desc.   Versienummer beter. section weer zichbaar.
+// * @version 0.10.2
+// * @desc.   Icon external link. Filterform aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 //
 
@@ -199,6 +199,7 @@
       padding-left: 5px;
     }
 
+    button,
     input[type="submit"] {
       background-color: @communicatiekleur_vol;
       .iconaddfill('../images/svg/looking-glass.svg', @wit);
@@ -212,9 +213,46 @@
       .iconaddfill('../images/svg/looking-glass.svg', @txt);
       }
     }
-    
   }
 
+
+  #rhswp-searchform-onderwerpen {
+    background: @communicatiekleur_vol;
+//    padding-top: .75em;
+    
+    label {
+      color: @wit;
+      line-height: 1;
+      font-size: 1.3em;
+      display: block;
+      padding-bottom: .5em;
+    }
+    
+
+    input[itemprop="query-input"] {
+      width: ~"calc(98% - @{filter_submit_width})";
+      float: left;
+    }
+    
+    
+    #searchbutton {
+      background-size: 15px 16px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      text-indent: -9999em;
+      width: @filter_submit_width;
+      float: right;
+    }
+    #filter {
+      background: none;
+      padding-left: 0;
+      &:hover,
+      &:active,
+      &:focus {
+        color: @wit;
+      }
+    }
+  }
 
   .screen-reader-response {
   	position: absolute;
@@ -264,7 +302,6 @@
         float: right;
       }
       input[type="radio"] {
-        border: 1px solid blue; 
         float: right;
       }
       
