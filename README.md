@@ -14,9 +14,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * single_XXX.php hernoemen naar single.php
 
 ## Current version:
-1.2.13 - Dossiers: bugfixes voor hoofdmenu boven inhoud.
+1.2.14 - Instellingen voor sitemap en 404-pagina.
 
 ## Version history
+* 1.2.14 - Instellingen voor sitemap en 404-pagina.
 * 1.2.13 - Dossiers: bugfixes voor hoofdmenu boven inhoud.
 * 1.2.11 - Bugs uit broodkruimelpad: dossierhierarchie tonen.
 * 1.2.10 - CSS voor list-items op onderwerppagina aangepast

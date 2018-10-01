@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.13
-// * @desc.   Dossiers: bugfixes voor hoofdmenu boven inhoud.
+// * @version 1.2.14
+// * @desc.   Instellingen voor sitemap en 404-pagina.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "1.2.13" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Dossiers: bugfixes voor hoofdmenu boven inhoud." );
+define( 'CHILD_THEME_VERSION',              "1.2.14" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Instellingen voor sitemap en 404-pagina." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -1153,51 +1153,40 @@ function rhswp_404() {
 //========================================================================================================
 
 function rhswp_get_sitemap_for_pagenotfound() {
-  ?>        
-  <section aria-labelledby="title_sitemap_pages">
-    <h2 id="title_sitemap_pages"><?php _e( "Pagina's:", 'wp-rijkshuisstijl' ); ?></h2>
 
-    <ul>
-        <?php
-          $args = array(    
-            'depth'                 => '1',
-            'title_li'              => '',
-            'echo'                  => 0,
-            'sort_column'           => 'post_title',
-            'walker'                => new rhswp_custom_walker_for_sitemap(),
-            'ignore_custom_sort'    => TRUE,
-          );
-          
-           $fulter = wp_list_pages( $args ); 
-           echo $fulter;
-           ?>
-    </ul>
-    
-  </section>
-  <?php
-  rhswp_show_customtax_terms( RHSWP_CT_DOSSIER, __( 'Onderwerpen', 'wp-rijkshuisstijl' ) . ":" );
-  rhswp_show_customtax_terms( 'category', __( 'Categorieën', 'wp-rijkshuisstijl' ) . ":" );
+  rhswp_get_sitemap_pages( 'ul', false );
+
+  if ( function_exists( 'get_field' ) ) {
   
+    if ( get_field( 'sitemap_settings_toondossiers', 'option') == 'ja' ) {
+      $toondossiers = true;
+    }
+    else {
+      $toondossiers = false;
+    }
   
+    if ( get_field( 'sitemap_settings_tooncategorie', 'option') == 'ja' ) {
+      $tooncategorie = true;
+    }
+    else {
+      $tooncategorie = false;
+    }
     
+    if( $toondossiers ) {
+      rhswp_show_customtax_terms( RHSWP_CT_DOSSIER, __( 'Onderwerpen', 'wp-rijkshuisstijl' ) . ":" );
+    }
+    if( $tooncategorie ) {
+      rhswp_show_customtax_terms( 'category', __( 'Categorieën', 'wp-rijkshuisstijl' ) . ":" );
+    }
+  }
+  
+
 }
 
 //========================================================================================================
 
-function rhswp_get_sitemap_content() {
-  
-  $filtersitemap    = true;
-  $showpagetemplate = false;
-  $listitem         = 'ul';
-  
-  if ( isset( $_GET['filtersitemap'] ) ) {
-    $filtersitemap = filter_input(INPUT_GET, 'filtersitemap', FILTER_SANITIZE_SPECIAL_CHARS);
-    if ( $filtersitemap == 'nee' ) {
-      $filtersitemap = false;
-      $listitem = 'ol';
-    }
-  }
-  
+function rhswp_get_sitemap_pages( $listitem = 'ul', $filtersitemap = true ) {
+
   ?>        
   <section aria-labelledby="title_sitemap_pages2">
     <h2 id="title_sitemap_pages2"><?php _e( "Pagina's:", 'wp-rijkshuisstijl' ); ?></h2>
@@ -1221,7 +1210,63 @@ function rhswp_get_sitemap_content() {
           );
         
         }
-          
+
+        if ( function_exists( 'get_field' ) ) {
+
+          if( get_field( 'sitemap_settings_hide_pages', 'option') ) {
+            
+            $excludepages = '';
+
+            $hidepages = get_field('sitemap_settings_hide_pages', 'option' );
+            
+            if ( $hidepages ) {
+              foreach ( $hidepages as $hidepage ) {
+
+                // loop door de uitgesloten pagina's 
+
+                if ( $excludepages ) {
+                  $excludepages .= ',' . $hidepage->ID;
+                }
+                else {
+                  $excludepages = $hidepage->ID;
+                }
+                
+                // en haal daarvoor ook de children op
+                $hideargs = array(
+                	'sort_order'    => 'asc',
+                	'sort_column'   => 'post_title',
+                	'hierarchical'  => 1,
+                	'child_of'      => $hidepage->ID,
+                	'offset'        => 0,
+                	'post_type'     => 'page',
+                	'post_status'   => 'publish'
+                ); 
+                
+                $pages_childpage = get_pages( $hideargs ); 
+                
+                $pagecounter = 0;
+                                
+
+                foreach ( $pages_childpage as $hidechildpage ) {
+
+                  if ( $excludepages ) {
+                    $excludepages .= ',' . $hidechildpage->ID;
+                  }
+                  else {
+                    $excludepages = $hidechildpage->ID;
+                  }
+                }
+              }
+            } 
+            $args['exclude'] = $excludepages;             
+          }
+        }
+
+
+
+
+
+
         $fulter   = wp_list_pages( $args ); 
         $pattern  = "/<ul[^>]*><\\/ul[^>]*>/"; 
         $fulter   = preg_replace($pattern, '', $fulter); 
@@ -1229,10 +1274,58 @@ function rhswp_get_sitemap_content() {
  ?>
       </<?php echo $listitem; ?>>
   </section>
-  <?php
-    
+
+<?php  
+
+}
+
+//========================================================================================================
+
+function rhswp_get_sitemap_content() {
+  
+  $filtersitemap    = true;
+  $showpagetemplate = false;
+  $listitem         = 'ul';
+  $toondossiers     = false;
+  $tooncategorie    = false;
+  $toonberichten    = false;
+
+  if ( function_exists( 'get_field' ) ) {
+  
+    if ( get_field( 'sitemap_settings_toondossiers', 'option') == 'ja' ) {
+      $toondossiers = true;
+    }
+  
+    if ( get_field( 'sitemap_settings_tooncategorie', 'option') == 'ja' ) {
+      $tooncategorie = true;
+    }
+
+    if ( get_field( 'sitemap_settings_toonberichten', 'option') == 'ja' ) {
+      $toonberichten = true;
+    }
+
+  }
+
+  
+  if ( isset( $_GET['filtersitemap'] ) ) {
+    $filtersitemap = filter_input(INPUT_GET, 'filtersitemap', FILTER_SANITIZE_SPECIAL_CHARS);
+    if ( $filtersitemap == 'nee' ) {
+      $filtersitemap = false;
+      $listitem = 'ol';
+    }
+  }
+  
+
+  rhswp_get_sitemap_pages( $listitem, $filtersitemap );
+
+  if( $toondossiers ) {
     rhswp_show_customtax_terms( RHSWP_CT_DOSSIER, __( 'Onderwerpen', 'wp-rijkshuisstijl' ) . ":" );
+  }
+  if( $tooncategorie ) {
     rhswp_show_customtax_terms( 'category', __( 'Categorieën', 'wp-rijkshuisstijl' ) . ":" );
+  }
+    
+
 
     if ( $filtersitemap ) {
     }
@@ -1297,49 +1390,53 @@ function rhswp_get_sitemap_content() {
         }
     }
 
-  
-  $maxnr_posts = -1;
+    if ( $toonberichten ) {
 
-  if ( $filtersitemap ) {
-    $maxnr_posts = 12;
-  }
-  else {
-    $maxnr_posts = 'Alle';
-  }
-  
-  ?>        
-  <section aria-labelledby="title_sitemap_posts">
-    <h2 id="title_sitemap_posts"><?php echo $maxnr_posts .  __( ' laatste berichten', 'wp-rijkshuisstijl' ) . ':'; ?></h2>
-    <<?php echo $listitem; ?>>
-        <?php 
+      $maxnr_posts = -1;
+    
+      if ( $filtersitemap ) {
+        $maxnr_posts = get_option('posts_per_page');
+      }
+      else {
+        $maxnr_posts = 'Alle';
+      }
+      
+      ?>        
+      <section aria-labelledby="title_sitemap_posts">
+        <h2 id="title_sitemap_posts"><?php echo $maxnr_posts .  __( ' laatste berichten', 'wp-rijkshuisstijl' ) . ':'; ?></h2>
+        <<?php echo $listitem; ?>>
+            <?php 
+    
+    
+            if ( $filtersitemap ) {
+              
+              $args = array(    
+              'type'        => 'postbypost',
+              'limit'       => $maxnr_posts,
+              'order'       => 'DESC',
+              'post_type'   => 'post',
+              'echo'         => 1,
+              );
+            
+            }
+            else {
+              
+              $args = array(    
+                'type'        => 'postbypost',
+                'post_type'   => 'post',
+                'echo'         => 1,
+              );
+            
+            }
+    
+              
+              wp_get_archives( $args ); ?>
+        </<?php echo $listitem; ?>>
+      </section>
+      
+      <?php
+    }
 
-
-        if ( $filtersitemap ) {
-          
-          $args = array(    
-          'type'        => 'postbypost',
-          'limit'       => $maxnr_posts,
-          'order'       => 'DESC',
-          'post_type'   => 'post',
-          'echo'         => 1,
-          );
-        
-        }
-        else {
-          
-          $args = array(    
-            'type'        => 'postbypost',
-            'post_type'   => 'post',
-            'echo'         => 1,
-          );
-        
-        }
-
-          
-          wp_get_archives( $args ); ?>
-    </<?php echo $listitem; ?>>
-  </section>
-  <?php
     
 }
 

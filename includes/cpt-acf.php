@@ -10,8 +10,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.8
-// * @desc.   Onderwerppagina met uitzonderingsonderwerpen. Kleine stijlwijzigingen. Bugfix voor single posts zonder dossiercontext.
+// * @version 1.2.14
+// * @desc.   Instellingen voor sitemap en 404-pagina.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -2574,6 +2574,176 @@ if( function_exists('acf_add_local_field_group') ):
   ));
 
   //------------------------------------------------------------------------------------------------------
+  // sitemap instellingen: tonen / verbergen van lijst met categorie, laatste berichten, dossierlijst
+  //
+  acf_add_local_field_group(array(
+  	'key' => 'group_5bb213f55a1f6',
+  	'title' => 'Sitemap: wat wel of niet tonen?',
+  	'fields' => array(
+  		array(
+  			'key' => 'field_5bb214191eeb8',
+  			'label' => 'Welke pagina\'s NIET tonen?',
+  			'name' => 'sitemap_settings_hide_pages',
+  			'type' => 'relationship',
+  			'instructions' => 'Kies hier de pagina\'s die je <strong style="color: red">niet</strong> wil tonen op de sitemap. Ook de pagina\'s onder de pagina die je hier kiest worden dan verborgen.',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array(
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'post_type' => array(
+  				0 => 'page',
+  			),
+  			'taxonomy' => '',
+  			'filters' => array(
+  				0 => 'search',
+  				1 => 'taxonomy',
+  			),
+  			'elements' => '',
+  			'min' => '',
+  			'max' => '',
+  			'return_format' => 'object',
+  		),
+  		array(
+  			'key' => 'field_5bb221088bf7a',
+  			'label' => 'Wil je de dossierslijst tonen?',
+  			'name' => 'sitemap_settings_toondossiers',
+  			'type' => 'radio',
+  			'instructions' => '',
+  			'required' => 1,
+  			'conditional_logic' => 0,
+  			'wrapper' => array(
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'choices' => array(
+  				'ja' => 'Ja, toon de lijst met dossiers',
+  				'nee' => 'Nee, verberg de lijst met dossiers',
+  			),
+  			'allow_null' => 1,
+  			'other_choice' => 0,
+  			'default_value' => 'ja',
+  			'layout' => 'vertical',
+  			'return_format' => 'value',
+  			'save_other_choice' => 0,
+  		),
+  		array(
+  			'key' => 'field_5bb224403dd0f',
+  			'label' => 'Wil je de categorielijst tonen?',
+  			'name' => 'sitemap_settings_tooncategorie',
+  			'type' => 'radio',
+  			'instructions' => '',
+  			'required' => 1,
+  			'conditional_logic' => 0,
+  			'wrapper' => array(
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'choices' => array(
+  				'ja' => 'Ja, toon de lijst met categorieën',
+  				'nee' => 'Nee, verberg de lijst met categorieën',
+  			),
+  			'allow_null' => 1,
+  			'other_choice' => 0,
+  			'default_value' => 'ja',
+  			'layout' => 'vertical',
+  			'return_format' => 'value',
+  			'save_other_choice' => 0,
+  		),
+  		array(
+  			'key' => 'field_5bb226d651e14',
+  			'label' => 'Wil je de laatste berichten tonen?',
+  			'name' => 'sitemap_settings_toonberichten',
+  			'type' => 'radio',
+  			'instructions' => '',
+  			'required' => 1,
+  			'conditional_logic' => 0,
+  			'wrapper' => array(
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'choices' => array(
+  				'ja' => 'Ja, toon een lijst met de laatste berichten',
+  				'nee' => 'Nee, verberg de laatste berichten',
+  			),
+  			'allow_null' => 1,
+  			'other_choice' => 0,
+  			'default_value' => 'ja',
+  			'layout' => 'vertical',
+  			'return_format' => 'value',
+  			'save_other_choice' => 0,
+  		),
+  	),
+  	'location' => array(
+  		array(
+  			array(
+  				'param' => 'options_page',
+  				'operator' => '==',
+  				'value' => 'instellingen',
+  			),
+  		),
+  	),
+  	'menu_order' => 0,
+  	'position' => 'normal',
+  	'style' => 'default',
+  	'label_placement' => 'top',
+  	'instruction_placement' => 'label',
+  	'hide_on_screen' => '',
+  	'active' => 1,
+  	'description' => '',
+  ));
+  
+
+  //------------------------------------------------------------------------------------------------------
+  // sitemap instellingen: boodschap op de sitemap pagina (obv template)
+  //
+  acf_add_local_field_group(array(
+  	'key' => 'group_5bb212c2df202',
+  	'title' => 'Sitemap: let op',
+  	'fields' => array(
+  		array(
+  			'key' => 'field_5bb212ce666a8',
+  			'label' => 'Sommige pagina\'s wel of niet tonen?',
+  			'name' => '',
+  			'type' => 'message',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array(
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'message' => 'Via de <a href="/wp-admin/themes.php?page=instellingen">theme instellingen</a> kun je bepalen welke pagina\'s verborgen moeten worden op de sitemap.',
+  			'new_lines' => 'wpautop',
+  			'esc_html' => 0,
+  		),
+  	),
+  	'location' => array(
+  		array(
+  			array(
+  				'param' => 'page_template',
+  				'operator' => '==',
+  				'value' => 'page_sitemap.php',
+  			),
+  		),
+  	),
+  	'menu_order' => 0,
+  	'position' => 'acf_after_title',
+  	'style' => 'default',
+  	'label_placement' => 'top',
+  	'instruction_placement' => 'label',
+  	'hide_on_screen' => '',
+  	'active' => 1,
+  	'description' => '',
+  ));
+  
+
 
 endif;
 
