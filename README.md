@@ -10,8 +10,7 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * Victor Zuydweg
 
 ## To do:
-
-* single_XXX.php hernoemen naar single.php
+* eh
 
 ## Current version:
 1.2.15 - CSS icons for twitter & RSS links.
