@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.9
-// * @desc.   Modernizr voor live-site. Bugfix voor dossier. List-item CSS aangepast.
+// * @version 1.2.15
+// * @desc.   CSS icons for twitter & RSS links.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -622,16 +622,24 @@
         list-style-type: square;
         
         &.rss {
-          &:before {
-            content: '';
-          }
+          .icon_socmed_icon('../images/svg/icon-rss.svg', @donkerblauw_vol );
         }
         &.twitter {
+          .icon_socmed_icon('../images/svg/icon-twitter.svg', @donkerblauw_vol );
+        }
+
+        &.rss,
+        &.twitter {
+          margin-left: 0;
+          padding-left: 1.1em;
+          background-size: 1em 1em;
+          background-repeat: no-repeat;
+          background-position: left center;
+
           &:before {
-            content: '';
-            font-size: 110%;
-            width: 1.6em;
+            content: '';
           }
+          
         }
       }
     }

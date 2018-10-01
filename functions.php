@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.14
-// * @desc.   Instellingen voor sitemap en 404-pagina.
+// * @version 1.2.15
+// * @desc.   CSS icons for twitter & RSS links.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "1.2.14" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Instellingen voor sitemap en 404-pagina." );
+define( 'CHILD_THEME_VERSION',              "1.2.15" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "CSS icons for twitter & RSS links." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
