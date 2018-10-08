@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.15
-// * @desc.   CSS icons for twitter & RSS links.
+// * @version 1.2.16
+// * @desc.   Tekstcorrectie in titel voor berichtpagina's in dossier.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "1.2.15" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "CSS icons for twitter & RSS links." );
+define( 'CHILD_THEME_VERSION',              "1.2.16" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Tekstcorrectie in titel voor berichtpagina's in dossier." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -5607,7 +5607,7 @@ function rhswp_custom_page_title_for_overviewpage( $title ) {
 
       if ( $category_slug ) {
         $categoryinfo = get_term_by( 'slug', $category_slug, 'category' );
-        $title        = sprintf( _x( 'Artikelen voor \'%s\' en \'%s\' %s', 'Artikelen voor onderwerp met categorie', 'wp-rijkshuisstijl' ), $term->name, $categoryinfo->name, $paged );
+        $title        = sprintf( _x( '%s onder \'%s\' %s', 'Artikelen voor onderwerp met categorie', 'wp-rijkshuisstijl' ), $categoryinfo->name, $term->name, $paged );
       }
       else {
         if ( $term->name ) {
