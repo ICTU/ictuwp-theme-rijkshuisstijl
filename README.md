@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-1.2.16 - Tekstcorrectie in titel voor berichtpagina's in dossier.
+1.2.17 - Kleine styling issue: zoekbutton.
 
 ## Version history
+* 1.2.17 - Kleine styling issue: zoekbutton.
 * 1.2.16 - Tekstcorrectie in titel voor berichtpagina's in dossier.
 * 1.2.15 - CSS icons for twitter & RSS links.
 * 1.2.14 - Instellingen voor sitemap en 404-pagina.

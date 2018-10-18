@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.16
-// * @desc.   Tekstcorrectie in titel voor berichtpagina's in dossier.
+// * @version 1.2.17
+// * @desc.   Kleine styling issue: zoekbutton.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "1.2.16" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Tekstcorrectie in titel voor berichtpagina's in dossier." );
+define( 'CHILD_THEME_VERSION',              "1.2.17" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Kleine styling issue: zoekbutton." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -3809,6 +3809,7 @@ function rhswp_add_blog_archive_css() {
   if ( have_posts() || is_tax( RHSWP_CT_DOSSIER ) ) : 
   
     $divid = '';
+    $carousselcheck = false;
 
     if ( is_page() ) {
       $theid          = get_the_ID();
