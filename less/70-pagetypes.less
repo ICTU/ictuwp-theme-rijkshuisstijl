@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.18
-// * @desc.   Grid CSS voor IE11.
+// * @version 1.2.19
+// * @desc.   Digibeter-kleuren ook in het Engels beschikbaar.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -540,7 +540,8 @@
           overflow: hidden;
           font-family: @fontitalic;
         }
-        .logo {
+        .logo,
+        .logo-en {
           display: block;
           background:  url('images/digibeter-icons/nl-digibeter.svg');
           max-width: 403px;
@@ -553,6 +554,9 @@
           font-family: @fontitalic;
           margin-bottom: .25em;
         }
+//        .logo-en {
+//          background:  url('images/digibeter-icons/en-digibeter.svg');
+//        }
       }
       
       & + h2 {
@@ -841,7 +845,6 @@
           .row {
             display: -ms-grid;
             display: grid;
-            border: 1px solid red;
             grid-gap: 1em;
             -ms-grid-columns: repeat(3, auto);
             grid-template-columns: repeat(3, auto);

@@ -10,8 +10,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.14
-// * @desc.   Instellingen voor sitemap en 404-pagina.
+// * @version 1.2.19
+// * @desc.   Digibeter-kleuren ook in het Engels beschikbaar.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -1712,10 +1712,11 @@ if( function_exists('acf_add_local_field_group') ):
   	'fields' => array(
   		array(
   			'key' => 'field_5b30e4db4e762',
-  			'label' => 'Achtergrondkleur',
+  			'label' => 'Achtergrondkleur (let op: Nederlands of Engels!)',
   			'name' => 'digibeter_term_achtergrondkleur',
   			'type' => 'select',
-  			'instructions' => '<img src="' . RHSWP_THEMEFOLDER . '/images/digibeter-kleuren.png" alt="">',
+  			'description' => 'In de header images zit ook tekst. Let er daarom op of je wel of geen ehm "<em>Engelse</em>" kleur kiest.',
+  			'instructions' => '<img src="' . RHSWP_THEMEFOLDER . '/images/digibeter-kleuren.png" width="272" height="280" alt="">',
   			'required' => 1,
   			'conditional_logic' => 0,
   			'wrapper' => array(
@@ -1724,12 +1725,19 @@ if( function_exists('acf_add_local_field_group') ):
   				'id' => '',
   			),
   			'choices' => array(
-  				'digibeter-oker' => 'oker',
-  				'digibeter-oranje' => 'oranje',
-  				'digibeter-blauw' => 'blauw',
-  				'digibeter-groen' => 'groen',
-  				'digibeter-violet' => 'violet',
-  				'digibeter-paars' => 'paars',
+//  				'digibeter-oker' => 'oker',
+  				'digibeter-oranje' => 'oranje (Nederlands)',
+  				'digibeter-blauw' => 'blauw (Nederlands)',
+  				'digibeter-groen' => 'groen (Nederlands)',
+  				'digibeter-violet' => 'violet (Nederlands)',
+  				'digibeter-paars' => 'paars (Nederlands)',
+
+  				'digibeter-en-orange' => 'oranje (Engels)',
+  				'digibeter-en-blue' => 'blauw (Engels)',
+  				'digibeter-en-green' => 'groen (Engels)',
+  				'digibeter-en-violet' => 'violet (Engels)',
+  				'digibeter-en-purple' => 'paars (Engels)',
+  				
   			),
   			'default_value' => array(
   			),

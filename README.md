@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-1.2.18 - Grid CSS voor IE11.
+1.2.19 - Digibeter-kleuren ook in het Engels beschikbaar.
 
 ## Version history
+* 1.2.19 - Digibeter-kleuren ook in het Engels beschikbaar.
 * 1.2.18 - Grid CSS voor IE11.
 * 1.2.17 - Kleine styling issue: zoekbutton.
 * 1.2.16 - Tekstcorrectie in titel voor berichtpagina's in dossier.

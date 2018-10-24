@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.1.10
-// * @desc.   Invoeren pullquotes aangepast: nu 2 soorten (simple & met foto).
+// * @version 1.2.19
+// * @desc.   Digibeter-kleuren ook in het Engels beschikbaar.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // *
  */
@@ -77,6 +77,10 @@ function rhswp_digibeter_filter_page_title( $title ) {
   
   $pattern      = '/nl digibeter/i';
   $replacement  = '<span class="logo"><strong>NL DIGI</strong>beter</span>';
+  $thetitle     = preg_replace( $pattern, $replacement, $thetitle );
+  
+  $pattern      = '/digital government agenda/i';
+  $replacement  = '<span class="logo-en"><strong>NL DIGI</strong>beter</span>';
   $thetitle     = preg_replace( $pattern, $replacement, $thetitle );
   
   $pattern      = 'nl digibeter';

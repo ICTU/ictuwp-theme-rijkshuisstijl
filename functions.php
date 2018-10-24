@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.18
-// * @desc.   Grid CSS voor IE11.
+// * @version 1.2.19
+// * @desc.   Digibeter-kleuren ook in het Engels beschikbaar.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "1.2.18" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Grid CSS voor IE11." );
+define( 'CHILD_THEME_VERSION',              "1.2.19" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Digibeter-kleuren ook in het Engels beschikbaar." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
