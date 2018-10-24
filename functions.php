@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.17
-// * @desc.   Kleine styling issue: zoekbutton.
+// * @version 1.2.18f
+// * @desc.   Grid CSS voor IE11.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "1.2.17" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Kleine styling issue: zoekbutton." );
+define( 'CHILD_THEME_VERSION',              "1.2.18f" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Grid CSS voor IE11." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 

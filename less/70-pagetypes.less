@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.11
-// * @desc.   Bugs uit broodkruimelpad: dossierhierarchie tonen.
+// * @version 1.2.18f
+// * @desc.   Grid CSS voor IE11.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -792,7 +792,8 @@
           display: table-cell;
           vertical-align: top;
           float: left;
-          min-height: 7em;
+//          min-height: 7em;
+border: 10px solid red;
           width: 49%;
           padding-bottom: 1em;
         }
@@ -806,6 +807,7 @@
         .row > .linkblock {
           min-height: 10em;
           width: 32%;
+border-color: blue;
         }
 
 
@@ -822,6 +824,16 @@
 
   //========================================================================================================
 
+  .no-cssgrid {
+    @media only screen and ( min-width: @break_tablet ) {
+      .row.driekwart {
+        .linkblock:nth-child(3n+1) {
+          clear: left;
+          border-color: yellow;
+        }
+      }
+    }  
+  }
   .cssgrid {
     // modernizr has detected support for CSS Grid    
     @media only screen and ( min-width: @break_tablet ) {
@@ -831,8 +843,11 @@
         
         .site-inner {
           .row {
+            display: -ms-grid;
             display: grid;
+            border: 1px solid red;
             grid-gap: 1em;
+            -ms-grid-columns: repeat(3, auto);
             grid-template-columns: repeat(3, auto);
             width: 100%;
             
