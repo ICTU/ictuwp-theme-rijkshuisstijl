@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Rijkshuisstijl (Digitale Overheid) - skip-links.php
- * ----------------------------------------------------------------------------------
- * Adds skiplinks after the header to content, menu's and asides.
- * ----------------------------------------------------------------------------------
- * @author  Rian Rietveld
- * @license GPL-2.0+
- * @package wp-rijkshuisstijl
- * @version 0.8.42
- * @desc.   Beschrijving toegevoegd voor skiplinks-section.
- * @link    http://genesis-accessible.org/
+// * Rijkshuisstijl (Digitale Overheid) - skip-links.php
+// * ----------------------------------------------------------------------------------
+// * Adds skiplinks after the header to content, menu's and asides.
+// * ----------------------------------------------------------------------------------
+// * @author  Rian Rietveld
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 1.2.20
+// * @desc.   Site-improve: alleen skiplink voor hoofdnavigatie gebruiken op homepage.
+// * @link    http://genesis-accessible.org/
  */
 
 
@@ -30,7 +30,9 @@ function rhswp_skip_links() {
 	$links = array();
 
 	if ( has_nav_menu( 'primary' ) ) {
-		$links['genesis-nav-primary'] =  __( 'Direct naar de hoofdnavigatie', 'wp-rijkshuisstijl' );
+    if ( is_home() || is_front_page() ) {
+      $links['genesis-nav-primary'] =  __( 'Direct naar de hoofdnavigatie', 'wp-rijkshuisstijl' );
+    }
 	}
 
 	$links['genesis-content'] = __( 'Direct naar de pagina-inhoud', 'wp-rijkshuisstijl' );
