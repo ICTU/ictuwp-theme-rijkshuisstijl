@@ -52,11 +52,14 @@ function admin_manage_theme_columns_dossiers($out, $column_name, $theme_id) {
 }
 
 //========================================================================================================
-
-function dodebug( $string, $tag = 'p' ) {
-  if ( WP_DEBUG && WP_LOCAL_DEV ) {
-    echo '<' . $tag . ' class="debugstring"> ' . $string . '</' . $tag . '>';
+if (! function_exists( 'dodebug' ) ) {
+  
+  function dodebug( $string, $tag = 'p' ) {
+    if ( WP_DEBUG && WP_LOCAL_DEV ) {
+      echo '<' . $tag . ' class="debugstring"> ' . $string . '</' . $tag . '>';
+    }
   }
+
 }
 
 //========================================================================================================
