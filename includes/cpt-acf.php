@@ -2616,7 +2616,7 @@ if( function_exists('acf_add_local_field_group') ):
   		),
   		array(
   			'key' => 'field_5bb221088bf7a',
-  			'label' => 'Wil je de dossierslijst tonen?',
+  			'label' => 'Wil je de lijst met dossiers tonen op de 404-pagina?',
   			'name' => 'sitemap_settings_toondossiers',
   			'type' => 'radio',
   			'instructions' => '',
@@ -2640,7 +2640,7 @@ if( function_exists('acf_add_local_field_group') ):
   		),
   		array(
   			'key' => 'field_5bb224403dd0f',
-  			'label' => 'Wil je de categorielijst tonen?',
+  			'label' => 'Wil je de lijst met categorieën tonen op de 404-pagina?',
   			'name' => 'sitemap_settings_tooncategorie',
   			'type' => 'radio',
   			'instructions' => '',
