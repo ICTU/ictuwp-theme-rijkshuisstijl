@@ -195,6 +195,10 @@ include_once( RHSWP_FOLDER . '/includes/event-manager-functions.php' );
 // Include for searchWP
 include_once( RHSWP_FOLDER . '/includes/search-helper-functions.php' );
 
+if ( 'accept.digitaleoverheid.nl' == $_SERVER["HTTP_HOST"] ) { 
+  include_once( RHSWP_FOLDER . '/includes/search-helper-basic-http.php' );
+}
+
 // Skiplinks
 include_once( RHSWP_FOLDER . '/includes/skip-links.php' );
 

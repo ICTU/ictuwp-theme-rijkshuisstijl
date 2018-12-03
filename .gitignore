@@ -101,3 +101,4 @@ urls-digitale-agenda.txt
 portfolio-mockup/*
 __searchform.php
 _searchform.php
+includes/search-helper-basic-http.php
