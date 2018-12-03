@@ -158,7 +158,6 @@ function rhswp_dossier_title_checker( ) {
   
       echo '<div class="dossier-overview"><div class="wrap">'; 
 
-      if ( function_exists( 'get_field' ) ) {
 
         $dossier_overzichtpagina  = get_field('dossier_overzichtpagina', $term );
         $menu_voor_dossier        = get_field('menu_pages', $term );
@@ -536,7 +535,7 @@ function rhswp_dossier_title_checker( ) {
           
         }
 
-      } // get_field() exists
+
 
 
       if ( $dossierinhoudpagina || $subpaginas ) {
@@ -676,10 +675,8 @@ function rhswp_dossier_get_pagelink( $theobject, $args ) {
     }
     else {
 
-      if ( function_exists( 'get_field' ) ) {
-        $filter    = get_field('wil_je_filteren_op_categorie_op_deze_pagina', $current_menuitem_id );
-        $filters   = get_field('kies_de_categorie_waarop_je_wilt_filteren', $current_menuitem_id );
-      }
+      $filter    = get_field('wil_je_filteren_op_categorie_op_deze_pagina', $current_menuitem_id );
+      $filters   = get_field('kies_de_categorie_waarop_je_wilt_filteren', $current_menuitem_id );
 
       $argsquery = array(
         'post_type' => $selectposttype,

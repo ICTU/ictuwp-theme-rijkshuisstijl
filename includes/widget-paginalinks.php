@@ -297,7 +297,6 @@ class rhswp_pagelinks_widget extends WP_Widget {
   
       $widgettitle = '';
   
-      if ( function_exists( 'get_field' ) ) {
         
         $toon_extra_links         = get_field(RHSWP_WIDGET_PAGELINKS_ID . '_widget_show_extra_links', $post->ID );
         $widgettitle              = get_field(RHSWP_WIDGET_PAGELINKS_ID . '_widget_title', $post->ID );
@@ -359,7 +358,7 @@ class rhswp_pagelinks_widget extends WP_Widget {
         else {
           // do nothing
         }
-      }
+
     }
     else {
       

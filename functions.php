@@ -481,6 +481,7 @@ function rhswp_add_extra_info_to_breadcrumb( $crumb = '', $args = '' ) {
     $span_before_end    = '</span>';  
     $loop               = rhswp_get_context_info();
     $berichtnaam        = get_the_title();
+    $term               = '';
 
   	if ( ( is_singular( 'post' ) && ( ( get_query_var( RHSWP_DOSSIERPOSTCONTEXT ) ) && ( ! get_query_var( RHSWP_DOSSIERCONTEXTPOSTOVERVIEW ) ) ) ) || is_date() || is_category() ) {
     	
@@ -1844,7 +1845,7 @@ add_filter( 'theme_page_templates', 'rhswp_remove_genesis_page_templates' );
 
 //========================================================================================================
 
-add_filter( 'get_search_form', 'rhswp_add_id_to_search_form', 21 );
+//add_filter( 'get_search_form', 'rhswp_add_id_to_search_form', 21 );
 
 function rhswp_add_id_to_search_form( $form ) {
 
@@ -3092,6 +3093,12 @@ function rhswp_check_caroussel_or_featured_img() {
     return;
 
   }
+  elseif ( ( is_single() && DOPT__ACTIELIJN_CPT == get_post_type() ) || 
+      ( is_single() && DOPT__GEBEURTENIS_CPT == get_post_type() ) ) {
+
+    return;
+
+  }
   elseif( has_term( '', RHSWP_CT_DIGIBETER, get_the_id() ) ) {
 
     $digibeterterms  = wp_get_post_terms( get_the_id(), RHSWP_CT_DIGIBETER );
@@ -3811,16 +3818,23 @@ function rhswp_add_blog_archive_css() {
     $divid = '';
     $carousselcheck = false;
 
-    if ( is_page() ) {
-      $theid          = get_the_ID();
-      $divid          = $theid;
-      $carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
+
+    if ( function_exists( 'get_field' ) ) {
+      if ( is_page() ) {
+        $theid          = get_the_ID();
+        $divid          = $theid;
+        $carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
+      }
+      elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
+        $theid          = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
+        $divid          = get_queried_object()->term_id;
+        $carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
+        $currentterm    = get_queried_object()->term_id;
+      }
     }
-    elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
-      $theid          = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
-      $divid          = get_queried_object()->term_id;
-      $carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
-      $currentterm    = get_queried_object()->term_id;
+    else {
+      echo '<p>rhswp_add_blog_archive_css: ACF plugin is niet actief</p>';
+      return;
     }
 
 
@@ -4116,8 +4130,8 @@ add_action( 'genesis_before_footer-1_widget_area', 'rhswp_footer_payoff');
 function rhswp_widget_definition_footer1() {	
 	genesis_register_sidebar( array(
 		'id'            => RHSWP_FOOTERWIDGET1,
-		'name'          => __( RHSWP_FOOTERWIDGET1, 'yourtheme' ),
-		'description'   => __( 'This is the general footer area', 'yourtheme' ),
+		'name'          => __( RHSWP_FOOTERWIDGET1, 'wp-rijkshuisstijl' ),
+		'description'   => __( 'This is the general footer area', 'wp-rijkshuisstijl' ),
     'before_widget' => genesis_markup( array(
         'html5' => '<section role="complementary" id="%1$s" class="widget-area widget footer-widgets-1 footer-widget-area %2$s '.RHSWP_FOOTERWIDGET1 . '" aria-labelledby="title_' . RHSWP_FOOTERWIDGET1 . '"><div class="widget-wrap">',
         'xhtml' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
@@ -4143,10 +4157,10 @@ function rhswp_widget_definition_footer1() {
 function rhswp_widget_definition_footer2() {	
 	genesis_register_sidebar( array(
 		'id'            => RHSWP_FOOTERWIDGET2,
-		'name'          => __( RHSWP_FOOTERWIDGET2, 'yourtheme' ),
-		'description'   => __( 'This is the general footer area', 'yourtheme' ),
+		'name'          => __( RHSWP_FOOTERWIDGET2, 'wp-rijkshuisstijl' ),
+		'description'   => __( 'This is the general footer area', 'wp-rijkshuisstijl' ),
     'before_widget' => genesis_markup( array(
-        'html5' => '<section role="complementary" id="%1$s" class="widget-area widget footer-widgets-1 footer-widget-area %2$s '.RHSWP_FOOTERWIDGET2 . '" aria-labelledby="title_' . RHSWP_FOOTERWIDGET2 . '"><div class="widget-wrap">',
+        'html5' => '<section role="complementary" id="%1$s" class="widget-area widget footer-widgets-1 footer-widget-area %2$s '.RHSWP_FOOTERWIDGET2 . '"><div class="widget-wrap">',
         'xhtml' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
         'echo'  => false,
     ) ),
@@ -4156,8 +4170,8 @@ function rhswp_widget_definition_footer2() {
         'echo'  => false
     ) ),
     'before_title'  => genesis_markup( array(
-        'html5' => '<h2 id="title_' . RHSWP_FOOTERWIDGET2 . '">',
-        'xhtml' => '<h2 id="title_' . RHSWP_FOOTERWIDGET2 . '">',
+        'html5' => '<h2>',
+        'xhtml' => '<h2">',
         'echo'  => false,
     ) ),
     'after_title'   => "</h2>\n",
@@ -5665,6 +5679,31 @@ function get_postid_by_slug( $page_slug = '', $posttype = 'post' ) {
   return 0;
 
 }
+
+//========================================================================================================
+
+function acf_check( $fn ) {
+  $theline = __( 'ACF plugin is niet actief (' . $fn . ') ', 'wp-rijkshuisstijl' );
+  error_log( $theline );
+  if ( ! is_admin() ) {
+    if ( WP_DEBUG ) {
+      die( $theline );
+    }
+    else {
+      echo '<p>' . $theline . '</p>';
+    }
+  }
+}
+
+//========================================================================================================
+
+if ( !function_exists( 'get_field' )  ||  !function_exists( 'have_rows' )  ) {
+
+  acf_check( 'get_field' );
+  
+}
+
+//========================================================================================================
 
 
 //========================================================================================================

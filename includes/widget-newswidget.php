@@ -108,9 +108,9 @@ class rhswp_news_widget extends WP_Widget {
     
         extract($args, EXTR_SKIP);
 
-        $rhswp_news_title     = empty( $instance['rhswp_news_title'] ) ? '' : $instance['rhswp_news_title'];
-        $categorie          = empty($instance['rhswp_news_category']) ? '' : $instance['rhswp_news_category'] ;
-        $aantalberichten    = empty($instance['rhswp_news_max']) ? '5' : $instance['rhswp_news_max'] ;
+        $rhswp_news_title   = empty( $instance['rhswp_news_title'] ) ? '' : $instance['rhswp_news_title'];
+        $categorie          = empty( $instance['rhswp_news_category'] ) ? '' : $instance['rhswp_news_category'] ;
+        $aantalberichten    = empty( $instance['rhswp_news_max'] ) ? '5' : $instance['rhswp_news_max'] ;
 
 
         if ( isset($wp_query->query_vars['category_name'] ) ) 

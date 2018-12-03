@@ -52,14 +52,11 @@ $timestamp = time();
   $dossierfilter    = '';
   $featonderwerpen  = '';
 
-  if ( function_exists( 'get_field' ) ) {
-	  $title              = get_field('dossier_overzicht_filter_title', $post->ID );
-	  $dossierfilter      = get_field('dossier_overzicht_filter', $post->ID );
-	  $featonderwerpen    = get_field('uitgelichte_dossiers', $post->ID );
-	  $hiddenonderwerpen  = get_field('dossier_overzicht_hide_dossiers', $post->ID );
+  $title              = get_field('dossier_overzicht_filter_title', $post->ID );
+  $dossierfilter      = get_field('dossier_overzicht_filter', $post->ID );
+  $featonderwerpen    = get_field('uitgelichte_dossiers', $post->ID );
+  $hiddenonderwerpen  = get_field('dossier_overzicht_hide_dossiers', $post->ID );
 	  
-  }
-
 // 1 toon alles
 // 2 toon alles en uitgelichte dossiers
 // 3 toon alleen uitgelichte dossiers
