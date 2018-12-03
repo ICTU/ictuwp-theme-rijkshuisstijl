@@ -4,6 +4,7 @@
 // * Rijkshuisstijl (Digitale Overheid) - searchform.php
 // * ----------------------------------------------------------------------------------
 // * Overwrite default searchform
+// * this file is a copy from /themes/genesis/searchform.php
 // * ----------------------------------------------------------------------------------
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
@@ -13,16 +14,31 @@
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
-//========================================================================================================
-?>
-<div id="searchForm" class="searchForm initSearch searchOpened" data-search-closed="Open het zoekveld" data-search-opened="Zoeken">
-  <form method="get" action="/zoeken" id="search-form">
-    <label for="search-keyword">Zoek binnen Rijkshuisstijl</label> 
-    <div class="clearFieldWrapper"><input type="text" id="search-keyword" class="searchInput" name="trefwoord" title="Type hier uw zoektermen" placeholder="Zoeken"><button class="clearField" type="button">invoer wissen</button></div>
-    <button id="search-submit" class="searchSubmit" name="search-submit" type="submit" title="Zoeken">Zoeken</button>
-  </form>
-</div>
+$strings                  = array();
+$search_text              = apply_filters( 'genesis_search_text', __( 'Search this website', 'genesis' ) );
+$strings['label']         = $search_text; // apply_filters( 'genesis_search_form_label', '' );
+/** This filter is documented in wp-includes/general-template.php */
+$input_value              = apply_filters( 'the_search_query', get_search_query() ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Duplicated WordPress filter
+$strings['input_value']   = ! empty( $input_value ) ? $input_value : '';
+$strings['submit_value']  = apply_filters( 'genesis_search_button_text', esc_attr__( 'Search', 'genesis' ) );
+$strings['placeholder']   = $search_text;
+$strings['label']         = isset( $strings['label'] ) ? $strings['label'] : $strings['placeholder'];
 
-<form tabindex="-1" id="rhswp-searchform-nav-primary" class="search-form" itemprop="potentialAction" itemscope="" itemtype="https://schema.org/SearchAction" method="get" action="http://appelflap.local:5757/" role="search"><meta itemprop="target" content="http://appelflap.local:5757/?s={s}"><label class="search-form-label screen-reader-text" for="searchform-5b76693b620789.96992489">Zoek op deze website</label><input itemprop="query-input" type="search" name="s" id="searchform-5b76693b620789.96992489" placeholder="Zoek op deze website …"><input type="submit" value="Zoek"></form>
 
-the get_search_form() fun
+
+$form = new Genesis_Search_Form( $strings );
+
+/**
+ * Allow the form output to be filtered.
+ *
+ * @since 1.0.0
+ *
+ * @param string The form markup.
+ * @param string Input value.
+ * @param string Submit button value.
+ * @param string Form label value.
+ */
+$searchform = apply_filters( 'genesis_search_form', $form->get_form(), $strings['input_value'], $strings['submit_value'], $strings['label'] );
+
+echo $searchform; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Need this to output raw html.
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
