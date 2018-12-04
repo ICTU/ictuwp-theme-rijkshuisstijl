@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.8
-// * @desc.   Onderwerppagina met uitzonderingsonderwerpen. Kleine stijlwijzigingen. Bugfix voor single posts zonder dossiercontext.
+// * @version 2.0.1
+// * @desc.   Definities voor CPT verplaatst naar plugin.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -40,13 +40,21 @@ genesis();
 //========================================================================================================
 
 function rhswp_show_all_dossiers() {
-  
 
-$timestamp = time();  
-
-  wp_enqueue_script( 'mixitupactions', RHSWP_THEMEFOLDER . '/js/min/filterpage-min.js', array( 'jquery' ), $timestamp, true );
+  if ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
+    echo __( 'Taxonomie voor dossier bestaat niet. Zet de plugin hiervoor aan ("ICTU / WP Register post types and taxonomies").', 'wp-rijkshuisstijl' );
+    return;
+  }
 
   global $post; 
+
+  $timestamp = time();  
+
+  if ( DO_MINIFY_JS ) {
+    $timestamp = CHILD_THEME_VERSION;  
+  }
+  
+  wp_enqueue_script( 'mixitupactions', RHSWP_THEMEFOLDER . '/js/min/filterpage-min.js', array( 'jquery' ), $timestamp, true );
 
   $title            = '';
   $dossierfilter    = '';

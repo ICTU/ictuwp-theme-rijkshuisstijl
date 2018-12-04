@@ -2,16 +2,16 @@
 
 
 /**
- * Rijkshuisstijl (Digitale Overheid) - taxonomy.php
- * ----------------------------------------------------------------------------------
- * Taxonomie-pagina voor tip-thema's
- * ----------------------------------------------------------------------------------
- * @author  Paul van Buuren
- * @license GPL-2.0+
- * @package wp-rijkshuisstijl
- * @version 0.8.24
- * @desc.   Div. bug fixes ( is_tax() ); paging in search results
- * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// * Rijkshuisstijl (Digitale Overheid) - taxonomy.php
+// * ----------------------------------------------------------------------------------
+// * Taxonomie-pagina voor tip-thema's
+// * ----------------------------------------------------------------------------------
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.0.1
+// * @desc.   Definities voor CPT verplaatst naar plugin.
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
 
@@ -59,7 +59,7 @@ genesis();
 
 function rhswp_write_contentblok_waarschuwing() {
 
-  if ( is_tax( RHSWP_CT_DOSSIER ) ) {
+  if ( taxonomy_exists( RHSWP_CT_DOSSIER ) && is_tax( RHSWP_CT_DOSSIER ) ) {
     
     $user = wp_get_current_user();
     if ( in_array( 'manage_categories', (array) $user->allcaps ) ) {

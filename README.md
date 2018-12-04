@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-1.2.20 - Site-improve: alleen skiplink voor hoofdnavigatie gebruiken op homepage.
+2.0.1 - Definities voor CPT verplaatst naar plugin.
 
 ## Version history
+* 2.0.1 - Definities voor CPT verplaatst naar plugin.
 * 1.2.20 - Site-improve: alleen skiplink voor hoofdnavigatie gebruiken op homepage.
 * 1.2.19 - Digibeter-kleuren ook in het Engels beschikbaar.
 * 1.2.18 - Grid CSS voor IE11.

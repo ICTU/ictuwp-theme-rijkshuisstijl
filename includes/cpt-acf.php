@@ -2,225 +2,17 @@
 
 // * Rijkshuisstijl (Digitale Overheid) - cpt-acf.php
 // * -------------------------------------------------------------------------------------------------------
-// * Definities van:
-// *  - custom taxonomies: CTAX_thema / CTAX_contentsoort 
-// *  - Advanced Custom Fields voor diverse plekken
+// * Definities van Advanced Custom Fields voor diverse plekken
 // * -------------------------------------------------------------------------------------------------------
 // *
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.19
-// * @desc.   Digibeter-kleuren ook in het Engels beschikbaar.
+// * @version 2.0.1
+// * @desc.   Definities voor CPT verplaatst naar plugin.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
-
-
-//========================================================================================================
-
-add_action( 'init', 'rhswp_register_my_taxes' );
-
-function rhswp_register_my_taxes() {
-
-	$labels = array(
-		"name" => __( 'Dossiers', 'wp-rijkshuisstijl' ),
-		"singular_name" => __( 'Dossier', 'wp-rijkshuisstijl' ),
-		);
-
-	$labels = array(
-		"name"                  => __( 'Dossiers', 'wp-rijkshuisstijl' ),
-		"singular_name"         => __( 'Dossier', 'wp-rijkshuisstijl' ),
-		"menu_name"             => __( 'Dossiers', 'wp-rijkshuisstijl' ),
-		"all_items"             => __( 'Alle dossiers', 'wp-rijkshuisstijl' ),
-		"add_new"               => __( 'Nieuw dossier toevoegen', 'wp-rijkshuisstijl' ),
-		"add_new_item"          => __( 'Voeg nieuw dossier toe', 'wp-rijkshuisstijl' ),
-		"edit_item"             => __( 'Bewerk dossier', 'wp-rijkshuisstijl' ),
-		"new_item"              => __( 'Nieuw dossier', 'wp-rijkshuisstijl' ),
-		"view_item"             => __( 'Bekijk dossier', 'wp-rijkshuisstijl' ),
-		"search_items"          => __( 'Zoek dossier', 'wp-rijkshuisstijl' ),
-		"not_found"             => __( 'Geen dossiers gevonden', 'wp-rijkshuisstijl' ),
-		"not_found_in_trash"    => __( 'Geen dossiers gevonden in de prullenbak', 'wp-rijkshuisstijl' ),
-		"featured_image"        => __( 'Uitgelichte afbeelding', 'wp-rijkshuisstijl' ),
-		"archives"              => __( 'Overzichten', 'wp-rijkshuisstijl' ),
-		"uploaded_to_this_item" => __( 'Bijbehorende bestanden', 'wp-rijkshuisstijl' ),
-		);
-
-
-
-	$args = array(
-		"label"               => __( 'Dossiers', 'wp-rijkshuisstijl' ),
-		"labels"              => $labels,
-		"public"              => true,
-		"hierarchical"        => true,
-		"label"               => __( 'Dossiers', 'wp-rijkshuisstijl' ),
-		"show_ui"             => true,
-		"show_in_menu"        => true,
-		"show_in_nav_menus"   => true,
-		"query_var"           => true,
-		"rewrite"             => array( 'slug' => RHSWP_CT_DOSSIER, 'with_front' => true, ),
-		"show_admin_column"   => false,
-		"show_in_rest"        => false,
-		"rest_base"           => "",
-		"show_in_quick_edit"  => false,
-	);
-	register_taxonomy( RHSWP_CT_DOSSIER, array( "post", "page", "links", 'event', "document" ), $args );
-
-  add_action( 'admin_menu', 'myprefix_remove_meta_box');
-  
-  function myprefix_remove_meta_box(){
-     remove_meta_box( RHSWP_CT_DOSSIER . 'div', array( 'page' ), 'normal');
-  }
-  
-
-	$labels = array(
-		"name" => __( 'Onderdelen NL Digibeter', 'wp-rijkshuisstijl' ),
-		"singular_name" => __( 'Onderdeel NL Digibeter', 'wp-rijkshuisstijl' ),
-		);
-
-	$labels = array(
-		"name"                  => __( 'Digibeter-kleuren', 'wp-rijkshuisstijl' ),
-		"singular_name"         => __( 'Digibeter-kleur', 'wp-rijkshuisstijl' ),
-		"menu_name"             => __( 'Digibeter-kleuren', 'wp-rijkshuisstijl' ),
-		"all_items"             => __( 'Alle kleuren', 'wp-rijkshuisstijl' ),
-		"add_new"               => __( 'Nieuw onderdeel toevoegen', 'wp-rijkshuisstijl' ),
-		"add_new_item"          => __( 'Voeg nieuw onderdeel toe', 'wp-rijkshuisstijl' ),
-		"edit_item"             => __( 'Bewerk onderdeel', 'wp-rijkshuisstijl' ),
-		"new_item"              => __( 'Nieuw onderdeel', 'wp-rijkshuisstijl' ),
-		"view_item"             => __( 'Bekijk onderdeel', 'wp-rijkshuisstijl' ),
-		"search_items"          => __( 'Zoek onderdeel', 'wp-rijkshuisstijl' ),
-		"not_found"             => __( 'Geen onderdelen gevonden', 'wp-rijkshuisstijl' ),
-		"not_found_in_trash"    => __( 'Geen onderdelen gevonden in de prullenbak', 'wp-rijkshuisstijl' ),
-		"featured_image"        => __( 'Uitgelichte afbeelding', 'wp-rijkshuisstijl' ),
-		"archives"              => __( 'Overzichten', 'wp-rijkshuisstijl' ),
-		"uploaded_to_this_item" => __( 'Bijbehorende bestanden', 'wp-rijkshuisstijl' ),
-		);
-
-
-
-	$args = array(
-		"label"               => __( 'Onderdelen NL Digibeter', 'wp-rijkshuisstijl' ),
-		"labels"              => $labels,
-		"public"              => true,
-		"hierarchical"        => true,
-		"label"               => __( 'Onderdelen NL Digibeter', 'wp-rijkshuisstijl' ),
-		"show_ui"             => true,
-		"show_in_menu"        => true,
-		"show_in_nav_menus"   => true,
-		"query_var"           => true,
-		"rewrite"             => array( 'slug' => RHSWP_CT_DIGIBETER, 'with_front' => true, ),
-		"show_admin_column"   => false,
-		"show_in_rest"        => false,
-		"rest_base"           => "",
-		"show_in_quick_edit"  => false,
-	);
-	register_taxonomy( RHSWP_CT_DIGIBETER, array( "page" ), $args );
-
-
-}
-
-
-//========================================================================================================
-
-add_action( 'init', 'rhswp_register_custom_post_types' );
-
-/* 
-* Register custom post types
-*/  
-
-function rhswp_register_custom_post_types() {
-  
-  /* 
-  * Documenten
-  */  
-  
-	$labels = array(
-		"name"                  => __( 'Documenten', 'wp-rijkshuisstijl' ),
-		"singular_name"         => __( 'Document', 'wp-rijkshuisstijl' ),
-		"menu_name"             => __( 'Documenten', 'wp-rijkshuisstijl' ),
-		"all_items"             => __( 'Alle documenten', 'wp-rijkshuisstijl' ),
-		"add_new"               => __( 'Nieuw document toevoegen', 'wp-rijkshuisstijl' ),
-		"add_new_item"          => __( 'Voeg nieuw document toe', 'wp-rijkshuisstijl' ),
-		"edit_item"             => __( 'Bewerk document', 'wp-rijkshuisstijl' ),
-		"new_item"              => __( 'Nieuw document', 'wp-rijkshuisstijl' ),
-		"view_item"             => __( 'Bekijk document', 'wp-rijkshuisstijl' ),
-		"search_items"          => __( 'Zoek document', 'wp-rijkshuisstijl' ),
-		"not_found"             => __( 'Geen documenten gevonden', 'wp-rijkshuisstijl' ),
-		"not_found_in_trash"    => __( 'Geen documenten gevonden in de prullenbak', 'wp-rijkshuisstijl' ),
-		"featured_image"        => __( 'Uitgelichte afbeelding', 'wp-rijkshuisstijl' ),
-		"archives"              => __( 'Overzichten', 'wp-rijkshuisstijl' ),
-		"uploaded_to_this_item" => __( 'Bijbehorende bestanden', 'wp-rijkshuisstijl' ),
-		);
-
-	$args = array(
-		"label"               => __( 'Documenten', 'wp-rijkshuisstijl' ),
-		"labels"              => $labels,
-		"description"         => "",
-		"public"              => true,
-		"publicly_queryable"  => true,
-		"show_ui"             => true,
-		"show_in_rest"        => false,
-		"rest_base"           => "",
-		"has_archive"         => true,
-		"show_in_menu"        => true,
-		"exclude_from_search" => false,
-		"capability_type"     => "post",
-		"map_meta_cap"        => true,
-		"hierarchical"        => false,
-		"rewrite"             => array( "slug" => RHSWP_CPT_DOCUMENT, "with_front" => true ),
-		"query_var"           => true,
-		"supports"            => array( "title", "editor", "thumbnail", "excerpt" ),		
-		"taxonomies"          => array( "dossiers" ),
-			);
-	register_post_type( RHSWP_CPT_DOCUMENT, $args );
-
-if ( 22 == 33 ) {
-  
-  /* 
-  * Relevante links
-  */  
-
-	$labels = array(
-		"name"                  => __( 'Relevante links', 'wp-rijkshuisstijl' ),
-		"singular_name"         => __( 'Relevante link', 'wp-rijkshuisstijl' ),
-		"menu_name"             => __( 'Relevante links', 'wp-rijkshuisstijl' ),
-		"all_items"             => __( 'Alle Relevante links', 'wp-rijkshuisstijl' ),
-		"add_new"               => __( 'Nieuwe link toevoegen', 'wp-rijkshuisstijl' ),
-		"add_new_item"          => __( 'Voeg nieuwe link toe', 'wp-rijkshuisstijl' ),
-		"edit_item"             => __( 'Bewerk relevante link', 'wp-rijkshuisstijl' ),
-		"new_item"              => __( 'Nieuwe link', 'wp-rijkshuisstijl' ),
-		"view_item"             => __( 'Bekijk relevante link', 'wp-rijkshuisstijl' ),
-		"search_items"          => __( 'Zoek relevante link', 'wp-rijkshuisstijl' ),
-		"not_found"             => __( 'Geen relevante links gevonden', 'wp-rijkshuisstijl' ),
-		"not_found_in_trash"    => __( 'Geen relevante links gevonden in de prullenbak', 'wp-rijkshuisstijl' ),
-		"featured_image"        => __( 'Uitgelichte afbeelding', 'wp-rijkshuisstijl' ),
-		"archives"              => __( 'Overzichten', 'wp-rijkshuisstijl' ),
-		"uploaded_to_this_item" => __( 'Bijbehorende bestanden', 'wp-rijkshuisstijl' ),
-		);
-
-	$args = array(
-		"labels"                => $labels,
-		"description"           => "",
-		"public"                => true,
-		"show_ui"               => true,
-		"show_in_rest"          => true,
-		"has_archive"           => true,
-		"show_in_menu"          => true,
-		"exclude_from_search"   => false,
-		"capability_type"       => "post",
-		"map_meta_cap"          => true,
-		"hierarchical"          => false,
-		"rewrite"               => array( "slug" => RHSWP_LINK_CPT, "with_front" => true ),
-		"query_var"             => true,
-		"supports"              => array( "title", "editor", "excerpt", "revisions", "thumbnail" ),				
-	);
-	register_post_type( RHSWP_LINK_CPT, $args );
-}
-
-
-
-// End of rhswp_register_custom_post_types()
-}
 
 
 //========================================================================================================
@@ -312,106 +104,110 @@ if( function_exists('acf_add_local_field_group') ):
   	'description' => '',
   ));
 
-  //======================================================================================================
-  // metadata voor CT RHSWP_CT_DOSSIER 
-  //======================================================================================================
-  acf_add_local_field_group(array (
-  	'key' => 'group_57f90d0a441e4',
-  	'title' => 'Dossier-informatie',
-  	'fields' => array (
-  		array (
-  			'key' => 'field_57f90d20c2fdf',
-  			'label'   => __( 'Inhoudspagina', 'wp-rijkshuisstijl' ),
-  			'name' => 'dossier_overzichtpagina',
-  			'type' => 'post_object',
-        'instructions'   => __( 'Welke pagina beschrijft de inhoud van dit dossier? Deze pagina is belangrijk, omdat we hiermee de verdere structuur van het dossier kunnen bepalen.', 'wp-rijkshuisstijl' ),  			
-  			'required' => 0,
-  			'conditional_logic' => 0,
-  			'wrapper' => array (
-  				'width' => '',
-  				'class' => '',
-  				'id' => '',
-  			),
-  			'post_type' => array (
-  				0 => 'page',
-  			),
-  			'taxonomy' => array (
-  			),
-  			'allow_null' => 0,
-  			'multiple' => 0,
-  			'return_format' => 'object',
-  			'ui' => 1,
-  		),
-  		array (
-  			'key' => 'field_57fa70f9fe7a3',
-  			'label'   => __( 'Toon inhoudspagina in het menu?', 'wp-rijkshuisstijl' ),
-  			'name' => 'toon_overzichtspagina_in_het_menu',
-  			'type' => 'radio',
-  			'instructions'   => '',
-  			'required' => 1,
-  			'conditional_logic' => 0,
-  			'wrapper' => array (
-  				'width' => '',
-  				'class' => '',
-  				'id' => '',
-  			),
-  			'choices' => array (
-  				'ja' => 'Toon wel',
-  				'nee' => 'Toon niet',
-  			),
-  			'allow_null' => 0,
-  			'other_choice' => 0,
-  			'save_other_choice' => 0,
-  			'default_value' => 'ja',
-  			'layout' => 'vertical',
-  			'return_format' => 'value',
-  		),
-  		array (
-  			'key' => 'field_57f90f281dcfb',
-  			'label'   => __( 'Andere pagina\'s in het menu', 'wp-rijkshuisstijl' ),
-  			'name' => 'menu_pages',
-  			'type' => 'relationship',
-  			'instructions'   => '',
-  			'required' => 0,
-  			'conditional_logic' => 0,
-  			'wrapper' => array (
-  				'width' => '',
-  				'class' => '',
-  				'id' => '',
-  			),
-  			'post_type' => array (
-  				0 => 'page',
-  			),
-  			'taxonomy' => array (
-  			),
-  			'filters' => array (
-  				0 => 'search',
-  				1 => 'taxonomy',
-  			),
-  			'elements' => '',
-  			'min' => '',
-  			'max' => '',
-  			'return_format' => 'object',
-  		),
-  	),
-  	'location' => array (
-  		array (
-  			array (
-  				'param' => 'taxonomy',
-  				'operator' => '==',
-  				'value' => 'dossiers',
-  			),
-  		),
-  	),
-  	'menu_order' => 0,
-  	'position' => 'normal',
-  	'style' => 'default',
-  	'label_placement' => 'top',
-  	'instruction_placement' => 'label',
-  	'hide_on_screen' => '',
-  	'active' => 1,
-  	'description' => '',
-  ));
+
+  if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
+    //======================================================================================================
+    // metadata voor CT RHSWP_CT_DOSSIER 
+    //======================================================================================================
+    acf_add_local_field_group(array (
+    	'key' => 'group_57f90d0a441e4',
+    	'title' => 'Dossier-informatie',
+    	'fields' => array (
+    		array (
+    			'key' => 'field_57f90d20c2fdf',
+    			'label'   => __( 'Inhoudspagina', 'wp-rijkshuisstijl' ),
+    			'name' => 'dossier_overzichtpagina',
+    			'type' => 'post_object',
+          'instructions'   => __( 'Welke pagina beschrijft de inhoud van dit dossier? Deze pagina is belangrijk, omdat we hiermee de verdere structuur van het dossier kunnen bepalen.', 'wp-rijkshuisstijl' ),  			
+    			'required' => 0,
+    			'conditional_logic' => 0,
+    			'wrapper' => array (
+    				'width' => '',
+    				'class' => '',
+    				'id' => '',
+    			),
+    			'post_type' => array (
+    				0 => 'page',
+    			),
+    			'taxonomy' => array (
+    			),
+    			'allow_null' => 0,
+    			'multiple' => 0,
+    			'return_format' => 'object',
+    			'ui' => 1,
+    		),
+    		array (
+    			'key' => 'field_57fa70f9fe7a3',
+    			'label'   => __( 'Toon inhoudspagina in het menu?', 'wp-rijkshuisstijl' ),
+    			'name' => 'toon_overzichtspagina_in_het_menu',
+    			'type' => 'radio',
+    			'instructions'   => '',
+    			'required' => 1,
+    			'conditional_logic' => 0,
+    			'wrapper' => array (
+    				'width' => '',
+    				'class' => '',
+    				'id' => '',
+    			),
+    			'choices' => array (
+    				'ja' => 'Toon wel',
+    				'nee' => 'Toon niet',
+    			),
+    			'allow_null' => 0,
+    			'other_choice' => 0,
+    			'save_other_choice' => 0,
+    			'default_value' => 'ja',
+    			'layout' => 'vertical',
+    			'return_format' => 'value',
+    		),
+    		array (
+    			'key' => 'field_57f90f281dcfb',
+    			'label'   => __( 'Andere pagina\'s in het menu', 'wp-rijkshuisstijl' ),
+    			'name' => 'menu_pages',
+    			'type' => 'relationship',
+    			'instructions'   => '',
+    			'required' => 0,
+    			'conditional_logic' => 0,
+    			'wrapper' => array (
+    				'width' => '',
+    				'class' => '',
+    				'id' => '',
+    			),
+    			'post_type' => array (
+    				0 => 'page',
+    			),
+    			'taxonomy' => array (
+    			),
+    			'filters' => array (
+    				0 => 'search',
+    				1 => 'taxonomy',
+    			),
+    			'elements' => '',
+    			'min' => '',
+    			'max' => '',
+    			'return_format' => 'object',
+    		),
+    	),
+    	'location' => array (
+    		array (
+    			array (
+    				'param' => 'taxonomy',
+    				'operator' => '==',
+    				'value' => RHSWP_CT_DOSSIER,
+    			),
+    		),
+    	),
+    	'menu_order' => 0,
+    	'position' => 'normal',
+    	'style' => 'default',
+    	'label_placement' => 'top',
+    	'instruction_placement' => 'label',
+    	'hide_on_screen' => '',
+    	'active' => 1,
+    	'description' => '',
+    ));
+  }
+
 
   //======================================================================================================
   // metadata voor page_dossiersingleactueel.php
@@ -849,126 +645,128 @@ if( function_exists('acf_add_local_field_group') ):
 
     //====================================================================================================
     // uitgelichte dossiers op de dossieroverzichtspagina
-    acf_add_local_field_group(array (
-    	'key' => 'group_57f50ce2004e6',
-    	'title' => 'Onderwerppagina: selecteer uitgelichte onderwerpen',
-    	'fields' => array (
-    		array (
-    			'key' => 'field_58382ce90bcd4',
-    			'label' => 'Hoe wil je de onderwerpen tonen?',
-    			'name' => 'dossier_overzicht_filter',
-    			'type' => 'radio',
-    			'instructions' => '',
-    			'required' => 1,
-    			'conditional_logic' => 0,
-    			'wrapper' => array (
-    				'width' => '',
-    				'class' => '',
-    				'id' => '',
-    			),
-    			'choices' => array (
-    				'dossier_overzicht_filter_as_list' => 'Alleen de onderwerpen in een lijst',
-    				'dossier_overzicht_filter_as_list_plus' => 'Filter en uitgelichte onderwerpen + alle onderwerpen in een lijst',
-    			),
-    			'allow_null' => 0,
-    			'other_choice' => 0,
-    			'save_other_choice' => 0,
-    			'default_value' => 'dossier_overzicht_filter_as_list',
-    			'layout' => 'vertical',
-    			'return_format' => 'value',
-    		),
-
-        array (
-        		'key' => 'field_583838dde16cd',
-        		'label' => 'Titel boven blok met uitgelichte onderwerpen',
-        		'name' => 'dossier_overzicht_filter_title',
-        		'type' => 'text',
-        		'instructions' => '',
-        		'required' => 1,
-        		'conditional_logic' => array (
-        			array (
-        				array (
-        					'field' => 'field_58382ce90bcd4',
-        					'operator' => '==',
-      						'value' => 'dossier_overzicht_filter_as_list_plus',
-        				),
-        			),
-        		),
-    		),
-    		array (
-    			'key' => 'field_57f50cf4234e6',
-    			'label'   => __( 'Uitgelichte onderwerpen', 'wp-rijkshuisstijl' ),
-    			'name' => 'uitgelichte_dossiers',
-    			'type' => 'taxonomy',
-          'instructions'   => __( 'De onderwerpen die je hier kiest worden bovenaan de pagina getoond met speciale layout.', 'wp-rijkshuisstijl' ),  			
-    			'required' => 0,
-    			'conditional_logic' => array (
-        			array (
-        				array (
-        					'field' => 'field_58382ce90bcd4',
-        					'operator' => '==',
-      						'value' => 'dossier_overzicht_filter_as_list_plus',
-        				),
-        			),
-    			),
-
-    			'wrapper' => array (
-    				'width' => '',
-    				'class' => '',
-    				'id' => '',
-    			),
-    			'taxonomy' => RHSWP_CT_DOSSIER,
-    			'field_type' => 'checkbox',
-    			'allow_null' => 0,
-    			'add_term' => 1,
-    			'save_terms' => 0,
-    			'load_terms' => 0,
-    			'return_format' => 'id',
-    			'multiple' => 0,
-    		),
-
-    		array(
-    			'key' => 'field_5ba1eaafcc2c0',
-    			'label' => 'Welke dossiers wil je NIET tonen?',
-    			'name' => 'dossier_overzicht_hide_dossiers',
-    			'type' => 'taxonomy',
-    			'instructions' => '',
-    			'required' => 0,
-    			'conditional_logic' => 0,
-    			'wrapper' => array(
-    				'width' => '',
-    				'class' => '',
-    				'id' => '',
-    			),
-    			'taxonomy' => 'dossiers',
-    			'field_type' => 'checkbox',
-    			'allow_null' => 1,
-    			'add_term' => 0,
-    			'save_terms' => 0,
-    			'load_terms' => 0,
-    			'return_format' => 'id',
-    			'multiple' => 0,
-    		),
-    		
-    	),
-    	'location' => array (
-    		array (
-    			array (
-    				'param' => 'page_template',
-    				'operator' => '==',
-    				'value' => 'page_showalldossiers-nieuwestyling.php',
-    			),
-    		),
-    	),
-    	'menu_order' => 0,
-    	'position' => 'acf_after_title',
-    	'style' => 'default',
-    	'label_placement' => 'top',
-    	'instruction_placement' => 'label',
-    	'hide_on_screen' => '',
-    	'active' => 1,
-    	'description' => '',
-    ));
+    if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
+      acf_add_local_field_group(array (
+      	'key' => 'group_57f50ce2004e6',
+      	'title' => 'Onderwerppagina: selecteer uitgelichte onderwerpen',
+      	'fields' => array (
+      		array (
+      			'key' => 'field_58382ce90bcd4',
+      			'label' => 'Hoe wil je de onderwerpen tonen?',
+      			'name' => 'dossier_overzicht_filter',
+      			'type' => 'radio',
+      			'instructions' => '',
+      			'required' => 1,
+      			'conditional_logic' => 0,
+      			'wrapper' => array (
+      				'width' => '',
+      				'class' => '',
+      				'id' => '',
+      			),
+      			'choices' => array (
+      				'dossier_overzicht_filter_as_list' => 'Alleen de onderwerpen in een lijst',
+      				'dossier_overzicht_filter_as_list_plus' => 'Filter en uitgelichte onderwerpen + alle onderwerpen in een lijst',
+      			),
+      			'allow_null' => 0,
+      			'other_choice' => 0,
+      			'save_other_choice' => 0,
+      			'default_value' => 'dossier_overzicht_filter_as_list',
+      			'layout' => 'vertical',
+      			'return_format' => 'value',
+      		),
+  
+          array (
+          		'key' => 'field_583838dde16cd',
+          		'label' => 'Titel boven blok met uitgelichte onderwerpen',
+          		'name' => 'dossier_overzicht_filter_title',
+          		'type' => 'text',
+          		'instructions' => '',
+          		'required' => 1,
+          		'conditional_logic' => array (
+          			array (
+          				array (
+          					'field' => 'field_58382ce90bcd4',
+          					'operator' => '==',
+        						'value' => 'dossier_overzicht_filter_as_list_plus',
+          				),
+          			),
+          		),
+      		),
+      		array (
+      			'key' => 'field_57f50cf4234e6',
+      			'label'   => __( 'Uitgelichte onderwerpen', 'wp-rijkshuisstijl' ),
+      			'name' => 'uitgelichte_dossiers',
+      			'type' => 'taxonomy',
+            'instructions'   => __( 'De onderwerpen die je hier kiest worden bovenaan de pagina getoond met speciale layout.', 'wp-rijkshuisstijl' ),  			
+      			'required' => 0,
+      			'conditional_logic' => array (
+          			array (
+          				array (
+          					'field' => 'field_58382ce90bcd4',
+          					'operator' => '==',
+        						'value' => 'dossier_overzicht_filter_as_list_plus',
+          				),
+          			),
+      			),
+  
+      			'wrapper' => array (
+      				'width' => '',
+      				'class' => '',
+      				'id' => '',
+      			),
+      			'taxonomy' => RHSWP_CT_DOSSIER,
+      			'field_type' => 'checkbox',
+      			'allow_null' => 0,
+      			'add_term' => 1,
+      			'save_terms' => 0,
+      			'load_terms' => 0,
+      			'return_format' => 'id',
+      			'multiple' => 0,
+      		),
+  
+      		array(
+      			'key' => 'field_5ba1eaafcc2c0',
+      			'label' => 'Welke dossiers wil je NIET tonen?',
+      			'name' => 'dossier_overzicht_hide_dossiers',
+      			'type' => 'taxonomy',
+      			'instructions' => '',
+      			'required' => 0,
+      			'conditional_logic' => 0,
+      			'wrapper' => array(
+      				'width' => '',
+      				'class' => '',
+      				'id' => '',
+      			),
+      			'taxonomy' => 'dossiers',
+      			'field_type' => 'checkbox',
+      			'allow_null' => 1,
+      			'add_term' => 0,
+      			'save_terms' => 0,
+      			'load_terms' => 0,
+      			'return_format' => 'id',
+      			'multiple' => 0,
+      		),
+      		
+      	),
+      	'location' => array (
+      		array (
+      			array (
+      				'param' => 'page_template',
+      				'operator' => '==',
+      				'value' => 'page_showalldossiers-nieuwestyling.php',
+      			),
+      		),
+      	),
+      	'menu_order' => 0,
+      	'position' => 'acf_after_title',
+      	'style' => 'default',
+      	'label_placement' => 'top',
+      	'instruction_placement' => 'label',
+      	'hide_on_screen' => '',
+      	'active' => 1,
+      	'description' => '',
+      ));
+    }
     
     acf_add_local_field_group(array (
     	'key' => 'group_57f5099923f1b',
@@ -1405,48 +1203,51 @@ endif;
 
 if( function_exists('acf_add_local_field_group') ):
   
-  acf_add_local_field_group(array (
-  	'key' => 'group_58da405ecc1c5',
-  	'title' => ' Korte beschrijving',
-  	'fields' => array (
-  		array (
-  			'default_value' => '',
-  			'maxlength' => '',
-  			'placeholder' => '',
-  			'prepend' => '',
-  			'append' => '',
-  			'key' => 'field_58da406ee63df',
-  			'label' => 'Korte beschrijving voor dossieroverzicht',
-  			'name' => 'dossier_korte_beschrijving_voor_dossieroverzicht',
-  			'type' => 'textarea',
-  			'instructions' => '',
-  			'required' => 0,
-  			'conditional_logic' => 0,
-  			'wrapper' => array (
-  				'width' => '',
-  				'class' => '',
-  				'id' => '',
-  			),
-  		),
-  	),
-  	'location' => array (
-  		array (
-  			array (
-  				'param' => 'taxonomy',
-  				'operator' => '==',
-  				'value' => RHSWP_CT_DOSSIER,
-  			),
-  		),
-  	),
-  	'menu_order' => 0,
-  	'position' => 'acf_after_title',
-  	'style' => 'default',
-  	'label_placement' => 'top',
-  	'instruction_placement' => 'label',
-  	'hide_on_screen' => '',
-  	'active' => 1,
-  	'description' => '',
-  ));
+  if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
+    acf_add_local_field_group(array (
+    	'key' => 'group_58da405ecc1c5',
+    	'title' => ' Korte beschrijving',
+    	'fields' => array (
+    		array (
+    			'default_value' => '',
+    			'maxlength' => '',
+    			'placeholder' => '',
+    			'prepend' => '',
+    			'append' => '',
+    			'key' => 'field_58da406ee63df',
+    			'label' => 'Korte beschrijving voor dossieroverzicht',
+    			'name' => 'dossier_korte_beschrijving_voor_dossieroverzicht',
+    			'type' => 'textarea',
+    			'instructions' => '',
+    			'required' => 0,
+    			'conditional_logic' => 0,
+    			'wrapper' => array (
+    				'width' => '',
+    				'class' => '',
+    				'id' => '',
+    			),
+    		),
+    	),
+    	'location' => array (
+    		array (
+    			array (
+    				'param' => 'taxonomy',
+    				'operator' => '==',
+    				'value' => RHSWP_CT_DOSSIER,
+    			),
+    		),
+    	),
+    	'menu_order' => 0,
+    	'position' => 'acf_after_title',
+    	'style' => 'default',
+    	'label_placement' => 'top',
+    	'instruction_placement' => 'label',
+    	'hide_on_screen' => '',
+    	'active' => 1,
+    	'description' => '',
+    ));
+  
+  }
 
 endif;
 
@@ -1820,387 +1621,419 @@ if( function_exists('acf_add_local_field_group') ):
   // - of vrij ingevoerde links
   // - of berichten (algemeen of gefilterd op categorie)
 
-  acf_add_local_field_group(array (
-  	'key' => 'group_5804cc93cxac6',
-  	'title' => __( 'Content-blokken', 'wp-rijkshuisstijl' ),
-  	'fields' => array (
-  		array (
-  			'key' => 'field_5804cd3ef7829',
-  			'label'   => __( 'Voeg 1 of meer blokken toe', 'wp-rijkshuisstijl' ),
-  			'name' => 'extra_contentblokken',
-  			'type' => 'repeater',
-  			'instructions'   => __( 'Deze blokken bestaan uit berichten, pagina\s of uit links. Berichten worden automatisch geselecteerd. Links moet je handmatig toevoegen. ', 'wp-rijkshuisstijl' ),
-  			'required' => 0,
-  			'conditional_logic' => 0,
-  			'wrapper' => array (
-  				'width' => '',
-  				'class' => '',
-  				'id' => '',
-  			),
-  			'collapsed' => 'field_5804cd67f782a',
-  			'min' => '',
-  			'max' => '',
-  			'layout' => 'row',
-  			'button_label' => 'Nieuw blok toevoegen',
-  			'sub_fields' => array (
-  				array (
-  					'key' => 'field_5804cd67f782a',
-      			'label'   => __( 'Titel boven contentblok', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_title',
-  					'type' => 'text',
-  					'instructions'   => '',
-  					'required' => 1,
-  					'conditional_logic' => 0,
-  					'wrapper' => array (
-  						'width' => '',
-  						'class' => '',
-  						'id' => '',
-  					),
-  					'default_value' => '',
-  					'placeholder' => '',
-  					'prepend' => '',
-  					'append' => '',
-  					'maxlength' => '',
-  				),
-  				array (
-  					'key' => 'field_5804cde25e99a',
-      			'label'   => __( 'Wat wil je tonen in dit contentblok?', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_type_block',
-  					'type' => 'radio',
-  					'instructions'   => '',
-  					'required' => 1,
-  					'conditional_logic' => 0,
-  					'wrapper' => array (
-  						'width' => '',
-  						'class' => '',
-  						'id' => '',
-  					),
-  					'choices' => array (
-  						'berichten'           => __( 'Automatische lijst van berichten', 'wp-rijkshuisstijl' ),
-  						'berichten_paginas'   => __( 'Berichten of pagina\'s', 'wp-rijkshuisstijl' ),
-  						'algemeen'            => __( 'Vrije invoer: links in de volgorde die ik bepaal', 'wp-rijkshuisstijl' ),
-  						'select_dossiers'     => __( 'Een selectie van dossiers', 'wp-rijkshuisstijl' ),
-  						'events'              => __( 'Automatische lijst van evenementen', 'wp-rijkshuisstijl' ),
-  					),
-  					'allow_null' => 0,
-  					'other_choice' => 0,
-  					'save_other_choice' => 0,
-  					'default_value' => 'berichten_paginas',
-  					'layout' => 'vertical',
-  					'return_format' => 'value',
-  				),
-  				array (
-  					'key' => 'field_5804cd7bf782b',
-            'label'   => __( 'Links in je contentblok', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_algemeen_links',
-  					'type' => 'repeater',
-  					'instructions' => '',
-  					'required' => 1,
-  					'conditional_logic' => array (
-  						array (
-  							array (
-  								'field' => 'field_5804cde25e99a',
-  								'operator' => '==',
-  								'value' => 'algemeen',
-  							),
-  						),
-  					),
-  					'wrapper' => array (
-  						'width' => '',
-  						'class' => '',
-  						'id' => '',
-  					),
-  					'collapsed' => '',
-  					'min' => '',
-  					'max' => '',
-  					'layout' => 'table',
-  					'button_label' => 'Nieuwe regel',
-  					'sub_fields' => array (
-  						array (
-  							'key' => 'field_580ddadb4597b',
-                'label'   => __( 'Linktekst', 'wp-rijkshuisstijl' ),
-  							'name' => 'extra_contentblok_algemeen_links_linktekst',
-  							'type' => 'text',
-  							'instructions' => '',
-  							'required' => 1,
-  							'conditional_logic' => 0,
-  							'wrapper' => array (
-  								'width' => '',
-  								'class' => '',
-  								'id' => '',
-  							),
-  							'default_value' => '',
-  							'placeholder' => '',
-  							'prepend' => '',
-  							'append' => '',
-  							'maxlength' => '',
-  						),
-  						array (
-  							'key' => 'field_580ddb0e4597c',
-  							'label' => 'Link',
-  							'name' => 'extra_contentblok_algemeen_links_url',
-  							'type' => 'url',
-  							'instructions' => '',
-  							'required' => 1,
-  							'conditional_logic' => 0,
-  							'wrapper' => array (
-  								'width' => '',
-  								'class' => '',
-  								'id' => '',
-  							),
-  							'default_value' => '',
-  							'placeholder' => '',
-  						),
-  					),
-  				),
-  				array (
-  					'key' => 'field_5804d01355657',
-      			'label'   => __( 'Wil je de berichten filteren op categorie?', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_categoriefilter',
-  					'type' => 'radio',
-            'instructions'   => __( 'Als deze pagina een dossier heeft, worden berichten sowieso gefilterd op het dossier.', 'wp-rijkshuisstijl' ),  			
-  					'required' => 1,
-  					'conditional_logic' => array (
-  						array (
-  							array (
-  								'field' => 'field_5804cde25e99a',
-  								'operator' => '==',
-  								'value' => 'berichten',
-  							),
-  						),
-  					),
-  					'wrapper' => array (
-  						'width' => '',
-  						'class' => '',
-  						'id' => '',
-  					),
-  					'choices' => array (
-  						'ja' => 'Ja, toon alleen berichten uit een bepaalde categorie.',
-  						'nee' => 'Nee, toon alle berichten.',
-  					),
-  					'allow_null' => 0,
-  					'other_choice' => 0,
-  					'save_other_choice' => 0,
-  					'default_value' => 'nee',
-  					'layout' => 'vertical',
-  					'return_format' => 'value',
-  				),
-  				array (
-  					'key' => 'field_5804d0ae7e521',
-      			'label'   => __( 'Kies de categorie', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_chosen_category',
-  					'type' => 'taxonomy',
-  					'instructions'   => '',
-  					'required' => 1,
-  					'conditional_logic' => array (
-  						array (
-  							array (
-  								'field' => 'field_5804cde25e99a',
-  								'operator' => '==',
-  								'value' => 'berichten',
-  							),
-  							array (
-  								'field' => 'field_5804d01355657',
-  								'operator' => '==',
-  								'value' => 'ja',
-  							),
-  						),
-  					),
-  					'wrapper' => array (
-  						'width' => '',
-  						'class' => '',
-  						'id' => '',
-  					),
-  					'taxonomy' => 'category',
-  					'field_type' => 'checkbox',
-  					'allow_null' => 0,
-  					'add_term' => 1,
-  					'save_terms' => 0,
-  					'load_terms' => 0,
-  					'return_format' => 'id',
-  					'multiple' => 0,
-  				),
-  				array (
-  					'key' => 'field_5804d1f49c89c',
-      			'label'   => __( 'Maximum aantal berichten', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_maxnr_posts',
-  					'type' => 'select',
-  					'instructions'   => '',
-  					'required' => 1,
-  					'conditional_logic' => array (
-  						array (
-  							array (
-  								'field' => 'field_5804cde25e99a',
-  								'operator' => '==',
-  								'value' => 'berichten',
-  							),
-  						),
-  					),
-  					'wrapper' => array (
-  						'width' => '',
-  						'class' => '',
-  						'id' => '',
-  					),
-  					'choices' => array (
-  						1 => '1',
-  						2 => '2',
-  						3 => '3',
-  						4 => '4',
-  						5 => '5',
-  						6 => '6',
-  						7 => '7',
-  						8 => '8',
-  						9 => '9',
-  						10 => '10',
-  						11 => '11',
-  						12 => '12',
-  						13 => '13',
-  						14 => '14',
-  						15 => '15',
-  						16 => '16',
-  						17 => '17',
-  						18 => '18',
-  						19 => '19',
-  						20 => '20',
-  					),
-  					'default_value' => array (
-  						0 => 6,
-  					),
-  					'allow_null' => 0,
-  					'multiple' => 0,
-  					'ui' => 0,
-  					'ajax' => 0,
-  					'return_format' => 'value',
-  					'placeholder' => '',
-  				),
-  				array (
-  					'key' => 'field_5804d943476f2',
-      			'label'   => __( 'Toon hoeveel berichten met hun uitgelichte afbeelding', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_maxnr_posts_with_featured_image',
-  					'type' => 'select',
-  					'instructions'   => '',
-  					'required' => 1,
-  					'conditional_logic' => array (
-  						array (
-  							array (
-  								'field' => 'field_5804cde25e99a',
-  								'operator' => '==',
-  								'value' => 'berichten',
-  							),
-  						),
-  					),
-  					'wrapper' => array (
-  						'width' => '',
-  						'class' => '',
-  						'id' => '',
-  					),
-  					'choices' => array (
-  						0 => 'geen',
-  						1 => '1',
-  						2 => '2',
-  						3 => '3',
-  						4 => '4',
-  						5 => '5',
-  						'alle' => 'Alle berichten tonen met uitgelichte afbeelding',
-  					),
-  					'default_value' => array (
-  						0 => 1,
-  					),
-  					'allow_null' => 0,
-  					'multiple' => 0,
-  					'ui' => 0,
-  					'ajax' => 0,
-  					'return_format' => 'value',
-  					'placeholder' => '',
-  				),
-
-  				array (
-  					'key' => 'field_5804d943474a9',
-      			'label'   => __( 'Hoeveel evenementen maximaal?', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_maxnr_events',
-  					'type' => 'select',
-  					'instructions'   => '',
-  					'required' => 1,
-  					'conditional_logic' => array (
-  						array (
-  							array (
-  								'field' => 'field_5804cde25e99a',
-  								'operator' => '==',
-  								'value' => 'events',
-  							),
-  						),
-  					),
-  					'wrapper' => array (
-  						'width' => '',
-  						'class' => '',
-  						'id' => '',
-  					),
-  					'choices' => array (
-  						1 => '1',
-  						2 => '2',
-  						3 => '3',
-  						4 => '4',
-  						5 => '5',
-  						6 => '6',
-  						9 => '9',
-  						12 => '12',
-  						15 => '15',
-  						18 => '18',
-  						21 => '21',
-  						24 => '24',
-  					),
-  					'default_value' => array (
-  						3 => 3,
-  					),
-  					'allow_null' => 0,
-  					'multiple' => 0,
-  					'ui' => 0,
-  					'ajax' => 0,
-  					'return_format' => 'value',
-  					'placeholder' => '',
-  				),
-
-  				
-  				array (
-    				
-
-      			'key' => 'field_68247045955b10',
-      			'label'   => __( 'Geselecteerde dossiers', 'wp-rijkshuisstijl' ),
-      			'name' => 'select_dossiers_list',
-      			'type' => 'taxonomy',
-            'instructions'   => __( 'De dossiers die je hier kiest worden bovenaan de pagina getoond met speciale layout.', 'wp-rijkshuisstijl' ),  			
-      			'required' => 0,
-      			'conditional_logic' => array (
-      				array (
-      					array (
-  								'field' => 'field_5804cde25e99a',
-      						'operator' => '==',
-      						'value' => 'select_dossiers',
-      					),
-      				),
-      			),
+  if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
+    acf_add_local_field_group(array (
+    	'key' => 'group_5804cc93cxac6',
+    	'title' => __( 'Content-blokken', 'wp-rijkshuisstijl' ),
+    	'fields' => array (
+    		array (
+    			'key' => 'field_5804cd3ef7829',
+    			'label'   => __( 'Voeg 1 of meer blokken toe', 'wp-rijkshuisstijl' ),
+    			'name' => 'extra_contentblokken',
+    			'type' => 'repeater',
+    			'instructions'   => __( 'Deze blokken bestaan uit berichten, pagina\s of uit links. Berichten worden automatisch geselecteerd. Links moet je handmatig toevoegen. ', 'wp-rijkshuisstijl' ),
+    			'required' => 0,
+    			'conditional_logic' => 0,
+    			'wrapper' => array (
+    				'width' => '',
+    				'class' => '',
+    				'id' => '',
+    			),
+    			'collapsed' => 'field_5804cd67f782a',
+    			'min' => '',
+    			'max' => '',
+    			'layout' => 'row',
+    			'button_label' => 'Nieuw blok toevoegen',
+    			'sub_fields' => array (
+    				array (
+    					'key' => 'field_5804cd67f782a',
+        			'label'   => __( 'Titel boven contentblok', 'wp-rijkshuisstijl' ),
+    					'name' => 'extra_contentblok_title',
+    					'type' => 'text',
+    					'instructions'   => '',
+    					'required' => 1,
+    					'conditional_logic' => 0,
+    					'wrapper' => array (
+    						'width' => '',
+    						'class' => '',
+    						'id' => '',
+    					),
+    					'default_value' => '',
+    					'placeholder' => '',
+    					'prepend' => '',
+    					'append' => '',
+    					'maxlength' => '',
+    				),
+    				array (
+    					'key' => 'field_5804cde25e99a',
+        			'label'   => __( 'Wat wil je tonen in dit contentblok?', 'wp-rijkshuisstijl' ),
+    					'name' => 'extra_contentblok_type_block',
+    					'type' => 'radio',
+    					'instructions'   => '',
+    					'required' => 1,
+    					'conditional_logic' => 0,
+    					'wrapper' => array (
+    						'width' => '',
+    						'class' => '',
+    						'id' => '',
+    					),
+    					'choices' => array (
+    						'berichten'           => __( 'Automatische lijst van berichten', 'wp-rijkshuisstijl' ),
+    						'berichten_paginas'   => __( 'Berichten of pagina\'s', 'wp-rijkshuisstijl' ),
+    						'algemeen'            => __( 'Vrije invoer: links in de volgorde die ik bepaal', 'wp-rijkshuisstijl' ),
+    						'select_dossiers'     => __( 'Een selectie van dossiers', 'wp-rijkshuisstijl' ),
+    						'events'              => __( 'Automatische lijst van evenementen', 'wp-rijkshuisstijl' ),
+    					),
+    					'allow_null' => 0,
+    					'other_choice' => 0,
+    					'save_other_choice' => 0,
+    					'default_value' => 'berichten_paginas',
+    					'layout' => 'vertical',
+    					'return_format' => 'value',
+    				),
+    				array (
+    					'key' => 'field_5804cd7bf782b',
+              'label'   => __( 'Links in je contentblok', 'wp-rijkshuisstijl' ),
+    					'name' => 'extra_contentblok_algemeen_links',
+    					'type' => 'repeater',
+    					'instructions' => '',
+    					'required' => 1,
+    					'conditional_logic' => array (
+    						array (
+    							array (
+    								'field' => 'field_5804cde25e99a',
+    								'operator' => '==',
+    								'value' => 'algemeen',
+    							),
+    						),
+    					),
+    					'wrapper' => array (
+    						'width' => '',
+    						'class' => '',
+    						'id' => '',
+    					),
+    					'collapsed' => '',
+    					'min' => '',
+    					'max' => '',
+    					'layout' => 'table',
+    					'button_label' => 'Nieuwe regel',
+    					'sub_fields' => array (
+    						array (
+    							'key' => 'field_580ddadb4597b',
+                  'label'   => __( 'Linktekst', 'wp-rijkshuisstijl' ),
+    							'name' => 'extra_contentblok_algemeen_links_linktekst',
+    							'type' => 'text',
+    							'instructions' => '',
+    							'required' => 1,
+    							'conditional_logic' => 0,
+    							'wrapper' => array (
+    								'width' => '',
+    								'class' => '',
+    								'id' => '',
+    							),
+    							'default_value' => '',
+    							'placeholder' => '',
+    							'prepend' => '',
+    							'append' => '',
+    							'maxlength' => '',
+    						),
+    						array (
+    							'key' => 'field_580ddb0e4597c',
+    							'label' => 'Link',
+    							'name' => 'extra_contentblok_algemeen_links_url',
+    							'type' => 'url',
+    							'instructions' => '',
+    							'required' => 1,
+    							'conditional_logic' => 0,
+    							'wrapper' => array (
+    								'width' => '',
+    								'class' => '',
+    								'id' => '',
+    							),
+    							'default_value' => '',
+    							'placeholder' => '',
+    						),
+    					),
+    				),
+    				array (
+    					'key' => 'field_5804d01355657',
+        			'label'   => __( 'Wil je de berichten filteren op categorie?', 'wp-rijkshuisstijl' ),
+    					'name' => 'extra_contentblok_categoriefilter',
+    					'type' => 'radio',
+              'instructions'   => __( 'Als deze pagina een dossier heeft, worden berichten sowieso gefilterd op het dossier.', 'wp-rijkshuisstijl' ),  			
+    					'required' => 1,
+    					'conditional_logic' => array (
+    						array (
+    							array (
+    								'field' => 'field_5804cde25e99a',
+    								'operator' => '==',
+    								'value' => 'berichten',
+    							),
+    						),
+    					),
+    					'wrapper' => array (
+    						'width' => '',
+    						'class' => '',
+    						'id' => '',
+    					),
+    					'choices' => array (
+    						'ja' => 'Ja, toon alleen berichten uit een bepaalde categorie.',
+    						'nee' => 'Nee, toon alle berichten.',
+    					),
+    					'allow_null' => 0,
+    					'other_choice' => 0,
+    					'save_other_choice' => 0,
+    					'default_value' => 'nee',
+    					'layout' => 'vertical',
+    					'return_format' => 'value',
+    				),
+    				array (
+    					'key' => 'field_5804d0ae7e521',
+        			'label'   => __( 'Kies de categorie', 'wp-rijkshuisstijl' ),
+    					'name' => 'extra_contentblok_chosen_category',
+    					'type' => 'taxonomy',
+    					'instructions'   => '',
+    					'required' => 1,
+    					'conditional_logic' => array (
+    						array (
+    							array (
+    								'field' => 'field_5804cde25e99a',
+    								'operator' => '==',
+    								'value' => 'berichten',
+    							),
+    							array (
+    								'field' => 'field_5804d01355657',
+    								'operator' => '==',
+    								'value' => 'ja',
+    							),
+    						),
+    					),
+    					'wrapper' => array (
+    						'width' => '',
+    						'class' => '',
+    						'id' => '',
+    					),
+    					'taxonomy' => 'category',
+    					'field_type' => 'checkbox',
+    					'allow_null' => 0,
+    					'add_term' => 1,
+    					'save_terms' => 0,
+    					'load_terms' => 0,
+    					'return_format' => 'id',
+    					'multiple' => 0,
+    				),
+    				array (
+    					'key' => 'field_5804d1f49c89c',
+        			'label'   => __( 'Maximum aantal berichten', 'wp-rijkshuisstijl' ),
+    					'name' => 'extra_contentblok_maxnr_posts',
+    					'type' => 'select',
+    					'instructions'   => '',
+    					'required' => 1,
+    					'conditional_logic' => array (
+    						array (
+    							array (
+    								'field' => 'field_5804cde25e99a',
+    								'operator' => '==',
+    								'value' => 'berichten',
+    							),
+    						),
+    					),
+    					'wrapper' => array (
+    						'width' => '',
+    						'class' => '',
+    						'id' => '',
+    					),
+    					'choices' => array (
+    						1 => '1',
+    						2 => '2',
+    						3 => '3',
+    						4 => '4',
+    						5 => '5',
+    						6 => '6',
+    						7 => '7',
+    						8 => '8',
+    						9 => '9',
+    						10 => '10',
+    						11 => '11',
+    						12 => '12',
+    						13 => '13',
+    						14 => '14',
+    						15 => '15',
+    						16 => '16',
+    						17 => '17',
+    						18 => '18',
+    						19 => '19',
+    						20 => '20',
+    					),
+    					'default_value' => array (
+    						0 => 6,
+    					),
+    					'allow_null' => 0,
+    					'multiple' => 0,
+    					'ui' => 0,
+    					'ajax' => 0,
+    					'return_format' => 'value',
+    					'placeholder' => '',
+    				),
+    				array (
+    					'key' => 'field_5804d943476f2',
+        			'label'   => __( 'Toon hoeveel berichten met hun uitgelichte afbeelding', 'wp-rijkshuisstijl' ),
+    					'name' => 'extra_contentblok_maxnr_posts_with_featured_image',
+    					'type' => 'select',
+    					'instructions'   => '',
+    					'required' => 1,
+    					'conditional_logic' => array (
+    						array (
+    							array (
+    								'field' => 'field_5804cde25e99a',
+    								'operator' => '==',
+    								'value' => 'berichten',
+    							),
+    						),
+    					),
+    					'wrapper' => array (
+    						'width' => '',
+    						'class' => '',
+    						'id' => '',
+    					),
+    					'choices' => array (
+    						0 => 'geen',
+    						1 => '1',
+    						2 => '2',
+    						3 => '3',
+    						4 => '4',
+    						5 => '5',
+    						'alle' => 'Alle berichten tonen met uitgelichte afbeelding',
+    					),
+    					'default_value' => array (
+    						0 => 1,
+    					),
+    					'allow_null' => 0,
+    					'multiple' => 0,
+    					'ui' => 0,
+    					'ajax' => 0,
+    					'return_format' => 'value',
+    					'placeholder' => '',
+    				),
   
-      			'wrapper' => array (
-      				'width' => '',
-      				'class' => '',
-      				'id' => '',
-      			),
-      			'taxonomy' => 'dossiers',
-      			'field_type' => 'checkbox',
-      			'allow_null' => 0,
-      			'add_term' => 0,
-      			'save_terms' => 0,
-      			'load_terms' => 0,
-      			'return_format' => 'id',
-      			'multiple' => 0,
+    				array (
+    					'key' => 'field_5804d943474a9',
+        			'label'   => __( 'Hoeveel evenementen maximaal?', 'wp-rijkshuisstijl' ),
+    					'name' => 'extra_contentblok_maxnr_events',
+    					'type' => 'select',
+    					'instructions'   => '',
+    					'required' => 1,
+    					'conditional_logic' => array (
+    						array (
+    							array (
+    								'field' => 'field_5804cde25e99a',
+    								'operator' => '==',
+    								'value' => 'events',
+    							),
+    						),
+    					),
+    					'wrapper' => array (
+    						'width' => '',
+    						'class' => '',
+    						'id' => '',
+    					),
+    					'choices' => array (
+    						1 => '1',
+    						2 => '2',
+    						3 => '3',
+    						4 => '4',
+    						5 => '5',
+    						6 => '6',
+    						9 => '9',
+    						12 => '12',
+    						15 => '15',
+    						18 => '18',
+    						21 => '21',
+    						24 => '24',
+    					),
+    					'default_value' => array (
+    						3 => 3,
+    					),
+    					'allow_null' => 0,
+    					'multiple' => 0,
+    					'ui' => 0,
+    					'ajax' => 0,
+    					'return_format' => 'value',
+    					'placeholder' => '',
+    				),
+    				array (
+        			'key' => 'field_68247045955b10',
+        			'label'   => __( 'Geselecteerde dossiers', 'wp-rijkshuisstijl' ),
+        			'name' => 'select_dossiers_list',
+        			'type' => 'taxonomy',
+              'instructions'   => __( 'De dossiers die je hier kiest worden bovenaan de pagina getoond met speciale layout.', 'wp-rijkshuisstijl' ),  			
+        			'required' => 0,
+        			'conditional_logic' => array (
+        				array (
+        					array (
+    								'field' => 'field_5804cde25e99a',
+        						'operator' => '==',
+        						'value' => 'select_dossiers',
+        					),
+        				),
+        			),
+    
+        			'wrapper' => array (
+        				'width' => '',
+        				'class' => '',
+        				'id' => '',
+        			),
+        			'taxonomy' => 'dossiers',
+        			'field_type' => 'checkbox',
+        			'allow_null' => 0,
+        			'add_term' => 0,
+        			'save_terms' => 0,
+        			'load_terms' => 0,
+        			'return_format' => 'id',
+        			'multiple' => 0,
+    
   
-
-  				),
+    				),
+    				array (
+    					'key' => 'field_58247045955a9',
+    					'label' => 'Berichten, documenten en pagina\'s',
+    					'name' => 'select_berichten_paginas',
+    					'type' => 'relationship',
+    					'instructions' => '',
+    					'required' => 1,
+    					'conditional_logic' => array (
+    						array (
+    							array (
+    								'field' => 'field_5804cde25e99a',
+    								'operator' => '==',
+    								'value' => 'berichten_paginas',
+    							),
+    						),
+    					),
+    					'wrapper' => array (
+    						'width' => '',
+    						'class' => '',
+    						'id' => '',
+    					),
+    					'post_type' => array (
+    					),
+        			'taxonomy' => array (
+        			),
+    					'filters' => array (
+    						0 => 'search',
+    						1 => 'post_type',
+    						2 => 'taxonomy',
+    					),
+    					'elements' => '',
+    					'min' => '',
+    					'max' => '',
+    					'return_format' => 'object',
+    				),
   				array (
-  					'key' => 'field_58247045955a9',
-  					'label' => 'Berichten, documenten en pagina\'s',
-  					'name' => 'select_berichten_paginas',
-  					'type' => 'relationship',
+  					'key' => 'field_58247630e21bb',
+  					'label' => 'Toon samenvattingen?',
+  					'name' => 'select_berichten_paginas_toon_samenvatting',
+  					'type' => 'radio',
   					'instructions' => '',
   					'required' => 1,
   					'conditional_logic' => array (
@@ -2217,89 +2050,46 @@ if( function_exists('acf_add_local_field_group') ):
   						'class' => '',
   						'id' => '',
   					),
-  					'post_type' => array (
+  					'choices' => array (
+  						'ja' => 'Ja, toon samenvattingen onder de link.',
+  						'nee' => 'Nee, toon alleen de link',
   					),
-      			'taxonomy' => array (
-      			),
-  					'filters' => array (
-  						0 => 'search',
-  						1 => 'post_type',
-  						2 => 'taxonomy',
-  					),
-  					'elements' => '',
-  					'min' => '',
-  					'max' => '',
-  					'return_format' => 'object',
-  				),
-				array (
-					'key' => 'field_58247630e21bb',
-					'label' => 'Toon samenvattingen?',
-					'name' => 'select_berichten_paginas_toon_samenvatting',
-					'type' => 'radio',
-					'instructions' => '',
-					'required' => 1,
-					'conditional_logic' => array (
-						array (
-							array (
-								'field' => 'field_5804cde25e99a',
-								'operator' => '==',
-								'value' => 'berichten_paginas',
-							),
-						),
-					),
-					'wrapper' => array (
-						'width' => '',
-						'class' => '',
-						'id' => '',
-					),
-					'choices' => array (
-						'ja' => 'Ja, toon samenvattingen onder de link.',
-						'nee' => 'Nee, toon alleen de link',
-					),
-					'allow_null' => 0,
-					'other_choice' => 0,
-					'save_other_choice' => 0,
-					'default_value' => 'nee',
-					'layout' => 'horizontal',
-					'return_format' => 'value',
-				),  				
-  			),
-  		),
-  	),
-  	'location' => array (
-
-    	
-  		array (
-  			array (
-  				'param' => 'post_type',
-  				'operator' => '==',
-  				'value' => 'page',
-  			),
-/*
-  			array(
-  				'param' => 'page_template',
-  				'operator' => '!=',
-  				'value' => 'front-page.php',
-  			),
-*/  			
-  		),
-  		array (
-  			array (
-  				'param' => 'taxonomy',
-  				'operator' => '==',
-  				'value' => RHSWP_CT_DOSSIER,
-  			),
-  		),
-  	),
-  	'menu_order' => 0,
-  	'position' => 'normal',
-  	'style' => 'default',
-  	'label_placement' => 'top',
-  	'instruction_placement' => 'label',
-  	'hide_on_screen' => '',
-  	'active' => 1,
-  	'description' => '',
-  ));
+  					'allow_null' => 0,
+  					'other_choice' => 0,
+  					'save_other_choice' => 0,
+  					'default_value' => 'nee',
+  					'layout' => 'horizontal',
+  					'return_format' => 'value',
+  				),  				
+    			),
+    		),
+    	),
+    	'location' => array (
+    		array (
+    			array (
+    				'param' => 'post_type',
+    				'operator' => '==',
+    				'value' => 'page',
+    			),
+    		),
+    		array (
+    			array (
+    				'param' => 'taxonomy',
+    				'operator' => '==',
+    				'value' => RHSWP_CT_DOSSIER,
+    			),
+    		),
+    	),
+    	'menu_order' => 0,
+    	'position' => 'normal',
+    	'style' => 'default',
+    	'label_placement' => 'top',
+    	'instruction_placement' => 'label',
+    	'hide_on_screen' => '',
+    	'active' => 1,
+    	'description' => '',
+    ));
+  }    
 
 //*/
 

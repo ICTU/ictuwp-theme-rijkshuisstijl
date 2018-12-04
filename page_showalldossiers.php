@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.11.11
-// * @desc.   ACF voor korte beschrijving op onderwerppagina aangepast.
+// * @version 2.0.1
+// * @desc.   Definities voor CPT verplaatst naar plugin.
 // * @link    http://wbvb.nl/themes/wp-rijkshuisstijl/
  */
 
@@ -47,6 +47,12 @@ function rhswp_show_all_dossiers() {
 
   $title          = get_field('dossier_overzicht_filter_title', $post->ID );
   $dossierfilter  = get_field('dossier_overzicht_filter', $post->ID );
+
+  if ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
+    echo __( 'Taxonomie voor dossier bestaat niet. Zet de plugin hiervoor aan ("ICTU / WP Register post types and taxonomies").', 'wp-rijkshuisstijl' );
+    return;
+  }
+
 
   $args = array(
     'taxonomy'              => RHSWP_CT_DOSSIER,

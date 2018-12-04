@@ -10,8 +10,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.13
-// * @desc.   Dossiers: bugfixes voor hoofdmenu boven inhoud.
+// * @version 2.0.1
+// * @desc.   Definities voor CPT verplaatst naar plugin.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -27,6 +27,10 @@ function rhswp_dossier_title_checker( ) {
   global $wp_query;
   global $tellertje;
   global $wp;
+
+  if ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
+    return;
+  }
 
   $current_url = home_url( add_query_arg( array(), $wp->request ) );
 
@@ -565,6 +569,10 @@ function rhswp_dossier_get_pagelink( $theobject, $args ) {
   
   $tellertje++;
   $childpages   = [];
+
+  if ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
+    return;
+  }
 
   if ( 
      is_tax() ||
