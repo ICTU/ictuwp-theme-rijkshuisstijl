@@ -5771,6 +5771,8 @@ nav.nav-primary .menu-item.js-menu-open > ul.sub-menu {
   display: block;
   clear: both;
   padding: 0.5em 0.7em;
+  overflow: hidden;
+  margin: 0.1em 0;
 }
 /* ====== */
 a.external:after {
