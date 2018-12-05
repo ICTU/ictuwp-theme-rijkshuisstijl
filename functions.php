@@ -2446,7 +2446,7 @@ function rhswp_write_extra_contentblokken() {
       }
 
      
-      if( $contentblokken && ( $contentblokken[0] != '' ) ) {
+      if( ( is_array( $contentblokken ) || is_object( $contentblokken ) ) && ( $contentblokken[0] != '' ) ) {
 
         foreach( $contentblokken as $row ) {
   
