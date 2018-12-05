@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 1.2.20
-  Version description: 1.2.20 - Site-improve: alleen skiplink voor hoofdnavigatie gebruiken op homepage.
+  Version: 2.0.1
+  Version description: 2.0.1 - Definities voor CPT verplaatst naar plugin.
   Text Domain: wp-rijkshuisstijl
   
   Template: genesis
@@ -2181,6 +2181,7 @@ fieldset textarea {
   padding: 0;
   background: none;
 }
+.search-form input[type="search"],
 .search-form input[itemprop="query-input"] {
   width: calc(100% - 50px);
   height: 50px;
@@ -2269,6 +2270,7 @@ main .search-form input[type="submit"]:focus {
   display: block;
   padding-bottom: 0.5em;
 }
+#rhswp-searchform-onderwerpen input[type="search"],
 #rhswp-searchform-onderwerpen input[itemprop="query-input"] {
   width: calc(98% - 50px);
   float: left;
@@ -2748,10 +2750,12 @@ nav.nav-primary .search-form {
     width: 310px;
   }
   nav.nav-primary form.search-form input[type="submit"],
+  nav.nav-primary form.search-form input[type="search"],
   nav.nav-primary form.search-form input[itemprop="query-input"] {
     height: 25px;
     font-size: 80%;
   }
+  nav.nav-primary form.search-form input[type="search"],
   nav.nav-primary form.search-form input[itemprop="query-input"] {
     padding-left: 5px;
   }

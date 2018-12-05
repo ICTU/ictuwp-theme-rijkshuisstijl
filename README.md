@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.0.1 - Definities voor CPT verplaatst naar plugin.
+2.0.2 - Searchform styling hersteld.
 
 ## Version history
+* 2.0.2 - Searchform styling hersteld.
 * 2.0.1 - Definities voor CPT verplaatst naar plugin.
 * 1.2.20 - Site-improve: alleen skiplink voor hoofdnavigatie gebruiken op homepage.
 * 1.2.19 - Digibeter-kleuren ook in het Engels beschikbaar.

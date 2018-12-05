@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.2
-// * @desc.   Removed the menu bar.
+// * @version 2.0.2
+// * @desc.   Searchform styling hersteld.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -382,10 +382,12 @@
         width: @sidebar_width;
 
         input[type="submit"],
+        input[type="search"],
         input[itemprop="query-input"] {
           height: @seachform_element_height_xlscreen;
           font-size: 80%;
         }        
+        input[type="search"],
         input[itemprop="query-input"] {
           padding-left: 5px;
       	}

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.17
-// * @desc.   Kleine styling issue: zoekbutton.
+// * @version 2.0.2
+// * @desc.   Searchform styling hersteld.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 //
 
@@ -131,6 +131,7 @@
     padding: 0;
     background: none;
     
+    input[type="search"],
     input[itemprop="query-input"] {
       width: ~"calc(100% - @{search_submit_width})";
       height: @seachform_element_height_normal;
@@ -233,6 +234,7 @@
     }
     
 
+    input[type="search"],
     input[itemprop="query-input"] {
       width: ~"calc(98% - @{filter_submit_width})";
       float: left;
