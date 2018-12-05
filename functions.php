@@ -3805,32 +3805,6 @@ function rhswp_add_blog_archive_css() {
       echo '<p>rhswp_add_blog_archive_css: ACF plugin is niet actief</p>';
       return;
     }
-
-
-/*
-    if ( is_page() ) {
-      $theid          = get_the_ID();
-      $divid          = $theid;
-      $carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
-    }
-    elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
-      $theid          = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
-      $divid          = get_queried_object()->term_id;
-      $carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $acfid );
-      $currentterm    = get_queried_object()->term_id;
-    }
-
-    if ( RHSWP_HEADER_IMAGE_CONFIRM == $carousselcheck ) {
-
-echo '<p>HIER MOET EEN HEADER IMAGE!!</p>';      
-      
-      $headerimage      = get_field( 'kies_header_image', $theid );
-      $image_tekst      = get_field( 'kies_header_image_tekst', $theid );
-
-
-
-*/  
-    
   
     if ( RHSWP_HEADER_IMAGE_CONFIRM == $carousselcheck ) {
       $headerimage      = get_field( 'kies_header_image', $theid );
@@ -3849,9 +3823,6 @@ echo '<p>HIER MOET EEN HEADER IMAGE!!</p>';
       }
     }
 
-
-  
-  
     while ( have_posts() ) : the_post();
   
       // do loop stuff
@@ -3880,194 +3851,194 @@ echo '<p>HIER MOET EEN HEADER IMAGE!!</p>';
 
     // extra contentblokken hiero
 
-    if ( is_page() || is_tax() ) {
+  if ( is_page() || is_tax() ) {
 
-      $dossier_in_content_block      = '';
+    $dossier_in_content_block      = '';
 
-      if( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
-        if ( is_page() ) {
-          $theid          = get_the_ID();
-          $contentblokken = get_field( 'extra_contentblokken', $theid );
-          $dossier_in_content_block    = get_the_terms( $theid , RHSWP_CT_DOSSIER );
-        }
-        elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
-          $theid          = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
-          $contentblokken = get_field( 'extra_contentblokken', $theid );
-          $dossier_in_content_block    = get_queried_object()->term_id;
-        }
+    if( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
+      if ( is_page() ) {
+        $theid          = get_the_ID();
+        $contentblokken = get_field( 'extra_contentblokken', $theid );
+        $dossier_in_content_block    = get_the_terms( $theid , RHSWP_CT_DOSSIER );
       }
+      elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
+        $theid          = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
+        $contentblokken = get_field( 'extra_contentblokken', $theid );
+        $dossier_in_content_block    = get_queried_object()->term_id;
+      }
+    }
 
-     
-      if( $contentblokken && ( $contentblokken[0] != '' ) ) {
-        
-        $thecounter = 0;
+   
+    if( ( is_array( $contentblokken ) || is_object( $contentblokken ) ) && ( $contentblokken[0] != '' ) ) {
+      
+      $thecounter = 0;
 
-        foreach( $contentblokken as $row ) {
+      foreach( $contentblokken as $row ) {
 
-					$thecounter++;  
+				$thecounter++;  
 
-          $chosen_category        = $row['extra_contentblok_chosen_category'];
-          $categoriefilter        = $row['extra_contentblok_categoriefilter'];
-          $maxnr_posts            = $row['extra_contentblok_maxnr_posts'];
-          $type_block             = $row['extra_contentblok_type_block'];
-          $with_featured_image    = $row['extra_contentblok_maxnr_posts_with_featured_image'];
+        $chosen_category        = $row['extra_contentblok_chosen_category'];
+        $categoriefilter        = $row['extra_contentblok_categoriefilter'];
+        $maxnr_posts            = $row['extra_contentblok_maxnr_posts'];
+        $type_block             = $row['extra_contentblok_type_block'];
+        $with_featured_image    = $row['extra_contentblok_maxnr_posts_with_featured_image'];
 
-          if ( 'algemeen' == $type_block ) {
-            // niks
-          }
-          elseif ( 'events' == $type_block ) {
-            // ook niks
-          }
-          elseif ( 'berichten_paginas' == $type_block ) {
-            // net zo min niks
-          }
-          elseif ( 'berichten' == $type_block ) {
-            // er moet contentblock getoond worden van het type 'berichten'  
+        if ( 'algemeen' == $type_block ) {
+          // niks
+        }
+        elseif ( 'events' == $type_block ) {
+          // ook niks
+        }
+        elseif ( 'berichten_paginas' == $type_block ) {
+          // net zo min niks
+        }
+        elseif ( 'berichten' == $type_block ) {
+          // er moet contentblock getoond worden van het type 'berichten'  
 
-              $overviewurl        = '';
-              $overviewlinktext   = '';
-              $toonlinksindossiercontext = false;
+            $overviewurl        = '';
+            $overviewlinktext   = '';
+            $toonlinksindossiercontext = false;
 
-              if ( $dossier_in_content_block ) {
+            if ( $dossier_in_content_block ) {
 
-                // we zijn op een dossieroverzicht
+              // we zijn op een dossieroverzicht
 
-                $term             = get_term( $dossier_in_content_block, RHSWP_CT_DOSSIER );
-                $currentterm      = $term->term_id;
-                $currenttermname  = $term->name;
-                $currenttermslug  = $term->slug; 
-                $toonlinksindossiercontext = $term;
-  
-                $args = array(
-                  'post_type'       => 'post',
-                  'post_status'     => 'publish',
-                  'posts_per_page'  => $maxnr_posts,
-                  'tax_query' => array(
-                    array(
-                      'taxonomy'  => RHSWP_CT_DOSSIER,
-                      'field'     => 'term_id',
-                      'terms'     => $currentterm
-                    ),
-                  )
-                );
+              $term             = get_term( $dossier_in_content_block, RHSWP_CT_DOSSIER );
+              $currentterm      = $term->term_id;
+              $currenttermname  = $term->name;
+              $currenttermslug  = $term->slug; 
+              $toonlinksindossiercontext = $term;
+
+              $args = array(
+                'post_type'       => 'post',
+                'post_status'     => 'publish',
+                'posts_per_page'  => $maxnr_posts,
+                'tax_query' => array(
+                  array(
+                    'taxonomy'  => RHSWP_CT_DOSSIER,
+                    'field'     => 'term_id',
+                    'terms'     => $currentterm
+                  ),
+                )
+              );
+              
+              $overviewlinktext = $dossier_in_content_block;
                 
-                $overviewlinktext = $dossier_in_content_block;
-                  
-              }
-              else {
+            }
+            else {
 
-                // niet op een dossieroverzicht
+              // niet op een dossieroverzicht
 
-                $args = array(
-                  'post_type'       => 'post',
-                  'post_status'     => 'publish',
-                  'posts_per_page'  => $maxnr_posts
-                );
-              }            
-              
-              if ( $categoriefilter == 'nee' ) {
-  
-                $actueelpageid    = get_option( 'page_for_posts' );
-                $overviewlinktext = get_the_title( $actueelpageid );
-                $overviewurl      = get_permalink( $actueelpageid ); // general page_for_posts
-  
-              }
-              else {
-  
-                $slugs = array();
-                
-                if ( $chosen_category ) {
-  
-                  foreach( $chosen_category as $filter ): 
-  
-                    $terminfo     = get_term_by( 'id', $filter, 'category' );
-                    $slugs[]      = $terminfo->slug;
-  
-                    $overviewlinktext = $terminfo->name;
-                    $actueelpageid    = get_option( 'page_for_posts' );
-                    
-                    $overviewurl      = get_permalink( $actueelpageid ) . $terminfo->slug . '/'; // page_for_posts
-              
-                  endforeach;
-                  
-                  if ( $dossier_in_content_block ) {
-                    
-                    // filter op dossier
-                    $args = array(
-                      'post_type'       => 'post',
-                      'post_status'     => 'publish',
-                      'posts_per_page'  => $maxnr_posts,
-                      'tax_query' => array(
-                        'relation' => 'AND',
-                        array(
-                          'taxonomy'  => RHSWP_CT_DOSSIER,
-                          'field'     => 'term_id',
-                          'terms'     => $dossier_in_content_block
-                        ),
-                        array(
-                          'taxonomy'  => 'category',
-                          'field'     => 'slug',
-                          'terms'     => $slugs,
-                        )
-                      )
-                    );
-                    
-                    // deze weer leeg maken, want er is niet zoiets als een overview mogelijk voor deze combinatie
-                    $overviewlinktext = '';
-                    $overviewurl      = '';
-                  }
-                  else {
-  
-                    // geen verder filter
-                    $args = array(
-                      'post_type'       => 'post',
-                      'post_status'     => 'publish',
-                      'posts_per_page'  => $maxnr_posts,
-                      'tax_query' => array(
-                        array(
-                          'taxonomy'  => 'category',
-                          'field'     => 'slug',
-                          'terms'     => $slugs,
-                        )
-                      )
-                    );
-                  }
-                } 
-              }
-              
-              // Assign predefined $args to your query
-              $sidebarposts = new WP_query();
-              $sidebarposts->query($args);
-
-              if ( $sidebarposts->have_posts() ) {
-
-                $postcounter = 0;
-  
-                while ($sidebarposts->have_posts()) : $sidebarposts->the_post();
-                  $postcounter++;
-
-                  $getid        = get_the_ID();
-                  $the_image_ID = 'image_featured_image_post_' . $getid;
-
-                  $image = wp_get_attachment_image_src( get_post_thumbnail_id( $getid ), 'full' );
+              $args = array(
+                'post_type'       => 'post',
+                'post_status'     => 'publish',
+                'posts_per_page'  => $maxnr_posts
+              );
+            }            
             
-                  if ( $image[0] ) {
-                    $blogberichten_css .= '#' . $the_image_ID . " {\n";
-                    $blogberichten_css .= "background-image: url('" . $image[0] . "'); ";
-                    $blogberichten_css .= "}\n";
-                  }
+            if ( $categoriefilter == 'nee' ) {
 
-                endwhile;
+              $actueelpageid    = get_option( 'page_for_posts' );
+              $overviewlinktext = get_the_title( $actueelpageid );
+              $overviewurl      = get_permalink( $actueelpageid ); // general page_for_posts
 
-              }
+            }
+            else {
 
-              // RESET THE QUERY
-              wp_reset_query();
+              $slugs = array();
+              
+              if ( $chosen_category ) {
 
-          }
+                foreach( $chosen_category as $filter ): 
+
+                  $terminfo     = get_term_by( 'id', $filter, 'category' );
+                  $slugs[]      = $terminfo->slug;
+
+                  $overviewlinktext = $terminfo->name;
+                  $actueelpageid    = get_option( 'page_for_posts' );
+                  
+                  $overviewurl      = get_permalink( $actueelpageid ) . $terminfo->slug . '/'; // page_for_posts
+            
+                endforeach;
+                
+                if ( $dossier_in_content_block ) {
+                  
+                  // filter op dossier
+                  $args = array(
+                    'post_type'       => 'post',
+                    'post_status'     => 'publish',
+                    'posts_per_page'  => $maxnr_posts,
+                    'tax_query' => array(
+                      'relation' => 'AND',
+                      array(
+                        'taxonomy'  => RHSWP_CT_DOSSIER,
+                        'field'     => 'term_id',
+                        'terms'     => $dossier_in_content_block
+                      ),
+                      array(
+                        'taxonomy'  => 'category',
+                        'field'     => 'slug',
+                        'terms'     => $slugs,
+                      )
+                    )
+                  );
+                  
+                  // deze weer leeg maken, want er is niet zoiets als een overview mogelijk voor deze combinatie
+                  $overviewlinktext = '';
+                  $overviewurl      = '';
+                }
+                else {
+
+                  // geen verder filter
+                  $args = array(
+                    'post_type'       => 'post',
+                    'post_status'     => 'publish',
+                    'posts_per_page'  => $maxnr_posts,
+                    'tax_query' => array(
+                      array(
+                        'taxonomy'  => 'category',
+                        'field'     => 'slug',
+                        'terms'     => $slugs,
+                      )
+                    )
+                  );
+                }
+              } 
+            }
+            
+            // Assign predefined $args to your query
+            $sidebarposts = new WP_query();
+            $sidebarposts->query($args);
+
+            if ( $sidebarposts->have_posts() ) {
+
+              $postcounter = 0;
+
+              while ($sidebarposts->have_posts()) : $sidebarposts->the_post();
+                $postcounter++;
+
+                $getid        = get_the_ID();
+                $the_image_ID = 'image_featured_image_post_' . $getid;
+
+                $image = wp_get_attachment_image_src( get_post_thumbnail_id( $getid ), 'full' );
+          
+                if ( $image[0] ) {
+                  $blogberichten_css .= '#' . $the_image_ID . " {\n";
+                  $blogberichten_css .= "background-image: url('" . $image[0] . "'); ";
+                  $blogberichten_css .= "}\n";
+                }
+
+              endwhile;
+
+            }
+
+            // RESET THE QUERY
+            wp_reset_query();
+
         }
       }
     }
+  }
 
   wp_enqueue_style( RHSWP_ARCHIVE_CSS, RHSWP_THEMEFOLDER . '/css/featured-background-images.css', array(), CHILD_THEME_VERSION, 'screen and (min-width: 650px)' );
 
