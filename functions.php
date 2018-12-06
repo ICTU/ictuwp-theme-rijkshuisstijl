@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.2
-// * @desc.   Searchform styling hersteld.
+// * @version 2.0.3
+// * @desc.   Uitzonderingen voor contenttypes ingebouwd in DO banner-widget
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.0.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Searchform styling hersteld." );
+define( 'CHILD_THEME_VERSION',              "2.0.3" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Uitzonderingen voor contenttypes ingebouwd in DO banner-widget" );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -105,14 +105,23 @@ if ( ! defined( 'RHSWP_HEADER_IMAGE_CONFIRM' ) ) {
 
 
 
+if ( ! defined( 'RHSWP_WIDGET_BANNER' ) ) {
+  define( 'RHSWP_WIDGET_BANNER',              '(DO) banner widget');
+}
+if ( ! defined( 'RHSWP_WIDGET_PAGELINKS_DESC' ) ) {
+  define( 'RHSWP_WIDGET_PAGELINKS_DESC',      '(DO) paginalinks widget');
+}
+if ( ! defined( 'RHSWP_WIDGET_PAGELINKS_ID' ) ) {
+  define( 'RHSWP_WIDGET_PAGELINKS_ID',        'rhswp_pagelinks_widget');
+}
+if ( ! defined( 'RHSWP_WIDGET_LINK_TO_SINGLE_PAGE' ) ) {
+  define( 'RHSWP_WIDGET_LINK_TO_SINGLE_PAGE', '(DO) verwijs naar een pagina');
+}
+if ( ! defined( 'RHSWP_CSS_BANNER' ) ) {
+  define( 'RHSWP_CSS_BANNER',                 'banner-css' ); // slug for custom post type 'document'
+}
 
-define( 'RHSWP_WIDGET_BANNER',              '(DO) banner widget');
-define( 'RHSWP_WIDGET_PAGELINKS_DESC',      '(DO) paginalinks widget');
-define( 'RHSWP_WIDGET_PAGELINKS_ID',        'rhswp_pagelinks_widget');
-define( 'RHSWP_WIDGET_LINK_TO_SINGLE_PAGE', '(DO) verwijs naar een pagina');
-
-define( 'RHSWP_CSS_BANNER',                 'banner-css' ); // slug for custom post type 'document'
-
+  
 if ( ! defined( 'RHSWP_DOSSIERPOSTCONTEXT' ) ) {
   define( 'RHSWP_DOSSIERPOSTCONTEXT',         'dossierpostcontext' );
 }
@@ -3274,16 +3283,15 @@ function rhswp_check_caroussel_or_featured_img() {
       }
     }
     elseif ( is_singular() ) {
-      
-  
+
       $postid = get_the_id();
   
       if ( has_post_thumbnail( $postid ) ) {
   
         // geen carroussel nodig, maar er is wel een featured image
         // is dit featured image wel breed genoeg voor een heroimage?
-  
-        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $getid ), $breakpoint['img_size_archive_list'] );
+
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $postid ), RHSWP_HERO_IMAGE_WIDTH_NAME );
         if ( RHSWP_MIN_HERO_IMAGE_WIDTH <= $image[1] ) {
           // plaatje is van zichzelf breed genoeg
           echo '<div class="hero-image wrap">' . get_the_post_thumbnail( $postid, 'full' ) . '</div>';
