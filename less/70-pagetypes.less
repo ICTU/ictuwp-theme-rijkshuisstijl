@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.19
-// * @desc.   Digibeter-kleuren ook in het Engels beschikbaar.
+// * @version 2.0.3
+// * @desc.   Bugfixes; contrastkleuren in widget en reactieform verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -89,9 +89,17 @@
   }
 
   div.dossier_overzicht_popular {
-    background: @grijs_2;
+    background: @grijs_1;
     padding: 0 1em 1em 1em;
 
+    a {
+      &:focus,
+      &:active,
+      &:hover {
+        color: @txt;          
+      }
+    }
+      
     ul.links {
       overflow: hidden;
       margin: 0 0;
@@ -749,7 +757,7 @@
           
           h3 {
             text-decoration: underline;
-            color: @a_color_hover;
+            color: @txt;
           }
         }
       }
@@ -818,8 +826,17 @@
     }
     
     section.onderwerpen {
-      background-color: @grijs_2;
+      background-color: @grijs_1;
       padding: 1em;      
+      
+      a {
+        &:focus,
+        &:active,
+        &:hover {
+          color: @txt;          
+        }
+      }
+      
     }
   }  
 

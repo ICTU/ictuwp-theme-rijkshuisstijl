@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.0.1
-  Version description: 2.0.1 - Definities voor CPT verplaatst naar plugin.
+  Version: 2.0.3c
+  Version description: 2.0.3c - Bugfixes; contrastkleuren in widget en reactieform verbeterd.
   Text Domain: wp-rijkshuisstijl
   
   Template: genesis
@@ -2087,7 +2087,14 @@ input[type="text"]:focus {
 }
 form {
   padding: 1em;
-  background: #e6e6e6;
+  background: #f3f3f3;
+}
+form a {
+  color: #000;
+}
+form a:focus,
+form a:hover {
+  color: #000;
 }
 input[type="text"],
 input[type="email"],
@@ -2867,7 +2874,7 @@ aside.sidebar .widget.banner .widget-wrap.standaard a:visited h3 {
 aside.sidebar .widget.banner .widget-wrap.standaard a:hover,
 aside.sidebar .widget.banner .widget-wrap.standaard a:active,
 aside.sidebar .widget.banner .widget-wrap.standaard a:focus {
-  color: #01689b;
+  color: #A02F1D;
 }
 aside.sidebar .widget.banner .widget-wrap.standaard a:hover h2,
 aside.sidebar .widget.banner .widget-wrap.standaard a:active h2,
@@ -3588,11 +3595,6 @@ ul.events-table li {
   width: 100%;
   margin-top: 0.75em;
 }
-.block h3 {
-  font-family: 'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  font-weight: normal;
-}
 .block h2 {
   margin-bottom: 0.5em;
 }
@@ -3627,8 +3629,8 @@ ul.events-table li {
   color: #01689b;
 }
 .block article .meta {
-  color: #535353;
-  margin: 0.5em 0 0 0;
+  font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
+  margin: 0.5em 0;
   font-size: 90%;
 }
 .block article .article-container {
@@ -4479,8 +4481,13 @@ footer {
   margin-bottom: 1em;
 }
 div.dossier_overzicht_popular {
-  background: #e6e6e6;
+  background: #f3f3f3;
   padding: 0 1em 1em 1em;
+}
+div.dossier_overzicht_popular a:focus,
+div.dossier_overzicht_popular a:active,
+div.dossier_overzicht_popular a:hover {
+  color: #000;
 }
 div.dossier_overzicht_popular ul.links {
   overflow: hidden;
@@ -5453,7 +5460,7 @@ div.dossier_overzicht_popular ul.links {
 .home .site-inner .linkblock:focus h3,
 .page-template-front-page .site-inner .linkblock:focus h3 {
   text-decoration: underline;
-  color: #A02F1D;
+  color: #000;
 }
 .home .site-inner .vollebreedte,
 .page-template-front-page .site-inner .vollebreedte,
@@ -5507,8 +5514,16 @@ div.dossier_overzicht_popular ul.links {
 }
 .home section.onderwerpen,
 .page-template-front-page section.onderwerpen {
-  background-color: #e6e6e6;
+  background-color: #f3f3f3;
   padding: 1em;
+}
+.home section.onderwerpen a:focus,
+.page-template-front-page section.onderwerpen a:focus,
+.home section.onderwerpen a:active,
+.page-template-front-page section.onderwerpen a:active,
+.home section.onderwerpen a:hover,
+.page-template-front-page section.onderwerpen a:hover {
+  color: #000;
 }
 @media only screen and (min-width: 650px) {
   .no-cssgrid .row.driekwart .linkblock:nth-child(3n+1) {
@@ -5753,7 +5768,7 @@ nav.nav-primary .menu-item.js-menu-open > ul.sub-menu {
   vertical-align: top;
 }
 .entry-content .metadata {
-  background: #e6e6e6;
+  background: #f3f3f3;
   padding: 0.5em;
 }
 .entry-content .metadata ul,
