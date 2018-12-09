@@ -50,15 +50,7 @@ class rhswp_banner_widget extends WP_Widget {
                       'rhswp_banner_widget_title'       => '', 
                       'rhswp_banner_widget_short_text'  => ''
                     ); 
-    
-    foreach ( $post_types as $post_type ) {
-      $checkboxid = 'rhswp_banner_posttype_1_' . $post_type->name ;
-      $defaults[ $checkboxid ]    = '';
-    }
-
-    $instance = wp_parse_args( (array) $instance, $defaults );
-
-//dovardump( $instance );
+    $instance     = wp_parse_args( (array) $instance, $defaults );
 
     $rhswp_banner_widget_title      = empty( $instance['rhswp_banner_widget_title'] )         ? '' : $instance['rhswp_banner_widget_title'];
     $rhswp_banner_widget_short_text = empty( $instance['rhswp_banner_widget_short_text'] )    ? '' : $instance['rhswp_banner_widget_short_text'];
@@ -70,20 +62,6 @@ class rhswp_banner_widget extends WP_Widget {
     <p><label for="<?php echo $this->get_field_id('rhswp_banner_widget_short_text') ?>"><?php  _e( "Vrije tekst in widget:", 'wp-rijkshuisstijl' ) ?><br /><textarea cols="35" rows="8" id="<?php echo $this->get_field_id('rhswp_banner_widget_short_text'); ?>" name="<?php echo $this->get_field_name('rhswp_banner_widget_short_text'); ?>"><?php echo esc_attr($rhswp_banner_widget_short_text); ?></textarea></label></p>
 
     <?php
-    
-      foreach ( $post_types as $post_type ) {
-        
-        $checkboxid = 'rhswp_banner_posttype_1_' . $post_type->name ;
-        $value      = $instance[ $checkboxid ];
-        
-        ?>    
-      	<label for="<?php echo $this->get_field_id( $checkboxid ) ?>"><input class="checkbox" type="checkbox" value="1" <?php checked( $instance[ $checkboxid ], 1 ); ?> id="<?php echo $this->get_field_id( $checkboxid ) ?>" name="<?php echo $this->get_field_id( $checkboxid ) ?>" /><?php echo $post_type->label . ' / "' . $value . '"' ?></label><br>
-      
-        <?php
-      
-      }
-    
-
 
   }
 
@@ -118,19 +96,9 @@ class rhswp_banner_widget extends WP_Widget {
 
   //======================================================================================================
 
-  function widget($args, $instance) {
+  function widget( $args, $instance ) {
     
     extract($args, EXTR_SKIP);
-
-//    dovardump( $instance, 'instance' );    
-
-//  dovardump( $params, 'instance' );    
-
-//  foreach( $instance as $param ) {
-//    dodebug( $param );
-//  }
-
-
 
     $rhswp_banner_widget_title          = empty($instance['rhswp_banner_widget_title']) ? '' : $instance['rhswp_banner_widget_title'] ;
     
@@ -139,16 +107,23 @@ class rhswp_banner_widget extends WP_Widget {
     $rhswp_banner_widget_title          = empty($instance['rhswp_banner_widget_title'])         ? '' : $instance['rhswp_banner_widget_title'] ;
     $rhswp_banner_widget_short_text     = empty($instance['rhswp_banner_widget_short_text'])    ? '' : $instance['rhswp_banner_widget_short_text'];
 
-    if ( $instance['rhswp_banner_widget_verberg_mij'] !== '') {
+    $hidewidget = strpos( $before_widget, 'rhswp_hide_this_banner', 0 );
+
+    $doshow     = true;
+
+    if ( $hidewidget === false ) {      
+      $doshow     = false;
     }
-    else {
-    
+      
+    if ( $doshow ) {
       echo $before_widget;
       echo '<div class="text">'; 
       
       if ( $instance['rhswp_banner_widget_title'] !== '') {
         echo $before_title . $instance['rhswp_banner_widget_title'] . $after_title;
       }
+
+      echo $hidewidget;
       
       echo $rhswp_banner_widget_short_text;
       
@@ -156,6 +131,12 @@ class rhswp_banner_widget extends WP_Widget {
       echo $after_widget;
 
     }
+    else {
+      // niets tonen, op deze contentsoort moet de widget verborgen worden
+      echo '&nbsp;'; // wel een nbsp om lege tags te voorkomen.
+      return;
+    }
+    
 
   }
 
@@ -206,8 +187,7 @@ function filter_for_rhswp_banner_widget( $params ) {
         // bij deze contentsoort moet de banner dus niet getoond worden
         // dus exit
 
-        $params[0]['hide_widget'] = 'true';
-
+        $params[0]['before_widget'] = 'rhswp_hide_this_banner' . '-' . $uitzondering;
         return $params;
       }
       
