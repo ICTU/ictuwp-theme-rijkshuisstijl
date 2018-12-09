@@ -9,7 +9,8 @@
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
 // * @version 2.0.4
-// * @desc.   Bugfixe in ACF en dossier check; contrastkleuren verder verbeterd.
+// * @version 2.0.5
+// * @desc.   Uitzonderingen voor contenttypes ingebouwd in DO banner-widget
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -296,14 +297,11 @@ if( function_exists('acf_add_local_field_group') ):
   //======================================================================================================
   // metadata voor RHSWP_WIDGET_BANNER
   //======================================================================================================
-  acf_add_local_field_group(array (
+  acf_add_local_field_group(array(
   	'key' => 'group_57e4e9cdb7b83',
   	'title' => 'Layout-opties voor banner-widget',
-  	'fields' => array (
-
-  		array (
-  			'default_value' => '',
-  			'placeholder' => '',
+  	'fields' => array(
+  		array(
   			'key' => 'field_5848103f0be5b',
   			'label' => 'Link in de banner',
   			'name' => 'rhswp_widget_link',
@@ -311,120 +309,148 @@ if( function_exists('acf_add_local_field_group') ):
   			'instructions' => 'Een link is niet verplicht',
   			'required' => 0,
   			'conditional_logic' => 0,
-  			'wrapper' => array (
+  			'wrapper' => array(
   				'width' => '',
   				'class' => '',
   				'id' => '',
   			),
+  			'default_value' => '',
+  			'placeholder' => '',
   		),
-      array (
-      	'multiple' => 0,
-      	'allow_null' => 0,
-      	'choices' => array (
-      		'standaard'         => 'Standaard - grijze rand, witte achtergrond, blauwe titel',
-      		'do-groen'          => 'DO-groen - Donkergroene achtergrond, witte tekst',
-      		'do-groen-light'    => 'DO-lichtgroen - Lichtgroene achtergrond, zwarte tekst',
-      		'text-over-plaatje' => 'Plaats de tekst over het plaatje',
-      		'plaatje-link-notitel' => 'Alleen plaatje met een link, titel verborgen',
-      	),
-      	'default_value' => array (
-      	),
-      	'ui' => 0,
-      	'ajax' => 0,
-      	'placeholder' => '',
-      	'return_format' => 'value',
-      	'key' => 'field_58491e20452d3',
-      	'label' => 'Vormgeving',
-      	'name' => 'rhswp_widget_class',
-      	'type' => 'select',
-      	'instructions' => '',
-      	'required' => 0,
-      	'conditional_logic' => 0,
-      	'wrapper' => array (
-      		'width' => '',
-      		'class' => '',
-      		'id' => '',
-      	),
-      ),
-      array (
-      	'return_format' => 'array',
-      	'preview_size' => 'thumbnail',
-      	'library' => 'all',
-      	'min_width' => '',
-      	'min_height' => '',
-      	'min_size' => '',
-      	'max_width' => '',
-      	'max_height' => '',
-      	'max_size' => '',
-      	'mime_types' => '',
-      	'key' => 'field_5847d2d9a31f8',
-      	'label' => 'Image in de banner',
-      	'name' => 'rhswp_widget_bannerimage',
-      	'type' => 'image',
-      	'instructions' => '',
-      	'required' => 0,
-      	'conditional_logic' => 0,
-      	'wrapper' => array (
-      		'width' => '',
-      		'class' => '',
-      		'id' => '',
-      	),
-      ),  		
-  
-  		array (
-  			'layout' => 'vertical',
-  			'choices' => array (
-  				'top' => 'Boven de tekst (volle breedte)',
-  				'left' => 'Links van de tekst (100px breed)',
-  				'right' => 'Rechts van de tekst (100px breed)',
+  		array(
+  			'key' => 'field_58491e20452d3',
+  			'label' => 'Vormgeving',
+  			'name' => 'rhswp_widget_class',
+  			'type' => 'select',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array(
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
   			),
-  			'default_value' => 'top',
-  			'other_choice' => 0,
-  			'save_other_choice' => 0,
+  			'choices' => array(
+  				'standaard' => 'Standaard - grijze rand, witte achtergrond, blauwe titel',
+  				'do-groen' => 'DO-groen - Donkergroene achtergrond, witte tekst',
+  				'do-groen-light' => 'DO-lichtgroen - Lichtgroene achtergrond, zwarte tekst',
+  				'text-over-plaatje' => 'Plaats de tekst over het plaatje',
+  				'plaatje-link-notitel' => 'Alleen plaatje met een link, titel verborgen',
+  			),
+  			'default_value' => array(
+  			),
   			'allow_null' => 0,
+  			'multiple' => 0,
+  			'ui' => 0,
   			'return_format' => 'value',
+  			'ajax' => 0,
+  			'placeholder' => '',
+  		),
+  		array(
+  			'key' => 'field_5847d2d9a31f8',
+  			'label' => 'Image in de banner',
+  			'name' => 'rhswp_widget_bannerimage',
+  			'type' => 'image',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array(
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'return_format' => 'array',
+  			'preview_size' => 'thumbnail',
+  			'library' => 'all',
+  			'min_width' => '',
+  			'min_height' => '',
+  			'min_size' => '',
+  			'max_width' => '',
+  			'max_height' => '',
+  			'max_size' => '',
+  			'mime_types' => '',
+  		),
+  		array(
   			'key' => 'field_58480b91f296f',
   			'label' => 'Hoe wil je het plaatje uitlijnen?',
   			'name' => 'rhswp_widget_image_alignment',
   			'type' => 'radio',
-  			'instructions' => 'Kies de plek van het plaatje: boven de tekst, links van de tekst of rechts van de tekst.',
+  			'instructions' => '',
   			'required' => 0,
   			'conditional_logic' => 0,
-  			'wrapper' => array (
+  			'wrapper' => array(
   				'width' => '',
   				'class' => '',
   				'id' => '',
   			),
+  			'choices' => array(
+  				'top' => 'Boven de tekst (volle breedte)',
+  				'left' => 'Links van de tekst (100px breed)',
+  				'right' => 'Rechts van de tekst (100px breed)',
+  			),
+  			'allow_null' => 0,
+  			'other_choice' => 0,
+  			'default_value' => '',
+  			'layout' => 'vertical',
+  			'return_format' => 'value',
+  			'save_other_choice' => 0,
   		),
-      array (
-      	'layout' => 'vertical',
-      	'choices' => array (
-      		'left' => 'Links uitgelijnd',
-      		'center' => 'Gecentreerd',
-      		'right' => 'Rechts uitgelijnd',
-      	),
-      	'default_value' => 'left',
-      	'other_choice' => 0,
-      	'save_other_choice' => 0,
-      	'allow_null' => 0,
-      	'return_format' => 'value',
-      	'key' => 'field_584927f5927b8',
-      	'label' => 'Uitlijning van de tekst',
-      	'name' => 'rhswp_widget_textalignment',
-      	'type' => 'radio',
-      	'instructions' => '',
-      	'required' => 0,
-      	'conditional_logic' => 0,
-      	'wrapper' => array (
-      		'width' => '',
-      		'class' => '',
-      		'id' => '',
-      	),
-      ),  		
+  		array(
+  			'key' => 'field_584927f5927b8',
+  			'label' => 'Uitlijning van de tekst',
+  			'name' => 'rhswp_widget_textalignment',
+  			'type' => 'radio',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array(
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'choices' => array(
+  				'left' => 'Links uitgelijnd',
+  				'center' => 'Gecentreerd',
+  				'right' => 'Rechts uitgelijnd',
+  			),
+  			'allow_null' => 0,
+  			'other_choice' => 0,
+  			'default_value' => '',
+  			'layout' => 'vertical',
+  			'return_format' => 'value',
+  			'save_other_choice' => 0,
+  		),
+  		array(
+  			'key' => 'field_5c08efcd9dd7f',
+  			'label' => '<strong>Uitzonderingen</strong>',
+  			'name' => 'rhswp_widget_link_uitzonderingen',
+  			'type' => 'checkbox',
+  			'instructions' => 'Kies op welke contentsoorten deze banner <strong style="color: white; background: red; padding: .1em .5em;">NIET</strong> getoond moet worden.',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array(
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'choices' => array(
+  				'page' => 'Pagina',
+  				'post' => 'Berichten',
+  				RHSWP_CPT_DOCUMENT => 'Document',
+  				RHSWP_CPT_EVENT => 'Evenement',
+  			),
+  			'allow_custom' => 0,
+  			'default_value' => array(
+  			),
+  			'layout' => 'vertical',
+  			'toggle' => 0,
+  			'return_format' => 'value',
+  			'save_custom' => 0,
+  		),
   	),
-  	'location' => array (
-  		array (
-  			array (
+  	'location' => array(
+  		array(
+  			array(
   				'param' => 'widget',
   				'operator' => '==',
   				'value' => 'rhswp_banner_widget',
@@ -440,7 +466,6 @@ if( function_exists('acf_add_local_field_group') ):
   	'active' => 1,
   	'description' => '',
   ));
-
 
 endif;
 
