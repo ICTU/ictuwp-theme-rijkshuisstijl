@@ -10,8 +10,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.3
-// * @desc.   Bugfixes; contrastkleuren in widget en reactieform verbeterd.
+// * @version 2.0.4
+// * @desc.   Bugfixe in ACF en dossier check; contrastkleuren verder verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -309,7 +309,8 @@ function rhswp_dossier_title_checker( ) {
         }
 
         
-        if ( $menu_voor_dossier && ( is_array( $menu_voor_dossier ) || is_object( $menu_voor_dossier ) ) ) {
+//        if ( $menu_voor_dossier && ( is_array( $menu_voor_dossier ) || is_object( $menu_voor_dossier ) ) ) {
+        if ( $menu_voor_dossier ) {
 
           foreach( $menu_voor_dossier as $menuitem ): 
             if ( is_object( $menuitem ) ) {

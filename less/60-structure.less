@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.2
-// * @desc.   Removed the menu bar.
+// * @version 2.0.4
+// * @desc.   Bugfixe in ACF en dossier check; contrastkleuren verder verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 //
 
@@ -180,6 +180,16 @@
   .dossier-overview {
 
     background: @grijs_1;
+    
+    a {
+      color: @txt;
+      &:hover,
+      &:active,
+      &:focus {
+        color: @txt;
+        text-decoration: underline;
+      }
+    }
 
     .wrap {
       padding-top: 1em;
@@ -198,33 +208,12 @@
 
       li {
     		padding-left: 1.5em !important;
-        .listitem_arrow( @a_color_default, .8em, 7px );
+        .listitem_arrow( @txt, .8em, 7px, 3px );
+        &:before {
+          background-position: 5px 3px;
+        }
       }      
 
-/*      
-      border-bottom: 1px solid @communicatiekleur_licht;
-      
-      .selected {
-        span {
-          display: block;
-        }
-      }
-      
-      a, .selected span {
-        padding: 5px 10px;
-        border-top: 1px solid @communicatiekleur_licht;
-      }
-      
-      a {
-        color: @txt;
-      }
-      .selected {
-        a,
-        span {
-          color: @txt;
-        }
-      }
-*/      
     }
 
   	@media only screen and (min-width: ( @break_fullwidth ) ) {
@@ -237,25 +226,6 @@
         }
         li {
         }        
-/*        
-        border-bottom-style: none;
-        
-        li {
-          display: inline-block;
-          float: left;
-        }
-        
-        .selected {
-          span {
-            display: block;
-          }
-        }
-        
-        a, .selected span {
-          padding: 5px 10px;
-          border-top-style: none;
-        }
-*/        
       }
   	}    
   }  

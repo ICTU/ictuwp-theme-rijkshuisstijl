@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.0.3 - Bugfixes; contrastkleuren in widget en reactieform verbeterd.
+2.0.4 - Bugfixe in ACF en dossier check; contrastkleuren verder verbeterd.
 
 ## Version history
+* 2.0.4 - Bugfixe in ACF en dossier check; contrastkleuren verder verbeterd.
 * 2.0.3 - Bugfixes; contrastkleuren in widget en reactieform verbeterd.
 * 2.0.2 - Searchform styling hersteld.
 * 2.0.1 - Definities voor CPT verplaatst naar plugin.
