@@ -13,10 +13,12 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.0.4 - Uitzonderingen voor contenttypes ingebouwd in DO banner-widget
+2.0.5 - Uitzonderingen voor contenttypes ingebouwd in DO banner-widget
 
 ## Version history
-* 2.0.4 - Uitzonderingen voor contenttypes ingebouwd in DO banner-widget
+* 2.0.5 - Uitzonderingen voor contenttypes ingebouwd in DO banner-widget
+* 2.0.4 - Bugfixe in ACF en dossier check; contrastkleuren verder verbeterd.
+* 2.0.3 - Bugfixes; contrastkleuren in widget en reactieform verbeterd.
 * 2.0.2 - Searchform styling hersteld.
 * 2.0.1 - Definities voor CPT verplaatst naar plugin.
 * 1.2.20 - Site-improve: alleen skiplink voor hoofdnavigatie gebruiken op homepage.

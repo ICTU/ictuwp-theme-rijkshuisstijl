@@ -10,8 +10,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.1
-// * @desc.   Definities voor CPT verplaatst naar plugin.
+// * @version 2.0.4
+// * @desc.   Bugfixe in ACF en dossier check; contrastkleuren verder verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -179,9 +179,12 @@ function rhswp_dossier_title_checker( ) {
             if ( 'string' == gettype( $menu_voor_dossier[0] ) ) {
               // a string, so we best unserialize it.
               $menu_voor_dossier = maybe_unserialize( $menu_voor_dossier[0] ); // serialize
-              foreach( $menu_voor_dossier as $menuitem ): 
-                $itemsinmenu[] = intval( $menuitem );
-              endforeach; 
+
+              if( is_array( $menu_voor_dossier ) || is_object( $menu_voor_dossier ) ) {
+                foreach( $menu_voor_dossier as $menuitem ): 
+                  $itemsinmenu[] = intval( $menuitem );
+                endforeach; 
+              }
             }
             else {
               foreach( $menu_voor_dossier as $menuitem ): 
@@ -306,6 +309,7 @@ function rhswp_dossier_title_checker( ) {
         }
 
         
+//        if ( $menu_voor_dossier && ( is_array( $menu_voor_dossier ) || is_object( $menu_voor_dossier ) ) ) {
         if ( $menu_voor_dossier ) {
 
           foreach( $menu_voor_dossier as $menuitem ): 

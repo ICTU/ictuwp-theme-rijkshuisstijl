@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.18
-// * @desc.   Grid CSS voor IE11.
+// * @version 2.0.4
+// * @desc.   Bugfixe in ACF en dossier check; contrastkleuren verder verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -188,9 +188,9 @@
       margin-top: .75em;
     }
     h3 {
-      font-family: @bodyfont;
-      font-weight: 300;
-      font-weight: normal;
+//      font-family: @bodyfont;
+//      font-weight: 300;
+//      font-weight: normal;
     }
     h2 {
       margin-bottom: .5em;
@@ -232,8 +232,8 @@
       }
 
       .meta {
-        color: @a_color_visited;
-        margin: .5em 0 0 0;
+        font-family: @headerfont;
+        margin: .5em 0;
         font-size: 90%;
       }
 
@@ -649,4 +649,21 @@
       }
     }
   }
+
+
+  /*
+  Timeline plugin
+  -------------------------------------------------------------------------------------------------- */
+  .timeline-main {
+    background-color: @grijs_1;
+    .timelineToggle {
+      color: @donkerblauw_vol;
+    }    
+    a {
+      &:hover {
+        color: @txt;
+      }
+    }
+  }
+
 }
