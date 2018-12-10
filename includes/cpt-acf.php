@@ -8,7 +8,6 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.4
 // * @version 2.0.5
 // * @desc.   Uitzonderingen voor contenttypes ingebouwd in DO banner-widget
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
