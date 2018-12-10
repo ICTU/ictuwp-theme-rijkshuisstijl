@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.5
-// * @desc.   Uitzonderingen voor contenttypes ingebouwd in DO banner-widget
+// * @version 2.0.6
+// * @desc.   Bugfixes en HTML-validatiefouten verholpen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.0.5" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Uitzonderingen voor contenttypes ingebouwd in DO banner-widget" );
+define( 'CHILD_THEME_VERSION',              "2.0.6" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Bugfixes en HTML-validatiefouten verholpen." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -2849,17 +2849,16 @@ function rhswp_write_extra_contentblokken() {
                   $excerpt        = wp_strip_all_tags( get_the_excerpt( $post ) );
                   $postdate       = get_the_date( );
                   $title          = get_the_title();
-                  $categories     = get_the_category();
+//                  $categories     = get_the_category();
                   $categorielinks = '';
                   $permalink_cat  = '';
 
+/*
                   foreach( $categories as $category ) {
                     
                     if ( $toonlinksindossiercontext && ( ! $permalink_cat ) ) {
                       if ( in_array( $category->term_id, $permalink_categories ) ) {
-                        // only register the first eligible category ID
                         $permalink_cat = $category->slug;
-//                        dodebug( 'INARRAY!! (' . $toonlinksindossiercontext . ') ' . $category->term_id . ' / ' . $category->slug );
                       }                                          
                     }
                     
@@ -2872,7 +2871,7 @@ function rhswp_write_extra_contentblokken() {
                   }                  
                   
                   $categorielinks = '<p>' . wp_strip_all_tags( $categorielinks ) . '</p>';
-
+*/
 
                   if ( $currentsite && $currentpage && $toonlinksindossiercontext ) {
                     // aaaaa, what a fuckup.
@@ -4146,7 +4145,7 @@ function rhswp_widget_output_footer1() {
 function rhswp_widget_output_footer2() {
 	genesis_widget_area ( RHSWP_FOOTERWIDGET2, array(
 		'before'  => '',
-		'after'  => '',
+		'after'  => '</div></div>',
 	));
 }
 

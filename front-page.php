@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.1
-// * @desc.   Definities voor CPT verplaatst naar plugin.
+// * @version 2.0.6
+// * @desc.   Bugfixes en HTML-validatiefouten verholpen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // 
  */
@@ -115,9 +115,9 @@ function rhswp_home_onderwerpen_dossiers() {
       endwhile; 
   
       echo '</div>';
-  
-  
+
     }
+    
   }
   
   if ( is_active_sidebar( RHSWP_HOME_WIDGET_AREA ) ) {
@@ -126,6 +126,7 @@ function rhswp_home_onderwerpen_dossiers() {
 
   }
 
+  echo '</div>'; // .wrap
   echo '</section>';
       
 }
