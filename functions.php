@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.7
-// * @desc.   Sortering van evenementen in contentblokken verbeterd: op datum ipv naam.
+// * @version 2.0.8
+// * @desc.   Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.0.7" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Sortering van evenementen in contentblokken verbeterd: op datum ipv naam." );
+define( 'CHILD_THEME_VERSION',              "2.0.8" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -2536,6 +2536,8 @@ function rhswp_write_extra_contentblokken() {
             }
 
             if (class_exists('EM_Events')) {
+        
+        			$events_link = em_get_link( __( 'all events','events-manager' ) );
 
               if ( $slug ) {
                 $eventlist = EM_Events::output( array( RHSWP_CT_DOSSIER => $slug, 'scope'=>'future', 'limit' => $limit ) );
@@ -2550,6 +2552,9 @@ function rhswp_write_extra_contentblokken() {
               }
               else {
                 echo $eventlist;
+                if ( $events_link ) {
+                  echo '<p class="more">' . $events_link . '</p>';
+                }
               }
             }
 

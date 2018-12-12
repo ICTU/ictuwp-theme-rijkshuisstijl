@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.2
-// * @desc.   Searchform styling hersteld.
+// * @version 2.0.8
+// * @desc.   Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -69,7 +69,6 @@
       }
       &.selected {
         a, span {
-//          background: white;
           font-weight: bold;
           font-family: @fontstrong;
         }
@@ -79,7 +78,6 @@
 
     &.nav-primary {
 
-//      padding: 71px 1em 1em 1em;
       padding: 1em;
       
       ul {
@@ -117,16 +115,6 @@
     }
   }
 
-
-	@media only screen and (max-width: ( @break_tablet  - 1 ) ) {
-
-	}
-	
-
-	@media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
-
-	}
-
   @media only screen and (max-width: ( @menubreakpoint ) ) {
 
     .sub-menu li {
@@ -152,8 +140,8 @@
             background: @nav_li_active_bg;
             color: @nav_li_active_color;
             margin-left: 0;
-        		padding-left: 1.5em;
-        		.listitem_arrow( @txt, 18px, 14px, 4px );
+            padding-left: 1.5em;
+            .listitem_arrow( @txt, 18px, 14px, 4px );
           }
         }
       }
@@ -161,7 +149,6 @@
       .menu-button {
         padding: 0 4px;
         overflow: hidden;
-//        min-width: 75px;
         border: 1px solid @nav_bg_color;
         background: @nav_bg_color;
         color: @wit;

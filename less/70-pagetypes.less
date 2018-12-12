@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.3
-// * @desc.   Bugfixes; contrastkleuren in widget en reactieform verbeterd.
+// * @version 2.0.8
+// * @desc.   Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -30,52 +30,6 @@
       a {
         display: block;
       }
-
-      .voorbereid {
-        
-        ul {
-          margin-left: 0;
-          
-          li {
-        		padding-left: 0 !important;
-            margin-left: 0 !important;
-    
-            &:before {
-              display: none !important;
-            }
-            
-            ul {
-              display: flex;
-              flex-flow: row wrap;
-              justify-content: flex-start;
-              margin-bottom: 1em;
-              
-              li {
-                margin-left: 0;
-                padding-bottom: .5em;
-                padding-right: .5em;
-                flex: 1;
-          	    flex-grow: 1;
-            		padding-left: 1.5em !important;
-            		.listitem_arrow( @a_color_default, .8em, 4px );
-                display: block;
-                flex-basis: 25%;
-    
-                &:before {
-                  display: block !important;
-                }
-                
-                a {
-                  display: block;
-                  &:visited {
-                    color: @a_color_default;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   }
 
@@ -92,17 +46,15 @@
     background: @grijs_1;
     padding: 0 1em 1em 1em;
 
-    a {
-      &:focus,
-      &:active,
-      &:hover {
-        color: @txt;          
-      }
-    }
-      
     ul.links {
       overflow: hidden;
       margin: 0 0;
+
+      a {
+        .listitem_arrow( @txt, 10px, 10px ); // done
+        color: @txt;
+        font-family: @fontstrong;
+      }
     }
   }        
 
@@ -149,19 +101,12 @@
         span {
           .visuallyhidden();
         }
-        
-        a, & {
-//          line-height: 1.4;
-        }
-        
+
         a {
           text-decoration: none;
           display: inline-block;
           overflow: hidden;
-//          margin-top: .2em;
-//          margin-right: .2em;
-//          padding-right: .75em;
-          
+
           &:focus,
           &:active,
           &:hover {
@@ -184,11 +129,9 @@
             margin-left: 0;
             display: block;
             width: 100%;
-
-        		padding-left: 1em;
-        		.listitem_arrow( @a_color_default, .7em, 9px );
-        		display: block;
-
+            padding-left: .75em;
+            .listitem_arrow( @a_color_default, 10px, 8px ); // done
+            display: block;
           }        
           
           
@@ -246,34 +189,26 @@
   //========================================================================================================
   @media only screen and (min-width: ( @break_tablet ) ) {
 
-    #mixitupfilterlist {
-      
-      &.unfiltered {
-      
+    #mixitupfilterlist.unfiltered {
+        
       div.cat-item {
         width: 25%;
         
         &.i-have-kids {
-          width: 100%;
+        width: 100%;
         }
-        
       }
       
-        ul.children {
-          column-count: 4;
-          
-          li {
-            margin-bottom: 0;
-            margin-left: 0;
-            display: block;
-            width: 100%;
-
-
-          }        
-        }
+      ul.children {
+        column-count: 4;
         
+        li {
+          margin-bottom: 0;
+          margin-left: 0;
+          display: block;
+          width: 100%;
+        }        
       }
-
     }
   }
 
@@ -374,23 +309,6 @@
       }
     }
   }
-
-/*
-  .error404,
-  .page-template-page_sitemap {
-    .site-inner {
-      ul, ol {
-        &:not(.social-media) {
-          margin-left: 1em;
-          li {
-        		.listitem_arrow( @a_color_default, .5em, 10px );
-        		padding-left: .9em;
-          }
-        }
-      }
-    }
-  }
-*/  
 
   //========================================================================================================
   

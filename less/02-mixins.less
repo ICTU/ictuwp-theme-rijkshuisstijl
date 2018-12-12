@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.1.15
-// * @desc.   CSS bugfixes (blockquote sizes, oude manier van details/summary invoegen hersteld).
+// * @version 2.0.8
+// * @desc.   Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -363,7 +363,7 @@
 
 //=========================================================================================================
 
-.listitem_arrow( @itemcolor: @a_color_default, @fontsize: 1em, @topdistance: 4px, @leftdistance: 0 ) {
+.listitem_arrow( @itemcolor: @a_color_default, @fontsize: 1em, @topdistance: 4px, @leftdistance: 0, @width: 1.5em ) {
 
   position: relative;
   
@@ -371,8 +371,7 @@
     speak: none;
     color: @itemcolor;
     display: inline-block;
-    width: 1.5em;
-    height: @fontsize;
+    width: @width;
     height: 1.5em;
     content: ' ';
     position: absolute;
@@ -381,6 +380,7 @@
     font-size: @fontsize;
     line-height: @fontsize;
     .icon_socmed_icon('../images/svg/list-arrow.svg', @itemcolor);
+    background-size: ( @fontsize * .75 ) @fontsize;
     background-repeat: no-repeat;
   }  
 }

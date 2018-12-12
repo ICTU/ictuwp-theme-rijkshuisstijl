@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.0.7 - Sortering van evenementen in contentblokken verbeterd: op datum ipv naam.
+2.0.8 - Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
 
 ## Version history
+* 2.0.8 - Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
 * 2.0.7 - Sortering van evenementen in contentblokken verbeterd: op datum ipv naam.
 * 2.0.6 - Bugfixes en HTML-validatiefouten verholpen.
 * 2.0.5 - Uitzonderingen voor contenttypes ingebouwd in DO banner-widget
