@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.6
-// * @desc.   Bugfixes en HTML-validatiefouten verholpen.
+// * @version 2.0.7
+// * @desc.   Sortering van evenementen in contentblokken verbeterd: op datum ipv naam.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.0.6" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Bugfixes en HTML-validatiefouten verholpen." );
+define( 'CHILD_THEME_VERSION',              "2.0.7" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Sortering van evenementen in contentblokken verbeterd: op datum ipv naam." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -223,26 +223,22 @@ include_once( RHSWP_FOLDER . '/includes/skip-links.php' );
 
 //========================================================================================================
 
-if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
-  
-  // Include to alter the dossier taxonomy on pages: use radiobuttons instead of checkboxes.
-  include_once( RHSWP_FOLDER . '/includes/class.taxonomy-single-term.php' );
-  $custom_tax_mb = new Taxonomy_Single_Term( RHSWP_CT_DOSSIER, array( 'page' ) );
-  
-  // Custom title for this metabox
-  $custom_tax_mb->set( 'metabox_title', __( 'Onderwerpen', 'wp-rijkshuisstijl' ) );
-  
-  // Will keep radio elements from indenting for child-terms.
-  $custom_tax_mb->set( 'indented', true );
-  
-  // Allows adding of new terms from the metabox
-  $custom_tax_mb->set( 'allow_new_terms', true );
-  
-  // Priority of the metabox placement.
-  $custom_tax_mb->set( 'priority', 'low' );
+// Include to alter the dossier taxonomy on pages: use radiobuttons instead of checkboxes.
+include_once( RHSWP_FOLDER . '/includes/class.taxonomy-single-term.php' );
 
-}
+$custom_tax_mb = new Taxonomy_Single_Term( RHSWP_CT_DOSSIER, array( 'page' ) );
 
+// Custom title for this metabox
+$custom_tax_mb->set( 'metabox_title', __( 'Onderwerpen', 'wp-rijkshuisstijl' ) );
+
+// Will keep radio elements from indenting for child-terms.
+$custom_tax_mb->set( 'indented', true );
+
+// Allows adding of new terms from the metabox
+$custom_tax_mb->set( 'allow_new_terms', true );
+
+// Priority of the metabox placement.
+$custom_tax_mb->set( 'priority', 'low' );
 
 //========================================================================================================
 
@@ -2540,7 +2536,13 @@ function rhswp_write_extra_contentblokken() {
             }
 
             if (class_exists('EM_Events')) {
-              $eventlist = EM_Events::output( array( 'orderby'=>'name', RHSWP_CT_DOSSIER => $slug, 'scope'=>'future', 'limit' => $limit ) );
+
+              if ( $slug ) {
+                $eventlist = EM_Events::output( array( RHSWP_CT_DOSSIER => $slug, 'scope'=>'future', 'limit' => $limit ) );
+              }
+              else {
+                $eventlist = EM_Events::output( array( 'scope'=>'future', 'limit' => $limit ) );
+              }
 
               if ( $eventlist == get_option ( 'dbem_no_events_message' ) ) {
                 // er zijn dus geen evenementen
