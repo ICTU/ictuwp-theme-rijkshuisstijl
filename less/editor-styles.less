@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.1.12
-// * @desc.   Invoermogelijkheid voor kaders herzien.
+// * @version 2.0.9
+// * @desc.   Admin-style aangepast: geen waarschuwing meer voor vette tekst.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -59,15 +59,12 @@
 @import "03-fonts.less";        /* fonts */
 @import "10-text-styles.less";     /* font-styles, shared with admin editor-styles.less */
 
-@waarschuwing: 'deze tekst bevat nog verkeerde opmaakcode. Selecteer de tekst en klik op de gum-knop om dit weg te halen';
-@waarschuwingbold: 'Deze tekst is vet. Als je een tussenkopje wil maken, gebruik dan h2, h3, h4. Vette tekst leidt erg af; van harte afgeraden.';
-@waarschuwingunderlined: 'Onderstreepte tekst impliceert een link. Niet gebruiken, alsjeblieft.';
-
-@waarschuwingfont: 'deze tekst bevat opmaakcode voor een ander lettertype. Selecteer de tekst en klik op de gum-knop om dit weg te halen';
-
-@waarschuwingh1: 'Deze tekst bevat een H1 als titel-tag. Die is gereserveerd voor de paginatitel. Gebruik alleen H2 of lager, alsjeblieft.';
-
-@waarschuwinghdiv: 'Er zitten <div>-tags in deze tekst. Misschien is dat je bedoeling, maar vaak levert dit ongewenste layout op. Probeer de tekst zonder extra layout in te voeren, bijvoorbeeld via het "tekst"-tabje.';
+// warnings
+@w_layout:      'deze tekst bevat nog verkeerde opmaakcode. Selecteer de tekst en klik op de gum-knop om dit weg te halen';
+@w_underline:   'Onderstreepte tekst impliceert een link. Niet gebruiken, alsjeblieft.';
+@w_fonttag:     'deze tekst bevat opmaakcode voor een ander lettertype. Selecteer de tekst en klik op de gum-knop om dit weg te halen';
+@w_headertag:   'Deze tekst bevat een H1 als titel-tag. Die is gereserveerd voor de paginatitel. Gebruik alleen H2 of lager, alsjeblieft.';
+@w_divtag:      'Er zitten <div>-tags in deze tekst. Misschien is dat je bedoeling, maar vaak levert dit ongewenste layout op. Probeer de tekst zonder extra layout in te voeren, bijvoorbeeld via het "tekst"-tabje.';
 
 
 .03_fonts_get_webfonts_relative();
@@ -84,54 +81,44 @@
 }
 
 
-strong, 
-b, 
 span[style*="font"], 
 span[style*="underline"], 
 u {
-    background: red !important;
-    color: white !important;
-    padding: .1em;
+  background: red !important;
+  color: white !important;
+  padding: .1em;
 }
-strong, b {
-    font-weight: bold;
-}
-strong,
-b, 
 span[style*="color"], 
 span[style*="font"], 
 span[style*="underline"], u  {
   
-    background: red !important;
-    color: white !important;
-    padding: .1em;
-    display: inline-block;
+  background: red !important;
+  color: white !important;
+  padding: .1em;
+  display: inline-block;
   
-    &:before { 
-        background: yellow url('../images/opmaak-verwijderen.png') no-repeat .4em .4em !important;
-        content: @waarschuwing;
-        display: block;
-        padding: .4em .4em .4em 42px;
-        font-family: sans-serif;
-        font-size: 10px;
-        line-height: 16px;
-        width:  180px;
-        border: 1px solid black;
-        float: left;
-        color: black !important;
-    }
+  &:before { 
+    background: yellow url('../images/opmaak-verwijderen.png') no-repeat .4em .4em !important;
+    content: @w_layout;
+    display: block;
+    padding: .4em .4em .4em 42px;
+    font-family: sans-serif;
+    font-size: 10px;
+    line-height: 16px;
+    width:  180px;
+    border: 1px solid black;
+    float: left;
+    color: black !important;
+  }
 }
 span[style*="color"]:before { 
-    content: @waarschuwingfont;
+  content: @w_fonttag;
 }
 span[style*="font"]:before { 
-    content: @waarschuwing;
+  content: @w_layout;
 }
 span[style*="underline"]:before, u:before {
-    content: @waarschuwingunderlined;
-}
-strong:before, b:before {
-    content: @waarschuwingbold;
+  content: @w_underline;
 }
 
 a {
@@ -146,7 +133,7 @@ h1 {
   
   &:before { 
     background: yellow url('../images/waarschuwing.svg') no-repeat .4em .4em !important;
-    content: @waarschuwingh1;
+    content: @w_headertag;
     display: block;
     padding: .4em .4em .4em 24px;
     font-family: sans-serif;
@@ -158,31 +145,6 @@ h1 {
     color: black !important;
   }
 }
-/*
-div:not(.borderframe) {
-  padding: .2em;
-  border: 1px solid @grijs_7;
-  
-  &:before { 
-    content: @waarschuwinghdiv;
-    display: inline-block;
-    float: none;
-    clear: both;
-    font-size: 80%;
-    color: @grijs_7;
-    border-bottom: 1px solid @grijs_7;
-    margin-bottom: 1em;
-  }
-}
-div.statusDoorlevering {
-  padding: 0;
-  border-style: none;
-    
-  &:before { 
-    display: none;
-  }
-}
-*/
 
 .intro {
   display: inline-block;

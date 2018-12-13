@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.1.18
-// * @desc.   Merge branch 'master' of https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// * @version 2.0.9
+// * @desc.   Admin-style aangepast: geen waarschuwing meer voor vette tekst.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -144,8 +144,9 @@ function rhswp_admin_dump_wpquery() {
 //========================================================================================================
 
 function admin_append_editor_styles() {
-    add_editor_style(RHSWP_THEMEFOLDER . '/css/editor-styles.css?v=' . CHILD_THEME_VERSION);
+  add_editor_style(RHSWP_THEMEFOLDER . '/css/editor-styles.css?v=' . CHILD_THEME_VERSION);
 }
+
 add_action( 'init', 'admin_append_editor_styles' );
 
 //========================================================================================================
@@ -156,6 +157,7 @@ function rhswp_admin_debug_css() {
     wp_enqueue_style( 'header-counter-css', RHSWP_THEMEFOLDER . '/css/header.css', array(), CHILD_THEME_VERSION );
   }
 }
+
 if ( WP_DEBUG ) {
     add_action( 'wp_enqueue_scripts', 'rhswp_admin_debug_css' );
 }
@@ -163,10 +165,10 @@ if ( WP_DEBUG ) {
 //========================================================================================================
 
 if ( SHOW_CSS_DEBUG ) {
+
   //* Add role to header
   add_filter('genesis_attr_site-header', 'rhswp_add_attribute_role_banner');
 
-  
   function rhswp_add_attribute_role_banner($attributes) {
   	$attributes['role'] = 'banner';
   	return $attributes;

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.8
-// * @desc.   Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
+// * @version 2.0.9
+// * @desc.   Admin-style aangepast: geen waarschuwing meer voor vette tekst.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.0.8" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast." );
+define( 'CHILD_THEME_VERSION',              "2.0.9" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Admin-style aangepast: geen waarschuwing meer voor vette tekst." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -1820,7 +1820,7 @@ function admin_set_tinymce_options( $settings ) {    $settings['theme_advanced_b
   $settings['entity_encoding']              = 'raw';
   $settings['extended_valid_elements']      = 'details,summary';
 
-  $settings['toolbar1'] = 'formatselect,italic,bullist,numlist,blockquote,|,link,unlink,|,spellchecker,|,styleselect,|,removeformat,cleanup,|,alignleft,alignright,undo,redo,outdent,indent,hr,fullscreen';
+  $settings['toolbar1'] = 'formatselect,italic,bold,bullist,numlist,blockquote,|,link,unlink,|,spellchecker,|,styleselect,|,removeformat,cleanup,|,alignleft,alignright,undo,redo,outdent,indent,hr,fullscreen';
   $settings['toolbar2'] = '';
   $settings['block_formats'] = 'Tussenkop niveau 2=h2;Tussenkop niveau 3=h3;Tussenkop niveau 4=h4;Tussenkop niveau 5=h5;Tussenkop niveau 6=h6;Paragraaf=p;Citaat=q';
   $settings['style_formats'] = '[

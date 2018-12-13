@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.0.8
-  Version description: 2.0.8 - Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
+  Version: 2.0.9
+  Version description: 2.0.9 - Admin-style aangepast: geen waarschuwing meer voor vette tekst.
   Text Domain: wp-rijkshuisstijl
   
   Template: genesis
@@ -981,8 +981,9 @@ img .alignright,
 .wp-caption .alignright {
   margin: 5.33333333px 0 16px 8px;
 }
-.wp-caption.alignnone {
-  margin: 5.33333333px 0 0 0;
+.wp-caption img {
+  margin: 0;
+  border: 1px solid transparent;
 }
 .wp-caption .wp-caption-text {
   font-size: 85%;
@@ -990,8 +991,32 @@ img .alignright,
   text-align: left;
   border-bottom: 1px solid #ddd;
   line-height: 1.4;
-  padding: 8px 0;
+  padding: 0.5em 0;
   width: auto;
+}
+.wp-caption.alignnone {
+  margin: 0.5em 0 0.75em 0;
+}
+@media only screen and (min-width: 650px) {
+  .wp-caption.alignnone {
+    overflow: hidden;
+    width: 100% !important;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+  .wp-caption.alignnone img[width="500"] {
+    float: left;
+    display: inline-block;
+    max-width: 75% !important;
+  }
+  .wp-caption.alignnone img[width="500"] + .wp-caption-text {
+    width: calc(99% - 501px);
+    padding-left: 1em;
+    padding-top: 0;
+    float: left;
+    overflow: hidden;
+    border-bottom-style: none;
+  }
 }
 .wp-caption.alignleft {
   margin: 0 1em 1em 0;
@@ -1025,21 +1050,6 @@ img .alignright,
   right: 0;
   bottom: 0;
 }
-/*  
-  .featured {
-    margin: 0 0 .25em 1em;
-    padding-top: .25em;
-    &.toc-active {
-	    max-width: 25%;
-	    margin: .25em 1em 1em 0;
-	    padding-top: 0;
-	    
-	    & + #toc_container {
-		    max-width: 33%;
-	    }
-    }
-  }
-*/
 .featured {
   margin: 0 0 0.25em 1em;
   padding-top: 0.25em;
