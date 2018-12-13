@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.0.8
-  Version description: 2.0.8 - Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
+  Version: 2.0.11
+  Version description: 2.0.11 - Aanpassingen aan div. widgets + bugfix voor widet-banner
   Text Domain: wp-rijkshuisstijl
   
   Template: genesis
@@ -119,7 +119,7 @@ Imports
   font-family: "RO Icons";
   font-style: normal;
   font-weight: bold;
-  src: url("fonts/ro-icons-1.7.woff") format("opentype"), url("fonts/ro-icons-1.7.ttf") format("truetype");
+  src: url("fonts/ro-icons-1.10.woff") format("opentype"), url("fonts/ro-icons-1.10.ttf") format("truetype");
 }
 body {
   font-family: 'Rijksoverheid Sans regular', sans-serif;
@@ -3072,11 +3072,11 @@ aside.sidebar .widget.banner .widgettitle {
   float: none;
 }
 .page-link-widget {
+  border: 3px solid #e1e1e1;
   padding: 16px;
 }
 .page-link-widget .read-more {
-  text-align: right;
-  margin: 0 16px 0 0;
+  margin-bottom: 0;
 }
 .page-link-widget h2,
 .page-link-widget h3 {
@@ -3661,6 +3661,7 @@ noscript {
   width: 100%;
   text-align: center;
 }
+.read-more,
 .more {
   width: 100%;
   margin-top: 1em;
@@ -3669,9 +3670,20 @@ noscript {
   padding-left: 1em;
   position: relative;
 }
+.read-more a,
 .more a {
+  text-decoration: none;
   color: #01689b;
 }
+.read-more a:hover,
+.more a:hover,
+.read-more a:focus,
+.more a:focus,
+.read-more a:active,
+.more a:active {
+  text-decoration: underline;
+}
+.read-more:before,
 .more:before {
   speak: none;
   color: #01689b;

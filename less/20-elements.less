@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.8
-// * @desc.   Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
+// * @version 2.0.11
+// * @desc.   Aanpassingen aan div. widgets + bugfix voor widet-banner
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -291,13 +291,21 @@
 
 
 
+  .read-more,
   .more {
     width: 100%;
     margin-top: 1em;
     font-weight: 700;
     font-family: @fontstrong;
     a {
+      text-decoration: none;
       color: @a_color_default;
+      
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: underline;
+      }
     }
 
 		padding-left: 1em;

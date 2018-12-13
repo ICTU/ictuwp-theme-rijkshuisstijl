@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.5
-// * @desc.   Uitzonderingen voor contenttypes ingebouwd in DO banner-widget
+// * @version 2.0.11
+// * @desc.   Aanpassingen aan div. widgets + bugfix voor widet-banner
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -333,7 +333,7 @@ if( function_exists('acf_add_local_field_group') ):
   				'standaard' => 'Standaard - grijze rand, witte achtergrond, blauwe titel',
   				'do-groen' => 'DO-groen - Donkergroene achtergrond, witte tekst',
   				'do-groen-light' => 'DO-lichtgroen - Lichtgroene achtergrond, zwarte tekst',
-  				'text-over-plaatje' => 'Plaats de tekst over het plaatje',
+  				'text-over-plaatje' => 'Tekst over een plaatje',
   				'plaatje-link-notitel' => 'Alleen plaatje met een link, titel verborgen',
   			),
   			'default_value' => array(
@@ -352,7 +352,22 @@ if( function_exists('acf_add_local_field_group') ):
   			'type' => 'image',
   			'instructions' => '',
   			'required' => 0,
-  			'conditional_logic' => 0,
+  			'conditional_logic' => array(
+  				array(
+  					array(
+  						'field' => 'field_58491e20452d3',
+  						'operator' => '==',
+  						'value' => 'text-over-plaatje',
+  					),
+  				),
+  				array(
+  					array(
+  						'field' => 'field_58491e20452d3',
+  						'operator' => '==',
+  						'value' => 'plaatje-link-notitel',
+  					),
+  				),
+  			),
   			'wrapper' => array(
   				'width' => '',
   				'class' => '',
@@ -434,9 +449,9 @@ if( function_exists('acf_add_local_field_group') ):
   			),
   			'choices' => array(
   				'page' => 'Pagina',
-  				'post' => 'Berichten',
-  				RHSWP_CPT_DOCUMENT => 'Document',
-  				RHSWP_CPT_EVENT => 'Evenement',
+  				'post' => 'Berichten (dat zijn ALLE berichten)',
+  				'document' => 'Document',
+  				'event' => 'Evenement',
   			),
   			'allow_custom' => 0,
   			'default_value' => array(
@@ -465,6 +480,7 @@ if( function_exists('acf_add_local_field_group') ):
   	'active' => 1,
   	'description' => '',
   ));
+
 
 endif;
 
