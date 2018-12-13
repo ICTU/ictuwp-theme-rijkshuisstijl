@@ -1,18 +1,18 @@
 <?php
 
 /**
- * wp-rijkshuisstijl - widget-home.php
- * ----------------------------------------------------------------------------------
- * voor als je niet weet waar je bent. Als je jezelf zoekt, of als je
- * gewoon in z'n algemeenheid de site probeert stuk te maken.
- * ----------------------------------------------------------------------------------
- *
- * @author  Paul van Buuren
- * @license GPL-2.0+
- * @package wp-rijkshuisstijl
- * @version 0.11.1
- * @desc.   Bugfix voor carroussel. CSS external link.
- * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// * wp-rijkshuisstijl - widget-page-link-widget.php
+// * ----------------------------------------------------------------------------------
+// * voor als je niet weet waar je bent. Als je jezelf zoekt, of als je
+// * gewoon in z'n algemeenheid de site probeert stuk te maken.
+// * ----------------------------------------------------------------------------------
+// *
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.0.11
+// * @desc.   Aanpassingen aan div. widgets + bugfix voor widet-banner
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
 
@@ -39,17 +39,17 @@ class rhswp_page_widget extends WP_Widget {
     function form($instance) {
         $instance = wp_parse_args( (array) $instance, 
             array( 
-                'rhswp_page_widget_title'    => '', 
-                'rhswp_page_widget_short_text'    => '',    
-                'rhswp_page_widget_page_linktext'    => '',    
-                'rhswp_page_widget_page_link'    => '' 
+                'rhswp_page_widget_title'           => '', 
+                'rhswp_page_widget_short_text'      => '',    
+                'rhswp_page_widget_page_linktext'   => '',    
+                'rhswp_page_widget_page_link'       => '' 
                 ) 
             );
 
         $rhswp_page_widget_title          = empty( $instance['rhswp_page_widget_title'] ) ? '' : $instance['rhswp_page_widget_title'];
         $rhswp_page_widget_short_text     = empty( $instance['rhswp_page_widget_short_text'] ) ? '' : $instance['rhswp_page_widget_short_text'];
         $rhswp_page_widget_page_link      = empty( $instance['rhswp_page_widget_page_link'] ) ? '' : $instance['rhswp_page_widget_page_link'];
-        $rhswp_page_widget_page_linktext  = empty( $instance['rhswp_page_widget_page_linktext'] ) ? '' : $instance['rhswp_page_widget_page_linktext'];
+        $rhswp_page_widget_page_linktext  = empty( $instance['rhswp_page_widget_page_linktext'] ) ? _x( "Meer lezen", 'Widget page-link: default linktekst', 'wp-rijkshuisstijl' ) : $instance['rhswp_page_widget_page_linktext'];
 
 
         ?>
@@ -115,8 +115,6 @@ class rhswp_page_widget extends WP_Widget {
             $rhswp_page_widget_page_link    = get_permalink($rhswp_page_widget_page_link);
             $linkbefore     = '<p class="read-more"><a href="' . $rhswp_page_widget_page_link. '">' . $rhswp_page_widget_page_linktext;
             $linkafter      = '</a></p>';
-            $before_title  .= '<a href="' . $rhswp_page_widget_page_link. '" tabindex="-1">';
-            $after_title    = '</a>' . $after_title;
         }
 
         if ( $instance['rhswp_page_widget_title'] !== '') {
@@ -126,7 +124,10 @@ class rhswp_page_widget extends WP_Widget {
         echo $rhswp_page_widget_short_text;
         echo $linkbefore . $linkafter;
 
+        echo '</div>'; // class=text
+
         echo $after_widget;
+
     }
  
 }

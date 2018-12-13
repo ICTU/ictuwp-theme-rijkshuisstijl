@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.9
-// * @desc.   Admin-style aangepast: geen waarschuwing meer voor vette tekst.
+// * @version 2.0.11
+// * @desc.   Aanpassingen aan div. widgets + bugfix voor widet-banner
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.0.9" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Admin-style aangepast: geen waarschuwing meer voor vette tekst." );
+define( 'CHILD_THEME_VERSION',              "2.0.11" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Aanpassingen aan div. widgets + bugfix voor widet-banner" );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -296,7 +296,7 @@ remove_action( 'wp_head', 'rest_output_link_wp_head' );
 //========================================================================================================
 
 // voor de widgets
-require_once( RHSWP_FOLDER . '/includes/widget-home.php' );
+require_once( RHSWP_FOLDER . '/includes/widget-page-link-widget.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-banner.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-newswidget.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-paginalinks.php' );

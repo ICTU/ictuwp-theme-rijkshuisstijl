@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.3
-// * @desc.   Uitzonderingen voor contenttypes ingebouwd in DO banner-widget
+// * @version 2.0.11
+// * @desc.   Aanpassingen aan div. widgets + bugfix voor widet-banner
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -107,12 +107,12 @@ class rhswp_banner_widget extends WP_Widget {
     $rhswp_banner_widget_title          = empty($instance['rhswp_banner_widget_title'])         ? '' : $instance['rhswp_banner_widget_title'] ;
     $rhswp_banner_widget_short_text     = empty($instance['rhswp_banner_widget_short_text'])    ? '' : $instance['rhswp_banner_widget_short_text'];
 
-    $hidewidget = strpos( $before_widget, 'rhswp_hide_this_banner', 0 );
+    $bevatverbodenstring  = strpos( $before_widget, 'rhswp_hide_this_banner', 0 );
+    $doshow               = false;
 
-    $doshow     = true;
-
-    if ( $hidewidget === false ) {      
-      $doshow     = false;
+    if ( $bevatverbodenstring === false ) {      
+      // we mogen de widget tonen, want de verboden string zit er niet in
+      $doshow     = true;
     }
       
     if ( $doshow ) {
@@ -123,7 +123,7 @@ class rhswp_banner_widget extends WP_Widget {
         echo $before_title . $instance['rhswp_banner_widget_title'] . $after_title;
       }
 
-      echo $hidewidget;
+      echo $bevatverbodenstring;
       
       echo $rhswp_banner_widget_short_text;
       
@@ -189,6 +189,7 @@ function filter_for_rhswp_banner_widget( $params ) {
 
         $params[0]['before_widget'] = 'rhswp_hide_this_banner' . '-' . $uitzondering;
         return $params;
+
       }
       
     endforeach; 

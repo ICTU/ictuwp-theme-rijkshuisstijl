@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.0.9 - Admin-style aangepast: geen waarschuwing meer voor vette tekst.
+2.0.11 - Aanpassingen aan div. widgets + bugfix voor widet-banner
 
 ## Version history
+* 2.0.11 - Aanpassingen aan div. widgets + bugfix voor widet-banner
 * 2.0.9 - Admin-style aangepast: geen waarschuwing meer voor vette tekst.
 * 2.0.8 - Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
 * 2.0.7 - Sortering van evenementen in contentblokken verbeterd: op datum ipv naam.
@@ -256,7 +257,7 @@ themes/wp-rijkshuisstijl/                     # → Folder met alle theme-bestan
 │   ├── walker.taxonomy-single-term.php       # → hoort bij class.taxonomy-single-term.php
 │   ├── widget-banner.php                     # → widget voor banner
 │   ├── widget-events.php                     # → widget voor events
-│   ├── widget-home.php                       # → widget voor gebruik op home widget area
+│   ├── widget-page-link-widget.php           # → widget voor gebruik op home widget area
 │   ├── widget-newswidget.php                 # → widget voor tonen van berichten
 │   └── widget-paginalinks.php                # → widget voor tonen van bijbehorende paginalinks
 ├── js/                                       # → Bevat javascript
