@@ -3784,6 +3784,14 @@ function rhswp_add_blog_archive_css() {
     background-position: right center;
     background-size: .75em .75em;
   }
+.entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):visited {    
+    background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-visited.svg');
+  }
+.entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):active,
+.entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):focus,
+.entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):hover {    
+    background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-hover.svg');
+  }
   .entry-content a:not([href]),
   .entry-content .links li a,
   .entry-content a[href^=\"/\"],
