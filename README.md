@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.0.11 - Aanpassingen aan div. widgets + bugfix voor widet-banner
+2.0.12 - External link icon aangepast.
 
 ## Version history
+* 2.0.12 - External link icon aangepast.
 * 2.0.11 - Aanpassingen aan div. widgets + bugfix voor widet-banner
 * 2.0.9 - Admin-style aangepast: geen waarschuwing meer voor vette tekst.
 * 2.0.8 - Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.

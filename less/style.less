@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.0.11
-  Version description: 2.0.11 - Aanpassingen aan div. widgets + bugfix voor widet-banner
+  Version: 2.0.12
+  Version description: 2.0.12 - External link icon aangepast.
   Text Domain: wp-rijkshuisstijl
   
   Template: genesis
@@ -848,117 +848,7 @@ input[type="text"] {
     }
   }
 }
-.dojs {
 
-  .contains-tooltip {
-    position: relative;
-    display: block;
-    padding-right: @hoogte_tooltip_button_px;
-
-
-    .btn-tooltip {
-      background: none;
-      border-radius: @blockradius;
-      border: 1px solid @wit;   
-      text-align: center;
-
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-
-      display: block;
-      height: @hoogte_tooltip_button_px;
-      width: @hoogte_tooltip_button_px;   
-      padding: 6px 4px 4px 4px;
-      font-size: 80%;
-      font-weight: normal;
-      
-      i {
-        border: 1px solid @grijs;
-        padding: 1px;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        font-style: normal;
-        display: block;
-        margin: 2px auto;
-      }
-    }
-
-    .has-tooltip {
-    
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      
-      top: 0;
-      right: 0;
-      display: block;
-      font-family: Arial, sans-serif;
-     // color: @grijs;   
-      .font-size( ( @hoogte_tooltip_button / 2 ) );
-    }
-
-    .tooltip-content {
-      
-      .visuallyhidden();
-      .styling_tooltip();
-      
-      font-family: @bodyfont;
-      
-      height: auto;
-      display: block;
-      position: absolute;
-      top: ( @hoogte_tooltip_button_px - 4px );
-      left: 0;
-      z-index: 10000;
-      width: 100%;
-      margin: 0;
-      padding: 0.75em;
-      text-align: left;
-      font-size: 16px;
-      transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
-      transform: rotateX(20deg) scale(1);
-      transform-origin: center -@hoogte_tooltip_button_px;
-      -webkit-backface-visibility: hidden;
-      opacity: 0;
-    }
-
-    .content--is-active {
-
-      z-index: 10000;
-
-      .btn-tooltip {
-        background: @txt;
-       // color: @wit;
-        border-color: @txt;
-
-box-shadow: 2px 2px 4px lighten(@gboxshawow_grijs, 20%);
-        
-        i {
-          border-color: @wit;
-          background: @wit;
-         // color: @txt;
-        }
-      }
-      
-      .tooltip-content {
-        .showvisuallyhidden();
-        .styling_tooltip_active();
-        border-radius: @blockradius 0 @blockradius @blockradius;
-        transform: rotateX(0deg);
-        opacity: 1;
-        background-color: @txt;
-       // color: @wit;
-
-box-shadow: 2px 2px 4px lighten(@gboxshawow_grijs, 20%);
-        
-      }
-    }
-    
-  }
-}
 
 
 
@@ -974,14 +864,6 @@ box-shadow: 2px 2px 4px lighten(@gboxshawow_grijs, 20%);
 /*
 Media Queries
 ---------------------------------------------------------------------------------------------------- */
-
-//@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-//	only screen and (-moz-min-device-pixel-ratio: 1.5),
-//	only screen and (-o-min-device-pixel-ratio: 3/2),
-//	only screen and (min-device-pixel-ratio: 1.5) {
-//
-//}
-
 
 @media only screen and (max-width: ( @break_fullwidth - 1 ) ) {
 

@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.8
-// * @desc.   Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
+// * @version 2.0.12
+// * @desc.   External link icon aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -124,51 +124,34 @@
 //=========================================================================================================
 
 .visuallyhidden() {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 //=========================================================================================================
 
 .visuallyvisual() {
-    border: inherit;
-    clip: auto;
-    height: auto;
-    margin: auto;
-    overflow: auto;
-    padding: inherit;
-    position: inherit;
-    width: auto;
-}
-
-//=========================================================================================================
-
-.styling_tooltip() {
-    background-color: @wit;
-   // color: @txt;
-}
-
-//=========================================================================================================
-
-.styling_tooltip_active() {
+  border: inherit;
+  clip: auto;
+  height: auto;
+  margin: auto;
+  overflow: auto;
+  padding: inherit;
+  position: inherit;
+  width: auto;
 }
 
 //=========================================================================================================
 
 .showvisuallyhidden() {
-    clip: auto;
-    overflow: visible;
-}
-
-//=========================================================================================================
-
-.subjectindicator() {
+  clip: auto;
+  overflow: visible;
 }
 
 //=========================================================================================================
@@ -277,8 +260,8 @@
 //=========================================================================================================
 
 .font-size(@input: 16) {
-    font-size: ( ( ( @input / @basefontsize ) * @basefontsize ) * @pixel );
-    font-size: ( ( @input / @basefontsize ) * @prem );
+  font-size: ( ( ( @input / @basefontsize ) * @basefontsize ) * @pixel );
+  font-size: ( ( @input / @basefontsize ) * @prem );
 }
 
 //=========================================================================================================
@@ -291,47 +274,47 @@
 //=========================================================================================================
 
 .embed_error_icon(@src, @fill-new) {
-    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-    @replace-default:   escape('fill:#FF0000;');
-    @replace-new:       escape('fill:@{fill-new}');
-    @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-
-    background: e(@replacesrc1);
-    background-repeat: no-repeat;
-    padding-left: 2em;
+  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default:   escape('fill:#FF0000;');
+  @replace-new:       escape('fill:@{fill-new}');
+  @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+  
+  background: e(@replacesrc1);
+  background-repeat: no-repeat;
+  padding-left: 2em;
 }
 
 //=========================================================================================================
 
 .icon_socmed_icon(@src, @fill-new) {
-    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-    @replace-default:   escape('fill="#00586F"');
-    @replace-new:       escape('fill="@{fill-new}"');
-    @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-
-    background-image: e(@replacesrc1);
+  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default:   escape('fill="#00586F"');
+  @replace-new:       escape('fill="@{fill-new}"');
+  @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+  
+  background-image: e(@replacesrc1);
 }
 
 //=========================================================================================================
 
 .arrow_up_and_down(@src, @fill-new) {
-    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-    @replace-default:   escape('fill="#fff"');
-    @replace-new:       escape('fill="@{fill-new}"');
-    @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-
-    background-image: e(@replacesrc1);
+  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default:   escape('fill="#fff"');
+  @replace-new:       escape('fill="@{fill-new}"');
+  @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+  
+  background-image: e(@replacesrc1);
 }
 
 //=========================================================================================================
 
 .iconaddfill(@src, @fill-new) {
-    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-    @replace-default:   escape('fill="#000000"');
-    @replace-new:       escape('fill="@{fill-new}"');
-    @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-
-    background-image: e(@replacesrc1);
+  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default:   escape('fill="#000000"');
+  @replace-new:       escape('fill="@{fill-new}"');
+  @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+  
+  background-image: e(@replacesrc1);
 }
 
 //=========================================================================================================
@@ -422,7 +405,7 @@
 //=========================================================================================================
 
 .externallink() {
-  /* ====== */
+
   a.external:after {
     content: ' ';
     display: inline-block;
