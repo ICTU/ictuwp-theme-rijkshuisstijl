@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.12
-// * @desc.   External link icon aangepast.
+// * @version 2.0.13
+// * @desc.   Minder 3dr-party JavaScript inladen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.0.12" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "External link icon aangepast." );
+define( 'CHILD_THEME_VERSION',              "2.0.13" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Minder 3dr-party JavaScript inladen." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -4198,8 +4198,14 @@ add_shortcode( 'getreactietitle', 'rhswp_contactreactie_get_title' );
 add_action( 'wp_enqueue_scripts', 'rhswp_remove_external_styles' );
 
 function rhswp_remove_external_styles() {
+
 	wp_deregister_style( 'contact-form-7' );
 	wp_deregister_style( 'toc-screen' );
+
+	wp_deregister_style( 'dashicons' );
+	wp_deregister_style( 'cptch_stylesheet' );
+	wp_deregister_style( 'cptch_desktop_style' );
+
 } 
 
 //========================================================================================================
