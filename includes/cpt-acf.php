@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.11
-// * @desc.   Aanpassingen aan div. widgets + bugfix voor widet-banner
+// * @version 2.0.14
+// * @desc.   Styling eventwidget aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -2125,8 +2125,6 @@ if( function_exists('acf_add_local_field_group') ):
   	'description' => '',
   ));
 
-
-//*/
 
   acf_add_local_field_group(array(
   	'key' => 'group_5b62a5dfca2ad',

@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.0.12
-  Version description: 2.0.12 - External link icon aangepast.
+  Version: 2.0.14
+  Version description: 2.0.14 - Styling eventwidget aangepast.
   Text Domain: wp-rijkshuisstijl
   
   Template: genesis
@@ -391,7 +391,7 @@ a.extern:visited:before {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2052.5%20(67469)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Eicon-list-external-link%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cg%20id%3D%22icon-list-external-link%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-list-external-link-v2%22%20transform%3D%22translate(0.000000%2C%204.000000)%22%20fill%3D%22%23535353%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M15.5555555%2C0.433781643%20C15.4251851%2C0.280150675%2015.2651851%2C0.164927419%2015.0755555%2C0.0881118751%20C14.8859259%2C0.0112963316%2014.6903703%2C-0.0152936233%2014.4888888%2C0.00834201048%20C10.6785184%2C0.00834201048%205.91555551%2C0.00834201048%203.05777774%2C0.00834201048%20C2.60740735%2C0.00834201048%202.25185179%2C0.150155221%201.99111108%2C0.433781643%20C1.83703704%2C0.563777096%201.71851852%2C0.723316973%201.63555552%2C0.912401274%20C1.55259252%2C1.10148558%201.517037%2C1.29647878%201.52888896%2C1.4973809%20C1.57629632%2C1.97600056%201.63555552%2C2.57427514%201.67111104%2C2.93323988%20C1.67111104%2C3.32322624%201.82518514%2C3.67775933%202.13333333%2C3.99683914%20C2.44148153%2C4.26864781%202.79703708%2C4.42227884%203.2%2C4.45773223%20C4.9540741%2C4.45773223%207.14666672%2C4.45773223%208.46222229%2C4.45773223%20C6.46222229%2C6.47413913%202.46222229%2C10.5069529%200.462222293%2C12.5233599%20C0.319999976%2C12.6533553%200.207407348%2C12.8128952%200.124444409%2C13.0019795%20C0.0414814696%2C13.1910638%200%2C13.386057%200%2C13.5869591%20C0%2C13.7878612%200.0414814696%2C13.9828544%200.124444409%2C14.1719387%20C0.207407348%2C14.361023%200.319999976%2C14.5205629%200.462222293%2C14.6505584%20C0.76444451%2C14.9400937%201.14222228%2C15.3020129%201.36888894%2C15.5191645%20C1.4992593%2C15.6727954%201.65925929%2C15.7880187%201.84888891%2C15.8648342%20C2.03851852%2C15.9416498%202.23407409%2C15.9859664%202.43555561%2C15.9977842%20C2.63703701%2C16.0096019%202.83259255%2C15.9741486%203.02222222%2C15.8914242%20C3.2118519%2C15.8086998%203.37185192%2C15.6846132%203.50222228%2C15.5191645%20C6.19851854%2C12.8306219%209.56888888%2C9.46994373%2011.5911111%2C7.45353683%20C11.6088889%2C8.81405751%2011.6444445%2C11.5350989%2011.6622223%2C12.8956196%20C11.6622223%2C13.0965217%2011.7037038%2C13.2915149%2011.7866667%2C13.4805992%20C11.8696296%2C13.6696835%2011.9822222%2C13.8292234%2012.1244444%2C13.9592188%20C12.4444444%2C14.2310276%2012.8%2C14.3846586%2013.1911111%2C14.4201119%20C13.6177777%2C14.4201119%2014.151111%2C14.4201119%2014.471111%2C14.4201119%20C14.6725926%2C14.4201119%2014.8651852%2C14.3787497%2015.0488889%2C14.2960253%20C15.2325926%2C14.2133009%2015.3955555%2C14.1069409%2015.5377777%2C13.9769455%20C15.68%2C13.8351323%2015.7925927%2C13.6696835%2015.8755556%2C13.4805992%20C15.9585185%2C13.2915149%2016%2C13.0965217%2016%2C12.8956196%20C16%2C9.09620669%2016%2C4.34694057%2016%2C1.4973809%20C16%2C1.04830564%2015.8518518%2C0.69377255%2015.5555555%2C0.433781643%20Z%22%20id%3D%22path_%EE%A8%8A_0%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
 }
 p {
-  margin: 0 0 1em 0;
+  margin: 0 0 16px 0;
   padding: 0;
 }
 strong,
@@ -417,9 +417,7 @@ blockquote {
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
   word-break: normal;
-  -webkit-hyphens: none;
-      -ms-hyphens: none;
-          hyphens: none;
+  hyphens: none;
 }
 .pullquote-with-image {
   min-height: 75px;
@@ -548,9 +546,7 @@ blockquote {
 .pullquote-with-image blockquote *,
 .simple-pullquote blockquote * {
   word-break: normal;
-  -webkit-hyphens: none;
-      -ms-hyphens: none;
-          hyphens: none;
+  hyphens: none;
 }
 @media only screen and (min-width: 650px) {
   .pullquote-with-image blockquote,
@@ -624,7 +620,7 @@ dl dd {
   float: right;
 }
 dl + dl {
-  padding-top: 1em;
+  padding-top: 16px;
   border-top-style: none;
   border-top: 1px solid #cccccc;
 }
@@ -698,6 +694,7 @@ details[open] summary:hover {
 }
 p {
   -webkit-hyphens: auto;
+  -moz-hyphens: auto;
   -ms-hyphens: auto;
   -o-hyphens: auto;
   hyphens: auto;
@@ -708,6 +705,7 @@ p a {
 b,
 strong {
   -webkit-hyphens: manual;
+  -moz-hyphens: manual;
   -ms-hyphens: manual;
   -o-hyphens: manual;
   hyphens: manual;
@@ -736,7 +734,7 @@ h5,
 h6 {
   font-weight: 700;
   line-height: 1.2;
-  margin: 0.5em 0 0.25em;
+  margin: 8px 0 4px;
   font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
 }
 h1 {
@@ -791,7 +789,7 @@ p + h6 {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  margin-bottom: 1em;
+  margin-bottom: 16px;
   width: 100%;
   border: 0 none #f3f3f3;
   outline: none;
@@ -959,7 +957,7 @@ table.timetable th[scope="row"] {
 img.centered,
 .aligncenter {
   display: block;
-  margin: 0 auto 1em;
+  margin: 0 auto 16px;
 }
 .alignleft {
   float: left;
@@ -973,17 +971,16 @@ img.alignleft,
 .wp-caption.alignleft,
 img.alignleft,
 .wp-caption.alignleft {
-  margin: 0.25em 0.5em 1em 0;
+  margin: 5.33333333px 8px 16px 0;
 }
 img .alignright,
 .wp-caption .alignright,
 img .alignright,
 .wp-caption .alignright {
-  margin: 0.25em 0 1em 0.5em;
+  margin: 5.33333333px 0 16px 8px;
 }
-.wp-caption img {
-  margin: 0;
-  border: 1px solid transparent;
+.wp-caption.alignnone {
+  margin: 5.33333333px 0 0 0;
 }
 .wp-caption .wp-caption-text {
   font-size: 85%;
@@ -991,50 +988,8 @@ img .alignright,
   text-align: left;
   border-bottom: 1px solid #ddd;
   line-height: 1.4;
-  padding: 0.5em 0;
+  padding: 8px 0;
   width: auto;
-}
-.wp-caption.alignnone {
-  margin: 0.5em 0 0.75em 0;
-}
-@media only screen and (min-width: 650px) {
-  .wp-caption.alignnone {
-    overflow: hidden;
-    width: 100% !important;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-  }
-  .wp-caption.alignnone img[width="491"],
-  .wp-caption.alignnone img[width="492"],
-  .wp-caption.alignnone img[width="493"],
-  .wp-caption.alignnone img[width="494"],
-  .wp-caption.alignnone img[width="495"],
-  .wp-caption.alignnone img[width="496"],
-  .wp-caption.alignnone img[width="497"],
-  .wp-caption.alignnone img[width="498"],
-  .wp-caption.alignnone img[width="499"],
-  .wp-caption.alignnone img[width="500"] {
-    float: left;
-    display: inline-block;
-    max-width: 75% !important;
-  }
-  .wp-caption.alignnone img[width="491"] + .wp-caption-text,
-  .wp-caption.alignnone img[width="492"] + .wp-caption-text,
-  .wp-caption.alignnone img[width="493"] + .wp-caption-text,
-  .wp-caption.alignnone img[width="494"] + .wp-caption-text,
-  .wp-caption.alignnone img[width="495"] + .wp-caption-text,
-  .wp-caption.alignnone img[width="496"] + .wp-caption-text,
-  .wp-caption.alignnone img[width="497"] + .wp-caption-text,
-  .wp-caption.alignnone img[width="498"] + .wp-caption-text,
-  .wp-caption.alignnone img[width="499"] + .wp-caption-text,
-  .wp-caption.alignnone img[width="500"] + .wp-caption-text {
-    width: calc(99% - 501px);
-    padding-left: 1em;
-    padding-top: 0;
-    float: left;
-    overflow: hidden;
-    border-bottom-style: none;
-  }
 }
 .wp-caption.alignleft {
   margin: 0 1em 1em 0;
@@ -1068,6 +1023,21 @@ img .alignright,
   right: 0;
   bottom: 0;
 }
+/*  
+  .featured {
+    margin: 0 0 .25em 1em;
+    padding-top: .25em;
+    &.toc-active {
+	    max-width: 25%;
+	    margin: .25em 1em 1em 0;
+	    padding-top: 0;
+	    
+	    & + #toc_container {
+		    max-width: 33%;
+	    }
+    }
+  }
+*/
 .featured {
   margin: 0 0 0.25em 1em;
   padding-top: 0.25em;
@@ -1963,6 +1933,7 @@ Accessibility Extra's
   z-index: 100000;
   line-height: normal;
   text-decoration: none;
+  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 }
 .wpacc-genesis-skip-link li {
@@ -2641,8 +2612,7 @@ nav.nav-primary .search-form {
     width: 500px;
     z-index: 9000;
     border-left: 1px solid #becdc3;
-    -webkit-transform: translateX(-1px);
-            transform: translateX(-1px);
+    transform: translateX(-1px);
   }
   nav.nav-primary .sub-menu li:last-child > a span {
     border-bottom: 1px solid #becdc3;
@@ -2761,6 +2731,19 @@ nav.nav-primary .search-form {
   color: #000;
   margin-top: 0.3em;
   margin-bottom: 0.1em;
+}
+.widget_em_widget ul ul {
+  margin-top: 0;
+  margin-left: 0;
+  padding-left: 0;
+}
+.widget_em_widget a {
+  font-weight: bold;
+  font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
+}
+.widget_em_widget li.all-events-link {
+  margin-top: 0.5em;
+  padding-left: 1em;
 }
 aside.sidebar .widget {
   margin-top: 1em;
@@ -2886,8 +2869,7 @@ aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:focus img {
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
   filter: grayscale(100%);
-  -webkit-filter: gray;
-          filter: gray;
+  filter: gray;
 }
 aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:hover .text,
 aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:active .text,
@@ -3596,6 +3578,7 @@ noscript {
   width: 100%;
   text-align: center;
 }
+.all-events-link,
 .read-more,
 .more {
   width: 100%;
@@ -3605,19 +3588,24 @@ noscript {
   padding-left: 1em;
   position: relative;
 }
+.all-events-link a,
 .read-more a,
 .more a {
   text-decoration: none;
   color: #01689b;
 }
+.all-events-link a:hover,
 .read-more a:hover,
 .more a:hover,
+.all-events-link a:focus,
 .read-more a:focus,
 .more a:focus,
+.all-events-link a:active,
 .read-more a:active,
 .more a:active {
   text-decoration: underline;
 }
+.all-events-link:before,
 .read-more:before,
 .more:before {
   speak: none;
@@ -3675,8 +3663,7 @@ noscript {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translateY(-50%) translateX(-50%);
-            transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
     width: 100%;
     height: auto;
   }
@@ -3743,8 +3730,7 @@ noscript {
   }
   .flexbox .page-template-front-page .block article.has-post-thumbnail .article-visual img {
     position: relative;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
     top: auto;
     left: auto;
     height: 300px;
@@ -3779,13 +3765,6 @@ noscript {
     display: block;
     width: 50%;
     float: left;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .flexbox .home .block article.post h3,
-  .flexbox .blog .block article.post h3,
-  .flexbox .archive .block article.post h3 {
-    min-height: 3.5rem;
   }
 }
 .block-audio-video .mejs-container .mejs-controls,
@@ -4297,8 +4276,7 @@ footer {
     width: 75%;
     float: left;
     display: block;
-    -webkit-column-count: 3;
-            column-count: 3;
+    column-count: 3;
   }
 }
 .site-inner {
@@ -4529,8 +4507,7 @@ div.dossier_overzicht_popular ul.links a:before {
     width: 100%;
   }
   #mixitupfilterlist.unfiltered ul.children {
-    -webkit-column-count: 4;
-            column-count: 4;
+    column-count: 4;
   }
   #mixitupfilterlist.unfiltered ul.children li {
     margin-bottom: 0;
@@ -4553,11 +4530,6 @@ div.dossier_overzicht_popular ul.links a:before {
 */
 }
 @media only screen and (min-width: 1200px) {
-  .flexbox .home .block article.post h3,
-  .flexbox .blog .block article.post h3,
-  .flexbox .archive .block article.post h3 {
-    min-height: 3.5rem;
-  }
   .flexbox .topicSearchWrapper {
     width: 50%;
     float: left;
@@ -4587,8 +4559,7 @@ div.dossier_overzicht_popular ul.links a:before {
     max-width: 33%;
   }
   .flexbox .page-template-page_showalldossiers div.dossier_overzicht_filter_as_list ul.links {
-    -webkit-column-count: 4;
-            column-count: 4;
+    column-count: 4;
   }
   .flexbox .page-template-page_showalldossiers div.dossier_overzicht_filter_as_list li {
     width: 100%;
@@ -5701,4 +5672,3 @@ a.external:after {
     float: right;
   }
 }
-/*# sourceMappingURL=style.css.map */

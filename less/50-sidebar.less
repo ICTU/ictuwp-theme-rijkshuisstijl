@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.11
-// * @desc.   Aanpassingen aan div. widgets + bugfix voor widet-banner
+// * @version 2.0.14
+// * @desc.   Styling eventwidget aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -19,7 +19,6 @@
 
 
 	.widget {
-
   	
 		ul, li {
 			padding-left: 0;
@@ -47,7 +46,26 @@
       margin-top: .3em;  		
       margin-bottom: .1em;  		
 		}
+		
 	}
+
+
+  // event manager widget
+  .widget_em_widget {
+  	ul ul {
+  		margin-top: 0;
+  		margin-left: 0;
+  		padding-left: 0;
+  	}
+  	a {
+      font-weight: bold;
+      font-family: @fontstrong;
+  	}
+  	li.all-events-link {
+    	margin-top: .5em;
+    	padding-left: 1em;
+  	}
+  }
 
 
 	aside.sidebar {
