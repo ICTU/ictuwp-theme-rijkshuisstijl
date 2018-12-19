@@ -4202,7 +4202,6 @@ function rhswp_remove_external_styles() {
 	wp_deregister_style( 'contact-form-7' );
 	wp_deregister_style( 'toc-screen' );
 
-	wp_deregister_style( 'dashicons' );
 	wp_deregister_style( 'cptch_stylesheet' );
 	wp_deregister_style( 'cptch_desktop_style' );
 
