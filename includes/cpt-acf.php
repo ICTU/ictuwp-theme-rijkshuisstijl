@@ -1291,6 +1291,7 @@ endif;
 //========================================================================================================
 
 add_action( 'init', 'cptui_register_my_cpts' );
+
 function cptui_register_my_cpts() {
 
 
@@ -1333,7 +1334,10 @@ function cptui_register_my_cpts() {
 	register_post_type( RHSWP_CPT_SLIDER, $args );
 
 // End of cptui_register_my_cpts()
+
 }
+
+//========================================================================================================
 
 if( function_exists('acf_add_local_field_group') ):
 
