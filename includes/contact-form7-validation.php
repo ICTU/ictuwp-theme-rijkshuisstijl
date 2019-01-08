@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.11.7
-// * @desc.   Extra opties voor contactformulier voor reacties.
+// * @version 2.1.1
+// * @desc.   Validatie voor e-mailafzendadressen strennger gemaakt.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -101,14 +101,42 @@ function rhswp_cf7_validation_check_email_veld($result, $tag) {
   $type = $tag['type'];
   $name = $tag['name'];
   
-  $the_value 		= $_POST[$name];
-  $foutboodschap	= ( get_field('leeg_mailadres', 'option') ) ? get_field('leeg_mailadres', 'option') : _x('We hebben uw mailadres nodig om te antwoorden.', 'Foutboodschap contactformulier', 'wp-rijkshuisstijl');
+
+  $verbodendomeinen = [ 'digitaleoverheid.nl', $_SERVER["HTTP_HOST"] ];
+
+  $hosts  = explode( ':', $_SERVER["HTTP_HOST"] );
+
+  if ( $hosts[0] ) {
+    $verbodendomeinen[] = $hosts[0];
+  }
   
+  $the_value        = sanitize_text_field( $_POST[$name] );
+  $foutboodschap    = ( get_field('leeg_mailadres', 'option') ) ? get_field('leeg_mailadres', 'option') : _x('We hebben uw mailadres nodig om te antwoorden.', 'Foutboodschap contactformulier', 'wp-rijkshuisstijl');
+
   if ($the_value == "") {
     $result->invalidate($tag, $foutboodschap );
   }
+  else {
+    
+    $elements = explode( '@', $the_value );
+
+    if ( $elements[1] ) {
+      // het gedeelte na de @ is gevuld
+
+      if ( in_array( $elements[1], $verbodendomeinen ) ) {
+        // mag niet!
+
+        $foutboodschap = sprintf( _x( 'U kunt niet namens \'%s\' reageren.', 'Foutboodschap contactformulier', 'wp-rijkshuisstijl' ), $elements[1] );
+
+        $result->invalidate($tag, $foutboodschap );
+        
+      }
+    }
+    
+  }
   
   return $result;
+  
 }
 
 //========================================================================================================

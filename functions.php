@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.14
-// * @desc.   Styling eventwidget aangepast.
+// * @version 2.1.1
+// * @desc.   Validatie voor e-mailafzendadressen strennger gemaakt.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.0.14" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Styling eventwidget aangepast." );
+define( 'CHILD_THEME_VERSION',              "2.1.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Validatie voor e-mailafzendadressen strennger gemaakt." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 

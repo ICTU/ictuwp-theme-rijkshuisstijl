@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.0.14 - Styling eventwidget aangepast.
+2.1.1 - Validatie voor e-mailafzendadressen strennger gemaakt.
 
 ## Version history
+* 2.1.1 - Validatie voor e-mailafzendadressen strennger gemaakt.
 * 2.0.14 - Styling eventwidget aangepast.
 * 2.0.13 - Minder 3dr-party JavaScript inladen.
 * 2.0.12 - External link icon aangepast.
