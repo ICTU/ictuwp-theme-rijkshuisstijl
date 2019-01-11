@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.1
-// * @desc.   Definities voor CPT verplaatst naar plugin.
+// * @version 2.2.1
+// * @desc.   Vertaling bijgewerkt met oog op Engelstalige site.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -42,7 +42,7 @@ genesis();
 function rhswp_show_all_dossiers() {
 
   if ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
-    echo __( 'Taxonomie voor dossier bestaat niet. Zet de plugin hiervoor aan ("ICTU / WP Register post types and taxonomies").', 'wp-rijkshuisstijl' );
+    echo __( "'Dossiers' taxonomy does not exist. Please activate the plugin 'ICTU / WP Register post types and taxonomies'", 'wp-rijkshuisstijl' );
     return;
   }
 

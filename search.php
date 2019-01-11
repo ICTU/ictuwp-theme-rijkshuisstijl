@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.1.24
-// * @desc.   Bug in searchresult list.
+// * @version 2.2.1
+// * @desc.   Vertaling bijgewerkt met oog op Engelstalige site.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -44,9 +44,9 @@ genesis();
 
 function rhswp_add_search_description() {
 
-  $search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', __( 'Zoek op deze website', 'genesis' ) . ' &#x02026;' );
+  $search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', _x( 'Search this site', 'searchform', 'wp-rijkshuisstijl' ) . ' &#x02026;' );
     
-  echo '<h1>' . __( "Zoekresultaat voor ", 'wp-rijkshuisstijl' ) . ' "<span class="wordbreak">' . $search_text . '</span>"</h1>';
+  echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "<span class="wordbreak">' . $search_text . '</span>"</h1>';
   
   get_search_form();
   
@@ -55,9 +55,9 @@ function rhswp_add_search_description() {
 
 function rhswp_add_search_description_without_searchwp() {
 
-  $search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', __( 'Zoek op deze website', 'genesis' ) . ' &#x02026;' );
+  $search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', _x( 'Search this site', 'searchform', 'wp-rijkshuisstijl' ) . ' &#x02026;' );
       
-  echo '<h1>' . __( "Zoekresultaat voor ", 'wp-rijkshuisstijl' ) . ' "' . $search_text . '"</h1>';
+  echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "' . $search_text . '"</h1>';
 
   dodebug( ' searchWP plugin wordt niet gebruikt ' );
   
@@ -200,11 +200,9 @@ function rhswp_archive_custom_search_with_searchWP() {
 
     else:
 
-      echo '<h2>' . _x( 'Helaas', 'foutboodschap als er geen content gevonden is', 'wp-rijkshuisstijl' ) . '</h2>';
+      echo '<h2>' . _x( 'Sorry', 'Title, no results text', 'wp-rijkshuisstijl' ) . '</h2>';
       echo '<p>';
-
-      echo sprintf( _x( 'We zochten naar %s, maar konden niets vinden.', 'foutboodschap als er geen content gevonden is', 'wp-rijkshuisstijl' ), '"' . $query . '"' );
-
+      echo sprintf( _x( 'No results for %s.', 'No results text', 'wp-rijkshuisstijl' ), $query );
       echo '</p>';
       
     endif; 

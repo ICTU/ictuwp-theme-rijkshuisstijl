@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.1
-// * @desc.   Definities voor CPT verplaatst naar plugin.
+// * @version 2.2.1
+// * @desc.   Vertaling bijgewerkt met oog op Engelstalige site.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -68,7 +68,7 @@ function rhswp_write_contentblok_waarschuwing() {
       $queried_object = get_queried_object();
       $edit_link = esc_url( get_edit_term_link( $queried_object->term_id ) );    
   
-      echo '</p><div style="border: 1px solid black; padding: .1em 1em; margin-bottom: 2em;"><h2>' . __( 'Noot voor de redactie', 'wp-rijkshuisstijl' ) . 
+      echo '</p><div style="border: 1px solid black; padding: .1em 1em; margin-bottom: 2em;"><h2>' . __( 'Note to the editor', 'wp-rijkshuisstijl' ) . 
       '</h2><p>' . __( 'Dit is een ongefilterde weergaven van alle content, aflopend gesoorteerd op de laatste toevoegingsdatum. Het verdient aanbeveling om hiervoor contentblokken te gebruiken. Deze worden getoond in plaats van deze lijst.', 'wp-rijkshuisstijl' ) . '.</a>';
       echo '<br><a href="' . $edit_link . '">' . __( 'Voeg contentblokken toe om deze pagina te structureren', 'wp-rijkshuisstijl' ) . '.</a>';
       echo '<br><em>' . __( 'Deze tekst wordt alleen getoond aan redacteuren die taxonomieën mogen wijzigen.', 'wp-rijkshuisstijl' ) . '</em></div>';

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.14
-// * @desc.   Styling eventwidget aangepast.
+// * @version 2.2.1
+// * @desc.   Vertaling bijgewerkt met oog op Engelstalige site.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -1163,7 +1163,7 @@ if( function_exists('acf_add_local_field_group') ):
 					'class' => '',
 					'id' => '',
 				),
-				'default_value' => 'We willen graag uw naam weten.',
+				'default_value' => 'State your name, please.',
 				'placeholder' => '',
 				'prepend' => '',
 				'append' => '',
@@ -1184,7 +1184,7 @@ if( function_exists('acf_add_local_field_group') ):
 					'class' => '',
 					'id' => '',
 				),
-				'default_value' => 'U hebt geen vraag of suggestie ingevuld.',
+				'default_value' => 'Please enter a question or a suggestion.',
 				'placeholder' => '',
 				'prepend' => '',
 				'append' => '',
@@ -1205,7 +1205,7 @@ if( function_exists('acf_add_local_field_group') ):
 					'class' => '',
 					'id' => '',
 				),
-				'default_value' => 'We hebben uw mailadres nodig om te antwoorden.',
+				'default_value' => 'Please state your email address, so we can respond to your message.',
 				'placeholder' => '',
 				'prepend' => '',
 				'append' => '',

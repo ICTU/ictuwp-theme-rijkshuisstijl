@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.1.1
-// * @desc.   Validatie voor e-mailafzendadressen strennger gemaakt.
+// * @version 2.2.1
+// * @desc.   Vertaling bijgewerkt met oog op Engelstalige site.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -43,7 +43,7 @@ function rhswp_cf7_validation_check_naam_veld($result, $tag) {
 
 	if ('your-name' == $name) {
 
-    	$foutboodschap	= ( get_field('lege_naam', 'option') ) ? get_field('lege_naam', 'option') : _x('We willen graag uw naam weten.', 'Foutboodschap contactformulier', 'wp-rijkshuisstijl');
+    	$foutboodschap	= ( get_field('lege_naam', 'option') ) ? get_field('lege_naam', 'option') : _x('State your name, please.', 'Contactform errors', 'wp-rijkshuisstijl');
 
 	    $the_value = rhswp_filter_input_string($_POST[$name]);
 	    $myresult = trim($the_value);
@@ -51,18 +51,6 @@ function rhswp_cf7_validation_check_naam_veld($result, $tag) {
 	        $result->invalidate($tag, $foutboodschap );
 	    }
 	}
-//	elseif ('input-organisatie' == $name) {
-//  	
-//    	$foutboodschap	= ( get_field('lege_organisatie', 'option') ) ? get_field('lege_organisatie', 'option') : _x( 'Voer alstublieft een organisatienaam in.', 'Foutboodschap contactformulier', 'wp-rijkshuisstijl');
-
-//	    $the_value = rhswp_filter_input_string($_POST[$name]);
-//	    $myresult = trim($the_value);
-//	    if ($myresult == "") {
-//	        $result->invalidate($tag, $foutboodschap );
-//	    }
-//	}
-
-	
 
 	return $result;
 }
@@ -77,7 +65,7 @@ function rhswp_cf7_validation_check_message_veld($result, $tag) {
   $the_value  = rhswp_filter_input_string($_POST[$name]);
   $myresult   = trim($the_value);
   
-  $foutboodschap	= ( get_field('lege_suggestie', 'option') ) ? get_field('lege_suggestie', 'option') : _x('U hebt geen vraag of suggestie ingevuld.', 'Foutboodschap contactformulier', 'wp-rijkshuisstijl');
+  $foutboodschap	= ( get_field('lege_suggestie', 'option') ) ? get_field('lege_suggestie', 'option') : _x( 'Please enter a question or a suggestion.'  , 'Contactform errors', 'wp-rijkshuisstijl');
   
   if ($myresult == "") {
     $result->invalidate($tag, $foutboodschap );
@@ -111,7 +99,7 @@ function rhswp_cf7_validation_check_email_veld($result, $tag) {
   }
   
   $the_value        = sanitize_text_field( $_POST[$name] );
-  $foutboodschap    = ( get_field('leeg_mailadres', 'option') ) ? get_field('leeg_mailadres', 'option') : _x('We hebben uw mailadres nodig om te antwoorden.', 'Foutboodschap contactformulier', 'wp-rijkshuisstijl');
+  $foutboodschap    = ( get_field('leeg_mailadres', 'option') ) ? get_field('leeg_mailadres', 'option') : _x('Please state your email address, so we can respond to your message.', 'Contactform errors', 'wp-rijkshuisstijl');
 
   if ($the_value == "") {
     $result->invalidate($tag, $foutboodschap );
@@ -126,7 +114,7 @@ function rhswp_cf7_validation_check_email_veld($result, $tag) {
       if ( in_array( $elements[1], $verbodendomeinen ) ) {
         // mag niet!
 
-        $foutboodschap = sprintf( _x( 'U kunt niet namens \'%s\' reageren.', 'Foutboodschap contactformulier', 'wp-rijkshuisstijl' ), $elements[1] );
+        $foutboodschap = sprintf( _x( "You can't use an email address with '%s'.", 'Contactform errors', 'wp-rijkshuisstijl' ), $elements[1] );
 
         $result->invalidate($tag, $foutboodschap );
         

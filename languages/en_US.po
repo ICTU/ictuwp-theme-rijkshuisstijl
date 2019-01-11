@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid) (v1.0.0)\n"
-"POT-Creation-Date: 2019-01-11 15:48+0100\n"
-"PO-Revision-Date: 2019-01-11 16:10+0100\n"
+"POT-Creation-Date: 2019-01-11 12:58+0100\n"
+"PO-Revision-Date: 2019-01-11 15:01+0100\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: \n"
-"Language: nl_NL\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,58 +21,49 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: front-page.php:76 page_showalldossiers-nieuwestyling.php:45
+#: page_showalldossiers.php:52
 msgid ""
 "'Dossiers' taxonomy does not exist. Please activate the plugin 'ICTU / WP "
 "Register post types and taxonomies'"
 msgstr ""
-"Taxonomie voor dossier bestaat niet. Activeerd de plugin \"ICTU / WP "
-"Register post types and taxonomies\"."
 
 #: functions.php:187
 msgid "IMG nieuwsletter size"
-msgstr "Nieuwsbrief-grootte"
+msgstr ""
 
 #: functions.php:232 functions.php:1209
 msgid "Topics"
-msgstr "Onderwerpen"
+msgstr ""
 
 #: functions.php:366
 msgctxt "Tekst op de actueelpagina"
 msgid "All post related to The Digital Governement."
-msgstr "All post related to The Digital Governement."
+msgstr ""
 
 #: functions.php:410
 msgctxt "verbindt de readmore met de titel"
 msgid "about"
-msgstr "over"
+msgstr ""
 
 #: functions.php:412
 msgctxt "Standaard linktekst voor lees-meer"
 msgid "Read more"
-msgstr "Lees meer"
+msgstr ""
 
-#: functions.php:746 functions.php:3529 functions.php:5600
-#: includes/dossier-helper-functions.php:456
-#: includes/dossier-helper-functions.php:470
-msgctxt "post types"
-msgid "Posts"
-msgstr "Nieuwsberichten"
-
-#: functions.php:750 functions.php:3559 functions.php:5611
-#: includes/dossier-helper-functions.php:538 includes/widget-events.php:317
-msgctxt "post types"
-msgid "Events"
-msgstr "Evenementen"
-
-#: functions.php:754 functions.php:1368 functions.php:3553 functions.php:5621
-msgctxt "post types"
-msgid "Documents"
-msgstr "Documenten"
-
-#: functions.php:758
+#: functions.php:746 functions.php:758
 msgctxt "Linktekst in dossiermenu"
 msgid "Posts"
-msgstr "Berichten"
+msgstr ""
+
+#: functions.php:750
+msgctxt "Linktekst in dossiermenu"
+msgid "Events"
+msgstr ""
+
+#: functions.php:754
+msgctxt "Linktekst in dossiermenu"
+msgid "Documents"
+msgstr ""
 
 #: functions.php:815
 msgid "<span class=\"separator\">&#8250;</span>"
@@ -80,109 +71,111 @@ msgstr ""
 
 #: functions.php:824
 msgid "Home"
-msgstr "Home"
+msgstr ""
 
 #: functions.php:827
 msgctxt "breadcrumb"
 msgid "Breadcrumb"
-msgstr "Kruimelpad"
+msgstr ""
 
 #: functions.php:833
 msgctxt "breadcrumb"
 msgid "Authors"
-msgstr "Auteurs"
+msgstr ""
 
 #: functions.php:837
 msgctxt "breadcrumb"
 msgid "Tags"
-msgstr "Tags"
+msgstr ""
 
-#: functions.php:838 search.php:49 search.php:60
+#: functions.php:838
 msgctxt "breadcrumb"
 msgid "Search result for "
-msgstr "Zoekresultaat voor "
+msgstr ""
 
 #: functions.php:846
 msgctxt "breadcrumb"
 msgid "Content type"
-msgstr "Contentsoort"
+msgstr ""
 
 #: functions.php:868
 msgctxt "breadcrumb"
 msgid "Topics"
-msgstr "Onderwerpen"
+msgstr ""
 
 #: functions.php:876
 msgctxt "breadcrumb"
 msgid "Page not found (error 404)"
-msgstr "Pagina niet gevonden (fout 404)"
+msgstr ""
 
 #: functions.php:914 includes/metadata-boxes.php:69
 #: includes/metadata-boxes.php:82
 msgid "Tag"
-msgstr "Tag"
+msgstr ""
 
 #: functions.php:928
 #, php-format
 msgctxt "beschrijving op documentpagina"
-msgid "All documents on %s."
-msgstr "Alle bijlages en documenten op %s."
+msgid "Alle bijlages en documenten op %s."
+msgstr ""
 
 #: functions.php:1147
 msgid "Page not found (error 404)"
-msgstr "Pagina niet gevonden (fout 404)"
+msgstr ""
 
 #: functions.php:1153
 #, php-format
 msgid ""
-"Sorry, the content you asked for is not available. Some options: <a href=\"%s"
-"\">go to the home page</a>, or use this search form."
-msgstr ""
 "We konden niet vinden waar je om vroeg. Misschien helpt het om naar <a href="
 "\"%s\">de homepage te gaan</a>. Je kunt ook zoeken via het zoekformulier "
 "hieronder."
+msgstr ""
 
 #: functions.php:1212
 msgid "Categories"
-msgstr "Categorieën"
+msgstr ""
 
 #: functions.php:1225
 msgctxt "sitemap"
 msgid "Pages"
-msgstr "Pagina's"
+msgstr ""
 
 #: functions.php:1355
 msgctxt "sitemap"
 msgid "Topics"
-msgstr "Onderwerpen en thema's"
+msgstr ""
 
 #: functions.php:1358
 msgctxt "sitemap"
 msgid "Categories"
-msgstr "Categorieën"
+msgstr ""
+
+#: functions.php:1368
+msgid "Documents"
+msgstr ""
 
 #: functions.php:1368
 msgid "(ordered by post date)"
-msgstr "(gesorteerd op datum)"
+msgstr ""
 
 #: functions.php:1384
 msgid "Agenda"
-msgstr "Agenda"
+msgstr ""
 
 #: functions.php:1405
 msgid "Videos"
-msgstr "Video's"
+msgstr ""
 
 #: functions.php:1431
 msgctxt "sitemap: all recent posts"
 msgid "All recent posts"
-msgstr "Recente berichten"
+msgstr ""
 
 #: functions.php:1435
 #, php-format
 msgctxt "beschrijving op documentpagina"
 msgid "%s recent posts"
-msgstr "De %s recente berichten"
+msgstr "%s most recent posts"
 
 #: functions.php:1699
 msgid "Homepage widget area"
@@ -202,8 +195,8 @@ msgstr ""
 
 #: functions.php:1890
 msgctxt "label zoekknop"
-msgid "Search"
-msgstr "Zoeken"
+msgid "Zoeken"
+msgstr ""
 
 #: functions.php:1898
 msgctxt "Title of footer widgets"
@@ -247,19 +240,19 @@ msgstr ""
 #: functions.php:1959
 msgctxt "share title"
 msgid "Share this page"
-msgstr "Deel deze pagina"
+msgstr "Share this page"
 
 #: functions.php:1981
 msgid "Share on Twitter"
-msgstr "Deel op Twitter"
+msgstr ""
 
 #: functions.php:1983
 msgid "Share on Facebook"
-msgstr "Deel op Facebook"
+msgstr ""
 
 #: functions.php:1985
 msgid "Share on LinkedIn"
-msgstr "Deel op LinkedIn"
+msgstr ""
 
 #: functions.php:2178
 #, php-format
@@ -269,23 +262,21 @@ msgstr ""
 
 #: functions.php:2541 includes/widget-events.php:173
 msgid "all events"
-msgstr "alle agenda-items"
+msgstr ""
 
 #: functions.php:2666 functions.php:2831 functions.php:2982 functions.php:3048
 msgid "No titel found for post"
-msgstr "Geen titel ingevoerd"
+msgstr ""
 
 #: functions.php:2670 functions.php:2985 taxonomy.php:71
 msgid "Note to the editor"
-msgstr "Noot voor de redactie"
+msgstr ""
 
 #: functions.php:2671
 msgid ""
 "Je hebt een content-block toegevoegd die berichten zou moeten tonen, maar de "
 "functie van deze pagina <em>is</em> het tonen van berichten. Dubbelop, dus."
 msgstr ""
-"Je hebt een content-block toegevoegd die artikelen zou moeten tonen, maar de "
-"functie van deze pagina <em>is</em> het tonen van artikelen. Dubbelop, dus."
 
 #: functions.php:2673 functions.php:2990
 msgid ""
@@ -297,53 +288,66 @@ msgid ""
 "Er is een content-block met berichten toegevoegd aan deze pagina, maar "
 "hiervoor zijn geen berichten gevonden."
 msgstr ""
-"Er is een content-block met artikelen toegevoegd aan deze pagina, maar "
-"hiervoor zijn geen berichten gevonden."
 
 #: functions.php:3527
 msgctxt "post types"
 msgid "Post"
-msgstr "Nieuwsbericht"
+msgstr ""
+
+#: functions.php:3529
+msgctxt "post types"
+msgid "Posts"
+msgstr ""
 
 #: functions.php:3533
 msgctxt "post types"
 msgid "Page"
-msgstr "Pagina"
+msgstr ""
 
 #: functions.php:3535
 msgctxt "post types"
 msgid "Pages"
-msgstr "Pagina's"
+msgstr ""
 
 #: functions.php:3539
 msgctxt "post types"
 msgid "Topic"
-msgstr "Onderwerp"
+msgstr ""
 
 #: functions.php:3541
 msgctxt "post types"
 msgid "Topics"
-msgstr "Onderwerpen"
+msgstr ""
 
 #: functions.php:3545
 msgctxt "post types"
 msgid "Attachment"
-msgstr "Attachment"
+msgstr ""
 
 #: functions.php:3547
 msgctxt "post types"
 msgid "Attachments"
-msgstr "Attachments"
+msgstr ""
 
-#: functions.php:3551 functions.php:3599
-msgctxt "post types"
+#: functions.php:3551
+msgctxt "wp-rijkshuisstijl"
 msgid "Document"
-msgstr "Document"
+msgstr ""
+
+#: functions.php:3553
+msgctxt "wp-rijkshuisstijl"
+msgid "Documents"
+msgstr ""
 
 #: functions.php:3557
 msgctxt "post types"
 msgid "Event"
-msgstr "Evenement"
+msgstr ""
+
+#: functions.php:3559
+msgctxt "post types"
+msgid "Evenements"
+msgstr ""
 
 #: functions.php:3563
 msgid "No sliders please"
@@ -352,42 +356,53 @@ msgstr ""
 #: functions.php:3583
 msgctxt "post types"
 msgid "Image"
-msgstr "Plaatje"
+msgstr ""
 
 #: functions.php:3588
 msgctxt "post types"
 msgid "Text file"
-msgstr "Tekstbestand"
+msgstr ""
 
 #: functions.php:3593
 msgctxt "post types"
 msgid "Movie file"
-msgstr "Filmbestand"
+msgstr ""
 
 #: functions.php:3596
 msgctxt "post types"
 msgid "PDF file"
-msgstr "PDF-bestand"
+msgstr ""
+
+#: functions.php:3599
+msgctxt "post types"
+msgid "Document"
+msgstr ""
 
 #: functions.php:3632
+#, fuzzy
+#| msgctxt "beschrijving op documentpagina"
+#| msgid "%s recent posts"
 msgctxt "paging"
 msgid "Newer posts"
-msgstr "Recentere berichten"
+msgstr "%s most recent posts"
 
 #: functions.php:3635
 msgctxt "paging"
 msgid "Next page"
-msgstr "Volgende pagina"
+msgstr ""
 
 #: functions.php:3644
 msgctxt "paging"
 msgid "Older posts"
-msgstr "Oudere berichten"
+msgstr ""
 
 #: functions.php:3647
+#, fuzzy
+#| msgctxt "share title"
+#| msgid "Share this page"
 msgctxt "paging"
 msgid "Previous page"
-msgstr "Vorige pagina"
+msgstr "Share this page"
 
 #: functions.php:4099 functions.php:4126
 msgid "This is the general footer area"
@@ -396,11 +411,11 @@ msgstr ""
 #: functions.php:4260 functions.php:4263
 msgctxt "reactieformulier"
 msgid "Questions, ideas, suggestions?"
-msgstr "Vraag, idee, reactie of suggestie?"
+msgstr ""
 
 #: functions.php:4266
 msgid "The webmaster has not selected a form for questions or suggestions."
-msgstr "Er is geen contactformulier ingesteld."
+msgstr ""
 
 #: functions.php:4270
 msgid ""
@@ -618,46 +633,58 @@ msgstr ""
 #: functions.php:5267
 msgctxt "Dossier header"
 msgid "All posts"
-msgstr "Alle berichten"
+msgstr ""
 
 #: functions.php:5296 functions.php:5460
 #, php-format
 msgctxt "Dossier header"
 msgid "posts for %s topic"
-msgstr "documenten in het dossier %s"
+msgstr ""
 
 #: functions.php:5417 functions.php:5528 search.php:205
 #, php-format
 msgctxt "No results text"
 msgid "No results for %s."
-msgstr "We zochten naar %s, maar konden niets vinden."
+msgstr ""
 
 #: functions.php:5584
 #, php-format
 msgid "- page %s"
-msgstr "- pagina %s"
+msgstr ""
 
 #: functions.php:5593
 #, php-format
-msgctxt "Posts for topic with category"
-msgid "%s for '%s' %s"
-msgstr "%s onder %s %s"
+msgctxt "Artikelen voor onderwerp met categorie"
+msgid "%s onder '%s' %s"
+msgstr ""
 
 #: functions.php:5597
 #, php-format
-msgctxt "Posts for topic without category"
-msgid "Posts for %s %s"
-msgstr "Nieuwsberichten onder %s %s"
+msgctxt "Artikelen voor onderwerp zonder categorie"
+msgid "Artikelen voor %s %s"
+msgstr ""
+
+#: functions.php:5600
+msgid "Artikelen"
+msgstr ""
 
 #: functions.php:5608
 #, php-format
-msgid "Events for %s %s"
-msgstr "Events onder %s %s"
+msgid "Evenementen voor %s %s"
+msgstr ""
+
+#: functions.php:5611
+msgid "Evenementen"
+msgstr ""
 
 #: functions.php:5618
 #, php-format
-msgid "Documents for %s %s"
-msgstr "Documenten onder %s %s"
+msgid "Documenten voor %s %s"
+msgstr ""
+
+#: functions.php:5621
+msgid "Documenten"
+msgstr ""
 
 #: functions.php:5655
 msgid "ACF plugin is niet actief ("
@@ -693,25 +720,25 @@ msgid "Kon security-token niet valideren. Sorry."
 msgstr ""
 
 #: includes/contact-form7-validation.php:46
-msgctxt "Contactform errors"
+msgctxt "Foutboodschap contactformulier"
 msgid "State your name, please."
-msgstr "We willen graag uw naam weten."
+msgstr ""
 
-#: includes/contact-form7-validation.php:68
-msgctxt "Contactform errors"
-msgid "Please enter a question or a suggestion."
-msgstr "U hebt geen vraag of suggestie ingevuld."
+#: includes/contact-form7-validation.php:80
+msgctxt "Foutboodschap contactformulier"
+msgid "U hebt geen vraag of suggestie ingevuld."
+msgstr ""
 
-#: includes/contact-form7-validation.php:102
-msgctxt "Contactform errors"
+#: includes/contact-form7-validation.php:114
+msgctxt "Foutboodschap contactformulier"
 msgid "Please state your email address, so we can respond to your message."
-msgstr "We hebben uw mailadres nodig om te antwoorden."
+msgstr ""
 
-#: includes/contact-form7-validation.php:117
+#: includes/contact-form7-validation.php:129
 #, php-format
-msgctxt "Contactform errors"
+msgctxt "Foutboodschap contactformulier"
 msgid "You can't use an email address with '%s'."
-msgstr "U kunt niet namens '%s' reageren."
+msgstr ""
 
 #: includes/cpt-acf.php:31
 msgid "Bijbehorend document"
@@ -1022,49 +1049,65 @@ msgid "Overzicht"
 msgstr ""
 
 #: includes/dossier-helper-functions.php:388
-#: includes/dossier-helper-functions.php:428
 #, php-format
-msgid "%s post"
-msgid_plural "%s posts"
-msgstr[0] "Er is %s bericht"
-msgstr[1] "Er zijn %s berichten"
+msgid "Er is %s artikel"
+msgid_plural "Er zijn %s artikelen"
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/dossier-helper-functions.php:389
 #: includes/dossier-helper-functions.php:500
 #, php-format
-msgid "%s for topic %s."
-msgstr "%s voor het dossier %s  ."
+msgid "%s voor het dossier %s."
+msgstr ""
+
+#: includes/dossier-helper-functions.php:428
+#, php-format
+msgid "Er is %s bericht"
+msgid_plural "Er zijn %s berichten"
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/dossier-helper-functions.php:429
 #, php-format
-msgid "%s for topic %s and category %s."
-msgstr "%s voor het dossier %s  en categorie %s."
+msgid "%s voor het dossier %s en categorie %s."
+msgstr ""
+
+#: includes/dossier-helper-functions.php:456
+#: includes/dossier-helper-functions.php:470
+msgctxt "Linktekst in dossiermenu"
+msgid "Artikelen"
+msgstr ""
 
 #: includes/dossier-helper-functions.php:499
 #, php-format
-msgid "%s document"
-msgid_plural "%s documents"
-msgstr[0] "Er is %s document"
-msgstr[1] "Er is %s documenten"
+msgid "Er is %s document"
+msgid_plural "Er zijn %s documenten"
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/dossier-helper-functions.php:508
-msgid "Documents"
-msgstr "Documenten"
+msgctxt "Linktekst in dossiermenu"
+msgid "Documenten"
+msgstr ""
+
+#: includes/dossier-helper-functions.php:538
+msgctxt "Linktekst in dossiermenu"
+msgid "Evenementen"
+msgstr ""
 
 #: includes/dossier-helper-functions.php:550
 #, php-format
-msgid "This topic contains %s item."
-msgid_plural "This topic contains %s items."
-msgstr[0] "Dit dossier bevat %s item."
-msgstr[1] "Dit dossier bevat %s items."
+msgid "Dit dossier bevat %s items."
+msgstr ""
 
 #: includes/event-manager-functions.php:33
-msgid "About"
-msgstr "Over"
+msgid "Over"
+msgstr ""
 
 #: includes/event-manager-functions.php:37
-msgid "Posts by"
-msgstr "Blogberichten van"
+msgid "Blogberichten van"
+msgstr ""
 
 #: includes/event-manager-functions.php:112
 msgctxt "Event: CTA om mail te versturen aan organisator"
@@ -1256,6 +1299,10 @@ msgstr ""
 msgid "Tekst als er niets in de agenda staat"
 msgstr ""
 
+#: includes/widget-events.php:317
+msgid "Events"
+msgstr ""
+
 #: includes/widget-newswidget.php:35
 msgid "Mogelijkheid voor tonen van nieuwsberichten uit een bepaalde categorie"
 msgstr ""
@@ -1283,7 +1330,7 @@ msgstr ""
 #: includes/widget-page-link-widget.php:52
 msgctxt "Widget page-link: default linktekst"
 msgid "Meer lezen"
-msgstr "Meer lezen"
+msgstr ""
 
 #: includes/widget-page-link-widget.php:66
 msgid "Linkt naar pagina:"
@@ -1394,29 +1441,17 @@ msgctxt "Tussenkop op onderwerppagina"
 msgid "Alle onderwerpen"
 msgstr ""
 
-#: page_showalldossiers.php:52
-#, fuzzy
-#| msgid ""
-#| "'Dossiers' taxonomy does not exist. Please activate the plugin 'ICTU / WP "
-#| "Register post types and taxonomies'"
-msgid ""
-"Taxonomie voor dossier bestaat niet. Zet de plugin hiervoor aan (\"ICTU / WP "
-"Register post types and taxonomies\")."
-msgstr ""
-"Taxonomie voor dossier bestaat niet. Activeerd de plugin \"ICTU / WP "
-"Register post types and taxonomies\"."
-
 #: search.php:47 search.php:58
-#, fuzzy
-#| msgctxt "share title"
-#| msgid "Share this page"
-msgctxt "searchform"
-msgid "Search this site"
-msgstr "Deel deze pagina"
+msgid "Zoek op deze website"
+msgstr ""
+
+#: search.php:49 search.php:60
+msgid "Zoekresultaat voor "
+msgstr ""
 
 #: search.php:203
-msgctxt "Title, no results text"
-msgid "Sorry"
+msgctxt "foutboodschap als er geen content gevonden is"
+msgid "Helaas"
 msgstr ""
 
 #: searchform.php:18
@@ -1517,55 +1552,3 @@ msgstr ""
 #. Template Name of the plugin/theme
 msgid "20 - home-pagina"
 msgstr ""
-
-#~ msgctxt "Contactform errors"
-#~ msgid "U kunt niet namens '%s' reageren."
-#~ msgstr "U kunt niet namens '%s' reageren."
-
-#~ msgctxt "Contactform errors"
-#~ msgid "U hebt geen vraag of suggestie ingevuld."
-#~ msgstr "U hebt geen vraag of suggestie ingevuld."
-
-#~ msgctxt "Foutboodschap contactformulier"
-#~ msgid "We willen graag uw naam weten."
-#~ msgstr "We willen graag uw naam weten."
-
-#~ msgctxt "Linktekst in dossiermenu"
-#~ msgid "Artikelen"
-#~ msgstr "Berichten"
-
-#~ msgctxt "Linktekst in dossiermenu"
-#~ msgid "Events"
-#~ msgstr "Evenementen"
-
-#~ msgctxt "Linktekst in dossiermenu"
-#~ msgid "Documents"
-#~ msgstr "Documenten"
-
-#~ msgctxt "wp-rijkshuisstijl"
-#~ msgid "Document"
-#~ msgstr "Document"
-
-#~ msgctxt "wp-rijkshuisstijl"
-#~ msgid "Documents"
-#~ msgstr "Documenten"
-
-#~ msgctxt "post types"
-#~ msgid "Evenements"
-#~ msgstr "Evenementen"
-
-#, fuzzy
-#~| msgid " laatste berichten"
-#~ msgctxt "paging"
-#~ msgid "Nieuwere berichten"
-#~ msgstr " laatste artikelen"
-
-#~ msgctxt "Tekst op de actueelpagina"
-#~ msgid "Alle berichten rondom de digitale overheid."
-#~ msgstr "Alle artikelen rondom de digitale overheid."
-
-#, fuzzy
-#~| msgctxt "page_dossier-document-overview"
-#~| msgid "Geen documenten gevonden"
-#~ msgid "Geen onderdelen gevonden"
-#~ msgstr "Geen ocudentjes gevonden in je dinges"

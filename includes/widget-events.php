@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.11.5
-// * @desc.   HTML validation; CSS active link color to AAA level. Removed WP emoji cruft.
+// * @version 2.2.1
+// * @desc.   Vertaling bijgewerkt met oog op Engelstalige site.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -314,7 +314,7 @@ if ( function_exists( 'em_get_scopes' ) ) {
 
 function viezelinks( $text = '' ) {
 	$text = ($text == '') ? get_option ( "dbem_events_page_title" ) : $text;
-	$text = ($text == '') ? __('Events','dbem') : $text; //In case options aren't there....
+	$text = ($text == '') ? _x("Events", 'post types', 'wp-rijkshuisstijl') : $text; //In case options aren't there....
 	return '<p class="more"><a href="'.EM_URI.'">' . $text . '</a></p>';
 }
 ?>

@@ -1,16 +1,16 @@
 <?php
   
 /**
- * Rijkshuisstijl (Digitale Overheid) - event-manager-functions.php
- * ----------------------------------------------------------------------------------
- * Extra functions tbv event manager
- * ----------------------------------------------------------------------------------
- * @author  Paul van Buuren
- * @license GPL-2.0+
- * @package wp-rijkshuisstijl
- * @version 0.6.23
- * @desc.   Modified Event Widget, updated pagination. Extra event functions and page.
- * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// * Rijkshuisstijl (Digitale Overheid) - event-manager-functions.php
+// * ----------------------------------------------------------------------------------
+// * Extra functions tbv event manager
+// * ----------------------------------------------------------------------------------
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.2.1
+// * @desc.   Vertaling bijgewerkt met oog op Engelstalige site.
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
 
@@ -30,11 +30,11 @@ function gc_wbvb_authorbox_compose_box( $userid, $gravatar = '', $sectiontype = 
   $publiek_mailadres      = '';
   $publiek_telefoonnummer = '';
   $header_tag             = 'h2';
-  $prefix                 = __( 'Over', 'gebruikercentraal');
+  $prefix                 = __( 'About', 'wp-rijkshuisstijl');
   
   if ( is_archive() ) {
     $header_tag             = 'h1';
-    $prefix                 = __( 'Blogberichten van', 'gebruikercentraal');
+    $prefix                 = __( 'Posts by', 'wp-rijkshuisstijl');
   }
 
   $sectiondiv = '<section class="author-box wrap" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">';
@@ -109,7 +109,7 @@ function gc_wbvb_authorbox_compose_box( $userid, $gravatar = '', $sectiontype = 
   }
 
   if ($publiek_mailadres) {
-    $publiek_mailadres = '<a href="mailto:' . $publiek_mailadres . '" itemprop="email">' . _x('Mail','Event: CTA om mail te versturen aan organisator','gebruikercentraal' ) . ' ' . $displayname . '</a> ';
+    $publiek_mailadres = '<a href="mailto:' . $publiek_mailadres . '" itemprop="email">' . _x('Mail','Event: CTA om mail te versturen aan organisator','wp-rijkshuisstijl' ) . ' ' . $displayname . '</a> ';
   }
 
   if ($publiek_mailadres) {
@@ -121,23 +121,23 @@ function gc_wbvb_authorbox_compose_box( $userid, $gravatar = '', $sectiontype = 
   }
 
   if ($personalurl) {
-    $dl .= '<li><a href="' . $personalurl . '" class="personallink" title="' . __('Persoonlijke website', 'gebruikercentraal' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('Persoonlijke website', 'gebruikercentraal' ) . '</span></a></li>';
+    $dl .= '<li><a href="' . $personalurl . '" class="personallink" title="' . __('Persoonlijke website', 'wp-rijkshuisstijl' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('Persoonlijke website', 'wp-rijkshuisstijl' ) . '</span></a></li>';
   }
 
   if ($googleplus) {
-    $dl .= '<li><a href="' . $googleplus . '" class="googleplus" title="' . __('Google+-profiel', 'gebruikercentraal' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('Google+', 'gebruikercentraal' ) . '</span></a></li>';
+    $dl .= '<li><a href="' . $googleplus . '" class="googleplus" title="' . __('Google+-profiel', 'wp-rijkshuisstijl' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('Google+', 'wp-rijkshuisstijl' ) . '</span></a></li>';
   }
 
   if ($linkedin) {
-    $dl .= '<li><a href="' . $linkedin . '" class="linkedin" title="' . __('LinkedIn-profiel', 'gebruikercentraal' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('LinkedIn-profiel', 'gebruikercentraal' ) . '</span></a></li>';
+    $dl .= '<li><a href="' . $linkedin . '" class="linkedin" title="' . __('LinkedIn-profiel', 'wp-rijkshuisstijl' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('LinkedIn-profiel', 'wp-rijkshuisstijl' ) . '</span></a></li>';
   }
 
   if ($facebook) {
-    $dl .= '<li><a href="' . $facebook . '" class="facebook" title="' . __('Facebook-account', 'gebruikercentraal' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('Facebook-account', 'gebruikercentraal' ) . '</span></a></li>';
+    $dl .= '<li><a href="' . $facebook . '" class="facebook" title="' . __('Facebook-account', 'wp-rijkshuisstijl' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('Facebook-account', 'wp-rijkshuisstijl' ) . '</span></a></li>';
   }
 
   if ($twitter) {
-    $dl .= '<li><a href="https://twitter.com/' . $twitter . '" class="twitter" title="' . __('Twitter-account', 'gebruikercentraal' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('Twitter-account', 'gebruikercentraal' ) . '</span></a></li>';
+    $dl .= '<li><a href="https://twitter.com/' . $twitter . '" class="twitter" title="' . __('Twitter-account', 'wp-rijkshuisstijl' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('Twitter-account', 'wp-rijkshuisstijl' ) . '</span></a></li>';
   }
 
   
@@ -156,7 +156,7 @@ function gc_wbvb_authorbox_compose_box( $userid, $gravatar = '', $sectiontype = 
       <p>' . $dl;
   if ( !is_author() ) {
     if ( $user_post_count > 0 ) {
-      $output .= '<a href="' . get_author_posts_url( $userid ) . '" class="author-archive more" title="' . __('Alle artikelen', 'gebruikercentraal' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('Alle artikelen', 'gebruikercentraal' ) . ' van ' . $gebruikersnaam . '</span></a>';
+      $output .= '<a href="' . get_author_posts_url( $userid ) . '" class="author-archive more" title="' . __('Alle artikelen', 'wp-rijkshuisstijl' ) . ' van ' . $gebruikersnaam . '"><span class="visuallyhidden">' . __('Alle artikelen', 'wp-rijkshuisstijl' ) . ' van ' . $gebruikersnaam . '</span></a>';
     }
   }
 
@@ -176,7 +176,7 @@ function gc_wbvb_event_get_programma() {
   
   if( have_rows( 'programmaonderdelen' ) ):
     
-    $return = '<div id="programma"><h2>' . _x('Programma', 'Kopje op evenementpagina', 'gebruikercentraal') . '</h2>';
+    $return = '<div id="programma"><h2>' . _x('Programma', 'Kopje op evenementpagina', 'wp-rijkshuisstijl') . '</h2>';
     $return .= '<ul class="event-program">';
     
     // loop through the rows of data
@@ -216,7 +216,7 @@ function gc_wbvb_post_get_links() {
   
   if( have_rows( 'event_post_links_collection' ) ):
   
-    $return = '<h2>' . _x('Links', 'Kopje op bericht- of evenementpagina', 'gebruikercentraal') . '</h2>';
+    $return = '<h2>' . _x('Links', 'Kopje op bericht- of evenementpagina', 'wp-rijkshuisstijl') . '</h2>';
     $return .= '<ul class="link-list">';
     
     // loop through the rows of data
