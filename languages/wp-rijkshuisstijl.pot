@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid) (v1.0.0)\n"
-"POT-Creation-Date: 2019-01-11 15:43+0100\n"
+"POT-Creation-Date: 2019-01-15 11:08+0100\n"
 "PO-Revision-Date: 2016-09-08 17:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -95,7 +95,7 @@ msgctxt "breadcrumb"
 msgid "Tags"
 msgstr ""
 
-#: functions.php:838
+#: functions.php:838 search.php:49 search.php:60
 msgctxt "breadcrumb"
 msgid "Search result for "
 msgstr ""
@@ -161,7 +161,7 @@ msgid "(ordered by post date)"
 msgstr ""
 
 #: functions.php:1384
-msgid "Agenda"
+msgid "Events"
 msgstr ""
 
 #: functions.php:1405
@@ -1389,11 +1389,8 @@ msgid ""
 msgstr ""
 
 #: search.php:47 search.php:58
-msgid "Zoek op deze website"
-msgstr ""
-
-#: search.php:49 search.php:60
-msgid "Zoekresultaat voor "
+msgctxt "searchform"
+msgid "Search this site"
 msgstr ""
 
 #: search.php:203

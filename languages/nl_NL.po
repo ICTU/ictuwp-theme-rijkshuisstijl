@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid) (v1.0.0)\n"
-"POT-Creation-Date: 2019-01-11 15:48+0100\n"
-"PO-Revision-Date: 2019-01-11 16:10+0100\n"
+"POT-Creation-Date: 2019-01-16 11:39+0100\n"
+"PO-Revision-Date: 2019-01-16 11:39+0100\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: front-page.php:76 page_showalldossiers-nieuwestyling.php:45
+#: front-page.php:78 page_showalldossiers-nieuwestyling.php:45
 msgid ""
 "'Dossiers' taxonomy does not exist. Please activate the plugin 'ICTU / WP "
 "Register post types and taxonomies'"
@@ -51,20 +51,21 @@ msgctxt "Standaard linktekst voor lees-meer"
 msgid "Read more"
 msgstr "Lees meer"
 
-#: functions.php:746 functions.php:3529 functions.php:5600
+#: functions.php:746 functions.php:3529 functions.php:5614
 #: includes/dossier-helper-functions.php:456
 #: includes/dossier-helper-functions.php:470
 msgctxt "post types"
 msgid "Posts"
 msgstr "Nieuwsberichten"
 
-#: functions.php:750 functions.php:3559 functions.php:5611
-#: includes/dossier-helper-functions.php:538 includes/widget-events.php:317
+#: functions.php:750 functions.php:3559 functions.php:3565 functions.php:3572
+#: functions.php:5625 includes/dossier-helper-functions.php:538
+#: includes/widget-events.php:317
 msgctxt "post types"
 msgid "Events"
 msgstr "Evenementen"
 
-#: functions.php:754 functions.php:1368 functions.php:3553 functions.php:5621
+#: functions.php:754 functions.php:1368 functions.php:3553 functions.php:5635
 msgctxt "post types"
 msgid "Documents"
 msgstr "Documenten"
@@ -166,8 +167,11 @@ msgid "(ordered by post date)"
 msgstr "(gesorteerd op datum)"
 
 #: functions.php:1384
-msgid "Agenda"
-msgstr "Agenda"
+#, fuzzy
+#| msgctxt "post types"
+#| msgid "Events"
+msgid "Events"
+msgstr "Evenementen"
 
 #: functions.php:1405
 msgid "Videos"
@@ -335,331 +339,331 @@ msgctxt "post types"
 msgid "Attachments"
 msgstr "Attachments"
 
-#: functions.php:3551 functions.php:3599
+#: functions.php:3551 functions.php:3613
 msgctxt "post types"
 msgid "Document"
 msgstr "Document"
 
-#: functions.php:3557
+#: functions.php:3557 functions.php:3563 functions.php:3570
 msgctxt "post types"
 msgid "Event"
 msgstr "Evenement"
 
-#: functions.php:3563
+#: functions.php:3577
 msgid "No sliders please"
 msgstr ""
 
-#: functions.php:3583
+#: functions.php:3597
 msgctxt "post types"
 msgid "Image"
 msgstr "Plaatje"
 
-#: functions.php:3588
+#: functions.php:3602
 msgctxt "post types"
 msgid "Text file"
 msgstr "Tekstbestand"
 
-#: functions.php:3593
+#: functions.php:3607
 msgctxt "post types"
 msgid "Movie file"
 msgstr "Filmbestand"
 
-#: functions.php:3596
+#: functions.php:3610
 msgctxt "post types"
 msgid "PDF file"
 msgstr "PDF-bestand"
 
-#: functions.php:3632
+#: functions.php:3646
 msgctxt "paging"
 msgid "Newer posts"
 msgstr "Recentere berichten"
 
-#: functions.php:3635
+#: functions.php:3649
 msgctxt "paging"
 msgid "Next page"
 msgstr "Volgende pagina"
 
-#: functions.php:3644
+#: functions.php:3658
 msgctxt "paging"
 msgid "Older posts"
 msgstr "Oudere berichten"
 
-#: functions.php:3647
+#: functions.php:3661
 msgctxt "paging"
 msgid "Previous page"
 msgstr "Vorige pagina"
 
-#: functions.php:4099 functions.php:4126
+#: functions.php:4113 functions.php:4140
 msgid "This is the general footer area"
 msgstr ""
 
-#: functions.php:4260 functions.php:4263
+#: functions.php:4274 functions.php:4277
 msgctxt "reactieformulier"
 msgid "Questions, ideas, suggestions?"
 msgstr "Vraag, idee, reactie of suggestie?"
 
-#: functions.php:4266
+#: functions.php:4280
 msgid "The webmaster has not selected a form for questions or suggestions."
 msgstr "Er is geen contactformulier ingesteld."
 
-#: functions.php:4270
+#: functions.php:4284
 msgid ""
 "Selecteer een contactformulier. \n"
 "Via: Admin > Weergave > Options"
 msgstr ""
 
-#: functions.php:4403
+#: functions.php:4417
 msgctxt "CTA knop"
 msgid "Selecteer of upload een PDF"
 msgstr ""
 
-#: functions.php:4405
+#: functions.php:4419
 msgctxt "CTA knop"
 msgid "Link naar dit bestand"
 msgstr ""
 
-#: functions.php:4450 functions.php:4597 functions.php:4604
+#: functions.php:4464 functions.php:4611 functions.php:4618
 msgctxt "Streamer errors"
 msgid "Voer een tekst in"
 msgstr ""
 
-#: functions.php:4456
+#: functions.php:4470
 msgctxt "Streamer errors"
 msgid "Selecteer een foto"
 msgstr ""
 
-#: functions.php:4481
+#: functions.php:4495
 msgctxt "Streamer errors"
 msgid "Voer in wie dit zei"
 msgstr ""
 
-#: functions.php:4512
+#: functions.php:4526
 msgctxt "Insert streamer"
 msgid "Gegevens voor streamer"
 msgstr ""
 
-#: functions.php:4517 functions.php:4632
+#: functions.php:4531 functions.php:4646
 msgctxt "Insert streamer"
 msgid "Citaat"
 msgstr ""
 
-#: functions.php:4522
+#: functions.php:4536
 msgctxt "Insert streamer"
 msgid "Citaatauteur"
 msgstr ""
 
-#: functions.php:4527
+#: functions.php:4541
 msgctxt "CTA knop"
 msgid "Foto van citaatauteur"
 msgstr ""
 
-#: functions.php:4529
+#: functions.php:4543
 msgctxt "CTA knop"
 msgid "Selecteer foto"
 msgstr ""
 
-#: functions.php:4530
+#: functions.php:4544
 msgctxt "CTA knop"
 msgid ""
 "Je kunt een link invoegen of met de knop een foto uit de mediabibliotheek "
 "selecteren."
 msgstr ""
 
-#: functions.php:4534
+#: functions.php:4548
 msgctxt "Insert streamer"
 msgid "Link naar post / pagina"
 msgstr ""
 
-#: functions.php:4539 functions.php:4637
+#: functions.php:4553 functions.php:4651
 msgctxt "Insert streamer"
 msgid "Uitlijnen"
 msgstr ""
 
-#: functions.php:4540 functions.php:4639
+#: functions.php:4554 functions.php:4653
 msgctxt "Insert streamer"
 msgid "Links"
 msgstr ""
 
-#: functions.php:4541 functions.php:4638
+#: functions.php:4555 functions.php:4652
 msgctxt "Insert streamer"
 msgid "Geen uitlijning"
 msgstr ""
 
-#: functions.php:4542
+#: functions.php:4556
 msgctxt "Insert streamer"
 msgid "Rechts"
 msgstr ""
 
-#: functions.php:4545
+#: functions.php:4559
 msgctxt "Insert streamer"
 msgid "Voeg citaat in"
 msgstr ""
 
-#: functions.php:4626 functions.php:4695
+#: functions.php:4640 functions.php:4709
 msgctxt "Insert streamer"
 msgid "Gewone streamer"
 msgstr ""
 
-#: functions.php:4643
+#: functions.php:4657
 msgctxt "Insert streamer"
 msgid "Voeg streamer toe"
 msgstr ""
 
-#: functions.php:4689 functions.php:4694
+#: functions.php:4703 functions.php:4708
 msgctxt "Insert streamer"
 msgid "Gegevens voor je streamer"
 msgstr ""
 
-#: functions.php:4690
+#: functions.php:4704
 msgctxt "Insert streamer"
 msgid "Streamer met foto"
 msgstr ""
 
-#: functions.php:4699
+#: functions.php:4713
 msgctxt "Insert streamer"
 msgid "Voeg inklapblok toe"
 msgstr ""
 
-#: functions.php:4700
+#: functions.php:4714
 msgctxt "Insert details summary"
 msgid "Voeg uitklapblok toe"
 msgstr ""
 
-#: functions.php:4704
+#: functions.php:4718
 msgctxt "Insert streamer"
 msgid "Voeg kader toe"
 msgstr ""
 
-#: functions.php:4705
+#: functions.php:4719
 msgctxt "kader"
 msgid "Voeg kader toe"
 msgstr ""
 
-#: functions.php:4801
+#: functions.php:4815
 msgctxt "Streamer errors"
 msgid "Voer een titel in<br>"
 msgstr ""
 
-#: functions.php:4808 functions.php:4993
+#: functions.php:4822 functions.php:5007
 msgctxt "Streamer errors"
 msgid "Voer een tekst in<br>"
 msgstr ""
 
-#: functions.php:4818 functions.php:4982
+#: functions.php:4832 functions.php:4996
 msgctxt "Streamer errors"
 msgid "Kies een header-niveau<br>"
 msgstr ""
 
-#: functions.php:4840
+#: functions.php:4854
 msgctxt "Insert streamer"
 msgid "Voeg een details / summary blok in. Dit blok toont of verbergt teksten."
 msgstr ""
 
-#: functions.php:4846 functions.php:5032
+#: functions.php:4860 functions.php:5046
 msgctxt "Insert streamer"
 msgid "Titel"
 msgstr ""
 
-#: functions.php:4851 functions.php:5037
+#: functions.php:4865 functions.php:5051
 msgctxt "Insert streamer"
 msgid "Header-niveau"
 msgstr ""
 
-#: functions.php:4853 functions.php:5039
+#: functions.php:4867 functions.php:5053
 msgctxt "Insert streamer"
 msgid "H2 (niveau 2)"
 msgstr ""
 
-#: functions.php:4854 functions.php:5040
+#: functions.php:4868 functions.php:5054
 msgctxt "Insert streamer"
 msgid "H3 (niveau 3)"
 msgstr ""
 
-#: functions.php:4855 functions.php:5041
+#: functions.php:4869 functions.php:5055
 msgctxt "Insert streamer"
 msgid "H4 (niveau 4)"
 msgstr ""
 
-#: functions.php:4856 functions.php:5042
+#: functions.php:4870 functions.php:5056
 msgctxt "Insert streamer"
 msgid "H5 (niveau 5)"
 msgstr ""
 
-#: functions.php:4857 functions.php:5043
+#: functions.php:4871 functions.php:5057
 msgctxt "Insert streamer"
 msgid "H6 (niveau 6)"
 msgstr ""
 
-#: functions.php:4862
+#: functions.php:4876
 msgctxt "Insert streamer"
 msgid "Inhoud van inklapblok"
 msgstr ""
 
-#: functions.php:4866 functions.php:5052
+#: functions.php:4880 functions.php:5066
 msgctxt "Insert streamer"
 msgid "Voeg uitklapblok toe"
 msgstr ""
 
-#: functions.php:5019
+#: functions.php:5033
 msgctxt "Insert streamer"
 msgid "Voeg een kader toe."
 msgstr ""
 
-#: functions.php:5025
+#: functions.php:5039
 msgctxt "Insert streamer"
 msgid "Randkleur"
 msgstr ""
 
-#: functions.php:5048
+#: functions.php:5062
 msgctxt "Insert streamer"
 msgid "Inhoud van blok"
 msgstr ""
 
-#: functions.php:5267
+#: functions.php:5281
 msgctxt "Dossier header"
 msgid "All posts"
 msgstr "Alle berichten"
 
-#: functions.php:5296 functions.php:5460
+#: functions.php:5310 functions.php:5474
 #, php-format
 msgctxt "Dossier header"
 msgid "posts for %s topic"
 msgstr "documenten in het dossier %s"
 
-#: functions.php:5417 functions.php:5528 search.php:205
+#: functions.php:5431 functions.php:5542 search.php:205
 #, php-format
 msgctxt "No results text"
 msgid "No results for %s."
 msgstr "We zochten naar %s, maar konden niets vinden."
 
-#: functions.php:5584
+#: functions.php:5598
 #, php-format
 msgid "- page %s"
 msgstr "- pagina %s"
 
-#: functions.php:5593
+#: functions.php:5607
 #, php-format
 msgctxt "Posts for topic with category"
 msgid "%s for '%s' %s"
 msgstr "%s onder %s %s"
 
-#: functions.php:5597
+#: functions.php:5611
 #, php-format
 msgctxt "Posts for topic without category"
 msgid "Posts for %s %s"
 msgstr "Nieuwsberichten onder %s %s"
 
-#: functions.php:5608
+#: functions.php:5622
 #, php-format
 msgid "Events for %s %s"
 msgstr "Events onder %s %s"
 
-#: functions.php:5618
+#: functions.php:5632
 #, php-format
 msgid "Documents for %s %s"
 msgstr "Documenten onder %s %s"
 
-#: functions.php:5655
+#: functions.php:5669
 msgid "ACF plugin is niet actief ("
 msgstr ""
 
@@ -1517,6 +1521,9 @@ msgstr ""
 #. Template Name of the plugin/theme
 msgid "20 - home-pagina"
 msgstr ""
+
+#~ msgid "Agenda"
+#~ msgstr "Agenda"
 
 #~ msgctxt "Contactform errors"
 #~ msgid "U kunt niet namens '%s' reageren."

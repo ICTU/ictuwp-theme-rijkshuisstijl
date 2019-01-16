@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.1
-// * @desc.   Vertaling bijgewerkt met oog op Engelstalige site.
+// * @version 2.2.2
+// * @desc.   Nav. menu alleen op echte homepage tonen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // 
  */
@@ -20,11 +20,13 @@
 //* Force full-width-content layout
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
-add_action( 'genesis_after_header', 'genesis_do_nav',                         14 );
 
 remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 
 if ( is_home() || is_front_page() ) {
+
+  // only show menu if this is really the home page
+  add_action( 'genesis_after_header', 'genesis_do_nav', 14 );
 
   // dossiers (onderwerpen) + widget ruimte
   add_action( 'genesis_loop', 'rhswp_home_onderwerpen_dossiers', 12 );

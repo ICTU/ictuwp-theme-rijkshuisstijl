@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.2.1 - Vertaling bijgewerkt met oog op Engelstalige site.
+2.2.2 - Nav. menu alleen op echte homepage tonen.
 
 ## Version history
+* 2.2.2 - Nav. menu alleen op echte homepage tonen.
 * 2.2.1 - Vertaling bijgewerkt met oog op Engelstalige site.
 * 2.1.1 - Validatie voor e-mailafzendadressen strennger gemaakt.
 * 2.0.14 - Styling eventwidget aangepast.
