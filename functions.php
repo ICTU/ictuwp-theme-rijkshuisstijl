@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.2
-// * @desc.   Nav. menu alleen op echte homepage tonen.
+// * @version 2.2.3
+// * @desc.   Meer strings vertaald, bugfiks voor homepage. Uitlijning reactieform op vollebreedtepagina's.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.2.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Nav. menu alleen op echte homepage tonen." );
+define( 'CHILD_THEME_VERSION',              "2.2.3" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Meer strings vertaald, bugfiks voor homepage. Uitlijning reactieform op vollebreedtepagina's." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -162,6 +162,11 @@ define( 'RHSWP_DOSSIERCONTEXTPOSTOVERVIEW',         'dossier-berichten' );
 define( 'RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW', 'dossier-categorie' );
 define( 'RHSWP_DOSSIERCONTEXTEVENTOVERVIEW',        'dossier-events' );
 define( 'RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW',     'dossier-documenten' );
+
+if ( ! defined( 'DOPT__ACTIELIJN_CPT' ) ) {
+  define( 'DOPT__ACTIELIJN_CPT',           "actielijn" );
+}
+
 
 
 //========================================================================================================
@@ -363,7 +368,7 @@ function rhswp_add_title_to_blog_page() {
     }
     
     echo '<header class="entry-header"><h1 class="entry-title" itemprop="headline">' . $actueelpagetitle  . '</h1> </header>';
-    echo '<p>' . _x( 'All post related to The Digital Governement.', 'Tekst op de actueelpagina', 'wp-rijkshuisstijl' ) . $paging . '</p>';
+    echo '<p>' . _x( 'All posts related to the Digital Governement.', 'Tekst op de actueelpagina', 'wp-rijkshuisstijl' ) . $paging . '</p>';
 
     /** Replace the standard loop with our custom loop */
     remove_action( 'genesis_loop', 'genesis_do_loop' );
@@ -2526,7 +2531,7 @@ function rhswp_write_extra_contentblokken() {
 
             $termname = get_term( $dossier_in_content_block, RHSWP_CT_DOSSIER );
             $slug     = '';
-            if ( $termname ) {
+            if ( $termname && ! is_wp_error( $termname ) ) {
               $slug = $termname->slug;
             }
 
@@ -3071,6 +3076,10 @@ function rhswp_check_caroussel_or_featured_img() {
     return;
   }
 
+  if ( is_search( ) || is_404( ) ) {
+    return;
+  }
+
   if ( 'page_digibeter-home.php' == get_page_template_slug( get_the_ID() ) && get_field( 'digibeter_content_intro', get_the_ID() ) ) {
     // voorkomen dat pagina's met dit template ook een carroussel laten zien
     // deze pagina heeft dus als template 'page_digibeter-home.php' en heeft iets in digibeter_content_intro
@@ -3138,8 +3147,8 @@ function rhswp_check_caroussel_or_featured_img() {
 
         if ( RHSWP_MIN_HERO_IMAGE_WIDTH <= $width ) {
           echo '<div class="hero-image" id="hero_' . $divid . '">';
+          echo '<div class="wrapper">';
           if ( $image_tekst ) {
-            echo '<div class="wrapper">';
             echo '<div class="hero-image-tekst">';
             echo $image_tekst;            
             echo '</div>';
@@ -3148,7 +3157,6 @@ function rhswp_check_caroussel_or_featured_img() {
               get_search_form();
             }          
             
-            echo '</div>';
           }
           else {
             echo '&nbsp;';
@@ -3156,6 +3164,7 @@ function rhswp_check_caroussel_or_featured_img() {
               get_search_form();
             }          
           }
+          echo '</div>';
           echo '</div>';
         }
         
@@ -3522,7 +3531,7 @@ function rhswp_archive_custom_loop() {
 function rhswp_translateposttypes( $posttype = '', $plural = false ) {
   $returnstring = '';
   
-  switch ($posttype) {
+  switch ( strtolower( $posttype ) ) {
     case 'post':
       $returnstring = esc_html( _x( "Post", 'post types', 'wp-rijkshuisstijl' ) );
       if ( $plural ) {
@@ -3580,7 +3589,6 @@ function rhswp_translateposttypes( $posttype = '', $plural = false ) {
       default:
       $returnstring = $posttype;
   }  
-
 
   return $returnstring;
   
@@ -5307,7 +5315,7 @@ function rhswp_get_page_dossiersingleactueel() {
           )
         );
       
-        $message = sprintf( _x( 'posts for %s topic', 'Dossier header', 'wp-rijkshuisstijl' ), $currenttermname );
+        $message = sprintf( _x( 'posts for topic %s', 'Dossier header', 'wp-rijkshuisstijl' ), $currenttermname );
       }
       
     }
@@ -5471,7 +5479,7 @@ function rhswp_get_documents_for_dossier() {
   
     if ( $term ) { 
   
-      $message = sprintf( _x( 'posts for %s topic', 'Dossier header', 'wp-rijkshuisstijl' ), $term->name );
+      $message = sprintf( _x( 'posts for topic %s', 'Dossier header', 'wp-rijkshuisstijl' ), $term->name );
 
       $args = array(
         'post_type'       => RHSWP_CPT_DOCUMENT,

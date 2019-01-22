@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.2.2
-  Version description: 2.2.2 - Nav. menu alleen op echte homepage tonen.
+  Version: 2.2.3
+  Version description: 2.2.3 - Meer strings vertaald, bugfiks voor homepage. Uitlijning reactieform op vollebreedtepagina's.
   Text Domain: wp-rijkshuisstijl
   
   Template: genesis
@@ -1006,6 +1006,15 @@ Media Queries
 }
 
 @media only screen and (min-width: ( @break_fullwidth  - 1 )) {
+  
+  .full-width-content {
+    .sharing.block,
+    #reactieformulier {
+      width: 66%;
+//      margin-left: auto;
+//      margin-right: auto;
+    }
+  }
   
   .footer-widgets {
     padding: 0;

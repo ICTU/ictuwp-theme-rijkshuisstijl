@@ -10,8 +10,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.1
-// * @desc.   Vertaling bijgewerkt met oog op Engelstalige site.
+// * @version 2.2.3
+// * @desc.   Meer strings vertaald, bugfiks voor homepage. Uitlijning reactieform op vollebreedtepagina's.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -505,7 +505,7 @@ function rhswp_dossier_title_checker( ) {
           //dodebug('rhswp_dossier_get_pagelink: 05: ' . trailingslashit( $current_url )  . ' == ' .trailingslashit( get_term_link( $term->term_id, RHSWP_CT_DOSSIER ) . RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW ) );
         }
 
-        $subpaginas .= '<li' . $isselected . '><a href="' . get_term_link( $term->term_id, RHSWP_CT_DOSSIER ) . RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW . '/">' . _e( 'Documents', 'post types', 'wp-rijkshuisstijl' )  . '</a></li>';
+        $subpaginas .= '<li' . $isselected . '><a href="' . get_term_link( $term->term_id, RHSWP_CT_DOSSIER ) . RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW . '/">' . _x( 'Documents', 'post types', 'wp-rijkshuisstijl' )  . '</a></li>';
 
       }
       

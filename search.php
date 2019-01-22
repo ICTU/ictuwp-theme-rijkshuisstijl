@@ -161,11 +161,9 @@ function rhswp_archive_custom_search_with_searchWP() {
             else {
               $documenttype = rhswp_translatemimetypes( $mimetype );
             }
-
           }
         }
-      
-      
+
         if( $post instanceof SearchWPTermResult ) :
 
           $classattr = str_replace( 'class="', 'class="taxonomy ' . $post->term->taxonomy . ' ', $classattr );
@@ -174,7 +172,7 @@ function rhswp_archive_custom_search_with_searchWP() {
           $thetitle     = $post->name;
           $excerpt      = $post->description;
           $documenttype = $post->taxonomy;
-        
+
         else : setup_postdata( $post ); 
 
           if ( 'post' == $contenttype ) {

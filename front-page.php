@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.2
-// * @desc.   Nav. menu alleen op echte homepage tonen.
+// * @version 2.2.3
+// * @desc.   Meer strings vertaald, bugfiks voor homepage. Uitlijning reactieform op vollebreedtepagina's.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // 
  */
@@ -28,6 +28,8 @@ if ( is_home() || is_front_page() ) {
   // only show menu if this is really the home page
   add_action( 'genesis_after_header', 'genesis_do_nav', 14 );
 
+}
+
   // dossiers (onderwerpen) + widget ruimte
   add_action( 'genesis_loop', 'rhswp_home_onderwerpen_dossiers', 12 );
 
@@ -37,7 +39,7 @@ if ( is_home() || is_front_page() ) {
     
   add_filter('the_content', 'rhswp_home_content_filter');
   
-}
+
 
 //========================================================================================================
 
@@ -89,9 +91,16 @@ function rhswp_home_onderwerpen_dossiers() {
         $rowcounter++;
   
         $url_extern   = get_sub_field('kies_een_onderwerp');
-        $acfid        = RHSWP_CT_DOSSIER . '_' . $url_extern->term_id;
-        $kortebeschr  = get_field( 'dossier_korte_beschrijving_voor_dossieroverzicht', $acfid );
-        $description  = $url_extern->description;
+        $description  = '';
+
+        if ( $url_extern ) {
+            
+          $acfid        = RHSWP_CT_DOSSIER . '_' . $url_extern->term_id;
+          $kortebeschr  = get_field( 'dossier_korte_beschrijving_voor_dossieroverzicht', $acfid );
+          $description  = $url_extern->description;
+        
+        }
+
   
         if ( 'standaardbeschrijving' != get_sub_field( 'welke_beschrijving' ) ) {
           $description = get_sub_field( 'andere_beschrijving' );
