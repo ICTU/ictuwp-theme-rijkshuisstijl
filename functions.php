@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.3
-// * @desc.   Meer strings vertaald, bugfiks voor homepage. Uitlijning reactieform op vollebreedtepagina's.
+// * @version 2.2.5a
+// * @desc.   Donkerder oranje voor NL-Digibeter.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.2.3" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Meer strings vertaald, bugfiks voor homepage. Uitlijning reactieform op vollebreedtepagina's." );
+define( 'CHILD_THEME_VERSION',              "2.2.5a" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Donkerder oranje voor NL-Digibeter." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
