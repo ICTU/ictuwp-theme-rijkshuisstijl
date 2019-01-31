@@ -1,6 +1,6 @@
 # Digitale Overheid WordPress - Theme Rijkshuisstijl
 
-WP-rijkshuisstijl is ontwikkeld als WordPress-theme voor [digitaleoverheid.nl](https://digitaleoverheid.nl). Opdrachtgever is ICTU (ICT Uitvoeringsorganisatie). Ontwikkelaar is Paul van Buuren ([WBVB Rotterdam](https://wbvb.nl)). 
+WP-rijkshuisstijl is ontwikkeld als WordPress-theme voor [digitaleoverheid.nl](https://digitaleoverheid.nl). Opdrachtgever is ICTU (ICT Uitvoeringsorganisatie). Ontwikkelaar is Paul van Buuren ([WBVB Rotterdam](https://wbvb.nl)).
 
 Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.nl)
 
@@ -79,7 +79,7 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * 1.1.0 - Versie 1.1 ter gelegenheid van BADO (zie 1.1.3)
 * 1.0.0 - 25 juni 2018: toch maar eens besloten het ding versie 1 te geven.
 * 0.11.19 - Debug verbeterd en print style verbeterd.
-* 0.11.18 - Pagina met full-width toegevoegd. 
+* 0.11.18 - Pagina met full-width toegevoegd.
 * 0.11.17 - Tabel-stijl voor Regie Op Gegevens-programmatabel.
 * 0.11.16 - Extra stijl toegevoegd aan DO-bannerwidget: alleen plaatje, geen tekst.
 * 0.11.15 - Verwijder archief-titel en -beschrijving voor taxonomieën.
@@ -144,16 +144,16 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * 0.8.13 en 0.8.14 - CSS voor tabellen bijgewerkt
 * 0.8.12 - CSS voor citaten bijgewerkt
 * 0.8.11 - Check in dossierbalk op pagina met onderliggende pagina's uitgezet
-* 0.8.10 - Paginering op de actueelpagina verbeterd 
-* 0.8.9 - Bugjes verwijderd. debug.log een stuk schoner nu 
-* 0.8.8 - Featured image toegevoegd aan post 
-* 0.8.7 - Banner-widget: bug-fixes 
+* 0.8.10 - Paginering op de actueelpagina verbeterd
+* 0.8.9 - Bugjes verwijderd. debug.log een stuk schoner nu
+* 0.8.8 - Featured image toegevoegd aan post
+* 0.8.7 - Banner-widget: bug-fixes
 * 0.8.6 - Banner-widget: classes voor achtergrondkleuren in plaats van colorpicker
-* 0.8.5 - Sortering van agenda-pagina aangepast 
-* 0.8.4 - Bugfix tbv pagelinks-widget 
-* 0.8.3 - Banner-widget met plaatje 
-* 0.8.2 - Marges voor sitemap-lijst 
-* 0.8.1 - Sitemap uitgebreid (filtersitemap=nee), 'article-visual' als nieuw beeldformaat toegevoegd. CSS wijzigingen voor list-items. Revisie van dossier-menu. 
+* 0.8.5 - Sortering van agenda-pagina aangepast
+* 0.8.4 - Bugfix tbv pagelinks-widget
+* 0.8.3 - Banner-widget met plaatje
+* 0.8.2 - Marges voor sitemap-lijst
+* 0.8.1 - Sitemap uitgebreid (filtersitemap=nee), 'article-visual' als nieuw beeldformaat toegevoegd. CSS wijzigingen voor list-items. Revisie van dossier-menu.
 * 0.7.27 - Versienummer aan editor-styles.css toegevoegd.
 * 0.7.25 - Versienummer beter. section weer zichbaar.
 * 0.7.24.2 - Logo voor IE, opmaak widget voor events
@@ -169,7 +169,7 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * 0.7.14 - Contentblock kan dossiers tonen. Extra check op taxonomy contentblock toegevoegd.
 * 0.7.13 - Contentblok-checker op diverse pagina's
 * 0.7.12 - Added extra styling for &lt;table&gt;
-* 0.7.11 - Contentblok check op dossier archive pages. 
+* 0.7.11 - Contentblok check op dossier archive pages.
 * 0.7.10 - CSS: list item arrow, flex on .home, search form in header
 * 0.7.9 - CSS for pagination updated
 * 0.7.8 - Added message for no results on search page. Translations updated.
@@ -177,48 +177,48 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * 0.7.6 - Fixed text for 2nd menu item in dossiers
 * 0.7.5 - Text changes ACF contentblock
 * 0.7.4 - Added SVG icons
-* 0.7.3 - contentblock revised 
-* 0.7.2 - Search functions - paging 
-* 0.7.1 - Search functions - search via SearchWP 
-* 0.6.35 - Screen reader response added for CF7 
-* 0.6.34 - Alt-attribute added to slider 
-* 0.6.33 - Search results - mark PDF attachments 
+* 0.7.3 - contentblock revised
+* 0.7.2 - Search functions - paging
+* 0.7.1 - Search functions - search via SearchWP
+* 0.6.35 - Screen reader response added for CF7
+* 0.6.34 - Alt-attribute added to slider
+* 0.6.33 - Search results - mark PDF attachments
 * 0.6.32 - Incorrect styling for content without featured image corrected
-* 0.6.31 - Rewrite rules added to prevent 404 after URL tampering 
-* 0.6.30 - Event context added for a dossier 
-* 0.6.29 - Paging on page_dossiersingleactueel.php 
+* 0.6.31 - Rewrite rules added to prevent 404 after URL tampering
+* 0.6.30 - Event context added for a dossier
+* 0.6.29 - Paging on page_dossiersingleactueel.php
 * 0.6.28 - Check in dossier if menu item is parent of child page. Error
-* 0.6.27 - Check on number of found document in dossier menu - bugfix 2 
+* 0.6.27 - Check on number of found document in dossier menu - bugfix 2
 * 0.6.26 - Check on number of found document in dossier menu - bugfix
-* 0.6.25 - Check on number of found document in dossier menu. CSS bugfixes 
-* 0.6.24 - Modified Event Widget, updated pagination - bugfixes 
-* 0.6.23 - Modified Event Widget, updated pagination. Extra event funct 
-* 0.6.22 - Script minification check. 
-* 0.6.21 - IE8 checks, scripts concatenated 
+* 0.6.25 - Check on number of found document in dossier menu. CSS bugfixes
+* 0.6.24 - Modified Event Widget, updated pagination - bugfixes
+* 0.6.23 - Modified Event Widget, updated pagination. Extra event funct
+* 0.6.22 - Script minification check.
+* 0.6.21 - IE8 checks, scripts concatenated
 * 0.6.20 - 01-home .blocks, pagination, 404 content list, translation u
-* 0.6.19 - Form elements. Contact form validation. 
+* 0.6.19 - Form elements. Contact form validation.
 * 0.6.18 - CSS for news items widget. Styling for post-meta. Link colors.
-* 0.6.17 - .slidenav corrected - bugfixes 
-* 0.6.16 - .slidenav corrected 
-* 0.6.15 - Kaderblok toegevoegd 
-* 0.6.14 - genesis_entry_footer disabled 
-* 0.6.13 - Improved dossier-helper-functions. Only direct descendants i 
-* 0.6.12 - Removed post-meta. Added class .intro. Font-size check for H 
-* 0.6.11 - Various small code and CSS bugfixes - widget, archive-loop 
-* 0.6.10 - Various small code and CSS bugfixes 
-* 0.6.9 - Renamed 'overzichtspagina' to 'inhoudspagina' in dossier 
-* 0.6.8 - Editor styles: &lt;div&gt; warning added 
-* 0.6.7 - Widget title: less padding between widgets 
-* 0.6.6 - Widget title: class always widgettitle (not: widget-title) 
-* 0.6.5 - News widget aangepast (banner-border weg) 
-* 0.6.4 - (temporary) remove relevante links CPT 
-* 0.6.3 - Remove Genesis SEO in-post options 
-* 0.6.2 - Bugfix: Footerwidgets weer zichtbaar 
-* 0.6.1 - Editor CSS: beperkingen en waarschuwingen 
-* 0.5.1 - Carrousel, js-actions - bugfixes 
-* 0.4.3 - Carrousel, js-actions 
-* 0.4.2 - Theme-check, carrousel en extra pagina-layout - bugfixes 
-* 0.4.1 - Theme-check, carrousel en extra pagina-layout 
+* 0.6.17 - .slidenav corrected - bugfixes
+* 0.6.16 - .slidenav corrected
+* 0.6.15 - Kaderblok toegevoegd
+* 0.6.14 - genesis_entry_footer disabled
+* 0.6.13 - Improved dossier-helper-functions. Only direct descendants i
+* 0.6.12 - Removed post-meta. Added class .intro. Font-size check for H
+* 0.6.11 - Various small code and CSS bugfixes - widget, archive-loop
+* 0.6.10 - Various small code and CSS bugfixes
+* 0.6.9 - Renamed 'overzichtspagina' to 'inhoudspagina' in dossier
+* 0.6.8 - Editor styles: &lt;div&gt; warning added
+* 0.6.7 - Widget title: less padding between widgets
+* 0.6.6 - Widget title: class always widgettitle (not: widget-title)
+* 0.6.5 - News widget aangepast (banner-border weg)
+* 0.6.4 - (temporary) remove relevante links CPT
+* 0.6.3 - Remove Genesis SEO in-post options
+* 0.6.2 - Bugfix: Footerwidgets weer zichtbaar
+* 0.6.1 - Editor CSS: beperkingen en waarschuwingen
+* 0.5.1 - Carrousel, js-actions - bugfixes
+* 0.4.3 - Carrousel, js-actions
+* 0.4.2 - Theme-check, carrousel en extra pagina-layout - bugfixes
+* 0.4.1 - Theme-check, carrousel en extra pagina-layout
 
 
 ## Theme structure
@@ -254,7 +254,7 @@ themes/wp-rijkshuisstijl/                     # → Folder met alle theme-bestan
 ├── images/                                   # → Theme-gerelateerde beeldbestanden
 │   └── svg/                                  # → SVG plaatjes
 ├── includes/                                 # → Bevat settings voor o.m. javascript-check
-│   ├── admin-helper-functions.php            # → functies voor wp-admin 
+│   ├── admin-helper-functions.php            # → functies voor wp-admin
 │   ├── class.taxonomy-single-term.php        # → functies voor wel of niet tonen van radiobuttons voor dossier
 │   ├── contact-form7-validation.php          # → validatie voor CF7
 │   ├── cpt-acf.php                           # → definities van custom post types, custom taxonomies, ACF-velden
@@ -277,12 +277,12 @@ themes/wp-rijkshuisstijl/                     # → Folder met alle theme-bestan
 ├── archive.php                               # → Algemeen berichten-overzicht
 ├── front-page.php                            # → Home page
 ├── functions.php                             # → Algemene functies, theme includes
-├── page_dossier-document-overview.php        # → 
-├── page_dossier-events-overview.php          # → 
-├── page_dossiersingleactueel.php             # → 
-├── page_evenement.php                        # → 
-├── page_show-child-pages.php                 # → 
-├── page_showalldossiers.php                  # → 
+├── page_dossier-document-overview.php        # →
+├── page_dossier-events-overview.php          # →
+├── page_dossiersingleactueel.php             # →
+├── page_evenement.php                        # →
+├── page_show-child-pages.php                 # →
+├── page_showalldossiers.php                  # →
 ├── page_sitemap.php                          # → Pagina voor het tonen van een sitemap
 ├── page.php                                  # → Algemene contentpagina
 ├── screenshot.png                            # → Theme screenshot voor in WP admin
@@ -293,4 +293,3 @@ themes/wp-rijkshuisstijl/                     # → Folder met alle theme-bestan
 └── taxonomy.php                              # → Code voor het tonen van een taxonomie
 
 ```
-
