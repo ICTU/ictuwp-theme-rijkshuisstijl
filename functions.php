@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.5b
-// * @desc.   Kleursuggestie Pim voor donkerder oranje.
+// * @version 2.2.5
+// * @desc.   Footerwidgets beter uitgelijnd + blokken op homepage op 4-koloms breedte.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.2.5b" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Kleursuggestie Pim voor donkerder oranje." );
+define( 'CHILD_THEME_VERSION',              "2.2.5" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Footerwidgets beter uitgelijnd + blokken op homepage op 4-koloms breedte." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -4147,7 +4147,7 @@ function rhswp_widget_definition_footer2() {
 		'name'          => __( RHSWP_FOOTERWIDGET2, 'wp-rijkshuisstijl' ),
 		'description'   => __( 'This is the general footer area', 'wp-rijkshuisstijl' ),
     'before_widget' => genesis_markup( array(
-        'html5' => '<section role="complementary" id="%1$s" class="widget-area widget footer-widgets-1 footer-widget-area %2$s '.RHSWP_FOOTERWIDGET2 . '"><div class="widget-wrap">',
+        'html5' => '<section role="complementary" id="%1$s" class="widget-area widget footer-widgets-2 footer-widget-area %2$s '.RHSWP_FOOTERWIDGET2 . '"><div class="widget-wrap">',
         'xhtml' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
         'echo'  => false,
     ) ),
@@ -4173,18 +4173,21 @@ function rhswp_widget_definition_footer2() {
 // Position the Footer Area
 function rhswp_widget_output_footer1() {
 	genesis_widget_area ( RHSWP_FOOTERWIDGET1, array(
-		'before' => '<div class="footer-widgets" id="genesis-footer-widgets"><div class="wrap">',
-		'after'  => '',
+		'before' => '<div class="footer-widgets" id="genesis-footer-widgets"><div class="wrap"><div class="container" id="footer1">footer1',
+		'after'  => '</div>',
 	));
+
 }
 
 
 // Position the Footer Area
 function rhswp_widget_output_footer2() {
+
 	genesis_widget_area ( RHSWP_FOOTERWIDGET2, array(
-		'before'  => '',
-		'after'  => '</div></div>',
+		'before'  => '<div class="container" id="footer2">footer2',
+		'after'  => '</div></div></div>',
 	));
+
 }
 
 //========================================================================================================
