@@ -1,17 +1,17 @@
 <?php
 
 /**
- * wp-rijkshuisstijl - widget-newswidget.php
- * ----------------------------------------------------------------------------------
- * toont nieuwsberichten uit een geselecteerde categorie
- * ----------------------------------------------------------------------------------
- *
- * @author  Paul van Buuren
- * @license GPL-2.0+
- * @package wp-rijkshuisstijl
- * @version 0.11.1
- * @desc.   Bugfix voor carroussel. CSS external link.
- * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// wp-rijkshuisstijl - widget-newswidget.php
+// ----------------------------------------------------------------------------------
+// toont nieuwsberichten uit een geselecteerde categorie
+// ----------------------------------------------------------------------------------
+// 
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.2.4
+// * @desc.   Kleine correctie news-widget + betere leesbaarheid ordered list-items in IE11.
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
 
@@ -205,6 +205,7 @@ class rhswp_news_widget extends WP_Widget {
                 echo the_title();
                 echo '</a>';
                 echo '</h4>';
+                echo '<p class="meta"><strong>' . get_the_date() . '</strong></p>';
                 echo the_excerpt();
                 echo '</div>'; 
             

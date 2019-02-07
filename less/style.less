@@ -1,19 +1,19 @@
 /*!
-  
+
   Theme Name: Rijkshuisstijl (Digitale Overheid)
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.2.3
-  Version description: 2.2.3 - Meer strings vertaald, bugfiks voor homepage. Uitlijning reactieform op vollebreedtepagina's.
+  Version: 2.2.5
+  Version description: 2.2.5 - Footerwidgets beter uitgelijnd + blokken op homepage op 4-koloms breedte.
   Text Domain: wp-rijkshuisstijl
-  
+
   Template: genesis
-  Template Version: 2.4.2
-  
+  Template Version: 2.8.0
+
   License: GPL-2.0+
   License URI: http://www.opensource.org/licenses/gpl-license.php
-  
+
 
 
 <!--                                                            -->
@@ -49,8 +49,8 @@
 <!--                                                            -->
 <!-- ========================================================   -->
 <!--                                                            -->
-	
- 
+
+
  */
 
 /*
@@ -66,10 +66,10 @@ Imports
 @import "30-menus.less";        /* all things related to navigation menus */
 @import "40-forms.less";        /* forms */
 @import "50-sidebar.less";      /* sidebar styling */
-@import "60-structure.less"; 
-@import "70-pagetypes.less"; 
-@import "80-print.less"; 
-@import "99-browserhacks.less"; 
+@import "60-structure.less";
+@import "70-pagetypes.less";
+@import "80-print.less";
+@import "99-browserhacks.less";
 
 
 .03_fonts_get_webfonts();
@@ -87,7 +87,7 @@ html {
 //  font-size: 62.5%; /* 10px browser default */
   font-size: 100%; /* 10px browser default */
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;	
+  -ms-text-size-adjust: 100%;
 }
 
 
@@ -106,8 +106,8 @@ footer {
   .widget-area {
     overflow: hidden;
     clear: both;
-  }  
-  
+  }
+
 }
 
 *[aria-hidden="true"] {
@@ -165,10 +165,10 @@ Common Classes
 
 
 .sticky {
-  background: grey;    
+  background: grey;
 }
 .bypostauthor {
-  background: grey;    
+  background: grey;
 }
 
 .widget_calendar table {
@@ -183,7 +183,7 @@ Common Classes
 /* Genesis
 --------------------------------------------- */
 
-.breadcrumb, 
+.breadcrumb,
 .archive-description,
 .author-box {
 //	margin-bottom: @padding;
@@ -192,7 +192,7 @@ Common Classes
 .breadcrumb {
   padding: 0;
   font-size: 80%;
-  
+
   .wrap {
     position: relative;
 
@@ -202,36 +202,36 @@ Common Classes
         clear: both;
         float: none;
         margin-bottom: 1em;
-      }    
+      }
       @media only screen and ( min-width: @break_tablet ) {
         position: absolute;
         right: 0;
         top: 14px;
-      }    
+      }
 
     }
-    
+
   }
-  
+
   nav {
     color: @wit;
     font-family: @fontstrong;
     padding-top: 18px;
     padding-bottom: 18px;
-    
+
     @media only screen and ( max-width: @break_tablet ) {
       padding-right: 18px;
       font-size: 1.25rem;
-    }    
+    }
     @media only screen and ( min-width: @break_tablet ) {
       font-size: 1.625rem;
       padding-right: 271px;
-    }    
-    
+    }
+
     span {
       padding: ( @padding / 1.5 ) 0;
     }
-    
+
     a {
       &:hover,
       &:active,
@@ -254,9 +254,9 @@ Common Classes
         line-height: 1em;
         margin: -3px 0 0 0;
         text-decoration: none;
-      }    
+      }
     }
-    
+
     span,
     a {
       color: @wit;
@@ -264,16 +264,16 @@ Common Classes
     }
 
   }
-  
+
   .separator {
     speak: none;
     display: inline-block;
     margin-left: ( @padding / 3 );
     margin-right: ( @padding / 3 );
-    
+
     .visuallyhidden();
-    
-  }	
+
+  }
 }
 
 
@@ -327,7 +327,7 @@ Widgets
     border: none;
     .font-size( ( 1.6 * @basefontsize ) );
     margin: 0;
-    
+
     a {
       border: none;
     }
@@ -382,7 +382,7 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 .taxonomy-title {
   font-size: 1.5rem;
   font-family: @bodyfont;
-  font-weight: 700; 
+  font-weight: 700;
   line-height: 1.2;
   margin: 0 0 .5em 0;
 }
@@ -463,7 +463,7 @@ Content Area
       h4 {
         margin: 0;
       }
-      p, 
+      p,
       ol,
       ul {
         & + p {
@@ -471,7 +471,7 @@ Content Area
         }
       }
     }
-  }        
+  }
 }
 
 
@@ -486,7 +486,7 @@ Content Area
   a {
     text-decoration: none;
     color: @a_color_visited;
-  
+
     &:focus,
     &:active,
     &:hover {
@@ -531,7 +531,7 @@ Content Area
   width: 100%;
   padding-left: 1em;
   font-size: 120%;
-  
+
   strong {
 		background: @donkerblauw_vol;
 		color: @wit;
@@ -552,7 +552,7 @@ Content Area
 			text-decoration: underline;
 		}
 	}
-  
+
 }
 
 .em-pagination,
@@ -561,7 +561,7 @@ Content Area
   border-top: 4px solid @donkerblauw_vol;
   margin-top: 1em;
   color: @donkerblauw_vol;
-  
+
   ul, ol {
     padding: 0;
     margin-left: 1em;
@@ -577,11 +577,11 @@ Content Area
 	.alignright {
 		margin-right: 0;
 	}
-	
+
 	li, div {
 		display: inline;
 		margin-right: .25em;
-		
+
 		a {
 			cursor: pointer;
 			display: inline-block;
@@ -596,7 +596,7 @@ Content Area
   			text-decoration: underline;
 			}
 		}
-		
+
 		&.active {
   		a {
     		background: @donkerblauw_vol;
@@ -605,15 +605,15 @@ Content Area
         font-family: @fontstrong;
   		}
 		}
-		
+
 	}
 
   .pagination-previous,
   .pagination-next {
     a {
       border-style: none;
-      background-repeat: no-repeat;     
-      white-space: nowrap; 
+      background-repeat: no-repeat;
+      white-space: nowrap;
     }
   }
   .pagination-previous a {
@@ -629,7 +629,7 @@ Content Area
       speak: none;
     }
   }
-	
+
 }
 .single .archive-pagination {
 	margin: 0 @padding;
@@ -788,7 +788,7 @@ Accessibility Extra's
 //	border: 1px solid @txt;
 }
 
-input[type="search"], 
+input[type="search"],
 input[type="text"] {
 	&:focus {
 		box-shadow: 0 0 5px rgba(81, 203, 238, 1);
@@ -820,8 +820,8 @@ input[type="text"] {
     main.content {
       .archive-description {
         display: block;
-        width: 100%;          
-      }        
+        width: 100%;
+      }
     }
   }
 }
@@ -840,7 +840,7 @@ input[type="text"] {
   h2.has-tooltip {
     .font-size(16);
     font-weight: normal;
-    
+
     .title {
       .font-size(24);
       font-weight: bold;
@@ -861,7 +861,7 @@ input[type="text"] {
 .menus();
 .sidebar_css();
 
- 
+
 
 /*
 Media Queries
@@ -920,7 +920,7 @@ Media Queries
 		padding-left: 0;
 	}
 
-	.site-inner, 
+	.site-inner,
 	.site-footer .footer-widgets {
 		padding-left: @padding;
 		padding-right: @padding;
@@ -978,7 +978,7 @@ Media Queries
         width: 45px;
         height: 45px;
     }
-    
+
 
 }
 
@@ -988,16 +988,16 @@ Media Queries
     .widget {
       clear: both;
       float: none;
-      
+
       article {
         float: left;
         width: 28%;
-        
+
         img.entry-image {
           margin-bottom: ( @padding / 2 );
         }
       }
-      
+
       .entry + .entry {
         padding-top: 0;
       }
@@ -1006,7 +1006,7 @@ Media Queries
 }
 
 @media only screen and (min-width: ( @break_fullwidth  - 1 )) {
-  
+
   .full-width-content {
     .sharing.block,
     #reactieformulier {
@@ -1015,37 +1015,37 @@ Media Queries
 //      margin-right: auto;
     }
   }
-  
+
   .footer-widgets {
     padding: 0;
     margin-top: @padding;
   }
 
   .sidebar {
-    
+
     .widget {
       clear: both;
       float: none;
-      
+
       article {
         float: none;
         width: auto;
-        
+
         img.entry-image {
           margin: @padding 0 ( @padding / 2 ) 0;
         }
-        
+
         .alignleft {
           img.entry-image {
             margin:  0 ( @padding / 2 ) 0 0;
           }
         }
       }
-      
+
       .entry + .entry {
         padding-top: 0;
       }
-      
+
     }
     .event-widget {
       .entry + .entry {
@@ -1062,7 +1062,7 @@ Media Queries
   .wrap .toggle-menu {
     background-image: url(images/hamburger.png);
   }
-  
+
 }
 
 
@@ -1109,7 +1109,7 @@ p.debugstring + p.debugstring {
 }
 
 
-    
+
 /* Text meant only for screen readers */
 .screen-reader-text span,
 .screen-reader-shortcut,
@@ -1204,7 +1204,7 @@ nav.nav-primary .menu-item.js-menu-open > ul.sub-menu {
       margin-left: 1em;
       padding-left: 1em;
       position: static;
-      
+
       &:before {
         content: '';
         display: none;
@@ -1224,4 +1224,3 @@ nav.nav-primary .menu-item.js-menu-open > ul.sub-menu {
 .externallink();
 
 .streamerstyle();
-
