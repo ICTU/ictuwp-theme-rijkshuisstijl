@@ -1782,7 +1782,7 @@ function rhswp_menu_container_end() {
 add_filter( 'genesis_after', 'rhswp_trackercode', 999 );
 
 function rhswp_trackercode() {
-  if ( 'www.digitaleoverheid.nl' == $_SERVER["HTTP_HOST"] || 'digitaleoverheid.nl' == $_SERVER["HTTP_HOST"] ) {
+  if ( 'www.digitaleoverheid.nl' == $_SERVER["HTTP_HOST"] || 'digitaleoverheid.nl' == $_SERVER["HTTP_HOST"] || 'nldigitalgovernment.nl' == $_SERVER["HTTP_HOST"] || 'www.nldigitalgovernment.nl' == $_SERVER["HTTP_HOST"] ) {
         echo '
 <script type="text/javascript">
 
@@ -4166,25 +4166,24 @@ function rhswp_widget_definition_footer2() {
 	));
 }
 
-
-
 //========================================================================================================
 
 // Position the Footer Area
 function rhswp_widget_output_footer1() {
 	genesis_widget_area ( RHSWP_FOOTERWIDGET1, array(
-		'before' => '<div class="footer-widgets" id="genesis-footer-widgets"><div class="wrap"><div class="container" id="footer1">footer1',
+		'before' => '<div class="footer-widgets" id="genesis-footer-widgets"><div class="wrap"><div class="container" id="footer1">',
 		'after'  => '</div>',
 	));
 
 }
 
+//========================================================================================================
 
 // Position the Footer Area
 function rhswp_widget_output_footer2() {
 
 	genesis_widget_area ( RHSWP_FOOTERWIDGET2, array(
-		'before'  => '<div class="container" id="footer2">footer2',
+		'before'  => '<div class="container" id="footer2">',
 		'after'  => '</div></div></div>',
 	));
 
