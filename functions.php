@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.6
-// * @desc.   Styling citaten aangepast.
+// * @version 2.2.7
+// * @desc.   Hero-image voor dossiers boven de dossierinfo gezet.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.2.6" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Styling citaten aangepast." );
+define( 'CHILD_THEME_VERSION',              "2.2.7" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Hero-image voor dossiers boven de dossierinfo gezet." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -441,8 +441,8 @@ remove_action( 'genesis_site_description',  'genesis_seo_site_description' );
 //add_action( 'genesis_after_header', 'rhswp_menu_container_end',               16 ); // DEZE MOET WEG!!!
 
 add_action( 'genesis_after_header', 'genesis_do_breadcrumbs',                 18 );
-add_action( 'genesis_after_header', 'rhswp_dossier_title_checker',            20 );
-add_action( 'genesis_after_header', 'rhswp_check_caroussel_or_featured_img',  24 );
+add_action( 'genesis_after_header', 'rhswp_check_caroussel_or_featured_img',  22 );
+add_action( 'genesis_after_header', 'rhswp_dossier_title_checker',            24 );
 
 //========================================================================================================
 
