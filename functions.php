@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.5
-// * @desc.   Footerwidgets beter uitgelijnd + blokken op homepage op 4-koloms breedte.
+// * @version 2.2.6
+// * @desc.   Styling citaten aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.2.5" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Footerwidgets beter uitgelijnd + blokken op homepage op 4-koloms breedte." );
+define( 'CHILD_THEME_VERSION',              "2.2.6" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Styling citaten aangepast." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.4
-// * @desc.   Betere leesbaarheid ordered list-items in IE11.
+// * @version 2.2.6
+// * @desc.   Styling citaten aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -75,11 +75,7 @@
   	padding: 0 0 0 1.5em;
   }
   
-  blockquote,
-  blockquote::before {
-  // color: @txt;
-  }
-  
+  q
   blockquote {
     margin: 1em 0 1em 0;
     padding: .5em;
@@ -93,6 +89,27 @@
     word-break: normal;
     hyphens: none;
   }
+
+  footer {
+    font-size: 80%;
+  }
+  blockquote em,
+  cite {
+    display: block;
+    clear: both;
+    text-align: left;
+    font-size: 75%;
+    margin-top: .5em;
+    
+    a {
+      padding-left: .75em;
+      .icon_socmed_icon('../images/svg/list-arrow.svg', @donkerblauw_vol );
+      background-repeat: no-repeat;
+      background-position: left center;
+      display: inline-block;
+    }
+  }
+
 
   @img_pullquote_max_width: 140px;
   @img_pullquote_mobile_max_width: 75px;
@@ -115,6 +132,7 @@
   	margin: 1em 1em 1em 1em;
   	font-style: normal;
     
+    q,
     blockquote {
     	border-top-style: none;
     	border-bottom-style: none;
@@ -180,24 +198,6 @@
         margin-right: 0;
       }
     }
-    footer {
-      font-size: 80%;
-    }
-    cite {
-      display: block;
-      clear: both;
-      text-align: left;
-      font-size: 75%;
-      margin-top: .5em;
-      
-      a {
-        padding-left: .75em;
-        .icon_socmed_icon('../images/svg/list-arrow.svg', @donkerblauw_vol );
-        background-repeat: no-repeat;
-        background-position: left center;
-        display: inline-block;
-      }
-    }
 
     &.align-left {
 
@@ -224,6 +224,7 @@
     &, a, * {
       color: @donkerblauw_vol;
     }
+    q,
     blockquote {
       &, * {
         word-break: normal;
@@ -259,11 +260,20 @@
       }
     }
     
+    q,
     blockquote {
+      
+      &:after,
+      &:before {
+        content: '';
+      }
+      
       border-top: 2px solid @donkerblauw_vol;
       border-bottom: 2px solid @donkerblauw_vol;
       line-height: 1.2;
       text-align: left;
+      display: block;
+      margin: .5em;
 
       @media only screen and (min-width: ( @break_tablet ) ) {
         padding: .5em 1em;
@@ -283,8 +293,9 @@
     }
   }
   
+  blockquote em,
   cite {
-  	font-style: normal;
+  	font-style: italic;
   	display: block;
   	clear: both;
   	text-align: right;

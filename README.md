@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.2.5 - Footerwidgets beter uitgelijnd + blokken op homepage op 4-koloms breedte.
+2.2.6 - Styling citaten aangepast.
 
 ## Version history
+* 2.2.6 - Styling citaten aangepast.
 * 2.2.5 - Footerwidgets beter uitgelijnd + blokken op homepage op 4-koloms breedte.
 * 2.2.4 - Kleursuggestie Pim voor donkerder oranje.
 * 2.2.3 - Meer strings vertaald, bugfiks voor homepage. Uitlijning reactieform op vollebreedtepagina's.
