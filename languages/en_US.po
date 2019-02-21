@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid) (v2.2.3)\n"
 "POT-Creation-Date: 2019-01-22 16:25+0100\n"
-"PO-Revision-Date: 2019-01-22 21:16+0100\n"
+"PO-Revision-Date: 2019-02-21 12:29+0100\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1012,13 +1012,13 @@ msgstr ""
 #: includes/dossier-helper-functions.php:223
 msgctxt "Standaardlabel voor het 2de item in het dossiermenu"
 msgid "Inhoud"
-msgstr ""
+msgstr "Content"
 
 #: includes/dossier-helper-functions.php:238
 #: includes/dossier-helper-functions.php:245
 msgctxt "Standaardlabel voor het menu in de dossiers"
 msgid "Overzicht"
-msgstr ""
+msgstr "Overview"
 
 #: includes/dossier-helper-functions.php:388
 #: includes/dossier-helper-functions.php:428
