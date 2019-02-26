@@ -1,15 +1,15 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid) (v2.2.7)\n"
 "POT-Creation-Date: 2019-02-26 15:20+0100\n"
-"PO-Revision-Date: 2016-09-08 17:23+0200\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2019-02-26 15:20+0100\n"
+"Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: \n"
+"Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: functions.php:237 functions.php:1214
 msgid "Topics"
-msgstr ""
+msgstr "Topics"
 
 #: functions.php:371
 msgctxt "Tekst op de actueelpagina"
@@ -179,7 +179,7 @@ msgstr ""
 #, php-format
 msgctxt "beschrijving op documentpagina"
 msgid "%s recent posts"
-msgstr ""
+msgstr "%s most recent posts"
 
 #: functions.php:1704
 msgid "Homepage widget area"
@@ -244,7 +244,7 @@ msgstr ""
 #: functions.php:1964
 msgctxt "share title"
 msgid "Share this page"
-msgstr ""
+msgstr "Share this page"
 
 #: functions.php:1986
 msgid "Share on Twitter"
@@ -363,9 +363,12 @@ msgid "PDF file"
 msgstr ""
 
 #: functions.php:3654
+#, fuzzy
+#| msgctxt "beschrijving op documentpagina"
+#| msgid "%s recent posts"
 msgctxt "paging"
 msgid "Newer posts"
-msgstr ""
+msgstr "%s most recent posts"
 
 #: functions.php:3657
 msgctxt "paging"
@@ -378,9 +381,12 @@ msgid "Older posts"
 msgstr ""
 
 #: functions.php:3669
+#, fuzzy
+#| msgctxt "share title"
+#| msgid "Share this page"
 msgctxt "paging"
 msgid "Previous page"
-msgstr ""
+msgstr "Share this page"
 
 #: functions.php:4121 functions.php:4148
 msgid "This is the general footer area"
@@ -732,8 +738,9 @@ msgstr ""
 
 #: includes/cpt-acf.php:120
 msgid ""
-"Welke pagina beschrijft de inhoud van dit dossier? Deze pagina is belangrijk, "
-"omdat we hiermee de verdere structuur van het dossier kunnen bepalen."
+"Welke pagina beschrijft de inhoud van dit dossier? Deze pagina is "
+"belangrijk, omdat we hiermee de verdere structuur van het dossier kunnen "
+"bepalen."
 msgstr ""
 
 #: includes/cpt-acf.php:140
@@ -795,10 +802,10 @@ msgstr ""
 
 #: includes/cpt-acf.php:605
 msgid ""
-"De paginatitel wordt standaard gebruikt voor ondermeer verwijzingen in menu's "
-"en in de <title>. Het kan zijn dat je voor de duidelijkheid een andere tekst "
-"wilt tonen in de <h1>. Als je hier 'ja' kiest, kun je een alternatieve "
-"paginatitel invoeren."
+"De paginatitel wordt standaard gebruikt voor ondermeer verwijzingen in "
+"menu's en in de <title>. Het kan zijn dat je voor de duidelijkheid een "
+"andere tekst wilt tonen in de <h1>. Als je hier 'ja' kiest, kun je een "
+"alternatieve paginatitel invoeren."
 msgstr ""
 
 #: includes/cpt-acf.php:625
@@ -831,7 +838,8 @@ msgstr ""
 msgid "Linktekst"
 msgstr ""
 
-#: includes/cpt-acf.php:1299 includes/cpt-acf.php:1301 includes/cpt-acf.php:1317
+#: includes/cpt-acf.php:1299 includes/cpt-acf.php:1301
+#: includes/cpt-acf.php:1317
 msgid "Carrousels"
 msgstr ""
 
@@ -1004,21 +1012,23 @@ msgstr ""
 #: includes/dossier-helper-functions.php:223
 msgctxt "Standaardlabel voor het 2de item in het dossiermenu"
 msgid "Inhoud"
-msgstr ""
+msgstr "Content"
 
 #: includes/dossier-helper-functions.php:238
 #: includes/dossier-helper-functions.php:245
 msgctxt "Standaardlabel voor het menu in de dossiers"
 msgid "Overzicht"
-msgstr ""
+msgstr "Overview"
 
 #: includes/dossier-helper-functions.php:388
 #: includes/dossier-helper-functions.php:428
-#, php-format
+#, fuzzy, php-format
+#| msgctxt "beschrijving op documentpagina"
+#| msgid "%s recent posts"
 msgid "%s post"
 msgid_plural "%s posts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s most recent posts"
+msgstr[1] "%s most recent posts"
 
 #: includes/dossier-helper-functions.php:389
 #: includes/dossier-helper-functions.php:500
@@ -1340,7 +1350,8 @@ msgid "Toon subpagina &lt;ul&gt; in de parent &lt;li&gt;"
 msgstr ""
 
 #: includes/widget-subpages.php:219
-msgid "Alleen als 'Toon ook de subpagina's van de huidige pagina' is aangevinkt"
+msgid ""
+"Alleen als 'Toon ook de subpagina's van de huidige pagina' is aangevinkt"
 msgstr ""
 
 #: page_digibeter-home.php:94
@@ -1387,9 +1398,12 @@ msgid ""
 msgstr ""
 
 #: search.php:47 search.php:58
+#, fuzzy
+#| msgctxt "share title"
+#| msgid "Share this page"
 msgctxt "searchform"
 msgid "Search this site"
-msgstr ""
+msgstr "Share this page"
 
 #: search.php:201
 msgctxt "Title, no results text"
@@ -1411,9 +1425,9 @@ msgstr ""
 
 #: taxonomy.php:72
 msgid ""
-"Dit is een ongefilterde weergaven van alle content, aflopend gesoorteerd op de "
-"laatste toevoegingsdatum. Het verdient aanbeveling om hiervoor contentblokken "
-"te gebruiken. Deze worden getoond in plaats van deze lijst."
+"Dit is een ongefilterde weergaven van alle content, aflopend gesoorteerd op "
+"de laatste toevoegingsdatum. Het verdient aanbeveling om hiervoor "
+"contentblokken te gebruiken. Deze worden getoond in plaats van deze lijst."
 msgstr ""
 
 #: taxonomy.php:73
@@ -1422,7 +1436,8 @@ msgstr ""
 
 #: taxonomy.php:74
 msgid ""
-"Deze tekst wordt alleen getoond aan redacteuren die taxonomieën mogen wijzigen."
+"Deze tekst wordt alleen getoond aan redacteuren die taxonomieën mogen "
+"wijzigen."
 msgstr ""
 
 #. Theme Name of the plugin/theme
@@ -1438,7 +1453,8 @@ msgid "Paul van Buuren"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/"
+msgid ""
+"https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/"
 msgstr ""
 
 #. Template Name of the plugin/theme

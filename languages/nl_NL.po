@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rijkshuisstijl (Digitale Overheid) (v2.2.3)\n"
-"POT-Creation-Date: 2019-01-22 20:41+0100\n"
-"PO-Revision-Date: 2019-01-22 21:17+0100\n"
+"Project-Id-Version: Rijkshuisstijl (Digitale Overheid) (v2.2.7)\n"
+"POT-Creation-Date: 2019-02-26 15:20+0100\n"
+"PO-Revision-Date: 2019-02-26 15:20+0100\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -340,7 +340,7 @@ msgctxt "post types"
 msgid "Attachments"
 msgstr "Attachments"
 
-#: functions.php:3560 functions.php:3623
+#: functions.php:3560 functions.php:3621
 msgctxt "post types"
 msgid "Document"
 msgstr "Document"
@@ -354,47 +354,47 @@ msgstr "Evenement"
 msgid "No sliders please"
 msgstr ""
 
-#: functions.php:3607
+#: functions.php:3605
 msgctxt "post types"
 msgid "Image"
 msgstr "Plaatje"
 
-#: functions.php:3612
+#: functions.php:3610
 msgctxt "post types"
 msgid "Text file"
 msgstr "Tekstbestand"
 
-#: functions.php:3617
+#: functions.php:3615
 msgctxt "post types"
 msgid "Movie file"
 msgstr "Filmbestand"
 
-#: functions.php:3620
+#: functions.php:3618
 msgctxt "post types"
 msgid "PDF file"
 msgstr "PDF-bestand"
 
-#: functions.php:3656
+#: functions.php:3654
 msgctxt "paging"
 msgid "Newer posts"
 msgstr "Recentere berichten"
 
-#: functions.php:3659
+#: functions.php:3657
 msgctxt "paging"
 msgid "Next page"
 msgstr "Volgende pagina"
 
-#: functions.php:3668
+#: functions.php:3666
 msgctxt "paging"
 msgid "Older posts"
 msgstr "Oudere berichten"
 
-#: functions.php:3671
+#: functions.php:3669
 msgctxt "paging"
 msgid "Previous page"
 msgstr "Vorige pagina"
 
-#: functions.php:4123 functions.php:4150
+#: functions.php:4121 functions.php:4148
 msgid "This is the general footer area"
 msgstr ""
 
@@ -631,7 +631,7 @@ msgctxt "Dossier header"
 msgid "posts for topic %s"
 msgstr "documenten in het dossier %s"
 
-#: functions.php:5441 functions.php:5552 search.php:206
+#: functions.php:5441 functions.php:5552 search.php:203
 #, php-format
 msgctxt "No results text"
 msgid "No results for %s."
@@ -681,7 +681,7 @@ msgid "Geen"
 msgstr ""
 
 #: includes/class.taxonomy-single-term.php:251
-msgid "Wissen"
+msgid "Deselecteren"
 msgstr ""
 
 #: includes/class.taxonomy-single-term.php:286
@@ -1273,7 +1273,7 @@ msgstr ""
 msgid "Aantal:"
 msgstr ""
 
-#: includes/widget-newswidget.php:218
+#: includes/widget-newswidget.php:219
 msgid "Meer"
 msgstr ""
 
@@ -1415,7 +1415,7 @@ msgctxt "searchform"
 msgid "Search this site"
 msgstr "Deel deze pagina"
 
-#: search.php:204
+#: search.php:201
 msgctxt "Title, no results text"
 msgid "Sorry"
 msgstr ""

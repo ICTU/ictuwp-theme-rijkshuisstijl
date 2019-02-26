@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Rijkshuisstijl (Digitale Overheid) - class.taxonomy-single-term.php
- * -------------------------------------------------------------------------------------------------------
- * Removes and replaces the built-in taxonomy metabox with <select> or series of <input type="radio" />
- * -------------------------------------------------------------------------------------------------------
- *
- * @author  Paul van Buuren
- * @license GPL-2.0+
- * @package wp-rijkshuisstijl
- * @version 0.4.1
- * @desc.   Theme-check, carrousel en extra pagina-layout 
- * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// * Rijkshuisstijl (Digitale Overheid) - class.taxonomy-single-term.php
+// * -------------------------------------------------------------------------------------------------------
+// * Removes and replaces the built-in taxonomy metabox with <select> or series of <input type="radio" />
+// * -------------------------------------------------------------------------------------------------------
+// * 
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.2.8
+// * @desc.   Default-kleur voor details-summary aangepast.
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
 
@@ -248,7 +248,7 @@ class Taxonomy_Single_Term {
 		?>
 		</ul>
 		<p style="margin-bottom:0;float:left;width:50%;">
-			<a class="button" id="taxonomy-<?php echo $this->slug; ?>-trigger-clear" href="#"><?php _e( 'Wissen', 'wp-rijkshuisstijl' ); ?></a>
+			<a class="button" id="taxonomy-<?php echo $this->slug; ?>-trigger-clear" href="#"><?php _e( 'Deselecteren', 'wp-rijkshuisstijl' ); ?></a>
 		</p>
 		<script type="text/javascript">
 			jQuery(document).ready(function($){
