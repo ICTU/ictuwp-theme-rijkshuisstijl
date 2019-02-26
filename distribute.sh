@@ -35,7 +35,10 @@ rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/developmen
 # remove the .pot
 rm '/shared-paul-files/Webs/temp/wp-rijkshuisstijl.pot'
 
-# remove the translations
+# rename the translations
+mv '/shared-paul-files/Webs/temp/en_GB.po' '/shared-paul-files/Webs/temp/wp-rijkshuisstijl-en_GB.po'
+mv '/shared-paul-files/Webs/temp/en_GB.mo' '/shared-paul-files/Webs/temp/wp-rijkshuisstijl-en_GB.mo'
+
 mv '/shared-paul-files/Webs/temp/en_US.po' '/shared-paul-files/Webs/temp/wp-rijkshuisstijl-en_US.po'
 mv '/shared-paul-files/Webs/temp/en_US.mo' '/shared-paul-files/Webs/temp/wp-rijkshuisstijl-en_US.mo'
 
@@ -43,18 +46,29 @@ mv '/shared-paul-files/Webs/temp/nl_NL.po' '/shared-paul-files/Webs/temp/wp-rijk
 mv '/shared-paul-files/Webs/temp/nl_NL.mo' '/shared-paul-files/Webs/temp/wp-rijkshuisstijl-nl_NL.mo'
 
 # copy files to /wp-content/languages/themes
+
+echo 'vertaling naar dev-env'
 rsync -ah '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/languages/themes/'
+
+echo 'vertaling naar Dutchlogic'
+rsync -ah '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/live-dutchlogic/wp-content/languages/themes/'
+
+echo 'vertaling naar Sentia acc'
+rsync -ah '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/languages/themes/'
+
+echo 'vertaling naar Sentia live'
+rsync -ah '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/languages/themes/'
 
 # ------------------
 # echo "bekkuppie maken ---------------------------------------------"
 
-# rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.2.4/'
+# rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.2.7/'
 
 # change the theme name
-# sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.2.4 - Kleine correctie news-widget + betere leesbaarheid ordered list-items in IE11./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.2.4/style.css'
+# sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.2.7 - Kleine correctie news-widget + betere leesbaarheid ordered list-items in IE11./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.2.7/style.css'
 
 # remove the backup
-# rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.2.4/style.css.bak'
+# rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.2.7/style.css.bak'
 
 
 

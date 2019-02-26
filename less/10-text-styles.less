@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.6
-// * @desc.   Styling citaten aangepast.
+// * @version 2.2.8
+// * @desc.   Default-kleur voor details-summary aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -347,6 +347,7 @@
     margin-bottom: 1em;
     border: 1px solid @txt;
     
+    p,
     ul,
     ol {
       margin-left: 1rem;
@@ -370,7 +371,10 @@
     
     summary {
 
+      background-color: @communicatiekleur_vol;
       background-image: url('images/icon-arrow-fat-down.svg');
+      .arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @wit );
+      color: @wit;
       background-position: 98% center;
       background-repeat: no-repeat;
       cursor: pointer;
@@ -382,6 +386,7 @@
       &:hover {
         background-color: @wit;
         background-image: url('images/icon-arrow-fat-down.svg');
+        .arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @txt );
         text-decoration: underline;
         color: @txt;        
       }
@@ -404,10 +409,12 @@
     &[open] {
       summary {
         background-image: url('images/icon-arrow-fat-up.svg');
+        .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @wit );
 
         &:hover {
           background-color: @txt;
           background-image: url('images/icon-arrow-fat-up-white.svg');
+          .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @wit );
           text-decoration: underline;
           color: white;        
         }
