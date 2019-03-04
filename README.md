@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.2.8 - Default-kleur voor details-summary aangepast.
+2.3.1 - NL-Digibeter omgebouwd naar beleidsonderwerpen.
 
 ## Version history
+* 2.3.1 - NL-Digibeter omgebouwd naar beleidsonderwerpen.
 * 2.2.8 - Default-kleur voor details-summary aangepast.
 * 2.2.7 - Hero-image voor dossiers boven de dossierinfo gezet.
 * 2.2.6 - Styling citaten aangepast.

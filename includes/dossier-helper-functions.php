@@ -10,8 +10,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.3
-// * @desc.   Meer strings vertaald, bugfiks voor homepage. Uitlijning reactieform op vollebreedtepagina's.
+// * @version 2.3.1
+// * @desc.   NL-Digibeter omgebouwd naar beleidsonderwerpen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -54,12 +54,12 @@ function rhswp_dossier_title_checker( ) {
   $standaardpaginanaam      = '';
 
   $args = array(
-    'dossier_overzichtpagina' => '',
-    'menu_voor_dossier' => '',
-    'markerforclickableactivepage' => '',
-    'currentpageid' => '',
-    'preferedtitle' => '',
-    'maxlength'     => 50,
+    'dossier_overzichtpagina'       => '',
+    'menu_voor_dossier'             => '',
+    'markerforclickableactivepage'  => '',
+    'currentpageid'                 => '',
+    'preferedtitle'                 => '',
+    'maxlength'                     => 65,
   );
 
 
@@ -557,6 +557,11 @@ function rhswp_dossier_title_checker( ) {
 
     echo '</div>';
     echo '</div>';
+
+    // RESET THE QUERY
+    wp_reset_query();
+    
+
   }
 
 
@@ -618,7 +623,7 @@ function rhswp_dossier_get_pagelink( $theobject, $args ) {
     $maxlength = $args['maxlength'];
   }
   else {
-    $maxlength = 50;
+    $maxlength = 65;
   }
   
 

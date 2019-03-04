@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.1
-// * @desc.   Vertaling bijgewerkt met oog op Engelstalige site.
+// * @version 2.3.1
+// * @desc.   NL-Digibeter omgebouwd naar beleidsonderwerpen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -1567,18 +1567,23 @@ if( function_exists('acf_add_local_field_group') ):
   				'id' => '',
   			),
   			'choices' => array(
-//  				'digibeter-oker' => 'oker',
-  				'digibeter-oranje' => 'oranje (Nederlands)',
-  				'digibeter-blauw' => 'blauw (Nederlands)',
-  				'digibeter-groen' => 'groen (Nederlands)',
-  				'digibeter-violet' => 'violet (Nederlands)',
-  				'digibeter-paars' => 'paars (Nederlands)',
+  				'digibeter-oranje' => 'oranje digibeter (Nederlands)',
+  				'digibeter-blauw' => 'blauw digibeter (Nederlands)',
+  				'digibeter-groen' => 'groen digibeter (Nederlands)',
+  				'digibeter-violet' => 'violet digibeter (Nederlands)',
+  				'digibeter-paars' => 'paars digibeter (Nederlands)',
 
-  				'digibeter-en-orange' => 'oranje (Engels)',
-  				'digibeter-en-blue' => 'blauw (Engels)',
-  				'digibeter-en-green' => 'groen (Engels)',
-  				'digibeter-en-violet' => 'violet (Engels)',
-  				'digibeter-en-purple' => 'paars (Engels)',
+  				'digibeter-en-orange' => 'oranje digibeter (Engels)',
+  				'digibeter-en-blue' => 'blauw digibeter (Engels)',
+  				'digibeter-en-green' => 'groen digibeter (Engels)',
+  				'digibeter-en-violet' => 'violet digibeter (Engels)',
+  				'digibeter-en-purple' => 'paars digibeter (Engels)',
+  				
+  				'da-01-problemen-oplossen' => 'Data-agenda 01 - Problemen oplossen met datagedreven werken',
+  				'da-02-wetgeving-publieke-waarden' => 'Data-agenda 02 - Aandacht voor wetgeving en publieke waarden',
+  				'da-03-overheidsdata-verbeteren' => 'Data-agenda 03 - Overheidsdata kwalitatief verbeteren en efficiënter benutten',
+  				'da-04-kennis-verzamelen-verbeteren' => 'Data-agenda 04 - Kennis over datagedreven werken verzamelen en delen',
+  				'da-05-mensen-organisatie-cultuurverandering' => 'Data-agenda 05 - Investeren in mensen, organisatie en cultuurverandering',
   				
   			),
   			'default_value' => array(

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.8
-// * @desc.   Default-kleur voor details-summary aangepast.
+// * @version 2.3.1
+// * @desc.   NL-Digibeter omgebouwd naar beleidsonderwerpen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.2.8" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Default-kleur voor details-summary aangepast." );
+define( 'CHILD_THEME_VERSION',              "2.3.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "NL-Digibeter omgebouwd naar beleidsonderwerpen." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -81,7 +81,7 @@ if ( ! defined( 'RHSWP_CPT_SLIDER' ) ) {
 }
 
 if ( ! defined( 'RHSWP_CT_DIGIBETER' ) ) {
-  define( 'RHSWP_CT_DIGIBETER',             'digitaleagenda' );   // custom taxonomy for digitale agenda
+  define( 'RHSWP_CT_DIGIBETER',             'beleidsterreinen' );   // custom taxonomy for digitale agenda
 }
 
 if ( ! defined( 'RHSWP_ADMIN_STREAMER_CSS' ) ) {
@@ -3800,30 +3800,37 @@ function rhswp_add_blog_archive_css() {
 
   global $imgbreakpoints;
 
-  $blogberichten_css   = ".entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]) {
-    padding-right: 1em;
-    background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link.svg');
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: .75em .75em;
-  }
+  $blogberichten_css   = "
+.block a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]),
+.entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]) {
+  padding-right: 1em;
+  background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link.svg');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: .75em .75em;
+}
+.block a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):visited,
 .entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):visited {
-    background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-visited.svg');
-  }
+  background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-visited.svg');
+}
+.block a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):active,
+.block a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):focus,
+.block a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):hover, 
 .entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):active,
 .entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):focus,
 .entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):hover {
-    background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-hover.svg');
-  }
-  .entry-content a:not([href]),
-  .entry-content .links li a,
-  .entry-content a[href^=\"/\"],
-  .entry-content a[href^=\"#\"],
-  .entry-content a[href*=\"tel:\"],
-  .entry-content a[href*=\"mailto:\"] {
-    padding-right: 0 !important;
-    background: none !important;
-  }";
+  background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-hover.svg');
+  color: #A02F1D;
+}
+.entry-content a:not([href]),
+.entry-content .links li a,
+.entry-content a[href^=\"/\"],
+.entry-content a[href^=\"#\"],
+.entry-content a[href*=\"tel:\"],
+.entry-content a[href*=\"mailto:\"] {
+  padding-right: 0 !important;
+  background: none !important;
+}";
 
   $countertje   = 0;
 
@@ -5049,6 +5056,7 @@ function rhswp_add_add_framebox_funcs() {
     echo "<label for='rhswp_add_framebox_style'>" . _x( "Randkleur", 'Insert streamer', 'wp-rijkshuisstijl' ) . "</label>";
     echo "<label for='rhswp_add_framebox_style_green'><input type='radio' id='rhswp_add_framebox_style_green' name='rhswp_add_framebox_style' checked='checked' value=\"green\">Groen</label>";
     echo "<label for='rhswp_add_framebox_style_gray'><input type='radio' id='rhswp_add_framebox_style_gray' name='rhswp_add_framebox_style' value=\"gray\">Grijs</label>";
+    echo "<label for='rhswp_add_framebox_style_blue'><input type='radio' id='rhswp_add_framebox_style_blue' name='rhswp_add_framebox_style' value=\"blue\">Blauw</label>";
     echo "</div>";
 
 

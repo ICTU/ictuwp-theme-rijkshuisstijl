@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.8
-// * @desc.   Default-kleur voor details-summary aangepast.
+// * @version 2.3.1
+// * @desc.   NL-Digibeter omgebouwd naar beleidsonderwerpen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -90,9 +90,6 @@
     hyphens: none;
   }
 
-  footer {
-    font-size: 80%;
-  }
   blockquote em,
   cite {
     display: block;
@@ -345,7 +342,7 @@
   details {
     overflow: hidden;
     margin-bottom: 1em;
-    border: 1px solid @txt;
+    border: 2px solid @communicatiekleur_vol;
     
     p,
     ul,
@@ -821,21 +818,6 @@
       }
     }
   }
-/*  
-  .featured {
-    margin: 0 0 .25em 1em;
-    padding-top: .25em;
-    &.toc-active {
-	    max-width: 25%;
-	    margin: .25em 1em 1em 0;
-	    padding-top: 0;
-	    
-	    & + #toc_container {
-		    max-width: 33%;
-	    }
-    }
-  }
-*/  
   .featured {
     margin: 0 0 .25em 1em;
     padding-top: .25em;
@@ -858,7 +840,7 @@
   
   .borderframe {
 
-    border: 1px solid @block_border_color;
+    border: 2px solid @grijs_4;
 
     h2, 
     h3, 
@@ -866,20 +848,29 @@
     h5, 
     h6 {
       &.blocktitle {
-        margin: 0 0 .4em 0;
-        padding: .5rem 1rem;
+        margin: 0 0 .25em 0;
+        padding: .75rem 1rem;
         font-size: 1.2rem;
+      }
+      & + div {
+        margin-top: 0;
       }
     }
     
     
     &.gray {
-      background: @grijs;      
-      border-color: @border_footer_top;
+      background: @grijs_2;      
+      border-color: @grijs_3;
+      
+      img {
+        border: 1px solid @grijs_4;
+      }
     }
 
     &.green {
 
+      border: 2px solid @communicatiekleur_vol;
+      
       h2, 
       h3, 
       h4, 
@@ -887,6 +878,22 @@
       h6 {
         &.blocktitle {
           background: @communicatiekleur_vol;
+          color: @wit;
+        }
+      }
+    }
+    
+    &.blue {
+
+      border: 2px solid @digibeter_blauw;
+
+      h2, 
+      h3, 
+      h4, 
+      h5, 
+      h6 {
+        &.blocktitle {
+          background: @digibeter_blauw;
           color: @wit;
         }
       }
@@ -1034,6 +1041,60 @@
       }
     }
 
+    .da-01-problemen-oplossen,
+    .da-02-wetgeving-publieke-waarden,
+    .da-03-overheidsdata-verbeteren,
+    .da-04-kennis-verzamelen-verbeteren,
+    .da-05-mensen-organisatie-cultuurverandering {
+      *, a {
+        color: @txt;
+      }
+      a {
+        &:hover,
+        &:active,
+        &:focus {
+          color: @txt;
+          .chapter-number {
+            color: @txt;
+          }
+        }
+      }
+      .chapter-number {
+        color: @digibeter_blauw;
+      }
+    }      
+    
+    .da-01-problemen-oplossen {
+      // toekomst
+      background-color: @wit;
+      background-image: url('images/digibeter-icons/da-01-problemen-oplossen-thumb.svg');
+    }
+
+    .da-02-wetgeving-publieke-waarden {
+      // toekomst
+      background-color: @dataagendagrijs;
+      background-image: url('images/digibeter-icons/da-02-wetgeving-publieke-waarden-thumb.svg');
+    }
+
+    .da-03-overheidsdata-verbeteren {
+      // toekomst
+      background-color: @wit;
+      background-image: url('images/digibeter-icons/da-03-overheidsdata-verbeteren-thumb.svg');
+    }
+
+    .da-04-kennis-verzamelen-verbeteren {
+      // toekomst
+      background-color: @dataagendagrijs;
+      background-image: url('images/digibeter-icons/da-04-kennis-verzamelen-verbeteren-thumb.svg');
+    }
+
+    .da-05-mensen-organisatie-cultuurverandering {
+      // toekomst
+      background-color: @wit;
+      background-image: url('images/digibeter-icons/da-05-mensen-organisatie-cultuurverandering-thumb.svg');
+    }
+
+
   	@media only screen and (max-width: ( @menubreakpoint ) ) {
       flex-direction: column;
 
@@ -1054,6 +1115,10 @@
         background-size: contain;
       }
 
+
+      .da-01-problemen-oplossen,
+      .da-03-overheidsdata-verbeteren,
+      .da-05-mensen-organisatie-cultuurverandering,
       .digibeter-oranje {
         // innovatie
         background-position: 2em center;
@@ -1062,6 +1127,8 @@
         }
       }
       
+      .da-02-wetgeving-publieke-waarden,
+      .da-04-kennis-verzamelen-verbeteren,
       .digibeter-blauw {
         // grondrechten
         background-position: 99% center;
@@ -1126,10 +1193,16 @@
         background-image: url('images/digibeter-icons/01-innovatie-illustratie.svg');
       }
       
-      .digibeter-blauw {
-        background-image: url('images/digibeter-icons/02-beschermen-grondrechten-illustratie.svg');
+      .da-02-wetgeving-publieke-waarden,
+      .da-04-kennis-verzamelen-verbeteren,
+      .digibeter-blauw,
+      .digibeter-violet {
         background-position: center 1em;
         padding-top: 8em;
+      }
+      
+      .digibeter-blauw {
+        background-image: url('images/digibeter-icons/02-beschermen-grondrechten-illustratie.svg');
       }
       
       .digibeter-groen {
@@ -1138,8 +1211,6 @@
       
       .digibeter-violet {
         background-image: url('images/digibeter-icons/04-persoonlijker-illustratie.svg');
-        padding-top: 8em;
-        background-position: center 1em;
         
         .chapter-number {
           text-align: left;

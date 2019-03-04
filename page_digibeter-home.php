@@ -9,22 +9,22 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.19
-// * @desc.   Digibeter-kleuren ook in het Engels beschikbaar.
+// * @version 2.3.1
+// * @desc.   NL-Digibeter omgebouwd naar beleidsonderwerpen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // *
  */
 
 
-//* Template Name: digibeter - landingspagina
+//* Template Name: NL-digibeter / Data Agenda - landingspagina
 
 //========================================================================================================
 
-remove_action( 'genesis_after_header', 'rhswp_check_caroussel_or_featured_img', 24 );
+//remove_action( 'genesis_after_header', 'rhswp_check_caroussel_or_featured_img', 24 );
 
 
 remove_filter( 'genesis_post_title_text', 'genesis_post_title_text_filter', 15 );
-//add_filter( 'genesis_post_title_text', 'rhswp_digibeter_filter_page_title', 15 );
+
 add_filter( 'genesis_post_title_output', 'rhswp_digibeter_filter_page_title', 16 );
 
 
@@ -51,12 +51,16 @@ genesis();
 //========================================================================================================
 
 function rhswp_digibeter_extra_content() {
+  
+  global $post;
 
   if ( get_field( 'digibeter_content_intro', get_the_ID() ) ) {
     // voorkomen dat pagina's met dit template ook een carroussel laten zien
     // deze pagina heeft dus als template 'page_digibeter-home.php' en heeft iets in digibeter_content_intro
     echo do_shortcode( get_field( 'digibeter_content_intro', get_the_ID() ) );
-
+  }
+  else {
+    // nou niks dus
   }
 
 }
@@ -87,11 +91,18 @@ function rhswp_digibeter_filter_page_title( $title ) {
   $replacement  = '';
   $agenda       = str_ireplace( $pattern, $replacement, get_the_title() );
   
-  if ( $agenda ) {
-    $agenda = '<span class="subtitle">' . $agenda . '</span>';
+  if ( 'nl digibeter' == strtolower( get_the_title() ) ) {
+    
+    if ( $agenda ) {
+      $agenda = '<span class="subtitle">' . $agenda . '</span>';
+    }
+    else {
+      $agenda = '<span class="subtitle">' . __( 'Agenda Digitale Overheid', 'wp-rijkshuisstijl' ) . '</span>';
+    }
+    
   }
   else {
-    $agenda = '<span class="subtitle">' . __( 'Agenda Digitale Overheid', 'wp-rijkshuisstijl' ) . '</span>';
+    $agenda = '';
   }
   
   $title = sprintf( '<h1 class="entry-title">%s %s</h1>', $thetitle, $agenda );

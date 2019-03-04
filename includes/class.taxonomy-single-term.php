@@ -9,7 +9,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.8
+// * @version 2.2.8a
 // * @desc.   Default-kleur voor details-summary aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
