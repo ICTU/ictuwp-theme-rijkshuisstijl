@@ -1782,27 +1782,41 @@ function rhswp_menu_container_end() {
 add_filter( 'genesis_after', 'rhswp_trackercode', 999 );
 
 function rhswp_trackercode() {
-  if ( 'www.digitaleoverheid.nl' == $_SERVER["HTTP_HOST"] || 'digitaleoverheid.nl' == $_SERVER["HTTP_HOST"] || 'nldigitalgovernment.nl' == $_SERVER["HTTP_HOST"] || 'www.nldigitalgovernment.nl' == $_SERVER["HTTP_HOST"] ) {
-        echo '
-<script type="text/javascript">
 
+  if ( 'www.digitaleoverheid.nl' == $_SERVER["HTTP_HOST"] || 'digitaleoverheid.nl' == $_SERVER["HTTP_HOST"] || 'nldigitalgovernment.nl' == $_SERVER["HTTP_HOST"] || 'www.nldigitalgovernment.nl' == $_SERVER["HTTP_HOST"] ) {
+
+    $strackingid  = 147;
+    $cookiedomain = 'digitaleoverheid.nl';
+    
+    if ( 'nldigitalgovernment.nl' == $_SERVER["HTTP_HOST"] || 'www.nldigitalgovernment.nl' == $_SERVER["HTTP_HOST"] ) {
+      $strackingid = 1771;
+      $cookiedomain = 'nldigitalgovernment.nl';
+    }
+    
+    
+    echo '
 <!-- Piwik -->
+<script type="text/javascript">
   var _paq = _paq || [];
-  _paq.push(["enableLinkTracking"]);
+  _paq.push(["setCookieDomain", "*.'. $cookiedomain . '"]);
+  _paq.push(["setDomains", ["*.' . $cookiedomain . '"]]);
+  _paq.push(["enableHeartBeatTimer", 10]);
   _paq.push(["setLinkTrackingTimer", 750]);
-  _paq.push(["enableHeartBeatTimer"]);
   _paq.push(["trackPageView"]);
   _paq.push(["enableLinkTracking"]);
   (function() {
     var u="//statistiek.rijksoverheid.nl/piwik/";
-    _paq.push(["setTrackerUrl", u+"js/tracker.php"]);
-    _paq.push(["setSiteId", 147]);
-    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0];
-    g.type="text/javascript"; g.async=true; g.defer=true; g.src=u+"js/tracker.php"; s.parentNode.insertBefore(g,s);
+    _paq.push(["setTrackerUrl", u+\'piwik.php\']);
+    _paq.push(["setSiteId", \'' . $strackingid . '\']);
+    var d=document, g=d.createElement(\'script\'), s=d.getElementsByTagName(\'script\')[0];
+    g.type=\'text/javascript\'; g.async=true; g.defer=true; g.src=u+\'piwik.js\'; s.parentNode.insertBefore(g,s);
   })();
+</script>
 <!-- End Piwik Code -->
-
-</script>';
+<!-- Piwik Image Tracker-->
+<noscript><img src="https://statistiek.rijksoverheid.nl/piwik/piwik.php?idsite=' . $strackingid . '&rec=1" style="border:0" alt="" /></noscript>
+<!-- End Piwik -->
+';
 
 
     }
