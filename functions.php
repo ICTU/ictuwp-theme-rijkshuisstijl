@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.3.1
-// * @desc.   NL-Digibeter omgebouwd naar beleidsonderwerpen.
+// * @version 2.3.2
+// * @desc.   Styling NL-Digitbeter verder aangepast; andere header-images, contrast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.3.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "NL-Digibeter omgebouwd naar beleidsonderwerpen." );
+define( 'CHILD_THEME_VERSION',              "2.3.2" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Styling NL-Digitbeter verder aangepast; andere header-images, contrast." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -2025,7 +2025,7 @@ function rhswp_document_add_extra_info() {
       $type       = get_field( 'rhswp_document_filetype', $post->ID );
       $file       = get_field( 'rhswp_document_upload', $post->ID );
       if( $file ) {
-        echo '<a href="' . $file['url'] . '">Download ' . $file['filename'] . '</a>';
+        echo '<a href="' . $file['url'] . '" class="download ' . RHSWP_CPT_DOCUMENT . '">' . sprintf( _x( 'Download %s', 'download document', 'wp-rijkshuisstijl' ), $file['filename'] ) . '</a>';
         if ( $type || $grootte ) {
           echo ' (';
           if ( $type && $grootte ) {
@@ -5070,6 +5070,8 @@ function rhswp_add_add_framebox_funcs() {
     echo "<label for='rhswp_add_framebox_style'>" . _x( "Randkleur", 'Insert streamer', 'wp-rijkshuisstijl' ) . "</label>";
     echo "<label for='rhswp_add_framebox_style_green'><input type='radio' id='rhswp_add_framebox_style_green' name='rhswp_add_framebox_style' checked='checked' value=\"green\">Groen</label>";
     echo "<label for='rhswp_add_framebox_style_gray'><input type='radio' id='rhswp_add_framebox_style_gray' name='rhswp_add_framebox_style' value=\"gray\">Grijs</label>";
+    echo "<label for='rhswp_add_framebox_style_dataagendablue'><input type='radio' id='rhswp_add_framebox_style_dataagendablue' name='rhswp_add_framebox_style' value=\"dataagendablue\">Data-agenda-blauw</label>";
+    echo "<label for='rhswp_add_framebox_style_dataagendaorange'><input type='radio' id='rhswp_add_framebox_style_dataagendaorange' name='rhswp_add_framebox_style' value=\"dataagendaorange\">Data-agenda-oranje</label>";
     echo "<label for='rhswp_add_framebox_style_blue'><input type='radio' id='rhswp_add_framebox_style_blue' name='rhswp_add_framebox_style' value=\"blue\">Blauw</label>";
     echo "</div>";
 

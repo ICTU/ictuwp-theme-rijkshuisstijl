@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.3.1
-// * @desc.   NL-Digibeter omgebouwd naar beleidsonderwerpen.
+// * @version 2.3.2
+// * @desc.   Styling NL-Digitbeter verder aangepast; andere header-images, contrast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -52,9 +52,26 @@
   	text-decoration: underline;
   }
 
-  	a.extern {
-      .listitem_arrow_extern( @a_color_default, @a_color_hover, @a_color_active, @a_color_visited );
-  	}     
+	a.extern {
+    .listitem_arrow_extern( @a_color_default, @a_color_hover, @a_color_active, @a_color_visited );
+	}     
+
+  a.download {
+    display: inline-block;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    padding-left: 2.25em;
+    padding-right: 1em;
+    margin-right: 1em;
+    color: @wit;
+    .iconaddfill('../images/svg/icon-download.svg', @wit );
+    background-size: 1.5em 1.5em;
+    background-position: .25em center;
+    background-repeat: no-repeat;
+    background-color: @donkerblauw_vol;
+  }
   
   p {
   	margin: 0 0 @padding 0;
@@ -882,7 +899,41 @@
         }
       }
     }
-    
+
+    &.dataagendablue {
+
+      border: 2px solid @digibeter_blauw;
+      background: @dataagenda_blauw_0;
+
+      h2, 
+      h3, 
+      h4, 
+      h5, 
+      h6 {
+        &.blocktitle {
+          background: @digibeter_blauw;
+          color: @wit;
+        }
+      }
+    }
+        
+    &.dataagendaorange {
+
+      border: 2px solid @digibeter_oranje;
+      background: @wit;
+
+      h2, 
+      h3, 
+      h4, 
+      h5, 
+      h6 {
+        &.blocktitle {
+          background: @digibeter_oranje;
+          color: @wit;
+        }
+      }
+    }
+        
     &.blue {
 
       border: 2px solid @digibeter_blauw;
@@ -923,6 +974,7 @@
     & + p,
     & + ol,
     & + ul,
+    & + details,
     & + div {
       margin-top: 1em;
     }
@@ -1066,31 +1118,31 @@
     
     .da-01-problemen-oplossen {
       // toekomst
-      background-color: @wit;
+      background-color: @dataagenda_blauw_1;
       background-image: url('images/digibeter-icons/da-01-problemen-oplossen-thumb.svg');
     }
 
     .da-02-wetgeving-publieke-waarden {
       // toekomst
-      background-color: @dataagendagrijs;
+      background-color: @dataagenda_blauw_2;
       background-image: url('images/digibeter-icons/da-02-wetgeving-publieke-waarden-thumb.svg');
     }
 
     .da-03-overheidsdata-verbeteren {
       // toekomst
-      background-color: @wit;
+      background-color: @dataagenda_blauw_1;
       background-image: url('images/digibeter-icons/da-03-overheidsdata-verbeteren-thumb.svg');
     }
 
     .da-04-kennis-verzamelen-verbeteren {
       // toekomst
-      background-color: @dataagendagrijs;
+      background-color: @dataagenda_blauw_2;
       background-image: url('images/digibeter-icons/da-04-kennis-verzamelen-verbeteren-thumb.svg');
     }
 
     .da-05-mensen-organisatie-cultuurverandering {
       // toekomst
-      background-color: @wit;
+      background-color: @dataagenda_blauw_1;
       background-image: url('images/digibeter-icons/da-05-mensen-organisatie-cultuurverandering-thumb.svg');
     }
 
