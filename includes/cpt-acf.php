@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.3.1
-// * @desc.   NL-Digibeter omgebouwd naar beleidsonderwerpen.
+// * @version 2.4.1
+// * @desc.   Optie voor ander reactieformulier per pagina of dossier.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -503,6 +503,7 @@ endif;
 
 if( function_exists('register_field_group') ):
 
+
     //====================================================================================================
     // sokmetknoppen voor twitter, linkedin, het satanische facebook
     // 
@@ -551,15 +552,46 @@ if( function_exists('register_field_group') ):
           'choices' 			=> array (
       			SOC_MED_YES	=> __( 'Ja, toon reactieformulier', 'wp-rijkshuisstijl' ),
       			SOC_MED_NO	=> __( 'Nee, verberg reactieformulier', 'wp-rijkshuisstijl' ),
+    				'anders'    => __( 'Anders, toon dit formulier:', 'wp-rijkshuisstijl' ) ,
           ),
           'other_choice'			=> 0,
           'save_other_choice'	=> 0,
           'default_value'			=> SOC_MED_YES,
           'layout' 						=> 'vertical',
         ),
-
-
+    
+    		array(
+    			'key' => 'field_5c87a6bc3c29a',
+    			'label' => 'Ander reactieformulier',
+    			'name' => 'ander_reactieformulier',
+    			'type' => 'post_object',
+    			'instructions' => '',
+    			'required' => 0,
+    			'conditional_logic' => array(
+    				array(
+    					array(
+    						'field' => 'field_54e610433e1d1',
+    						'operator' => '==',
+    						'value' => 'anders',
+    					),
+    				),
+    			),
+    			'wrapper' => array(
+    				'width' => '',
+    				'class' => '',
+    				'id' => '',
+    			),
+    			'post_type' => array(
+    				0 => 'wpcf7_contact_form',
+    			),
+    			'taxonomy' => '',
+    			'allow_null' => 0,
+    			'multiple' => 0,
+    			'return_format' => 'id',
+    			'ui' => 1,
+    		),
       ),
+
       'location' => array (
         array (
           array (
@@ -582,6 +614,14 @@ if( function_exists('register_field_group') ):
             'value' => 'event',
           ),
         ),
+    		array(
+    			array(
+    				'param' => 'taxonomy',
+    				'operator' => '==',
+    				'value' => RHSWP_CT_DOSSIER,
+    			),
+    		),
+        
       ),
       'menu_order' => 0,
       'position' => 'normal',
@@ -590,7 +630,6 @@ if( function_exists('register_field_group') ):
       'instruction_placement' => 'label',
       'hide_on_screen' => '',
     ));
-
 
   
   acf_add_local_field_group(array (
