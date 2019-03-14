@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.3.2
-// * @desc.   Styling NL-Digitbeter verder aangepast; andere header-images, contrast.
+// * @version 2.4.1
+// * @desc.   Optie voor ander reactieformulier per pagina of dossier.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.3.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Styling NL-Digitbeter verder aangepast; andere header-images, contrast." );
+define( 'CHILD_THEME_VERSION',              "2.4.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Optie voor ander reactieformulier per pagina of dossier." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -3074,6 +3074,11 @@ function rhswp_write_extra_contentblokken() {
       }
     }
   }
+
+  // RESET THE QUERY
+  wp_reset_query();
+
+  
 }
 
 //========================================================================================================
@@ -4264,6 +4269,7 @@ add_action( 'genesis_after_loop', 'rhswp_contactreactie_write_reactieform', 15 )
 
 
 function rhswp_contactreactie_write_reactieform() {
+
   global $post;
 
 	$contactformulier	 			= '';
@@ -4271,16 +4277,40 @@ function rhswp_contactreactie_write_reactieform() {
   $toon_reactieformulier	= 'default';
   $documenttypes    			= array( 'post', 'page' );
   $doctype_check 					= false;
+  $postid                 = $post->ID;
+  $title                  = esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) );
+
+  if ( is_tax( RHSWP_CT_DOSSIER ) ) {
+    $postid                 = get_queried_object()->term_id;
+    $acfid                  = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
+  }
+  else {
+    $acfid                  = $postid;
+  }
+
 
 	if ( function_exists( 'get_field' ) ) {
 		$contactformulier				= get_field( 'contactformulier', 'option' );
     $documenttypes    			= get_field( 'contactformulier_documenttypes', 'option' );
-    $toon_reactieformulier	= get_field( 'toon_reactieformulier_post', $post->ID );
-    $posttype								= get_post_type();
+    $toon_reactieformulier  = get_field( 'toon_reactieformulier_post', $acfid );
 
-    if ( $documenttypes && $posttype ) {
-	    // check of posttype klopt
-	    $doctype_check 				= in_array( $posttype, $documenttypes );
+    if ( is_tax( RHSWP_CT_DOSSIER ) ) {
+      $doctype_check 				  = true;
+    }
+    else {
+
+      $posttype								= get_post_type();
+    
+      if ( $documenttypes && $posttype ) {
+        // check of posttype klopt
+        $doctype_check 				= in_array( $posttype, $documenttypes );
+      }
+    
+    }
+
+    
+    if ( 'anders' == $toon_reactieformulier ) {
+  		$contactformulier				= get_field( 'ander_reactieformulier', $acfid );
     }
 
     if ( ! $toon_reactieformulier ) {
@@ -4299,10 +4329,14 @@ function rhswp_contactreactie_write_reactieform() {
 	}
 
 
-	if ( SOC_MED_YES == $toon_reactieformulier &&  $doctype_check )  {
+	if ( ( SOC_MED_YES == $toon_reactieformulier || 'anders' == $toon_reactieformulier ) &&  $doctype_check )  {
+
+    if ( get_the_title( $contactformulier ) ) {
+      $title                  = get_the_title( $contactformulier );
+    }
 
 		echo '<section class="suggestie" id="reactieformulier" aria-labelledby="ID_reactieformulier_title">';
-		echo '<h2 id="ID_reactieformulier_title">' . esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) ) . '</h2>';
+		echo '<h2 id="ID_reactieformulier_title">' . $title . '</h2>';
 
 	  if ( $contactformulier ) {
 			echo do_shortcode('[contact-form-7 id="' . $contactformulier . '" title="' . esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) ) . '"]');
