@@ -1,6 +1,6 @@
 # sh /shared-paul-files/Webs/git-repos/ICTU---Digitale-Overheid-WP-theme/distribute.sh &>/dev/null
 
-# version 2.3.2
+# version 2.3.3
 
 # clear the log file
 
@@ -62,13 +62,13 @@ rsync -ah '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruike
 # ------------------
 # echo "bekkuppie maken ---------------------------------------------"
 
-# rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.3.2/'
+# rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.3.3/'
 
 # change the theme name
-  # sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.3.2 - Styling NL-Digitbeter verder aangepast; andere header-images, contrast./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.3.2/style.css'
+  # sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.3.3 - Styling NL-Digitbeter; header-images met nog beter contrast./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.3.3/style.css'
 
 # remove the backup
-# rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.3.2/style.css.bak'
+# rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.3.3/style.css.bak'
 
 
 
