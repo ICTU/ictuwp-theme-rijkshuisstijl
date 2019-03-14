@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.4.1 - Optie voor ander reactieformulier per pagina of dossier.
+2.4.2 - Extra opties voor beleidskleuren; header-styling in uitklapblokken.
 
 ## Version history
+* 2.4.2 - Extra opties voor beleidskleuren; header-styling in uitklapblokken.
 * 2.4.1 - Optie voor ander reactieformulier per pagina of dossier.
 * 2.3.3 - Styling NL-Digitbeter; header-images met nog beter contrast.
 * 2.3.2 - Styling NL-Digitbeter verder aangepast; andere header-images, contrast.

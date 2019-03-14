@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.4.1
-// * @desc.   Optie voor ander reactieformulier per pagina of dossier.
+// * @version 2.4.2
+// * @desc.   Extra opties voor beleidskleuren; header-styling in uitklapblokken.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -1618,11 +1618,12 @@ if( function_exists('acf_add_local_field_group') ):
   				'digibeter-en-violet' => 'violet digibeter (Engels)',
   				'digibeter-en-purple' => 'paars digibeter (Engels)',
   				
-  				'da-01-problemen-oplossen' => 'Data-agenda 01 - Problemen oplossen met datagedreven werken',
-  				'da-02-wetgeving-publieke-waarden' => 'Data-agenda 02 - Aandacht voor wetgeving en publieke waarden',
-  				'da-03-overheidsdata-verbeteren' => 'Data-agenda 03 - Overheidsdata kwalitatief verbeteren en efficiënter benutten',
-  				'da-04-kennis-verzamelen-verbeteren' => 'Data-agenda 04 - Kennis over datagedreven werken verzamelen en delen',
-  				'da-05-mensen-organisatie-cultuurverandering' => 'Data-agenda 05 - Investeren in mensen, organisatie en cultuurverandering',
+  				'da-06' => 'NDA - algemeen',
+  				'da-01-problemen-oplossen' => 'NDA H1 - Problemen oplossen met datagedreven werken',
+  				'da-02-wetgeving-publieke-waarden' => 'NDA H2 - Aandacht voor wetgeving en publieke waarden',
+  				'da-03-overheidsdata-verbeteren' => 'NDA H3 - Overheidsdata kwalitatief verbeteren en efficiënter benutten',
+  				'da-04-kennis-verzamelen-verbeteren' => 'NDA H4 - Kennis over datagedreven werken verzamelen en delen',
+  				'da-05-mensen-organisatie-cultuurverandering' => 'NDA H5 - Investeren in mensen, organisatie en cultuurverandering',
   				
   			),
   			'default_value' => array(
