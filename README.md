@@ -17,6 +17,7 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 
 ## Version history
 * 2.4.1 - Optie voor ander reactieformulier per pagina of dossier.
+* 2.3.3 - Styling NL-Digitbeter; header-images met nog beter contrast.
 * 2.3.2 - Styling NL-Digitbeter verder aangepast; andere header-images, contrast.
 * 2.3.1 - NL-Digibeter omgebouwd naar beleidsonderwerpen.
 * 2.2.8 - Default-kleur voor details-summary aangepast.
