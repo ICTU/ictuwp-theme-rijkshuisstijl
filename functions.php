@@ -23,7 +23,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.4.4" );
+define( 'CHILD_THEME_VERSION',              "2.4.5" );
 define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Optie voor ander reactieformulier per pagina of dossier." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
@@ -1752,12 +1752,12 @@ function rhswp_enqueue_js_scripts() {
       wp_enqueue_script( 'slider2', RHSWP_THEMEFOLDER . '/js/carousel-actions.js', array( 'jquery' ), '', true );
 
       wp_enqueue_script( 'details-element', RHSWP_THEMEFOLDER . '/js/details-element.js', '', CHILD_THEME_VERSION, true );
-      
+
     }
 
     $openclose  = _x( 'Show all details', 'Labels detailbuttons', 'wp-rijkshuisstijl' );
     $openinit   = sprintf( _x( 'There are __NUMBER__ blocks with hidden text on this page. Use the button with \'%s\' to make the text available.', 'Labels detailbuttons', 'wp-rijkshuisstijl' ), $openclose );
-    
+
     // Localize the script with new data
     $translation_array = array(
     	'detailsbutton_init'  => $openinit,
@@ -1766,10 +1766,10 @@ function rhswp_enqueue_js_scripts() {
     	'open'  => $openclose,
     	'close' => _x( 'Hide all details', 'Labels detailbuttons', 'wp-rijkshuisstijl' )
     );
-    
+
     wp_localize_script( 'slider2', 'detailssummarytranslate', $translation_array );
 
-    
+
   }
 
 }
@@ -1806,13 +1806,13 @@ function rhswp_trackercode() {
 
     $strackingid  = 147;
     $cookiedomain = 'digitaleoverheid.nl';
-    
+
     if ( 'nldigitalgovernment.nl' == $_SERVER["HTTP_HOST"] || 'www.nldigitalgovernment.nl' == $_SERVER["HTTP_HOST"] ) {
       $strackingid = 1771;
       $cookiedomain = 'nldigitalgovernment.nl';
     }
-    
-    
+
+
     echo '
 <!-- Piwik -->
 <script type="text/javascript">
@@ -3097,7 +3097,7 @@ function rhswp_write_extra_contentblokken() {
   // RESET THE QUERY
   wp_reset_query();
 
-  
+
 }
 
 //========================================================================================================
@@ -3853,7 +3853,7 @@ function rhswp_add_blog_archive_css() {
 }
 .block a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):active,
 .block a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):focus,
-.block a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):hover, 
+.block a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):hover,
 .entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):active,
 .entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):focus,
 .entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):hover {
@@ -4319,15 +4319,15 @@ function rhswp_contactreactie_write_reactieform() {
     else {
 
       $posttype								= get_post_type();
-    
+
       if ( $documenttypes && $posttype ) {
         // check of posttype klopt
         $doctype_check 				= in_array( $posttype, $documenttypes );
       }
-    
+
     }
 
-    
+
     if ( 'anders' == $toon_reactieformulier ) {
   		$contactformulier				= get_field( 'ander_reactieformulier', $acfid );
     }
@@ -5059,6 +5059,7 @@ function rhswp_add_add_framebox_funcs() {
           var rhswp_add_framebox_headerlevel  = jQuery('#rhswp_add_framebox_headerlevel').val();
           var rhswp_add_framebox_style        = jQuery('input[name=rhswp_add_framebox_style]:checked').val();
           var theReturn                       = true;
+          var theTag                          = 'div'; // standard = '<div>'
 
           jQuery( '#rhswp_add_framebox_errors' ).text('');
           jQuery( '#rhswp_add_framebox_errors' ).removeClass('error');
@@ -5069,6 +5070,9 @@ function rhswp_add_add_framebox_funcs() {
           }
           else {
             rhswp_add_framebox_style = ' ' + rhswp_add_framebox_style;
+            if ( rhswp_add_framebox_style == 'asidegrey' ) {
+              theTag = 'aside';
+            }
           }
 
           if (  ( rhswp_add_framebox_title === '' ) ||  ( rhswp_add_framebox_title == null ) ) {
@@ -5097,6 +5101,7 @@ function rhswp_add_add_framebox_funcs() {
             rhswp_add_framebox_text = rhswp_add_framebox_text.replace(/(?:\r\n|\r|\n)/g, '<br>');
           }
 
+//
 
           if ( theReturn ) {
           }
@@ -5121,11 +5126,16 @@ function rhswp_add_add_framebox_funcs() {
 
     echo "<div class='divider'>";
     echo "<label for='rhswp_add_framebox_style'>" . _x( "Randkleur", 'Insert streamer', 'wp-rijkshuisstijl' ) . "</label>";
-    echo "<label for='rhswp_add_framebox_style_green'><input type='radio' id='rhswp_add_framebox_style_green' name='rhswp_add_framebox_style' checked='checked' value=\"green\">Groen</label>";
-    echo "<label for='rhswp_add_framebox_style_gray'><input type='radio' id='rhswp_add_framebox_style_gray' name='rhswp_add_framebox_style' value=\"gray\">Grijs</label>";
-    echo "<label for='rhswp_add_framebox_style_dataagendablue'><input type='radio' id='rhswp_add_framebox_style_dataagendablue' name='rhswp_add_framebox_style' value=\"dataagendablue\">Data-agenda-blauw</label>";
-    echo "<label for='rhswp_add_framebox_style_dataagendaorange'><input type='radio' id='rhswp_add_framebox_style_dataagendaorange' name='rhswp_add_framebox_style' value=\"dataagendaorange\">Data-agenda-oranje</label>";
-    echo "<label for='rhswp_add_framebox_style_blue'><input type='radio' id='rhswp_add_framebox_style_blue' name='rhswp_add_framebox_style' value=\"blue\">Blauw</label>";
+    echo '<ul style="overflow: hidden;">';
+    echo "<li><label style=\"width: auto; clear: both;\" for='rhswp_add_framebox_style_green'><input type='radio' id='rhswp_add_framebox_style_green' name='rhswp_add_framebox_style' checked='checked' value=\"green\">Groen</label></li>";
+    echo "<li><label style=\"width: auto; clear: both;\" for='rhswp_add_framebox_style_gray'><input type='radio' id='rhswp_add_framebox_style_gray' name='rhswp_add_framebox_style' value=\"gray\">Grijs</label></li>";
+    echo "<li><label style=\"width: auto; clear: both;\" for='rhswp_add_framebox_style_dataagendablue'><input type='radio' id='rhswp_add_framebox_style_dataagendablue' name='rhswp_add_framebox_style' value=\"dataagendablue\">Data-agenda-blauw</label></li>";
+    echo "<li><label style=\"width: auto; clear: both;\" for='rhswp_add_framebox_style_dataagendaorange'><input type='radio' id='rhswp_add_framebox_style_dataagendaorange' name='rhswp_add_framebox_style' value=\"dataagendaorange\">Data-agenda-oranje</label></li>";
+    echo "<li><label style=\"width: auto; clear: both;\" for='rhswp_add_framebox_style_blue'><input type='radio' id='rhswp_add_framebox_style_blue' name='rhswp_add_framebox_style' value=\"blue\">Blauw</label></li>";
+    echo "<li><label style=\"width: auto; clear: both;\" for='rhswp_add_framebox_style_asidegrey'><input type='radio' id='rhswp_add_framebox_style_asidegrey' name='rhswp_add_framebox_style' value=\"asidegrey\">Smal blokje links</label></li>";
+
+    echo '</ul>';
+
     echo "</div>";
 
 
