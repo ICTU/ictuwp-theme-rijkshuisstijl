@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.4.2
-// * @desc.   Extra opties voor beleidskleuren; header-styling in uitklapblokken.
+// * @version 2.4.5
+// * @desc.   Extra optie voor kaders in teksten: aside.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -943,6 +943,22 @@
         }
       }
     }
+
+@break_aside: 380px;
+
+    &.asidegrey {
+      float: left;
+      border: 2px solid @grijs;
+      background: @grijs;
+      float: left;
+      margin: 1em 1em 1em 0;
+
+      @media only screen and (min-width: ( ( @break_aside * 2 ) ) ) {
+        max-width: @break_aside;
+      }
+      
+    }
+
         
     &.blue {
 
