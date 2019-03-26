@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid) (2.3.2)\n"
-"POT-Creation-Date: 2019-03-21 12:16+0100\n"
+"POT-Creation-Date: 2019-03-26 14:26+0100\n"
 "PO-Revision-Date: 2016-09-08 17:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -49,7 +49,7 @@ msgctxt "Standaard linktekst voor lees-meer"
 msgid "Read more"
 msgstr ""
 
-#: functions.php:751 functions.php:3576 functions.php:5701
+#: functions.php:751 functions.php:3576 functions.php:5711
 #: includes/dossier-helper-functions.php:461
 #: includes/dossier-helper-functions.php:475
 msgctxt "post types"
@@ -57,13 +57,13 @@ msgid "Posts"
 msgstr ""
 
 #: functions.php:755 functions.php:3606 functions.php:3612 functions.php:3619
-#: functions.php:5712 includes/dossier-helper-functions.php:541
+#: functions.php:5722 includes/dossier-helper-functions.php:541
 #: includes/widget-events.php:317
 msgctxt "post types"
 msgid "Events"
 msgstr ""
 
-#: functions.php:759 functions.php:1373 functions.php:3600 functions.php:5722
+#: functions.php:759 functions.php:1373 functions.php:3600 functions.php:5732
 #: includes/dossier-helper-functions.php:511
 msgctxt "post types"
 msgid "Documents"
@@ -199,7 +199,7 @@ msgstr ""
 msgctxt "Labels detailbuttons"
 msgid ""
 "There are __NUMBER__ blocks with hidden text on this page. Use the button with "
-"%s to make the text available."
+"'%s' to make the text available."
 msgstr ""
 
 #: functions.php:1764
@@ -397,22 +397,22 @@ msgid "PDF file"
 msgstr ""
 
 #: functions.php:3692
-msgctxt "paging"
-msgid "Newer posts"
+msgctxt "paging: to older"
+msgid "Previous posts"
 msgstr ""
 
 #: functions.php:3695
-msgctxt "paging"
+msgctxt "paging: to older"
 msgid "Next page"
 msgstr ""
 
 #: functions.php:3704
-msgctxt "paging"
-msgid "Older posts"
+msgctxt "paging: to newer"
+msgid "Newer posts"
 msgstr ""
 
 #: functions.php:3707
-msgctxt "paging"
+msgctxt "paging: to newer"
 msgid "Previous page"
 msgstr ""
 
@@ -567,12 +567,12 @@ msgctxt "Streamer errors"
 msgid "Voer een titel in<br>"
 msgstr ""
 
-#: functions.php:4906 functions.php:5091
+#: functions.php:4906 functions.php:5095
 msgctxt "Streamer errors"
 msgid "Voer een tekst in<br>"
 msgstr ""
 
-#: functions.php:4916 functions.php:5080
+#: functions.php:4916 functions.php:5084
 msgctxt "Streamer errors"
 msgid "Kies een header-niveau<br>"
 msgstr ""
@@ -582,37 +582,37 @@ msgctxt "Insert streamer"
 msgid "Voeg een details / summary blok in. Dit blok toont of verbergt teksten."
 msgstr ""
 
-#: functions.php:4944 functions.php:5133
+#: functions.php:4944 functions.php:5143
 msgctxt "Insert streamer"
 msgid "Titel"
 msgstr ""
 
-#: functions.php:4949 functions.php:5138
+#: functions.php:4949 functions.php:5148
 msgctxt "Insert streamer"
 msgid "Header-niveau"
 msgstr ""
 
-#: functions.php:4951 functions.php:5140
+#: functions.php:4951 functions.php:5150
 msgctxt "Insert streamer"
 msgid "H2 (niveau 2)"
 msgstr ""
 
-#: functions.php:4952 functions.php:5141
+#: functions.php:4952 functions.php:5151
 msgctxt "Insert streamer"
 msgid "H3 (niveau 3)"
 msgstr ""
 
-#: functions.php:4953 functions.php:5142
+#: functions.php:4953 functions.php:5152
 msgctxt "Insert streamer"
 msgid "H4 (niveau 4)"
 msgstr ""
 
-#: functions.php:4954 functions.php:5143
+#: functions.php:4954 functions.php:5153
 msgctxt "Insert streamer"
 msgid "H5 (niveau 5)"
 msgstr ""
 
-#: functions.php:4955 functions.php:5144
+#: functions.php:4955 functions.php:5154
 msgctxt "Insert streamer"
 msgid "H6 (niveau 6)"
 msgstr ""
@@ -622,79 +622,79 @@ msgctxt "Insert streamer"
 msgid "Inhoud van inklapblok"
 msgstr ""
 
-#: functions.php:4964 functions.php:5153
+#: functions.php:4964 functions.php:5163
 msgctxt "Insert streamer"
 msgid "Voeg uitklapblok toe"
 msgstr ""
 
-#: functions.php:5117
+#: functions.php:5122
 msgctxt "Insert streamer"
 msgid "Voeg een kader toe."
 msgstr ""
 
-#: functions.php:5123
+#: functions.php:5128
 msgctxt "Insert streamer"
 msgid "Randkleur"
 msgstr ""
 
-#: functions.php:5149
+#: functions.php:5159
 msgctxt "Insert streamer"
 msgid "Inhoud van blok"
 msgstr ""
 
-#: functions.php:5368
+#: functions.php:5378
 msgctxt "Dossier header"
 msgid "All posts"
 msgstr ""
 
-#: functions.php:5397 functions.php:5561
+#: functions.php:5407 functions.php:5571
 #, php-format
 msgctxt "Dossier header"
 msgid "posts for topic %s"
 msgstr ""
 
-#: functions.php:5518 functions.php:5629 search.php:203
+#: functions.php:5528 functions.php:5639 search.php:203
 #, php-format
 msgctxt "No results text"
 msgid "No results for %s."
 msgstr ""
 
-#: functions.php:5685
+#: functions.php:5695
 #, php-format
 msgid "- page %s"
 msgstr ""
 
-#: functions.php:5694
+#: functions.php:5704
 #, php-format
 msgctxt "Posts for topic with category"
 msgid "%s for '%s' %s"
 msgstr ""
 
-#: functions.php:5698
+#: functions.php:5708
 #, php-format
 msgctxt "Posts for topic without category"
 msgid "Posts for %s %s"
 msgstr ""
 
-#: functions.php:5709
+#: functions.php:5719
 #, php-format
 msgid "Events for %s %s"
 msgstr ""
 
-#: functions.php:5719
+#: functions.php:5729
 #, php-format
 msgid "Documents for %s %s"
 msgstr ""
 
-#: functions.php:5756
+#: functions.php:5766
 msgid "ACF plugin is niet actief ("
 msgstr ""
 
-#: functions.php:5784
+#: functions.php:5794
 msgid "URL"
 msgstr ""
 
-#: functions.php:5785
+#: functions.php:5795
 msgid "Caption"
 msgstr ""
 
