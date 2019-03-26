@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.3
-// * @desc.   Bugfixes; contrastkleuren in widget en reactieform verbeterd.
+// * @version 2.4.4
+// * @desc.   JS voor details-summary tags.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 //
 
@@ -133,6 +133,23 @@
       display: block;
     	box-sizing: border-box;
     }
+  }
+  
+  .openbutton {
+    background: none;
+    border: 1px solid @txt;
+    display: block;
+    color: @txt;
+    float: right;
+    clear: both;
+    text-align: right;
+    margin: .25rem 0;
+    
+    & + details {
+      clear: both;
+      float: none;
+    }
+    
   }
   
   //===================================
