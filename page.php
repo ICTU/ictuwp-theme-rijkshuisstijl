@@ -9,13 +9,10 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.11.12
-// * @desc.   Contactformulier: later in de loop gezet, net iets voor socmed-icoontjes.
+// * @version 2.5.1
+// * @desc.   Lijst met pagina-templates gecontroleerd en opgeschoond.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
-
-
-//* Template Name: standaardpagina
 
 
 if ( rhswp_extra_contentblokken_checker() ) {
@@ -26,6 +23,4 @@ if ( rhswp_extra_contentblokken_checker() ) {
 //========================================================================================================
 
 genesis();
-
-
 

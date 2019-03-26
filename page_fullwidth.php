@@ -5,17 +5,18 @@
 // * ----------------------------------------------------------------------------------
 // * Pagina met alleen full width, geen zijbalk
 // * ----------------------------------------------------------------------------------
-// *
+// * 
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.11.18
-// * @desc.   Pagina met full-width toegevoegd.
+// * @version 2.5.1
+// * @desc.   Lijst met pagina-templates gecontroleerd en opgeschoond.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// 
  */
 
 
-//* Template Name: 12 - pagina fullwidth (geen zijbalk)
+//* Template Name: Template voor pagina zonder zijbalk met widgets
 
 //* Force full-width-content layout
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );

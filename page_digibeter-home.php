@@ -9,19 +9,16 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.3.1
-// * @desc.   NL-Digibeter omgebouwd naar beleidsonderwerpen.
+// * @version 2.5.1
+// * @desc.   Lijst met pagina-templates gecontroleerd en opgeschoond.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // *
  */
 
 
-//* Template Name: NL-digibeter / Data Agenda - landingspagina
+//* Template Name: Landingspagina voor NL-digibeter / Data Agenda
 
 //========================================================================================================
-
-//remove_action( 'genesis_after_header', 'rhswp_check_caroussel_or_featured_img', 24 );
-
 
 remove_filter( 'genesis_post_title_text', 'genesis_post_title_text_filter', 15 );
 

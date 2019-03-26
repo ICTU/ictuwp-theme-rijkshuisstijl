@@ -1,21 +1,21 @@
 <?php
 
 /**
-// wp-rijkshuisstijl - home.php
-// ----------------------------------------------------------------------------------
-// speciale functionaliteit voor de homepage
-// ----------------------------------------------------------------------------------
+// * Rijkshuisstijl (Digitale Overheid) - home.php
+// * ----------------------------------------------------------------------------------
+// * speciale functionaliteit voor de homepage
+// * ----------------------------------------------------------------------------------
 // 
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.2.3
-// * @desc.   Meer strings vertaald, bugfiks voor homepage. Uitlijning reactieform op vollebreedtepagina's.
+// * @version 2.5.1
+// * @desc.   Lijst met pagina-templates gecontroleerd en opgeschoond.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // 
  */
 
-//* Template Name: 20 - home-pagina 
+//* Template Name: Template voor home 
 
 //* Force full-width-content layout
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );

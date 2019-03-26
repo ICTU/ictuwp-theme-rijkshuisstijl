@@ -1,6 +1,6 @@
 # sh /shared-paul-files/Webs/git-repos/ICTU---Digitale-Overheid-WP-theme/distribute.sh &>/dev/null
 
-# version 2.4.5
+# version 2.5.1
 
 # clear the log file
 
@@ -62,13 +62,13 @@ rsync -ah '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruike
 # ------------------
 # echo "bekkuppie maken ---------------------------------------------"
 
-# rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.4.5/'
+# rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.5.1/'
 
 # change the theme name
-  # sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.4.5 - Extra optie voor kaders in teksten: aside./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.4.5/style.css'
+  # sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.5.1 - Lijst met pagina-templates gecontroleerd en opgeschoond./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.5.1/style.css'
 
 # remove the backup
-# rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.4.5/style.css.bak'
+# rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.5.1/style.css.bak'
 
 
 
