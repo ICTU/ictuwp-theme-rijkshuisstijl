@@ -1,6 +1,6 @@
 <?php
 
-///**
+/**
 // * Rijkshuisstijl (Digitale Overheid) - page_dossiersingleactueel.php
 // * ----------------------------------------------------------------------------------
 // * Toont de berichtten van een dossier
@@ -9,14 +9,14 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.7
-// * @desc.   Voor dossiers: automatische links toegevoegd voor berichten, events, documenten. Plus: search form in breadcrumb.
+// * @version 2.5.1a
+// * @desc.   Lijst met pagina-templates gecontroleerd en opgeschoond.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
-// */
+ */
 
 
 
-//* Template Name: 01 - (dossiers) berichtenpagina (evt. met filter)
+//* Template Name: VERWIJDEREN 01 - (dossiers) berichtenpagina (evt. met filter) VERWIJDEREN
 
 //========================================================================================================
 

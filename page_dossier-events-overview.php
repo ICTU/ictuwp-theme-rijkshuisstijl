@@ -9,13 +9,13 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.7
-// * @desc.   Voor dossiers: automatische links toegevoegd voor berichten, events, documenten. Plus: search form in breadcrumb.
+// * @version 2.5.1a
+// * @desc.   Lijst met pagina-templates gecontroleerd en opgeschoond.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
 
-//* Template Name: 02 - (dossiers) events voor een dossier 
+//* Template Name: VERWIJDEREN 02 - (dossiers) events voor een dossier 
 
 //========================================================================================================
 

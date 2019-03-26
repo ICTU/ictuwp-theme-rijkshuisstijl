@@ -1,17 +1,24 @@
-<?php 
+<?php
 
 /**
- * Gebruiker Centraal page_evenement.php
- * ----------------------------------------------------------------------------------
- * Pagina voor het tonen van een event. Deze combineert template files met custom code
- * ----------------------------------------------------------------------------------
- * @author  Paul van Buuren
- * @license GPL-2.0+
- * @package wp-rijkshuisstijl
- * @version 0.7.13
- * @desc.   Contentblok-checker op diverse pagina's
- * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// * ----------------------------------------------------------------------------------
+// * Rijkshuisstijl (Digitale Overheid) - page_evenement.php
+// * ----------------------------------------------------------------------------------
+// * Pagina voor het tonen van een event. Deze combineert template files met custom code
+// * ----------------------------------------------------------------------------------
+// * 
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.5.1a
+// * @desc.   Lijst met pagina-templates gecontroleerd en opgeschoond.
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// 
  */
+
+
+ 
+//* Template Name: VERWIJDEREN GC Agenda - pagina met een enkel event  
  
 
 //* Display author box on single posts
@@ -26,7 +33,6 @@ if ( rhswp_extra_contentblokken_checker() ) {
  
 dodebug(__FILE__, 'page_evenement'); 
 
-//* Template Name: GC Agenda - pagina met een enkel event  
 
 //* Remove standard header
 remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
@@ -84,3 +90,4 @@ $EM_gc_wbvb_single_event_links         =   '';
 
 
 genesis();
+

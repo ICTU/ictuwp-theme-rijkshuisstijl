@@ -9,13 +9,13 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.1
-// * @desc.   Definities voor CPT verplaatst naar plugin.
+// * @version 2.5.1a
+// * @desc.   Lijst met pagina-templates gecontroleerd en opgeschoond.
 // * @link    http://wbvb.nl/themes/wp-rijkshuisstijl/
  */
 
 
-//* Template Name: 04 - (dossiers, oude styling) overzicht dossiers met beschrijving
+//* Template Name: VERWIJDEREN 04 - (dossiers, oude styling) overzicht dossiers met beschrijving
 
 //* Force full-width-content layout
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
