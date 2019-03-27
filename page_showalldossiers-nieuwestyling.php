@@ -15,7 +15,7 @@
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
-//* Template Name: Template voor dossier-overzicht
+//* Template Name: DO - Template voor dossier-overzicht
 
 
 //* Force full-width-content layout

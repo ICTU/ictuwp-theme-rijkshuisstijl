@@ -16,7 +16,7 @@
  */
 
 
-//* Template Name: Template voor pagina zonder zijbalk met widgets
+//* Template Name: DO - Template voor pagina zonder zijbalk met widgets
 
 //* Force full-width-content layout
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );

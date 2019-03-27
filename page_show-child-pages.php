@@ -16,7 +16,7 @@
  */
 
 
-//* Template Name: Toon onderliggende pagina's
+//* Template Name: DO - Toon onderliggende pagina's
 
 add_action( 'genesis_entry_content', 'rhswp_get_page_childpages', 15 );
 
