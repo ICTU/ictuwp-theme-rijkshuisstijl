@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Rijkshuisstijl (Digitale Overheid) - page_newsletterarchive.php
- * ----------------------------------------------------------------------------------
- * Zonder functions geen functionaliteit, he?
- * ----------------------------------------------------------------------------------
- * @author  Paul van Buuren
- * @license GPL-2.0+
- * @package wp-rijkshuisstijl
- * @version 0.8.34
- * @desc.   Archive for newsletters, contactform7 validation
- * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// * Rijkshuisstijl (Digitale Overheid) - page_newsletterarchive.php
+// * ----------------------------------------------------------------------------------
+// * Dit template zou een archief moeten tonen van de verzonden nieuwsbrieven
+// * ----------------------------------------------------------------------------------
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.5.1
+// * @desc.   Lijst met pagina-templates gecontroleerd en opgeschoond.
+// * @link    http://wbvb.nl/themes/wp-rijkshuisstijl/
  */
 
 //========================================================================================================
-//* Template Name: 30 - Nieuwsbriefarchief
+//* Template Name: ZZZ (NIET GEBRUIKEN) DO - Nieuwsbriefarchief
 
 
 //========================================================================================================

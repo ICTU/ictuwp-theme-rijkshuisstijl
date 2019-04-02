@@ -13,10 +13,11 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.4.6 - Kleine typvaud gecorrigeerd in paginering.
+2.5.2 - Optie om uitgelichte afbeelding NIET automatisch in te voegen.
 
 ## Version history
-* 2.4.6 - Kleine typvaud gecorrigeerd in paginering.
+* 2.5.2 - Optie om uitgelichte afbeelding NIET automatisch in te voegen.
+* 2.5.1 - Lijst met pagina-templates gecontroleerd en opgeschoond.
 * 2.4.5 - Extra optie voor kaders in teksten: aside.
 * 2.4.2 - Extra opties voor beleidskleuren; header-styling in uitklapblokken.
 * 2.4.1 - Optie voor ander reactieformulier per pagina of dossier.

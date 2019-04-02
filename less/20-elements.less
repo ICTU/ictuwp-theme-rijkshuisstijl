@@ -147,6 +147,7 @@
 
   .flexbox {
     .page-template-page_showalldossiers,
+    .page-template-page_show-child-pages,
     .home,
     .blog,
     .archive {
@@ -154,10 +155,13 @@
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-start;
-        
+
         article {
-    	    flex-grow: 1;
+          flex-grow: 1;
           float: left;
+          &.with-image {
+            width: 100%;
+          }
         }
       }
     }  

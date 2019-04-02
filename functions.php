@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.4.6
-// * @desc.   Kleine typvaud gecorrigeerd in paginering.
+// * @version 2.5.2
+// * @desc.   Optie om uitgelichte afbeelding NIET automatisch in te voegen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -24,8 +24,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.4.6" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Optie voor ander reactieformulier per pagina of dossier." );
+define( 'CHILD_THEME_VERSION',              "2.5.2" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Optie om uitgelichte afbeelding NIET automatisch in te voegen." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -3353,6 +3353,7 @@ function rhswp_check_caroussel_or_featured_img() {
         }
         else {
           // plaatje is niet breed genoeg. We schrijven 'm dadelijk wel uit, na de titel en naast de inleiding.
+//          echo '<div class="hero-image wrap" style="border: 20px solid red;">niet deze, want breedte van de ' . RHSWP_HERO_IMAGE_WIDTH_NAME . '-versie van dit plaatje is ' . $image[1] . ' en hoogte is: ' . $image[2] . '<br>' . get_the_post_thumbnail( $postid, 'full' ) . '</div>';
         }
       }
     }
@@ -3730,8 +3731,9 @@ function rhswp_single_add_featured_image() {
 
   if ( ( is_single() && ( 'post' == get_post_type() ) || (  'page' == get_post_type()  ) ) && ( has_post_thumbnail() ) && ( !is_front_page() && !is_home() ) ) {
 
-    $theid          = get_the_ID();
-    $carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
+    $theid                      = get_the_ID();
+    $carousselcheck             = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
+    $featimg_automatic_insert   = get_field( 'featimg_automatic_insert', $theid );
 
 
     $postid = get_the_id();
@@ -3739,29 +3741,30 @@ function rhswp_single_add_featured_image() {
     $cssid        = 'image_featured_image_post_' . $postid;
 
 
-    if ( ( strval( $carousselcheck ) !==  'ja' ) &&  has_post_thumbnail( $postid ) ) {
+    if ( ( strval( $carousselcheck ) !==  'ja' ) &&  ( strval( $featimg_automatic_insert ) !==  'nee' ) &&  has_post_thumbnail( $postid ) ) {
 
       $image = wp_get_attachment_image_src( get_post_thumbnail_id( $postid ), 'full' );
 
-      if ( $image[1] < RHSWP_MIN_HERO_IMAGE_WIDTH ) {
+//      if ( $image[1] < RHSWP_MIN_HERO_IMAGE_WIDTH ) {
+      if ( RHSWP_MIN_HERO_IMAGE_WIDTH >= $image[1] ) {
         // de featured image is niet groot genoeg om gebruikt te worden als hero-image.
         // dus hebben we geen hiervoor geen hero-image neergezet
         // dus mogeen we hem hier WEL neerzeggen.
         // hoera...
 
-    		$alignment      = ' alignright';
+        $alignment      = ' alignright';
 
-    		if ( class_exists( 'toc' ) && is_page() ) {
-    			// the TOC+ plugin is active
-    			$alignment = ' alignleft toc-active';
-    		}
+        if ( class_exists( 'toc' ) && is_page() ) {
+          // the TOC+ plugin is active
+          $alignment = ' alignleft toc-active';
+        }
 
         $theimageobject		= get_post( get_post_thumbnail_id() );
         $get_description	= $theimageobject->post_excerpt;
 
-    		// check for an image caption
+        // check for an image caption
         if(!empty( $theimageobject->post_excerpt )){
-          echo '<div class="wp-caption ' . $alignment . '">';
+          echo '<div class="featured wp-caption ' . $alignment . '">';
         }
         else {
           echo '<div class="featured ' . $alignment . '">';
@@ -3769,7 +3772,7 @@ function rhswp_single_add_featured_image() {
 
         echo get_the_post_thumbnail( $postid, 'article-visual', array( 'class' => 'alignright' ) );
 
-    		// write the image caption if any
+        // write the image caption if any
         if(!empty( $theimageobject->post_excerpt )){
           echo '<p class="wp-caption-text">' . $theimageobject->post_excerpt . '</p>';
         }
