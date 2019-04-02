@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.4.2
-// * @desc.   Extra opties voor beleidskleuren; header-styling in uitklapblokken.
+// * @version 2.5.2
+// * @desc.   Optie om uitgelichte afbeelding NIET automatisch in te voegen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -2622,7 +2622,64 @@ if( function_exists('acf_add_local_field_group') ):
   	'active' => 1,
   	'description' => '',
   ));
-  
+
+  //------------------------------------------------------------------------------------------------------
+  // Extra layout-optie voor automatische afbeelding
+  //
+  acf_add_local_field_group(array(
+    	'key' => 'group_5c9c94d6734bc',
+    	'title' => 'Uitlijning uitgelichte afbeelding',
+    	'fields' => array(
+    		array(
+    			'key' => 'field_5c9c9544cf719',
+    			'label' => 'Uitgelichte afbeelding automatisch aan tekst toevoegen?',
+    			'name' => 'featimg_automatic_insert',
+    			'type' => 'radio',
+    			'instructions' => 'Als je hier \'<em>Nee</em>\' kiest, dan kun je zelf in je tekst een foto toevoegen met de uitsnedes of uitlijning die je wilt. Als je dit op \'<em>Ja</em>\' laat staan, dan wordt de uitgelichte afbeelding rechtsbovenin de tekst ingevoegd.',
+    			'required' => 0,
+    			'conditional_logic' => 0,
+    			'wrapper' => array(
+    				'width' => '',
+    				'class' => '',
+    				'id' => '',
+    			),
+    			'choices' => array(
+    				'ja' => 'Ja, automatisch invoegen',
+    				'nee' => 'Nee, niet automatisch invoegen',
+    			),
+    			'allow_null' => 0,
+    			'other_choice' => 0,
+    			'default_value' => 'ja',
+    			'layout' => 'vertical',
+    			'return_format' => 'value',
+    			'save_other_choice' => 0,
+    		),
+    	),
+    	'location' => array(
+    		array(
+    			array(
+    				'param' => 'post_type',
+    				'operator' => '==',
+    				'value' => 'post',
+    			),
+    		),
+    		array(
+    			array(
+    				'param' => 'post_type',
+    				'operator' => '==',
+    				'value' => 'page',
+    			),
+    		),
+    	),
+    	'menu_order' => 0,
+    	'position' => 'side',
+    	'style' => 'default',
+    	'label_placement' => 'top',
+    	'instruction_placement' => 'field',
+    	'hide_on_screen' => '',
+    	'active' => true,
+    	'description' => '',
+  ));
 
 
 endif;

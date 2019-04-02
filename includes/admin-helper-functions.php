@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.9
-// * @desc.   Admin-style aangepast: geen waarschuwing meer voor vette tekst.
+// * @version 2.5.2
+// * @desc.   Optie om uitgelichte afbeelding NIET automatisch in te voegen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -82,7 +82,7 @@ function dodebug2($file = '', $extra = '') {
 if (! function_exists( 'dovardump' ) ) {
   
   function dovardump($data, $context = '', $echo = true ) {
-    
+
     if ( WP_DEBUG ) {
       $contextstring  = '';
       $startstring    = '<div class="debug-context-info">';
@@ -94,11 +94,9 @@ if (! function_exists( 'dovardump' ) ) {
       }
       
       if ( is_array( $data ) || is_object( $data ) ) {
-        
-        $theline = "array: " . print_r( $data, true );
+        $theline = "array: " . print_r( $data, false );
       }
       else {
-
         $theline = $data;
       }
       

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.4.5
-// * @desc.   Extra optie voor kaders in teksten: aside.
+// * @version 2.5.2
+// * @desc.   Optie om uitgelichte afbeelding NIET automatisch in te voegen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -763,55 +763,54 @@
   
   img.centered,
   .aligncenter {
-  	display: block;
-  	margin: 0 auto @padding;
+    	display: block;
+    	margin: 0 auto @padding;
   }
   
-  img.alignnone {
-//    	margin-bottom: @padding;
-  }
   
   .alignleft {
-  	float: left;
-  	text-align: left;
+    	float: left;
+    	text-align: left;
   }
   
   .alignright {
-  	float: right;
-  	text-align: right;
+    	float: right;
+    	text-align: right;
+  }
+  
+  .featured {
+//    border: 20px solid red;    
   }
 
   img,
   .wp-caption {
     &.alignleft,
     &.alignleft {
-    	margin: ( @padding / 3 ) ( @padding / 2 ) @padding 0;
+      margin: ( @padding / 3 ) ( @padding / 2 ) @padding 0;
     }
-  
+    
     .alignright,
     .alignright {
-    	margin: ( @padding / 3 ) 0 @padding ( @padding / 2 );
+      margin: ( @padding / 3 ) 0 @padding ( @padding / 2 );
     }
   }
 
-
   .wp-caption {
-
+    
     &.alignnone {
-    	margin: ( @padding / 3 ) 0 0 0;
+      margin: ( @padding / 3 ) 0 0 0;
     }
-
+    
     .wp-caption-text {
       font-size: 85%;
-    	font-weight: normal;
-    	text-align: left;
-    	border-bottom: 1px solid #ddd;
-    	line-height: 1.4;
-    	padding: ( @padding / 2 ) 0;
-//    	display: inline-block;
-    	width: auto;
+      font-weight: normal;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      line-height: 1.4;
+      padding: ( @padding / 2 ) 0;
+      width: auto;
     }
-
+    
     &.alignleft {
       margin: 0 1em 1em 0;
     }
