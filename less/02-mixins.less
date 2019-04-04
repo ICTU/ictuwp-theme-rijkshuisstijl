@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.4.2
-// * @desc.   Extra opties voor beleidskleuren; header-styling in uitklapblokken.
+// * @version 2.6.1
+// * @desc.   Markering in grijs voor archief-dossiers.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -559,6 +559,46 @@
   margin-left: auto;
   margin-right: auto;
 
+}
+
+//=========================================================================================================
+
+.archiefmarkering() {
+  
+  .archiefmarkering {
+    .breadcrumb,
+    .site-footer {      
+      background: @archief_bgcolor;
+      color: @archief_txt_color;
+    }
+
+    .button,
+    .entry-content .button,
+    button,
+    input[type=submit],
+    input[type=button],
+    input[type=reset],
+    .search-form button[type=submit], 
+    .search-form input[type=submit] {
+      border-color: @archief_button_bgcolor;
+      background-color: @archief_button_bgcolor;
+    }
+    
+    input[type=email],
+    input[type=text],
+    input[type=password],
+    input[type=file],
+    input[type=date],
+    select,
+    textarea {
+      border-bottom-color: @archief_button_bgcolor;
+    }
+
+    aside.sidebar .widget.banner .widget-wrap.do-groen {
+      border-color: @archief_button_bgcolor;
+      background: @archief_button_bgcolor;
+    }
+  }
 }
 
 //=========================================================================================================
