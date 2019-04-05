@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.5.2
-// * @desc.   Optie om uitgelichte afbeelding NIET automatisch in te voegen.
+// * @version 2.6.1
+// * @desc.   Markering in grijs voor archief-dossiers.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -2333,13 +2333,13 @@ if( function_exists('acf_add_local_field_group') ):
   				40 => '40',
   			),
   			'default_value' => array(
-  				0 => 4,
+  				0 => 10,
   			),
   			'allow_null' => 0,
   			'multiple' => 0,
   			'ui' => 0,
-  			'ajax' => 0,
   			'return_format' => 'value',
+  			'ajax' => 0,
   			'placeholder' => '',
   		),
   		array(
@@ -2380,8 +2380,7 @@ if( function_exists('acf_add_local_field_group') ):
   			'post_type' => array(
   				0 => 'page',
   			),
-  			'taxonomy' => array(
-  			),
+  			'taxonomy' => '',
   			'allow_null' => 1,
   			'multiple' => 0,
   			'return_format' => 'object',
@@ -2403,8 +2402,7 @@ if( function_exists('acf_add_local_field_group') ):
   			'post_type' => array(
   				0 => 'page',
   			),
-  			'taxonomy' => array(
-  			),
+  			'taxonomy' => '',
   			'allow_null' => 0,
   			'multiple' => 0,
   			'return_format' => 'object',
@@ -2426,12 +2424,33 @@ if( function_exists('acf_add_local_field_group') ):
   			'post_type' => array(
   				0 => 'page',
   			),
-  			'taxonomy' => array(
-  			),
+  			'taxonomy' => '',
   			'allow_null' => 0,
   			'multiple' => 0,
   			'return_format' => 'object',
   			'ui' => 1,
+  		),
+  		array(
+  			'key' => 'field_5ca5e711e2a9c',
+  			'label' => 'Archief-dossier',
+  			'name' => 'site_archief_dossier',
+  			'type' => 'taxonomy',
+  			'instructions' => 'Dit dossier zal grijs gemarkeerd worden. Zo zien bezoekers beter dat content niet meer actief wordt bijgehouden. Selecteer het dossier dat de status \'archief\' heeft. Alle onderliggende dossiers zullen ook de status \'archief\' krijgen.',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array(
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'taxonomy' => 'dossiers',
+  			'field_type' => 'select',
+  			'allow_null' => 0,
+  			'add_term' => 0,
+  			'save_terms' => 0,
+  			'load_terms' => 0,
+  			'return_format' => 'id',
+  			'multiple' => 0,
   		),
   	),
   	'location' => array(
@@ -2449,9 +2468,10 @@ if( function_exists('acf_add_local_field_group') ):
   	'label_placement' => 'top',
   	'instruction_placement' => 'label',
   	'hide_on_screen' => '',
-  	'active' => 1,
+  	'active' => true,
   	'description' => '',
   ));
+
 
   //------------------------------------------------------------------------------------------------------
   // sitemap instellingen: tonen / verbergen van lijst met categorie, laatste berichten, dossierlijst
