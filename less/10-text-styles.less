@@ -26,52 +26,52 @@
 
 .10_textstyles() {
 
-  a {
-    color: @a_color_default; // @txt;
-  	text-decoration: none;
-  	  
-  	&:visited {
-      color: @a_color_visited;
-    }
-
-  	&:hover,
-  	&:active,
-  	&:focus {
-    	text-decoration: underline;
-    }
-  	&:hover {
-      color: @a_color_hover;
-  	}
-  	&:active,
-  	&:focus {
-      color: @a_color_active;
-    }
-  }
+	a {
+		color: @a_color_default; // @txt;
+		text-decoration: none;
+		
+		&:visited {
+			color: @a_color_visited;
+		}
+		
+		&:hover,
+		&:active,
+		&:focus {
+			text-decoration: underline;
+		}
+		&:hover {
+			color: @a_color_hover;
+		}
+		&:active,
+		&:focus {
+			color: @a_color_active;
+		}
+	}
   
-  a:hover {
-  	text-decoration: underline;
-  }
+	a:hover {
+		text-decoration: underline;
+	}
 
 	a.extern {
-    .listitem_arrow_extern( @a_color_default, @a_color_hover, @a_color_active, @a_color_visited );
+		.listitem_arrow_extern( @a_color_default, @a_color_hover, @a_color_active, @a_color_visited );
 	}     
 
-  a.download {
-    display: inline-block;
-    margin-top: .5em;
-    margin-bottom: .5em;
-    padding-top: .5em;
-    padding-bottom: .5em;
-    padding-left: 2.25em;
-    padding-right: 1em;
-    margin-right: 1em;
-    color: @wit;
-    .iconaddfill('../images/svg/icon-download.svg', @wit );
-    background-size: 1.5em 1.5em;
-    background-position: .25em center;
-    background-repeat: no-repeat;
-    background-color: @donkerblauw_vol;
-  }
+	a.download {
+		display: inline-block;
+		margin-top: .5em;
+		margin-bottom: .5em;
+		padding-top: .5em;
+		padding-bottom: .5em;
+		padding-left: 2.25em;
+		padding-right: 1em;
+		margin-right: 1em;
+		color: @wit;
+		.iconaddfill('../images/svg/icon-download.svg', @wit );
+		background-size: 1.5em 1.5em;
+		background-position: .25em center;
+		background-repeat: no-repeat;
+		background-color: @donkerblauw_vol;
+	}
   
   p {
   	margin: 0 0 @padding 0;

@@ -14,6 +14,7 @@
  */
 
 
+
 //========================================================================================================
 
 // Start Genesis engine
@@ -2392,16 +2393,15 @@ if ( RHSWP_DOSSIERPOSTCONTEXT_OPTION_DO_FLUSH ) {
 }
 
 function rhswp_dossiercontext_flush_check() {
-
-  $check = get_option( RHSWP_DOSSIERPOSTCONTEXT_OPTION );
-
-  if ( !$check == RHSWP_DOSSIERPOSTCONTEXT ) {
-    dodebug('Wel spoelen');
-    flush_rewrite_rules();
-    delete_option( RHSWP_DOSSIERPOSTCONTEXT_OPTION );
-    add_option( RHSWP_DOSSIERPOSTCONTEXT_OPTION, RHSWP_DOSSIERPOSTCONTEXT );
-  }
-
+	
+	$check = get_option( RHSWP_DOSSIERPOSTCONTEXT_OPTION );
+	
+	if ( !$check == RHSWP_DOSSIERPOSTCONTEXT ) {
+		dodebug('Wel spoelen');
+		flush_rewrite_rules();
+		delete_option( RHSWP_DOSSIERPOSTCONTEXT_OPTION );
+		add_option( RHSWP_DOSSIERPOSTCONTEXT_OPTION, RHSWP_DOSSIERPOSTCONTEXT );
+	}
 }
 
 //========================================================================================================
@@ -2494,19 +2494,19 @@ function rhswp_write_extra_contentblokken() {
       if( ( is_array( $contentblokken ) || is_object( $contentblokken ) ) && ( $contentblokken[0] != '' ) ) {
 
         foreach( $contentblokken as $row ) {
-
-					$thecounter++;
-					$algemeen_links         = $row['extra_contentblok_algemeen_links'];
-          $select_dossiers_list   = $row['select_dossiers_list'];
-          $selected_content       = $row['select_berichten_paginas'];
-          $selected_content_full  = $row['select_berichten_paginas_toon_samenvatting'];
-          $chosen_category        = $row['extra_contentblok_chosen_category'];
-          $titel                  = esc_html( $row['extra_contentblok_title'] );
-          $type_block             = $row['extra_contentblok_type_block'];
-          $categoriefilter        = $row['extra_contentblok_categoriefilter'];
-          $maxnr_posts            = $row['extra_contentblok_maxnr_posts'];
-          $with_featured_image    = $row['extra_contentblok_maxnr_posts_with_featured_image'];
-          $limit                  = $row['extra_contentblok_maxnr_events'];
+			
+			$thecounter++;
+			$algemeen_links         = $row['extra_contentblok_algemeen_links'];
+			$select_dossiers_list   = $row['select_dossiers_list'];
+			$selected_content       = $row['select_berichten_paginas'];
+			$selected_content_full  = $row['select_berichten_paginas_toon_samenvatting'];
+			$chosen_category        = $row['extra_contentblok_chosen_category'];
+			$titel                  = esc_html( $row['extra_contentblok_title'] );
+			$type_block             = $row['extra_contentblok_type_block'];
+			$categoriefilter        = $row['extra_contentblok_categoriefilter'];
+			$maxnr_posts            = $row['extra_contentblok_maxnr_posts'];
+			$with_featured_image    = $row['extra_contentblok_maxnr_posts_with_featured_image'];
+			$limit                  = $row['extra_contentblok_maxnr_events'];
 
           if ( $blockidattribute_prev == $titel ) {
 	          $blockidattribute_name =  $titel . '-' . $thecounter;
@@ -4454,7 +4454,7 @@ function rhswp_add_body_classses( $classes ) {
       if ( $terms && ! is_wp_error( $terms ) ) {
         // eerder hebben we succesvol bepaald dat de content in een dossier zit
 
-        dodebug( 'dit dinges heeft iets uit ' . RHSWP_CT_DOSSIER );
+//        dodebug( 'dit dinges heeft iets uit ' . RHSWP_CT_DOSSIER );
 
         if ( is_object( $terms ) ) {
 

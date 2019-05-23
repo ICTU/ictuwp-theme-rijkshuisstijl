@@ -167,91 +167,86 @@ function filter_for_rhswp_banner_widget( $params ) {
 
 	$imagesize = 'widget-image';
 
-  $rhswp_widget_link                = empty( get_field( 'rhswp_widget_link', 'widget_' . $widget_id) ) ? '' : get_field( 'rhswp_widget_link', 'widget_' . $widget_id);
-  $rhswp_widget_bannerimage         = empty( get_field( 'rhswp_widget_bannerimage', 'widget_' . $widget_id) ) ? '' : get_field( 'rhswp_widget_bannerimage', 'widget_' . $widget_id);
-  $rhswp_widget_class               = empty( get_field( 'rhswp_widget_class', 'widget_' . $widget_id) ) ? 'standaard' : get_field( 'rhswp_widget_class', 'widget_' . $widget_id);
-  $rhswp_widget_textalignment       = empty( get_field( 'rhswp_widget_textalignment', 'widget_' . $widget_id) ) ? '' : get_field( 'rhswp_widget_textalignment', 'widget_' . $widget_id);
-  $rhswp_widget_link_uitzonderingen = empty( get_field( 'rhswp_widget_link_uitzonderingen', 'widget_' . $widget_id) ) ? '' : get_field( 'rhswp_widget_link_uitzonderingen', 'widget_' . $widget_id);
-
-  $params[0]['hide_widget'] = 'false';
-
-
-  // check of de banner op bepaalde contentsoorten niet getoond moet worden
-  if( is_array( $rhswp_widget_link_uitzonderingen ) ) {
-
-    $posttype = get_post_type(); // haal posttype van huidige content op
-
-    foreach( $rhswp_widget_link_uitzonderingen as $uitzondering ): 
-
-      if ( $uitzondering == $posttype ) {
-        // bij deze contentsoort moet de banner dus niet getoond worden
-        // dus exit
-
-        $params[0]['before_widget'] = 'rhswp_hide_this_banner' . '-' . $uitzondering;
-        return $params;
-
-      }
-      
-    endforeach; 
-
-  }
-
-
-  // link toevoegen, if any
-  if( $rhswp_widget_link ) {
-
-    $params[0]['before_widget'] .= '<a href="' . $rhswp_widget_link . '">';
-    $params[0]['after_widget'] = '</a>' . $params[0]['after_widget'];
-
-  }
-
-  // plaatje toevoegen, if any
-  if( $rhswp_widget_bannerimage ) {
-
-    $rhswp_widget_bannerimage_alignment = empty( get_field( 'rhswp_widget_image_alignment', 'widget_' . $widget_id) ) ? 'top' : get_field( 'rhswp_widget_image_alignment', 'widget_' . $widget_id);
-
-    if ( $rhswp_widget_bannerimage_alignment == 'top' || $rhswp_widget_class == 'text-over-plaatje' ) {
-
-      if ( $rhswp_widget_bannerimage['sizes']['large-width'] > 700 ) {
-        $imagesize = 'large';
-      }
-      else {
-        $imagesize = 'widget-image-top';
-      }
-
-    }
-
-    $params[0]['before_widget'] .= sprintf('<img src="%s" alt="' . $rhswp_widget_bannerimage['alt'] . '" class="align' . $rhswp_widget_bannerimage_alignment . '" width="%s" height="%s" />',
-    $rhswp_widget_bannerimage['sizes'][$imagesize], 
-    $rhswp_widget_bannerimage['sizes'][$imagesize.'-width'], 
-    $rhswp_widget_bannerimage['sizes'][$imagesize.'-height'] );
-
-  }
-
-  // class toepassen, if any
-  if( $rhswp_widget_class ) {
-
-    $haystack = $params[0]['before_widget'];
-    $needle   = 'class="widget-wrap';
-    $replacer = 'class="widget-wrap ' . $rhswp_widget_class;
-
-    $params[0]['before_widget'] = str_replace( $needle, $replacer, $haystack );
-
-  }
-
-  // tekstuitlijning, if any
-  if( $rhswp_widget_textalignment ) {
-
-    $haystack = $params[0]['before_widget'];
-    $needle   = 'class="widget-wrap';
-    $replacer = 'class="widget-wrap text-align-' . $rhswp_widget_textalignment;
-
-    $params[0]['before_widget'] = str_replace( $needle, $replacer, $haystack );
-
-  }
+	$rhswp_widget_link                = empty( get_field( 'rhswp_widget_link', 'widget_' . $widget_id) ) ? '' : get_field( 'rhswp_widget_link', 'widget_' . $widget_id);
+	$rhswp_widget_bannerimage         = empty( get_field( 'rhswp_widget_bannerimage', 'widget_' . $widget_id) ) ? '' : get_field( 'rhswp_widget_bannerimage', 'widget_' . $widget_id);
+	$rhswp_widget_class               = empty( get_field( 'rhswp_widget_class', 'widget_' . $widget_id) ) ? 'standaard' : get_field( 'rhswp_widget_class', 'widget_' . $widget_id);
+	$rhswp_widget_textalignment       = empty( get_field( 'rhswp_widget_textalignment', 'widget_' . $widget_id) ) ? '' : get_field( 'rhswp_widget_textalignment', 'widget_' . $widget_id);
+	$rhswp_widget_link_uitzonderingen = empty( get_field( 'rhswp_widget_link_uitzonderingen', 'widget_' . $widget_id) ) ? '' : get_field( 'rhswp_widget_link_uitzonderingen', 'widget_' . $widget_id);
+	
+	$params[0]['hide_widget'] = 'false';
+	
+	
+	// check of de banner op bepaalde contentsoorten niet getoond moet worden
+	if( is_array( $rhswp_widget_link_uitzonderingen ) ) {
+		
+		$posttype = get_post_type(); // haal posttype van huidige content op
+		
+		foreach( $rhswp_widget_link_uitzonderingen as $uitzondering ): 
+		
+			if ( $uitzondering == $posttype ) {
+				// bij deze contentsoort moet de banner dus niet getoond worden
+				// dus exit
+				$params[0]['before_widget'] = 'rhswp_hide_this_banner' . '-' . $uitzondering;
+				return $params;
+				
+			}
+		
+		endforeach; 
+		
+	}
 
 
-  
+	// link toevoegen, if any
+	if( $rhswp_widget_link ) {
+	
+		$params[0]['before_widget'] .= '<a href="' . $rhswp_widget_link . '">';
+		$params[0]['after_widget'] = '</a>' . $params[0]['after_widget'];
+		
+	}
+
+	// plaatje toevoegen, if any
+	if( $rhswp_widget_bannerimage ) {
+	
+		$rhswp_widget_bannerimage_alignment = empty( get_field( 'rhswp_widget_image_alignment', 'widget_' . $widget_id) ) ? 'top' : get_field( 'rhswp_widget_image_alignment', 'widget_' . $widget_id);
+		
+		if ( $rhswp_widget_bannerimage_alignment == 'top' || $rhswp_widget_class == 'text-over-plaatje' ) {
+			
+			if ( $rhswp_widget_bannerimage['sizes']['large-width'] > 700 ) {
+				$imagesize = 'large';
+			}
+			else {
+				$imagesize = 'widget-image-top';
+			}
+		}
+		
+		$params[0]['before_widget'] .= sprintf('<img src="%s" alt="' . $rhswp_widget_bannerimage['alt'] . '" class="align' . $rhswp_widget_bannerimage_alignment . '" width="%s" height="%s" />',
+		$rhswp_widget_bannerimage['sizes'][$imagesize], 
+		$rhswp_widget_bannerimage['sizes'][$imagesize.'-width'], 
+		$rhswp_widget_bannerimage['sizes'][$imagesize.'-height'] );
+		
+	}
+
+	// class toepassen, if any
+	if( $rhswp_widget_class ) {
+		
+		$haystack = $params[0]['before_widget'];
+		$needle   = 'class="widget-wrap';
+		$replacer = 'class="widget-wrap ' . $rhswp_widget_class;
+		
+		$params[0]['before_widget'] = str_replace( $needle, $replacer, $haystack );
+		
+	}
+
+	// tekstuitlijning, if any
+	if( $rhswp_widget_textalignment ) {
+	
+		$haystack = $params[0]['before_widget'];
+		$needle   = 'class="widget-wrap';
+		$replacer = 'class="widget-wrap text-align-' . $rhswp_widget_textalignment;
+		
+		$params[0]['before_widget'] = str_replace( $needle, $replacer, $haystack );
+	
+	}
 
 	// return
 	return $params;
