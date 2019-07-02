@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.6.1
-// * @desc.   Markering in grijs voor archief-dossiers.
+// * @version 2.6.2
+// * @desc.   Check in bannerwidget op wel/niet tonen plaatje.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -25,8 +25,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.6.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Markering in grijs voor archief-dossiers." );
+define( 'CHILD_THEME_VERSION',              "2.6.2" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Check in bannerwidget op wel/niet tonen plaatje." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
