@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.6.2
-// * @desc.   Check in bannerwidget op wel/niet tonen plaatje.
+// * @version 2.6.3a
+// * @desc.   Eerste opzet toolbox-pagina's.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -25,8 +25,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.6.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Check in bannerwidget op wel/niet tonen plaatje." );
+define( 'CHILD_THEME_VERSION',              "2.6.3a" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Eerste opzet toolbox-pagina's." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -169,7 +169,10 @@ if ( ! defined( 'DOPT__ACTIELIJN_CPT' ) ) {
   define( 'DOPT__ACTIELIJN_CPT',           "actielijn" );
 }
 
+//========================================================================================================
 
+//* Remove the edit link
+add_filter ( 'genesis_edit_post_link' , '__return_false' );
 
 //========================================================================================================
 
