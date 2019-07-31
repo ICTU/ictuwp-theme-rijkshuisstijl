@@ -8,7 +8,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.6.3a
+// * @version 2.7.1
 // * @desc.   Eerste opzet toolbox-pagina's.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
@@ -25,7 +25,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.6.3a" );
+define( 'CHILD_THEME_VERSION',              "2.7.1" );
 define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Eerste opzet toolbox-pagina's." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
@@ -3854,6 +3854,7 @@ function rhswp_add_blog_archive_css() {
   background-position: right center;
   background-size: .75em .75em;
 }
+
 .block a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):visited,
 .entry-content a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):visited {
   background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-visited.svg');
@@ -3867,6 +3868,13 @@ function rhswp_add_blog_archive_css() {
   background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-hover.svg');
   color: #A02F1D;
 }
+.entry-content .borderframe.blue a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):active,
+.entry-content .borderframe.blue a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):focus,
+.entry-content .borderframe.blue a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):hover,
+.entry-content .borderframe.blue a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]) {
+  background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-white.svg');
+}
+
 .entry-content a:not([href]),
 .entry-content .links li a,
 .entry-content a[href^=\"/\"],
@@ -5233,6 +5241,7 @@ function rhswp_add_add_framebox_funcs() {
     echo "<li><label style=\"width: auto; clear: both;\" for='rhswp_add_framebox_style_dataagendablue'><input type='radio' id='rhswp_add_framebox_style_dataagendablue' name='rhswp_add_framebox_style' value=\"dataagendablue\">Data-agenda-blauw</label></li>";
     echo "<li><label style=\"width: auto; clear: both;\" for='rhswp_add_framebox_style_dataagendaorange'><input type='radio' id='rhswp_add_framebox_style_dataagendaorange' name='rhswp_add_framebox_style' value=\"dataagendaorange\">Data-agenda-oranje</label></li>";
     echo "<li><label style=\"width: auto; clear: both;\" for='rhswp_add_framebox_style_blue'><input type='radio' id='rhswp_add_framebox_style_blue' name='rhswp_add_framebox_style' value=\"blue\">Blauw</label></li>";
+    echo "<li><label style=\"width: auto; clear: both;\" for='rhswp_add_framebox_style_toolboxblue'><input type='radio' id='rhswp_add_framebox_style_toolboxblue' name='rhswp_add_framebox_style' value=\"toolboxblue\">Toolbox + blauw</label></li>";
     echo "<li><label style=\"width: auto; clear: both;\" for='rhswp_add_framebox_style_asidegrey'><input type='radio' id='rhswp_add_framebox_style_asidegrey' name='rhswp_add_framebox_style' value=\"asidegrey\">Smal blokje links</label></li>";
 
     echo '</ul>';

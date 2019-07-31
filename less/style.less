@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.6.3a
-  Version description: 2.6.3a - Eerste opzet toolbox-pagina's.
+  Version: 2.7.1
+  Version description: 2.7.1 - Eerste opzet toolbox-pagina's.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -114,6 +114,9 @@ footer {
     display: none;
 }
 
+*:selection {
+	text-shadow: none !important;
+}
 
 
 /* Text styles, shared with admin CSS
@@ -1007,19 +1010,23 @@ Media Queries
 
 @media only screen and (min-width: ( @break_fullwidth  - 1 )) {
 
-  .full-width-content {
-    .sharing.block,
-    #reactieformulier {
-      width: 66%;
-//      margin-left: auto;
-//      margin-right: auto;
-    }
-  }
+	.full-width-content {
+		.sharing.block,
+		.toolbox-introduction,
+		.toolbox-the-content,
+		.entry-header,
+		#reactieformulier {
+			width: 66%;
+//			border: 1px solid red;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
 
-  .footer-widgets {
-    padding: 0;
-    margin-top: @padding;
-  }
+	.footer-widgets {
+		padding: 0;
+		margin-top: @padding;
+	}
 
   .sidebar {
 
@@ -1230,150 +1237,10 @@ nav.nav-primary .menu-item.js-menu-open > ul.sub-menu {
 
 .archiefmarkering();
 
-.svgstyling();
+.toolboxillustrations();
+.toolboxwidgets();
 
 
-.svgstyling() {
 
-	svg.icon {
-		border: 10px solid blue;
-		width: 400px;		
-		height: 400px;		
-	}
-	
-	#hier-mijn-achtergrond-toolbox {
-	
-		.toolbox-img {
-			overflow: hidden;
-			
-			h2 {
-				margin-top: 0;
-				margin-bottom: 0;
-				font-weight: normal;
-				font-family: @bodyfont;
-			}
-		}
-		
-		@media only screen and ( max-width: @break_fullwidth ) {
-	
-			display: flex;
-			flex-direction: column;
-
-			.toolbox-img {
-				flex: 1 1 auto;
-				padding: 0 1em;
-				margin-bottom: .5rem;
-				background: @toolbox_lichtblauw;
-				
-
-				a {
-					display: flex;
-					flex-direction: row;
-					align-items: center;
-					justify-content: center;		
-					
-					.svg, h2 {
-						flex: 1;
-					}
-				}
-	
-				.svg {
-					max-width: 55px;
-					height: auto;
-					min-height: 52px;
-					float: left;
-					margin: .5rem 1rem .5rem 0;
-					
-					svg {
-						vertical-align: middle;
-					}
-				}
-			}
-		}
-		@media only screen and ( min-width: @break_fullwidth ) {
-			overflow: hidden;
-			background-image: url('images/toolbox/blauw-ding.svg');
-			background-repeat: no-repeat;
-			background-size: contain;
-			position: relative;
-			height: 900px;
-			
-			a {
-				display: block;
-				border: 2px solid transparent;
-				
-				.svg {
-					border: 2px solid transparent;
-				}
-				
-				&:hover,
-				&:focus,
-				&:active {
-					border-color: @a_color_active;
-					background: @wit !important;
-					background: rgba( 256, 256, 256, .8 ) !important;
-
-					h2 {
-						text-decoration: underline !important;
-					}					
-				}
-			}
-			
-			h2 {
-				font-size: 1.25rem;
-				display: inline-block;
-				background: @wit;
-				padding-left: .5rem;
-				padding-right: .5rem;
-				background: rgba( 256, 256, 256, .8 );
-			}
-			
-			.toolbox-img {
-				position: absolute;
-				text-align: center;
-			}			
-			
-			#toolbox_principe_1 {
-				top: 78px;
-				left: 40px;
-				width: 215px;
-			}
-			#toolbox_principe_2 {
-				top: 0;
-				left: 764px;
-				width: 246px;
-			}
-			#toolbox_principe_3 {
-				top: 494px;
-				left: 0;
-				width: 267px;
-			}
-			#toolbox_principe_4 {
-				top: 568px;
-				left: 445px;
-				width: 245px;
-			}
-			#toolbox_principe_5 {
-				top: 477px;
-				left: 867px;
-				width: 241px;
-			}
-			#toolbox_principe_6 {
-				top: 208px;
-				right: 0;
-				width: 210px;
-			}
-			#toolbox_principe_7 {
-				top: 192px;
-				left: 445px;
-				width: 269px;
-			}
-			
-		}
-		
-
-		
-	}
-}
 
 

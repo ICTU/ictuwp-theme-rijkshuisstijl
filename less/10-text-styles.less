@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.5.2
-// * @desc.   Optie om uitgelichte afbeelding NIET automatisch in te voegen.
+// * @version 2.7.1
+// * @desc.   Eerste opzet toolbox-pagina's.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -778,10 +778,6 @@
     	text-align: right;
   }
   
-  .featured {
-//    border: 20px solid red;    
-  }
-
   img,
   .wp-caption {
     &.alignleft,
@@ -864,147 +860,163 @@
   	border-bottom: none;
   }
   
-  .borderframe {
-
-    border: 2px solid @grijs_4;
-
-    h2, 
-    h3, 
-    h4, 
-    h5, 
-    h6 {
-      &.blocktitle {
-        margin: 0 0 .25em 0;
-        padding: .75rem 1rem;
-        font-size: 1.2rem;
-      }
-      & + div {
-        margin-top: 0;
-      }
-    }
-    
-    
-    &.gray {
-      background: @grijs_2;      
-      border-color: @grijs_3;
-      
-      img {
-        border: 1px solid @grijs_4;
-      }
-    }
-
-    &.green {
-
-      border: 2px solid @communicatiekleur_vol;
-      
-      h2, 
-      h3, 
-      h4, 
-      h5, 
-      h6 {
-        &.blocktitle {
-          background: @communicatiekleur_vol;
-          color: @wit;
-        }
-      }
-    }
-
-    &.dataagendablue {
-
-      border: 2px solid @digibeter_blauw;
-      background: @dataagenda_blauw_0;
-
-      h2, 
-      h3, 
-      h4, 
-      h5, 
-      h6 {
-        &.blocktitle {
-          background: @digibeter_blauw;
-          color: @wit;
-        }
-      }
-    }
-        
-    &.dataagendaorange {
-
-      border: 2px solid @digibeter_oranje;
-      background: @wit;
-
-      h2, 
-      h3, 
-      h4, 
-      h5, 
-      h6 {
-        &.blocktitle {
-          background: @digibeter_oranje;
-          color: @wit;
-        }
-      }
-    }
-
-@break_aside: 380px;
-
-    &.asidegrey {
-      float: left;
-      border: 2px solid @grijs;
-      background: @grijs;
-      float: left;
-      margin: 1em 1em 1em 0;
-
-      @media only screen and (min-width: ( ( @break_aside * 2 ) ) ) {
-        max-width: @break_aside;
-      }
-      
-    }
-
-        
-    &.blue {
-
-      border: 2px solid @digibeter_blauw;
-
-      h2, 
-      h3, 
-      h4, 
-      h5, 
-      h6 {
-        &.blocktitle {
-          background: @digibeter_blauw;
-          color: @wit;
-        }
-      }
-    }
-    
-    padding: 0;
-    
-    .the-content,
-    div {
-      margin: 1rem;
-    }
-    .block-audio-video {
-      margin: 0;
-    }
-    
-
-    p, ul, ol {
-      margin: 0;
-      padding: 0 .2rem;
-    }
-    ul, ol {
-    ul, ol {
-      padding: 0;
-    }
-    }
-
-    & + p,
-    & + ol,
-    & + ul,
-    & + details,
-    & + div {
-      margin-top: 1em;
-    }
-
-  }
+	.borderframe {
+		
+		border: 2px solid @grijs_4;
+		
+		h2, 
+		h3, 
+		h4, 
+		h5, 
+		h6 {
+			&.blocktitle {
+				margin: 0 0 .25em 0;
+				padding: .75rem 1rem;
+				font-size: 1.2rem;
+			}
+			& + div {
+				margin-top: 0;
+			}
+		}
+		
+		
+		&.gray {
+			background: @grijs_2;      
+			border-color: @grijs_3;
+		
+			img {
+				border: 1px solid @grijs_4;
+			}
+		}
+		
+		&.green {
+			
+			border: 2px solid @communicatiekleur_vol;
+			
+			h2, 
+			h3, 
+			h4, 
+			h5, 
+			h6 {
+				&.blocktitle {
+					background-color: @communicatiekleur_vol;
+					color: @wit;
+				}
+			}
+		}
+		
+		&.dataagendablue {
+			
+			border: 2px solid @digibeter_blauw;
+			background: @dataagenda_blauw_0;
+			
+			h2, 
+			h3, 
+			h4, 
+			h5, 
+			h6 {
+				&.blocktitle {
+					background-color: @digibeter_blauw;
+					color: @wit;
+				}
+			}
+		}
+		
+		&.dataagendaorange {
+			
+			border: 2px solid @digibeter_oranje;
+			background: @wit;
+			
+			h2, 
+			h3, 
+			h4, 
+			h5, 
+			h6 {
+				&.blocktitle {
+					background-color: @digibeter_oranje;
+					color: @wit;
+				}
+			}
+		}
+		
+		@break_aside: 380px;
+		
+		&.asidegrey {
+			float: left;
+			border: 2px solid @grijs;
+			background: @grijs;
+			float: left;
+			margin: 1em 1em 1em 0;
+			
+			@media only screen and (min-width: ( ( @break_aside * 2 ) ) ) {
+				max-width: @break_aside;
+			}
+		
+		}
+		
+		
+		&.blue {
+			
+			border: 2px solid @digibeter_blauw;
+			
+			h2, 
+			h3, 
+			h4, 
+			h5, 
+			h6 {
+				&.blocktitle {
+					background-color: @digibeter_blauw;
+					color: @wit;
+				}
+			}
+		}
+		
+		&.toolbox {
+			
+			border: 2px solid @digibeter_blauw;
+			
+			h2, 
+			h3, 
+			h4, 
+			h5, 
+			h6 {
+				&.blocktitle {
+					background-color: @digibeter_blauw;
+					color: @wit;
+				}
+			}
+		}
+		
+		padding: 0;
+		
+		.the-content,
+		div {
+			margin: 1rem;
+		}
+		.block-audio-video {
+			margin: 0;
+		}
+		
+		
+		p, ul, ol {
+			margin: 0;
+			padding: 0 .2rem;
+		}
+		ul, ol {
+			padding-left: 1em;
+			ul, ol {
+				padding: 0;
+			}
+		}
+		
+		& + p,
+		& + ol,
+		& + ul,
+		& + details,
+		& + div {
+			margin-top: 1em;
+		}
+	}
 
   p,
   ol,

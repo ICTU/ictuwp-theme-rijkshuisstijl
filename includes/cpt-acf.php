@@ -8,7 +8,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.6.3a
+// * @version 2.7.1
 // * @desc.   Eerste opzet toolbox-pagina's.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
@@ -1606,33 +1606,33 @@ if( function_exists('acf_add_local_field_group') ):
   				'id' => '',
   			),
   			'choices' => array(
-  				'digibeter-oranje' => 'oranje digibeter (Nederlands)',
-  				'digibeter-blauw' => 'blauw digibeter (Nederlands)',
-  				'digibeter-groen' => 'groen digibeter (Nederlands)',
-  				'digibeter-violet' => 'violet digibeter (Nederlands)',
-  				'digibeter-paars' => 'paars digibeter (Nederlands)',
+  				'digibeter-oranje'								=> 'oranje digibeter (Nederlands)',
+  				'digibeter-blauw'								=> 'blauw digibeter (Nederlands)',
+  				'digibeter-groen'								=> 'groen digibeter (Nederlands)',
+  				'digibeter-violet'								=> 'violet digibeter (Nederlands)',
+  				'digibeter-paars'								=> 'paars digibeter (Nederlands)',
 
-  				'digibeter-en-orange' => 'oranje digibeter (Engels)',
-  				'digibeter-en-blue' => 'blauw digibeter (Engels)',
-  				'digibeter-en-green' => 'groen digibeter (Engels)',
-  				'digibeter-en-violet' => 'violet digibeter (Engels)',
-  				'digibeter-en-purple' => 'paars digibeter (Engels)',
+  				'digibeter-en-orange'							=> 'oranje digibeter (Engels)',
+  				'digibeter-en-blue'								=> 'blauw digibeter (Engels)',
+  				'digibeter-en-green'							=> 'groen digibeter (Engels)',
+  				'digibeter-en-violet'							=> 'violet digibeter (Engels)',
+  				'digibeter-en-purple'							=> 'paars digibeter (Engels)',
   				
-  				'da-06' => 'NDA - algemeen',
-  				'da-01-problemen-oplossen' => 'NDA H1 - Problemen oplossen met datagedreven werken',
-  				'da-02-wetgeving-publieke-waarden' => 'NDA H2 - Aandacht voor wetgeving en publieke waarden',
-  				'da-03-overheidsdata-verbeteren' => 'NDA H3 - Overheidsdata kwalitatief verbeteren en efficiënter benutten',
-  				'da-04-kennis-verzamelen-verbeteren' => 'NDA H4 - Kennis over datagedreven werken verzamelen en delen',
-  				'da-05-mensen-organisatie-cultuurverandering' => 'NDA H5 - Investeren in mensen, organisatie en cultuurverandering',
+  				'da-06'											=> 'NDA - algemeen',
+  				'da-01-problemen-oplossen'						=> 'NDA H1 - Problemen oplossen met datagedreven werken',
+  				'da-02-wetgeving-publieke-waarden'				=> 'NDA H2 - Aandacht voor wetgeving en publieke waarden',
+  				'da-03-overheidsdata-verbeteren'				=> 'NDA H3 - Overheidsdata kwalitatief verbeteren en efficiënter benutten',
+  				'da-04-kennis-verzamelen-verbeteren'			=> 'NDA H4 - Kennis over datagedreven werken verzamelen en delen',
+  				'da-05-mensen-organisatie-cultuurverandering'	=> 'NDA H5 - Investeren in mensen, organisatie en cultuurverandering',
   				
 				
-				'01-kwaliteit-van-data-algoritme-en-analyse'	=> 'Toolbox 1 - Kwaliteit van data algoritme en analyse',
-				'02-belanghebbenden-betrekken'     				=> 'Toolbox 2 - Belanghebbenden betrekken',
-				'03-transparantie-en-verantwoording'     		=> 'Toolbox 3 - Transparantie en verantwoording',
-				'04-wet-en-regelgeving-respecteren'     		=> 'Toolbox 4 - Wet- en regelgeving respecteren',
-				'05-monitoren-en-evalueren'     				=> 'Toolbox 5 - Monitoren en evalueren',
-				'06-veiligheid-borgen'     						=> 'Toolbox 6 - Veiligheid borgen',
-				'07-publieke-waarden-centraal'					=> 'Toolbox 7 - Publieke waarden centraal',
+				'toolbox01-kwaliteit-van-data-algoritme-en-analyse'	=> 'Toolbox 1 - Kwaliteit van data algoritme en analyse',
+				'toolbox02-belanghebbenden-betrekken'     			=> 'Toolbox 2 - Belanghebbenden betrekken',
+				'toolbox03-transparantie-en-verantwoording'     	=> 'Toolbox 3 - Transparantie en verantwoording',
+				'toolbox04-wet-en-regelgeving-respecteren'     		=> 'Toolbox 4 - Wet- en regelgeving respecteren',
+				'toolbox05-monitoren-en-evalueren'     				=> 'Toolbox 5 - Monitoren en evalueren',
+				'toolbox06-veiligheid-borgen'     					=> 'Toolbox 6 - Veiligheid borgen',
+				'toolbox07-publieke-waarden-centraal'				=> 'Toolbox 7 - Publieke waarden centraal',
   				
   			),
   			'default_value' => array(
@@ -2745,7 +2745,7 @@ acf_add_local_field_group(array(
 			'label' => 'Principe 1',
 			'name' => '',
 			'type' => 'accordion',
-			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/principe_1.svg" width="100" alt="" />',
+			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/01-kwaliteit_van_data_algoritme_en_analyse.svg" width="100" alt="" />',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -2801,7 +2801,7 @@ acf_add_local_field_group(array(
 			'label' => 'Principe 2',
 			'name' => '',
 			'type' => 'accordion',
-			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/principe_2.svg" width="100" alt="" />',
+			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/02-belanghebbenden_betrekken.svg" width="100" alt="" />',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -2857,7 +2857,7 @@ acf_add_local_field_group(array(
 			'label' => 'Principe 3',
 			'name' => '',
 			'type' => 'accordion',
-			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/principe_3.svg" width="100" alt="" />',
+			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/03-transparantie_en_verantwoording.svg" width="100" alt="" />',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -2913,7 +2913,7 @@ acf_add_local_field_group(array(
 			'label' => 'Principe 4',
 			'name' => '',
 			'type' => 'accordion',
-			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/principe_4.svg" width="100" alt="" />',
+			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/04-wet-_en_regelgeving_respecteren.svg" width="100" alt="" />',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -2969,7 +2969,7 @@ acf_add_local_field_group(array(
 			'label' => 'Principe 5',
 			'name' => '',
 			'type' => 'accordion',
-			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/principe_5.svg" width="100" alt="" />',
+			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/05-monitoren_en_evalueren.svg" width="100" alt="" />',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -3025,7 +3025,7 @@ acf_add_local_field_group(array(
 			'label' => 'Principe 6',
 			'name' => '',
 			'type' => 'accordion',
-			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/principe_6.svg" width="100" alt="" />',
+			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/06-veiligheid_borgen.svg" width="100" alt="" />',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -3081,7 +3081,7 @@ acf_add_local_field_group(array(
 			'label' => 'Principe 7',
 			'name' => '',
 			'type' => 'accordion',
-			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/principe_7.svg" width="100" alt="" />',
+			'instructions' => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/07-publieke_waarden_centraal.svg" width="100" alt="" />',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(

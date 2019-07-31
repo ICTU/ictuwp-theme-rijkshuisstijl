@@ -13,10 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.6.3a - Eerste opzet toolbox-pagina's.
+2.7.1 - Eerste opzet toolbox-pagina's.
 
 ## Version history
-* 2.6.3a - Eerste opzet toolbox-pagina's.
+* 2.7.1 - Eerste opzet toolbox-pagina's.
 * 2.6.2 - Check in bannerwidget op wel/niet tonen plaatje.
 * 2.6.1 - Markering in grijs voor archief-dossiers.
 * 2.5.2 - Optie om uitgelichte afbeelding NIET automatisch in te voegen.
