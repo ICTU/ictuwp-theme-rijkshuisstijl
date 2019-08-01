@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.1
-// * @desc.   Eerste opzet toolbox-pagina's.
+// * @version 2.7.2
+// * @desc.   Bij beleidskleur: mogelijkheid om een header-image te uploaden.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -1586,83 +1586,109 @@ if( function_exists('acf_add_local_field_group') ):
   ));
 
   //======================================================================================================
-  
-  acf_add_local_field_group(array(
-  	'key' => 'group_5b30e4089957f',
-  	'title' => 'Kleuren voor NL Digibeter',
-  	'fields' => array(
-  		array(
-  			'key' => 'field_5b30e4db4e762',
-  			'label' => 'Achtergrondkleur (let op: Nederlands of Engels!)',
-  			'name' => 'digibeter_term_achtergrondkleur',
-  			'type' => 'select',
-  			'description' => 'In de header images zit ook tekst. Let er daarom op of je wel of geen ehm "<em>Engelse</em>" kleur kiest.',
-  			'instructions' => '<img src="' . RHSWP_THEMEFOLDER . '/images/digibeter-kleuren.png" width="272" height="280" alt="">',
-  			'required' => 1,
-  			'conditional_logic' => 0,
-  			'wrapper' => array(
-  				'width' => '',
-  				'class' => '',
-  				'id' => '',
-  			),
-  			'choices' => array(
-  				'digibeter-oranje'								=> 'oranje digibeter (Nederlands)',
-  				'digibeter-blauw'								=> 'blauw digibeter (Nederlands)',
-  				'digibeter-groen'								=> 'groen digibeter (Nederlands)',
-  				'digibeter-violet'								=> 'violet digibeter (Nederlands)',
-  				'digibeter-paars'								=> 'paars digibeter (Nederlands)',
 
-  				'digibeter-en-orange'							=> 'oranje digibeter (Engels)',
-  				'digibeter-en-blue'								=> 'blauw digibeter (Engels)',
-  				'digibeter-en-green'							=> 'groen digibeter (Engels)',
-  				'digibeter-en-violet'							=> 'violet digibeter (Engels)',
-  				'digibeter-en-purple'							=> 'paars digibeter (Engels)',
-  				
-  				'da-06'											=> 'NDA - algemeen',
-  				'da-01-problemen-oplossen'						=> 'NDA H1 - Problemen oplossen met datagedreven werken',
-  				'da-02-wetgeving-publieke-waarden'				=> 'NDA H2 - Aandacht voor wetgeving en publieke waarden',
-  				'da-03-overheidsdata-verbeteren'				=> 'NDA H3 - Overheidsdata kwalitatief verbeteren en efficiënter benutten',
-  				'da-04-kennis-verzamelen-verbeteren'			=> 'NDA H4 - Kennis over datagedreven werken verzamelen en delen',
-  				'da-05-mensen-organisatie-cultuurverandering'	=> 'NDA H5 - Investeren in mensen, organisatie en cultuurverandering',
-  				
+	acf_add_local_field_group(array(
+		'key' => 'group_5b30e4089957f',
+		'title' => 'Kleuren voor NL Digibeter',
+		'fields' => array(
+			array(
+				'key' => 'field_5b30e4db4e762',
+				'label' => 'Achtergrondkleur (let op: Nederlands of Engels!)',
+				'name' => 'digibeter_term_achtergrondkleur',
+				'type' => 'select',
 				
-				'toolbox01-kwaliteit-van-data-algoritme-en-analyse'	=> 'Toolbox 1 - Kwaliteit van data algoritme en analyse',
-				'toolbox02-belanghebbenden-betrekken'     			=> 'Toolbox 2 - Belanghebbenden betrekken',
-				'toolbox03-transparantie-en-verantwoording'     	=> 'Toolbox 3 - Transparantie en verantwoording',
-				'toolbox04-wet-en-regelgeving-respecteren'     		=> 'Toolbox 4 - Wet- en regelgeving respecteren',
-				'toolbox05-monitoren-en-evalueren'     				=> 'Toolbox 5 - Monitoren en evalueren',
-				'toolbox06-veiligheid-borgen'     					=> 'Toolbox 6 - Veiligheid borgen',
-				'toolbox07-publieke-waarden-centraal'				=> 'Toolbox 7 - Publieke waarden centraal',
-  				
-  			),
-  			'default_value' => array(
-  			),
-  			'allow_null' => 0,
-  			'multiple' => 0,
-  			'ui' => 0,
-  			'ajax' => 0,
-  			'return_format' => 'value',
-  			'placeholder' => '',
-  		),
-  	),
-  	'location' => array(
-  		array(
-  			array(
-  				'param' => 'taxonomy',
-  				'operator' => '==',
-  				'value' => RHSWP_CT_DIGIBETER,
-  			),
-  		),
-  	),
-  	'menu_order' => 0,
-  	'position' => 'normal',
-  	'style' => 'default',
-  	'label_placement' => 'top',
-  	'instruction_placement' => 'label',
-  	'hide_on_screen' => '',
-  	'active' => 1,
-  	'description' => '',
-  ));
+				'description' => 'In de header images zit ook tekst. Let er daarom op of je wel of geen ehm "<em>Engelse</em>" kleur kiest.',
+				'instructions' => 'In de header images zit ook tekst. Let er daarom op of je wel of geen ehm "<em>Engelse</em>" kleur kiest.<img src="' . RHSWP_THEMEFOLDER . '/images/digibeter-kleuren.png" width="272" height="280" alt="">',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+	  				'digibeter-oranje'									=> 'oranje digibeter (Nederlands)',
+	  				'digibeter-blauw'									=> 'blauw digibeter (Nederlands)',
+	  				'digibeter-groen'									=> 'groen digibeter (Nederlands)',
+	  				'digibeter-violet'									=> 'violet digibeter (Nederlands)',
+	  				'digibeter-paars'									=> 'paars digibeter (Nederlands)',
+	
+	  				'digibeter-en-orange'								=> 'oranje digibeter (Engels)',
+	  				'digibeter-en-blue'									=> 'blauw digibeter (Engels)',
+	  				'digibeter-en-green'								=> 'groen digibeter (Engels)',
+	  				'digibeter-en-violet'								=> 'violet digibeter (Engels)',
+	  				'digibeter-en-purple'								=> 'paars digibeter (Engels)',
+	  				
+	  				'da-06'												=> 'NDA - algemeen',
+	  				'da-01-problemen-oplossen'							=> 'NDA H1 - Problemen oplossen met datagedreven werken',
+	  				'da-02-wetgeving-publieke-waarden'					=> 'NDA H2 - Aandacht voor wetgeving en publieke waarden',
+	  				'da-03-overheidsdata-verbeteren'					=> 'NDA H3 - Overheidsdata kwalitatief verbeteren en efficiënter benutten',
+	  				'da-04-kennis-verzamelen-verbeteren'				=> 'NDA H4 - Kennis over datagedreven werken verzamelen en delen',
+	  				'da-05-mensen-organisatie-cultuurverandering'		=> 'NDA H5 - Investeren in mensen, organisatie en cultuurverandering',
+
+					'toolbox01-kwaliteit-van-data-algoritme-en-analyse'	=> 'Toolbox 1 - Kwaliteit van data algoritme en analyse',
+					'toolbox02-belanghebbenden-betrekken'     			=> 'Toolbox 2 - Belanghebbenden betrekken',
+					'toolbox03-transparantie-en-verantwoording'     	=> 'Toolbox 3 - Transparantie en verantwoording',
+					'toolbox04-wet-en-regelgeving-respecteren'     		=> 'Toolbox 4 - Wet- en regelgeving respecteren',
+					'toolbox05-monitoren-en-evalueren'     				=> 'Toolbox 5 - Monitoren en evalueren',
+					'toolbox06-veiligheid-borgen'     					=> 'Toolbox 6 - Veiligheid borgen',
+					'toolbox07-publieke-waarden-centraal'				=> 'Toolbox 7 - Publieke waarden centraal',
+	  	
+				),
+				'default_value' => array(
+				),
+				'allow_null' => 0,
+				'multiple' => 0,
+				'ui' => 0,
+				'return_format' => 'value',
+				'ajax' => 0,
+				'placeholder' => '',
+			),
+			array(
+				'key' => 'field_5d42ddbd3314b',
+				'label' => 'Hoofdstukplaatje',
+				'name' => 'digibeter_term_hoofdstukplaatje',
+				'type' => 'image',
+				'instructions' => 'Voor elke kleur is al een standaardplaatje ingebouwd. Het plaatje dat je hier uploadt, wordt dan getoond in plaats van het standaardplaatje.',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'return_format' => 'array',
+				'preview_size' => 'Carrousel (full width: 1500 wide)',
+				'library' => 'all',
+				'min_width' => 1200,
+				'min_height' => 400,
+				'min_size' => '',
+				'max_width' => '',
+				'max_height' => '',
+				'max_size' => '',
+				'mime_types' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'taxonomy',
+					'operator' => '==',
+					'value' => RHSWP_CT_DIGIBETER,					
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => 'description hiero? <img src="/wp-content/themes/wp-rijkshuisstijl/images/digibeter-kleuren.png" width="272" height="280" alt="">',
+	));
+
+
   
   //======================================================================================================
 

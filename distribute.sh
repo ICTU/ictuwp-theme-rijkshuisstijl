@@ -1,6 +1,6 @@
 # sh /shared-paul-files/Webs/git-repos/ICTU---Digitale-Overheid-WP-theme/distribute.sh &>/dev/null
 
-# version 2.7.1
+# version 2.7.2
 
 # clear the log file
 
@@ -62,13 +62,13 @@ rsync -ah '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruike
 # ------------------
 # echo "bekkuppie maken ---------------------------------------------"
 
-# rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.7.1/'
+# rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.7.2/'
 
 # change the theme name
-  # sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.7.1 - Eerste opzet toolbox-pagina's./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.7.1/style.css'
+  # sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.7.2 - Bij beleidskleur: mogelijkheid om een header-image te uploaden./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.7.2/style.css'
 
 # remove the backup
-# rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.7.1/style.css.bak'
+# rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.7.2/style.css.bak'
 
 
 

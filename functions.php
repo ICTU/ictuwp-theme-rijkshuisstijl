@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.1
-// * @desc.   Eerste opzet toolbox-pagina's.
+// * @version 2.7.2
+// * @desc.   Bij beleidskleur: mogelijkheid om een header-image te uploaden.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -25,8 +25,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.7.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Eerste opzet toolbox-pagina's." );
+define( 'CHILD_THEME_VERSION',              "2.7.2" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Bij beleidskleur: mogelijkheid om een header-image te uploaden." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -3108,262 +3108,254 @@ function rhswp_write_extra_contentblokken() {
 
 function rhswp_check_caroussel_or_featured_img() {
 
-  global $post;
-
-  if ( ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) || ( ! taxonomy_exists( RHSWP_CT_DIGIBETER ) ) ) {
-    return;
-  }
-
-  if ( ! function_exists( 'get_field' ) ) {
-    return;
-  }
-
-  if ( is_search( ) || is_404( ) ) {
-    return;
-  }
-
-  if ( 'page_digibeter-home.php' == get_page_template_slug( get_the_ID() ) && get_field( 'digibeter_content_intro', get_the_ID() ) ) {
-    // voorkomen dat pagina's met dit template ook een carroussel laten zien
-    // deze pagina heeft dus als template 'page_digibeter-home.php' en heeft iets in digibeter_content_intro
-    // dodebug( 'rhswp_check_caroussel_or_featured_img 1: template voor digibeter ' );
-    return;
-
-  }
-  elseif ( ( ( post_type_exists( DOPT__ACTIELIJN_CPT ) ) && ( post_type_exists( DOPT__GEBEURTENIS_CPT ) ) ) && ( ( is_single() && DOPT__ACTIELIJN_CPT == get_post_type() ) ||
-      ( is_single() && DOPT__GEBEURTENIS_CPT == get_post_type() ) ) ) {
-
-    return;
-
-  }
-  elseif( has_term( '', RHSWP_CT_DIGIBETER, get_the_id() ) && ( ! is_tax( RHSWP_CT_DIGIBETER ) ) ) {
-
-    $digibeterterms  = wp_get_post_terms( get_the_id(), RHSWP_CT_DIGIBETER );
-
-    // dodebug( 'rhswp_check_caroussel_or_featured_img 2: has term check: ' . RHSWP_CT_DIGIBETER );
-
-    if ( $digibeterterms ) {
-
-      // dodebug( 'rhswp_check_caroussel_or_featured_img 2: en jawel ' . RHSWP_CT_DIGIBETER );
-
-      echo '<div class="wrap header-image">';
-      foreach( $digibeterterms as $digibeterterm ) {
-        $term_id    = ' ' . $digibeterterm->term_id;
-        $acfid      = RHSWP_CT_DIGIBETER . '_' . $term_id;
-        $digibeterclass  = get_field( 'digibeter_term_achtergrondkleur', $acfid );
-        echo '<img src="' . RHSWP_THEMEFOLDER . '/images/digibeter-icons/' . $digibeterclass . '.svg" alt="' . $digibeterclass . '" width="1200" height="400" >';
-      }
-      echo '</div>';
-    }
-  }
-  else {
-
-    $carousselcheck = '';
-    $divid          = '';
-
-    // dodebug( 'rhswp_check_caroussel_or_featured_img 3: page or tax' );
-
-    if ( is_page() ) {
-      $theid          = get_the_ID();
-      $divid          = $theid;
-      $carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
-    }
-    elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
-      $theid          = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
-      $divid          = get_queried_object()->term_id;
-      $carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
-      $currentterm    = get_queried_object()->term_id;
-    }
-
-    if ( RHSWP_HEADER_IMAGE_CONFIRM == $carousselcheck ) {
-
-      // dodebug( 'rhswp_check_caroussel_or_featured_img 3: page or tax : has headerimage ' );
-
-      $headerimage      = get_field( 'kies_header_image', $theid );
-      $image_tekst      = get_field( 'kies_header_image_tekst', $theid );
-
-      if ( $headerimage ) {
-
-        $thumb      = $headerimage['sizes'][ RHSWP_HERO_IMAGE2_WIDTH_NAME ];
-        $width      = $headerimage['sizes'][ RHSWP_HERO_IMAGE2_WIDTH_NAME . '-width' ];
-        $height     = $headerimage['sizes'][ RHSWP_HERO_IMAGE2_WIDTH_NAME . '-height' ];
-
-        if ( RHSWP_MIN_HERO_IMAGE_WIDTH <= $width ) {
-          echo '<div class="hero-image" id="hero_' . $divid . '">';
-          echo '<div class="wrapper">';
-          if ( $image_tekst ) {
-            echo '<div class="hero-image-tekst">';
-            echo $image_tekst;
-            echo '</div>';
-
-            if ( is_home() || is_front_page() ) {
-              get_search_form();
-            }
-
-          }
-          else {
-            echo '&nbsp;';
-            if ( is_home() || is_front_page() ) {
-              get_search_form();
-            }
-          }
-          echo '</div>';
-          echo '</div>';
-        }
-
-      }
-    }
-    elseif ( RHSWP_HEADER_CARROUSEL_CONFIRM == $carousselcheck ) {
-
-      $getcarousel      = get_field( 'kies_carrousel', $theid );
-      $carouselid       = 0;
-
-      if ( is_object( $getcarousel ) ) {
-        $carouselid       = $getcarousel->ID;
-        $carouseltitle    = $getcarousel->post_title;
-        $carrousel_items  = get_field( 'carrousel_items', $carouselid );
-      }
-
-
-      if( have_rows('carrousel_items', $carouselid ) ) {
-
-        $itemcounter = 'items' . count( $carrousel_items ) ;
-
-        echo '<div class="slider" role="complementary">';
-        echo '<div class="wrap">';
-
-        echo '<p class="visuallyhidden">' . $carouseltitle . '</p>';
-        echo '<p class="slidenav" id="slidenavid">&nbsp;</p>';
-
-        echo '<ul class="carousel ' . $itemcounter . '" id="carousel" data-slidecount="' . $itemcounter . '">';
-
-
-        $slidecounter = 0;
-
-        foreach( $carrousel_items as $row ) {
-
-          $slidecounter++;
-
-          $link_img_start       = '';
-          $link_end             = '';
-          $slide_link_start     = '';
-          $slide_link_end       = '';
-          $slide_caption_start  = '<div class="caption">';
-          $slide_caption_end    = '</div>';
-
-          $image    = $row[ 'carrousel_item_photo' ];
-          $titel    = esc_html( $row[ 'carrousel_item_title' ] );
-          $text     = esc_html( $row[ 'carrousel_item_short_text' ] );
-          $type     = $row[ 'carrousel_item_link_type' ];
-          $link     = $row[ 'carrousel_item_link_page' ];
-          $dossier  = $row[ 'carrousel_item_link_dossier' ];
-          $size     = RHSWP_HERO_IMAGE_WIDTH_NAME;
-
-          $selected = '';
-
-          if ( $slidecounter == 1 ) {
-            $selected = ' class="slide selected"';
-          }
-          else {
-            $selected = ' class="slide"';
-          }
-
-          echo '<li' . $selected . '>';
-
-          if ( $link && $type == 'pagina' ) {
-            $linkid         = array_pop($link);
-            $link_img_start     = '<a href="' . get_permalink( $linkid ) . '" tabindex="-1" class="img-container">';
-            $link_end           = '</a>';
-
-            $slide_link_start = '<a href="' . get_permalink( $linkid ) . '">';
-            $slide_link_end   = '</a>';
-          }
-          elseif ( $dossier && $type == 'dossier' ) {
-            $link_img_start     = '<a href="' . get_term_link( $dossier ) . '" tabindex="-1" class="img-container">';
-            $link_end           = '</a>';
-
-            $slide_link_start = '<a href="' . get_term_link( $dossier ) . '">';
-            $slide_link_end   = '</a>';
-
-          }
-          else {
-            $link_img_start     = '<span class="img-container">';
-            $link_end           = '</span>';
-
-          }
-
-
-
-          if ( $image ) {
-            $thumb  = $image['sizes'][ $size ];
-            $width  = $image['sizes'][ $size . '-width' ];
-            $height = $image['sizes'][ $size . '-height' ];
-
-
-            echo $slide_link_start;
-
-            if ( $titel || $text ) {
-
-
-              echo $slide_caption_start;
-
-
-              if ( $titel ) {
-                echo '<h2 class="caption-title">' .  $titel . '</h2>';
-              }
-
-              if ( $text ) {
-                echo '<p class="caption-text">' .  $text . '</p>';
-              }
-
-  //            echo $link_img_start;
-  //            echo $link_end;
-
-
-            echo $slide_caption_end;
-
-
-            }
-
-            echo '<img src="' . $thumb . '" alt="Bekijk de pagina ' . $titel . '" width="' . $width . '" height="' . $height . '" />';
-
-            echo $slide_link_end;
-
-
-          }
-
-
-          echo '</li>';
-
-        }
-
-        echo '</ul></div></div>';
-
-      }
-    }
-    elseif ( is_singular() ) {
-
-      $postid = get_the_id();
-
-      if ( has_post_thumbnail( $postid ) ) {
-
-        // geen carroussel nodig, maar er is wel een featured image
-        // is dit featured image wel breed genoeg voor een heroimage?
-
-        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $postid ), RHSWP_HERO_IMAGE_WIDTH_NAME );
-        if ( RHSWP_MIN_HERO_IMAGE_WIDTH <= $image[1] ) {
-          // plaatje is van zichzelf breed genoeg
-          echo '<div class="hero-image wrap">' . get_the_post_thumbnail( $postid, 'full' ) . '</div>';
-        }
-        else {
-          // plaatje is niet breed genoeg. We schrijven 'm dadelijk wel uit, na de titel en naast de inleiding.
-//          echo '<div class="hero-image wrap" style="border: 20px solid red;">niet deze, want breedte van de ' . RHSWP_HERO_IMAGE_WIDTH_NAME . '-versie van dit plaatje is ' . $image[1] . ' en hoogte is: ' . $image[2] . '<br>' . get_the_post_thumbnail( $postid, 'full' ) . '</div>';
-        }
-      }
-    }
-
-
-  }
-
+	global $post;
+	
+	if ( ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) || ( ! taxonomy_exists( RHSWP_CT_DIGIBETER ) ) ) {
+		return;
+	}
+	
+	if ( ! function_exists( 'get_field' ) ) {
+		return;
+	}
+	
+	if ( is_search( ) || is_404( ) ) {
+		return;
+	}
+	
+	if ( 'page_digibeter-home.php' == get_page_template_slug( get_the_ID() ) && get_field( 'digibeter_content_intro', get_the_ID() ) ) {
+		// voorkomen dat pagina's met dit template ook een carroussel laten zien
+		// deze pagina heeft dus als template 'page_digibeter-home.php' en heeft iets in digibeter_content_intro
+		// dodebug( 'rhswp_check_caroussel_or_featured_img 1: template voor digibeter ' );
+		return;
+		
+	}
+	elseif ( ( ( post_type_exists( DOPT__ACTIELIJN_CPT ) ) && ( post_type_exists( DOPT__GEBEURTENIS_CPT ) ) ) && ( ( is_single() && DOPT__ACTIELIJN_CPT == get_post_type() ) ||
+	( is_single() && DOPT__GEBEURTENIS_CPT == get_post_type() ) ) ) {
+		
+		return;
+		
+	}
+	elseif( has_term( '', RHSWP_CT_DIGIBETER, get_the_id() ) && ( ! is_tax( RHSWP_CT_DIGIBETER ) ) ) {
+		
+		$digibeterterms  = wp_get_post_terms( get_the_id(), RHSWP_CT_DIGIBETER );
+		
+		// dodebug( 'rhswp_check_caroussel_or_featured_img 2: has term check: ' . RHSWP_CT_DIGIBETER );
+		
+		if ( $digibeterterms ) {
+		
+			dodebug( 'rhswp_check_caroussel_or_featured_img 2: en jawel ' . RHSWP_CT_DIGIBETER );
+			
+			echo '<div class="wrap header-image">';
+			foreach( $digibeterterms as $digibeterterm ) {
+
+				$term_id    		= ' ' . $digibeterterm->term_id;
+				$acfid      		= RHSWP_CT_DIGIBETER . '_' . $term_id;
+
+				$digibeterimage		= get_field( 'digibeter_term_hoofdstukplaatje', $acfid );
+				$digibeterclass 	= get_field( 'digibeter_term_achtergrondkleur', $acfid );
+				
+				// default image is part of this theme
+				$image				= RHSWP_THEMEFOLDER . '/images/digibeter-icons/' . $digibeterclass . '.svg';
+				$alttekst			= $digibeterclass;
+
+				// but if an image is attached to this term, show the uploaded image
+				if( $digibeterimage ) {
+					$image 		= $digibeterimage['url'];
+					$alttekst 	= $digibeterimage['alt'];
+				}					
+
+				echo '<img src="' . $image . '" alt="' . $alttekst . '" width="1200" height="400" >';
+				
+			}
+			echo '</div>';
+		}
+	}
+	else {
+		
+		$carousselcheck = '';
+		$divid          = '';
+		
+		if ( is_page() ) {
+			$theid          = get_the_ID();
+			$divid          = $theid;
+			$carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
+		}
+		elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
+			$theid          = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
+			$divid          = get_queried_object()->term_id;
+			$carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
+			$currentterm    = get_queried_object()->term_id;
+		}
+		
+		if ( RHSWP_HEADER_IMAGE_CONFIRM == $carousselcheck ) {
+
+			$headerimage      = get_field( 'kies_header_image', $theid );
+			$image_tekst      = get_field( 'kies_header_image_tekst', $theid );
+			
+			if ( $headerimage ) {
+				
+				$thumb      = $headerimage['sizes'][ RHSWP_HERO_IMAGE2_WIDTH_NAME ];
+				$width      = $headerimage['sizes'][ RHSWP_HERO_IMAGE2_WIDTH_NAME . '-width' ];
+				$height     = $headerimage['sizes'][ RHSWP_HERO_IMAGE2_WIDTH_NAME . '-height' ];
+				
+				if ( RHSWP_MIN_HERO_IMAGE_WIDTH <= $width ) {
+					echo '<div class="hero-image" id="hero_' . $divid . '">';
+					echo '<div class="wrapper">';
+					
+					if ( $image_tekst ) {
+						echo '<div class="hero-image-tekst">';
+						echo $image_tekst;
+						echo '</div>';
+						
+						if ( is_home() || is_front_page() ) {
+							get_search_form();
+						}
+						
+					}
+					else {
+						echo '&nbsp;';
+						if ( is_home() || is_front_page() ) {
+							get_search_form();
+						}
+					}
+					echo '</div>'; // .wrapper
+					echo '</div>'; // .hero-image / #hero_' . $divid . '
+				}
+			}
+		}
+		elseif ( RHSWP_HEADER_CARROUSEL_CONFIRM == $carousselcheck ) {
+			
+			$getcarousel      = get_field( 'kies_carrousel', $theid );
+			$carouselid       = 0;
+			
+			if ( is_object( $getcarousel ) ) {
+				$carouselid       = $getcarousel->ID;
+				$carouseltitle    = $getcarousel->post_title;
+				$carrousel_items  = get_field( 'carrousel_items', $carouselid );
+			}
+
+			if( have_rows('carrousel_items', $carouselid ) ) {
+				
+				$itemcounter = 'items' . count( $carrousel_items ) ;
+				
+				echo '<div class="slider" role="complementary">';
+				echo '<div class="wrap">';
+				
+				echo '<p class="visuallyhidden">' . $carouseltitle . '</p>';
+				echo '<p class="slidenav" id="slidenavid">&nbsp;</p>';
+				
+				echo '<ul class="carousel ' . $itemcounter . '" id="carousel" data-slidecount="' . $itemcounter . '">';
+				
+				
+				$slidecounter = 0;
+				
+				foreach( $carrousel_items as $row ) {
+					
+					$slidecounter++;
+					
+					$link_img_start       = '';
+					$link_end             = '';
+					$slide_link_start     = '';
+					$slide_link_end       = '';
+					$slide_caption_start  = '<div class="caption">';
+					$slide_caption_end    = '</div>';
+					
+					$image    = $row[ 'carrousel_item_photo' ];
+					$titel    = esc_html( $row[ 'carrousel_item_title' ] );
+					$text     = esc_html( $row[ 'carrousel_item_short_text' ] );
+					$type     = $row[ 'carrousel_item_link_type' ];
+					$link     = $row[ 'carrousel_item_link_page' ];
+					$dossier  = $row[ 'carrousel_item_link_dossier' ];
+					$size     = RHSWP_HERO_IMAGE_WIDTH_NAME;
+					
+					$selected = '';
+					
+					if ( $slidecounter == 1 ) {
+						$selected = ' class="slide selected"';
+					}
+					else {
+						$selected = ' class="slide"';
+					}
+					
+					echo '<li' . $selected . '>';
+					
+					if ( $link && $type == 'pagina' ) {
+						$linkid         = array_pop($link);
+						$link_img_start     = '<a href="' . get_permalink( $linkid ) . '" tabindex="-1" class="img-container">';
+						$link_end           = '</a>';
+						
+						$slide_link_start = '<a href="' . get_permalink( $linkid ) . '">';
+						$slide_link_end   = '</a>';
+					}
+					elseif ( $dossier && $type == 'dossier' ) {
+						$link_img_start     = '<a href="' . get_term_link( $dossier ) . '" tabindex="-1" class="img-container">';
+						$link_end           = '</a>';
+						
+						$slide_link_start = '<a href="' . get_term_link( $dossier ) . '">';
+						$slide_link_end   = '</a>';
+					}
+					else {
+						$link_img_start     = '<span class="img-container">';
+						$link_end           = '</span>';
+					}
+					
+					if ( $image ) {
+						$thumb  = $image['sizes'][ $size ];
+						$width  = $image['sizes'][ $size . '-width' ];
+						$height = $image['sizes'][ $size . '-height' ];
+
+						echo $slide_link_start;
+						
+						if ( $titel || $text ) {
+
+							echo $slide_caption_start;
+
+							if ( $titel ) {
+								echo '<h2 class="caption-title">' .  $titel . '</h2>';
+							}
+							
+							if ( $text ) {
+								echo '<p class="caption-text">' .  $text . '</p>';
+							}
+
+							echo $slide_caption_end;
+
+						}
+						
+						echo '<img src="' . $thumb . '" alt="Bekijk de pagina ' . $titel . '" width="' . $width . '" height="' . $height . '" />';
+						
+						echo $slide_link_end;
+
+					}
+					
+					echo '</li>';
+				}
+				
+				echo '</ul></div></div>';
+				
+			}
+		}
+		elseif ( is_singular() ) {
+			
+			$postid = get_the_id();
+			
+			if ( has_post_thumbnail( $postid ) ) {
+				
+				// geen carroussel nodig, maar er is wel een featured image
+				// is dit featured image wel breed genoeg voor een heroimage?
+				
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $postid ), RHSWP_HERO_IMAGE_WIDTH_NAME );
+				if ( RHSWP_MIN_HERO_IMAGE_WIDTH <= $image[1] ) {
+					// plaatje is van zichzelf breed genoeg
+					echo '<div class="hero-image wrap">' . get_the_post_thumbnail( $postid, 'full' ) . '</div>';
+				}
+				else {
+					// plaatje is niet breed genoeg. We schrijven 'm dadelijk wel uit, na de titel en naast de inleiding.
+					//          echo '<div class="hero-image wrap" style="border: 20px solid red;">niet deze, want breedte van de ' . RHSWP_HERO_IMAGE_WIDTH_NAME . '-versie van dit plaatje is ' . $image[1] . ' en hoogte is: ' . $image[2] . '<br>' . get_the_post_thumbnail( $postid, 'full' ) . '</div>';
+				}
+			}
+		}
+	}
 }
 
 //========================================================================================================
