@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.1
-// * @desc.   Eerste opzet toolbox-pagina's.
+// * @version 2.7.3
+// * @desc.   CSS animatie voor toolbox weer gedactiveerd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -885,14 +885,15 @@
 		65%  { transform: translate(0, 15px); }
 		to   { transform: translate(0, -0px); }    
 	}
-	
+
+/*	
 	@keyframes toolboxanimation_principe_1 {
 		from { transform: translate(0,  0px) scale(1); }
 		65%  { transform: translate(20px, -5px) scale(1.02); }
 		to   { transform: translate(0, -0px) scale(1); }    
 	}
 	@keyframes toolboxanimation_principe_2 {
-		/* cyan */
+		// cyan
 		0% {
 			transform: translate(0);
 		}
@@ -916,7 +917,7 @@
 		}
 	}
 	@keyframes toolboxanimation_principe_3 {
-		/* green */
+		// green 
 		0% {
 			transform: translate(0);
 		}
@@ -940,7 +941,7 @@
 		}
 	}
 	@keyframes toolboxanimation_principe_4 {
-		/* red */
+		// red
 		0% {
 			transform: translate(0);
 		}
@@ -961,7 +962,7 @@
 		}
 	}
 	@keyframes toolboxanimation_principe_5 {
-		/* blue */
+		// blue
 		0% {
 			transform: translate(0);
 		}
@@ -985,7 +986,7 @@
 		}
 	}
 	@keyframes toolboxanimation_principe_6 {
-		/* purple */
+		// purple
 		0% {
 			transform: translate(0);
 		}
@@ -1006,7 +1007,7 @@
 		}
 	}
 	@keyframes toolboxanimation_principe_7 {
-		/* black */
+		// black
 		0% {
 			transform: translate(0);
 		}
@@ -1026,7 +1027,7 @@
 			transform: translate(0);
 		}
 	}
-
+*/
 
 	#toolbox-illustrations {
 	
@@ -1122,8 +1123,8 @@
 				transition: all .2s ease-in-out; 
 
 				animation-duration: 3s;
-				animation-iteration-count: infinite;
-				animation-timing-function: ease-in-out;
+				// animation-iteration-count: infinite;
+				// animation-timing-function: ease-in-out;
 
 				h2 {
 					color: @oranje_vol;
@@ -1135,8 +1136,8 @@
 				top: 78px;
 				left: 40px;
 				width: 225px;
-				animation-name: toolboxanimation_principe_1;
-				animation-duration: 12s;
+				// animation-name: toolboxanimation_principe_1;
+				// animation-duration: 12s;
 				// border: 1px dashed yellow;
 				.animationhover();
 			}
@@ -1144,8 +1145,8 @@
 				top: 10px;
 				left: 764px;
 				width: 256px;
-				animation-name: toolboxanimation_principe_2;
-				animation-duration: 6s;
+				// animation-name: toolboxanimation_principe_2;
+				// animation-duration: 6s;
 				// border: 1px dashed cyan;
 				.animationhover();
 			}
@@ -1153,8 +1154,8 @@
 				top: 494px;
 				left: 10px;
 				width: 271px;
-				animation-name: toolboxanimation_principe_3;
-				animation-duration: 8s;
+				// animation-name: toolboxanimation_principe_3;
+				// animation-duration: 8s;
 				// border: 1px dashed green;
 				.animationhover();
 			}
@@ -1162,8 +1163,8 @@
 				top: 568px;
 				left: 445px;
 				width: 255px;
-				animation-name: toolboxanimation_principe_4;
-				animation-duration: 7s;
+				// animation-name: toolboxanimation_principe_4;
+				// animation-duration: 7s;
 				// border: 1px dashed red;
 				.animationhover();
 			}
@@ -1171,8 +1172,8 @@
 				top: 477px;
 				left: 867px;
 				width: 251px;
-				animation-name: toolboxanimation_principe_5;
-				animation-duration: 7s;
+				// animation-name: toolboxanimation_principe_5;
+				// animation-duration: 7s;
 				// border: 1px dashed blue;
 				.animationhover();
 			}
@@ -1180,8 +1181,8 @@
 				top: 218px;
 				right: 10px;
 				width: 225px;
-				animation-name: toolboxanimation_principe_6;
-				animation-duration: 8s;
+				// animation-name: toolboxanimation_principe_6;
+				// animation-duration: 8s;
 				// border: 1px dashed purple;
 				.animationhover();
 			}
@@ -1189,8 +1190,8 @@
 				top: 192px;
 				left: 445px;
 				width: 279px;
-				animation-name: toolboxanimation_principe_7;
-				animation-duration: 9s;
+				// animation-name: toolboxanimation_principe_7;
+				// animation-duration: 9s;
 				// border: 1px dashed black;
 				.animationhover();
 			}
@@ -1207,9 +1208,7 @@
 		animation-iteration-count: 1;
 		animation-timing-function: ease;
 //		box-shadow: 2px 3px 8px 8px rgba( 120, 120, 120, .6 );
-		
 		transform: scale(1.05); 
-		
 		z-index: 8888;
 	}				
 }
