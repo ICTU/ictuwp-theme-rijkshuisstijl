@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.7.3 - CSS animatie voor toolbox weer gedactiveerd.
+2.7.4 - Toolbox: animatie-code weggehaald en CSS bugfix voor kaderblok.
 
 ## Version history
+* 2.7.4 - Toolbox: animatie-code weggehaald en CSS bugfix voor kaderblok.
 * 2.7.3 - CSS animatie voor toolbox weer gedactiveerd.
 * 2.7.2 - Bij beleidskleur: mogelijkheid om een header-image te uploaden.
 * 2.7.1 - Eerste opzet toolbox-pagina's.

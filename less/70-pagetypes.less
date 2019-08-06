@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.3
-// * @desc.   CSS animatie voor toolbox weer gedactiveerd.
+// * @version 2.7.4
+// * @desc.   Toolbox: animatie-code weggehaald en CSS bugfix voor kaderblok.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -507,6 +507,16 @@
 	.toolbox06-veiligheid-borgen,
 	.toolbox07-publieke-waarden-centraal {
 		.borderframe.blue {
+			a {
+				text-decoration: underline !important;
+				color: @wit;
+				&:hover,
+				&:active,
+				&:focus {
+					background-color: @wit;
+					color: @digibeter_blauw;
+				}
+			}
 			.blocktitle {
 				background-image: url('images/toolbox/icon-toolbox.svg');
 				background-repeat: no-repeat;
@@ -516,7 +526,6 @@
 				padding-top: 16px;
 				min-height: 50px;
 			}
-//			// border: 1px dashed red;
 			background-color: @digibeter_blauw;
 			&, * {
 				color: @wit;
@@ -1122,9 +1131,14 @@
 				text-align: center;
 				transition: all .2s ease-in-out; 
 
-				animation-duration: 3s;
-				// animation-iteration-count: infinite;
-				// animation-timing-function: ease-in-out;
+				&:hover { 
+					animation-name: vergroot;
+					animation-duration: 1s;
+					animation-iteration-count: 1;
+					animation-timing-function: ease;
+					transform: scale(1.05); 
+					z-index: 8888;
+				}				
 
 				h2 {
 					color: @oranje_vol;
@@ -1136,64 +1150,36 @@
 				top: 78px;
 				left: 40px;
 				width: 225px;
-				// animation-name: toolboxanimation_principe_1;
-				// animation-duration: 12s;
-				// border: 1px dashed yellow;
-				.animationhover();
 			}
 			#toolbox_principe_2 {
 				top: 10px;
 				left: 764px;
 				width: 256px;
-				// animation-name: toolboxanimation_principe_2;
-				// animation-duration: 6s;
-				// border: 1px dashed cyan;
-				.animationhover();
 			}
 			#toolbox_principe_3 {
 				top: 494px;
 				left: 10px;
 				width: 271px;
-				// animation-name: toolboxanimation_principe_3;
-				// animation-duration: 8s;
-				// border: 1px dashed green;
-				.animationhover();
 			}
 			#toolbox_principe_4 {
 				top: 568px;
 				left: 445px;
 				width: 255px;
-				// animation-name: toolboxanimation_principe_4;
-				// animation-duration: 7s;
-				// border: 1px dashed red;
-				.animationhover();
 			}
 			#toolbox_principe_5 {
 				top: 477px;
 				left: 867px;
 				width: 251px;
-				// animation-name: toolboxanimation_principe_5;
-				// animation-duration: 7s;
-				// border: 1px dashed blue;
-				.animationhover();
 			}
 			#toolbox_principe_6 {
 				top: 218px;
 				right: 10px;
 				width: 225px;
-				// animation-name: toolboxanimation_principe_6;
-				// animation-duration: 8s;
-				// border: 1px dashed purple;
-				.animationhover();
 			}
 			#toolbox_principe_7 {
 				top: 192px;
 				left: 445px;
 				width: 279px;
-				// animation-name: toolboxanimation_principe_7;
-				// animation-duration: 9s;
-				// border: 1px dashed black;
-				.animationhover();
 			}
 		}
 	}
@@ -1201,14 +1187,3 @@
 
 //========================================================================================================
 
-.animationhover() {
-	&:hover { 
-		animation-name: vergroot;
-		animation-duration: 1s;
-		animation-iteration-count: 1;
-		animation-timing-function: ease;
-//		box-shadow: 2px 3px 8px 8px rgba( 120, 120, 120, .6 );
-		transform: scale(1.05); 
-		z-index: 8888;
-	}				
-}
