@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.4.2
-// * @desc.   Extra opties voor beleidskleuren; header-styling in uitklapblokken.
+// * @version 2.7.5x
+// * @desc.   Toolbox: toegevoegd. Oude NL-Digibeterplaatjes vervangen door nieuwe.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -499,6 +499,48 @@
     }
   }
 
+	.toolbox01-kwaliteit-van-data-algoritme-en-analyse,
+	.toolbox02-belanghebbenden-betrekken,
+	.toolbox03-transparantie-en-verantwoording,
+	.toolbox04-wet-en-regelgeving-respecteren,
+	.toolbox05-monitoren-en-evalueren,
+	.toolbox06-veiligheid-borgen,
+	.toolbox07-publieke-waarden-centraal {
+		.borderframe.blue {
+			background-color: @digibeter_blauw;
+			a {
+				text-decoration: underline !important;
+				color: @wit;
+				&:hover,
+				&:active,
+				&:focus {
+					background-color: @wit;
+					color: @digibeter_blauw;
+				}
+			}
+			.blocktitle {
+				background-image: url('images/toolbox/icon-toolbox.svg');
+				background-repeat: no-repeat;
+				background-size: 34px 35px;
+				background-position: 16px 9px;
+				padding-left: 63px;
+				padding-top: 16px;
+				min-height: 50px;
+			}
+			&, * {
+				color: @wit;
+			}
+		}
+		details {
+			border-color: @digibeter_blauw;
+			
+			summary {
+				background-color: @digibeter_blauw;
+			}
+		}	  
+	}
+
+
 
     @media only screen and (max-width: ( @break_fullwidth ) ) {
       .page-template-page_fullwidth {
@@ -579,15 +621,15 @@
               max-width: 100%;              
             }
     
-            ul,
+            p,
+            h3, 
+            h4, 
+            h5, 
+            h6, 
             ol,
-            p, {
+            ul {
               margin-left: 1rem;
               margin-right: 1rem;
-            }
-            ul,
-            ol,
-            p, {
             }
             
           }

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.6.2
-// * @desc.   Check in bannerwidget op wel/niet tonen plaatje.
+// * @version 2.7.5x
+// * @desc.   Toolbox: toegevoegd. Oude NL-Digibeterplaatjes vervangen door nieuwe.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -25,8 +25,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.6.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Check in bannerwidget op wel/niet tonen plaatje." );
+define( 'CHILD_THEME_VERSION',              "2.7.5x" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Toolbox: toegevoegd. Oude NL-Digibeterplaatjes vervangen door nieuwe." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -3147,7 +3147,7 @@ function rhswp_check_caroussel_or_featured_img() {
         $term_id    = ' ' . $digibeterterm->term_id;
         $acfid      = RHSWP_CT_DIGIBETER . '_' . $term_id;
         $digibeterclass  = get_field( 'digibeter_term_achtergrondkleur', $acfid );
-        echo '<img src="' . RHSWP_THEMEFOLDER . '/images/digibeter-icons/' . $digibeterclass . '.svg" alt="' . $digibeterclass . '" width="1200" height="400" >';
+        echo '<img src="' . RHSWP_THEMEFOLDER . '/images/digibeter-icons/' . $digibeterclass . '.svg?v=cachebuster" alt="' . $digibeterclass . '" width="1200" height="400" >';
       }
       echo '</div>';
     }
