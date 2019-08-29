@@ -54,7 +54,7 @@ class rhswp_page_widget extends WP_Widget {
 
         ?>
 
-        <p><label for="<?php echo $this->get_field_id('rhswp_page_widget_title'); ?>">Titel: <input id="<?php echo $this->get_field_id('rhswp_page_widget_title'); ?>" name="<?php echo $this->get_field_name('rhswp_page_widget_title'); ?>" type="text" value="<?php echo esc_attr($rhswp_page_widget_title); ?>" /></label></p>
+        <p><label for="<?php echo $this->get_field_id('rhswp_page_widget-title'); ?>">Titel: <input id="<?php echo $this->get_field_id('rhswp_page_widget-title'); ?>" name="<?php echo $this->get_field_name('rhswp_page_widget_title'); ?>" type="text" value="<?php echo esc_attr($rhswp_page_widget_title); ?>" /></label></p>
         
         <p><label for="<?php echo $this->get_field_id('rhswp_page_widget_short_text') ?>"><?php  _e( "Vrije tekst in widget:", 'wp-rijkshuisstijl' ) ?><br /><textarea cols="33" rows="4" id="<?php echo $this->get_field_id('rhswp_page_widget_short_text'); ?>" name="<?php echo $this->get_field_name('rhswp_page_widget_short_text'); ?>"><?php echo esc_attr($rhswp_page_widget_short_text); ?></textarea></label></p>
 

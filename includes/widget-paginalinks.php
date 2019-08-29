@@ -274,7 +274,7 @@ class rhswp_pagelinks_widget extends WP_Widget {
     
     echo '<p>' . _x( 'Dit widget doet pas iets als je op pagina- of berichtniveau links hebt toegevoegd. Die links worden dan op deze plaats getoond.</p><p>De titel hieronder wordt getoond als op pagina-niveau geen titel is ingevoerd.', 'paginalinkswidget', 'wp-rijkshuisstijl' );
     ?>
-    <br><label for="<?php echo $this->get_field_id('rhswp_pagelinks_widget_title'); ?>"><?php echo _x( 'Titel', 'paginalinkswidget', 'wp-rijkshuisstijl' ) ?><input id="<?php echo $this->get_field_id('rhswp_pagelinks_widget_title'); ?>" name="<?php echo $this->get_field_name('rhswp_pagelinks_widget_title'); ?>" type="text" value="<?php echo esc_attr($rhswp_pagelinks_widget_title); ?>" /></label></p>  
+    <br><label for="<?php echo $this->get_field_id('rhswp_pagelinks_widget-title'); ?>"><?php echo _x( 'Titel', 'paginalinkswidget', 'wp-rijkshuisstijl' ) ?><input id="<?php echo $this->get_field_id('rhswp_pagelinks_widget-title'); ?>" name="<?php echo $this->get_field_name('rhswp_pagelinks_widget_title'); ?>" type="text" value="<?php echo esc_attr($rhswp_pagelinks_widget_title); ?>" /></label></p>  
     <?php      
       
   }
