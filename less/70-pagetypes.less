@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.5y
-// * @desc.   Toolbox: toegevoegd. Oude NL-Digibeterplaatjes vervangen door nieuwe.
+// * @version 2.9.2
+// * @desc.   Tonen van berichten in een dossier verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -651,7 +651,15 @@
       p {
         color: @txt;
         margin: 0;
+        
+		&.meta {
+			color: @grijs_6;
+			margin: .5em 0;
+			font-size: 90%;
+		}
       }
+
+      
       h2,
       h3 {
         color: @donkerblauw_vol;

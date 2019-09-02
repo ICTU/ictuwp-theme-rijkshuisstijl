@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.1
-// * @desc.   Document archive page verbeterd, filesize toegevoegd.
+// * @version 2.9.2
+// * @desc.   Tonen van berichten in een dossier verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -25,8 +25,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.9.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Document archive page verbeterd, filesize toegevoegd." );
+define( 'CHILD_THEME_VERSION',              "2.9.2" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Tonen van berichten in een dossier verbeterd." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -2921,29 +2921,8 @@ function rhswp_write_extra_contentblokken() {
                   $excerpt        = wp_strip_all_tags( get_the_excerpt( $post ) );
                   $postdate       = get_the_date( );
                   $title          = get_the_title();
-//                  $categories     = get_the_category();
                   $categorielinks = '';
                   $permalink_cat  = '';
-
-/*
-                  foreach( $categories as $category ) {
-
-                    if ( $toonlinksindossiercontext && ( ! $permalink_cat ) ) {
-                      if ( in_array( $category->term_id, $permalink_categories ) ) {
-                        $permalink_cat = $category->slug;
-                      }
-                    }
-
-                    if ( $categorielinks ) {
-                      $categorielinks .= ', ' . $category->name;
-                    }
-                    else {
-                      $categorielinks = $category->name;
-                    }
-                  }
-
-                  $categorielinks = '<p>' . wp_strip_all_tags( $categorielinks ) . '</p>';
-*/
 
                   if ( $currentsite && $currentpage && $toonlinksindossiercontext ) {
                     // aaaaa, what a fuckup.
@@ -5459,238 +5438,245 @@ function rhswp_use_page_template( $query ) {
 //========================================================================================================
 
 function rhswp_get_page_dossiersingleactueel() {
-
-  dodebug('rhswp_get_page_dossiersingleactueel');
-
-  global $post;
-  global $wp_query;
-
-  if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
-
-    $terms            = get_the_terms( $post->ID , RHSWP_CT_DOSSIER );
-    $currentpageid    = $post->ID;
-    $currentpageslug  = $post->post_name;
-    $currentpage      = get_permalink();
-    $currentsite      = get_site_url();
-    $paged            = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-    $dossierfilter    = '';
-    $categoryfilter   = '';
-
-    if ( function_exists( 'get_field' ) ) {
-      $filter    = get_field('wil_je_filteren_op_categorie_op_deze_pagina', $post->ID );
-      $filters   = get_field('kies_de_categorie_waarop_je_wilt_filteren', $post->ID );
-    }
-
-
-    // check if the category is passed on via the query string
-    if ( get_query_var( RHSWP_CT_DOSSIER ) ) {
-
-      // posts must be filtered by category as well
-      $dossierfilter  = get_query_var( RHSWP_CT_DOSSIER );
-
-      if ( get_query_var( 'category_slug' ) ) {
-        $categoryfilter = get_query_var( 'category_slug' );
-        $category_slug  = get_query_var( 'category_slug' );
-        $categoryinfo   = get_term_by( 'slug', $category_slug, 'category' );
-
-        $filters        = array();
-        $filters[]      = $categoryinfo->term_id;
-
-      }
-
-  //dodebug('Cat=' . $categoryfilter . ', dossier=' . $dossierfilter . '.' );
-
-      $filter         = 'ja';
-      $terms          = get_term_by("slug", get_query_var( RHSWP_CT_DOSSIER ), RHSWP_CT_DOSSIER );
-
-      if ($terms && ! is_wp_error( $terms ) ) {
-
-        $term             = $terms;
-
-      }
-
-    }
-    else {
-
-      // nope, just use the known dossier
-      if ($terms && ! is_wp_error( $terms ) ) {
-
-        $term = array_pop($terms);
-
-      }
-
-    }
-
-
-    // default = very unspecific filter
-    $args = array(
-      'post_type'       => 'post',
-      'post_status'     => 'publish',
-      'paged'           => $paged,
-      'posts_per_page'  => get_option('posts_per_page'),
-    );
-
-    $message          = _x( 'All posts', 'Dossier header', 'wp-rijkshuisstijl' );
-    $currentterm      = '';
-    $currenttermname  = '';
-    $currenttermslug  = '';
-
-
-    if ( $term && ! is_wp_error( $term ) ) {
-      // we can make the query more specific
-
-      $currentterm      = $term->term_id;
-      $currenttermname  = $term->name;
-      $currenttermslug  = $term->slug;
-
-      if ( $currentterm ) {
-        // filter op dossier
-        $args = array(
-          'post_type'       => 'post',
-          'paged'           => $paged,
-          'posts_per_page'  => get_option('posts_per_page'),
-          'tax_query'       => array(
-            'relation' => 'AND',
-            array(
-              'taxonomy' => RHSWP_CT_DOSSIER,
-              'field' => 'term_id',
-              'terms' => $currentterm
-            )
-          )
-        );
-
-        $message = sprintf( _x( 'posts for topic %s', 'Dossier header', 'wp-rijkshuisstijl' ), $currenttermname );
-      }
-
-    }
-    else {
-  //      dodebug('Terms NIET bekend :-(' );
-    }
-
-
-    if ( $filter !== 'ja' ) {
-    }
-    else {
-
-      if ( $filters ) {
-
-        $slugs = array();
-
-        foreach( $filters as $filter ):
-
-          $terminfo = get_term_by( 'id', $filter, 'category' );
-          $message .= ' gecombineerd met de categorie "' . $terminfo->name . '"';
-
-          $slugs[] = $terminfo->slug;
-
-        endforeach;
-
-        if ( $currentterm ) {
-
-          $args = array(
-              'post_type'       => 'post',
-              'paged'           => $paged,
-              'posts_per_page'  => get_option('posts_per_page'),
-              'tax_query'       => array(
-                'relation' => 'AND',
-                array(
-                  'taxonomy' => RHSWP_CT_DOSSIER,
-                  'field' => 'term_id',
-                  'terms' => $currentterm
-                ),
-                array(
-                  'taxonomy'  => 'category',
-                  'field'     => 'slug',
-                  'terms'     => $slugs,
-                )
-              )
-            );
-
-        }
-        else {
-          $args = array(
-            'post_type'       => 'post',
-            'paged'           => $paged,
-            'posts_per_page'  => get_option('posts_per_page'),
-            'tax_query'       => array(
-              array(
-                'taxonomy'  => 'category',
-                'field'     => 'slug',
-                'terms'     => $slugs,
-              )
-            )
-          );
-
-        }
-      }
-    }
-
-    $wp_query = new WP_Query( $args );
-
-    if( $wp_query->have_posts() ) {
-
-        echo '<div class="posts-for-dossier">';
-
-      	while ( $wp_query->have_posts() ) {
-      		$wp_query->the_post();
-
-          if ( $currentsite && $currentpage ) {
-
-            $postpermalink  = get_the_permalink();
-            $postpermalink  = str_replace( $currentsite, '', $postpermalink);
-            $postpermalink  = '/' . $post->post_name;
-            $crumb          = str_replace( $currentsite, '', $currentpage);
-
-            if ( $dossierfilter ) {
-
-              $crumb          = '/' . RHSWP_CT_DOSSIER . '/' . $dossierfilter . '/' . RHSWP_DOSSIERCONTEXTPOSTOVERVIEW;
-
-              if ( $categoryfilter ) {
-
-                $crumb          .= '/' . RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW . '/' . $categoryfilter;
-
-              }
-
-              $theurl         = $currentsite . $crumb . $postpermalink . '/';
-
-            }
-            else {
-
-              $theurl         = $currentsite . $crumb  . RHSWP_DOSSIERPOSTCONTEXT . $postpermalink . '/';
-
-            }
-
-          }
-          else {
-            $theurl         = get_the_permalink();
-          }
-
-          $title          = rhswp_filter_alternative_title( get_the_id(), get_the_title( ) );
-          $excerpt        = get_the_excerpt();
-          $postdate       = get_the_date( );
-          $categorielinks = '';
-
-
-          printf( '<section><a href="%s"><h2>%s</h2><p class="meta">%s</p><p>%s</p>%s</a></section>', $theurl, $title, $postdate, wp_strip_all_tags( $excerpt ), $categorielinks );
-
-        }
-
-        echo '</div>'; // class="posts-for-dossier">';
-
-      }
-      else {
-        echo '<p>';
-        echo sprintf( _x( 'No results for %s.', 'No results text', 'wp-rijkshuisstijl' ), $message );
-        echo '</p>';
-      }
-
-      genesis_posts_nav();
-
-      wp_reset_query();
-
-    }
-
-
+	
+	dodebug('rhswp_get_page_dossiersingleactueel');
+	
+	global $post;
+	global $wp_query;
+	
+	if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
+		
+		$terms            = get_the_terms( $post->ID , RHSWP_CT_DOSSIER );
+		$currentpageid    = $post->ID;
+		$currentpageslug  = $post->post_name;
+		$currentpage      = get_permalink();
+		$currentsite      = get_site_url();
+		$paged            = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+		$dossierfilter    = '';
+		$categoryfilter   = '';
+		
+		if ( function_exists( 'get_field' ) ) {
+			$filter    = get_field('wil_je_filteren_op_categorie_op_deze_pagina', $post->ID );
+			$filters   = get_field('kies_de_categorie_waarop_je_wilt_filteren', $post->ID );
+		}
+
+		// check if the category is passed on via the query string
+		if ( get_query_var( RHSWP_CT_DOSSIER ) ) {
+			
+			// posts must be filtered by category as well
+			$dossierfilter  = get_query_var( RHSWP_CT_DOSSIER );
+			
+			if ( get_query_var( 'category_slug' ) ) {
+				$categoryfilter = get_query_var( 'category_slug' );
+				$category_slug  = get_query_var( 'category_slug' );
+				$categoryinfo   = get_term_by( 'slug', $category_slug, 'category' );
+				
+				$filters        = array();
+				$filters[]      = $categoryinfo->term_id;
+				
+			}
+
+			$filter         = 'ja';
+			$terms          = get_term_by("slug", get_query_var( RHSWP_CT_DOSSIER ), RHSWP_CT_DOSSIER );
+			
+			if ($terms && ! is_wp_error( $terms ) ) {
+				$term             = $terms;
+			}
+		}
+		else {
+			// nope, just use the known dossier
+			if ($terms && ! is_wp_error( $terms ) ) {
+				$term = array_pop($terms);
+			}
+		}
+		
+		
+		// default = very unspecific filter
+		$args = array(
+			'post_type'       => 'post',
+			'post_status'     => 'publish',
+			'paged'           => $paged,
+			'posts_per_page'  => get_option('posts_per_page'),
+		);
+		
+		$message          = _x( 'All posts', 'Dossier header', 'wp-rijkshuisstijl' );
+		$currentterm      = '';
+		$currenttermname  = '';
+		$currenttermslug  = '';
+		
+	
+		if ( $term && ! is_wp_error( $term ) ) {
+			// we can make the query more specific
+			
+			$currentterm      = $term->term_id;
+			$currenttermname  = $term->name;
+			$currenttermslug  = $term->slug;
+			
+			if ( $currentterm ) {
+				// filter op dossier
+				$args = array(
+						'post_type'       => 'post',
+						'paged'           => $paged,
+						'posts_per_page'  => get_option('posts_per_page'),
+						'tax_query'       => array(
+						'relation' => 'AND',
+							array(
+							'taxonomy' => RHSWP_CT_DOSSIER,
+							'field' => 'term_id',
+							'terms' => $currentterm
+							)
+						)
+					);
+				
+				$message = sprintf( _x( 'posts for topic %s', 'Dossier header', 'wp-rijkshuisstijl' ), $currenttermname );
+			}
+		}
+		else {
+			//      dodebug('Terms NIET bekend :-(' );
+		}
+		
+		
+		if ( $filter !== 'ja' ) {
+		}
+		else {
+			
+			if ( $filters ) {
+				
+				$slugs = array();
+				
+				foreach( $filters as $filter ):
+				
+				$terminfo = get_term_by( 'id', $filter, 'category' );
+				$message .= ' gecombineerd met de categorie "' . $terminfo->name . '"';
+				
+				$slugs[] = $terminfo->slug;
+				
+				endforeach;
+				
+				if ( $currentterm ) {
+					
+					$args = array(
+							'post_type'       => 'post',
+							'paged'           => $paged,
+							'posts_per_page'  => get_option('posts_per_page'),
+							'tax_query'       => array(
+							'relation' => 'AND',
+								array(
+								'taxonomy' => RHSWP_CT_DOSSIER,
+								'field' => 'term_id',
+								'terms' => $currentterm
+								),
+								array(
+								'taxonomy'  => 'category',
+								'field'     => 'slug',
+								'terms'     => $slugs,
+								)
+							)
+						);
+					
+				}
+				else {
+					$args = array(
+							'post_type'       => 'post',
+							'paged'           => $paged,
+							'posts_per_page'  => get_option('posts_per_page'),
+							'tax_query'       => array(
+								array(
+									'taxonomy'  => 'category',
+									'field'     => 'slug',
+									'terms'     => $slugs,
+								)
+							)
+						);
+				}
+			}
+		}
+		
+		$wp_query = new WP_Query( $args );
+		
+		if( $wp_query->have_posts() ) {
+			
+			echo '<div class="posts-for-dossier flexcontainer">';
+			echo '<div class="block no-top">';
+			
+			$postcounter = 0;
+			
+			$with_featured_image = 2;
+
+			while ( $wp_query->have_posts() ) {
+				
+				$wp_query->the_post();
+				$postcounter++;
+				$doimage = false;
+
+				if ( ( $postcounter <= $with_featured_image ) && has_post_thumbnail() ) {
+					$doimage = true;
+				}
+
+				if ( $currentsite && $currentpage ) {
+					$postpermalink  = get_the_permalink();
+					$postpermalink  = str_replace( $currentsite, '', $postpermalink);
+					$postpermalink  = '/' . $post->post_name;
+					$crumb          = str_replace( $currentsite, '', $currentpage);
+					
+					if ( $dossierfilter ) {
+						$crumb          = '/' . RHSWP_CT_DOSSIER . '/' . $dossierfilter . '/' . RHSWP_DOSSIERCONTEXTPOSTOVERVIEW;
+						
+						if ( $categoryfilter ) {
+							$crumb          .= '/' . RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW . '/' . $categoryfilter;
+						}
+						
+						$theurl         = $currentsite . $crumb . $postpermalink . '/';
+						
+					}
+					else {
+						$theurl         = $currentsite . $crumb  . RHSWP_DOSSIERPOSTCONTEXT . $postpermalink . '/';
+					}
+					
+				}
+				else {
+					$theurl         = get_the_permalink();
+				}
+
+
+				
+				$title          = rhswp_filter_alternative_title( get_the_id(), get_the_title( ) );
+				$excerpt        = get_the_excerpt();
+				$postdate       = get_the_date( );
+				$categorielinks = '';
+				
+				if ( $doimage ) {
+					echo '<article class="has-post-thumbnail"><div class="article-container">';
+					printf( '
+					<div class="article-visual">%s</div>
+					<div class="article-excerpt">
+					<a href="%s"><h2>%s</h2><p class="meta">%s</p><p>%s</p></a>
+					</div>',  get_the_post_thumbnail( $post->ID, 'article-visual' ), $theurl, $title, $postdate, $excerpt );
+					echo '</div></article>';
+				}
+				else {
+					printf( '<section><a href="%s"><h2>%s</h2><p class="meta">%s</p><p>%s</p>%s</a></section>', $theurl, $title, $postdate, wp_strip_all_tags( $excerpt ), $categorielinks );
+				}
+
+				
+				
+			}
+			
+			echo '</div>'; // class="block">';
+			echo '</div>'; // class="posts-for-dossier flexcontainer">';
+			
+		}
+		else {
+			echo '<p>';
+			echo sprintf( _x( 'No results for %s.', 'No results text', 'wp-rijkshuisstijl' ), $message );
+			echo '</p>';
+		}
+		
+		genesis_posts_nav();
+		
+		wp_reset_query();
+		
+	}
 }
 
 //========================================================================================================
@@ -5704,6 +5690,7 @@ function rhswp_get_documents_for_dossier() {
   $currentpage      = get_permalink();
   $currentsite      = get_site_url();
   $paged            = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+  $term 			= '';
 
   if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
 
@@ -5880,7 +5867,7 @@ function rhswp_custom_page_title_for_overviewpage( $title ) {
       }
       elseif ( RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW == get_query_var( 'pagename' ) ) {
         // documents
-        if ( $term->name ) {
+        if ( $term && $term->name ) {
           $title = sprintf( __( 'Documents for %s %s', 'wp-rijkshuisstijl' ), $term->name, $paged );
         }
         else {

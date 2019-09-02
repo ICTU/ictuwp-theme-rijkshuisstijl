@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.1
-// * @desc.   Document archive page verbeterd, filesize toegevoegd.
+// * @version 2.9.2
+// * @desc.   Tonen van berichten in een dossier verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -145,27 +145,37 @@
   }
 
 
-  .flexbox {
-    .page-template-page_showalldossiers,
-    .page-template-page_show-child-pages,
-    .home,
-    .blog,
-    .archive {
-      .block {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: flex-start;
-
-        article {
-          flex-grow: 1;
-          float: left;
-          &.with-image {
-            width: 100%;
-          }
-        }
-      }
-    }  
-  }  
+	.flexbox {
+		.page-template-page_showalldossiers,
+		.page-template-page_show-child-pages,
+		.home,
+		.blog,
+		.flexcontainer,
+		.archive {
+			
+			.block {
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: flex-start;
+				
+				section,
+				article {
+					flex-grow: 1;
+					float: left;
+					
+					&.with-image {
+						width: 100%;
+					}
+					
+					h2, h3 {
+						font-size: 1.125em;
+						line-height: 1.4;
+						margin-top: 0;
+					} 
+				}
+			}
+		}  
+	}  
   
 	ul.events-table {
 		&, li {
@@ -223,75 +233,72 @@
       }
     }
         
-    article {
-
-      overflow: hidden;
-      margin-bottom: 1em;
-
-      h3 {
-        padding: 0;
-        margin-top: 0;
-      }
-      
-      a {
-        display: block;
-        padding: 0;
-        margin: 0;
-        p {
-          color: @txt;
-          margin: 0;
-        }
-        h3 {
-          color: @donkerblauw_vol;
-        }
-      }
-
+	section,
+	article {
+		overflow: hidden;
+		margin-bottom: 1em;
+		
+		h3 {
+			padding: 0;
+			margin-top: 0;
+		}
+		
+		a {
+			display: block;
+			padding: 0;
+			margin: 0;
+			p {
+				color: @txt;
+				margin: 0;
+			}
+			h3 {
+				color: @donkerblauw_vol;
+			}
+		}
+		
 		.meta {
 			color: @grijs_6;
 			margin: .5em 0;
 			font-size: 90%;
 		}
-
-      .article-container {
-        padding: 0;
-        overflow: hidden;
-        background: @grijs_1;
-        height: 100%;
-        display: block;
-        display: flex;
-
-        h3 {
-          min-height: 1rem;
-          margin-top: 0;
-        }
-        
-      }
-    }
-    article.has-post-thumbnail {
-      max-width: 100%;
-      width: 100%;
-      
-    }
-    .article-visual {
-      padding-right: .5em;      
-      text-decoration: none;
-      align-items: stretch;
-      
-      a {
-        vertical-align: bottom;
-      }
-
-    }
-    .article-excerpt {
-      padding-left: .5em;      
-      padding-right: 1em;      
-      padding-top: 1em;      
-      padding-bottom: 1em;      
-      
-      p {
-        margin-bottom: 0;
-      }
-    }
+		
+		.article-container {
+			padding: 0;
+			overflow: hidden;
+			background: @grijs_1;
+			height: 100%;
+			display: block;
+			display: flex;
+			
+			h3 {
+				min-height: 1rem;
+				margin-top: 0;
+			}
+		}
+	}
+	article.has-post-thumbnail {
+		max-width: 100%;
+		width: 100%;
+	}
+	.article-visual {
+		padding-right: .5em;      
+		text-decoration: none;
+		align-items: stretch;
+		
+		a {
+			vertical-align: bottom;
+		}
+	}
+	.article-excerpt {
+		padding-left: .5em;      
+		padding-right: 1em;      
+		padding-top: 1em;      
+		padding-bottom: 1em;     
+		
+		p {
+			margin-bottom: 0;
+		}
+	}
     
     .post-thumbnail-bg-gray {
       overflow: hidden;
@@ -363,6 +370,7 @@
 
     .flexbox {
       .block {
+        section,
         article {
   
           .article-visual,
@@ -411,73 +419,73 @@
   
 
   @media only screen and (min-width: ( @break_tablet ) ) {
-    .flexbox {
-      .home,
-      .page-template-page_showalldossiers,
-      .blog,
-      .archive {
-        .block {
-
-          article {
-            padding: 0 1.5em 2px 2px;
-            flex-basis: @flexbasis_twocols;
-  
-            &.has-post-thumbnail {
-              max-width: 100%;
-              flex-basis: 100%;
-            }
-                    
-            &:only-of-type {
-              flex-basis: 100%;
-            }
-            &:last-of-type {
-              max-width: @flexbasis_twocols;
-            }
-
-            &.has-post-thumbnail:last-of-type {
-              max-width: 100%;
-            }            
-          }
-        }
-      }
-
-      .page-template-front-page {      
-        .block {
-          article {
-            &.has-post-thumbnail {
-              max-width: 33%;
-              flex-basis: 33%;
-
-              .article-container {
-                display: block;
-                width: 100%;
-              }          
-
-              .article-visual,
-              .article-excerpt {
-                width: 100%;
-                float: none;
-              }          
-              
-              .article-visual {
-                height: 300px;
-                overflow: hidden;
-                img {
-                  position: relative;
-                  transform: none;
-                  top: auto;
-                  left: auto;
-                  height: 300px;
-                  width: auto;
-                  overflow: hidden;
-                }
-              }
-
-            }
-          }
-        }
-      }
-    }
+	.flexbox {
+		.home,
+		.page-template-page_showalldossiers,
+		.blog,
+		.flexcontainer,
+		.archive {
+			.block {
+				section,
+				article {
+					padding: 0 1.5em 2px 2px;
+					flex-basis: @flexbasis_twocols;
+					
+					&.has-post-thumbnail {
+						max-width: 100%;
+						flex-basis: 100%;
+					}
+					
+					&:only-of-type {
+						flex-basis: 100%;
+					}
+					&:last-of-type {
+						max-width: @flexbasis_twocols;
+					}
+					
+					&.has-post-thumbnail:last-of-type {
+						max-width: 100%;
+					}            
+				}
+			}
+		}
+		
+		.page-template-front-page {      
+			.block {
+				article {
+					&.has-post-thumbnail {
+						max-width: 33%;
+						flex-basis: 33%;
+						
+						.article-container {
+							display: block;
+							width: 100%;
+						}          
+						
+						.article-visual,
+						.article-excerpt {
+							width: 100%;
+							float: none;
+						}          
+						
+						.article-visual {
+							height: 300px;
+							overflow: hidden;
+							img {
+								position: relative;
+								transform: none;
+								top: auto;
+								left: auto;
+								height: 300px;
+								width: auto;
+								overflow: hidden;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
 
     .flexbox {
