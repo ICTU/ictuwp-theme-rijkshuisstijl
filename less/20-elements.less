@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.7
-// * @desc.   Layout event page. Bugfixes vertalingen. 
+// * @version 2.9.1
+// * @desc.   Document archive page verbeterd, filesize toegevoegd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -517,6 +517,18 @@
         }      
       }
     }
+
+	.post-type-archive-document,
+	.search-results {
+
+		.block article {
+			display: block;
+			flex-basis: 100% !important;
+			max-width: 100% !important;
+		}
+	}
+
+    
   }
 
   @media only screen and (min-width: ( @break_fullwidth ) ) {

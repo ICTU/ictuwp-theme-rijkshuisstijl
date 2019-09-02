@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.8.1
-  Version description: 2.8.1 - Styling IE10 / IE11: flexbox nieuwsarchief.
+  Version: 2.9.1
+  Version description: 2.9.1 - Document archive page verbeterd, filesize toegevoegd.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -560,80 +560,80 @@ Content Area
 
 .em-pagination,
 .archive-pagination {
-
-  border-top: 4px solid @donkerblauw_vol;
-  margin-top: 1em;
-  color: @donkerblauw_vol;
-
-  ul, ol {
-    padding: 0;
-    margin-left: 1em;
-    margin-top: 0;
-    font-size: 120%;
-    li {
-      padding-left: 0;
-      display: inline-block;
-      float: left;
-    }
-  }
-
-	.alignright {
-		margin-right: 0;
+	
+	border-top: 4px solid @donkerblauw_vol;
+	margin-top: 1em;
+	color: @donkerblauw_vol;
+	
+	ul, ol {
+		padding: 0;
+//		margin-left: 1em;
+		margin-top: 0;
+		font-size: 120%;
+		li {
+			padding-left: 0;
+			display: inline-block;
+			float: left;
+		}
 	}
-
+	
+	.alignright {
+	margin-right: 0;
+	}
+	
 	li, div {
 		display: inline;
 		margin-right: .25em;
-
+		
 		a {
 			cursor: pointer;
 			display: inline-block;
 			padding: .3em .5em;
 			text-decoration: none;
 			&:visited {
-  			color: @a_color_default;
+				color: @a_color_default;
 			}
 			&:hover,
 			&:active,
 			&:focus {
-  			text-decoration: underline;
+				text-decoration: underline;
 			}
 		}
-
+		
 		&.active {
-  		a {
-    		background: @donkerblauw_vol;
-    		color: @wit;
-        font-weight: bold;
-        font-family: @fontstrong;
-  		}
+			a {
+				background: @donkerblauw_vol;
+				color: @wit;
+				font-weight: bold;
+				font-family: @fontstrong;
+			}
 		}
-
 	}
-
-  .pagination-previous,
-  .pagination-next {
-    a {
-      border-style: none;
-      background-repeat: no-repeat;
-      white-space: nowrap;
-    }
-  }
-  .pagination-previous a {
-    padding-left: 0;
-    &:before {
-      content: '< ';
-      speak: none;
-    }
-  }
-  .pagination-next a {
-    &:after {
-      content: ' >';
-      speak: none;
-    }
-  }
-
+	
+	.pagination-previous,
+	.pagination-next {
+		a {
+			border-style: none;
+			background-repeat: no-repeat;
+			white-space: nowrap;
+		}
+	}
+	.pagination-previous a {
+		padding-left: 0;
+		&:before {
+			content: '< ';
+			speak: none;
+		}
+	}
+	.pagination-next a {
+		&:after {
+			content: ' >';
+			speak: none;
+		}
+	}
+	
 }
+
 .single .archive-pagination {
 	margin: 0 @padding;
 }
