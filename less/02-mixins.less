@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.5x
-// * @desc.   Toolbox: toegevoegd. Oude NL-Digibeterplaatjes vervangen door nieuwe.
+// * @version 2.7.6
+// * @desc.   Document CPT: mogelijkheid invoeren URL toegevoegd; layout SERP verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -315,6 +315,18 @@
   @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
   
   background-image: e(@replacesrc1);
+}
+
+
+//=========================================================================================================
+
+.iconaddfill_important(@src, @fill-new) {
+  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default:   escape('fill="#000000"');
+  @replace-new:       escape('fill="@{fill-new}"');
+  @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+  
+  background-image: e(@replacesrc1) !important;
 }
 
 //=========================================================================================================
