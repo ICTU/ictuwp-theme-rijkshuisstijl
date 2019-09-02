@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.6
-// * @desc.   Document CPT: mogelijkheid invoeren URL toegevoegd; layout SERP verbeterd.
+// * @version 2.7.7
+// * @desc.   Layout event page. Bugfixes vertalingen. 
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -25,8 +25,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.7.6" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Document CPT: mogelijkheid invoeren URL toegevoegd; layout SERP verbeterd." );
+define( 'CHILD_THEME_VERSION',              "2.7.7" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Layout event page. Bugfixes vertalingen. " );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -3725,25 +3725,27 @@ function rhswp_filter_input_string( $string ) {
 //========================================================================================================
 
 add_filter ( 'genesis_next_link_text' , 'rhswp_paging_next' );
+
 function rhswp_paging_next ( $text ) {
-  if ( is_category() ) {
-    return esc_html( _x( "Previous posts", "paging: to older", 'wp-rijkshuisstijl' ) );
-  }
-  else {
-    return esc_html( _x( "Next page", "paging: to older", 'wp-rijkshuisstijl' ) );
-  }
+	if ( is_category() ) {
+		return esc_html( _x( "Previous posts", "paging: to older", 'wp-rijkshuisstijl' ) );
+	}
+	else {
+		return esc_html( _x( "Next page", "paging: to older", 'wp-rijkshuisstijl' ) );
+	}
 }
 
 //========================================================================================================
 
 add_filter ( 'genesis_prev_link_text' , 'rhswp_paging_previous' );
+
 function rhswp_paging_previous ( $text ) {
-  if ( is_category() ) {
-    return esc_html( _x( "Newer posts", "paging: to newer", 'wp-rijkshuisstijl' ) );
-  }
-  else {
-    return esc_html( _x( "Previous page", 'paging: to newer', 'wp-rijkshuisstijl' ) );
-  }
+	if ( is_category() ) {
+		return esc_html( _x( "Newer posts", "paging: to newer", 'wp-rijkshuisstijl' ) );
+	}
+	else {
+		return esc_html( _x( "Previous page", 'paging: to newer', 'wp-rijkshuisstijl' ) );
+	}
 }
 
 //========================================================================================================

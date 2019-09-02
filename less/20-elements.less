@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.6
-// * @desc.   Document CPT: mogelijkheid invoeren URL toegevoegd; layout SERP verbeterd.
+// * @version 2.7.7
+// * @desc.   Layout event page. Bugfixes vertalingen. 
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -167,18 +167,34 @@
     }  
   }  
   
-  ul.events-table {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    width: 100%;
-  
-    li {
-      flex-grow: 1;
-      float: left;
-      flex-basis: 100%;
-    }
-  }
+	ul.events-table {
+		&, li {
+			list-style: none;
+		}
+		
+		li {
+			.listitem_arrow( @a_color_default, 10px, 9px ); // done
+			padding-left: 1.25rem;
+			margin-left: 0;
+			
+			& + li {
+				margin-top: 1em;
+			}
+			
+			a {
+			    font-family: @headerfont;
+				font-size: 1.125em;
+				line-height: 1.4;
+				text-decoration: none;
+				
+				&:hover,
+				&:active,
+				&:focus {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
   
   .block {
     h2,
@@ -390,12 +406,6 @@
           padding-bottom: 1em;
         }
       }
-      .events-table {
-        li + li {
-          margin-top: 1em;
-          padding-bottom: 1em;
-        }
-      } 
     }
   }
   
@@ -465,14 +475,6 @@
 
             }
           }
-        }
-      }
-
-      ul.events-table {
-      
-        li {
-          max-width: 33%;
-          flex-basis: 33%;
         }
       }
     }
