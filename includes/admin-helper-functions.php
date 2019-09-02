@@ -79,6 +79,48 @@ function dodebug2($file = '', $extra = '') {
 
 //========================================================================================================
 
+if (! function_exists( 'dovardump2' ) ) {
+  
+  function dovardump2($data, $context = '', $echo = true ) {
+
+    if ( WP_DEBUG ) {
+      $contextstring  = '';
+      $startstring    = '<div class="debug-context-info">';
+      $endtring       = '</div>';
+      
+      if ( $context ) {
+
+        $contextstring = '<p>Vardump ' . $context . '</p>';        
+      }
+      
+      if ( is_array( $data ) || is_object( $data ) ) {
+        $theline = "array: " . print_r( $data, false );
+      }
+      else {
+        $theline = $data;
+      }
+      
+      error_log( $theline );
+      
+      if ( $echo ) {
+      
+        echo $startstring . '<hr>';
+        echo $contextstring;        
+        echo '<pre>';
+        print_r($data);
+        echo '</pre><hr>' . $endtring;
+      }
+      else {
+
+        return '<hr>' . $contextstring . '<pre>' . print_r($data, true) . '</pre><hr>';
+      }
+    }        
+  }        
+}        
+  
+
+//========================================================================================================
+
 if (! function_exists( 'dovardump' ) ) {
   
   function dovardump($data, $context = '', $echo = true ) {
