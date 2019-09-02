@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.7
-// * @desc.   Layout event page. Bugfixes vertalingen. 
+// * @version 2.8.1
+// * @desc.   Styling IE10 / IE11: flexbox nieuwsarchief.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -25,8 +25,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.7.7" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Layout event page. Bugfixes vertalingen. " );
+define( 'CHILD_THEME_VERSION',              "2.8.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Styling IE10 / IE11: flexbox nieuwsarchief." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -440,11 +440,6 @@ remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
 remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
 remove_action( 'genesis_site_description',  'genesis_seo_site_description' );
 
-//add_action( 'genesis_after_header', 'rhswp_site_description',                 10 );
-//add_action( 'genesis_after_header', 'rhswp_menu_container_start',             12 ); // DEZE MOET WEG!!!
-//add_action( 'genesis_after_header', 'genesis_do_nav',                         14 ); // DEZE MOET WEG!!!
-//add_action( 'genesis_after_header', 'rhswp_menu_container_end',               16 ); // DEZE MOET WEG!!!
-
 add_action( 'genesis_after_header', 'genesis_do_breadcrumbs',                 18 );
 add_action( 'genesis_after_header', 'rhswp_check_caroussel_or_featured_img',  22 );
 add_action( 'genesis_after_header', 'rhswp_dossier_title_checker',            24 );
@@ -616,9 +611,6 @@ function rhswp_add_extra_info_to_breadcrumb( $crumb = '', $args = '' ) {
 
               // de ID achterhalen van de pagina vanwaar dit bericht / event / whatever gelinkt werd
               $urlofparentpage  = get_query_var( RHSWP_DOSSIERPOSTCONTEXT );
-
-dodebug( 'URL of parent: ' . $urlofparentpage );
-
               $parentpageid     = url_to_postid( $urlofparentpage );
 
             }
@@ -688,8 +680,6 @@ dodebug( 'URL of parent: ' . $urlofparentpage );
 
               $returnstring = '';
 
-// dodebug( 'rhswp_add_extra_info_to_breadcrumb: IS TAX!!');
-
               if ( function_exists( 'get_field' ) ) {
                 if( get_field( 'dossier_overzichtspagina', 'option') ) {
 
@@ -733,7 +723,7 @@ dodebug( 'URL of parent: ' . $urlofparentpage );
               }
 
 
-              $returnstring .= $span_before_start .  ' <a href="' . get_term_link( $term->term_id ) . '">' .  $term->name .'</a>' . $span_before_end . $args['sep'];
+              $returnstring .= $span_before_start .  ' <a href="' . get_term_link( $term->term_id ) . '">' .  $term->name .'</a>' . $span_before_end;
 
 
               if ( get_query_var( 'category_slug' ) ) {
@@ -5947,5 +5937,18 @@ function localize_admin_scripts() {
 
 }
 
+//========================================================================================================
+
+function ie_style_sheets () {
+
+	wp_register_style( 'ie9', RHSWP_THEMEFOLDER . '/css/ie9.css'  );
+	$GLOBALS['wp_styles']->add_data( 'ie9', 'conditional', 'lte IE 9' );
+	wp_enqueue_style( 'ie9' );
+	
+}
+
+
+add_action ('wp_enqueue_scripts','ie_style_sheets');
 
 //========================================================================================================
+

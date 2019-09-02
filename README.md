@@ -13,10 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.7.7 - Layout event page. Bugfixes vertalingen. 
+2.8.1 - Styling IE10 / IE11: flexbox nieuwsarchief.
 
 ## Version history
-* 2.7.7 - Layout event page. Bugfixes vertalingen. 
+* 2.8.1 - Styling IE10 / IE11: flexbox nieuwsarchief.
 * 2.7.6 - Document CPT: mogelijkheid invoeren URL toegevoegd; layout zoekresultaatpagina verbeterd.
 * 2.7.5 - Toolbox: toegevoegd. Oude NL-Digibeterplaatjes vervangen door nieuwe.
 * 2.7.3 - CSS animatie voor toolbox weer gedactiveerd.
