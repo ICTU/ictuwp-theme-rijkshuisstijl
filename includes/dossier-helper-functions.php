@@ -554,7 +554,7 @@ function rhswp_dossier_title_checker( ) {
         echo '</p>';
       }
 
-      echo '<nav><ul>' . $dossierinhoudpagina  .  $subpaginas . '</ul></nav>';    
+      echo '<nav aria-label="' . sprintf( _x( "Important pages about %s.", "Label dossier navigatie", 'wp-rijkshuisstijl' ), $term->name ) . '"><ul>' . $dossierinhoudpagina  .  $subpaginas . '</ul></nav>';    
       
     }
 
