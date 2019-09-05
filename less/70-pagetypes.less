@@ -709,34 +709,35 @@
       	overflow: visible;
       }
       
-      .linkblock {
-        padding-left: .3em;
-        padding-right: .6em;
-        margin: 2px;
-        
-        &:first-of-type {
-          padding-left: 0;
-        }
-
-        p {
-          color: @txt;
-          margin: 0;
-        }
-        h3 {
-          color: @donkerblauw_vol;
-        }
-
-        &:hover,
-        &:active,
-        &:focus {
-          text-decoration: none;
-          
-          h3 {
-            text-decoration: underline;
-            color: @txt;
-          }
-        }
-      }
+		.linkblock {
+			padding-left: .3em;
+			padding-right: .6em;
+			margin: 2px;
+			text-decoration: none;
+			
+			&:first-of-type {
+				padding-left: 0;
+			}
+			
+			p {
+				color: @txt;
+				margin: 0;
+			}
+			h3 {
+				color: @donkerblauw_vol;
+			}
+			
+			&:hover,
+			&:active,
+			&:focus {
+//				text-decoration: none;
+				
+				h3 {
+					text-decoration: underline;
+					color: @txt;
+				}
+			}
+		}
 
       .vollebreedte,
       .driekwart,
