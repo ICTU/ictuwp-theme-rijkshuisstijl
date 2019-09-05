@@ -166,6 +166,19 @@
 					&.with-image {
 						width: 100%;
 					}
+
+					a {
+						text-decoration: none;
+						
+						&:hover,
+						&:active,
+						&:focus {
+							h2, h3 {
+								text-decoration: underline;
+							}
+						}
+					}
+					
 					
 					h2, h3 {
 						font-size: 1.125em;
@@ -533,6 +546,18 @@
 			display: block;
 			flex-basis: 100% !important;
 			max-width: 100% !important;
+
+			a {
+				text-decoration: none;
+				
+				&:hover,
+				&:active,
+				&:focus {
+					h2, h3 {
+						text-decoration: underline;
+					}
+				}
+			}
 		}
 	}
 

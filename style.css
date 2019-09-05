@@ -409,15 +409,9 @@ footer .widget-area {
 --------------------------------------------- */
 a {
   color: #01689b;
-  text-decoration: none;
 }
 a:visited {
   color: #535353;
-}
-a:hover,
-a:active,
-a:focus {
-  text-decoration: underline;
 }
 a:hover {
   color: #A02F1D;
@@ -1824,6 +1818,9 @@ Common Classes
 .breadcrumb nav span {
   padding: 10.66666667px 0;
 }
+.breadcrumb nav a {
+  text-decoration: none;
+}
 .breadcrumb nav a:hover,
 .breadcrumb nav a:active,
 .breadcrumb nav a:focus {
@@ -3084,6 +3081,14 @@ nav.nav-primary .search-form {
   margin-top: 0.2em;
   margin-bottom: 0.5em;
 }
+.widget li a {
+  text-decoration: none;
+}
+.widget li a:hover,
+.widget li a:active,
+.widget li a:focus {
+  text-decoration: underline;
+}
 .widget ul ul {
   margin-top: 0.5em;
   margin-left: 1em;
@@ -3277,12 +3282,14 @@ aside.sidebar .widget.banner .widget-wrap ol {
   margin: 0 0 0 0.5em;
 }
 aside.sidebar .widget.banner .widget-wrap a {
-  text-decoration: none;
   color: inherit;
 }
-aside.sidebar .widget.banner .widget-wrap a:hover,
-aside.sidebar .widget.banner .widget-wrap a:active,
-aside.sidebar .widget.banner .widget-wrap a:focus {
+aside.sidebar .widget.banner .widget-wrap a .text {
+  text-decoration: none;
+}
+aside.sidebar .widget.banner .widget-wrap a:hover .text,
+aside.sidebar .widget.banner .widget-wrap a:active .text,
+aside.sidebar .widget.banner .widget-wrap a:focus .text {
   text-decoration: underline;
 }
 aside.sidebar .widget.banner .widgettitle {
@@ -3916,6 +3923,94 @@ Media Queries
 .flexbox .archive .block article.with-image {
   width: 100%;
 }
+.flexbox .page-template-page_showalldossiers .block section a,
+.flexbox .page-template-page_show-child-pages .block section a,
+.flexbox .home .block section a,
+.flexbox .blog .block section a,
+.flexbox .flexcontainer .block section a,
+.flexbox .archive .block section a,
+.flexbox .page-template-page_showalldossiers .block article a,
+.flexbox .page-template-page_show-child-pages .block article a,
+.flexbox .home .block article a,
+.flexbox .blog .block article a,
+.flexbox .flexcontainer .block article a,
+.flexbox .archive .block article a {
+  text-decoration: none;
+}
+.flexbox .page-template-page_showalldossiers .block section a:hover h2,
+.flexbox .page-template-page_show-child-pages .block section a:hover h2,
+.flexbox .home .block section a:hover h2,
+.flexbox .blog .block section a:hover h2,
+.flexbox .flexcontainer .block section a:hover h2,
+.flexbox .archive .block section a:hover h2,
+.flexbox .page-template-page_showalldossiers .block article a:hover h2,
+.flexbox .page-template-page_show-child-pages .block article a:hover h2,
+.flexbox .home .block article a:hover h2,
+.flexbox .blog .block article a:hover h2,
+.flexbox .flexcontainer .block article a:hover h2,
+.flexbox .archive .block article a:hover h2,
+.flexbox .page-template-page_showalldossiers .block section a:active h2,
+.flexbox .page-template-page_show-child-pages .block section a:active h2,
+.flexbox .home .block section a:active h2,
+.flexbox .blog .block section a:active h2,
+.flexbox .flexcontainer .block section a:active h2,
+.flexbox .archive .block section a:active h2,
+.flexbox .page-template-page_showalldossiers .block article a:active h2,
+.flexbox .page-template-page_show-child-pages .block article a:active h2,
+.flexbox .home .block article a:active h2,
+.flexbox .blog .block article a:active h2,
+.flexbox .flexcontainer .block article a:active h2,
+.flexbox .archive .block article a:active h2,
+.flexbox .page-template-page_showalldossiers .block section a:focus h2,
+.flexbox .page-template-page_show-child-pages .block section a:focus h2,
+.flexbox .home .block section a:focus h2,
+.flexbox .blog .block section a:focus h2,
+.flexbox .flexcontainer .block section a:focus h2,
+.flexbox .archive .block section a:focus h2,
+.flexbox .page-template-page_showalldossiers .block article a:focus h2,
+.flexbox .page-template-page_show-child-pages .block article a:focus h2,
+.flexbox .home .block article a:focus h2,
+.flexbox .blog .block article a:focus h2,
+.flexbox .flexcontainer .block article a:focus h2,
+.flexbox .archive .block article a:focus h2,
+.flexbox .page-template-page_showalldossiers .block section a:hover h3,
+.flexbox .page-template-page_show-child-pages .block section a:hover h3,
+.flexbox .home .block section a:hover h3,
+.flexbox .blog .block section a:hover h3,
+.flexbox .flexcontainer .block section a:hover h3,
+.flexbox .archive .block section a:hover h3,
+.flexbox .page-template-page_showalldossiers .block article a:hover h3,
+.flexbox .page-template-page_show-child-pages .block article a:hover h3,
+.flexbox .home .block article a:hover h3,
+.flexbox .blog .block article a:hover h3,
+.flexbox .flexcontainer .block article a:hover h3,
+.flexbox .archive .block article a:hover h3,
+.flexbox .page-template-page_showalldossiers .block section a:active h3,
+.flexbox .page-template-page_show-child-pages .block section a:active h3,
+.flexbox .home .block section a:active h3,
+.flexbox .blog .block section a:active h3,
+.flexbox .flexcontainer .block section a:active h3,
+.flexbox .archive .block section a:active h3,
+.flexbox .page-template-page_showalldossiers .block article a:active h3,
+.flexbox .page-template-page_show-child-pages .block article a:active h3,
+.flexbox .home .block article a:active h3,
+.flexbox .blog .block article a:active h3,
+.flexbox .flexcontainer .block article a:active h3,
+.flexbox .archive .block article a:active h3,
+.flexbox .page-template-page_showalldossiers .block section a:focus h3,
+.flexbox .page-template-page_show-child-pages .block section a:focus h3,
+.flexbox .home .block section a:focus h3,
+.flexbox .blog .block section a:focus h3,
+.flexbox .flexcontainer .block section a:focus h3,
+.flexbox .archive .block section a:focus h3,
+.flexbox .page-template-page_showalldossiers .block article a:focus h3,
+.flexbox .page-template-page_show-child-pages .block article a:focus h3,
+.flexbox .home .block article a:focus h3,
+.flexbox .blog .block article a:focus h3,
+.flexbox .flexcontainer .block article a:focus h3,
+.flexbox .archive .block article a:focus h3 {
+  text-decoration: underline;
+}
 .flexbox .page-template-page_showalldossiers .block section h2,
 .flexbox .page-template-page_show-child-pages .block section h2,
 .flexbox .home .block section h2,
@@ -4308,6 +4403,24 @@ noscript {
     display: block;
     flex-basis: 100% !important;
     max-width: 100% !important;
+  }
+  .post-type-archive-document .block article a,
+  .search-results .block article a {
+    text-decoration: none;
+  }
+  .post-type-archive-document .block article a:hover h2,
+  .search-results .block article a:hover h2,
+  .post-type-archive-document .block article a:active h2,
+  .search-results .block article a:active h2,
+  .post-type-archive-document .block article a:focus h2,
+  .search-results .block article a:focus h2,
+  .post-type-archive-document .block article a:hover h3,
+  .search-results .block article a:hover h3,
+  .post-type-archive-document .block article a:active h3,
+  .search-results .block article a:active h3,
+  .post-type-archive-document .block article a:focus h3,
+  .search-results .block article a:focus h3 {
+    text-decoration: underline;
   }
 }
 .block-audio-video .mejs-container .mejs-controls,
@@ -6309,6 +6422,7 @@ div.dossier_overzicht_popular ul.links a:before {
   padding-left: 0.3em;
   padding-right: 0.6em;
   margin: 2px;
+  text-decoration: none;
 }
 .home .site-inner .linkblock:first-of-type,
 .page-template-front-page .site-inner .linkblock:first-of-type {
@@ -6322,14 +6436,6 @@ div.dossier_overzicht_popular ul.links a:before {
 .home .site-inner .linkblock h3,
 .page-template-front-page .site-inner .linkblock h3 {
   color: #01689b;
-}
-.home .site-inner .linkblock:hover,
-.page-template-front-page .site-inner .linkblock:hover,
-.home .site-inner .linkblock:active,
-.page-template-front-page .site-inner .linkblock:active,
-.home .site-inner .linkblock:focus,
-.page-template-front-page .site-inner .linkblock:focus {
-  text-decoration: none;
 }
 .home .site-inner .linkblock:hover h3,
 .page-template-front-page .site-inner .linkblock:hover h3,

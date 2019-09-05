@@ -28,6 +28,16 @@
 		li {
 			margin-top: .2em;
 			margin-bottom: .5em;
+			
+			a {
+				text-decoration: none;
+				&:hover,
+				&:active,
+				&:focus {
+					text-decoration: underline;
+				}
+			}
+			
 		}
 		ul ul {
 			margin-top: .5em;
@@ -69,202 +79,203 @@
 
 
 	aside.sidebar {
-  	.widget {
-      margin-top: 1em;
-      border-top: 3px solid @block_border_color;
-  	}
-  	
-  	.widget + .widget {
-      margin-top: 2em;
-  	}
-  	
-  	.widget.banner {
-    	border-top-style: none;
-    	max-width: 400px;
-    	
-    	.widget-wrap {
-      	overflow: hidden;
-      	text-align: left;
+		.widget {
+			margin-top: 1em;
+			border-top: 3px solid @block_border_color;
+		}
+		
+		.widget + .widget {
+			margin-top: 2em;
+		}
+		
+		.widget.banner {
+			border-top-style: none;
+			max-width: 400px;
+			
+			.widget-wrap {
+				overflow: hidden;
+				text-align: left;
+				
+				&:hover {
+					border-color: @grijs_4 !important;
+				}
+				
+				&.plaatje-link-notitel {
+					border: 3px solid @grijs_1;
+					
+					.text {
+						.visuallyhidden();
+					}
+				}
+				
+				&.standaard {
+					border: 3px solid @grijs_1;
+					
+					h2, h3 {
+						color: @donkerblauw_vol;
+					}
+					
+					a {
+						&, &:visited {
+							h2, h3 {
+								color: @donkerblauw_vol !important;
+							}
+						}
+						
+						&:hover,
+						&:active,
+						&:focus {
+							color: @a_color_hover;
+							
+							h2, h3 {
+								color: @donkerblauw_vol;
+								text-decoration: none;
+							}
+						}
+					}
+				}
+				
+				&.do-groen {
+					border: 3px solid @communicatiekleur_vol;
+					color: @wit;
+					background: @communicatiekleur_vol;
+					
+					a {
+						background: @communicatiekleur_vol;
+						display: block;
+					}
+					
+					a:hover,
+					a:active,
+					a:focus {
+						color: @communicatiekleur_vol;
+						background: @wit;
+					}
+				}
+				
+				&.do-groen-light {
+					border: 3px solid @communicatiekleur_licht;
+					color: @txt;
+					background: @communicatiekleur_lichtst;
+					
+					a {
+						background: @communicatiekleur_lichtst;
+						display: block;
+					}
+					
+					a:hover,
+					a:active,
+					a:focus {
+						background: @wit;
+					}
+				}
+				
+				&.text-over-plaatje {
+					border: 3px solid @grijs_3;
+					background: @communicatiekleur_licht;
+					color: @txt;
+					position: relative;
+					
+					img {
+						width: 100%;
+						height: auto;
+					}
+					
+					a {
+						display: block;
+					}
+					
+					.text {
+						.semitransbackground();
+						position: absolute;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						padding: .5em;
+						
+						h2, h3 {
+							color: @donkerblauw_vol;
+						}
+						a {
+							display: inline;
+						}
+					}
 
-        &:hover {
-          border-color: @grijs_4 !important;
-        }
+					a:hover,
+					a:active,
+					a:focus {
+						img {
+							-webkit-filter: grayscale(100%);
+							-moz-filter: grayscale(100%);
+							-ms-filter: grayscale(100%);
+							-o-filter: grayscale(100%);
+							filter: grayscale(100%);
+							filter: gray;
+						}
+						
+						.text {
+							background-color: @wit;
+							background-color: rgba(256,256,256,.9);
+						}
+					}
+				}
+				
+				&.text-align-right {
+					text-align: right;
+				}
+				&.text-align-center {
+					text-align: center;
+				}
 
-      	&.plaatje-link-notitel {
-        	border: 3px solid @grijs_1;
-        	
-        	.text {
-          	.visuallyhidden();
-        	}
-        }
+				img {
+					margin-top: 0;
+					margin-bottom: 0;
+					display: table-cell;
+				}
+				
+				h2, h3 {
+					margin-top: 0;
+				}
+				p {
+					margin: 0;
+				}
+				.text {
+					padding: .5em;
+				}
+				img.aligntop {
+					width: 100%;
+					height: auto;
+				}
+				
+				ul, ol {
+					margin: 0 0 0 .5em;
+				}
+				
+				a {
+					color: inherit;
 
-      	&.standaard {
-        	border: 3px solid @grijs_1;
+					.text {
+						text-decoration: none;
+					}
+					
+					&:hover,
+					&:active,
+					&:focus {
+						.text {
+							text-decoration: underline;
+						}
+					}
 
-          h2, h3 {
-            color: @donkerblauw_vol;
-          }
-
-          a {
-            &, &:visited {
-
-
-              h2, h3 {
-                color: @donkerblauw_vol !important;
-              }
-              
-            }
-
-            &:hover,
-            &:active,
-            &:focus {
-              color: @a_color_hover;
-  
-              h2, h3 {
-                color: @donkerblauw_vol;
-                text-decoration: none;
-              }
-          	}
-          }
-      	}
-      	
-      	&.do-groen {
-         	border: 3px solid @communicatiekleur_vol;
-         	color: @wit;
-        	background: @communicatiekleur_vol;
-
-        	a {
-          	background: @communicatiekleur_vol;
-          	display: block;
-        	}
-
-          a:hover,
-          a:active,
-          a:focus {
-           	color: @communicatiekleur_vol;
-          	background: @wit;
-        	}
-      	}
-      	
-      	&.do-groen-light {
-        	border: 3px solid @communicatiekleur_licht;
-        	color: @txt;
-        	background: @communicatiekleur_lichtst;
-
-        	a {
-          	background: @communicatiekleur_lichtst;
-          	display: block;
-        	}
-        	
-          a:hover,
-          a:active,
-          a:focus {
-          	background: @wit;
-        	}
-      	}
-      	&.text-over-plaatje {
-        	border: 3px solid @grijs_3;
-        	background: @communicatiekleur_licht;
-        	color: @txt;
-        	position: relative;
-        	
-        	img {
-          	width: 100%;
-          	height: auto;
-        	}
-
-          a {
-            display: block;
-          }
-
-          .text {
-            .semitransbackground();
-          	position: absolute;
-          	left: 0;
-          	right: 0;
-          	bottom: 0;
-            padding: .5em;
-            h2, h3 {
-              color: @donkerblauw_vol;
-            }
-            a {
-              display: inline;
-            }
-          }
-          
-
-          a:hover,
-          a:active,
-          a:focus {
-            img {
-              -webkit-filter: grayscale(100%);
-              -moz-filter: grayscale(100%);
-              -ms-filter: grayscale(100%);
-              -o-filter: grayscale(100%);
-              filter: grayscale(100%);
-              filter: gray;
-            }
-
-            .text {
-              background-color: @wit;
-              background-color: rgba(256,256,256,.9);
-            }
-            
-          }
-      	}
-      	&.text-align-right {
-        	text-align: right;
-      	}
-      	&.text-align-center {
-        	text-align: center;
-      	}
-
-
-      	
-      	img {
-        	margin-top: 0;
-        	margin-bottom: 0;
-        	display: table-cell;
-      	}
-
-        h2, h3 {
-          margin-top: 0;
-        }
-        p {
-          margin: 0;
-        }
-        .text {
-          padding: .5em;
-        }
-        img.aligntop {
-          width: 100%;
-          height: auto;
-        }
-
-        ul, ol {
-          margin: 0 0 0 .5em;
-        }
-
-        a {
-          text-decoration: none;
-          color: inherit;
-          
-          &:hover,
-          &:active,
-          &:focus {
-            text-decoration: underline;
-          }
-        } 
-      	
-    	}
-    	.widgettitle {
-      	margin-bottom: 0;
-    	}
-  	}
-
-
-  	
+					
+				} 
+			}
+			
+			.widgettitle {
+				margin-bottom: 0;
+			}
+		}
 	}
+
 	.sidebar {
   	
   	overflow: hidden;
