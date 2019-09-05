@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.4.4
-// * @desc.   JS voor details-summary tags.
+// * @version 2.9.3
+// * @desc.   JS + CSS voor inklapbare blokken.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -101,8 +101,30 @@ if ( alledetailstags.length > 1 ) {
       parent_of_element.insertBefore( newNode, currentElement.nextSibling );
 
     }
-
   }
-
 }
+
+
+// source (eh, inspiration) inclusive-components.design/collapsible-sections/
+(function() {
+	var headings = document.querySelectorAll('.collapsetoggle');
+	for( var i = 0; i < headings.length; i++) {
+		var btn		= headings[i].querySelector('button');
+		btn.onclick = function(e) {
+
+			var expanded	= this.getAttribute('aria-expanded') === 'true' || false;
+			var target		= this.parentElement.nextElementSibling;
+
+			if ( expanded ) {
+				this.setAttribute('aria-expanded', false );
+				target.setAttribute('hidden', 'hidden');
+			}
+			else {
+				this.setAttribute('aria-expanded', true );
+				target.removeAttribute('hidden');
+			}
+		}
+	}
+})();
+
   

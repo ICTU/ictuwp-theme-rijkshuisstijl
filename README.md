@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.9.2 - Tonen van berichten in een dossier verbeterd.
+2.9.3 - JS + CSS voor inklapbare blokken.
 
 ## Version history
+* 2.9.3 - JS + CSS voor inklapbare blokken.
 * 2.9.2 - Tonen van berichten in een dossier verbeterd.
 * 2.9.1 - Document archive page verbeterd, filesize toegevoegd.
 * 2.8.1 - Styling IE10 / IE11: flexbox nieuwsarchief.
