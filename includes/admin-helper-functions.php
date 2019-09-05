@@ -204,6 +204,14 @@ if ( WP_DEBUG ) {
 
 //========================================================================================================
 
+add_action( 'wp_print_styles', 'rhswp_frontend_deregister_styles', 100 );
+
+function rhswp_frontend_deregister_styles() {
+    wp_dequeue_style( 'wp-block-library' );
+}
+
+//========================================================================================================
+
 if ( SHOW_CSS_DEBUG ) {
 
   //* Add role to header
