@@ -52,29 +52,35 @@ function admin_manage_theme_columns_dossiers($out, $column_name, $theme_id) {
 }
 
 //========================================================================================================
-if (! function_exists( 'dodebug' ) ) {
-  
-  function dodebug( $string, $tag = 'p' ) {
-    if ( WP_DEBUG && WP_LOCAL_DEV ) {
-      echo '<' . $tag . ' class="debugstring"> ' . $string . '</' . $tag . '>';
-    }
-  }
 
+if (! function_exists( 'dodebug' ) ) {
+	
+	function dodebug( $string, $tag = 'p' ) {
+		if ( WP_DEBUG && WP_LOCAL_DEV ) {
+			echo '<' . $tag . ' class="debugstring"> ' . $string . '</' . $tag . '>';
+		}
+	}
+	
 }
 
 //========================================================================================================
 
-function dodebug2($file = '', $extra = '') {
-  if ( WP_DEBUG && WP_LOCAL_DEV ) {
-    $break = Explode('/', $file);
-    $pfile = $break[count($break) - 1]; 
-  
-    echo '<hr><span class="debugmessage" title="' . $file . '">' . $pfile;
-    if ( $extra ) {
-        echo ' - ' . $extra;
-    }
-    echo '</span>';
-  }
+if (! function_exists( 'dodebug2' ) ) {
+	
+	function dodebug2($file = '', $extra = '') {
+
+		if ( WP_DEBUG && WP_LOCAL_DEV ) {
+			$break = Explode('/', $file);
+			$pfile = $break[count($break) - 1]; 
+			
+			echo '<hr><span class="debugmessage" title="' . $file . '">' . $pfile;
+			if ( $extra ) {
+				echo ' - ' . $extra;
+			}
+			echo '</span>';
+		}
+	}
+	
 }
 
 //========================================================================================================
