@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.3
-// * @desc.   JS + CSS voor inklapbare blokken.
+// * @version 2.9.4
+// * @desc.   Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -25,8 +25,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.9.3" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "JS + CSS voor inklapbare blokken." );
+define( 'CHILD_THEME_VERSION',              "2.9.4" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -2034,10 +2034,16 @@ function rhswp_document_add_extra_info() {
 			if( 'URL' === $file_or_url && $rhswp_document_url ) {
 
 				if ( ! $rhswp_document_linktext ) {
-					$rhswp_document_linktext = 'download bestand';
+					
+					$arr_linktext	= explode( '/', $rhswp_document_url );
+					$linktext		= end( $arr_linktext );
+					$linktext		= preg_replace('|-|i', ' ', $linktext );
+					$linktext		= preg_replace('|   |i', ' - ', $linktext );
+					
+					$rhswp_document_linktext = sprintf( _x( 'Bekijk "%s"', 'download document', 'wp-rijkshuisstijl' ), $linktext );
 				}
 
-				echo '<a href="' . $rhswp_document_url . '" class="download ' . RHSWP_CPT_DOCUMENT . '">' . sprintf( _x( 'Download %s', 'download document', 'wp-rijkshuisstijl' ), $rhswp_document_linktext ) . '</a>';
+				echo '<a href="' . $rhswp_document_url . '" class="download ' . RHSWP_CPT_DOCUMENT . '">' . $rhswp_document_linktext . '</a>';
 			
 			}
 			else {
@@ -3465,16 +3471,24 @@ function rhswp_archive_custom_loop() {
 			}
 			
 			if ( $toonitem ) {
-				
-				if ( is_search()  || is_archive( RHSWP_CPT_DOCUMENT ) ) {
-					
+
+				if ( is_search()  || is_post_type_archive( RHSWP_CPT_DOCUMENT ) ) {
+
 					$theurl       = get_permalink();
 					$thetitle     = rhswp_filter_alternative_title( get_the_id(), get_the_title() );
 					$documenttype = rhswp_translateposttypes( $contenttype );
 
 					if ( 'post' == $contenttype ) {
+						$categories = get_the_category( get_the_id() );
+						if ( ! empty( $categories ) ) {
+							// show the categories / category
+						    $documenttype = esc_html( $categories[0]->name );   
+						}						
+						else {
+							// leave the translated post type
+						}
 						
-						$documenttype .= '<span class="post-date">' . get_the_date() . '</span>';
+						$documenttype .= ' - <span class="post-date">' . get_the_date() . '</span>';
 					}
 					if ( 'document' == $contenttype ) {
 
@@ -3525,6 +3539,19 @@ function rhswp_archive_custom_loop() {
 				}
 				else {
 					// no search, not an archive for RHSWP_CPT_DOCUMENT
+
+					if ( 'post' == $contenttype ) {
+						$categories = get_the_category( get_the_id() );
+						if ( ! empty( $categories ) ) {
+							// show the categories / category
+						    $documenttype = esc_html( $categories[0]->name );   
+						}						
+						else {
+							// leave the translated post type
+						}
+						
+						$documenttype .= ' - <span class="post-date">' . get_the_date() . '</span>';
+					}
 					
 					if ( ! ( 'page' == get_post_type( $post->ID ) ) ) {
 						$thetitle     = get_the_title( get_the_id() );
@@ -3812,11 +3839,11 @@ add_action( 'pre_get_posts', 'rhswp_modify_query_for_dossieroverview' );
 function rhswp_modify_query_for_dossieroverview( $query ) {
 
 	if( $query->is_main_query() && !is_admin() && is_tax( RHSWP_CT_DOSSIER ) ) {
-
-    // remove all posts that are marked 'private'
-    $query->set( 'perm', 'readable' );
-    return $query;
-
+	
+	    // remove all posts that are marked 'private'
+	    $query->set( 'perm', 'readable' );
+	    return $query;
+	
 	}
 }
 
@@ -5947,6 +5974,25 @@ function ie_style_sheets () {
 
 
 add_action ('wp_enqueue_scripts','ie_style_sheets');
+
+//========================================================================================================
+
+function change_category_order( $query ) {
+	echo 'ha';
+	if ( $query->is_main_query() && !is_admin() ) {
+        $query->set( 'orderby', 'date' );
+        $query->set( 'order', 'DESC' );
+		echo ', ja';
+    }
+    else {
+		echo ', oohw...';
+    }
+
+	return $query;
+	
+}
+
+//add_action( 'pre_get_posts', 'change_category_order' );
 
 //========================================================================================================
 

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.3
-// * @desc.   JS + CSS voor inklapbare blokken.
+// * @version 2.9.4
+// * @desc.   Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -96,18 +96,17 @@
       .listitem_arrow_extern( @a_color_default, @a_color_hover, @a_color_active, @a_color_visited );
   	}     
   }
-  .block .events-table {
-    
-    a {
-      font-family: @fontstrong;
-      font-size: 1.125em;
-    }
-    li {
-      list-style: none;
-      padding-left: 0;
-      margin-left: 0;
-    }
-  }
+	.block .events-table {
+		
+		a {
+			font-family: @fontstrong;
+			font-size: 1.125em;
+		}
+		li {
+			list-style: none;
+			margin-left: 0;
+		}
+	}
 
 
   .block {

@@ -163,15 +163,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'type' => 'text',
 				'instructions' => 'Bijvoorbeeld: \'download verslag bijeenkomst 13 september 2018\'',
 				'required' => 1,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field' => 'field_5d6cdcd6d0daf',
-							'operator' => '==',
-							'value' => 'URL',
-						),
-					),
-				),
+				'conditional_logic' => 0,
 				'wrapper' => array(
 					'width' => '',
 					'class' => '',
