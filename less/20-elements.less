@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.2
-// * @desc.   Tonen van berichten in een dossier verbeterd.
+// * @version 2.9.4
+// * @desc.   Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -96,18 +96,17 @@
       .listitem_arrow_extern( @a_color_default, @a_color_hover, @a_color_active, @a_color_visited );
   	}     
   }
-  .block .events-table {
-    
-    a {
-      font-family: @fontstrong;
-      font-size: 1.125em;
-    }
-    li {
-      list-style: none;
-      padding-left: 0;
-      margin-left: 0;
-    }
-  }
+	.block .events-table {
+		
+		a {
+			font-family: @fontstrong;
+			font-size: 1.125em;
+		}
+		li {
+			list-style: none;
+			margin-left: 0;
+		}
+	}
 
 
   .block {
@@ -710,19 +709,65 @@
   }
 
 
-  /*
-  Timeline plugin
-  -------------------------------------------------------------------------------------------------- */
-  .timeline-main {
-    background-color: @grijs_1;
-    .timelineToggle {
-      color: @donkerblauw_vol;
-    }    
-    a {
-      &:hover {
-        color: @txt;
-      }
-    }
-  }
+	/*
+	Timeline plugin
+	-------------------------------------------------------------------------------------------------- */
+	.timeline-main {
+		background-color: @grijs_1;
+		.timelineToggle {
+			color: @donkerblauw_vol;
+		}    
+		a {
+			&:hover {
+				color: @txt;
+			}
+		}
+	}
 
+	/*
+	Inklapblokken
+	-------------------------------------------------------------------------------------------------- */
+	.collapsible {
+		overflow: hidden;
+		padding: 1rem;
+		a {
+			background-image: none !important;
+		}
+	}
+
+	.collapsetoggle {
+		background: @grijs;
+		color: @txt;
+		display: block;
+		width: 100%;
+		font-family: @fontstrong;
+		font-size: 112.5%;
+		margin: .1rem 0;
+		border-top: 3px solid @wit;
+	
+		button {
+			text-align: left;
+			background: @grijs;
+			color: @a_color_default;
+			display: block;
+			width: 100%;
+			background-repeat: no-repeat;
+			background-position: 98% center;
+	        .arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @a_color_default);
+	        border-color: @grijs;
+			padding-left: 1rem;
+			padding-right: 1rem;
+			
+			&:hover {
+				text-decoration: underline;
+			}
+			&:focus {
+		        border-color: @txt;
+			}	
+	
+			&[aria-expanded="true"] {
+	            .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @a_color_default );
+			}
+		}
+	}
 }

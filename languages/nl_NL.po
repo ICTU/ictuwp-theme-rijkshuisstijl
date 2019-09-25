@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
-"POT-Creation-Date: 2019-09-03 20:02+0200\n"
-"PO-Revision-Date: 2019-09-03 20:02+0200\n"
+"POT-Creation-Date: 2019-09-24 12:10+0200\n"
+"PO-Revision-Date: 2019-09-24 12:10+0200\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: paul@wbvb.nl\n"
 "Language: nl_NL\n"
@@ -51,20 +51,20 @@ msgctxt "Standaard linktekst voor lees-meer"
 msgid "Read more"
 msgstr "Lees meer"
 
-#: functions.php:745 functions.php:3581 functions.php:5848
+#: functions.php:745 functions.php:3608 functions.php:5875
 #: includes/dossier-helper-functions.php:461
 #: includes/dossier-helper-functions.php:475
 msgctxt "post types"
 msgid "Posts"
 msgstr "Nieuwsberichten"
 
-#: functions.php:749 functions.php:3616 functions.php:5859
+#: functions.php:749 functions.php:3643 functions.php:5886
 #: includes/dossier-helper-functions.php:541 includes/widget-events.php:317
 msgctxt "post types"
 msgid "Events"
 msgstr "Evenementen"
 
-#: functions.php:753 functions.php:1370 functions.php:3609 functions.php:5869
+#: functions.php:753 functions.php:1370 functions.php:3636 functions.php:5896
 #: includes/dossier-helper-functions.php:511
 msgctxt "post types"
 msgid "Documents"
@@ -288,37 +288,37 @@ msgstr "Deel op Facebook"
 msgid "Share on LinkedIn"
 msgstr "Deel op LinkedIn"
 
-#: functions.php:2040
+#: functions.php:2043
 #, php-format
 msgctxt "download document"
-msgid "Download %s"
+msgid "Bekijk \"%s\""
 msgstr ""
 
-#: functions.php:2057
+#: functions.php:2063
 #, php-format
 msgctxt "download document"
 msgid "Download '%s'"
 msgstr ""
 
-#: functions.php:2228
+#: functions.php:2234
 #, php-format
 msgctxt "title for link to homepage"
 msgid "To the homepage of %s."
 msgstr ""
 
-#: functions.php:2590 includes/widget-events.php:173
+#: functions.php:2596 includes/widget-events.php:173
 msgid "all events"
 msgstr "alle agenda-items"
 
-#: functions.php:2716 functions.php:2881 functions.php:3011 functions.php:3077
+#: functions.php:2722 functions.php:2887 functions.php:3017 functions.php:3083
 msgid "No titel found for post"
 msgstr "Geen titel ingevoerd"
 
-#: functions.php:2720 functions.php:3014 taxonomy.php:71
+#: functions.php:2726 functions.php:3020 taxonomy.php:71
 msgid "Note to the editor"
 msgstr "Noot voor de redactie"
 
-#: functions.php:2721
+#: functions.php:2727
 msgid ""
 "Je hebt een content-block toegevoegd die berichten zou moeten tonen, maar de "
 "functie van deze pagina <em>is</em> het tonen van berichten. Dubbelop, dus."
@@ -326,12 +326,12 @@ msgstr ""
 "Je hebt een content-block toegevoegd die artikelen zou moeten tonen, maar de "
 "functie van deze pagina <em>is</em> het tonen van artikelen. Dubbelop, dus."
 
-#: functions.php:2723 functions.php:3019
+#: functions.php:2729 functions.php:3025
 msgid ""
 "Deze tekst wordt alleen getoond aan redacteuren die pagina's mogen wijzigen."
 msgstr ""
 
-#: functions.php:3015
+#: functions.php:3021
 msgid ""
 "Er is een content-block met berichten toegevoegd aan deze pagina, maar "
 "hiervoor zijn geen berichten gevonden."
@@ -339,384 +339,384 @@ msgstr ""
 "Er is een content-block met artikelen toegevoegd aan deze pagina, maar "
 "hiervoor zijn geen berichten gevonden."
 
-#: functions.php:3579
+#: functions.php:3606
 msgctxt "post types"
 msgid "Post"
 msgstr "Nieuwsbericht"
 
-#: functions.php:3586
+#: functions.php:3613
 msgctxt "post types"
 msgid "Page"
 msgstr "Pagina"
 
-#: functions.php:3588
+#: functions.php:3615
 msgctxt "post types"
 msgid "Pages"
 msgstr "Pagina's"
 
-#: functions.php:3593
+#: functions.php:3620
 msgctxt "post types"
 msgid "Topic"
 msgstr "Onderwerp"
 
-#: functions.php:3595
+#: functions.php:3622
 msgctxt "post types"
 msgid "Topics"
 msgstr "Onderwerpen"
 
-#: functions.php:3600
+#: functions.php:3627
 msgctxt "post types"
 msgid "Attachment"
 msgstr "Attachment"
 
-#: functions.php:3602
+#: functions.php:3629
 msgctxt "post types"
 msgid "Attachments"
 msgstr "Attachments"
 
-#: functions.php:3607 functions.php:3671
+#: functions.php:3634 functions.php:3698
 msgctxt "post types"
 msgid "Document"
 msgstr "Document"
 
-#: functions.php:3614
+#: functions.php:3641
 msgctxt "post types"
 msgid "Event"
 msgstr "Evenement"
 
-#: functions.php:3621 functions.php:3623 functions.php:3628 functions.php:3630
+#: functions.php:3648 functions.php:3650 functions.php:3655 functions.php:3657
 msgctxt "post types"
 msgid "Planning"
 msgstr ""
 
-#: functions.php:3635
+#: functions.php:3662
 msgid "No sliders please"
 msgstr ""
 
-#: functions.php:3655
+#: functions.php:3682
 msgctxt "post types"
 msgid "Image"
 msgstr "Plaatje"
 
-#: functions.php:3660
+#: functions.php:3687
 msgctxt "post types"
 msgid "Text file"
 msgstr "Tekstbestand"
 
-#: functions.php:3665
+#: functions.php:3692
 msgctxt "post types"
 msgid "Movie file"
 msgstr "Filmbestand"
 
-#: functions.php:3668
+#: functions.php:3695
 msgctxt "post types"
 msgid "PDF file"
 msgstr "PDF-bestand"
 
-#: functions.php:3705
+#: functions.php:3732
 msgctxt "paging: to older"
 msgid "Previous posts"
 msgstr "Vorige pagina"
 
-#: functions.php:3708
+#: functions.php:3735
 msgctxt "paging: to older"
 msgid "Next page"
 msgstr "Volgende pagina"
 
-#: functions.php:3718
+#: functions.php:3745
 msgctxt "paging: to newer"
 msgid "Newer posts"
 msgstr "Recentere berichten"
 
-#: functions.php:3721
+#: functions.php:3748
 msgctxt "paging: to newer"
 msgid "Previous page"
 msgstr "Vorige pagina"
 
-#: functions.php:4190 functions.php:4217
+#: functions.php:4217 functions.php:4244
 msgid "This is the general footer area"
 msgstr ""
 
-#: functions.php:4243
+#: functions.php:4270
 msgctxt "naam widget area in footer"
 msgid "Extra information and links in the footer"
 msgstr "Extra informatie over de site en handige links"
 
-#: functions.php:4324 functions.php:4388
+#: functions.php:4351 functions.php:4415
 msgctxt "reactieformulier"
 msgid "Questions, ideas, suggestions?"
 msgstr "Vraag, idee, reactie of suggestie?"
 
-#: functions.php:4391
+#: functions.php:4418
 msgid "The webmaster has not selected a form for questions or suggestions."
 msgstr "Er is geen contactformulier ingesteld."
 
-#: functions.php:4396
+#: functions.php:4423
 msgid ""
 "Selecteer een contactformulier. \n"
 "Via: Admin > Weergave > Options"
 msgstr ""
 
-#: functions.php:4623
+#: functions.php:4650
 msgctxt "CTA knop"
 msgid "Selecteer of upload een PDF"
 msgstr ""
 
-#: functions.php:4625
+#: functions.php:4652
 msgctxt "CTA knop"
 msgid "Link naar dit bestand"
 msgstr ""
 
-#: functions.php:4670 functions.php:4817 functions.php:4824
+#: functions.php:4697 functions.php:4844 functions.php:4851
 msgctxt "Streamer errors"
 msgid "Voer een tekst in"
 msgstr ""
 
-#: functions.php:4676
+#: functions.php:4703
 msgctxt "Streamer errors"
 msgid "Selecteer een foto"
 msgstr ""
 
-#: functions.php:4701
+#: functions.php:4728
 msgctxt "Streamer errors"
 msgid "Voer in wie dit zei"
 msgstr ""
 
-#: functions.php:4732
+#: functions.php:4759
 msgctxt "Insert streamer"
 msgid "Gegevens voor streamer"
 msgstr ""
 
-#: functions.php:4737 functions.php:4852
+#: functions.php:4764 functions.php:4879
 msgctxt "Insert streamer"
 msgid "Citaat"
 msgstr ""
 
-#: functions.php:4742
+#: functions.php:4769
 msgctxt "Insert streamer"
 msgid "Citaatauteur"
 msgstr ""
 
-#: functions.php:4747
+#: functions.php:4774
 msgctxt "CTA knop"
 msgid "Foto van citaatauteur"
 msgstr ""
 
-#: functions.php:4749
+#: functions.php:4776
 msgctxt "CTA knop"
 msgid "Selecteer foto"
 msgstr ""
 
-#: functions.php:4750
+#: functions.php:4777
 msgctxt "CTA knop"
 msgid ""
 "Je kunt een link invoegen of met de knop een foto uit de mediabibliotheek "
 "selecteren."
 msgstr ""
 
-#: functions.php:4754
+#: functions.php:4781
 msgctxt "Insert streamer"
 msgid "Link naar post / pagina"
 msgstr ""
 
-#: functions.php:4759 functions.php:4857
+#: functions.php:4786 functions.php:4884
 msgctxt "Insert streamer"
 msgid "Uitlijnen"
 msgstr ""
 
-#: functions.php:4760 functions.php:4859
+#: functions.php:4787 functions.php:4886
 msgctxt "Insert streamer"
 msgid "Links"
 msgstr ""
 
-#: functions.php:4761 functions.php:4858
+#: functions.php:4788 functions.php:4885
 msgctxt "Insert streamer"
 msgid "Geen uitlijning"
 msgstr ""
 
-#: functions.php:4762
+#: functions.php:4789
 msgctxt "Insert streamer"
 msgid "Rechts"
 msgstr ""
 
-#: functions.php:4765
+#: functions.php:4792
 msgctxt "Insert streamer"
 msgid "Voeg citaat in"
 msgstr ""
 
-#: functions.php:4846 functions.php:4915
+#: functions.php:4873 functions.php:4942
 msgctxt "Insert streamer"
 msgid "Gewone streamer"
 msgstr ""
 
-#: functions.php:4863
+#: functions.php:4890
 msgctxt "Insert streamer"
 msgid "Voeg streamer toe"
 msgstr ""
 
-#: functions.php:4909 functions.php:4914
+#: functions.php:4936 functions.php:4941
 msgctxt "Insert streamer"
 msgid "Gegevens voor je streamer"
 msgstr ""
 
-#: functions.php:4910
+#: functions.php:4937
 msgctxt "Insert streamer"
 msgid "Streamer met foto"
 msgstr ""
 
-#: functions.php:4919
+#: functions.php:4946
 msgctxt "Insert streamer"
 msgid "Voeg inklapblok toe"
 msgstr ""
 
-#: functions.php:4920
+#: functions.php:4947
 msgctxt "Insert details summary"
 msgid "Voeg uitklapblok toe"
 msgstr ""
 
-#: functions.php:4924
+#: functions.php:4951
 msgctxt "Insert streamer"
 msgid "Voeg kader toe"
 msgstr ""
 
-#: functions.php:4925
+#: functions.php:4952
 msgctxt "kader"
 msgid "Voeg kader toe"
 msgstr ""
 
-#: functions.php:5021
+#: functions.php:5048
 msgctxt "Streamer errors"
 msgid "Voer een titel in<br>"
 msgstr ""
 
-#: functions.php:5028 functions.php:5217
+#: functions.php:5055 functions.php:5244
 msgctxt "Streamer errors"
 msgid "Voer een tekst in<br>"
 msgstr ""
 
-#: functions.php:5038 functions.php:5206
+#: functions.php:5065 functions.php:5233
 msgctxt "Streamer errors"
 msgid "Kies een header-niveau<br>"
 msgstr ""
 
-#: functions.php:5060
+#: functions.php:5087
 msgctxt "Insert streamer"
 msgid "Voeg een details / summary blok in. Dit blok toont of verbergt teksten."
 msgstr ""
 
-#: functions.php:5066 functions.php:5266
+#: functions.php:5093 functions.php:5293
 msgctxt "Insert streamer"
 msgid "Titel"
 msgstr ""
 
-#: functions.php:5071 functions.php:5271
+#: functions.php:5098 functions.php:5298
 msgctxt "Insert streamer"
 msgid "Header-niveau"
 msgstr ""
 
-#: functions.php:5073 functions.php:5273
+#: functions.php:5100 functions.php:5300
 msgctxt "Insert streamer"
 msgid "H2 (niveau 2)"
 msgstr ""
 
-#: functions.php:5074 functions.php:5274
+#: functions.php:5101 functions.php:5301
 msgctxt "Insert streamer"
 msgid "H3 (niveau 3)"
 msgstr ""
 
-#: functions.php:5075 functions.php:5275
+#: functions.php:5102 functions.php:5302
 msgctxt "Insert streamer"
 msgid "H4 (niveau 4)"
 msgstr ""
 
-#: functions.php:5076 functions.php:5276
+#: functions.php:5103 functions.php:5303
 msgctxt "Insert streamer"
 msgid "H5 (niveau 5)"
 msgstr ""
 
-#: functions.php:5077 functions.php:5277
+#: functions.php:5104 functions.php:5304
 msgctxt "Insert streamer"
 msgid "H6 (niveau 6)"
 msgstr ""
 
-#: functions.php:5082
+#: functions.php:5109
 msgctxt "Insert streamer"
 msgid "Inhoud van inklapblok"
 msgstr ""
 
-#: functions.php:5086 functions.php:5286
+#: functions.php:5113 functions.php:5313
 msgctxt "Insert streamer"
 msgid "Voeg uitklapblok toe"
 msgstr ""
 
-#: functions.php:5244
+#: functions.php:5271
 msgctxt "Insert streamer"
 msgid "Voeg een kader toe."
 msgstr ""
 
-#: functions.php:5250
+#: functions.php:5277
 msgctxt "Insert streamer"
 msgid "Randkleur"
 msgstr ""
 
-#: functions.php:5282
+#: functions.php:5309
 msgctxt "Insert streamer"
 msgid "Inhoud van blok"
 msgstr ""
 
-#: functions.php:5491
+#: functions.php:5518
 msgctxt "Dossier header"
 msgid "All posts"
 msgstr "Alle berichten"
 
-#: functions.php:5520 functions.php:5698
+#: functions.php:5547 functions.php:5725
 #, php-format
 msgctxt "Dossier header"
 msgid "posts for topic %s"
 msgstr "documenten in het dossier %s"
 
-#: functions.php:5660 functions.php:5777 search.php:232
+#: functions.php:5687 functions.php:5804 search.php:232
 #, php-format
 msgctxt "No results text"
 msgid "No results for %s."
 msgstr "We zochten naar %s, maar konden niets vinden."
 
-#: functions.php:5832
+#: functions.php:5859
 #, php-format
 msgid "- page %s"
 msgstr "- pagina %s"
 
-#: functions.php:5841
+#: functions.php:5868
 #, php-format
 msgctxt "Posts for topic with category"
 msgid "%s for '%s' %s"
 msgstr "%s onder %s %s"
 
-#: functions.php:5845
+#: functions.php:5872
 #, php-format
 msgctxt "Posts for topic without category"
 msgid "Posts for %s %s"
 msgstr "Nieuwsberichten onder %s %s"
 
-#: functions.php:5856
+#: functions.php:5883
 #, php-format
 msgid "Events for %s %s"
 msgstr "Events onder %s %s"
 
-#: functions.php:5866
+#: functions.php:5893
 #, php-format
 msgid "Documents for %s %s"
 msgstr "Documenten onder %s %s"
 
-#: functions.php:5903
+#: functions.php:5930
 msgid "ACF plugin is niet actief ("
 msgstr ""
 
-#: functions.php:5931
+#: functions.php:5958
 msgid "URL"
 msgstr ""
 
-#: functions.php:5932
+#: functions.php:5959
 msgid "Caption"
 msgstr ""
 
@@ -770,30 +770,30 @@ msgctxt "Contactform errors"
 msgid "You can't use an email address with '%s'."
 msgstr "U kunt niet namens '%s' reageren."
 
-#: includes/cpt-acf.php:218
+#: includes/cpt-acf.php:210
 msgid "Inhoudspagina"
 msgstr ""
 
-#: includes/cpt-acf.php:221
+#: includes/cpt-acf.php:213
 msgid ""
 "Welke pagina beschrijft de inhoud van dit dossier? Deze pagina is "
 "belangrijk, omdat we hiermee de verdere structuur van het dossier kunnen "
 "bepalen."
 msgstr ""
 
-#: includes/cpt-acf.php:241
+#: includes/cpt-acf.php:233
 msgid "Toon inhoudspagina in het menu?"
 msgstr ""
 
-#: includes/cpt-acf.php:265
+#: includes/cpt-acf.php:257
 msgid "Andere pagina's in het menu"
 msgstr ""
 
-#: includes/cpt-acf.php:321
+#: includes/cpt-acf.php:313
 msgid "Wil je filteren op categorie op deze pagina?"
 msgstr ""
 
-#: includes/cpt-acf.php:324
+#: includes/cpt-acf.php:316
 msgid ""
 "Als je niet filtert worden alle berichten getoond die aan dit dossier "
 "gekoppeld zijn. Als je wilt filteren, kun je kiezen voor een categorie. Dan "
@@ -802,47 +802,47 @@ msgid ""
 "  - als aan de door jou gekozen categorie"
 msgstr ""
 
-#: includes/cpt-acf.php:348
+#: includes/cpt-acf.php:340
 msgid "Kies de categorie waarop je wilt filteren"
 msgstr ""
 
-#: includes/cpt-acf.php:595
+#: includes/cpt-acf.php:587
 msgid "Instellingen theme"
 msgstr ""
 
-#: includes/cpt-acf.php:617
+#: includes/cpt-acf.php:609
 msgid "Toon social-media-opties wel of niet"
 msgstr ""
 
-#: includes/cpt-acf.php:630
+#: includes/cpt-acf.php:622
 msgid "Ja, toon socialmedia-icoontjes"
 msgstr ""
 
-#: includes/cpt-acf.php:631
+#: includes/cpt-acf.php:623
 msgid "Nee, verberg socialmedia-icoontjes"
 msgstr ""
 
-#: includes/cpt-acf.php:641
+#: includes/cpt-acf.php:633
 msgid "Toon reactieformulier"
 msgstr ""
 
-#: includes/cpt-acf.php:654
+#: includes/cpt-acf.php:646
 msgid "Ja, toon reactieformulier"
 msgstr ""
 
-#: includes/cpt-acf.php:655
+#: includes/cpt-acf.php:647
 msgid "Nee, verberg reactieformulier"
 msgstr ""
 
-#: includes/cpt-acf.php:656
+#: includes/cpt-acf.php:648
 msgid "Anders, toon dit formulier:"
 msgstr ""
 
-#: includes/cpt-acf.php:742
+#: includes/cpt-acf.php:734
 msgid "Alternatieve paginatitel gebruiken?"
 msgstr ""
 
-#: includes/cpt-acf.php:745
+#: includes/cpt-acf.php:737
 msgid ""
 "De paginatitel wordt standaard gebruikt voor ondermeer verwijzingen in "
 "menu's en in de <title>. Het kan zijn dat je voor de duidelijkheid een "
@@ -850,202 +850,202 @@ msgid ""
 "alternatieve paginatitel invoeren."
 msgstr ""
 
-#: includes/cpt-acf.php:765
+#: includes/cpt-acf.php:757
 msgid "Alternatieve paginatitel"
 msgstr ""
 
-#: includes/cpt-acf.php:875
+#: includes/cpt-acf.php:867
 msgid "Uitgelichte onderwerpen"
 msgstr ""
 
-#: includes/cpt-acf.php:878
+#: includes/cpt-acf.php:870
 msgid ""
 "De onderwerpen die je hier kiest worden bovenaan de pagina getoond met "
 "speciale layout."
 msgstr ""
 
-#: includes/cpt-acf.php:955
+#: includes/cpt-acf.php:947
 msgid "Inhoudspagina voor dossier"
 msgstr ""
 
-#: includes/cpt-acf.php:978
+#: includes/cpt-acf.php:970
 msgid "Link in footer"
 msgstr ""
 
-#: includes/cpt-acf.php:1031
+#: includes/cpt-acf.php:1023
 msgid "URL voor relevante link"
 msgstr ""
 
-#: includes/cpt-acf.php:1047 includes/cpt-acf.php:1943
+#: includes/cpt-acf.php:1039 includes/cpt-acf.php:1935
 msgid "Linktekst"
 msgstr ""
 
-#: includes/cpt-acf.php:1439 includes/cpt-acf.php:1441
-#: includes/cpt-acf.php:1457
+#: includes/cpt-acf.php:1431 includes/cpt-acf.php:1433
+#: includes/cpt-acf.php:1449
 msgid "Carrousels"
 msgstr ""
 
-#: includes/cpt-acf.php:1440
+#: includes/cpt-acf.php:1432
 msgid "Carrousel"
 msgstr ""
 
-#: includes/cpt-acf.php:1442
+#: includes/cpt-acf.php:1434
 msgid "Alle carrousels"
 msgstr ""
 
-#: includes/cpt-acf.php:1443
+#: includes/cpt-acf.php:1435
 msgid "Nieuwe carrousel toevoegen"
 msgstr ""
 
-#: includes/cpt-acf.php:1444
+#: includes/cpt-acf.php:1436
 msgid "Voeg nieuwe carrousel toe"
 msgstr ""
 
-#: includes/cpt-acf.php:1445
+#: includes/cpt-acf.php:1437
 msgid "Bewerk carrousel"
 msgstr ""
 
-#: includes/cpt-acf.php:1446
+#: includes/cpt-acf.php:1438
 msgid "Nieuwe carrousel"
 msgstr ""
 
-#: includes/cpt-acf.php:1447
+#: includes/cpt-acf.php:1439
 msgid "Bekijk carrousel"
 msgstr ""
 
-#: includes/cpt-acf.php:1448
+#: includes/cpt-acf.php:1440
 msgid "Zoek carrousel"
 msgstr ""
 
-#: includes/cpt-acf.php:1449
+#: includes/cpt-acf.php:1441
 msgid "Geen carrousels gevonden"
 msgstr ""
 
-#: includes/cpt-acf.php:1450
+#: includes/cpt-acf.php:1442
 msgid "Geen carrousels gevonden in de prullenbak"
 msgstr ""
 
-#: includes/cpt-acf.php:1451
+#: includes/cpt-acf.php:1443
 msgid "Uitgelichte afbeelding"
 msgstr ""
 
-#: includes/cpt-acf.php:1452
+#: includes/cpt-acf.php:1444
 msgid "Overzichten"
 msgstr ""
 
-#: includes/cpt-acf.php:1453
+#: includes/cpt-acf.php:1445
 msgid "Bijbehorende bestanden"
 msgstr ""
 
-#: includes/cpt-acf.php:1510
+#: includes/cpt-acf.php:1502
 msgid "Afbeelding bij dit item"
 msgstr ""
 
-#: includes/cpt-acf.php:1534
+#: includes/cpt-acf.php:1526
 msgid "Titel bij dit item"
 msgstr ""
 
-#: includes/cpt-acf.php:1553
+#: includes/cpt-acf.php:1545
 msgid "Korte tekst bij dit item"
 msgstr ""
 
-#: includes/cpt-acf.php:1573
+#: includes/cpt-acf.php:1565
 msgid "Soort link"
 msgstr ""
 
-#: includes/cpt-acf.php:1585
+#: includes/cpt-acf.php:1577
 msgid "Naar een pagina / bericht"
 msgstr ""
 
-#: includes/cpt-acf.php:1586
+#: includes/cpt-acf.php:1578
 msgid "Naar een dossier"
 msgstr ""
 
-#: includes/cpt-acf.php:1597
+#: includes/cpt-acf.php:1589
 msgid "Kies een pagina of bericht:"
 msgstr ""
 
-#: includes/cpt-acf.php:1635
+#: includes/cpt-acf.php:1627
 msgid "Kies een dossier:"
 msgstr ""
 
-#: includes/cpt-acf.php:1847
+#: includes/cpt-acf.php:1839
 msgid "Content-blokken"
 msgstr ""
 
-#: includes/cpt-acf.php:1851
+#: includes/cpt-acf.php:1843
 msgid "Voeg 1 of meer blokken toe"
 msgstr ""
 
-#: includes/cpt-acf.php:1854
+#: includes/cpt-acf.php:1846
 msgid ""
 "Deze blokken bestaan uit berichten, pagina\\s of uit links. Berichten worden "
 "automatisch geselecteerd. Links moet je handmatig toevoegen. "
 msgstr ""
 
-#: includes/cpt-acf.php:1870
+#: includes/cpt-acf.php:1862
 msgid "Titel boven contentblok"
 msgstr ""
 
-#: includes/cpt-acf.php:1889
+#: includes/cpt-acf.php:1881
 msgid "Wat wil je tonen in dit contentblok?"
 msgstr ""
 
-#: includes/cpt-acf.php:1901
+#: includes/cpt-acf.php:1893
 msgid "Automatische lijst van berichten"
 msgstr ""
 
-#: includes/cpt-acf.php:1902
+#: includes/cpt-acf.php:1894
 msgid "Berichten of pagina's"
 msgstr ""
 
-#: includes/cpt-acf.php:1903
+#: includes/cpt-acf.php:1895
 msgid "Vrije invoer: links in de volgorde die ik bepaal"
 msgstr ""
 
-#: includes/cpt-acf.php:1904
+#: includes/cpt-acf.php:1896
 msgid "Een selectie van dossiers"
 msgstr ""
 
-#: includes/cpt-acf.php:1905
+#: includes/cpt-acf.php:1897
 msgid "Automatische lijst van evenementen"
 msgstr ""
 
-#: includes/cpt-acf.php:1916
+#: includes/cpt-acf.php:1908
 msgid "Links in je contentblok"
 msgstr ""
 
-#: includes/cpt-acf.php:1980
+#: includes/cpt-acf.php:1972
 msgid "Wil je de berichten filteren op categorie?"
 msgstr ""
 
-#: includes/cpt-acf.php:1983
+#: includes/cpt-acf.php:1975
 msgid ""
 "Als deze pagina een dossier heeft, worden berichten sowieso gefilterd op het "
 "dossier."
 msgstr ""
 
-#: includes/cpt-acf.php:2012
+#: includes/cpt-acf.php:2004
 msgid "Kies de categorie"
 msgstr ""
 
-#: includes/cpt-acf.php:2047
+#: includes/cpt-acf.php:2039
 msgid "Maximum aantal berichten"
 msgstr ""
 
-#: includes/cpt-acf.php:2100
+#: includes/cpt-acf.php:2092
 msgid "Toon hoeveel berichten met hun uitgelichte afbeelding"
 msgstr ""
 
-#: includes/cpt-acf.php:2141
+#: includes/cpt-acf.php:2133
 msgid "Hoeveel evenementen maximaal?"
 msgstr ""
 
-#: includes/cpt-acf.php:2186
+#: includes/cpt-acf.php:2178
 msgid "Geselecteerde dossiers"
 msgstr ""
 
-#: includes/cpt-acf.php:2189
+#: includes/cpt-acf.php:2181
 msgid ""
 "De dossiers die je hier kiest worden bovenaan de pagina getoond met speciale "
 "layout."

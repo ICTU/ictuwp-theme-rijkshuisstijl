@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.1
-// * @desc.   Document archive page verbeterd, filesize toegevoegd.
+// * @version 2.9.4
+// * @desc.   Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 //
 
@@ -94,6 +94,12 @@
 				&:before {
 					float: left;
 					width: @padding_arrow_before;
+				}
+				
+				&.type-document {
+					&:before {
+						top: 8px;
+					}
 				}
 				
 				&.taxonomy {
