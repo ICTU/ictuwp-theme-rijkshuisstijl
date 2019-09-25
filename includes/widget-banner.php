@@ -177,25 +177,31 @@ function filter_for_rhswp_banner_widget( $params ) {
 		$rhswp_widget_bannerimage = '';
 	}
 	
-	// check of de banner op bepaalde contentsoorten niet getoond moet worden
-	if( is_array( $rhswp_widget_link_uitzonderingen ) ) {
-		
-		$posttype = get_post_type(); // haal posttype van huidige content op
-		
-		foreach( $rhswp_widget_link_uitzonderingen as $uitzondering ): 
-		
-			if ( $uitzondering == $posttype ) {
-				// bij deze contentsoort moet de banner dus niet getoond worden
-				// dus exit
-				$params[0]['before_widget'] = 'rhswp_hide_this_banner' . '-' . $uitzondering;
-				return $params;
-				
-			}
-		
-		endforeach; 
-		
+	if ( is_archive() || is_tax() ) {
+		// can't check post type exceptions on non-post type views
 	}
+	else {
+		
+		// check of de banner op bepaalde contentsoorten niet getoond moet worden
+		if( is_array( $rhswp_widget_link_uitzonderingen ) ) {
+			
+			$posttype = get_post_type( $post ); // haal posttype van huidige content op
+			
+			foreach( $rhswp_widget_link_uitzonderingen as $uitzondering ): 
+			
+				if ( $uitzondering == $posttype ) {
+					// bij deze contentsoort moet de banner dus niet getoond worden
+					// dus exit
+					$params[0]['before_widget'] = 'rhswp_hide_this_banner' . '-' . $uitzondering;
+					return $params;
+					
+				}
+			
+			endforeach; 
+			
+		}
 
+	}
 
 	// link toevoegen, if any
 	if( $rhswp_widget_link ) {
