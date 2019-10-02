@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
 "POT-Creation-Date: 2019-09-24 12:08+0200\n"
-"PO-Revision-Date: 2019-09-24 12:09+0200\n"
+"PO-Revision-Date: 2019-10-02 16:57+0200\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -1453,21 +1453,16 @@ msgid "Overview of all topics"
 msgstr ""
 
 #: search.php:74 search.php:86
-#, fuzzy
-#| msgctxt "share title"
-#| msgid "Share this page"
 msgctxt "searchform"
 msgid "Search this site"
-msgstr "Share this page"
+msgstr "Search this site"
 
 #: search.php:116
-#, fuzzy, php-format
-#| msgctxt "beschrijving op documentpagina"
-#| msgid "%s recent posts"
+#, php-format
 msgid "%s result"
 msgid_plural "%s results"
-msgstr[0] "%s most recent posts"
-msgstr[1] "%s most recent posts"
+msgstr[0] "%s result"
+msgstr[1] "%s results"
 
 #: search.php:230
 msgctxt "Title, no results text"

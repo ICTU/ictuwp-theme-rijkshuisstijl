@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
 "POT-Creation-Date: 2019-09-24 12:10+0200\n"
-"PO-Revision-Date: 2019-09-24 12:10+0200\n"
+"PO-Revision-Date: 2019-10-02 17:02+0200\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: Paul van Buuren <paul@wbvb.nl>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -845,7 +845,7 @@ msgstr ""
 
 #: includes/cpt-acf.php:867
 msgid "Uitgelichte onderwerpen"
-msgstr ""
+msgstr "Featured topics"
 
 #: includes/cpt-acf.php:870
 msgid ""
@@ -1043,13 +1043,13 @@ msgstr ""
 #: includes/dossier-helper-functions.php:231
 msgctxt "Standaardlabel voor het 2de item in het dossiermenu"
 msgid "Inhoud"
-msgstr ""
+msgstr "Topic description"
 
 #: includes/dossier-helper-functions.php:246
 #: includes/dossier-helper-functions.php:253
 msgctxt "Standaardlabel voor het menu in de dossiers"
 msgid "Overzicht"
-msgstr ""
+msgstr "Overview"
 
 #: includes/dossier-helper-functions.php:393
 #: includes/dossier-helper-functions.php:433
@@ -1434,22 +1434,22 @@ msgstr ""
 #: page_showalldossiers-nieuwestyling.php:89
 msgctxt "onderwerpfilterpagina"
 msgid "Filter op onderwerp"
-msgstr ""
+msgstr "Filter by topic"
 
 #: page_showalldossiers-nieuwestyling.php:91
 msgctxt "onderwerpfilterpagina"
 msgid "onderwerp"
-msgstr ""
+msgstr "topic"
 
 #: page_showalldossiers-nieuwestyling.php:95
 msgctxt "filterknop op onderwerppagina"
 msgid "Verwijder filter"
-msgstr ""
+msgstr "Remove filter"
 
 #: page_showalldossiers-nieuwestyling.php:148
 msgctxt "Tussenkop op onderwerppagina"
 msgid "Overview of all topics"
-msgstr ""
+msgstr "Overview of all topics"
 
 #: search.php:74 search.php:86
 msgctxt "searchform"
