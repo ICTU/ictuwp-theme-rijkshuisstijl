@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.2
-// * @desc.   Bij beleidskleur: mogelijkheid om een header-image te uploaden.
+// * @version 2.7.6
+// * @desc.   Document CPT: mogelijkheid invoeren URL toegevoegd; layout SERP verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -22,88 +22,181 @@ if( function_exists('acf_add_local_field_group') ):
   //======================================================================================================
   // upload voor CPT RHSWP_CPT_DOCUMENT 
   //======================================================================================================
-  acf_add_local_field_group(array (
-  	'key' => 'group_57e8f17964532',
-  	'title' => 'Document',
-  	'fields' => array (
-  		array (
-  			'key'     => 'field_57e8f1821cab5',
-  			'label'   => __( 'Bijbehorend document', 'wp-rijkshuisstijl' ),
-  			'name'    => 'rhswp_document_upload',
-  			'type'    => 'file',
-  			'instructions'   => '',
-  			'required' => 1,
-  			'conditional_logic' => 0,
-  			'wrapper' => array (
-  				'width' => '',
-  				'class' => '',
-  				'id' => '',
-  			),
-  			'return_format' => 'array',
-  			'library' => 'all',
-  			'min_size' => '',
-  			'max_size' => '',
-  			'mime_types' => '',
-  		),
-  		array (
-  			'key' => 'field_57faa99195748',
-  			'label'   => __( 'Bestandstype', 'wp-rijkshuisstijl' ),
-  			'name' => 'rhswp_document_filetype',
-  			'type' => 'text',
-  			'instructions'   => __( 'Denk aan: PDF, Word-document, tekstbestand', 'wp-rijkshuisstijl' ),
-  			'required' => 0,
-  			'conditional_logic' => 0,
-  			'wrapper' => array (
-  				'width' => '',
-  				'class' => '',
-  				'id' => '',
-  			),
-  			'default_value' => '',
-  			'placeholder' => '',
-  			'prepend' => '',
-  			'append' => '',
-  			'maxlength' => '',
-  		),
-  		array (
-  			'key' => 'field_57faa9a013f5f',
-  			'label'   => __( 'Document-grootte', 'wp-rijkshuisstijl' ),
-  			'name' => 'rhswp_document_filesize',
-  			'type' => 'text',
-        'instructions'   => __( 'bijvoorbeeld: 372KB, of: 2MB', 'wp-rijkshuisstijl' ),  			
-  			'required' => 0,
-  			'conditional_logic' => 0,
-  			'wrapper' => array (
-  				'width' => '',
-  				'class' => '',
-  				'id' => '',
-  			),
-  			'default_value' => '',
-  			'placeholder' => '',
-  			'prepend' => '',
-  			'append' => '',
-  			'maxlength' => '',
-  		),
-  		
-  	),
-  	'location' => array (
-  		array (
-  			array (
-  				'param' => 'post_type',
-  				'operator' => '==',
-  				'value' => 'document',
-  			),
-  		),
-  	),
-  	'menu_order' => 0,
-  	'position' => 'acf_after_title',
-  	'style' => 'default',
-  	'label_placement' => 'top',
-  	'instruction_placement' => 'label',
-  	'hide_on_screen' => '',
-  	'active' => 1,
-  	'description' => '',
-  ));
 
+	acf_add_local_field_group(array(
+		'key' => 'group_57e8f17964532',
+		'title' => 'Document',
+		'fields' => array(
+			array(
+				'key' => 'field_5d6cdcd6d0daf',
+				'label' => 'URL of bestand?',
+				'name' => 'rhswp_document_file_or_url',
+				'type' => 'radio',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'bestand' => 'file',
+					'URL' => 'URL',
+				),
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'default_value' => 'file',
+				'layout' => 'vertical',
+				'return_format' => 'value',
+				'save_other_choice' => 0,
+			),
+			array(
+				'key' => 'field_57e8f1821cab5',
+				'label' => 'Bijbehorend document',
+				'name' => 'rhswp_document_upload',
+				'type' => 'file',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5d6cdcd6d0daf',
+							'operator' => '==',
+							'value' => 'bestand',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'return_format' => 'array',
+				'library' => 'all',
+				'min_size' => '',
+				'max_size' => '',
+				'mime_types' => '',
+			),
+			array(
+				'key' => 'field_57faa99195748',
+				'label' => 'Bestandstype',
+				'name' => 'rhswp_document_filetype',
+				'type' => 'text',
+				'instructions' => 'Denk aan: PDF, Word-document, tekstbestand',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5d6cdcd6d0daf',
+							'operator' => '==',
+							'value' => 'bestand',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_5d6cdada82529',
+				'label' => 'Document-grootte',
+				'name' => 'rhswp_document_filesize',
+				'type' => 'text',
+				'instructions' => 'bijvoorbeeld: 372KB, of: 2MB',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5d6cdcd6d0daf',
+							'operator' => '==',
+							'value' => 'bestand',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_5d6cdd88ba22e',
+				'label' => 'URL',
+				'name' => 'rhswp_document_url',
+				'type' => 'url',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5d6cdcd6d0daf',
+							'operator' => '==',
+							'value' => 'URL',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+			),
+			array(
+				'key' => 'field_5d6ce2fb84f08',
+				'label' => 'Linktekst',
+				'name' => 'rhswp_document_linktext',
+				'type' => 'text',
+				'instructions' => 'Bijvoorbeeld: \'download verslag bijeenkomst 13 september 2018\'',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => 'download bestand',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'document',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'acf_after_title',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	
+	
 
     //======================================================================================================
     // metadata voor CT RHSWP_CT_DOSSIER 

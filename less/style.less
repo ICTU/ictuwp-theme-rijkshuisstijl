@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.7.4
-  Version description: 2.7.4 - Toolbox: animatie-code weggehaald en CSS bugfix voor kaderblok.
+  Version: 2.9.4
+  Version description: 2.9.4 - Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -114,9 +114,11 @@ footer {
     display: none;
 }
 
-*:selection {
-	text-shadow: none !important;
-}
+//::selection {
+//	text-shadow: none !important;
+//	border: 1px solid red;
+//	text-shadow: none;
+//}
 
 
 /* Text styles, shared with admin CSS
@@ -216,57 +218,57 @@ Common Classes
 
   }
 
-  nav {
-    color: @wit;
-    font-family: @fontstrong;
-    padding-top: 18px;
-    padding-bottom: 18px;
-
-    @media only screen and ( max-width: @break_tablet ) {
-      padding-right: 18px;
-      font-size: 1.25rem;
-    }
-    @media only screen and ( min-width: @break_tablet ) {
-      font-size: 1.625rem;
-      padding-right: 271px;
-    }
-
-    span {
-      padding: ( @padding / 1.5 ) 0;
-    }
-
-    a {
-      &:hover,
-      &:active,
-      &:focus {
-        text-decoration: underline;
-      }
-
-      &:after {
-        font-weight: normal;
-        font-family: "RO Icons";
-        display: inline-block;
-        vertical-align: middle;
-        content: "";
-        speak: none;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        padding: 0 6px 0 10px;
-        display: inline-block;
-        font-size: .9375rem;
-        line-height: 1em;
-        margin: -3px 0 0 0;
-        text-decoration: none;
-      }
-    }
-
-    span,
-    a {
-      color: @wit;
-      font-family: @bodyfont;
-    }
-
-  }
+	nav {
+		color: @wit;
+		font-family: @fontstrong;
+		padding-top: 18px;
+		padding-bottom: 18px;
+		
+		@media only screen and ( max-width: @break_tablet ) {
+			padding-right: 18px;
+			font-size: 1.25rem;
+		}
+		@media only screen and ( min-width: @break_tablet ) {
+			font-size: 1.625rem;
+			padding-right: 271px;
+		}
+		
+		span {
+			padding: ( @padding / 1.5 ) 0;
+		}
+		
+		a {
+			text-decoration: none;
+			&:hover,
+			&:active,
+			&:focus {
+				text-decoration: underline;
+			}
+		
+			&:after {
+				font-weight: normal;
+				font-family: "RO Icons";
+				display: inline-block;
+				vertical-align: middle;
+				content: "";
+				speak: none;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				padding: 0 6px 0 10px;
+				display: inline-block;
+				font-size: .9375rem;
+				line-height: 1em;
+				margin: -3px 0 0 0;
+				text-decoration: none;
+			}
+		}
+		
+		span,
+		a {
+			color: @wit;
+			font-family: @bodyfont;
+		}
+	}
 
   .separator {
     speak: none;
@@ -560,80 +562,81 @@ Content Area
 
 .em-pagination,
 .archive-pagination {
-
-  border-top: 4px solid @donkerblauw_vol;
-  margin-top: 1em;
-  color: @donkerblauw_vol;
-
-  ul, ol {
-    padding: 0;
-    margin-left: 1em;
-    margin-top: 0;
-    font-size: 120%;
-    li {
-      padding-left: 0;
-      display: inline-block;
-      float: left;
-    }
-  }
-
+	
+	border-top: 4px solid @donkerblauw_vol;
+	margin-top: 1em;
+	color: @donkerblauw_vol;
+	
+	ul, ol {
+		padding: 0;
+//		margin-left: 1em;
+		margin-top: 0;
+		font-size: 120%;
+		li {
+			padding-left: 0;
+			margin-left: 0;
+			display: inline-block;
+			float: left;
+		}
+	}
+	
 	.alignright {
 		margin-right: 0;
 	}
-
-	li, div {
+	
+	ul li, ol li, div {
 		display: inline;
 		margin-right: .25em;
-
+		
 		a {
 			cursor: pointer;
 			display: inline-block;
 			padding: .3em .5em;
 			text-decoration: none;
 			&:visited {
-  			color: @a_color_default;
+				color: @a_color_default;
 			}
 			&:hover,
 			&:active,
 			&:focus {
-  			text-decoration: underline;
+				text-decoration: underline;
 			}
 		}
-
+		
 		&.active {
-  		a {
-    		background: @donkerblauw_vol;
-    		color: @wit;
-        font-weight: bold;
-        font-family: @fontstrong;
-  		}
+			a {
+				background: @donkerblauw_vol;
+				color: @wit;
+				font-weight: bold;
+				font-family: @fontstrong;
+			}
 		}
-
 	}
-
-  .pagination-previous,
-  .pagination-next {
-    a {
-      border-style: none;
-      background-repeat: no-repeat;
-      white-space: nowrap;
-    }
-  }
-  .pagination-previous a {
-    padding-left: 0;
-    &:before {
-      content: '< ';
-      speak: none;
-    }
-  }
-  .pagination-next a {
-    &:after {
-      content: ' >';
-      speak: none;
-    }
-  }
-
+	
+	.pagination-previous,
+	.pagination-next {
+		a {
+			border-style: none;
+			background-repeat: no-repeat;
+			white-space: nowrap;
+		}
+	}
+	.pagination-previous a {
+		padding-left: 0;
+		&:before {
+			content: '< ';
+			speak: none;
+		}
+	}
+	.pagination-next a {
+		&:after {
+			content: ' >';
+			speak: none;
+		}
+	}
+	
 }
+
 .single .archive-pagination {
 	margin: 0 @padding;
 }
@@ -799,7 +802,10 @@ input[type="text"] {
 }
 
 .taxonomy-description {
-  margin-bottom: 2em;
+	margin-bottom: 2em;
+	a {
+		text-decoration: underline;
+	}
 }
 
 

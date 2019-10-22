@@ -52,30 +52,78 @@ function admin_manage_theme_columns_dossiers($out, $column_name, $theme_id) {
 }
 
 //========================================================================================================
-if (! function_exists( 'dodebug' ) ) {
-  
-  function dodebug( $string, $tag = 'p' ) {
-    if ( WP_DEBUG && WP_LOCAL_DEV ) {
-      echo '<' . $tag . ' class="debugstring"> ' . $string . '</' . $tag . '>';
-    }
-  }
 
+if (! function_exists( 'dodebug' ) ) {
+	
+	function dodebug( $string, $tag = 'p' ) {
+		if ( WP_DEBUG && WP_LOCAL_DEV ) {
+			echo '<' . $tag . ' class="debugstring"> ' . $string . '</' . $tag . '>';
+		}
+	}
+	
 }
 
 //========================================================================================================
 
-function dodebug2($file = '', $extra = '') {
-  if ( WP_DEBUG && WP_LOCAL_DEV ) {
-    $break = Explode('/', $file);
-    $pfile = $break[count($break) - 1]; 
-  
-    echo '<hr><span class="debugmessage" title="' . $file . '">' . $pfile;
-    if ( $extra ) {
-        echo ' - ' . $extra;
-    }
-    echo '</span>';
-  }
+if (! function_exists( 'dodebug2' ) ) {
+	
+	function dodebug2($file = '', $extra = '') {
+
+		if ( WP_DEBUG && WP_LOCAL_DEV ) {
+			$break = Explode('/', $file);
+			$pfile = $break[count($break) - 1]; 
+			
+			echo '<hr><span class="debugmessage" title="' . $file . '">' . $pfile;
+			if ( $extra ) {
+				echo ' - ' . $extra;
+			}
+			echo '</span>';
+		}
+	}
+	
 }
+
+//========================================================================================================
+
+if (! function_exists( 'dovardump2' ) ) {
+  
+  function dovardump2($data, $context = '', $echo = true ) {
+
+    if ( WP_DEBUG ) {
+      $contextstring  = '';
+      $startstring    = '<div class="debug-context-info">';
+      $endtring       = '</div>';
+      
+      if ( $context ) {
+
+        $contextstring = '<p>Vardump ' . $context . '</p>';        
+      }
+      
+      if ( is_array( $data ) || is_object( $data ) ) {
+        $theline = "array: " . print_r( $data, false );
+      }
+      else {
+        $theline = $data;
+      }
+      
+      error_log( $theline );
+      
+      if ( $echo ) {
+      
+        echo $startstring . '<hr>';
+        echo $contextstring;        
+        echo '<pre>';
+        print_r($data);
+        echo '</pre><hr>' . $endtring;
+      }
+      else {
+
+        return '<hr>' . $contextstring . '<pre>' . print_r($data, true) . '</pre><hr>';
+      }
+    }        
+  }        
+}        
+  
 
 //========================================================================================================
 
@@ -158,6 +206,14 @@ function rhswp_admin_debug_css() {
 
 if ( WP_DEBUG ) {
     add_action( 'wp_enqueue_scripts', 'rhswp_admin_debug_css' );
+}
+
+//========================================================================================================
+
+add_action( 'wp_print_styles', 'rhswp_frontend_deregister_styles', 100 );
+
+function rhswp_frontend_deregister_styles() {
+    wp_dequeue_style( 'wp-block-library' );
 }
 
 //========================================================================================================

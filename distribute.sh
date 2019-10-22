@@ -30,6 +30,9 @@ rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/theme
 # Vertalingen --------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------
 
+echo "copy vertalingen --------------------------------------------------"
+echo "to dev env"
+
 rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/languages/' '/shared-paul-files/Webs/temp/'
 
 # remove the .pot

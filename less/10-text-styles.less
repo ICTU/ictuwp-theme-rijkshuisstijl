@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.1
-// * @desc.   Eerste opzet toolbox-pagina's.
+// * @version 2.7.6
+// * @desc.   Document CPT: mogelijkheid invoeren URL toegevoegd; layout SERP verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -28,7 +28,7 @@
 
 	a {
 		color: @a_color_default; // @txt;
-		text-decoration: none;
+//		text-decoration: none;
 		
 		&:visited {
 			color: @a_color_visited;
@@ -37,7 +37,7 @@
 		&:hover,
 		&:active,
 		&:focus {
-			text-decoration: underline;
+//			text-decoration: underline;
 		}
 		&:hover {
 			color: @a_color_hover;
@@ -56,6 +56,8 @@
 		.listitem_arrow_extern( @a_color_default, @a_color_hover, @a_color_active, @a_color_visited );
 	}     
 
+
+
 	a.download {
 		display: inline-block;
 		margin-top: .5em;
@@ -71,6 +73,22 @@
 		background-position: .25em center;
 		background-repeat: no-repeat;
 		background-color: @donkerblauw_vol;
+		border: 4px solid @donkerblauw_vol;
+	}
+
+	.single .entry-content a.download {
+		.iconaddfill_important('../images/svg/icon-download.svg', @wit );
+		background-position: .25em center !important;
+		background-size: 1.5em 1.5em !important;
+		
+		&:focus,
+		&:hover {
+			.iconaddfill_important('../images/svg/icon-download.svg', @donkerblauw_vol );
+			background-color: @wit;
+			border-color: @donkerblauw_vol;
+			color: @txt;
+			text-decoration: underline;
+		}
 	}
   
   p {
@@ -1043,279 +1061,279 @@
 
 //========================================================================================================
 
-  div.chapters {
+	div.chapters {
+		background: @digibeter_oker;
+		display: flex;
+		margin-bottom: 1em;
+		
+		&, a {
+			color: @wit;
+		}
+		
+		div {
+			flex: 1;
+			background-repeat: no-repeat;
+			padding: .5em .5em 0 .5em;
+		}
+		
+		span {
+			display: block;
+		}
+		
+		a {
+			text-decoration: none;
+			display: block;
+			
+			&:hover, 
+			&:active, 
+			&:focus {
+			
+				.chapter-number {
+					color: @wit;
+				}
+				.desc {
+					text-decoration: underline;
+				}
+			}
+		}
+		
+		.chapter-number {
+			font-family: @headerfont;
+			margin-bottom: 0;
+		}
+		
+		.digibeter-oranje {
+			// innovatie
+			background-color: @digibeter_oranje;
+			background-image: url('images/digibeter-icons/01-innovatie.svg?v=cachebuster');
+			.chapter-number {
+				color: @oranje_lichtst;
+			}
+		}
+		
+		.digibeter-blauw {
+			// grondrechten
+			background-color: @digibeter_blauw;
+			background-image: url('images/digibeter-icons/02-beschermen-grondrechten.svg?v=cachebuster');
+			.chapter-number {
+				color: @lichtblauw_lichtst;
+			}
+		}
+		
+		.digibeter-groen {
+			// toegankelijkheid
+			background-color: @digibeter_groen;
+			background-image: url('images/digibeter-icons/03-toegankelijk.svg?v=cachebuster');
+			.chapter-number {
+				color: @groen_lichtst;
+			}
+		}
+		
+		.digibeter-violet {
+		// persoonlijke dienstverlening
+		background-color: @digibeter_violet;
+		background-image: url('images/digibeter-icons/04-persoonlijker.svg?v=cachebuster');
+		.chapter-number {
+		color: @violet_lichtst;
+		}
+		}
+		
+		.digibeter-paars {
+			// toekomst
+			background-color: @digibeter_paars;
+			background-image: url('images/digibeter-icons/05-toekomst.svg?v=cachebuster');
+			.chapter-number {
+				color: @paars_lichtst;
+			}
+		}
+		
+		.da-06,
+		.da-01-problemen-oplossen,
+		.da-02-wetgeving-publieke-waarden,
+		.da-03-overheidsdata-verbeteren,
+		.da-04-kennis-verzamelen-verbeteren,
+		.da-05-mensen-organisatie-cultuurverandering {
+			*, a {
+				color: @txt;
+			}
+			a {
+				&:hover,
+				&:active,
+				&:focus {
+					color: @txt;
+					.chapter-number {
+						color: @txt;
+					}
+				}
+			}
+			.chapter-number {
+				color: @digibeter_blauw;
+			}
+		}      
+		
+		.da-01-problemen-oplossen {
+			// toekomst
+			background-color: @dataagenda_blauw_1;
+			background-image: url('images/digibeter-icons/da-01-problemen-oplossen-thumb.svg');
+		}
+		
+		.da-02-wetgeving-publieke-waarden {
+			// toekomst
+			background-color: @dataagenda_blauw_2;
+			background-image: url('images/digibeter-icons/da-02-wetgeving-publieke-waarden-thumb.svg');
+		}
+		
+		.da-03-overheidsdata-verbeteren {
+			// toekomst
+			background-color: @dataagenda_blauw_1;
+			background-image: url('images/digibeter-icons/da-03-overheidsdata-verbeteren-thumb.svg');
+		}
+		
+		.da-04-kennis-verzamelen-verbeteren {
+			// toekomst
+			background-color: @dataagenda_blauw_2;
+			background-image: url('images/digibeter-icons/da-04-kennis-verzamelen-verbeteren-thumb.svg');
+		}
+		
+		.da-05-mensen-organisatie-cultuurverandering {
+			// toekomst
+			background-color: @dataagenda_blauw_1;
+			background-image: url('images/digibeter-icons/da-05-mensen-organisatie-cultuurverandering-thumb.svg');
+		}
+		
+		
+		@media only screen and (max-width: ( @menubreakpoint ) ) {
+			flex-direction: column;
+			
+			div {
+				flex: 0 1 auto;
+			}
+			.chapter-number {
+				font-size: 2em;
+				float: left;
+				margin-right: .25em;
+			}
+			
+			.desc {
+				font-size: 90%;
+			}
+			
+			div {
+				background-size: contain;
+			}
 
-    background: @digibeter_oker;
-    display: flex;
-    margin-bottom: 1em;
-    
-    &, a {
-      color: @wit;
-    }
+			.da-01-problemen-oplossen,
+			.da-03-overheidsdata-verbeteren,
+			.da-05-mensen-organisatie-cultuurverandering,
+				.digibeter-oranje {
+				// innovatie
+				background-position: 2em center;
 
-    div {
-      flex: 1;
-      background-repeat: no-repeat;
-      padding: .5em .5em 0 .5em;
-    }
-    
-    span {
-      display: block;
-    }
-    
-    a {
-      text-decoration: none;
-      display: block;
+				.desc {
+					padding-left: 7em;
+				}
+			}
+			
+			.da-02-wetgeving-publieke-waarden,
+			.da-04-kennis-verzamelen-verbeteren,
+			.digibeter-blauw {
+				// grondrechten
+				background-position: 99% center;
+	
+				.desc {
+					padding-right: 3.5em;
+				}
+			}
+			
+			.digibeter-groen {
+				// toegankelijkheid
+				background-position: 1.75em center;
+				
+				.desc {
+					padding-left: 7em;
+				}
+			}
+			
+			.digibeter-violet {
+				// persoonlijke dienstverlening
+				background-position: 98% center;
 
-      &:hover, 
-      &:active, 
-      &:focus {
-        
-        .chapter-number {
-          color: @wit;
-        }
-        .desc {
-          text-decoration: underline;
-        }
-      }
-    }
-      
-    .chapter-number {
-      font-family: @headerfont;
-      margin-bottom: 0;
-    }
-    
-    .digibeter-oranje {
-      // innovatie
-      background-color: @digibeter_oranje;
-      background-image: url('images/digibeter-icons/01-innovatie.svg');
-      .chapter-number {
-        color: @oranje_lichtst;
-      }
-    }
-    
-    .digibeter-blauw {
-      // grondrechten
-      background-color: @digibeter_blauw;
-      background-image: url('images/digibeter-icons/02-beschermen-grondrechten.svg');
-      .chapter-number {
-        color: @lichtblauw_lichtst;
-      }
-    }
-    
-    .digibeter-groen {
-      // toegankelijkheid
-      background-color: @digibeter_groen;
-      background-image: url('images/digibeter-icons/03-toegankelijk.svg');
-      .chapter-number {
-        color: @groen_lichtst;
-      }
-    }
-    
-    .digibeter-violet {
-      // persoonlijke dienstverlening
-      background-color: @digibeter_violet;
-      background-image: url('images/digibeter-icons/04-persoonlijker.svg');
-      .chapter-number {
-        color: @violet_lichtst;
-      }
-    }
-    
-    .digibeter-paars {
-      // toekomst
-      background-color: @digibeter_paars;
-      background-image: url('images/digibeter-icons/05-toekomst.svg');
-      .chapter-number {
-        color: @paars_lichtst;
-      }
-    }
+				.desc {
+					padding-right: 3.5em;
+				}
+			}
+			
+			.digibeter-paars {
+				// toekomst
+				background-position: 2em center;
 
-      .da-06,
-    .da-01-problemen-oplossen,
-    .da-02-wetgeving-publieke-waarden,
-    .da-03-overheidsdata-verbeteren,
-    .da-04-kennis-verzamelen-verbeteren,
-    .da-05-mensen-organisatie-cultuurverandering {
-      *, a {
-        color: @txt;
-      }
-      a {
-        &:hover,
-        &:active,
-        &:focus {
-          color: @txt;
-          .chapter-number {
-            color: @txt;
-          }
-        }
-      }
-      .chapter-number {
-        color: @digibeter_blauw;
-      }
-    }      
-    
-    .da-01-problemen-oplossen {
-      // toekomst
-      background-color: @dataagenda_blauw_1;
-      background-image: url('images/digibeter-icons/da-01-problemen-oplossen-thumb.svg');
-    }
-
-    .da-02-wetgeving-publieke-waarden {
-      // toekomst
-      background-color: @dataagenda_blauw_2;
-      background-image: url('images/digibeter-icons/da-02-wetgeving-publieke-waarden-thumb.svg');
-    }
-
-    .da-03-overheidsdata-verbeteren {
-      // toekomst
-      background-color: @dataagenda_blauw_1;
-      background-image: url('images/digibeter-icons/da-03-overheidsdata-verbeteren-thumb.svg');
-    }
-
-    .da-04-kennis-verzamelen-verbeteren {
-      // toekomst
-      background-color: @dataagenda_blauw_2;
-      background-image: url('images/digibeter-icons/da-04-kennis-verzamelen-verbeteren-thumb.svg');
-    }
-
-    .da-05-mensen-organisatie-cultuurverandering {
-      // toekomst
-      background-color: @dataagenda_blauw_1;
-      background-image: url('images/digibeter-icons/da-05-mensen-organisatie-cultuurverandering-thumb.svg');
-    }
-
-
-  	@media only screen and (max-width: ( @menubreakpoint ) ) {
-      flex-direction: column;
-
-      div {
-        flex: 0 1 auto;
-      }
-      .chapter-number {
-        font-size: 2em;
-        float: left;
-        margin-right: .25em;
-      }
-      
-      .desc {
-        font-size: 90%;
-      }
-
-      div {
-        background-size: contain;
-      }
-
-
-      .da-01-problemen-oplossen,
-      .da-03-overheidsdata-verbeteren,
-      .da-05-mensen-organisatie-cultuurverandering,
-      .digibeter-oranje {
-        // innovatie
-        background-position: 2em center;
-        .desc {
-          padding-left: 7em;
-        }
-      }
-      
-      .da-02-wetgeving-publieke-waarden,
-      .da-04-kennis-verzamelen-verbeteren,
-      .digibeter-blauw {
-        // grondrechten
-        background-position: 99% center;
-        .desc {
-          padding-right: 3.5em;
-        }
-      }
-      
-      .digibeter-groen {
-        // toegankelijkheid
-        background-position: 1.75em center;
-        .desc {
-          padding-left: 7em;
-        }
-      }
-      
-      .digibeter-violet {
-        // persoonlijke dienstverlening
-        background-position: 98% center;
-        .desc {
-          padding-right: 3.5em;
-        }
-      }
-      
-      .digibeter-paars {
-        // toekomst
-        background-position: 2em center;
-        .desc {
-          padding-left: 7em;
-        }
-      }
-      
-    }
-
-  	@media only screen and (min-width: ( @menubreakpoint + 1 ) ) {
-
-      flex-direction: row;
-
-      div {
-        flex: 1;
-        background-repeat: no-repeat;
-        background-position: center 90%;
-        padding: .5em;
-        font-size: 125%;
-      }
-      
-      .chapter-number {
-        text-align: center;
-        font-size: 6em;
-        line-height: 1;
-        line-height: 1;
-      }
-    	
-      span {
-        display: block;
-        float: none;
-        clear: both;
-      }
-  
-      .digibeter-oranje {
-        // innovatie
-        background-image: url('images/digibeter-icons/01-innovatie-illustratie.svg');
-      }
-      
-      .da-02-wetgeving-publieke-waarden,
-      .da-04-kennis-verzamelen-verbeteren,
-      .digibeter-blauw,
-      .digibeter-violet {
-        background-position: center 1em;
-        padding-top: 8em;
-      }
-      
-      .digibeter-blauw {
-        background-image: url('images/digibeter-icons/02-beschermen-grondrechten-illustratie.svg');
-      }
-      
-      .digibeter-groen {
-        background-image: url('images/digibeter-icons/03-toegankelijk-illustratie.svg');
-      }
-      
-      .digibeter-violet {
-        background-image: url('images/digibeter-icons/04-persoonlijker-illustratie.svg');
-        
-        .chapter-number {
-          text-align: left;
-          text-indent: .25em;
-        }
-      }
-      
-      .digibeter-paars {
-        background-image: url('images/digibeter-icons/05-toekomst-illustratie.svg');
-      }
-      
-  
-    }
-    
-  }
+				.desc {
+					padding-left: 7em;
+				}
+			}
+		}
+		
+		@media only screen and (min-width: ( @menubreakpoint + 1 ) ) {
+			
+			flex-direction: row;
+			
+			div {
+				flex: 1;
+				background-repeat: no-repeat;
+				background-position: center 90%;
+				padding: .5em;
+				font-size: 125%;
+			}
+			
+			.chapter-number {
+				text-align: center;
+				font-size: 6em;
+				line-height: 1;
+				line-height: 1;
+			}
+			
+			span {
+				display: block;
+				float: none;
+				clear: both;
+			}
+			
+			.digibeter-oranje {
+				// innovatie
+				background-image: url('images/digibeter-icons/01-innovatie-illustratie.svg?v=cachebuster');
+			}
+			
+			.da-02-wetgeving-publieke-waarden,
+			.da-04-kennis-verzamelen-verbeteren,
+			.digibeter-blauw,
+			.digibeter-violet {
+				background-position: center 1em;
+				padding-top: 8em;
+			}
+			
+			.digibeter-blauw {
+				background-image: url('images/digibeter-icons/02-beschermen-grondrechten-illustratie.svg?v=cachebuster');
+			}
+			
+			.digibeter-groen {
+				background-image: url('images/digibeter-icons/03-toegankelijk-illustratie.svg?v=cachebuster');
+				background-position: center bottom;
+			}
+			
+			.digibeter-violet {
+				background-image: url('images/digibeter-icons/04-persoonlijker-illustratie.svg?v=cachebuster');
+			
+				.chapter-number {
+					text-align: left;
+					text-indent: .25em;
+				}
+			}
+			
+			.digibeter-paars {
+				background-image: url('images/digibeter-icons/05-toekomst-illustratie.svg?v=cachebuster');
+			}
+		}
+	}
   
 
 

@@ -7,10 +7,14 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.6.1
-// * @desc.   Markering in grijs voor archief-dossiers.
+// * @version 2.9.4
+// * @desc.   Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 //
+
+
+@padding_arrow_before: 14px;
+
 
 .60_structure() {
 
@@ -76,7 +80,58 @@
   .full-width-content .content {
   	width: 100%;
   }
-  
+
+	.post-type-archive-document,
+	.search-results {
+
+		.block article {
+			
+			//========================================================================================================
+			@media only screen and (min-width: ( @break_tablet ) ) {
+	
+				.listitem_arrow( @a_color_default, 12px, 12px ); // done
+				
+				&:before {
+					float: left;
+					width: @padding_arrow_before;
+				}
+				
+				&.type-document {
+					&:before {
+						top: 8px;
+					}
+				}
+				
+				&.taxonomy {
+					&:before {
+						top: 22px;
+					}
+				}
+				
+				h2, h3 {
+					margin-top: 0;
+				}
+				
+				a {
+					float: right;
+					width: ~"calc(100% - @{padding_arrow_before})";
+					margin-left: 0;
+				}
+			}
+			//========================================================================================================
+		}
+	}
+
+
+	.search-results {
+		&.full-width-content .content {
+			max-width: 790px;
+			float: none;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
   /* Primary Sidebar */
   
   .sidebar-primary {

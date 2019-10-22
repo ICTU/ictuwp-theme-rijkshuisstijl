@@ -13,10 +13,16 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.7.4 - Toolbox: animatie-code weggehaald en CSS bugfix voor kaderblok.
+2.9.4 - Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk.
 
 ## Version history
-* 2.7.4 - Toolbox: animatie-code weggehaald en CSS bugfix voor kaderblok.
+* 2.9.4 - Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk.
+* 2.9.3 - JS + CSS voor inklapbare blokken.
+* 2.9.2 - Tonen van berichten in een dossier verbeterd.
+* 2.9.1 - Document archive page verbeterd, filesize toegevoegd.
+* 2.8.1 - Styling IE10 / IE11: flexbox nieuwsarchief.
+* 2.7.6 - Document CPT: mogelijkheid invoeren URL toegevoegd; layout zoekresultaatpagina verbeterd.
+* 2.7.5 - Toolbox: toegevoegd. Oude NL-Digibeterplaatjes vervangen door nieuwe.
 * 2.7.3 - CSS animatie voor toolbox weer gedactiveerd.
 * 2.7.2 - Bij beleidskleur: mogelijkheid om een header-image te uploaden.
 * 2.7.1 - Eerste opzet toolbox-pagina's.

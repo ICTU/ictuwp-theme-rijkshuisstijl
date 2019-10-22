@@ -53,7 +53,7 @@ class rhswp_news_widget extends WP_Widget {
         $rhswp_news_max       = $instance['rhswp_news_max'];
         
         ?>
-        <p><label for="<?php echo $this->get_field_id('rhswp_news_title') . '">' . __( "Titel:", 'wp-rijkshuisstijl' ) ?><br /><input id="<?php echo $this->get_field_id('rhswp_news_title'); ?>" name="<?php echo $this->get_field_name('rhswp_news_title'); ?>" type="text" style="width: 100%;" value="<?php echo esc_attr($rhswp_news_title); ?>" /></label><br>(niet zichtbaar, wel noodzakelijk)</p>
+        <p><label for="<?php echo $this->get_field_id('rhswp_news-title') . '">' . __( "Titel:", 'wp-rijkshuisstijl' ) ?><br /><input id="<?php echo $this->get_field_id('rhswp_news-title'); ?>" name="<?php echo $this->get_field_name('rhswp_news_title'); ?>" type="text" style="width: 100%;" value="<?php echo esc_attr($rhswp_news_title); ?>" /></label><br>(niet zichtbaar, wel noodzakelijk)</p>
         
         <?php
             

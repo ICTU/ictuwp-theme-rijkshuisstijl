@@ -8,11 +8,12 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.10.9
-// * @desc.   Kleine CSS bugs verholpen (onderwerppaginakolombreedte).
+// * @version 2.8.1
+// * @desc.   Styling IE10 / IE11: flexbox nieuwsarchief.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
+//========================================================================================================
 
 .no-svg {
   #logotype {
@@ -46,3 +47,37 @@
     }
   }
 }
+
+//========================================================================================================
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    // IE10+ CSS here
+
+	.flexbox {
+		.page-template-page_showalldossiers,
+		.page-template-page_show-child-pages,
+		.home,
+		.blog,
+		.flexcontainer,
+		.archive {
+			.block {
+				section,
+				article {
+					padding: 0 !important;
+					flex: 1 0 50%;
+					
+					a {
+						margin-right: 1rem;
+					}
+					
+					&.with-image {
+						flex: 1 0 100%;
+					}
+				}
+			}
+		}  
+	}  
+}
+
+//========================================================================================================
+
