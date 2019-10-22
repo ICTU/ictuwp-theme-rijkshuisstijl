@@ -4326,6 +4326,11 @@ function rhswp_remove_external_styles() {
 	wp_deregister_style( 'cptch_stylesheet' );
 	wp_deregister_style( 'cptch_desktop_style' );
 
+	if ( ! is_user_logged_in() ) {
+		wp_dequeue_style( 'wp-block-library' );		
+		wp_deregister_style( 'dashicons' );
+	}
+
 }
 
 //========================================================================================================
