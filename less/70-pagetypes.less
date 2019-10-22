@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.2
-// * @desc.   Tonen van berichten in een dossier verbeterd.
+// * @version 2.10.1
+// * @desc.   Toolbox voor cyberincidenten toevoegd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -901,13 +901,13 @@
 	}
 
 
-	#toolbox-illustrations {
+	#toolbox-innovatie-illustrations,
+	#toolbox-cyberincident-illustrations {
 	
 		.toolbox-img {
 			overflow: hidden;
 			
 			h2 {
-				margin-top: 0;
 				margin-bottom: 0;
 			}
 		}
@@ -952,7 +952,7 @@
 		
 		@media only screen and ( min-width: @break_fullwidth ) {
 			overflow: hidden;
-			background-image: url('images/toolbox/toolbox-background.svg?asd');
+			background-image: url('images/toolbox/toolbox-background.svg');
 			background-repeat: no-repeat;
 			background-size: contain;
 			position: relative;
@@ -969,11 +969,11 @@
 				&:hover,
 				&:focus,
 				&:active {
-//					border-color: @a_color_active;
+//					border-color: @violet_vol;
 					border-color: @toolbox_lichtblauw;
 					
-					background: @wit !important;
-					background: rgba( 256, 256, 256, .8 ) !important;
+//					background: @wit !important;
+//					background: rgba( 256, 256, 256, .8 ) !important;
 
 					h2 {
 						text-decoration: underline !important;
@@ -987,48 +987,173 @@
 				display: inline-block;
 				padding-left: .5rem;
 				padding-right: .5rem;
-				text-shadow: 4px 4px 3px @wit,  -4px -4px 3px @wit,  4px -4px 3px @wit,  -4px 4px 3px @wit;
 			}
 			
 			.toolbox-img {
 				position: absolute;
 				text-align: center;
 				transition: all .2s ease-in-out; 
-
-				&:hover { 
-					animation-name: vergroot;
-					animation-duration: 1s;
-					animation-iteration-count: 1;
-					animation-timing-function: ease;
-					transform: scale(1.05); 
-					z-index: 8888;
-				}				
-
-				h2 {
-					color: @oranje_vol;
+				
+				&.has-link {
+					&:hover { 
+						animation-name: vergroot;
+						animation-duration: 1s;
+						animation-iteration-count: 1;
+						animation-timing-function: ease;
+						transform: scale(1.05); 
+						z-index: 8888;
+					}				
 				}
+			}
+		}
+	}
+	#toolbox-cyberincident-illustrations {
+		
+		h2 {
+			color: @txt;
+			font-weight: bold;
+			text-align: left;
+			
+			span {
+				background: @oranje_vol;
+				color: @wit;
+				display: inline-block;
+				float: left;
+				border-radius: 50%;
+				line-height: 50px;
+				text-align: center;
+				height: 50px;
+				width: 50px;
+				margin-right: 1rem;
+			}
+			em {
+				font-weight: normal;
+				float: left;
+			}
+		}
+				
+		@media only screen and ( max-width: ( @break_fullwidth - 1 ) ) {
 
+			.toolbox-img {
+				background: @grijs_2;
+				h2 {
+					margin-top: 0;
+				}
+			}
+			.toolbox-introduction {
+				.visuallyhidden();
 			}
 			
+		}
+		
+		@media only screen and ( min-width: @break_fullwidth ) {
+
+			height: 725px;
+			background-image: url('images/toolbox/cyberincident/background.svg');
+
+			.toolbox-introduction {
+				color: @digibeter_blauw;
+				position: absolute;
+				top: 2rem;
+				left: 2rem;
+				max-width: 30rem;
+				.font-size( 32 );
+				line-height: 1.5;
+			}
+			
+			h2 {
+				background: @wit;
+				
+				span {
+					background: @oranje_vol;
+					color: @wit;
+					display: inline-block;
+					float: left;
+					border-radius: 50%;
+					line-height: 50px;
+					text-align: center;
+					height: 50px;
+					width: 50px;
+					margin-right: 1rem;
+				}
+				em {
+					font-weight: normal;
+					float: left;
+				}
+			}
+
+			a {
+				&:hover,
+				&:focus,
+				&:active {
+					border-color: @violet_vol;
+				}			
+			}			
+
+			#toolbox_stap_1 {
+				top: 191px;
+				left: 40px;
+				width: 225px;
+			}
+			#toolbox_stap_2 {
+				top: 20px;
+				left: 604px;
+				width: 256px;
+			}
+			#toolbox_stap_3 {
+				top: 140px;
+				left: 900px;
+				width: 271px;
+			}
+			#toolbox_stap_4 {
+				top: 336px;
+				left: 353px;
+				width: 255px;
+			}
+			#toolbox_stap_5 {
+				top: 377px;
+				left: 727px;
+				width: 283px;
+			}
+			
+		}
+	}
+
+	#toolbox-innovatie-illustrations {
+
+		.toolbox-img {
+			
+			h2 {
+				margin-top: 0;
+			}
+		}
+
+		@media only screen and ( min-width: @break_fullwidth ) {
+
+			h2 {
+				color: @oranje_vol;
+				text-shadow: 4px 4px 3px @wit,  -4px -4px 3px @wit,  4px -4px 3px @wit,  -4px 4px 3px @wit;
+			}
+
 			#toolbox_principe_1 {
-				top: 78px;
+				top: 188px;
 				left: 40px;
 				width: 225px;
 			}
 			#toolbox_principe_2 {
 				top: 10px;
-				left: 764px;
+				left: 605px;
 				width: 256px;
 			}
 			#toolbox_principe_3 {
-				top: 494px;
-				left: 10px;
+				top: 134px;
+				left: 900px;
 				width: 271px;
 			}
 			#toolbox_principe_4 {
 				top: 568px;
 				left: 445px;
-				width: 255px;
+				width: 243;
 			}
 			#toolbox_principe_5 {
 				top: 477px;

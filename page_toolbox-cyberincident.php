@@ -1,7 +1,7 @@
 <?php
 
 /**
-// * Rijkshuisstijl (Digitale Overheid) - page_toolbox-home.php
+// * Rijkshuisstijl (Digitale Overheid) - page_toolbox-cyberincident.php
 // * ----------------------------------------------------------------------------------
 // * Landingspagina voor toolbox
 // * ----------------------------------------------------------------------------------
@@ -16,7 +16,7 @@
  */
 
 
-//* Template Name: DO - Toolbox Innovatie
+//* Template Name: DO - Toolbox Cyberincident
 
 //========================================================================================================
 
@@ -38,22 +38,19 @@ function rhswp_toolbox_append_illustrations() {
 	$counter = 0;
 	
 	$toolbox_images = array(
-		'01-kwaliteit_van_data_algoritme_en_analyse'	=> 'Kwaliteit van data algoritme en analyse',
-		'02-belanghebbenden_betrekken'     				=> 'Belanghebbenden betrekken',
-		'03-transparantie_en_verantwoording'     		=> 'Transparantie en verantwoording',
-		'04-wet-_en_regelgeving_respecteren'     		=> 'Wet- en regelgeving respecteren',
-		'05-monitoren_en_evalueren'     				=> 'Monitoren en evalueren',
-		'06-veiligheid_borgen'     						=> 'Veiligheid borgen',
-		'07-publieke_waarden_centraal'					=> 'Publieke waarden centraal',
+		'image01-rapporteren-report'	=> 'Rapporteren',
+		'image02-beoordelen-assess'     => 'Beoordelen',
+		'image03-bijeenroepen-convene'  => 'Bijeenroepen',
+		'image04-uitvoeren-execute'     => 'Uitvoeren',
+		'image05-oplossen-resolve'		=> 'Oplossen'
 	);
 
-	$toolbox_inleiding		= get_field('toolbox_inleiding', $post->ID );
+	echo '<div id="toolbox-cyberincident-illustrations">';
 
+	$toolbox_inleiding		= get_field('titel_boven_plaat', $post->ID );
 	if ( $toolbox_inleiding ) {
 		echo '<div class="toolbox-introduction">' . apply_filters( 'the_content', $toolbox_inleiding ) . '</div>';
 	}
-
-	echo '<div id="toolbox-innovatie-illustrations">';
 
 	foreach ( $toolbox_images as $attr => $value ) {
 		
@@ -63,15 +60,19 @@ function rhswp_toolbox_append_illustrations() {
 		$a_end		= '';
 		$link 		= '';
 		
-		$titel_principe		= get_field('titel_principe_' . $counter, $post->ID ) ? get_field('titel_principe_' . $counter, $post->ID ) : $value;
-		$link_principe		= get_field('link_principe_' . $counter, $post->ID );
-		if ( is_object( $link_principe ) ) {
-			$link 				= get_permalink( $link_principe->ID );
+		$titel_stap		= get_field('titel_stap_' . $counter, $post->ID ) ? get_field('titel_stap_' . $counter, $post->ID ) : $value;
+		$titel_stap_en	= get_field('titel_stap_' . $counter . '_en', $post->ID ) ? get_field('titel_stap_' . $counter . '_en', $post->ID ) : '';
+		$link_stap		= get_field('link_stap_' . $counter, $post->ID );
+		if ( is_object( $link_stap ) ) {
+			$link 				= get_permalink( $link_stap->ID );
 		}
 
-		if ( $titel_principe ) {
-//			$titel_principe = '<h2>' . $counter . ' - ' . $titel_principe . '</h2>';
-			$titel_principe = '<h2>' . $titel_principe . '</h2>';
+		if ( $titel_stap_en ) {
+			$titel_stap_en = '<br><em lang="en">' . $titel_stap_en . '</em>';
+		}
+		if ( $titel_stap ) {
+			$titel_stap = '<h2><span>' . $counter . '</span> ' . $titel_stap . $titel_stap_en . '</h2>';
+//			$titel_stap = '<h2>' . $titel_stap . '</h2>';
 		}
 
 		$has_link = '';
@@ -82,10 +83,10 @@ function rhswp_toolbox_append_illustrations() {
 			$has_link 	= ' has-link';
 		}
 		
-		echo '<div id="toolbox_principe_' . $counter . '" class="toolbox-img' . $has_link . '">';
+		echo '<div id="toolbox_stap_' . $counter . '" class="toolbox-img' . $has_link . '">';
 		echo $a_start;
 		
-		$svg_icons = get_stylesheet_directory()  . '/images/toolbox/' . $attr . '.svg';
+		$svg_icons = get_stylesheet_directory()  . '/images/toolbox/cyberincident/' . $attr . '.svg';
 		// If it exists, include it.
 		if ( file_exists( $svg_icons ) ) {
 			echo '<div class="svg">';
@@ -93,7 +94,7 @@ function rhswp_toolbox_append_illustrations() {
 			echo '</div>';
 		}
 		
-		echo $titel_principe;
+		echo $titel_stap;
 		echo $a_end;
 		echo '</div>';
 		
