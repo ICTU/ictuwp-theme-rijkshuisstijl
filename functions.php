@@ -39,8 +39,8 @@ else {
 }
 
 if ( WP_DEBUG ) {
-//  define( 'WP_LOCAL_DEV',                   false );
-  define( 'WP_LOCAL_DEV',                   true );
+  define( 'WP_LOCAL_DEV',                   false );
+//  define( 'WP_LOCAL_DEV',                   true );
 }
 else {
   define( 'WP_LOCAL_DEV',                   false );
@@ -4476,129 +4476,134 @@ add_filter( 'body_class', 'rhswp_add_body_classses' );
  */
 function rhswp_add_body_classses( $classes ) {
 
-  global $post;
+// dodebug_do( 'rhswp_add_body_classses' );
+	
+	global $post;
+	
+	if ( ! function_exists( 'get_field' ) ) {
+		exit;
+	}
+		
+	if( get_field( 'site_archief_dossier', 'option') ) {
+		// er is dus een dossier aangewezen als archiefdossier.
+		
+		$archiefdossierid = get_field( 'site_archief_dossier', 'option');
+		$extraclass       = ''; // later vullen we deze variabele; als het gevuld is voegen we dit toe als class aan de body-tag
+		$terms            = '';
+		
+		if ( is_tax( RHSWP_CT_DOSSIER )) {
+			// we zitten te kijken naar een dossier
+			
+			$currenttaxid = get_queried_object()->term_id;
+// dodebug_do( 'rhswp_add_body_classses IS TAX: ' . $currenttaxid );
+			
+			if ( $archiefdossierid == $currenttaxid ) {
+				// dit dossier IS het archiefdossier
+				$extraclass   = 'archiefmarkering';
+			}
+			elseif ( term_is_ancestor_of( $archiefdossierid, $currenttaxid, RHSWP_CT_DOSSIER ) ) {
+				// dit dossier valt ONDER het archiefdossier
+				$extraclass   = 'archiefmarkering';
+			}
+		}      
+		elseif ( 
+			( RHSWP_DOSSIERCONTEXTPOSTOVERVIEW == get_query_var( 'pagename' ) ) ||  
+			( RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW == get_query_var( 'pagename' ) ) ||
+			( RHSWP_DOSSIERCONTEXTEVENTOVERVIEW == get_query_var( 'pagename' ) ) ||
+			( RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW == get_query_var( 'pagename' ) ) 
+		) {
+			// dit is zo'n nep-pagina die berichten / events / documenten bij een bepaald dossier toont
+// dodebug_do( 'rhswp_add_body_classses NEPPAGINA');
+			$terms = get_term_by( 'slug', get_query_var( RHSWP_CT_DOSSIER ), RHSWP_CT_DOSSIER );
+		}
+		else {
+			// het is geen dossier en het is niet zo'n neppagina. Het is content en het kan misschien in een dossier zitten
+			$terms = get_the_terms( get_the_ID(), RHSWP_CT_DOSSIER );
+// dodebug_do( 'rhswp_add_body_classses GEEN TAX, GEEM NEPPAGINA');
+			
+			if( has_term( $archiefdossierid, RHSWP_CT_DOSSIER ) ) {
+				dodebug_do( 'is zo\'n archiefdinges' );
+			}
+		}
+		
+		if ( $terms && ! is_wp_error( $terms ) ) {
+			// eerder hebben we succesvol bepaald dat de content in een dossier zit
+			
+			dodebug_do( 'dit dinges heeft iets uit ' . RHSWP_CT_DOSSIER );
+			
+			if ( is_object( $terms ) ) {
+				
+				if ( $archiefdossierid === $terms->term_id ) {
+					$extraclass   = 'archiefmarkering luimeme';
+				}
+				elseif ( term_is_ancestor_of( $archiefdossierid, $terms->term_id, RHSWP_CT_DOSSIER ) ) {
+					$extraclass   = 'archiefmarkering parent';
+				}
+				
+			}
+			else {
+				
+				if ( is_array( $terms ) ) {
+					// deze post zit in meerdere dossiers
+					
+					foreach ( $terms as $term ) {
+						if ( term_is_ancestor_of( $archiefdossierid, $term->term_id, RHSWP_CT_DOSSIER ) ) {
+							$extraclass   = 'archiefmarkering parent';
+							break;
+						}
+					}
+				}
+				else {
+					// geen array, geen object, weet ik veel
+				}
+			}
+		}
+		
+		if ( $extraclass ) {
+			if ( isset( $classes['class'] ) ) {
+				$classes['class'] .= ' ' . $extraclass;
+			}
+			else {
+				$classes['class'] = $extraclass;
+			}
+		}
+	}
+			
+	if ( is_tax() ) {
+// dodebug_do( 'rhswp_add_body_classses NOT A POST!');
+	}
+	elseif ( 'post' == get_post_type() || 'page' == get_post_type() ) {
 
-  if ( function_exists( 'get_field' ) ) {
+// dodebug_do( 'rhswp_add_body_classses POSTTYPES: ' . get_post_type() );
+		
+		if( has_term( '', RHSWP_CT_DIGIBETER ) ) {
+			// if has any terms in RHSWP_CT_DIGIBETER
+			if ( isset( $classes['class'] ) ) {
+				$classes['class'] .= ' digibeter';
+			}
+			else {
+				$classes['class'] = 'digibeter';
+			}
+		}
+		
+		$postid         = get_the_id();
+		$digibeterterms = wp_get_post_terms( $postid, RHSWP_CT_DIGIBETER );
+		
+		if ( $digibeterterms ) {
+			foreach( $digibeterterms as $digibeterterm ) {
+				$term_id    		= ' ' . $digibeterterm->term_id;
+				$acfid      		= RHSWP_CT_DIGIBETER . '_' . $term_id;
+				$digibeterclass  	= get_field( 'digibeter_term_achtergrondkleur', $acfid );
 
-
-    if( get_field( 'site_archief_dossier', 'option') ) {
-      // er is dus een dossier aangewezen als archiefdossier.
-      
-      $archiefdossierid = get_field( 'site_archief_dossier', 'option');
-      $extraclass       = ''; // later vullen we deze variabele; als het gevuld is voegen we dit toe als class aan de body-tag
-      $terms            = '';
-
-      if ( is_tax( RHSWP_CT_DOSSIER )) {
-        // we zitten te kijken naar een dossier
-        
-        $currenttaxid = get_queried_object()->term_id;
-        
-        if ( $archiefdossierid == $currenttaxid ) {
-          // dit dossier IS het archiefdossier
-          $extraclass   = 'archiefmarkering';
-        }
-        elseif ( term_is_ancestor_of( $archiefdossierid, $currenttaxid, RHSWP_CT_DOSSIER ) ) {
-          // dit dossier valt ONDER het archiefdossier
-          $extraclass   = 'archiefmarkering';
-        }
-      }      
-      elseif ( ( RHSWP_DOSSIERCONTEXTPOSTOVERVIEW == get_query_var( 'pagename' ) ) // 
-        || ( RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW == get_query_var( 'pagename' ) )
-        || ( RHSWP_DOSSIERCONTEXTEVENTOVERVIEW == get_query_var( 'pagename' ) )
-        || ( RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW == get_query_var( 'pagename' ) ) ) {
-          
-          // dit is zo'n nep-pagina die berichten / events / documenten bij een bepaald dossier toont
-
-        $terms = get_term_by( 'slug', get_query_var( RHSWP_CT_DOSSIER ), RHSWP_CT_DOSSIER );
-
-      }
-      else {
-        // het is geen dossier en het is niet zo'n neppagina. Het is content en het kan misschien in een dossier zitten
-        $terms = get_the_terms( get_the_ID(), RHSWP_CT_DOSSIER );
-
-        if( has_term( $archiefdossierid, RHSWP_CT_DOSSIER ) ) {
-          dodebug_do( 'is zo\'n archiefdinges' );
-        }
-
-      }
-
-      if ( $terms && ! is_wp_error( $terms ) ) {
-        // eerder hebben we succesvol bepaald dat de content in een dossier zit
-
-dodebug_do( 'dit dinges heeft iets uit ' . RHSWP_CT_DOSSIER );
-
-        if ( is_object( $terms ) ) {
-
-          if ( $archiefdossierid === $terms->term_id ) {
-            $extraclass   = 'archiefmarkering luimeme';
-          }
-          elseif ( term_is_ancestor_of( $archiefdossierid, $terms->term_id, RHSWP_CT_DOSSIER ) ) {
-            $extraclass   = 'archiefmarkering parent';
-          }
-          
-        }
-        else {
-
-          if ( is_array( $terms ) ) {
-            // deze post zit in meerdere dossiers
-          
-            foreach ( $terms as $term ) {
-              if ( term_is_ancestor_of( $archiefdossierid, $term->term_id, RHSWP_CT_DOSSIER ) ) {
-                $extraclass   = 'archiefmarkering parent';
-                break;
-              }
-            }
-            
-          }
-          else {
-            // geen array, geen object, weet ik veel
-          }
-        }
-      }
-
-      if ( $extraclass ) {
-        
-        if ( isset( $classes['class'] ) ) {
-          $classes['class'] .= ' ' . $extraclass;
-        }
-        else {
-          $classes['class'] = $extraclass;
-        }
-      
-      }
-      
-    }
-  
-    if ( 'post' == get_post_type() || 'page' == get_post_type() ) {
-  
-      if( has_term( '', RHSWP_CT_DIGIBETER ) ) {
-        // if has any terms in RHSWP_CT_DIGIBETER
-        if ( isset( $classes['class'] ) ) {
-          $classes['class'] .= ' digibeter';
-        }
-        else {
-          $classes['class'] = 'digibeter';
-        }
-      }
-
-      $postid         = get_the_id();
-      $digibeterterms = wp_get_post_terms( $postid, RHSWP_CT_DIGIBETER );
-
-      if ( $digibeterterms ) {
-        foreach( $digibeterterms as $digibeterterm ) {
-          $term_id    = ' ' . $digibeterterm->term_id;
-          $acfid      = RHSWP_CT_DIGIBETER . '_' . $term_id;
-          $digibeterclass  = get_field( 'digibeter_term_achtergrondkleur', $acfid );
-
-          $classes['class'] .= ' ' . $digibeterclass;
-
-        }
-      }
-    }
-  }
-
-  return $classes;
-
+// dodebug_do( 'rhswp_add_body_classses ADD CLASS: ' . $digibeterclass );
+				
+				$classes['class']	.= ' ' . $digibeterclass;
+			}
+		}
+	}
+	
+	return $classes;
+	
 }
 
 //========================================================================================================
