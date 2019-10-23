@@ -27,6 +27,8 @@ function rhswp_dossier_title_checker( ) {
 	global $wp_query;
 	global $tellertje;
 	global $wp;
+
+      dodebug_do('rhswp_dossier_title_checker start');
 	
 	if ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
 		// dossier bestaat niet
@@ -53,8 +55,13 @@ function rhswp_dossier_title_checker( ) {
 		return;
 	}
 
-	if ( ( 'page_digibeter-home.php' == get_page_template_slug( get_the_ID() ) ) || ( 'page_toolbox-cyberincident.php' == get_page_template_slug( get_the_ID() ) ) ) {
+
+      dodebug_do('rhswp_dossier_title_checker start: ' . get_the_ID() );
+      dodebug_do('rhswp_dossier_title_checker template: ' . get_page_template_slug( get_the_ID() ) );
+
+	if ( ( 'page_toolbox-home.php' == get_page_template_slug( get_the_ID() ) ) || ( 'page_digibeter-home.php' == get_page_template_slug( get_the_ID() ) ) || ( 'page_toolbox-cyberincident.php' == get_page_template_slug( get_the_ID() ) ) ) {
 		// toolbox layout: dus geen plaatje tonen
+      dodebug_do('rhswp_dossier_title_checker toolbox layout!');
 		return;
 	}
 
