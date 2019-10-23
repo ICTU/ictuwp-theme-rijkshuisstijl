@@ -53,9 +53,9 @@ function admin_manage_theme_columns_dossiers($out, $column_name, $theme_id) {
 
 //========================================================================================================
 
-if (! function_exists( 'dodebug' ) ) {
+if (! function_exists( 'dodebug_do' ) ) {
 	
-	function dodebug( $string, $tag = 'p' ) {
+	function dodebug_do( $string, $tag = 'p' ) {
 		if ( WP_DEBUG && WP_LOCAL_DEV ) {
 			echo '<' . $tag . ' class="debugstring"> ' . $string . '</' . $tag . '>';
 		}
@@ -65,9 +65,11 @@ if (! function_exists( 'dodebug' ) ) {
 
 //========================================================================================================
 
-if (! function_exists( 'dodebug2' ) ) {
+if (! function_exists( 'dodebug_do4' ) ) {
 	
-	function dodebug2($file = '', $extra = '') {
+	function dodebug_do4($file = '', $extra = '') {
+
+echo 'dodebug_do4!: ';
 
 		if ( WP_DEBUG && WP_LOCAL_DEV ) {
 			$break = Explode('/', $file);
