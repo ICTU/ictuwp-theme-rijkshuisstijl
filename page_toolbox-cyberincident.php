@@ -72,7 +72,6 @@ function rhswp_toolbox_append_illustrations() {
 		}
 		if ( $titel_stap ) {
 			$titel_stap = '<h2><span>' . $counter . '</span> ' . $titel_stap . $titel_stap_en . '</h2>';
-//			$titel_stap = '<h2>' . $titel_stap . '</h2>';
 		}
 
 		$has_link = '';
@@ -93,6 +92,9 @@ function rhswp_toolbox_append_illustrations() {
 			require_once( $svg_icons );
 			echo '</div>';
 		}
+//		else {
+//			echo 'Foetsie? toolbox/cyberincident/' . $attr . '.svg<br>';
+//		}
 		
 		echo $titel_stap;
 		echo $a_end;

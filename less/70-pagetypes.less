@@ -921,7 +921,7 @@
 				flex: 1 1 auto;
 				padding: 0 1em;
 				margin-bottom: .5rem;
-				background: @toolbox_lichtblauw;
+				background: @toolbox_innov_lichtblauw;
 
 				a {
 					display: flex;
@@ -969,11 +969,7 @@
 				&:hover,
 				&:focus,
 				&:active {
-//					border-color: @violet_vol;
-					border-color: @toolbox_lichtblauw;
-					
-//					background: @wit !important;
-//					background: rgba( 256, 256, 256, .8 ) !important;
+					border-color: @toolbox_innov_lichtblauw;
 
 					h2 {
 						text-decoration: underline !important;
@@ -1007,6 +1003,7 @@
 			}
 		}
 	}
+	
 	#toolbox-cyberincident-illustrations {
 		
 		h2 {
@@ -1039,17 +1036,32 @@
 				h2 {
 					margin-top: 0;
 				}
+
+				.svg {
+					max-width: 110px;
+//					border: 2px solid purple;
+					
+					svg {
+						vertical-align: middle;
+						max-width: 90px;
+					}
+				}
 			}
 			.toolbox-introduction {
 				.visuallyhidden();
 			}
 			
 		}
+
 		
 		@media only screen and ( min-width: @break_fullwidth ) {
 
-			height: 725px;
-			background-image: url('images/toolbox/cyberincident/background.svg');
+			height: 750px;
+//			border: 1px solid red;
+//			background-image: url('images/toolbox/cyberincident/background-licht-rood.svg');
+//			background-image: url('images/toolbox/cyberincident/background-blauw.svg');
+			background-image: url('images/toolbox/cyberincident/background-violet.svg');
+//			background-image: url('images/toolbox/cyberincident/background-paars.svg');
 
 			.toolbox-introduction {
 				color: @digibeter_blauw;
@@ -1065,7 +1077,7 @@
 				background: @wit;
 				
 				span {
-					background: @oranje_vol;
+					background: @toolbox_cyber_h2_span_bg;
 					color: @wit;
 					display: inline-block;
 					float: left;
@@ -1113,7 +1125,7 @@
 			#toolbox_stap_5 {
 				top: 377px;
 				left: 727px;
-				width: 283px;
+				width: 300px;
 			}
 			
 		}
