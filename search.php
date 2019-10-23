@@ -87,7 +87,7 @@ function rhswp_add_search_description_without_searchwp() {
 	  
 	echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "' . $search_text . '"</h1>';
 	
-	dodebug( ' searchWP plugin wordt niet gebruikt ' );
+	dodebug_do( ' searchWP plugin wordt niet gebruikt ' );
 
 	get_search_form();
 	  
