@@ -1,6 +1,6 @@
 # sh '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/distribute.sh' &>/dev/null
 
-# version 2.9.5
+# version 2.9.6
 
 # clear the log file
 
@@ -68,13 +68,13 @@ rsync -ah '/shared-paul-files/Webs/temp_translations/' '/shared-paul-files/Webs/
 # ------------------
 echo "bekkuppie maken ---------------------------------------------"
 
-rsync -r -a -v --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.9.5/'
+# rsync -r -a -v --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.9.6/'
 
 # change the theme name
-sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.9.5 - ACF layout verbeterd voor content-blokken./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.9.5/style.css'
+# sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.9.6 - Revisie onderwerppagina, ACF layout verbeterd voor content-blokken./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.9.6/style.css'
 
 # remove the backup
-rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.9.5/style.css.bak'
+# rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.9.6/style.css.bak'
 
 
 # --------------------------------------------------------------------------------------------------------------------------------
