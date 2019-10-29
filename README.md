@@ -13,10 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.9.x - ACF layout verbeterd voor content-blokken.
+2.9.5 - ACF layout verbeterd voor content-blokken.
 
 ## Version history
-* 2.9.x - ACF layout verbeterd voor content-blokken.
+* 2.9.5 - ACF layout verbeterd voor content-blokken.
 * 2.9.4 - Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk.
 * 2.9.3 - JS + CSS voor inklapbare blokken.
 * 2.9.2 - Tonen van berichten in een dossier verbeterd.
