@@ -1839,16 +1839,16 @@ if( function_exists('acf_add_local_field_group') ):
   	'title' => __( 'Content-blokken', 'wp-rijkshuisstijl' ),
   	'fields' => array (
   		array (
-  			'key' => 'field_5804cd3ef7829',
-  			'label'   => __( 'Voeg 1 of meer blokken toe', 'wp-rijkshuisstijl' ),
-  			'name' => 'extra_contentblokken',
-  			'type' => 'repeater',
+  			'key'	=> 'field_5804cd3ef7829',
+  			'label' => __( 'Voeg 1 of meer blokken toe', 'wp-rijkshuisstijl' ),
+  			'name'	=> 'extra_contentblokken',
+  			'type'	=> 'repeater',
   			'instructions'   => __( 'Deze blokken bestaan uit berichten, pagina\s of uit links. Berichten worden automatisch geselecteerd. Links moet je handmatig toevoegen. ', 'wp-rijkshuisstijl' ),
   			'required' => 0,
   			'conditional_logic' => 0,
   			'wrapper' => array (
   				'width' => '',
-  				'class' => '',
+  				'class' => 'dangit',
   				'id' => '',
   			),
   			'collapsed' => 'field_5804cd67f782a',
@@ -1858,13 +1858,13 @@ if( function_exists('acf_add_local_field_group') ):
   			'button_label' => 'Nieuw blok toevoegen',
   			'sub_fields' => array (
   				array (
-  					'key' => 'field_5804cd67f782a',
-      			'label'   => __( 'Titel boven contentblok', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_title',
-  					'type' => 'text',
-  					'instructions'   => '',
-  					'required' => 1,
-  					'conditional_logic' => 0,
+					'key'			=> 'field_5804cd67f782a',
+					'label'			=> __( 'Titel boven contentblok', 'wp-rijkshuisstijl' ),
+					'name'			=> 'extra_contentblok_title',
+					'type'			=> 'text',
+  					'instructions'	=> '',
+  					'required'		=> 1,
+  					'conditional_logic'	=> 0,
   					'wrapper' => array (
   						'width' => '',
   						'class' => '',

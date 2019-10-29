@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.4
-// * @desc.   Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk.
+// * @version 2.9.x
+// * @desc.   ACF layout verbeterd voor content-blokken.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -25,8 +25,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.9.4" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk." );
+define( 'CHILD_THEME_VERSION',              "2.9.x" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "ACF layout verbeterd voor content-blokken." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -6002,22 +6002,16 @@ add_action ('wp_enqueue_scripts','ie_style_sheets');
 
 //========================================================================================================
 
-function change_category_order( $query ) {
-	echo 'ha';
-	if ( $query->is_main_query() && !is_admin() ) {
-        $query->set( 'orderby', 'date' );
-        $query->set( 'order', 'DESC' );
-		echo ', ja';
-    }
-    else {
-		echo ', oohw...';
-    }
+add_action('admin_enqueue_scripts', 'admin_enqueue_css_acf_contentblokken');
 
-	return $query;
-	
+function admin_enqueue_css_acf_contentblokken() {
+
+	if ( is_admin() ) {
+		wp_enqueue_style( 'admin-css-acf-contentblokken', RHSWP_THEMEFOLDER . '/css/admin-css-acf-contentblokken.css', false, CHILD_THEME_VERSION );
+
+	}
+
 }
-
-//add_action( 'pre_get_posts', 'change_category_order' );
 
 //========================================================================================================
 
