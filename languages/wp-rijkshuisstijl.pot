@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
-"POT-Creation-Date: 2019-10-29 09:16+0100\n"
+"POT-Creation-Date: 2019-10-30 09:59+0100\n"
 "PO-Revision-Date: 2019-04-02 22:40+0200\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: Paul van Buuren <paul@wbvb.nl>\n"
@@ -707,6 +707,142 @@ msgstr ""
 
 #: functions.php:5984
 msgid "Caption"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/block.php:22
+#: ignore/mailtemplates/digi-overheid-posts/block.php:22
+msgctxt "newsletter"
+msgid "Read more..."
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:8
+#: ignore/mailtemplates/digi-overheid-posts/options.php:8
+#: ignore/mailtemplates/origineel/hero/options.php:9
+msgctxt "newsletter"
+msgid "Layout"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:8
+#: ignore/mailtemplates/digi-overheid-posts/options.php:8
+msgctxt "newsletter"
+msgid "One column"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:8
+#: ignore/mailtemplates/digi-overheid-posts/options.php:8
+msgctxt "newsletter"
+msgid "Two columns"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:10
+msgctxt "newsletter"
+msgid "Title font"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:12
+msgctxt "newsletter"
+msgid "Excerpt font"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:14
+#: ignore/mailtemplates/digi-overheid-posts/options.php:10
+msgctxt "newsletter"
+msgid "Show image"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:16
+#: ignore/mailtemplates/digi-overheid-posts/options.php:12
+msgctxt "newsletter"
+msgid "Show date"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:18
+#: ignore/mailtemplates/digi-overheid-posts/options.php:14
+msgctxt "newsletter"
+msgid "Max posts"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:24
+#: ignore/mailtemplates/digi-overheid-posts/options.php:20
+msgctxt "newsletter"
+msgid "Filters"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:26
+#: ignore/mailtemplates/digi-overheid-posts/options.php:24
+msgctxt "newsletter"
+msgid "Tags"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-posts/options.php:10
+msgctxt "newsletter"
+msgid "Yes, show images"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-posts/options.php:10
+msgctxt "newsletter"
+msgid "Hide images"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-posts/options.php:12
+msgctxt "newsletter"
+msgid "No, hide post dates"
+msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-posts/options.php:12
+msgctxt "newsletter"
+msgid "Yes, show post dates"
+msgstr ""
+
+#: ignore/mailtemplates/origineel/cta/options.php:8
+msgctxt "newsletter"
+msgid "Font"
+msgstr ""
+
+#: ignore/mailtemplates/origineel/cta/options.php:10
+msgctxt "newsletter"
+msgid "Width"
+msgstr ""
+
+#: ignore/mailtemplates/origineel/giphy/options.php:7 searchform.php:23
+msgid "Search"
+msgstr ""
+
+#: ignore/mailtemplates/origineel/heading/options.php:5
+#: ignore/mailtemplates/origineel/hero/options.php:15
+#: ignore/mailtemplates/origineel/preheader/options.php:6
+msgctxt "newsletter"
+msgid "Text"
+msgstr ""
+
+#: ignore/mailtemplates/origineel/hero/options.php:10
+msgctxt "newsletter"
+msgid "Image"
+msgstr ""
+
+#: ignore/mailtemplates/origineel/hero/options.php:12
+msgctxt "newsletter"
+msgid "Title"
+msgstr ""
+
+#: ignore/mailtemplates/origineel/hero/options.php:18
+msgctxt "newsletter"
+msgid "Button"
+msgstr ""
+
+#: ignore/mailtemplates/origineel/preheader/options.php:7
+msgctxt "newsletter"
+msgid "View online"
+msgstr ""
+
+#: ignore/mailtemplates/origineel/separator/options.php:5
+msgctxt "newsletter"
+msgid "Color"
+msgstr ""
+
+#: ignore/mailtemplates/origineel/separator/options.php:6
+msgctxt "newsletter"
+msgid "Height"
 msgstr ""
 
 #: includes/admin-helper-functions.php:25
@@ -1446,7 +1582,7 @@ msgctxt "filterknop op onderwerppagina"
 msgid "Verwijder filter"
 msgstr ""
 
-#: page_showalldossiers-nieuwestyling.php:148
+#: page_showalldossiers-nieuwestyling.php:146
 msgctxt "Tussenkop op onderwerppagina"
 msgid "Overview of all topics"
 msgstr ""
@@ -1470,10 +1606,6 @@ msgstr ""
 
 #: searchform.php:18
 msgid "Search this website"
-msgstr ""
-
-#: searchform.php:23
-msgid "Search"
 msgstr ""
 
 #: sidebar.php:21

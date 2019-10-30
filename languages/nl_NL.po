@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
-"POT-Creation-Date: 2019-10-29 09:15+0100\n"
-"PO-Revision-Date: 2019-10-29 09:19+0100\n"
+"POT-Creation-Date: 2019-10-29 22:29+0100\n"
+"PO-Revision-Date: 2019-10-30 09:59+0100\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: paul@wbvb.nl\n"
 "Language: nl_NL\n"
@@ -716,6 +716,142 @@ msgstr ""
 #: functions.php:5984
 msgid "Caption"
 msgstr ""
+
+#: ignore/mailtemplates/digi-overheid-events/block.php:22
+#: ignore/mailtemplates/digi-overheid-posts/block.php:22
+msgctxt "newsletter"
+msgid "Read more..."
+msgstr "Lees meer"
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:8
+#: ignore/mailtemplates/digi-overheid-posts/options.php:8
+#: ignore/mailtemplates/origineel/hero/options.php:9
+msgctxt "newsletter"
+msgid "Layout"
+msgstr "Opmaak"
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:8
+#: ignore/mailtemplates/digi-overheid-posts/options.php:8
+msgctxt "newsletter"
+msgid "One column"
+msgstr "Een-koloms"
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:8
+#: ignore/mailtemplates/digi-overheid-posts/options.php:8
+msgctxt "newsletter"
+msgid "Two columns"
+msgstr "Twee-koloms"
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:10
+msgctxt "newsletter"
+msgid "Title font"
+msgstr "Lettertype voor kopje"
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:12
+msgctxt "newsletter"
+msgid "Excerpt font"
+msgstr "Lettertype voor samenvatting"
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:14
+#: ignore/mailtemplates/digi-overheid-posts/options.php:10
+msgctxt "newsletter"
+msgid "Show image"
+msgstr "Toon afbeelding"
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:16
+#: ignore/mailtemplates/digi-overheid-posts/options.php:12
+msgctxt "newsletter"
+msgid "Show date"
+msgstr "Toon datum"
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:18
+#: ignore/mailtemplates/digi-overheid-posts/options.php:14
+msgctxt "newsletter"
+msgid "Max posts"
+msgstr "Maximaal aantal berichten"
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:24
+#: ignore/mailtemplates/digi-overheid-posts/options.php:20
+msgctxt "newsletter"
+msgid "Filters"
+msgstr "Filters"
+
+#: ignore/mailtemplates/digi-overheid-events/options.php:26
+#: ignore/mailtemplates/digi-overheid-posts/options.php:24
+msgctxt "newsletter"
+msgid "Tags"
+msgstr "Tags"
+
+#: ignore/mailtemplates/digi-overheid-posts/options.php:10
+msgctxt "newsletter"
+msgid "Yes, show images"
+msgstr "Ja, toon afbeelding"
+
+#: ignore/mailtemplates/digi-overheid-posts/options.php:10
+msgctxt "newsletter"
+msgid "Hide images"
+msgstr "Nee, verberg afbeeldingen"
+
+#: ignore/mailtemplates/digi-overheid-posts/options.php:12
+msgctxt "newsletter"
+msgid "No, hide post dates"
+msgstr "Nee, verberg publicatiedatum"
+
+#: ignore/mailtemplates/digi-overheid-posts/options.php:12
+msgctxt "newsletter"
+msgid "Yes, show post dates"
+msgstr "Ja, toon publicatiedatum"
+
+#: ignore/mailtemplates/origineel/cta/options.php:8
+msgctxt "newsletter"
+msgid "Font"
+msgstr "Lettertype"
+
+#: ignore/mailtemplates/origineel/cta/options.php:10
+msgctxt "newsletter"
+msgid "Width"
+msgstr "Breedte"
+
+#: ignore/mailtemplates/origineel/giphy/options.php:7 searchform.php:23
+msgid "Search"
+msgstr "Zoek"
+
+#: ignore/mailtemplates/origineel/heading/options.php:5
+#: ignore/mailtemplates/origineel/hero/options.php:15
+#: ignore/mailtemplates/origineel/preheader/options.php:6
+msgctxt "newsletter"
+msgid "Text"
+msgstr "Tekst"
+
+#: ignore/mailtemplates/origineel/hero/options.php:10
+msgctxt "newsletter"
+msgid "Image"
+msgstr "Afbeelding"
+
+#: ignore/mailtemplates/origineel/hero/options.php:12
+msgctxt "newsletter"
+msgid "Title"
+msgstr "TItel"
+
+#: ignore/mailtemplates/origineel/hero/options.php:18
+msgctxt "newsletter"
+msgid "Button"
+msgstr "Knop"
+
+#: ignore/mailtemplates/origineel/preheader/options.php:7
+msgctxt "newsletter"
+msgid "View online"
+msgstr "Bekijk online"
+
+#: ignore/mailtemplates/origineel/separator/options.php:5
+msgctxt "newsletter"
+msgid "Color"
+msgstr "Kleur"
+
+#: ignore/mailtemplates/origineel/separator/options.php:6
+msgctxt "newsletter"
+msgid "Height"
+msgstr "Hoogte"
 
 #: includes/admin-helper-functions.php:25
 msgid "Dossiernaam"
@@ -1454,7 +1590,7 @@ msgctxt "filterknop op onderwerppagina"
 msgid "Verwijder filter"
 msgstr ""
 
-#: page_showalldossiers-nieuwestyling.php:148
+#: page_showalldossiers-nieuwestyling.php:146
 msgctxt "Tussenkop op onderwerppagina"
 msgid "Overview of all topics"
 msgstr "Overzicht van alle onderwerpen"
@@ -1479,10 +1615,6 @@ msgstr ""
 #: searchform.php:18
 msgid "Search this website"
 msgstr "Zoek op deze site"
-
-#: searchform.php:23
-msgid "Search"
-msgstr "Zoek"
 
 #: sidebar.php:21
 msgctxt "Title of primary sidebar"
