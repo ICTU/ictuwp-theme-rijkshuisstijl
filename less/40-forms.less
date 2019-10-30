@@ -249,56 +249,76 @@
   }
 
 
-  #rhswp-searchform-onderwerpen {
-    background: @communicatiekleur_vol;
-//    padding-top: .75em;
-    
-    label {
-      color: @wit;
-      line-height: 1;
-      font-size: 1.3em;
-      display: block;
-      padding-bottom: .5em;
-    }
-    
+	#rhswp-searchform-onderwerpen {
+		background: @communicatiekleur_vol;
+		
+		label {
+			color: @wit;
+			line-height: 1;
+			font-size: 1.3em;
+			display: block;
+			padding-bottom: .5em;
+		}
+		
+		
+		input[type="search"],
+		input[itemprop="query-input"] {
+			width: ~"calc(98% - @{filter_submit_width})";
+			float: left;
+		}
+		
+		
+		#filterbutton {
+			background-size: 21px 30px;
+			background-position: center center;
+			background-repeat: no-repeat;
+			text-indent: -9999em;
+			width: @filter_submit_width;
+			height: @seachform_element_height_normal;
+			float: right;
+			.iconaddfill('../images/svg/1006-filter.svg', @wit);
+			
+			&:hover,
+			&:active,
+			&:focus {
+				color: @txt;
+				background-color: @wit;
+				.iconaddfill('../images/svg/1006-filter.svg', @txt);
+			}
+		}
+		
+		#resetbutton {
+			background: none;
+			padding-left: 0;
+			border-style: none;
+			text-indent: 0;
+			width: auto;
+			white-space: nowrap;
+			color: @wit;
 
-    input[type="search"],
-    input[itemprop="query-input"] {
-      width: ~"calc(98% - @{filter_submit_width})";
-      float: left;
-    }
-    
-    
-    #filterbutton {
-      background-size: 21px 30px;
-      background-position: center center;
-      background-repeat: no-repeat;
-      text-indent: -9999em;
-      width: @filter_submit_width;
-      height: @seachform_element_height_normal;
-      float: right;
-      .iconaddfill('../images/svg/1006-filter.svg', @wit);
-
-      &:hover,
-      &:active,
-      &:focus {
-        color: @txt;
-        background-color: @wit;
-      .iconaddfill('../images/svg/1006-filter.svg', @txt);
-      }
-      
-    }
-    #resetbutton {
-      background: none;
-      padding-left: 0;
-      border-style: none;
-      &:hover,
-      &:active,
-      &:focus {
-        color: @wit;
-      }
-    }
-  }
+			&:before {
+				content: '×';
+				color: @communicatiekleur_vol;
+				display: block;
+				float: left;
+				margin-right: .5rem;
+				width: 1.2rem;
+				height: 1.2rem;
+				background: @wit;
+				line-height: 1;
+				font-size: 1.25rem;
+				border-radius: 50%;
+				speak: none;
+			}
+		
+			&:hover,
+			&:active,
+			&:focus {
+				color: @wit;
+				text-decoration: underline;
+			}
+		}
+	}
 
   .screen-reader-response {
   	position: absolute;
