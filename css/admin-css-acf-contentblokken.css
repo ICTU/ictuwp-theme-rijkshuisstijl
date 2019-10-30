@@ -7,7 +7,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.x
+// * @version 2.9.5
 // * @desc.   ACF layout verbeterd voor content-blokken.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
@@ -49,23 +49,4 @@
 <!--                                                            -->
 	
  
- */
-/* colors */
-/* colors */
-/* mixins, sizes */
-/* fonts */
-/* font-styles, shared with admin editor-styles.less */
-.taxonomy-dossiers .form-table [data-name="extra_contentblokken"] .acf-label,
-.taxonomy-dossiers .form-table [data-name="extra_contentblokken"] .acf-input {
-  display: block !important;
-  clear: both;
-  width: 100%;
-}
-.taxonomy-dossiers .form-table [data-name="extra_contentblokken"] .acf-label td,
-.taxonomy-dossiers .form-table [data-name="extra_contentblokken"] .acf-input td {
-  display: table-cell;
-}
-.taxonomy-dossiers .form-table [data-name="extra_contentblokken"] .acf-fields.-left > .acf-field > .acf-input {
-  width: 98%;
-}
-/*# sourceMappingURL=admin-css-acf-contentblokken.css.map */
+ */.taxonomy-dossiers .form-table [data-name=extra_contentblokken] .acf-input,.taxonomy-dossiers .form-table [data-name=extra_contentblokken] .acf-label{display:block!important;clear:both;width:100%}.taxonomy-dossiers .form-table [data-name=extra_contentblokken] .acf-input td,.taxonomy-dossiers .form-table [data-name=extra_contentblokken] .acf-label td{display:table-cell}.taxonomy-dossiers .form-table [data-name=extra_contentblokken] .acf-fields.-left>.acf-field>.acf-input{width:98%}/*# sourceMappingURL=admin-css-acf-contentblokken.css.map */
