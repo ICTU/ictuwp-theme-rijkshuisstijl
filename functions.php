@@ -8,11 +8,13 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.6
-// * @desc.   Revisie onderwerppagina, ACF layout verbeterd voor content-blokken.
+// * @version 2.9.7
+// * @desc.   Bugfix reset-knop op onderwerppagina.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
+
+// jules is gek op
 
 
 //========================================================================================================
@@ -25,8 +27,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.9.6" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Revisie onderwerppagina, ACF layout verbeterd voor content-blokken." );
+define( 'CHILD_THEME_VERSION',              "2.9.7" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Bugfix reset-knop op onderwerppagina." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
