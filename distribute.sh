@@ -1,6 +1,6 @@
 # sh '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/distribute.sh' &>/dev/null
 
-# version 2.9.7
+# version 2.10.1
 
 # clear the log file
 
@@ -68,15 +68,15 @@ rsync -ah '/shared-paul-files/Webs/temp_translations/' '/shared-paul-files/Webs/
 # ------------------
 echo "bekkuppie maken ---------------------------------------------"
 
-rsync -r -a -v --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.9.7/'
+rsync -r -a -v --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.10.1/'
 
 # change the theme name
-sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.9.7 - Bugfix reset-knop op onderwerppagina./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.9.7/style.css'
+sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.10.1 - Toolbox voor cyberincidenten toevoegd./g' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.10.1/style.css'
 
 # remove the backup
-rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.9.7/style.css.bak'
+rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.10.1/style.css.bak'
 
-rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.9.7/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/wp-rijkshuisstijl-accept-2.9.7/' 
+rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.10.1/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/wp-rijkshuisstijl-accept-2.10.1/' 
 
 
 # --------------------------------------------------------------------------------------------------------------------------------
