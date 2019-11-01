@@ -14,490 +14,409 @@
 
 .70_pagetypes() {
 
-  .entry-content {
-    
-    .dossieroverzicht {
-      
-      p {
-        margin-bottom: 0;
-      }
-      ul + p,
-      ol + p,
-      p + p {
-        margin-top: 1em;
-      }
-      
-      a {
-        display: block;
-      }
-    }
-  }
+	.entry-content {
+		
+		.dossieroverzicht {
+			p {
+				margin-bottom: 0;
+			}
+			ul + p,
+			ol + p,
+			p + p {
+				margin-top: 1em;
+			}
+			
+			a {
+				display: block;
+			}
+		}
+	}
 
 
-  #cardflex_tab1 {
-    overflow: hidden;
-  }
-  #filterselector {
-    overflow: hidden;
-    margin-bottom: 1em;
-  }
+	#cardflex_tab1 {
+		overflow: hidden;
+	}
+	#filterselector {
+		overflow: hidden;
+		margin-bottom: 1em;
+	}
+	
+	div.dossier_overzicht_popular {
+		background: @grijs_1;
+		padding: 0 1em 1em 1em;
+		
+		ul.links {
+			overflow: hidden;
+			margin: 0 0;
+			
+			a {
+				.listitem_arrow( @txt, 10px, 10px ); // done
+				color: @txt;
+				font-family: @fontstrong;
+			}
+		}
+	}        
 
-  div.dossier_overzicht_popular {
-    background: @grijs_1;
-    padding: 0 1em 1em 1em;
+	@media only screen and (max-width: ( @break_fullwidth ) ) {
+		
+		#filterselector {
+			display: flex;
+			width: 100%;
+			flex-wrap: wrap;
+		}
+		
+		div.topicSearchWrapper {
+			order: 2;      
+		}
+		div.dossier_overzicht_popular {
+			order: 1;      
+		}
+		
+		div.topicSearchWrapper,
+		div.dossier_overzicht_popular {
+			width: 100%;
+			min-width: 100%;
+			margin-bottom: 1em;
+		}  
+	}        
 
-    ul.links {
-      overflow: hidden;
-      margin: 0 0;
-
-      a {
-        .listitem_arrow( @txt, 10px, 10px ); // done
-        color: @txt;
-        font-family: @fontstrong;
-      }
-    }
-  }        
-
-  @media only screen and (max-width: ( @break_fullwidth ) ) {
-    
-    #filterselector {
-      display: flex;
-      width: 100%;
-      flex-wrap: wrap;
-    }
-
-    div.topicSearchWrapper {
-      order: 2;      
-    }
-    div.dossier_overzicht_popular {
-      order: 1;      
-    }
-    
-    div.topicSearchWrapper,
-    div.dossier_overzicht_popular {
-      width: 100%;
-      min-width: 100%;
-      margin-bottom: 1em;
-    }  
-  }        
-
-  
-
-      
-  #mixitupfilterlist {
-    
-    li:before {
-      color: @a_color_default;
-      top: 12px;
-    }
-    
-    &.unfiltered {
-
-      li, div {
-        float: left;
-        overflow: hidden;
-        display: block;
-        
-        span {
-          .visuallyhidden();
-        }
-
-        a {
-          text-decoration: none;
-          display: inline-block;
-          overflow: hidden;
-
-          &:focus,
-          &:active,
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-
-        &.i-have-kids {
-          width: 100%;
-          max-width: 100%;
-          clear: both;
-          flex-basis: 100%;
-          padding-left: 0;
-          padding-right: 0;
-          margin-bottom: 1em;
-          border-bottom: 1px solid @grijs;
-
-          li {
-            margin-bottom: 0;
-            margin-left: 0;
-            display: block;
-            width: 100%;
-            padding-left: .75em;
-            .listitem_arrow( @a_color_default, 10px, 8px ); // done
-            display: block;
-          }        
-          
-          
-          &:before {
-            content: '';
-            width: 0;
-          }
-
-          .i-have-kids {
-            width: 100%;
-            max-width: 100%;
-            clear: both;
-            flex-basis: 100%;
-            border-bottom-style: none;
-            padding-top: 0;
-            margin-top: 0;
-          }          
-        }          
-      }
-    }
-    
-    &.filtered {
-      
-      
-      li:before {
-        content: '';
-      }
-      li,div {
-        &:not([style*="display: block"]) {
-          .visuallyhidden();
-        }
-        &[style*="display: block"] {
-          .visuallyvisual();
-
-          span {
-            .visuallyvisual();
-            display: block;
-            clear: both;
-            padding: 0 0 1em 0 !important;
-
-            margin-bottom: 1em;
-            border-bottom: 1px solid @lichtgrijs;
-
-            @media only screen and (min-width: ( @break_fullwidth ) ) {
-              width: 66%;
-              margin-left: 0;
-            }
-          }
-        }
-      }
-    }
-  }
+	#mixitupfilterlist {
+	    
+	    li:before {
+	      color: @a_color_default;
+	      top: 12px;
+	    }
+	
+		&.unfiltered {
+			li, div {
+	
+				span {
+					.visuallyhidden();
+				}
+	
+				a {
+					text-decoration: none;
+					display: inline-block;
+					overflow: hidden;
+					
+					&:focus,
+					&:active,
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+				
+				&.term-children {
+					li {
+			            padding-left: .75em;
+			            .listitem_arrow( @a_color_default, 10px, 10px ); // done
+					}
+				}
+			}
+		}
+	
+		&.filtered {
+	
+			li:before {
+				content: '';
+			}
+			li,div {
+				&:not([style*="display: block"]) {
+					.visuallyhidden();
+				}
+				&[style*="display: block"] {
+					.visuallyvisual();
+					
+					span {
+						.visuallyvisual();
+						display: block;
+						clear: both;
+						padding: 0 0 1em 0 !important;
+						
+						margin-bottom: 1em;
+						border-bottom: 1px solid @lichtgrijs;
+						
+						@media only screen and (min-width: ( @break_fullwidth ) ) {
+							width: 66%;
+							margin-left: 0;
+						}
+					}
+				}
+			}
+		}
+	}
 
 
-  //========================================================================================================
-  @media only screen and (min-width: ( @break_tablet ) ) {
-
-    #mixitupfilterlist.unfiltered {
-        
-      div.cat-item {
-        width: 25%;
-        
-        &.i-have-kids {
-        width: 100%;
-        }
-      }
-      
-      ul.children {
-        column-count: 4;
-        
-        li {
-          margin-bottom: 0;
-          margin-left: 0;
-          display: block;
-          width: 100%;
-        }        
-      }
-    }
-  }
-
-  //========================================================================================================
-  @media only screen and (min-width: ( @break_fullwidth ) ) {
-/*
-    #mixitupfilterlist {
-      
-      &.unfiltered {
-        li, div {
-          flex-basis: @flexbasis_fourcols;
-          width: @flexbasis_fourcols;
-        }
-      }
-    }
-*/    
-  }
+	//========================================================================================================
+	@media only screen and (min-width: ( @break_tablet ) ) {
+		
+		#mixitupfilterlist.unfiltered {
+			
+			div.cat-item {
+				width: 25%;
+				
+				&.term-children {
+					width: 100%;
+				}
+			}
+			
+			ul.children {
+				column-count: 4;
+				margin-bottom: 2rem;
+				
+				li {
+					line-height: 1.5;
+					margin: 0;
+					padding: 0 0 0 .75em;
+				}        
+			}
+		}
+	}
 
   //========================================================================================================
 
-  @media only screen and (min-width: ( @break_fullwidth ) ) {
-    .flexbox {
-      .home,
-      .blog,
-      .archive {
-        .block {
-          article.post {
-            h3 {
-//              min-height: 3.5rem;
-            }
-          }
-        }
-      }
+	@media only screen and (min-width: ( @break_fullwidth ) ) {
+		.flexbox {
+			.topicSearchWrapper {
+				width: 50%;
+				float: left;
+				padding-right: 1em;
+				h2 {
+					.visuallyhidden();
+				}
+			}
+			.topicSearchWrapper + .dossier_overzicht_filter_as_list_plus {
+				width: 50%;
+				float: left;
+				clear: right;
+				padding-left: 1em;
+			}
+			
+			.page-template-page_showalldossiers {
+				.block {
+					article {
+						flex-basis: @flexbasis_threecols;
+						max-width: @flexbasis_threecols;
+					
+						&:last-of-type {
+							max-width: @flexbasis_threecols;
+						}
+					}
+				}
+				
+				div.dossier_overzicht_filter_as_list {
+					
+					ul.links {
+						column-count: 4;
+					}
+					li {
+						width: 100%;
+						float: none;
+						overflow: hidden;
+						a {
+							display: block;
+						}
+					}
+					
+					li {
+						&:nth-child(odd) {
+							clear: none;
+						}            
+					}
+				}
+			}
+		}
+	}  
+	
+	//========================================================================================================
+	
+	.page-template-page_show-child-pages {
+		.content {
+			section {
+				clear: both;
+				
+				img.attachment-featured-post-widget {
+					float: right;
+					display: inline;
+				}        
+			}
+		}
+	}
+	
+	//========================================================================================================
+	
+	@media only screen and (min-width: ( @break_tablet ) ) {
+		.error404 .site-inner,
+		.page-template-page_sitemap .site-inner {
 
-      .topicSearchWrapper {
-        width: 50%;
-        float: left;
-        padding-right: 1em;
-        h2 {
-          .visuallyhidden();
-        }
-      }
-      .topicSearchWrapper + .dossier_overzicht_filter_as_list_plus {
-        width: 50%;
-        float: left;
-        clear: right;
-        padding-left: 1em;
-      }
-      
-      .page-template-page_showalldossiers {
-        .block {
-          article {
-            flex-basis: @flexbasis_threecols;
-            max-width: @flexbasis_threecols;
+			ul, ol {
+				li {
+					margin-bottom: 0;
+					
+					a {
+						text-decoration: none;
+						
+						&:hover,
+						&:focus,
+						&:active {
+							text-decoration: underline;
+						}
+					}
+				}
+				ul, ol {
+					margin-top: 0;
+				}
+			}
+			
+			.category,
+			.dossiers {
+				display: flex;
+				flex-wrap: wrap;
 
-            &:last-of-type {
-              max-width: @flexbasis_threecols;
-            }
-          }
-        }
-
-        div.dossier_overzicht_filter_as_list {
-
-          ul.links {
-            column-count: 4;
-          }
-          li {
-            width: 100%;
-            float: none;
-            overflow: hidden;
-            a {
-              display: block;
-            }
-          }
-          
-          li {
-
-            &:nth-child(odd) {
-              clear: none;
-            }            
-          }
-        }
-      }
-    }
-  }  
-
-  //========================================================================================================
-
-  .page-template-page_show-child-pages {
-    .content {
-      section {
-        clear: both;
-        
-        img.attachment-featured-post-widget {
-          float: right;
-          display: inline;
-        }        
-      }
-    }
-  }
-
-  //========================================================================================================
-  
-  @media only screen and (min-width: ( @break_tablet ) ) {
-    .error404 .site-inner,
-    .page-template-page_sitemap .site-inner {
-      ul, ol {
-
-        li {
-          margin-bottom: 0;
-          
-          a {
-            text-decoration: none;
-            &:hover,
-            &:focus,
-            &:active {
-              text-decoration: underline;
-            }
-          }
-        }
-        ul, ol {
-          margin-top: 0;
-        }
-      }
-      .category,
-      .dossiers {
-        display: flex;
-        flex-wrap: wrap;
-        li {
-          flex-basis: 50%;
-          padding-right: 1em;
-          padding-bottom: .5em;
-        }
-      }
-    }
-  }
-
-  //========================================================================================================
-
-  @media only screen and (min-width: ( @break_fullwidth ) ) {
-/*    
-    .error404,
-    .page-template-page_sitemap {
-      .category,
-      .dossiers {
-        li {
-          flex-basis: @flexbasis_fourcols;
-          width: @flexbasis_fourcols;
-        }
-      }
-    }
-*/
-  }
-
-  //========================================================================================================
-
-  .page-template-page_search,
-  .search {
-  
-    .post-date {
-      &:before {
-        content: '|';
-        display: inline-block;
-        margin-left: .5em;
-        margin-right: .3em;
-        speak: none;
-      }
-    }
-    
-    article {
-      padding: .1em;
-      
-      a {
-        margin: .1em;
-  
-        &:hover,
-        &:focus,
-        &:active {
-          h2 {
-            text-decoration: underline;
-          }
-        }
-      }
-      p {
-        margin: 0;        
-      }
-    }
-  
-    .document,
-    .type-document {
-    }  
-    .post {
-  //      border-color: @communicatiekleur_vol;      
-    }  
-  
-    .taxonomy {
-      margin-top: 1em;
-      border-bottom: 3px solid @communicatiekleur_vol;
-      padding-bottom: 1em;    
-      
-      h2 {
-        font-size: 210%;
-        margin: 0 0 .2em 0;
-      }
-      .dossiers {
-        border-color: yellow;
-      }   
-    }   
-  
-    .attachment.pdf {
-  
-      a p {
-        padding-left: 1.5em;
-        background-image: url('images/icon-document.svg');
-        background-position: left center;
-        background-repeat: no-repeat;
-        
-        &.meta {
-          padding-left: 0;
-          background: none;
-        }
-      }
-    }
-  }
-
-  //========================================================================================================
-
-  .digibeter_colors( digibeter-oker,    @digibeter_oker,    @txt, @txt, @digibeter_oker_licht   );
-  .digibeter_colors( digibeter-oranje,  @digibeter_oranje,  @wit, @txt, @digibeter_oranje_licht );
-  .digibeter_colors( digibeter-blauw,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-  .digibeter_colors( digibeter-groen,   @digibeter_groen,   @wit, @wit, @digibeter_groen_licht  );
-  .digibeter_colors( digibeter-violet,  @digibeter_violet,  @wit, @wit, @digibeter_violet_licht );
-  .digibeter_colors( digibeter-paars,   @digibeter_paars,   @wit, @wit, @digibeter_paars_licht  );
+				li {
+					flex-basis: 50%;
+					padding-right: 1em;
+					padding-bottom: .5em;
+				}
+			}
+		}
+	}
 
 
-  .digibeter_colors( da-06,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-  .digibeter_colors( da-01-problemen-oplossen,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-  .digibeter_colors( da-02-wetgeving-publieke-waarden,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-  .digibeter_colors( da-03-overheidsdata-verbeteren,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-  .digibeter_colors( da-04-kennis-verzamelen-verbeteren,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-  .digibeter_colors( da-05-mensen-organisatie-cultuurverandering,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-  
+	//========================================================================================================
+	
+	.page-template-page_search,
+	.search {
+		
+	    .post-date {
+	      &:before {
+	        content: '|';
+	        display: inline-block;
+	        margin-left: .5em;
+	        margin-right: .3em;
+	        speak: none;
+	      }
+	    }
+	    
+	    article {
+	      padding: .1em;
+	      
+	      a {
+	        margin: .1em;
+	  
+	        &:hover,
+	        &:focus,
+	        &:active {
+	          h2 {
+	            text-decoration: underline;
+	          }
+	        }
+	      }
+	      p {
+	        margin: 0;        
+	      }
+	    }
+	  
+	    .document,
+	    .type-document {
+	    }  
+	    .post {
+	  //      border-color: @communicatiekleur_vol;      
+	    }  
+	  
+	    .taxonomy {
+	      margin-top: 1em;
+	      border-bottom: 3px solid @communicatiekleur_vol;
+	      padding-bottom: 1em;    
+	      
+	      h2 {
+	        font-size: 210%;
+	        margin: 0 0 .2em 0;
+	      }
+	      .dossiers {
+	        border-color: yellow;
+	      }   
+	    }   
+	  
+	    .attachment.pdf {
+	  
+	      a p {
+	        padding-left: 1.5em;
+	        background-image: url('images/icon-document.svg');
+	        background-position: left center;
+	        background-repeat: no-repeat;
+	        
+	        &.meta {
+	          padding-left: 0;
+	          background: none;
+	        }
+	      }
+	    }
+	}
 
-  .page-template-page_fullwidth {
-    .entry-content {
-  
-      .wp-caption {
-        margin-top: .5em;          
-        margin-bottom: .5em;          
-      }
-    }
-  }  
+	//========================================================================================================
+	
+	.digibeter_colors( digibeter-oker,    @digibeter_oker,    @txt, @txt, @digibeter_oker_licht   );
+	.digibeter_colors( digibeter-oranje,  @digibeter_oranje,  @wit, @txt, @digibeter_oranje_licht );
+	.digibeter_colors( digibeter-blauw,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+	.digibeter_colors( digibeter-groen,   @digibeter_groen,   @wit, @wit, @digibeter_groen_licht  );
+	.digibeter_colors( digibeter-violet,  @digibeter_violet,  @wit, @wit, @digibeter_violet_licht );
+	.digibeter_colors( digibeter-paars,   @digibeter_paars,   @wit, @wit, @digibeter_paars_licht  );
+	
+	
+	.digibeter_colors( da-06,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+	.digibeter_colors( da-01-problemen-oplossen,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+	.digibeter_colors( da-02-wetgeving-publieke-waarden,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+	.digibeter_colors( da-03-overheidsdata-verbeteren,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+	.digibeter_colors( da-04-kennis-verzamelen-verbeteren,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+	.digibeter_colors( da-05-mensen-organisatie-cultuurverandering,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
 
-  .page-template-page_digibeter-home {
-    .entry-header {
-        
-      h1 {
-        font-family: @bodyfont;
-        font-weight: normal;
-        margin-bottom: .5em;
-        .subtitle {
-          display: block;
-          overflow: hidden;
-          font-family: @fontitalic;
-        }
-        .logo,
-        .logo-en {
-          display: block;
-          background:  url('images/digibeter-icons/nl-digibeter.svg');
-          max-width: 403px;
-          height: 60px;
-          background-position: left top;
-          background-repeat: no-repeat;
-          background-size: contain;
-          text-indent: -9999em;
-          overflow: hidden;
-          font-family: @fontitalic;
-          margin-bottom: .25em;
-        }
-//        .logo-en {
-//          background:  url('images/digibeter-icons/en-digibeter.svg');
-//        }
-      }
-      
-      & + h2 {
-        margin-top: .5rem;
-      }
-    }
-  }
+	//========================================================================================================
+	
+	.page-template-page_fullwidth {
+		.entry-content {
+		
+			.wp-caption {
+				margin-top: .5em;          
+				margin-bottom: .5em;          
+			}
+		}
+	}  
+
+	.page-template-page_digibeter-home {
+		.entry-header {
+			
+			h1 {
+				font-family: @bodyfont;
+				font-weight: normal;
+				margin-bottom: .5em;
+				
+				.subtitle {
+					display: block;
+					overflow: hidden;
+					font-family: @fontitalic;
+				}
+				.logo,
+				.logo-en {
+					display: block;
+					background:  url('images/digibeter-icons/nl-digibeter.svg');
+					max-width: 403px;
+					height: 60px;
+					background-position: left top;
+					background-repeat: no-repeat;
+					background-size: contain;
+					text-indent: -9999em;
+					overflow: hidden;
+					font-family: @fontitalic;
+					margin-bottom: .25em;
+				}
+			}
+			
+			& + h2 {
+				margin-top: .5rem;
+			}
+		}
+	}
 
 	.toolbox01-kwaliteit-van-data-algoritme-en-analyse,
 	.toolbox02-belanghebbenden-betrekken,
@@ -540,189 +459,121 @@
 		}	  
 	}
 
+	@media only screen and (max-width: ( @break_fullwidth ) ) {
+		.page-template-page_fullwidth {
+			.entry-header {
+				width: 100%;
+				margin-left: 0;
+				margin-right: 0;
+			}  
+		}  
+	}  
 
-
-    @media only screen and (max-width: ( @break_fullwidth ) ) {
-      .page-template-page_fullwidth {
-        .entry-header {
-          width: 100%;
-          margin-left: 0;
-          margin-right: 0;
-        }  
-      }  
-    }  
-
-    @media only screen and (min-width: ( @break_fullwidth ) ) {
-
-      .page-template-page_fullwidth {
-
-        .entry-header {
-          
-          .fullwidth_content_with_padding();
-          
-          h1 {
-            padding-top: .5em;
-            padding-bottom: .5em;
-          }
-        }
-
-        .entry-content {
-          p,
-          h2, 
-          h3, 
-          h4, 
-          h5, 
-          h6, 
-          ol,
-          ul,
-          .simple-pullquote,
-          .pullquote-with-image,
-          details, 
-          .borderframe { 
-            .fullwidth_content_with_padding();
-          }
-          
-
-          .simple-pullquote.align-left,
-          .simple-pullquote.align-right {
-            max-width: 40%;
-          }
-
-          .pullquote-with-image.align-left,
-          .pullquote-with-image.align-right {
-            max-width: 45%;
-            margin-top: 1.5em;
-            margin-bottom: 1.5em;
-          }
-          .pullquote-with-image.align-left {
-            margin-left: 4em;
-          }
-          .pullquote-with-image.align-right {
-            margin-right: 4em;
-          }
-
-          .simple-pullquote {
-            margin-left: auto;
-            margin-right: auto;
-            clear: both;
-            float: none;
-          }
-
-          .borderframe,
-          details { 
-            p,
-            h2, 
-            h3, 
-            h4, 
-            h5, 
-            h6, 
-            ol,
-            ul {
-              max-width: 100%;              
-            }
-    
-            p,
-            h3, 
-            h4, 
-            h5, 
-            h6, 
-            ol,
-            ul {
-              margin-left: 1rem;
-              margin-right: 1rem;
-            }
-            
-          }
-          
-        }
-        #reactieformulier {
-          .fullwidth_content_with_padding();
-        }
-      }
-    }
-
-  //========================================================================================================
-
-  .page .posts-for-dossier,
-  .page-template-page_dossiersingleactueel .entry-content {
-    section a {
-      display: block;
-
-      p {
-        color: @txt;
-        margin: 0;
-        
-		&.meta {
-			color: @grijs_6;
-			margin: .5em 0;
-			font-size: 90%;
-		}
-      }
-
-      
-      h2,
-      h3 {
-        color: @donkerblauw_vol;
-      }
-
-      &:hover,
-      &:active,
-      &:focus {
-        text-decoration: none;
-        
-        h2,
-        h3 {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-      
-
-  //========================================================================================================
-
-      
-  .home,
-  .page-template-front-page {
-    
-    article.entry.type-page {
-      .visuallyhidden();
-      
-      .post-edit-link {
-        display: none;
-        visibility: hidden;
-      }
-      
-    }
-    
-    .site-inner {
-      width: 100%;
-      max-width: none;
-      margin-top: 0;
-      
-      #reactieformulier,
-      .block,
-      article,
-      .wrap {
-      	margin: 0 auto;
-      	max-width: @break_fullwidth;
-      	overflow: visible;
-      }
-      
-		.linkblock {
-			padding-left: .3em;
-			padding-right: .6em;
-			margin: 2px;
-			text-decoration: none;
+	@media only screen and (min-width: ( @break_fullwidth ) ) {
+		
+		.page-template-page_fullwidth {
 			
-			&:first-of-type {
-				padding-left: 0;
+			.entry-header {
+				.fullwidth_content_with_padding();
+			
+				h1 {
+					padding-top: .5em;
+					padding-bottom: .5em;
+				}
 			}
+			
+			.entry-content {
+				p,
+				h2, 
+				h3, 
+				h4, 
+				h5, 
+				h6, 
+				ol,
+				ul,
+				.simple-pullquote,
+				.pullquote-with-image,
+				details, 
+				.borderframe { 
+					.fullwidth_content_with_padding();
+				}
+
+				.simple-pullquote.align-left,
+				.simple-pullquote.align-right {
+					max-width: 40%;
+				}
+				
+				.pullquote-with-image.align-left,
+				.pullquote-with-image.align-right {
+					max-width: 45%;
+					margin-top: 1.5em;
+					margin-bottom: 1.5em;
+				}
+				.pullquote-with-image.align-left {
+					margin-left: 4em;
+				}
+				.pullquote-with-image.align-right {
+					margin-right: 4em;
+				}
+				
+				.simple-pullquote {
+					margin-left: auto;
+					margin-right: auto;
+					clear: both;
+					float: none;
+				}
+				
+				.borderframe,
+				details { 
+					p,
+					h2, 
+					h3, 
+					h4, 
+					h5, 
+					h6, 
+					ol,
+					ul {
+						max-width: 100%;              
+					}
+					
+					p,
+					h3, 
+					h4, 
+					h5, 
+					h6, 
+					ol,
+					ul {
+						margin-left: 1rem;
+						margin-right: 1rem;
+					}
+				}
+			}
+			
+			#reactieformulier {
+				.fullwidth_content_with_padding();
+			}
+		}
+	}
+	
+	//========================================================================================================
+	
+	.page .posts-for-dossier,
+	.page-template-page_dossiersingleactueel .entry-content {
+		section a {
+			display: block;
 			
 			p {
 				color: @txt;
 				margin: 0;
+				
+				&.meta {
+					color: @grijs_6;
+					margin: .5em 0;
+					font-size: 90%;
+				}
 			}
+	
+			h2,
 			h3 {
 				color: @donkerblauw_vol;
 			}
@@ -730,150 +581,196 @@
 			&:hover,
 			&:active,
 			&:focus {
-//				text-decoration: none;
-				
+			text-decoration: none;
+			
+				h2,
 				h3 {
 					text-decoration: underline;
-					color: @txt;
 				}
 			}
 		}
+	}
 
-      .vollebreedte,
-      .driekwart,
-      .home-widget-area {
-        width: 100%;
-        overflow: hidden;
-        padding-bottom: 1em;
-      }
-      
-      .vollebreedte {
-        .linkblock {
-          &:last-of-type {
-            padding-right: 0;
-          }
-        }
-      }
-      
-      .row {
-        border-spacing: 10px;
-      }
+	//========================================================================================================
 
+	.home,
+	.page-template-front-page {
+		
+		article.entry.type-page {
+			.visuallyhidden();
+			
+			.post-edit-link {
+				display: none;
+				visibility: hidden;
+			}
+		}
+		
+		.site-inner {
+			width: 100%;
+			max-width: none;
+			margin-top: 0;
+			
+			#reactieformulier,
+			.block,
+			article,
+			.wrap {
+				margin: 0 auto;
+				max-width: @break_fullwidth;
+				overflow: visible;
+			}
+			
+			.linkblock {
+				padding-left: .3em;
+				padding-right: .6em;
+				margin: 2px;
+				text-decoration: none;
+				
+				&:first-of-type {
+					padding-left: 0;
+				}
+				
+				p {
+					color: @txt;
+					margin: 0;
+				}
+				
+				h3 {
+					color: @donkerblauw_vol;
+				}
+				
+				&:hover,
+				&:active,
+				&:focus {
+				
+					h3 {
+						text-decoration: underline;
+						color: @txt;
+					}
+				}
+			}
+			
+			.vollebreedte,
+			.driekwart,
+			.home-widget-area {
+				width: 100%;
+				overflow: hidden;
+				padding-bottom: 1em;
+			}
+			
+			.vollebreedte {
+				.linkblock {
+					&:last-of-type {
+						padding-right: 0;
+					}
+				}
+			}
+			
+			.row {
+				border-spacing: 10px;
+			}
 
-      @media only screen and ( min-width: @break_tablet ) {
+			@media only screen and ( min-width: @break_tablet ) {
+				
+				.driekwart {
+					width: 75%;
+					float: left;
+				}        
+				
+				.home-widget-area {
+					display: block;
+					overflow: hidden;
+					clear: none;
+					float: left;
+					width: 25%;
+					padding-left: .3em;
+					padding-right: 0;
+				}
+				
+				.row > .linkblock {
+					display: table-cell;
+					vertical-align: top;
+					float: left;
+					width: 49%;
+					padding-bottom: 1em;
+				}
+			}
 
-        .driekwart {
-          width: 75%;
-          float: left;
-        }        
-  
-        .home-widget-area {
-          display: block;
-          overflow: hidden;
-          clear: none;
-          float: left;
-          width: 25%;
-          padding-left: .3em;
-          padding-right: 0;
-        }
-
-        .row > .linkblock {
-          display: table-cell;
-          vertical-align: top;
-          float: left;
-          width: 49%;
-          padding-bottom: 1em;
-        }
-        
-
-      }
-
-
-      @media only screen and ( min-width: @break_fullwidth ) {
-
-        .row {
-          & > .linkblock {
-            min-height: 10em;
-            width: 24.5%;
-          }
-
-          .linkblock:nth-child(4n+1) {
-            clear: left;
-          }
-
-        }
-
-      }
-
-    }
-    
-    section.onderwerpen {
-      background-color: @grijs_1;
-      padding: 1em;      
-      
-      a {
-        &:focus,
-        &:active,
-        &:hover {
-          color: @txt;          
-        }
-      }
-      
-    }
-  }  
-
-  //========================================================================================================
-
-  .no-cssgrid {
-    @media only screen and ( min-width: @break_tablet ) {
-      .row.driekwart {
-        .linkblock:nth-child(3n+1) {
-          clear: left;
-        }
-      }
-    }  
-  }
-  .cssgrid {
-    // modernizr has detected support for CSS Grid    
-    @media only screen and ( min-width: @break_tablet ) {
-      
-      .home,
-      .page-template-front-page {
-        
-        .site-inner {
-          .row {
-            display: -ms-grid;
-            display: grid;
-            grid-gap: 1em;
-            -ms-grid-columns: repeat(4, auto);
-            grid-template-columns: repeat(4, auto);
-            width: 100%;
-            
-            &.driekwart {
-              -ms-grid-columns: repeat(3, auto);
-              grid-template-columns: repeat(3, auto);
-              width: 75%;
-            }
-            
-            .linkblock {
-              width: auto;
-              min-height: 0;
-              padding-left: 0;
-              padding-right: 0;
-              padding-bottom: 0;
-//              margin-bottom: 1em;
-            }
-          }      
-        }  
-      }  
-    }
-
-    @media only screen and ( min-width: @break_fullwidth ) {
-
-    }  
-    
-  }  
-
+			@media only screen and ( min-width: @break_fullwidth ) {
+				
+				.row {
+					& > .linkblock {
+						min-height: 10em;
+						width: 24.5%;
+					}
+					
+					.linkblock:nth-child(4n+1) {
+						clear: left;
+					}
+				}
+			}
+		}
+		
+		section.onderwerpen {
+			background-color: @grijs_1;
+			padding: 1em;      
+			
+			a {
+				&:focus,
+				&:active,
+				&:hover {
+					color: @txt;          
+				}
+			}
+		}
+	}  
+	
+	//========================================================================================================
+	
+	.no-cssgrid {
+		@media only screen and ( min-width: @break_tablet ) {
+			.row.driekwart {
+				.linkblock:nth-child(3n+1) {
+					clear: left;
+				}
+			}
+		}  
+	}
+	
+	.cssgrid {
+		// modernizr has detected support for CSS Grid    
+		
+		@media only screen and ( min-width: @break_tablet ) {
+			
+			.home,
+			.page-template-front-page {
+				
+				.site-inner {
+					.row {
+						display: -ms-grid;
+						display: grid;
+						grid-gap: 1em;
+						-ms-grid-columns: repeat(4, auto);
+						grid-template-columns: repeat(4, auto);
+						width: 100%;
+						
+						&.driekwart {
+							-ms-grid-columns: repeat(3, auto);
+							grid-template-columns: repeat(3, auto);
+							width: 75%;
+						}
+						
+						.linkblock {
+							width: auto;
+							min-height: 0;
+							padding-left: 0;
+							padding-right: 0;
+							padding-bottom: 0;
+						}
+					}      
+				}  
+			}  
+		}
+	}  
 }
 
 //========================================================================================================
@@ -970,6 +867,8 @@
 				&:focus,
 				&:active {
 					border-color: @toolbox_innov_lichtblauw;
+					background: @wit !important;
+					background: rgba( 256, 256, 256, .8 ) !important;
 
 					h2 {
 						text-decoration: underline !important;

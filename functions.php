@@ -14,6 +14,8 @@
  */
 
 
+// jules is gek op
+
 
 //========================================================================================================
 
@@ -1526,7 +1528,7 @@ class rhswp_custom_walker_for_taxonomies extends Walker_Category {
 
         $termchildren = get_term_children( $category->term_id, $category->taxonomy );
         if(count($termchildren)>0){
-          $class .=  ' i-have-kids';
+          $class .=  ' term-children';
         }
 
         if ( !empty($current_category) ) {
@@ -6002,22 +6004,16 @@ add_action ('wp_enqueue_scripts','ie_style_sheets');
 
 //========================================================================================================
 
-function change_category_order( $query ) {
-	echo 'ha';
-	if ( $query->is_main_query() && !is_admin() ) {
-        $query->set( 'orderby', 'date' );
-        $query->set( 'order', 'DESC' );
-		echo ', ja';
-    }
-    else {
-		echo ', oohw...';
-    }
+add_action('admin_enqueue_scripts', 'admin_enqueue_css_acf_contentblokken');
 
-	return $query;
-	
+function admin_enqueue_css_acf_contentblokken() {
+
+	if ( is_admin() ) {
+		wp_enqueue_style( 'admin-css-acf-contentblokken', RHSWP_THEMEFOLDER . '/css/admin-css-acf-contentblokken.css', false, CHILD_THEME_VERSION );
+
+	}
+
 }
-
-//add_action( 'pre_get_posts', 'change_category_order' );
 
 //========================================================================================================
 
