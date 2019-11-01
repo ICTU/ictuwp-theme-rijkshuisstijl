@@ -13,10 +13,6 @@
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
-
-// jules is gek op
-
-
 //========================================================================================================
 
 // Start Genesis engine
@@ -248,6 +244,21 @@ $custom_tax_mb->set( 'indented', true );
 
 // Allows adding of new terms from the metabox
 $custom_tax_mb->set( 'allow_new_terms', true );
+
+// Priority of the metabox placement.
+$custom_tax_mb->set( 'priority', 'low' );
+
+// Do the same for beleidskleuren 
+$custom_tax_mb = new Taxonomy_Single_Term( RHSWP_CT_DIGIBETER, array( 'page' ) );
+
+// Custom title for this metabox
+$custom_tax_mb->set( 'metabox_title', __( 'Beleidskleuren', 'wp-rijkshuisstijl' ) );
+
+// Will keep radio elements from indenting for child-terms.
+$custom_tax_mb->set( 'indented', true );
+
+// Allows adding of new terms from the metabox
+$custom_tax_mb->set( 'allow_new_terms', false );
 
 // Priority of the metabox placement.
 $custom_tax_mb->set( 'priority', 'low' );
@@ -4572,11 +4583,10 @@ function rhswp_add_body_classses( $classes ) {
 	}
 			
 	if ( is_tax() ) {
-// dodebug_do( 'rhswp_add_body_classses NOT A POST!');
+		// it is a taxonomy and not a post or page
 	}
 	elseif ( 'post' == get_post_type() || 'page' == get_post_type() ) {
-
-// dodebug_do( 'rhswp_add_body_classses POSTTYPES: ' . get_post_type() );
+		// it's a post or page
 		
 		if( has_term( '', RHSWP_CT_DIGIBETER ) ) {
 			// if has any terms in RHSWP_CT_DIGIBETER
@@ -4596,9 +4606,6 @@ function rhswp_add_body_classses( $classes ) {
 				$term_id    		= ' ' . $digibeterterm->term_id;
 				$acfid      		= RHSWP_CT_DIGIBETER . '_' . $term_id;
 				$digibeterclass  	= get_field( 'digibeter_term_achtergrondkleur', $acfid );
-
-// dodebug_do( 'rhswp_add_body_classses ADD CLASS: ' . $digibeterclass );
-				
 				$classes['class']	.= ' ' . $digibeterclass;
 			}
 		}

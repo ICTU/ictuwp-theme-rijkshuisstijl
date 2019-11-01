@@ -1719,13 +1719,19 @@ if( function_exists('acf_add_local_field_group') ):
 	  				'da-04-kennis-verzamelen-verbeteren'				=> 'NDA H4 - Kennis over datagedreven werken verzamelen en delen',
 	  				'da-05-mensen-organisatie-cultuurverandering'		=> 'NDA H5 - Investeren in mensen, organisatie en cultuurverandering',
 
-					'toolbox01-kwaliteit-van-data-algoritme-en-analyse'	=> 'Toolbox 1 - Kwaliteit van data algoritme en analyse',
-					'toolbox02-belanghebbenden-betrekken'     			=> 'Toolbox 2 - Belanghebbenden betrekken',
-					'toolbox03-transparantie-en-verantwoording'     	=> 'Toolbox 3 - Transparantie en verantwoording',
-					'toolbox04-wet-en-regelgeving-respecteren'     		=> 'Toolbox 4 - Wet- en regelgeving respecteren',
-					'toolbox05-monitoren-en-evalueren'     				=> 'Toolbox 5 - Monitoren en evalueren',
-					'toolbox06-veiligheid-borgen'     					=> 'Toolbox 6 - Veiligheid borgen',
-					'toolbox07-publieke-waarden-centraal'				=> 'Toolbox 7 - Publieke waarden centraal',
+					'toolbox01-kwaliteit-van-data-algoritme-en-analyse'	=> 'Innovatie 1 - Kwaliteit van data algoritme en analyse',
+					'toolbox02-belanghebbenden-betrekken'     			=> 'Innovatie 2 - Belanghebbenden betrekken',
+					'toolbox03-transparantie-en-verantwoording'     	=> 'Innovatie 3 - Transparantie en verantwoording',
+					'toolbox04-wet-en-regelgeving-respecteren'     		=> 'Innovatie 4 - Wet- en regelgeving respecteren',
+					'toolbox05-monitoren-en-evalueren'     				=> 'Innovatie 5 - Monitoren en evalueren',
+					'toolbox06-veiligheid-borgen'     					=> 'Innovatie 6 - Veiligheid borgen',
+					'toolbox07-publieke-waarden-centraal'				=> 'Innovatie 7 - Publieke waarden centraal',
+	  	
+					'cyberincident01-rapporteren-report'				=> 'Cyberincident 1 - Rapporteren (report)',
+					'cyberincident02-beoordelen-assess'     			=> 'Cyberincident 2 - Beoordelen (assess)',
+					'cyberincident03-bijeenroepen-convene'     			=> 'Cyberincident 3 - Bijeenroepen (convene)',
+					'cyberincident04-uitvoeren-execute'     			=> 'Cyberincident 4 - Uitvoeren (execute)',
+					'cyberincident05-oplossen-resolve'     				=> 'Cyberincident 5 - Oplossen (resolve)',
 	  	
 				),
 				'default_value' => array(
@@ -2842,7 +2848,7 @@ acf_add_local_field_group(array(
 	'fields' => array(
 		array(
 			'key' => 'field_5d272ae9e1c65',
-			'label' => 'Inleiding',
+			'label' => 'Subtitel',
 			'name' => 'toolbox_inleiding',
 			'type' => 'wysiwyg',
 			'instructions' => '',
