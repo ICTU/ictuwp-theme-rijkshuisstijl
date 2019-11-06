@@ -1,3 +1,17 @@
+//
+// * Rijkshuisstijl (Digitale Overheid) - js-rijksoverheid.js
+// * ----------------------------------------------------------------------------------
+// * Gejatte code van rijksoverheid.nl
+// * ----------------------------------------------------------------------------------
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.10.2
+// * @desc.   Header-images voor Toolbox voor Sieberincidenten toegevoegd.
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+//
+
+
 (function(e, t, n) {
     function a(e, t) {
         return typeof e === t

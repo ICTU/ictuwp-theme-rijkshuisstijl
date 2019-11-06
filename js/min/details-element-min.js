@@ -1,0 +1,14 @@
+/*
+
+// * Rijkshuisstijl (Digitale Overheid) - details-element.js
+// * ----------------------------------------------------------------------------------
+// * Polyfill voor IE / Edge en knuppelbrowsers die details/summary tag niet kennen
+// * ----------------------------------------------------------------------------------
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.9.3
+// * @desc.   JS + CSS voor inklapbare blokken.
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+ */
+var currentElement,parent_of_element,alledetailstags=document.querySelectorAll("details");if(alledetailstags.length>1){var liveregion_detailsummary="";function detailsbuttonListenFunc(e){var t=this.innerHTML,n=detailssummarytranslate.close;if(window.alert("open: "+detailssummarytranslate.open+", close: "+n),t==detailssummarytranslate.open){this.innerHTML=detailssummarytranslate.close,liveregion_detailsummary.textContent=detailssummarytranslate.detailsbutton_resultclose;for(var a=0;a<alledetailstags.length;a++)alledetailstags[a].setAttribute("open","")}else{n=detailssummarytranslate.open,liveregion_detailsummary.textContent=detailssummarytranslate.detailsbutton_resultopen;for(a=0;a<alledetailstags.length;a++)alledetailstags[a].removeAttribute("open")}var l=document.querySelectorAll("button.openbutton");for(a=0;a<l.length;a++)l[a].innerHTML=n}for(var i=0;i<alledetailstags.length;i++){parent_of_element=(currentElement=alledetailstags[i]).parentNode;var newNode=document.createElement("button");if(0==i){var myNewLiveRegion=document.createElement("div");myNewLiveRegion.setAttribute("role","region"),myNewLiveRegion.setAttribute("id","liveregion_detailsummary"),myNewLiveRegion.setAttribute("aria-live","polite"),myNewLiveRegion.innerHTML="Hier een paragraaf";var thelabel=detailssummarytranslate.detailsbutton_init.replace("__NUMBER__",alledetailstags.length);myNewLiveRegion.textContent=thelabel,parent_of_element.insertBefore(myNewLiveRegion,currentElement),liveregion_detailsummary=document.querySelector("#liveregion_detailsummary"),newNode.innerHTML=detailssummarytranslate.open,newNode.addEventListener("click",detailsbuttonListenFunc),newNode.classList.add("openbutton"),parent_of_element.insertBefore(newNode,currentElement)}i==alledetailstags.length-1&&(newNode.innerHTML=detailssummarytranslate.open,newNode.classList.add("openbutton"),newNode.addEventListener("click",detailsbuttonListenFunc),parent_of_element.insertBefore(newNode,currentElement.nextSibling))}}!function(){for(var e=document.querySelectorAll(".collapsetoggle"),t=0;t<e.length;t++){e[t].querySelector("button").onclick=function(e){var t="true"===this.getAttribute("aria-expanded")||!1,n=this.parentElement.nextElementSibling;t?(this.setAttribute("aria-expanded",!1),n.setAttribute("hidden","hidden")):(this.setAttribute("aria-expanded",!0),n.removeAttribute("hidden"))}}}();

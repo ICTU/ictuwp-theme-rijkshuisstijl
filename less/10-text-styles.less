@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.6
-// * @desc.   Document CPT: mogelijkheid invoeren URL toegevoegd; layout SERP verbeterd.
+// * @version 2.10.2
+// * @desc.   Header-images voor Toolbox voor Sieberincidenten toegevoegd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -972,6 +972,26 @@
 		
 		}
 		
+		&.blue,
+		&.toolbox {
+			
+			h2, 
+			h3, 
+			h4, 
+			h5, 
+			h6 {
+				&.blocktitle {
+					background-repeat: no-repeat;
+					background-size: 34px 35px;
+					background-position: 16px 9px;
+					padding-left: 63px;
+					padding-top: 16px;
+					min-height: 50px;
+
+					background-image: url('/wp-content/themes/wp-rijkshuisstijl/images/toolbox/cyberincident/icon-toolbox-cyber.svg');
+				}
+			}
+		}
 		
 		&.blue {
 			
@@ -991,7 +1011,7 @@
 		
 		&.toolbox {
 			
-			border: 2px solid @digibeter_blauw;
+			border: 2px solid @grijs_6;
 			
 			h2, 
 			h3, 
@@ -999,7 +1019,7 @@
 			h5, 
 			h6 {
 				&.blocktitle {
-					background-color: @digibeter_blauw;
+					background-color: @grijs_6;
 					color: @wit;
 				}
 			}

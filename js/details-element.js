@@ -1,5 +1,4 @@
-/*
-
+//
 // * Rijkshuisstijl (Digitale Overheid) - details-element.js
 // * ----------------------------------------------------------------------------------
 // * Polyfill voor IE / Edge en knuppelbrowsers die details/summary tag niet kennen
@@ -7,10 +6,10 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.3
-// * @desc.   JS + CSS voor inklapbare blokken.
-// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
- */
+// * @version 2.10.2
+// * @desc.   Header-images voor Toolbox voor Sieberincidenten toegevoegd.
+// * @link      https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+//
 
 
 var alledetailstags = document.querySelectorAll("details");
