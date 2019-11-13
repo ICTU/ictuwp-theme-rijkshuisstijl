@@ -6,7 +6,13 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.4.4
-// * @desc.   JS voor details-summary tags.
+// * @version 2.10.2
+// * @desc.   Header-images voor Toolbox voor Sieberincidenten toegevoegd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
+// should consist of:
+// - genesis-skiplinks.js
+// - js-rijksoverheid.js
+// - polyfill-matchmedia.js
+// - carousel-actions.js
+// - details-element.js

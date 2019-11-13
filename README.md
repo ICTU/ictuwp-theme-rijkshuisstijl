@@ -13,9 +13,11 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.10.1 - Toolbox voor cyberincidenten toevoegd.
+2.10.3 - 1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen.
 
 ## Version history
+* 2.10.3 - 1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen.
+* 2.10.2 - Header-images voor Toolbox voor Sieberincidenten toegevoegd.
 * 2.10.1 - Toolbox voor cyberincidenten toevoegd.
 * 2.9.7 - Bugfix reset-knop op onderwerppagina.
 * 2.9.6 - Revisie onderwerppagina, ACF layout verbeterd voor content-blokken.

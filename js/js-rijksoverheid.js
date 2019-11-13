@@ -1,3 +1,17 @@
+//
+// * Rijkshuisstijl (Digitale Overheid) - js-rijksoverheid.js
+// * ----------------------------------------------------------------------------------
+// * Gejatte code van rijksoverheid.nl
+// * ----------------------------------------------------------------------------------
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.10.3
+// * @desc.   1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen.
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+//
+
+
 (function(e, t, n) {
     function a(e, t) {
         return typeof e === t
@@ -5098,138 +5112,12 @@ var Core = {},
                 }
             }
         },
-        loadJsScripts: function() {
-            var e = {
-                    audiovideo: {
-                        path: "shared-ro/mediaplayer",
-                        deps: ["collapsiblePanels"],
-                        triggers: [".block-audio-video"]
-                    },
-                    autocomplete: {
-                        path: "shared-ro/autocomplete",
-                        deps: ["jquery-ui"],
-                        triggers: [".autocomplete"]
-                    },
-                    baz: {
-                        path: "shared-ro/baz",
-                        triggers: [".baz"]
-                    },
-                    collapsiblePanels: {
-                        path: "shared-ro/collapsible-panels"
-                    },
-                    collapsible: {
-                        path: "shared-ro/collapsible",
-                        deps: ["jquery-ui"],
-                        triggers: ".collapsible"
-                    },
-                    filterTools: {
-                        path: "shared-ro/filtertool",
-                        triggers: [".filterToolWrapper"]
-                    },
-                    filterList: {
-                        path: "shared-ro/filter-list",
-                        triggers: ["#source-list"]
-                    },
-                    "flex-images": {
-                        path: "shared-ro/flex-images",
-                        deps: ["img-helpers"],
-                        triggers: [".block-photo-gallery"]
-                    },
-                    "foto-slider": {
-                        path: "shared-ro/foto-slider",
-                        triggers: [".fotoSlider"]
-                    },
-                    forms: {
-                        path: "shared-ro/forms",
-                        deps: ["jquery-ui"],
-                        triggers: [".form"]
-                    },
-                    helpers: {
-                        path: "shared-ro/helpers",
-                        triggers: ["table", ".anchors", ".index"]
-                    },
-                    highchart: {
-                        path: "shared-ro/highcharts",
-                        deps: ["collapsiblePanels"],
-                        triggers: [".hchart"]
-                    },
-                    highmaps: {
-                        path: "shared-ro/highmaps",
-                        deps: ["highchart"],
-                        triggers: [".hmap"]
-                    },
-                    hotspot: {
-                        path: "shared-ro/hotspot",
-                        triggers: [".hotspotContainer"]
-                    },
-                    infographics: {
-                        path: "shared-ro/infographics",
-                        deps: ["collapsiblePanels"],
-                        triggers: [".infographic", ".infographicInfo"]
-                    },
-                    "img-helpers": {
-                        path: "shared-ro/img-helpers",
-                        triggers: [".content-image-left", ".dlimg", ".hasOptions", ".headerImage", ".campaignImage"]
-                    },
-                    "jquery-ui": {
-                        path: "shared-ro/jquery-ui"
-                    },
-                    lazyload: {
-                        path: "shared-ro/jquery-lazyload",
-                        triggers: [".lazy"]
-                    },
-                    leaflet: {
-                        deps: ["collapsiblePanels"],
-                        path: "shared-ro/leaflet",
-                        triggers: [".map"]
-                    },
-                    contactMap: {
-                        path: "shared-ro/contactmap",
-                        deps: ["leaflet", "collapsiblePanels"],
-                        triggers: [".mapsComponent"]
-                    },
-                    poll: {
-                        path: "shared-ro/poll",
-                        triggers: [".poll"]
-                    },
-                    "position-here": {
-                        path: "shared-ro/position-here",
-                        deps: ["jquery-ui"],
-                        triggers: [".positionHere"]
-                    },
-                    "style-togglr": {
-                        path: "shared-ro/styletogglr",
-                        triggers: []
-                    },
-                    timeline: {
-                        path: "shared-ro/timeliner",
-                        deps: ["lazyload"],
-                        triggers: [".timeline"]
-                    },
-                    "topic-filter": {
-                        path: "shared-ro/topic-filters",
-                        deps: ["jquery-ui"],
-                        triggers: [".topicSearchForm"]
-                    }
-                },
-                n = {},
-                r = {},
-                i = {};
-            for (var s in e) n[s] = {}, n[s] = this.scriptpath + e[s].path + this.scriptversion, r[s] = {}, r[s].exports = s, e[s].deps && (r[s].deps = e[s].deps), e[s].triggers && (i[s] = e[s].triggers);
-            require.config({
-                paths: n,
-                shim: r
-            });
-            for (var o in i) this.testSelectors(i[o]) && require([o]);
-            var u = t.location.host.split(".");
-            for (var a = 0, f = u.length; a < f; a++)(u[a] === "git" || u[a] === "localhost:2000" || u[a] === "192") && require(["style-togglr"])
-        },
         init: function() {
             var n = this,
                 r = e.getElementsByTagName("html")[0],
                 i = e.getElementsByTagName("body")[0],
                 s = r.className.indexOf("ie") > -1;
-            n.debug = n.debug || t.location.hash.indexOf("debug") > -1, n.scriptpath = i.getAttribute("data-scriptpath") ? i.getAttribute("data-scriptpath") + "/" : "behaviour/", n.scriptversion = i.getAttribute("data-scriptversion") ? "-" + i.getAttribute("data-scriptversion") + ".min" : "", !s && i.className.indexOf("home") < 0, n.setScreenType(), n.checkLogoVersion(), n.loadJsScripts(), n.fixSkiplinks(), Cookies.init(), n.showcookiebar = i.getAttribute("data-showcookiebar") ? i.getAttribute("data-showcookiebar").toString() === "true" : !1, n.showcookiebar && (Cookiebar.cookieurl = i.getAttribute("data-cookieimg") ? i.getAttribute("data-cookieimg") : "/presentation/shared-ro/images/cookie.png", Cookiebar.init({
+            n.debug = n.debug || t.location.hash.indexOf("debug") > -1, n.scriptpath = i.getAttribute("data-scriptpath") ? i.getAttribute("data-scriptpath") + "/" : "behaviour/", n.scriptversion = i.getAttribute("data-scriptversion") ? "-" + i.getAttribute("data-scriptversion") + ".min" : "", !s && i.className.indexOf("home") < 0, n.setScreenType(), n.checkLogoVersion(), n.fixSkiplinks(), Cookies.init(), n.showcookiebar = i.getAttribute("data-showcookiebar") ? i.getAttribute("data-showcookiebar").toString() === "true" : !1, n.showcookiebar && (Cookiebar.cookieurl = i.getAttribute("data-cookieimg") ? i.getAttribute("data-cookieimg") : "/presentation/shared-ro/images/cookie.png", Cookiebar.init({
                 callback: function(e) {
                     Cookies.create(Cookiebar.cookiename, Cookiebar.cookievalues[e], Cookiebar.lifespan);
                     var t = navigator.userAgent.hashCode(),

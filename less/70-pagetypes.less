@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.1
-// * @desc.   Toolbox voor cyberincidenten toevoegd.
+// * @version 2.10.3
+// * @desc.   1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -425,7 +425,8 @@
 	.toolbox05-monitoren-en-evalueren,
 	.toolbox06-veiligheid-borgen,
 	.toolbox07-publieke-waarden-centraal {
-		.borderframe.blue {
+		.borderframe.blue,
+		.borderframe.toolbox {
 			background-color: @digibeter_blauw;
 			a {
 				text-decoration: underline !important;
@@ -438,7 +439,7 @@
 				}
 			}
 			.blocktitle {
-				background-image: url('images/toolbox/icon-toolbox.svg');
+				background-image: url('images/toolbox/icon-toolbox-innovatie.svg');
 				background-repeat: no-repeat;
 				background-size: 34px 35px;
 				background-position: 16px 9px;
@@ -458,6 +459,53 @@
 			}
 		}	  
 	}
+	
+//	.digibeter_colors( digibeter-violet,  @digibeter_violet,  @wit, @wit, @digibeter_violet_licht );
+
+	.cyberincident01-rapporteren-report,
+	.cyberincident02-beoordelen-assess,
+	.cyberincident03-bijeenroepen-convene,
+	.cyberincident04-uitvoeren-execute,
+	.cyberincident05-oplossen-resolve,
+	.cyberincident06-voorbereid {
+		.borderframe.blue,
+		.borderframe.toolbox {
+			background-color: @digibeter_violet_licht;
+			border-color: @digibeter_violet;
+			a {
+				text-decoration: underline !important;
+				color: @txt;
+				&:hover,
+				&:active,
+				&:focus {
+					background-color: @wit;
+					color: @violet_vol;
+				}
+			}
+			.blocktitle {
+				background-color: @digibeter_violet;
+				background-image: url('images/toolbox/cyberincident/icon-toolbox-cyber.svg');
+				background-repeat: no-repeat;
+				background-size: 34px 35px;
+				background-position: 16px 9px;
+				padding-left: 63px;
+				padding-top: 16px;
+				min-height: 50px;
+			}
+			&, * {
+				color: @txt;
+			}
+		}
+		details {
+			border-color: @digibeter_blauw;
+			
+			summary {
+				background-color: @digibeter_blauw;
+			}
+		}	  
+	}
+	
+	
 
 	@media only screen and (max-width: ( @break_fullwidth ) ) {
 		.page-template-page_fullwidth {
@@ -494,7 +542,8 @@
 				.simple-pullquote,
 				.pullquote-with-image,
 				details, 
-				.borderframe { 
+				.borderframe,
+				.detail-buttons { 
 					.fullwidth_content_with_padding();
 				}
 
@@ -949,18 +998,13 @@
 			.toolbox-introduction {
 				.visuallyhidden();
 			}
-			
 		}
 
 		
 		@media only screen and ( min-width: @break_fullwidth ) {
 
 			height: 750px;
-//			border: 1px solid red;
-//			background-image: url('images/toolbox/cyberincident/background-licht-rood.svg');
-//			background-image: url('images/toolbox/cyberincident/background-blauw.svg');
 			background-image: url('images/toolbox/cyberincident/background-violet.svg');
-//			background-image: url('images/toolbox/cyberincident/background-paars.svg');
 
 			.toolbox-introduction {
 				color: @digibeter_blauw;

@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.5.2
-// * @desc.   Optie om uitgelichte afbeelding NIET automatisch in te voegen.
+// * @version 2.10.3
+// * @desc.   1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -241,20 +241,24 @@ if ( SHOW_CSS_DEBUG ) {
 
 //========================================================================================================
 
-add_action('admin_head', 'my_custom_fonts');
+add_action('admin_head', 'rhswp_admin_extra_css');
 
-function my_custom_fonts() {
-  echo '<style>
-  .cmb2-wrap .cmb-row {
-    margin: 0 !important;
-    border-bottom-style: none  !important;
-    padding-top: 0 !important;
-  }
-  .cmb2-text-url,
-  .cmb2-text-url input.cmb2-text-medium{
-    width: 100% !important;
-  }
-  </style>';
+function rhswp_admin_extra_css() {
+  echo "
+	<style>
+	.cmb2-wrap .cmb-row {
+		margin: 0 !important;
+		border-bottom-style: none  !important;
+		padding-top: 0 !important;
+	}
+	.cmb2-text-url,
+	.cmb2-text-url input.cmb2-text-medium{
+		width: 100% !important;
+	}
+	body #TB_window #TB_ajaxContent li:before {
+		content: '' !important
+	}
+	</style>";
 }
 
 //========================================================================================================
@@ -264,6 +268,3 @@ function is_posts_page() {
 }
 
 //========================================================================================================
-
-
-
