@@ -81,7 +81,7 @@ sed -i '.bak' 's/Rijkshuisstijl (Digitale Overheid)/2.10.3 - 1 extra header-imag
 # remove the backup
 rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.10.3/style.css.bak'
 
-rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.10.3/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/wp-rijkshuisstijl-accept-2.10.3/' 
+rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-accept-2.10.3/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-accept-2.10.3/' 
 
 
 # --------------------------------------------------------------------------------------------------------------------------------
