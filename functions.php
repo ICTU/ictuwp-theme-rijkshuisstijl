@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.2
-// * @desc.   Header-images voor Toolbox voor Sieberincidenten toegevoegd.
+// * @version 2.10.3
+// * @desc.   1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.10.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Header-images voor Toolbox voor Sieberincidenten toegevoegd." );
+define( 'CHILD_THEME_VERSION',              "2.10.3" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -37,8 +37,8 @@ else {
 }
 
 if ( WP_DEBUG ) {
-//  define( 'WP_LOCAL_DEV',                   false );
-  define( 'WP_LOCAL_DEV',                   true );
+  define( 'WP_LOCAL_DEV',                   false );
+//  define( 'WP_LOCAL_DEV',                   true );
 }
 else {
   define( 'WP_LOCAL_DEV',                   false );

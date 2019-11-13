@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.2
-// * @desc.   Header-images voor Toolbox voor Sieberincidenten toegevoegd.
+// * @version 2.10.3
+// * @desc.   1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -1732,6 +1732,7 @@ if( function_exists('acf_add_local_field_group') ):
 					'cyberincident03-bijeenroepen-convene'     			=> 'Cyberincident 3 - Bijeenroepen (convene)',
 					'cyberincident04-uitvoeren-execute'     			=> 'Cyberincident 4 - Uitvoeren (execute)',
 					'cyberincident05-oplossen-resolve'     				=> 'Cyberincident 5 - Oplossen (resolve)',
+					'cyberincident06-voorbereid'     					=> 'Cyberincident 6 - Voorbereid',
 	  	
 				),
 				'default_value' => array(
