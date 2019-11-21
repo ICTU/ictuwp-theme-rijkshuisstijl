@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.3
-// * @desc.   1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen.
+// * @version 2.10.4
+// * @desc.   Stijlcorrectie voor toolbox cyber; kolommen voor dossiermenu beter verdeeld.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -885,7 +885,7 @@
 					height: auto;
 					min-height: 52px;
 					float: left;
-					margin: .5rem 1rem .5rem 0;
+					margin: .5rem .5rem .5rem 0;
 					
 					svg {
 						vertical-align: middle;
@@ -965,10 +965,7 @@
 				display: inline-block;
 				float: left;
 				border-radius: 50%;
-				line-height: 50px;
 				text-align: center;
-				height: 50px;
-				width: 50px;
 				margin-right: 1rem;
 			}
 			em {
@@ -978,6 +975,22 @@
 		}
 				
 		@media only screen and ( max-width: ( @break_fullwidth - 1 ) ) {
+
+
+			h2 {
+				position: relative;
+				padding-left: 32px;
+				
+				span {
+					font-size: 16px;
+					line-height: 25px;
+					height: 24px;
+					width: 24px;
+					position: absolute;
+					top: 3px;
+					left: 0;
+				}
+			}
 
 			.toolbox-img {
 				background: @grijs_2;
