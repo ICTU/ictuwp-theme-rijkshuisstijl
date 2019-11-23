@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.10.4
-  Version description: Stijlcorrectie voor toolbox cyber; kolommen voor dossiermenu beter verdeeld.
+  Version: 2.10.5
+  Version description: Deregister CSS van plugins, overschreven met CSS in eigen style.css.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -70,6 +70,12 @@ Imports
 @import "70-pagetypes.less";
 @import "80-print.less";
 @import "99-browserhacks.less";
+
+// substitue css from plugins
+@import "plugins/captcha.less";
+@import "plugins/genesis-accessible-dropdown-menu.less";
+@import "plugins/newsletter.less";
+
 
 
 .03_fonts_get_webfonts();
@@ -1247,6 +1253,11 @@ nav.nav-primary .menu-item.js-menu-open > ul.sub-menu {
 .toolboxillustrations();
 .toolboxwidgets();
 
+
+// CSS from plugin replacement
+.subst_captcha_mobile_style();
+.subst_genesis-accessible-dropdown-menu();
+.subst_newsletter();
 
 
 

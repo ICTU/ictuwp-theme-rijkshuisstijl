@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.4
-// * @desc.   Stijlcorrectie voor toolbox cyber; kolommen voor dossiermenu beter verdeeld.
+// * @version 2.10.5
+// * @desc.   Deregister CSS van plugins, overschreven met CSS in eigen style.css.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.10.4" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Stijlcorrectie voor toolbox cyber; kolommen voor dossiermenu beter verdeeld." );
+define( 'CHILD_THEME_VERSION',              "2.10.5" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Deregister CSS van plugins, overschreven met CSS in eigen style.css." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -4347,6 +4347,8 @@ add_shortcode( 'getreactietitle', 'rhswp_contactreactie_get_title' );
  */
 add_action( 'wp_enqueue_scripts', 'rhswp_remove_external_styles' );
 
+add_action( 'wp_print_styles', 'rhswp_remove_external_styles' ,100 );
+
 function rhswp_remove_external_styles() {
 
 	wp_deregister_style( 'contact-form-7' );
@@ -4354,6 +4356,12 @@ function rhswp_remove_external_styles() {
 
 	wp_deregister_style( 'cptch_stylesheet' );
 	wp_deregister_style( 'cptch_desktop_style' );
+	
+	wp_deregister_style( 'newsletter' );
+	wp_dequeue_style( 'newsletter-css' );
+	wp_deregister_style( 'wpacc-genesis-dropdown-css' );
+	wp_deregister_style( 'duplicate-post' );
+	wp_dequeue_style( 'duplicate-post-css' );
 
 	if ( ! is_user_logged_in() ) {
 		wp_dequeue_style( 'wp-block-library' );		

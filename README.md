@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.10.4 - Stijlcorrectie voor toolbox cyber; kolommen voor dossiermenu beter verdeeld.
+2.10.5 - Deregister CSS van plugins, overschreven met CSS in eigen style.css.
 
 ## Version history
+* 2.10.5 - Deregister CSS van plugins, overschreven met CSS in eigen style.css.
 * 2.10.4 - Stijlcorrectie voor toolbox cyber; kolommen voor dossiermenu beter verdeeld.
 * 2.10.3 - 1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen.
 * 2.10.2 - Header-images voor Toolbox voor Sieberincidenten toegevoegd.
