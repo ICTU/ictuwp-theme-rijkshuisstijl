@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.11.1
-// * @desc.   Widget 'widget_rhswp_navigationmenu_widget' toegevoegd; widgetruimte RHSWP_NORESULT_WIDGET_AREA toegevoegd aan no-result searchpage. Veel defaultwidgets gedactiveerd.
+// * @version 2.11.2
+// * @desc.   Widget 'page-links' gedeactiveerd en verplaatst naar hook 'genesis_after_entry'. 
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.11.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Widget 'widget_rhswp_navigationmenu_widget' toegevoegd; widgetruimte RHSWP_NORESULT_WIDGET_AREA toegevoegd aan no-result searchpage. Veel defaultwidgets gedactiveerd." );
+define( 'CHILD_THEME_VERSION',              "2.11.2" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Widget 'page-links' gedeactiveerd en verplaatst naar hook 'genesis_after_entry'. " );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 

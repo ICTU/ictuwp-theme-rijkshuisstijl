@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.11.1 - Widget 'widget_rhswp_navigationmenu_widget' toegevoegd; widgetruimte RHSWP_NORESULT_WIDGET_AREA toegevoegd aan no-result searchpage. Veel defaultwidgets gedactiveerd.
+2.11.2 - Widget 'page-links' gedeactiveerd en verplaatst naar hook 'genesis_after_entry'. 
 
 ## Version history
+* 2.11.2 - Widget 'page-links' gedeactiveerd en verplaatst naar hook 'genesis_after_entry'. 
 * 2.11.1 - Widget 'widget_rhswp_navigationmenu_widget' toegevoegd; widgetruimte RHSWP_NORESULT_WIDGET_AREA toegevoegd aan no-result searchpage. Veel defaultwidgets gedactiveerd.
 * 2.10.5 - Deregister CSS van plugins, overschreven met CSS in eigen style.css.
 * 2.10.4 - Stijlcorrectie voor toolbox cyber; kolommen voor dossiermenu beter verdeeld.
