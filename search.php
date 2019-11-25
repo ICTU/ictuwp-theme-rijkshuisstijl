@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.6
-// * @desc.   Document CPT: mogelijkheid invoeren URL toegevoegd; layout SERP verbeterd.
+// * @version 2.11.1
+// * @desc.   Widget 'widget_rhswp_navigationmenu_widget' toegevoegd; widgetruimte RHSWP_NORESULT_WIDGET_AREA toegevoegd aan no-result searchpage. Veel defaultwidgets gedactiveerd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -230,6 +230,13 @@ function rhswp_archive_custom_search_with_searchWP() {
 			echo '<h2>' . _x( 'Sorry', 'Title, no results text', 'wp-rijkshuisstijl' ) . '</h2>';
 			echo '<p>';
 			echo sprintf( _x( 'No results for %s.', 'No results text', 'wp-rijkshuisstijl' ), $query );
+			
+			if ( is_active_sidebar( RHSWP_NORESULT_WIDGET_AREA ) ) {
+			
+				dynamic_sidebar( RHSWP_NORESULT_WIDGET_AREA );
+			
+			}
+
 			echo '</p>';
 		
 		endif; 

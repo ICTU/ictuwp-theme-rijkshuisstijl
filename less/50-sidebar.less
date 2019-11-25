@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.3
-// * @desc.   1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen.
+// * @version 2.11.1
+// * @desc.   Widget 'widget_rhswp_navigationmenu_widget' toegevoegd; widgetruimte RHSWP_NORESULT_WIDGET_AREA toegevoegd aan no-result searchpage. Veel defaultwidgets gedactiveerd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -388,6 +388,7 @@
 
   .home-widget-area {
     &.widget_custom_html,
+    &.widget_rhswp_navigationmenu_widget, 
     &.widget_nav_menu {
       li {
         padding-left: 1em;
@@ -437,7 +438,8 @@
       
     }    
 
-    .widget_nav_menu {
+	.widget_rhswp_navigationmenu_widget, 
+	.widget_nav_menu {
     	li {
       	ul {
         	margin-left: 0;
