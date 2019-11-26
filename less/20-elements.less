@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.4
-// * @desc.   Opsomming berichten verbeterd. Linktext voor documenten verbeterd. Bugfixes CSS: selecteren tekst weer mogelijk.
+// * @version 2.10.5
+// * @desc.   Deregister CSS van plugins, overschreven met CSS in eigen style.css.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -196,12 +196,40 @@
 		
 		li {
 			.listitem_arrow( @a_color_default, 10px, 9px ); // done
-			padding-left: 1.25rem;
+			padding-left: 1.5rem;
 			margin-left: 0;
-			
+
 			& + li {
 				margin-top: 1em;
 			}
+
+			
+			.event-meta {
+				li {
+					margin-top: 0;
+					margin-bottom: 0;
+					
+					background-image: url('images/rhs-icons/1007-locatie-marker.svg');
+					background-repeat: no-repeat;
+					background-position: left center;
+					background-size: 1.1rem 1.1rem;
+					
+					&:before {
+						content: none;
+					}
+					
+					&.event-date {
+						background-image: url('images/rhs-icons/2001-kalender.svg');
+					}
+					&.event-time {
+						background-image: url('images/rhs-icons/2010-klok.svg');
+					}
+					&.event-town {
+						background-image: url('images/rhs-icons/1007-locatie-marker.svg');
+					}
+				}
+			}
+			
 			
 			a {
 			    font-family: @headerfont;
