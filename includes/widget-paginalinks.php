@@ -390,28 +390,23 @@ function rhswp_pagelinks_replace_widget() {
 		
 		if ( !$widgettitle ) {
 		
-			if ( $instance['rhswp_pagelinks_widget_title'] !== '') {
-				$widgettitle = $instance['rhswp_pagelinks_widget_title'];
-			}
-			else {
-				$widgettitle = _x( 'Extra links voor ', 'paginalinkswidget', 'wp-rijkshuisstijl' ) . get_the_title();
-			}
+			$widgettitle = _x( 'Extra links voor ', 'paginalinkswidget', 'wp-rijkshuisstijl' ) . get_the_title();
 
 		}
 		
 		
-		if ( 'ja' == $toon_extra_links ) {
+		if ( 'ja' == $toon_extra_links && $links ) {
 			
 	        $title_id 				= sanitize_title( $widgettitle );
 
             echo '<section aria-labelledby="' . $title_id . '" class="page-links">';
             echo '<h2 id="' . $title_id . '">' . $widgettitle . '</h2>';
 
-			if( have_rows(RHSWP_WIDGET_PAGELINKS_ID . '_widget_links') ) {
+			if( have_rows( RHSWP_WIDGET_PAGELINKS_ID . '_widget_links', $post->ID ) ) {
 				
 				echo '<ul>';
 				
-				while( have_rows(RHSWP_WIDGET_PAGELINKS_ID . '_widget_links') ): the_row(); 
+				while( have_rows( RHSWP_WIDGET_PAGELINKS_ID . '_widget_links', $post->ID ) ): the_row(); 
 				
 					// vars
 					$externe_link                 = get_sub_field('externe_link');
