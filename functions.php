@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.5
-// * @desc.   Deregister CSS van plugins, overschreven met CSS in eigen style.css.
+// * @version 2.10.6
+// * @desc.   Betere layout voor events in een opsomming.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.10.5" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Deregister CSS van plugins, overschreven met CSS in eigen style.css." );
+define( 'CHILD_THEME_VERSION',              "2.10.6" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Betere layout voor events in een opsomming." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
