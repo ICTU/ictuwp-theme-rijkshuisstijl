@@ -42,30 +42,6 @@ else {
 
 genesis();
 
-//========================================================================================================
-
-function rhswp_search_results_box() {
-
-//_x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' )
-/*
-	$termtitel = 'sadfasdf';
-	
-	// code for a completely custom loop
-	global $post;
-	$query  = isset( $_GET['s'] ) ? sanitize_text_field( $_GET['s'] ) : '';
-	$paged  = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-	$page   = isset( $_GET['swppage'] ) ? absint( $_GET['swppage'] ) : $paged;
-
-	if ( $paged > 1 ) {
-		$termtitel .= ' - pagina ' . $paged;
-	}
-
-	$title = sprintf( __( 'Documents for %s %s', 'wp-rijkshuisstijl' ), $term->name, $paged );
-
-	echo '<p>' . $title . '</p>';
-*/
-
-}
 
 //========================================================================================================
 
@@ -75,8 +51,6 @@ function rhswp_add_search_description() {
 	
 	echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "<span class="wordbreak">' . $search_text . '</span>"</h1>';
 
-	rhswp_search_results_box();	
-	  
 }
 
 //========================================================================================================

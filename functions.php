@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.11.2
-// * @desc.   Widget 'page-links' gedeactiveerd en verplaatst naar hook 'genesis_after_entry'. 
+// * @version 2.11.3
+// * @desc.   Widget voor no-result pagina verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.11.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Widget 'page-links' gedeactiveerd en verplaatst naar hook 'genesis_after_entry'. " );
+define( 'CHILD_THEME_VERSION',              "2.11.3" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Widget voor no-result pagina verbeterd." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -1977,9 +1977,9 @@ function rhswp_overwrite_widget_settings() {
 				'name'          => _x( 'Geen resultaat op zoekpagina', 'Title of secondary sidebar', 'wp-rijkshuisstijl' ),
 				'description'   => _x( 'In deze ruimte kun je widgets opnemen die getoond worden als er geen zoekresultaten zijn voor een zoekopdracht.', 'Description of secundary sidebar', 'wp-rijkshuisstijl' ),
 				'id'            => RHSWP_NORESULT_WIDGET_AREA,
-				'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
+				'before_widget' => '<div id="%1$s" class="search no-results-widget %2$s"><div class="widget-wrap">',
 				'after_widget'  => "</div></div>\n",
-				'before_title'  => '<h2 class="widgettitle">',
+				'before_title'  => '<h2>',
 				'after_title'   => "</h2>\n"
 			)
 		);

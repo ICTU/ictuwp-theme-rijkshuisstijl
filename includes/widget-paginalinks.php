@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.11.2
-// * @desc.   Widget 'page-links' gedeactiveerd en verplaatst naar hook 'genesis_after_entry'. 
+// * @version 2.11.3
+// * @desc.   Widget voor no-result pagina verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
