@@ -19,6 +19,7 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * 2.11.3 - Widget voor no-result pagina verbeterd.
 * 2.11.2 - Widget 'page-links' gedeactiveerd en verplaatst naar hook 'genesis_after_entry'. 
 * 2.11.1 - Widget 'widget_rhswp_navigationmenu_widget' toegevoegd; widgetruimte RHSWP_NORESULT_WIDGET_AREA toegevoegd aan no-result searchpage. Veel defaultwidgets gedactiveerd.
+* 2.10.7 - Widget-fix voor DO banners. Breadcrumb voor categorie aangepast.
 * 2.10.6 - Betere layout voor events in een opsomming.
 * 2.10.5 - Deregister CSS van plugins, overschreven met CSS in eigen style.css.
 * 2.10.4 - Stijlcorrectie voor toolbox cyber; kolommen voor dossiermenu beter verdeeld.

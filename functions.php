@@ -746,14 +746,16 @@ dodebug_do( 'rhswp_add_extra_info_to_breadcrumb: page with parentID ');
 
               if ( get_query_var( 'category_slug' ) ) {
 
-dodebug_do( 'rhswp_add_extra_info_to_breadcrumb: YES CAT SLUG');
-/*
+dodebug_do( 'rhswp_add_extra_info_to_breadcrumb: YES CAT SLUG: "' .  get_query_var( 'category_slug' ) . "'" );
+
                 $category                 = get_term_by( 'slug', get_query_var( 'category_slug' ), 'category' );
 
-                $returnstring .= $span_before_start .  ' <a href="' . get_term_link( $term->term_id ) . RHSWP_DOSSIERCONTEXTPOSTOVERVIEW . '/' . RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW . '/' . $category->slug . '/">' .  $category->name .'</a>' . $span_before_end . $args['sep'];
+//                $returnstring .= $span_before_start .  ' <a href="' . get_term_link( $term->term_id ) . RHSWP_DOSSIERCONTEXTPOSTOVERVIEW . '/' . RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW . '/' . $category->slug . '/">' .  $category->name .'</a>' . $span_before_end . $args['sep'];
 
-                $returnstring .= $span_before_start . $berichtnaam . $span_before_end;
-*/
+                $returnstring .= $category->name; // . $args['sep'];
+
+//                $returnstring .= $span_before_start . $berichtnaam . $span_before_end;
+
               }
               else {
 
