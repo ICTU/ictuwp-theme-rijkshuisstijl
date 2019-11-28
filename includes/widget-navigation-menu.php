@@ -58,10 +58,10 @@ class rhswp_navigationmenu_widget extends WP_Widget {
 			return;
 		}
 
-		$title				= ! empty( $instance['title'] ) ? $instance['title'] : '';
-		$nav_description	= ! empty( $instance['nav_description'] ) ? $instance['nav_description'] : 'poepje';
-		$hide_banner_for_cpts  				= strpos( $args['before_widget'], 'rhswp_hide_this_banner', 0 );
-		$doshow               				= false;
+		$title					= ! empty( $instance['title'] ) ? $instance['title'] : '';
+		$nav_description		= ! empty( $instance['nav_description'] ) ? $instance['nav_description'] : '';
+		$hide_banner_for_cpts  	= strpos( $args['before_widget'], 'rhswp_hide_this_banner', 0 );
+		$doshow               	= false;
 
 
 		if ( $hide_banner_for_cpts === false ) {      
@@ -134,7 +134,7 @@ class rhswp_navigationmenu_widget extends WP_Widget {
 		global $wp_customize;
 		$title    			= isset( $instance['title'] ) ? $instance['title'] : '';
 		$nav_menu 			= isset( $instance['nav_menu'] ) ? $instance['nav_menu'] : '';
-		$nav_description	= isset( $instance['nav_description'] ) ? $instance['nav_description'] : 'nou nee';
+		$nav_description	= isset( $instance['nav_description'] ) ? $instance['nav_description'] : '';
 		
 
 		// Get menus
