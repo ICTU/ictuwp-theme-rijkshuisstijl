@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.1
-// * @desc.   Homepage nu vanuit template file (page_front-page.php).
+// * @version 2.12.2
+// * @desc.   Kortere check op uitschrijven nav.bar op home.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // 
  */
@@ -23,8 +23,14 @@ add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_c
 
 remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 
-// only show menu if this is really the home page
-add_action( 'genesis_after_header', 'genesis_do_nav', 14 );
+//========================================================================================================
+
+// Reposition the primary navigation menu
+if ( ( is_front_page() ) || ( is_home() ) ) {
+	add_action( 'genesis_after_header', 'genesis_do_nav' );
+}
+
+//========================================================================================================
 
 // dossiers (onderwerpen) + widget ruimte
 add_action( 'genesis_loop', 'rhswp_home_onderwerpen_dossiers', 12 );

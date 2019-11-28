@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.12.1 - Homepage nu vanuit template file (page_front-page.php).
+2.12.2 - Kortere check op uitschrijven nav.bar op home.
 
 ## Version history
+* 2.12.2 - Kortere check op uitschrijven nav.bar op home.
 * 2.12.1 - Homepage nu vanuit template file (page_front-page.php).
 * 2.11.3 - Widget voor no-result pagina verbeterd.
 * 2.11.2 - Widget 'page-links' gedeactiveerd en verplaatst naar hook 'genesis_after_entry'. 
