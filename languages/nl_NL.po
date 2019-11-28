@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
 "POT-Creation-Date: 2019-11-26 15:55+0100\n"
-"PO-Revision-Date: 2019-11-26 17:39+0100\n"
+"PO-Revision-Date: 2019-11-28 20:44+0100\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: paul@wbvb.nl\n"
 "Language: nl_NL\n"
@@ -1558,7 +1558,7 @@ msgstr ""
 #: page_show-child-pages.php:53
 msgctxt "show child pages"
 msgid "See also these pages:"
-msgstr "Onderliggende pagina's:"
+msgstr "Bekijk ook:"
 
 #: page_show-child-pages.php:81
 msgctxt "Standaardtekst als pagina geen tekst heeft."
