@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.10.6 - Betere layout voor events in een opsomming.
+2.10.7 - Widget-fix voor DO banners. Breadcrumb voor categorie aangepast.
 
 ## Version history
+* 2.10.7 - Widget-fix voor DO banners. Breadcrumb voor categorie aangepast.
 * 2.10.6 - Betere layout voor events in een opsomming.
 * 2.10.5 - Deregister CSS van plugins, overschreven met CSS in eigen style.css.
 * 2.10.4 - Stijlcorrectie voor toolbox cyber; kolommen voor dossiermenu beter verdeeld.

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.6
-// * @desc.   Betere layout voor events in een opsomming.
+// * @version 2.10.7
+// * @desc.   Widget-fix voor DO banners. Breadcrumb voor categorie aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.10.6" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Betere layout voor events in een opsomming." );
+define( 'CHILD_THEME_VERSION',              "2.10.7" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Widget-fix voor DO banners. Breadcrumb voor categorie aangepast." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -740,14 +740,16 @@ dodebug_do( 'rhswp_add_extra_info_to_breadcrumb: page with parentID ');
 
               if ( get_query_var( 'category_slug' ) ) {
 
-dodebug_do( 'rhswp_add_extra_info_to_breadcrumb: YES CAT SLUG');
-/*
+dodebug_do( 'rhswp_add_extra_info_to_breadcrumb: YES CAT SLUG: "' .  get_query_var( 'category_slug' ) . "'" );
+
                 $category                 = get_term_by( 'slug', get_query_var( 'category_slug' ), 'category' );
 
-                $returnstring .= $span_before_start .  ' <a href="' . get_term_link( $term->term_id ) . RHSWP_DOSSIERCONTEXTPOSTOVERVIEW . '/' . RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW . '/' . $category->slug . '/">' .  $category->name .'</a>' . $span_before_end . $args['sep'];
+//                $returnstring .= $span_before_start .  ' <a href="' . get_term_link( $term->term_id ) . RHSWP_DOSSIERCONTEXTPOSTOVERVIEW . '/' . RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW . '/' . $category->slug . '/">' .  $category->name .'</a>' . $span_before_end . $args['sep'];
 
-                $returnstring .= $span_before_start . $berichtnaam . $span_before_end;
-*/
+                $returnstring .= $category->name; // . $args['sep'];
+
+//                $returnstring .= $span_before_start . $berichtnaam . $span_before_end;
+
               }
               else {
 
