@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.6
-// * @desc.   Betere layout voor events in een opsomming.
+// * @version 2.12.1
+// * @desc.   Homepage nu vanuit template file (page_front-page.php).
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -445,17 +445,17 @@
     }
   }
 
-  @media only screen and ( max-width: ( @break_tablet ) ) {
-  
-    .page-template-front-page {     
-      .block {
-        article + article {
-          margin-top: 1em;
-          padding-bottom: 1em;
-        }
-      }
-    }
-  }
+	@media only screen and ( max-width: ( @break_tablet ) ) {
+	
+		.page-template-page_front-page {     
+			.block {
+				article + article {
+					margin-top: 1em;
+					padding-bottom: 1em;
+				}
+			}
+		}
+	}
   
 
   @media only screen and (min-width: ( @break_tablet ) ) {
@@ -490,7 +490,7 @@
 			}
 		}
 		
-		.page-template-front-page {      
+		.page-template-page_front-page {      
 			.block {
 				article {
 					&.has-post-thumbnail {

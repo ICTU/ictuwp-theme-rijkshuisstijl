@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.10.7
-  Version description: Widget-fix voor DO banners. Breadcrumb voor categorie aangepast.
+  Version: 2.12.1
+  Version description: Homepage nu vanuit template file (page_front-page.php).
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -823,10 +823,10 @@ input[type="text"] {
   overflow-wrap: break-word;
 }
 
-.home {
-  header .page-title {
-    padding-left: @padding;
-  }
+.page-template-page_front-page {
+	header .page-title {
+		padding-left: @padding;
+	}
 }
 
 @media only screen and (min-width: ( @break_tablet ) ) {
