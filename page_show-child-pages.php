@@ -51,7 +51,7 @@ function rhswp_get_page_childpages() {
     $postcounter = 0;
     
     echo '<h2 class="visuallyhidden">' . _x( 'See also these pages:', 'show child pages', 'wp-rijkshuisstijl' ) . '</h2>';
-    echo '<div class="block">';
+    echo '<div class="block no-top">';
 
     foreach( $mypages as $postx ) {
 
