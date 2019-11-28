@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.7
-// * @desc.   Bugfix reset-knop op onderwerppagina.
+// * @version 2.11.3
+// * @desc.   Widget voor no-result pagina verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 //
 
@@ -254,6 +254,10 @@
       }
     }
   }
+
+	main .no-results-widget.widget_search {
+		max-width: @break_tablet;
+	}
 
 
 	#rhswp-searchform-onderwerpen {

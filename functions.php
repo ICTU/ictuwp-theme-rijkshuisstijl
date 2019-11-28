@@ -63,6 +63,8 @@ define( 'RHSWP_LINK_CPT',                   'links' );
 define( 'CTAX_contentsoort',                'contentsoort' );
 define( 'CTAX_thema',                       'CTAX_thema' );
 define( 'RHSWP_HOME_WIDGET_AREA',           'home-widget-area' );
+define( 'RHSWP_NORESULT_WIDGET_AREA',       'noresult-widget-area' );
+
 define( 'RHSWP_PREFIX_TAG_CAT',             'rhswp_dossier_select_tag_category');
 define( 'RHSWP_CMB2_TAG_FIELD',             'select_tag');
 define( 'RHSWP_CMB2_TXT_FIELD',             'select_txt');
@@ -119,6 +121,9 @@ if ( ! defined( 'RHSWP_WIDGET_LINK_TO_SINGLE_PAGE' ) ) {
 }
 if ( ! defined( 'RHSWP_CSS_BANNER' ) ) {
   define( 'RHSWP_CSS_BANNER',                 'banner-css' ); // slug for custom post type 'document'
+}
+if ( ! defined( 'RHSWP_WIDGET_NAVIGATIONMENU' ) ) {
+  define( 'RHSWP_WIDGET_NAVIGATIONMENU',      '(DO) navigation menu');
 }
 
 
@@ -325,6 +330,7 @@ require_once( RHSWP_FOLDER . '/includes/widget-newswidget.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-paginalinks.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-subpages.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-events.php' );
+require_once( RHSWP_FOLDER . '/includes/widget-navigation-menu.php' );
 
 // Add support for 2-column footer widgets
 add_theme_support( 'genesis-footer-widgets', 2 );
@@ -1952,18 +1958,6 @@ function rhswp_overwrite_widget_settings() {
 
   genesis_register_sidebar(
     array (
-    	'name'          => _x( 'Tweede sidebar', 'Title of secondary sidebar', 'wp-rijkshuisstijl' ),
-    	'description'   => _x( 'Secundaire zijbalk met ruimte voor widgets. Wordt alleen getoond op pagina\'s waar de niet-standaard layout is gekozen', 'Description of secundary sidebar', 'wp-rijkshuisstijl' ),
-    	'id'            => 'sidebar-alt',
-    	'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
-    	'after_widget'  => "</div></div>\n",
-    	'before_title'  => '<h2 class="widgettitle">',
-    	'after_title'   => "</h2>\n"
-    )
-  );
-
-  genesis_register_sidebar(
-    array (
     	'name'          => _x( 'Widgets in de footer', 'Title of footer widget', 'wp-rijkshuisstijl' ),
     	'description'   => _x( "Ruimte voor extra menus's onder de hoofdcontent", 'Description of footer widget space', 'wp-rijkshuisstijl' ),
     	'id'            => 'sidebar-footer',
@@ -1973,6 +1967,47 @@ function rhswp_overwrite_widget_settings() {
     	'after_title'   => "</h3>\n"
     )
   );
+
+		
+	genesis_register_sidebar(
+		array (
+				'name'          => _x( 'Geen resultaat op zoekpagina', 'Title of secondary sidebar', 'wp-rijkshuisstijl' ),
+				'description'   => _x( 'In deze ruimte kun je widgets opnemen die getoond worden als er geen zoekresultaten zijn voor een zoekopdracht.', 'Description of secundary sidebar', 'wp-rijkshuisstijl' ),
+				'id'            => RHSWP_NORESULT_WIDGET_AREA,
+				'before_widget' => '<div id="%1$s" class="search no-results-widget %2$s"><div class="widget-wrap">',
+				'after_widget'  => "</div></div>\n",
+				'before_title'  => '<h2>',
+				'after_title'   => "</h2>\n"
+			)
+		);
+
+	
+	unregister_widget( 'WP_Widget_Meta' );
+	unregister_widget( 'WP_Widget_Media_gallery' );
+	
+
+//	register_widget( 'WP_Nav_Menu_Widget' );
+	unregister_widget( 'WP_Widget_Archives' );
+	unregister_widget( 'WP_Widget_Calendar' );
+	unregister_widget( 'WP_Widget_Categories' );
+//	register_widget( 'WP_Widget_Custom_HTML' );
+	unregister_widget( 'WP_Widget_Media_Audio' );
+	unregister_widget( 'WP_Widget_Media_Gallery' );
+	unregister_widget( 'WP_Widget_Media_Image' );
+	unregister_widget( 'WP_Widget_Media_Video' );
+	unregister_widget( 'WP_Widget_Pages' );
+	unregister_widget( 'WP_Widget_Recent_Comments' );
+//	register_widget( 'WP_Widget_Recent_Posts' );
+	unregister_widget( 'WP_Widget_RSS' );
+//	register_widget( 'WP_Widget_Search' );
+	unregister_widget( 'WP_Widget_Tag_Cloud' );
+//	register_widget( 'WP_Widget_Text' );
+
+	unregister_widget( 'Genesis_Featured_Page' );
+	unregister_widget( 'Genesis_Featured_Post' );
+	unregister_widget( 'Genesis_User_Profile_Widget' );
+
+	
 }
 
 //========================================================================================================
