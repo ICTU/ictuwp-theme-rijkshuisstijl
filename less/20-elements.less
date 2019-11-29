@@ -448,17 +448,18 @@
     }
   }
 
-  @media only screen and ( max-width: ( @break_tablet ) ) {
-  
-    .page-template-front-page {     
-      .block {
-        article + article {
-          margin-top: 1em;
-          padding-bottom: 1em;
-        }
-      }
-    }
-  }
+	@media only screen and ( max-width: ( @break_tablet ) ) {
+	
+		.page-template-page_front-page,
+		.page-template-front-page {     
+			.block {
+				article + article {
+					margin-top: 1em;
+					padding-bottom: 1em;
+				}
+			}
+		}
+	}
   
 
   @media only screen and (min-width: ( @break_tablet ) ) {
@@ -499,7 +500,8 @@
 			}
 		}
 		
-		.page-template-front-page {      
+		.page-template-page_front-page,
+		.page-template-front-page {     
 			.block {
 				article {
 					&.has-post-thumbnail {
