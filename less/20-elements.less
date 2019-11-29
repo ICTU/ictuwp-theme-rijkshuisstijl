@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.6
-// * @desc.   Betere layout voor events in een opsomming.
+// * @version 2.10.8
+// * @desc.   Tonen uitgelichte afbeelding van pagina's in contentblokken. Kleine stijl-fiksjes (.cta, padding flexblok, banner-widgets).
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -56,36 +56,17 @@
     }
   }
 
-  .block:not(.no-top) {
-    margin-top: 2em;
-//    border-top: 3px solid @block_border_color;
-    border-top: 1px solid @block_border_color;
-  }
-
-
-	section.page-links {
-		border: 3px solid @grijs_1;
-		padding: 1rem;
-		
-		h2 {
-			margin: 0;
-		}
-		ul, ol {
-			padding-left: 0;
-			margin-top: .5rem;
-			margin-bottom: .5rem;
-		}
+	.block:not(.no-top) {
+		margin-top: 2em;
+		border-top: 1px solid @block_border_color;
 	}
-  
-	section.page-links,
+
 	.block .info,
 	.block .links,
 	.sidebar .widget.page-links,
 	.sidebar .widget.widget_custom_html,
 	.sidebar .context-info ul,
-	.sidebar .widget_rhswp_navigationmenu_widget,
 	.sidebar .widget_nav_menu {
-
 		li {
 			list-style: none;
 			margin-left: 0;
@@ -94,12 +75,12 @@
 		}
 		a {
 			padding-left: 1em;
-			.listitem_arrow( @txt, 10px, 8px ); // done
+			.listitem_arrow( @a_color_default, 10px, 8px ); // done
 			display: block;
 			
 			&:visited {
 				&:before {
-					color: @a_color_visited;
+				color: @a_color_visited;
 				}
 			}
 			&:hover {
@@ -115,6 +96,10 @@
 	
 	.block .events-table {
 		
+		p {
+			margin-bottom: 0;
+		}
+		
 		a {
 			font-family: @fontstrong;
 			font-size: 1.125em;
@@ -126,39 +111,38 @@
 	}
 
 
-  .block {
-    .links {
-      li {
-        display: block;
-        a {
-          padding-right: .5em;
-          text-decoration: none;
-          font-family: @fontstrong;
-          
-          &:before {
-            top: 14px;
-            left: 3px;
-          }
-          &:hover, 
-          &:focus, 
-          &:active {
-            text-decoration: underline;
-          }
-        }
-
-
-      }
-      li:nth-child(odd) {
-        clear: left;
-      }
-      li:nth-child(even) {
-        clear: right;
-      }
-    }
-    h2 + .links {
-      margin-top: 0;
-    }
-  }
+	.block {
+		.links {
+			li {
+				display: block;
+				a {
+					padding-right: .5em;
+					text-decoration: none;
+					font-family: @fontstrong;
+					
+					&:before {
+						top: 10px;
+						left: 3px;
+					}
+					&:hover, 
+					&:focus, 
+					&:active {
+						text-decoration: underline;
+					}
+				}
+			}
+			
+			li:nth-child(odd) {
+				clear: left;
+			}
+			li:nth-child(even) {
+				clear: right;
+			}
+		}
+		h2 + .links {
+			margin-top: 0;
+		}
+	}
 
 
 	.flexbox {
@@ -222,6 +206,8 @@
 
 			
 			.event-meta {
+				margin-left: 0;
+				
 				li {
 					margin-top: 0;
 					margin-bottom: 0;
@@ -486,18 +472,24 @@
 				section,
 				article {
 					padding: 0 1.5em 2px 2px;
+//					padding: 0 0 2px 2px;
 					flex-basis: @flexbasis_twocols;
 					
 					&.has-post-thumbnail {
 						max-width: 100%;
 						flex-basis: 100%;
+						padding-right: 0;
 					}
 					
-					&:only-of-type {
-						flex-basis: 100%;
-					}
 					&:last-of-type {
 						max-width: @flexbasis_twocols;
+					}
+					&:only-of-type {
+						flex-basis: 100%;
+						&:last-of-type {
+							max-width: 100%;
+							padding-right: 0;
+						}
 					}
 					
 					&.has-post-thumbnail:last-of-type {
@@ -545,43 +537,43 @@
 	}
 
 
-    .flexbox {
-      .full-width-content {
-        &.home,
-        &.page-template-page_showalldossiers,
-        &.blog,
-        &.archive {
-          .block {
-            article {
-              flex-basis: @flexbasis_threecols;
-              max-width: @flexbasis_threecols;
-                      
-              &:last-of-type {
-                max-width: @flexbasis_threecols;
-              }
-            }
-          }
-        }
-      }
-    }
+	.flexbox {
+		.full-width-content {
+			&.home,
+			&.page-template-page_showalldossiers,
+			&.blog,
+			&.archive {
+				.block {
+					article {
+						flex-basis: @flexbasis_threecols;
+						max-width: @flexbasis_threecols;
+						padding-right: 1.5em;
+						  
+						&:last-of-type {
+							max-width: @flexbasis_threecols;
+						}
+					}
+				}
+			}
+		}
+	}
     
     
-    .block {
-
-      .has-post-thumbnail {
-        margin: 0 0 1em 0;
-        padding: 0;
-      }   
-
-      .links {
-        width: 100%;
-        li {
-          display: block;
-          width: 50%;
-          float: left;
-        }      
-      }
-    }
+	.block {
+		.has-post-thumbnail {
+			margin: 0 0 1em 0;
+			padding: 0;
+		}   
+		
+		.links {
+			width: 100%;
+			li {
+				display: block;
+				width: 50%;
+				float: left;
+			}      
+		}
+	}
 
 	.post-type-archive-document,
 	.search-results {

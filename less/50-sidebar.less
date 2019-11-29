@@ -19,7 +19,7 @@
 
 
 	.widget {
-  	
+		
 		ul, li {
 			padding-left: 0;
 			margin-left: 0;
@@ -37,8 +37,8 @@
 					text-decoration: underline;
 				}
 			}
-			
 		}
+		
 		ul ul {
 			margin-top: .5em;
 			margin-left: 1em;
@@ -51,31 +51,30 @@
 		h4,
 		h5,
 		h6 {
-  		font-size: 99%;
-      color: @txt;
-      margin-top: .3em;  		
-      margin-bottom: .1em;  		
+			font-size: 99%;
+			color: @txt;
+			margin-top: .3em;  		
+			margin-bottom: .1em;  		
 		}
-		
 	}
 
 
-  // event manager widget
-  .widget_em_widget {
-  	ul ul {
-  		margin-top: 0;
-  		margin-left: 0;
-  		padding-left: 0;
-  	}
-  	a {
-      font-weight: bold;
-      font-family: @fontstrong;
-  	}
-  	li.all-events-link {
-    	margin-top: .5em;
-    	padding-left: 1em;
-  	}
-  }
+	  // event manager widget
+	.widget_em_widget {
+		ul ul {
+			margin-top: 0;
+			margin-left: 0;
+			padding-left: 0;
+		}
+		a {
+			font-weight: bold;
+			font-family: @fontstrong;
+		}
+		li.all-events-link {
+			margin-top: .5em;
+			padding-left: 1em;
+		}
+	}
 
 
 	aside.sidebar {
@@ -150,11 +149,16 @@
 					a {
 						background: @communicatiekleur_vol;
 						display: block;
+						text-decoration: none;
+						.widgettitle {
+							text-decoration: underline;
+						}
 					}
 					
 					a:hover,
 					a:active,
 					a:focus {
+						text-decoration: underline !important;
 						color: @communicatiekleur_vol;
 						background: @wit;
 					}
@@ -193,15 +197,20 @@
 					}
 					
 					.text {
-						.semitransbackground();
+//						.semitransbackground();
+
+						background-color: @txt;
+						background-color: rgba(256,256,256,.9);
+						background: linear-gradient(180deg, rgba(255,255,255,0) 6%, rgba(2,0,36,0.7) 29%);							
+
 						position: absolute;
 						left: 0;
 						right: 0;
 						bottom: 0;
-						padding: .5em;
+						padding: 1em .5em .25em .5em;
 						
-						h2, h3 {
-							color: @donkerblauw_vol;
+						h2, h3, a, & {
+							color: @wit;
 						}
 						a {
 							display: inline;
@@ -221,8 +230,9 @@
 						}
 						
 						.text {
-							background-color: @wit;
+							background-color: @txt;
 							background-color: rgba(256,256,256,.9);
+							background: linear-gradient(180deg, rgba(255,255,255,0) 6%, rgba(0,0,0,0.7) 29%);							
 						}
 					}
 				}

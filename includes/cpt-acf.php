@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.3
-// * @desc.   1 extra header-image voor cyber-toolbox toegevoegd; kleine CSS en JS verbeteringen.
+// * @version 2.10.8
+// * @desc.   Tonen uitgelichte afbeelding van pagina's in contentblokken. Kleine stijl-fiksjes (.cta, padding flexblok, banner-widgets).
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -1911,13 +1911,13 @@ if( function_exists('acf_add_local_field_group') ):
   					'return_format' => 'value',
   				),
   				array (
-  					'key' => 'field_5804cd7bf782b',
-            'label'   => __( 'Links in je contentblok', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_algemeen_links',
-  					'type' => 'repeater',
-  					'instructions' => '',
-  					'required' => 1,
-  					'conditional_logic' => array (
+					'key' => 'field_5804cd7bf782b',
+					'label'   => __( 'Links in je contentblok', 'wp-rijkshuisstijl' ),
+					'name' => 'extra_contentblok_algemeen_links',
+					'type' => 'repeater',
+					'instructions' => '',
+					'required' => 1,
+					'conditional_logic' => array (
   						array (
   							array (
   								'field' => 'field_5804cde25e99a',
@@ -1938,10 +1938,10 @@ if( function_exists('acf_add_local_field_group') ):
   					'button_label' => 'Nieuwe regel',
   					'sub_fields' => array (
   						array (
-  							'key' => 'field_580ddadb4597b',
-                'label'   => __( 'Linktekst', 'wp-rijkshuisstijl' ),
-  							'name' => 'extra_contentblok_algemeen_links_linktekst',
-  							'type' => 'text',
+							'key' => 'field_580ddadb4597b',
+							'label'   => __( 'Linktekst', 'wp-rijkshuisstijl' ),
+							'name' => 'extra_contentblok_algemeen_links_linktekst',
+							'type' => 'text',
   							'instructions' => '',
   							'required' => 1,
   							'conditional_logic' => 0,
@@ -1975,12 +1975,12 @@ if( function_exists('acf_add_local_field_group') ):
   					),
   				),
   				array (
-  					'key' => 'field_5804d01355657',
-      			'label'   => __( 'Wil je de berichten filteren op categorie?', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_categoriefilter',
-  					'type' => 'radio',
-            'instructions'   => __( 'Als deze pagina een dossier heeft, worden berichten sowieso gefilterd op het dossier.', 'wp-rijkshuisstijl' ),  			
-  					'required' => 1,
+					'key' => 'field_5804d01355657',
+					'label'   => __( 'Wil je de berichten filteren op categorie?', 'wp-rijkshuisstijl' ),
+					'name' => 'extra_contentblok_categoriefilter',
+					'type' => 'radio',
+					'instructions'   => __( 'Als deze pagina een dossier heeft, worden berichten sowieso gefilterd op het dossier.', 'wp-rijkshuisstijl' ),  			
+					'required' => 1,
   					'conditional_logic' => array (
   						array (
   							array (
@@ -2095,12 +2095,12 @@ if( function_exists('acf_add_local_field_group') ):
   					'placeholder' => '',
   				),
   				array (
-  					'key' => 'field_5804d943476f2',
-      			'label'   => __( 'Toon hoeveel berichten met hun uitgelichte afbeelding', 'wp-rijkshuisstijl' ),
-  					'name' => 'extra_contentblok_maxnr_posts_with_featured_image',
-  					'type' => 'select',
-  					'instructions'   => '',
-  					'required' => 1,
+					'key' => 'field_5804d943476f2',
+					'label'   => __( 'Toon hoeveel berichten met hun uitgelichte afbeelding', 'wp-rijkshuisstijl' ),
+					'name' => 'extra_contentblok_maxnr_posts_with_featured_image',
+					'type' => 'select',
+					'instructions'   => '',
+					'required' => 1,
   					'conditional_logic' => array (
   						array (
   							array (
@@ -2183,11 +2183,11 @@ if( function_exists('acf_add_local_field_group') ):
   				array (
       			'key' => 'field_68247045955b10',
       			'label'   => __( 'Geselecteerde dossiers', 'wp-rijkshuisstijl' ),
-      			'name' => 'select_dossiers_list',
-      			'type' => 'taxonomy',
-            'instructions'   => __( 'De dossiers die je hier kiest worden bovenaan de pagina getoond met speciale layout.', 'wp-rijkshuisstijl' ),  			
-      			'required' => 0,
-      			'conditional_logic' => array (
+				'name' => 'select_dossiers_list',
+				'type' => 'taxonomy',
+				'instructions'   => __( 'De dossiers die je hier kiest worden bovenaan de pagina getoond met speciale layout.', 'wp-rijkshuisstijl' ),  			
+				'required' => 0,
+				'conditional_logic' => array (
       				array (
       					array (
   								'field' => 'field_5804cde25e99a',

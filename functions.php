@@ -2677,6 +2677,7 @@ function rhswp_write_extra_contentblokken() {
             }
 
             if ( $selected_content_full != 'ja' ) {
+	            // niet ja, dus nee: toon geen samenvatting, alleen de link
 
               echo '<ul class="links">';
 
@@ -2701,48 +2702,58 @@ function rhswp_write_extra_contentblokken() {
 
               echo '</ul>';
             }
-            else {
-              // dus $selected_content_full == 'ja'
-
-              $postcounter = 0;
-
-              foreach ( $selected_content as $post ) {
-
-                setup_postdata($post);
-
-                $postcounter++;
-
-                $doimage = false;
-
-                $classattr = genesis_attr( 'entry' );
-
-                do_action( 'genesis_before_entry' );
-
-                $classattr  = str_replace( 'has-post-thumbnail', '', $classattr );
-
-                $permalink  = get_permalink();
-                $excerpt    = wp_strip_all_tags( get_the_excerpt( $post ) );
-
-                if ( !$excerpt ) {
-                  $excerpt = get_the_title();
-                }
-                $postdate   = '';
-                if ( 'post'    == get_post_type() ) {
-                    $postdate   = get_the_date( );
-                }
-                
-
-                printf( '<article %s>', $classattr );
-                printf( '<a href="%s"><h3>%s</h3><p class="meta">%s</p><p>%s</p></a>', get_permalink(), get_the_title(), $postdate, $excerpt );
-                echo '</article>';
-
-                // RESET THE QUERY
-                wp_reset_query();
-
-                do_action( 'genesis_after_entry' );
-
-              }
-            }
+			else {
+				// dus $selected_content_full == 'ja'
+				
+				$postcounter = 0;
+			
+				foreach ( $selected_content as $post ) {
+					
+					setup_postdata($post);
+					
+					$postcounter++;
+					
+					$doimage = false;
+					
+					$classattr = genesis_attr( 'entry' );
+					
+					do_action( 'genesis_before_entry' );
+					
+					$classattr  = str_replace( 'has-post-thumbnail', '', $classattr );
+					
+					$permalink  = get_permalink();
+					$excerpt    = wp_strip_all_tags( get_the_excerpt( $post ) );
+					
+					if ( !$excerpt ) {
+						$excerpt = get_the_title();
+					}
+					
+					$postdate   = '';
+					if ( 'post'    == get_post_type() ) {
+						$postdate   = get_the_date( );
+					}
+					
+					if ( has_post_thumbnail( $post ) ) {
+						printf( '<article %s>', $classattr );
+						echo '<div class="article-container">';
+						printf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'article-visual' ) );
+						printf( '<div class="article-excerpt"><a href="%s"><h3>%s</h3><p class="meta">%s</p><p>%s</p></a></div>', get_permalink(), get_the_title(), $postdate, $excerpt );
+						echo '</div>';
+						echo '</article>';
+					}
+					else {
+						printf( '<article %s>', $classattr );
+						printf( '<a href="%s"><h3>%s</h3><p class="meta">%s</p><p>%s</p></a>', get_permalink(), get_the_title(), $postdate, $excerpt );
+						echo '</article>';
+					}
+					
+					// RESET THE QUERY
+					wp_reset_query();
+					
+					do_action( 'genesis_after_entry' );
+					
+				}
+			}
 
             echo '</div>';
           }
