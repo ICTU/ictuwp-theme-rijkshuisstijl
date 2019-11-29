@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.2
-// * @desc.   Header-images voor Toolbox voor Sieberincidenten toegevoegd.
+// * @version 2.10.8
+// * @desc.   Tonen uitgelichte afbeelding van pagina's in contentblokken. Kleine stijl-fiksjes (.cta, padding flexblok, banner-widgets).
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -28,16 +28,9 @@
 
 	a {
 		color: @a_color_default; // @txt;
-//		text-decoration: none;
 		
 		&:visited {
 			color: @a_color_visited;
-		}
-		
-		&:hover,
-		&:active,
-		&:focus {
-//			text-decoration: underline;
 		}
 		&:hover {
 			color: @a_color_hover;
@@ -56,24 +49,59 @@
 		.listitem_arrow_extern( @a_color_default, @a_color_hover, @a_color_active, @a_color_visited );
 	}     
 
-
-
+	a.cta,
 	a.download {
 		display: inline-block;
 		margin-top: .5em;
 		margin-bottom: .5em;
-		padding-top: .5em;
-		padding-bottom: .5em;
-		padding-left: 2.25em;
-		padding-right: 1em;
+		padding: .5em;
 		margin-right: 1em;
 		color: @wit;
+		background-color: @donkerblauw_vol;
+		border: 4px solid @donkerblauw_vol;
+		border-radius: 5px;
+	}
+	
+	a.cta {
+		text-decoration: none;
+	    font-family: @headerfont;
+	    font-size: 120%;
+	    background-image: none !important;
+	    padding-right: .25rem !important;
+		
+		&:after {
+			display: inline-block;
+			float: right;
+			.icon_socmed_icon('../images/svg/list-arrow.svg', @wit );
+			background-size: 1em 1em;
+			background-position: right center;
+			background-repeat: no-repeat;
+			content: ' ';
+			height: 1em;
+			width: 1.5rem;
+			margin-left: .25em;
+			margin-top: .25em;
+		}
+
+	    
+	    &:hover,
+	    &:focus,
+	    &:active {
+		    background-color: @wit;
+		    text-decoration: underline;
+		    
+			&:after {
+				.icon_socmed_icon('../images/svg/list-arrow.svg', @a_color_hover );
+			}
+	    }
+	}
+
+	a.download {
+		padding-left: 2.25em;
 		.iconaddfill('../images/svg/icon-download.svg', @wit );
 		background-size: 1.5em 1.5em;
 		background-position: .25em center;
 		background-repeat: no-repeat;
-		background-color: @donkerblauw_vol;
-		border: 4px solid @donkerblauw_vol;
 	}
 
 	.single .entry-content a.download {

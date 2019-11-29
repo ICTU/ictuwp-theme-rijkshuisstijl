@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.6.2
-// * @desc.   Check in bannerwidget op wel/niet tonen plaatje.
+// * @version 2.10.8
+// * @desc.   Tonen uitgelichte afbeelding van pagina's in contentblokken. Kleine stijl-fiksjes (.cta, padding flexblok, banner-widgets).
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -117,9 +117,9 @@ class rhswp_banner_widget extends WP_Widget {
 		if ( $doshow && ( $instance['rhswp_banner_widget_title'] || $rhswp_banner_widget_short_text ) ) {
 			echo $before_widget;
 			
-			if ( $rhswp_banner_widget_short_text ) {
+//			if ( $rhswp_banner_widget_short_text ) {
 				echo '<div class="text">'; 
-			}	      
+//			}	      
 			
 			if ( $instance['rhswp_banner_widget_title'] !== '') {
 				echo $before_title . $instance['rhswp_banner_widget_title'] . $after_title;
@@ -128,9 +128,9 @@ class rhswp_banner_widget extends WP_Widget {
 			echo $hide_banner_for_cpts;
 			echo $rhswp_banner_widget_short_text;
 		
-			if ( $rhswp_banner_widget_short_text ) {
+//			if ( $rhswp_banner_widget_short_text ) {
 				echo '</div>'; 
-			}
+//			}
 			echo $after_widget;
 			
 		}

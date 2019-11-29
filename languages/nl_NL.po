@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
 "POT-Creation-Date: 2019-11-26 15:55+0100\n"
-"PO-Revision-Date: 2019-11-28 20:44+0100\n"
+"PO-Revision-Date: 2019-11-29 10:55+0100\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: paul@wbvb.nl\n"
 "Language: nl_NL\n"
@@ -693,7 +693,7 @@ msgstr "- pagina %s"
 #, php-format
 msgctxt "Posts for topic with category"
 msgid "%s for '%s' %s"
-msgstr "%s onder %s %s"
+msgstr "%s voor %s %s"
 
 #: functions.php:5950
 #, php-format
