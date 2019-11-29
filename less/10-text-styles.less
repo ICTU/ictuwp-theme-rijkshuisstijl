@@ -909,6 +909,7 @@
 	.borderframe {
 		
 		border: 2px solid @grijs_4;
+		overflow: hidden;
 		
 		h2, 
 		h3, 
@@ -922,6 +923,23 @@
 			}
 			& + div {
 				margin-top: 0;
+			}
+		}
+		
+		img {
+			&.alignleft,
+			&.alignright {
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+				border: 1px solid @block_border_color;
+				max-width: 25%;
+				height: auto;
+			}
+			&.alignleft {
+				margin-right: 1rem;
+			}
+			&.alignright {
+				margin-left: 1rem;
 			}
 		}
 		
