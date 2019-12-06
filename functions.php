@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.8
-// * @desc.   Tonen uitgelichte afbeelding van pagina's in contentblokken. Kleine stijl-fiksjes (.cta, padding flexblok, banner-widgets).
+// * @version 2.11.1
+// * @desc.   Widgetruimtes opgeschoond en hernoemd; nieuwe widgetruimtes toegevoegd via plugin en nieuw navigatiemenu widget live gezet.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.10.8" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Tonen uitgelichte afbeelding van pagina's in contentblokken. Kleine stijl-fiksjes (.cta, padding flexblok, banner-widgets)." );
+define( 'CHILD_THEME_VERSION',              "2.11.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Widgetruimtes opgeschoond en hernoemd; nieuwe widgetruimtes toegevoegd via plugin en nieuw navigatiemenu widget live gezet." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -1945,7 +1945,7 @@ function rhswp_overwrite_widget_settings() {
 
   genesis_register_sidebar(
     array (
-    	'name'          => _x( 'Eerste sidebar', 'Title of primary sidebar', 'wp-rijkshuisstijl' ),
+    	'name'          => _x( 'Widgetruimte algemeen', 'Title of primary sidebar', 'wp-rijkshuisstijl' ),
     	'description'   => _x( 'Primaire zijbalk met ruimte voor widgets. Wordt standaard getoond aan de rechterkant van de content op brede schermen', 'Description of primary sidebar', 'wp-rijkshuisstijl' ),
     	'id'            => 'sidebar',
     	'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
@@ -1954,7 +1954,9 @@ function rhswp_overwrite_widget_settings() {
     	'after_title'   => "</h3>\n"
     )
   );
-
+  
+/*
+	
   genesis_register_sidebar(
     array (
     	'name'          => _x( 'Tweede sidebar', 'Title of secondary sidebar', 'wp-rijkshuisstijl' ),
@@ -1978,6 +1980,10 @@ function rhswp_overwrite_widget_settings() {
     	'after_title'   => "</h3>\n"
     )
   );
+
+*/
+
+  
 }
 
 //========================================================================================================
@@ -4255,7 +4261,7 @@ add_action( 'genesis_before_footer-1_widget_area', 'rhswp_footer_payoff');
 function rhswp_widget_definition_footer1() {
 	genesis_register_sidebar( array(
 		'id'            => RHSWP_FOOTERWIDGET1,
-		'name'          => __( RHSWP_FOOTERWIDGET1, 'wp-rijkshuisstijl' ),
+		'name'          => __( 'Footer widget (left)', 'wp-rijkshuisstijl' ),
 		'description'   => __( 'This is the general footer area', 'wp-rijkshuisstijl' ),
     'before_widget' => genesis_markup( array(
         'html5' => '<div id="%1$s" class="widget-area widget footer-widgets-1 footer-widget-area %2$s '.RHSWP_FOOTERWIDGET1 . '" aria-labelledby="title_' . RHSWP_FOOTERWIDGET1 . '"><div class="widget-wrap">',
@@ -4282,7 +4288,7 @@ function rhswp_widget_definition_footer1() {
 function rhswp_widget_definition_footer2() {
 	genesis_register_sidebar( array(
 		'id'            => RHSWP_FOOTERWIDGET2,
-		'name'          => __( RHSWP_FOOTERWIDGET2, 'wp-rijkshuisstijl' ),
+		'name'          => __( 'Footer widget (right)', 'wp-rijkshuisstijl' ),
 		'description'   => __( 'This is the general footer area', 'wp-rijkshuisstijl' ),
     'before_widget' => genesis_markup( array(
         'html5' => '<div id="%1$s" class="widget-area widget footer-widgets-2 footer-widget-area %2$s '.RHSWP_FOOTERWIDGET2 . '"><div class="widget-wrap">',

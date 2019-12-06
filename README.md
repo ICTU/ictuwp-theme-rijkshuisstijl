@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.10.8 - Tonen uitgelichte afbeelding van pagina's in contentblokken. Kleine stijl-fiksjes (.cta, padding flexblok, banner-widgets).
+2.11.1 - Widgetruimtes opgeschoond en hernoemd; nieuwe widgetruimtes toegevoegd via plugin en nieuw navigatiemenu widget live gezet.
 
 ## Version history
+* 2.11.1 - Widgetruimtes opgeschoond en hernoemd; nieuwe widgetruimtes toegevoegd via plugin en nieuw navigatiemenu widget live gezet.
 * 2.10.8 - Tonen uitgelichte afbeelding van pagina's in contentblokken. Kleine stijl-fiksjes (.cta, padding flexblok, banner-widgets).
 * 2.10.7 - Widget-fix voor DO banners. Breadcrumb voor categorie aangepast.
 * 2.10.6 - Betere layout voor events in een opsomming.
