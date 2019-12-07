@@ -1951,7 +1951,7 @@ function rhswp_overwrite_widget_settings() {
 
   genesis_register_sidebar(
     array (
-    	'name'          => _x( 'Eerste sidebar', 'Title of primary sidebar', 'wp-rijkshuisstijl' ),
+    	'name'          => _x( 'Widgetruimte algemeen', 'Title of primary sidebar', 'wp-rijkshuisstijl' ),
     	'description'   => _x( 'Primaire zijbalk met ruimte voor widgets. Wordt standaard getoond aan de rechterkant van de content op brede schermen', 'Description of primary sidebar', 'wp-rijkshuisstijl' ),
     	'id'            => 'sidebar',
     	'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
@@ -1960,7 +1960,9 @@ function rhswp_overwrite_widget_settings() {
     	'after_title'   => "</h3>\n"
     )
   );
-
+  
+/*
+	
   genesis_register_sidebar(
     array (
     	'name'          => _x( 'Widgets in de footer', 'Title of footer widget', 'wp-rijkshuisstijl' ),
@@ -1973,6 +1975,7 @@ function rhswp_overwrite_widget_settings() {
     )
   );
 
+*/
 		
 	genesis_register_sidebar(
 		array (
@@ -4290,7 +4293,7 @@ add_action( 'genesis_before_footer-1_widget_area', 'rhswp_footer_payoff');
 function rhswp_widget_definition_footer1() {
 	genesis_register_sidebar( array(
 		'id'            => RHSWP_FOOTERWIDGET1,
-		'name'          => __( RHSWP_FOOTERWIDGET1, 'wp-rijkshuisstijl' ),
+		'name'          => __( 'Footer widget (left)', 'wp-rijkshuisstijl' ),
 		'description'   => __( 'This is the general footer area', 'wp-rijkshuisstijl' ),
     'before_widget' => genesis_markup( array(
         'html5' => '<div id="%1$s" class="widget-area widget footer-widgets-1 footer-widget-area %2$s '.RHSWP_FOOTERWIDGET1 . '" aria-labelledby="title_' . RHSWP_FOOTERWIDGET1 . '"><div class="widget-wrap">',
@@ -4317,7 +4320,7 @@ function rhswp_widget_definition_footer1() {
 function rhswp_widget_definition_footer2() {
 	genesis_register_sidebar( array(
 		'id'            => RHSWP_FOOTERWIDGET2,
-		'name'          => __( RHSWP_FOOTERWIDGET2, 'wp-rijkshuisstijl' ),
+		'name'          => __( 'Footer widget (right)', 'wp-rijkshuisstijl' ),
 		'description'   => __( 'This is the general footer area', 'wp-rijkshuisstijl' ),
     'before_widget' => genesis_markup( array(
         'html5' => '<div id="%1$s" class="widget-area widget footer-widgets-2 footer-widget-area %2$s '.RHSWP_FOOTERWIDGET2 . '"><div class="widget-wrap">',
@@ -6077,6 +6080,82 @@ function admin_enqueue_css_acf_contentblokken() {
 
 	}
 
+}
+
+//========================================================================================================
+
+// Overwrite widget settings
+add_action( 'widgets_init', 'rhswp_overwrite_widget_settings' );
+
+function rhswp_overwrite_widget_settings() {
+  //Gets rid of the default Primary Sidebar
+  unregister_sidebar( 'sidebar' );
+  unregister_sidebar( 'sidebar-alt' );
+
+  genesis_register_sidebar(
+    array (
+    	'name'          => _x( 'Eerste sidebar', 'Title of primary sidebar', 'wp-rijkshuisstijl' ),
+    	'description'   => _x( 'Primaire zijbalk met ruimte voor widgets. Wordt standaard getoond aan de rechterkant van de content op brede schermen', 'Description of primary sidebar', 'wp-rijkshuisstijl' ),
+    	'id'            => 'sidebar',
+    	'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
+    	'after_widget'  => "</div></div>\n",
+    	'before_title'  => '<h3 class="widgettitle">',
+    	'after_title'   => "</h3>\n"
+    )
+  );
+
+  genesis_register_sidebar(
+    array (
+    	'name'          => _x( 'Widgets in de footer', 'Title of footer widget', 'wp-rijkshuisstijl' ),
+    	'description'   => _x( "Ruimte voor extra menus's onder de hoofdcontent", 'Description of footer widget space', 'wp-rijkshuisstijl' ),
+    	'id'            => 'sidebar-footer',
+    	'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
+    	'after_widget'  => "</div></div>\n",
+    	'before_title'  => '<h3 class="widgettitle">',
+    	'after_title'   => "</h3>\n"
+    )
+  );
+
+		
+	genesis_register_sidebar(
+		array (
+				'name'          => _x( 'Geen resultaat op zoekpagina', 'Title of secondary sidebar', 'wp-rijkshuisstijl' ),
+				'description'   => _x( 'In deze ruimte kun je widgets opnemen die getoond worden als er geen zoekresultaten zijn voor een zoekopdracht.', 'Description of secundary sidebar', 'wp-rijkshuisstijl' ),
+				'id'            => RHSWP_NORESULT_WIDGET_AREA,
+				'before_widget' => '<div id="%1$s" class="search no-results-widget %2$s"><div class="widget-wrap">',
+				'after_widget'  => "</div></div>\n",
+				'before_title'  => '<h2>',
+				'after_title'   => "</h2>\n"
+			)
+		);
+
+	
+	unregister_widget( 'WP_Widget_Meta' );
+	unregister_widget( 'WP_Widget_Media_gallery' );
+	
+
+//	register_widget( 'WP_Nav_Menu_Widget' );
+	unregister_widget( 'WP_Widget_Archives' );
+	unregister_widget( 'WP_Widget_Calendar' );
+	unregister_widget( 'WP_Widget_Categories' );
+//	register_widget( 'WP_Widget_Custom_HTML' );
+	unregister_widget( 'WP_Widget_Media_Audio' );
+	unregister_widget( 'WP_Widget_Media_Gallery' );
+	unregister_widget( 'WP_Widget_Media_Image' );
+	unregister_widget( 'WP_Widget_Media_Video' );
+	unregister_widget( 'WP_Widget_Pages' );
+	unregister_widget( 'WP_Widget_Recent_Comments' );
+//	register_widget( 'WP_Widget_Recent_Posts' );
+	unregister_widget( 'WP_Widget_RSS' );
+//	register_widget( 'WP_Widget_Search' );
+	unregister_widget( 'WP_Widget_Tag_Cloud' );
+//	register_widget( 'WP_Widget_Text' );
+
+	unregister_widget( 'Genesis_Featured_Page' );
+	unregister_widget( 'Genesis_Featured_Post' );
+	unregister_widget( 'Genesis_User_Profile_Widget' );
+
+	
 }
 
 //========================================================================================================
