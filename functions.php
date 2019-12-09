@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.3
-// * @desc.   Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'.
+// * @version 2.12.4
+// * @desc.   search widgetruimte toegevoegd aan no-results.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.3" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'." );
+define( 'CHILD_THEME_VERSION',              "2.12.4" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "search widgetruimte toegevoegd aan no-results." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -66,6 +66,8 @@ define( 'RHSWP_HOME_WIDGET_AREA',           'home-widget-area' );
 define( 'RHSWP_PREFIX_TAG_CAT',             'rhswp_dossier_select_tag_category');
 define( 'RHSWP_CMB2_TAG_FIELD',             'select_tag');
 define( 'RHSWP_CMB2_TXT_FIELD',             'select_txt');
+
+define( 'RHSWP_NORESULT_WIDGET_AREA',       'noresult-widget-area' );
 
 if ( ! defined( 'RHSWP_CT_DOSSIER' ) ) {
   define( 'RHSWP_CT_DOSSIER',               'dossiers' );   // slug for custom taxonomy 'dossier'
@@ -1954,20 +1956,6 @@ function rhswp_overwrite_widget_settings() {
     	'after_title'   => "</h3>\n"
     )
   );
-  
-/*
-	
-  genesis_register_sidebar(
-    array (
-    	'name'          => _x( 'Tweede sidebar', 'Title of secondary sidebar', 'wp-rijkshuisstijl' ),
-    	'description'   => _x( 'Secundaire zijbalk met ruimte voor widgets. Wordt alleen getoond op pagina\'s waar de niet-standaard layout is gekozen', 'Description of secundary sidebar', 'wp-rijkshuisstijl' ),
-    	'id'            => 'sidebar-alt',
-    	'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
-    	'after_widget'  => "</div></div>\n",
-    	'before_title'  => '<h2 class="widgettitle">',
-    	'after_title'   => "</h2>\n"
-    )
-  );
 
   genesis_register_sidebar(
     array (
@@ -1981,9 +1969,46 @@ function rhswp_overwrite_widget_settings() {
     )
   );
 
-*/
+		
+	genesis_register_sidebar(
+		array (
+				'name'          => _x( 'Geen resultaat op zoekpagina', 'Title of secondary sidebar', 'wp-rijkshuisstijl' ),
+				'description'   => _x( 'In deze ruimte kun je widgets opnemen die getoond worden als er geen zoekresultaten zijn voor een zoekopdracht.', 'Description of secundary sidebar', 'wp-rijkshuisstijl' ),
+				'id'            => RHSWP_NORESULT_WIDGET_AREA,
+				'before_widget' => '<div id="%1$s" class="search no-results-widget %2$s"><div class="widget-wrap">',
+				'after_widget'  => "</div></div>\n",
+				'before_title'  => '<h2>',
+				'after_title'   => "</h2>\n"
+			)
+		);
 
-  
+	
+	unregister_widget( 'WP_Widget_Meta' );
+	unregister_widget( 'WP_Widget_Media_gallery' );
+	
+
+//	register_widget( 'WP_Nav_Menu_Widget' );
+	unregister_widget( 'WP_Widget_Archives' );
+	unregister_widget( 'WP_Widget_Calendar' );
+	unregister_widget( 'WP_Widget_Categories' );
+//	register_widget( 'WP_Widget_Custom_HTML' );
+	unregister_widget( 'WP_Widget_Media_Audio' );
+	unregister_widget( 'WP_Widget_Media_Gallery' );
+	unregister_widget( 'WP_Widget_Media_Image' );
+	unregister_widget( 'WP_Widget_Media_Video' );
+	unregister_widget( 'WP_Widget_Pages' );
+	unregister_widget( 'WP_Widget_Recent_Comments' );
+//	register_widget( 'WP_Widget_Recent_Posts' );
+	unregister_widget( 'WP_Widget_RSS' );
+//	register_widget( 'WP_Widget_Search' );
+	unregister_widget( 'WP_Widget_Tag_Cloud' );
+//	register_widget( 'WP_Widget_Text' );
+
+	unregister_widget( 'Genesis_Featured_Page' );
+	unregister_widget( 'Genesis_Featured_Post' );
+	unregister_widget( 'Genesis_User_Profile_Widget' );
+
+	
 }
 
 //========================================================================================================
