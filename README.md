@@ -13,10 +13,15 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.11.1 - Widgetruimtes opgeschoond en hernoemd; nieuwe widgetruimtes toegevoegd via plugin en nieuw navigatiemenu widget live gezet.
+2.12.3 - Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'.
 
 ## Version history
-* 2.11.1 - Widgetruimtes opgeschoond en hernoemd; nieuwe widgetruimtes toegevoegd via plugin en nieuw navigatiemenu widget live gezet.
+* 2.12.3 - Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'.
+* 2.12.2 - Kortere check op uitschrijven nav.bar op home.
+* 2.12.1 - Homepage nu vanuit template file (page_front-page.php).
+* 2.11.3 - Widget voor no-result pagina verbeterd.
+* 2.11.2 - Widget 'page-links' gedeactiveerd en verplaatst naar hook 'genesis_after_entry'. 
+* 2.11.1 - Widget 'widget_rhswp_navigationmenu_widget' toegevoegd; widgetruimte RHSWP_NORESULT_WIDGET_AREA toegevoegd aan no-result searchpage. Veel defaultwidgets gedactiveerd.
 * 2.10.8 - Tonen uitgelichte afbeelding van pagina's in contentblokken. Kleine stijl-fiksjes (.cta, padding flexblok, banner-widgets).
 * 2.10.7 - Widget-fix voor DO banners. Breadcrumb voor categorie aangepast.
 * 2.10.6 - Betere layout voor events in een opsomming.

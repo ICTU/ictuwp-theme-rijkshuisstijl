@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.11.1
-  Version description: Widgetruimtes opgeschoond en hernoemd; nieuwe widgetruimtes toegevoegd via plugin en nieuw navigatiemenu widget live gezet.
+  Version: 2.12.3a
+  Version description: Fout op homepage door 'rhswp_pagelinks_replace_widget'.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -97,13 +97,13 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .flexbox .page-template-page_showalldossiers .block section,
   .flexbox .page-template-page_show-child-pages .block section,
-  .flexbox .home .block section,
+  .flexbox .page-template-page_front-page .block section,
   .flexbox .blog .block section,
   .flexbox .flexcontainer .block section,
   .flexbox .archive .block section,
   .flexbox .page-template-page_showalldossiers .block article,
   .flexbox .page-template-page_show-child-pages .block article,
-  .flexbox .home .block article,
+  .flexbox .page-template-page_front-page .block article,
   .flexbox .blog .block article,
   .flexbox .flexcontainer .block article,
   .flexbox .archive .block article {
@@ -112,13 +112,13 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
   }
   .flexbox .page-template-page_showalldossiers .block section a,
   .flexbox .page-template-page_show-child-pages .block section a,
-  .flexbox .home .block section a,
+  .flexbox .page-template-page_front-page .block section a,
   .flexbox .blog .block section a,
   .flexbox .flexcontainer .block section a,
   .flexbox .archive .block section a,
   .flexbox .page-template-page_showalldossiers .block article a,
   .flexbox .page-template-page_show-child-pages .block article a,
-  .flexbox .home .block article a,
+  .flexbox .page-template-page_front-page .block article a,
   .flexbox .blog .block article a,
   .flexbox .flexcontainer .block article a,
   .flexbox .archive .block article a {
@@ -126,13 +126,13 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
   }
   .flexbox .page-template-page_showalldossiers .block section.with-image,
   .flexbox .page-template-page_show-child-pages .block section.with-image,
-  .flexbox .home .block section.with-image,
+  .flexbox .page-template-page_front-page .block section.with-image,
   .flexbox .blog .block section.with-image,
   .flexbox .flexcontainer .block section.with-image,
   .flexbox .archive .block section.with-image,
   .flexbox .page-template-page_showalldossiers .block article.with-image,
   .flexbox .page-template-page_show-child-pages .block article.with-image,
-  .flexbox .home .block article.with-image,
+  .flexbox .page-template-page_front-page .block article.with-image,
   .flexbox .blog .block article.with-image,
   .flexbox .flexcontainer .block article.with-image,
   .flexbox .archive .block article.with-image {
@@ -2371,7 +2371,7 @@ input[type="text"]:focus {
 .wordbreak {
   overflow-wrap: break-word;
 }
-.home header .page-title {
+.page-template-page_front-page header .page-title {
   padding-left: 16px;
 }
 @media only screen and (min-width: 650px) {
@@ -2608,6 +2608,9 @@ main .search-form input[type="submit"]:focus {
   color: #000;
   background-color: #fff;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2256px%22%20height%3D%2255px%22%20viewBox%3D%220%200%2056%2055%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2040.2%20(33826)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Elooking-glass%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-search%22%20transform%3D%22translate(-4.000000%2C%20-5.000000)%22%20fill%3D%22%23000%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(4.000000%2C%205.000000)%22%20id%3D%22looking-glass%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M54.060791%2C47.1978023%20C51.055875%2C44.2032968%2045.0460432%2C38.2142857%2042.0411273%2C35.2197802%20C41.9995847%2C35.206044%2041.9164996%2C35.1785715%2041.874957%2C35.1648352%20C41.8380299%2C35.1282052%2041.8195663%2C35.0915752%2041.8195663%2C35.0549452%20C43.03815%2C33.2600734%2043.970551%2C31.3095239%2044.6167694%2C29.2032967%20C45.2629878%2C27.0970695%2045.586097%2C24.8901098%2045.586097%2C22.5824176%20C45.586097%2C18.5164835%2044.5336841%2C14.7252747%2042.4288585%2C11.208791%20C40.4348128%2C7.8021977%2037.7206951%2C5.09157513%2034.2865057%2C3.0769233%20C30.7415356%2C1.0256411%2026.9103832%2C0%2022.7930485%2C0%20C18.6757137%2C0%2014.8445613%2C1.0256411%2011.2995913%2C3.0769233%20C7.86540182%2C5.09157513%205.13282102%2C7.8021977%203.10184887%2C11.208791%20C1.03394962%2C14.7252747%200%2C18.525641%200%2C22.60989%20C0%2C26.6941391%201.03394962%2C30.4945054%203.10184887%2C34.0109891%20C5.13282102%2C37.4175824%207.86540182%2C40.1098902%2011.2995913%2C42.0879124%20C14.8445613%2C44.1758242%2018.666482%2C45.2197801%2022.7653534%2C45.2197801%20C25.0178863%2C45.2197801%2027.2334925%2C44.8901097%2029.412172%2C44.230769%20C31.5169979%2C43.6080586%2033.4925802%2C42.6923077%2035.3389187%2C41.4835163%20C35.3758454%2C41.5384614%2035.4220038%2C41.6071429%2035.4496989%2C41.6483518%20C35.4496989%2C41.6849818%2035.4681622%2C41.7032968%2035.505089%2C41.7032968%20C39.5301069%2C45.6776558%2044.5613793%2C50.6456046%2047.5801427%2C53.6263739%20C48.4663851%2C54.5421246%2049.5557247%2C55%2050.8481616%2C55%20C52.1405986%2C55%2053.2299384%2C54.5421246%2054.1161811%2C53.6263739%20C55.0393501%2C52.7106228%2055.491703%2C51.6300366%2055.4732396%2C50.3846153%20C55.4547762%2C49.139194%2054.98396%2C48.076923%2054.060791%2C47.1978023%20L54.060791%2C47.1978023%20Z%20M22.7653534%2C37.3626374%20C20.0696994%2C37.3626374%2017.5863741%2C36.7032968%2015.3153776%2C35.3846155%20C13.0443812%2C34.0659342%2011.2257378%2C32.2710625%209.8594476%2C30.0000002%20C8.53008375%2C27.7289377%207.86540182%2C25.2564101%207.86540182%2C22.5824175%20C7.86540182%2C19.908425%208.53008375%2C17.4542126%209.8594476%2C15.2197804%20C11.2257378%2C12.9487178%2013.0443812%2C11.1446884%2015.3153776%2C9.80769212%20C17.5863741%2C8.47069584%2020.0696994%2C7.8021977%2022.7653534%2C7.8021977%20C25.4610075%2C7.8021977%2027.9535644%2C8.47069584%2030.2430243%2C9.80769212%20C32.5324841%2C11.1446884%2034.3418958%2C12.9487178%2035.6712592%2C15.2197804%20C37.0006231%2C17.4542126%2037.665305%2C19.908425%2037.665305%2C22.5824175%20C37.665305%2C25.2564101%2037.0006231%2C27.7289377%2035.6712592%2C30.0000002%20C34.3418958%2C32.2710625%2032.5324841%2C34.0659342%2030.2430243%2C35.3846155%20C27.9535644%2C36.7032968%2025.4610075%2C37.3626374%2022.7653534%2C37.3626374%20L22.7653534%2C37.3626374%20Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+main .no-results-widget.widget_search {
+  max-width: 650px;
 }
 #rhswp-searchform-onderwerpen {
   background: #275937;
@@ -3498,12 +3501,14 @@ aside.sidebar .widget.banner .widgettitle {
   text-decoration: underline;
 }
 .home-widget-area.widget_custom_html li,
+.home-widget-area.widget_rhswp_navigationmenu_widget li,
 .home-widget-area.widget_nav_menu li {
   padding-left: 1em;
   position: relative;
   display: block;
 }
 .home-widget-area.widget_custom_html li:before,
+.home-widget-area.widget_rhswp_navigationmenu_widget li:before,
 .home-widget-area.widget_nav_menu li:before {
   speak: none;
   color: #01689b;
@@ -3566,14 +3571,18 @@ aside.sidebar .widget.banner .widgettitle {
   clear: right;
   width: 98%;
 }
+.site-footer .widget_rhswp_navigationmenu_widget li ul,
 .site-footer .widget_nav_menu li ul {
   margin-left: 0;
   padding-left: 0;
 }
+.site-footer .widget_rhswp_navigationmenu_widget li a,
 .site-footer .widget_nav_menu li a,
+.site-footer .widget_rhswp_navigationmenu_widget li a:before,
 .site-footer .widget_nav_menu li a:before {
   color: #fff;
 }
+.site-footer .widget_rhswp_navigationmenu_widget li.current-menu-item a,
 .site-footer .widget_nav_menu li.current-menu-item a {
   font-weight: bold;
   font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
@@ -3962,9 +3971,10 @@ Media Queries
   display: block;
 }
 .block .links li a {
-  padding-right: 0.5em;
+  padding-right: 1em;
   text-decoration: none;
   font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
+  display: inline-block;
 }
 .block .links li a:before {
   top: 10px;
@@ -4397,13 +4407,15 @@ noscript {
     height: auto;
   }
 }
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 900px) {
+  .home .block article + article,
+  .page-template-page_front-page .block article + article,
   .page-template-front-page .block article + article {
     margin-top: 1em;
     padding-bottom: 1em;
   }
 }
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 900px) {
   .flexbox .home .block section,
   .flexbox .page-template-page_showalldossiers .block section,
   .flexbox .blog .block section,
@@ -4480,23 +4492,29 @@ noscript {
   .flexbox .archive .block article.has-post-thumbnail:last-of-type {
     max-width: 100%;
   }
+  .flexbox .page-template-page_front-page .block article.has-post-thumbnail,
   .flexbox .page-template-front-page .block article.has-post-thumbnail {
     max-width: 33%;
     flex-basis: 33%;
   }
+  .flexbox .page-template-page_front-page .block article.has-post-thumbnail .article-container,
   .flexbox .page-template-front-page .block article.has-post-thumbnail .article-container {
     display: block;
     width: 100%;
   }
+  .flexbox .page-template-page_front-page .block article.has-post-thumbnail .article-visual,
   .flexbox .page-template-front-page .block article.has-post-thumbnail .article-visual,
+  .flexbox .page-template-page_front-page .block article.has-post-thumbnail .article-excerpt,
   .flexbox .page-template-front-page .block article.has-post-thumbnail .article-excerpt {
     width: 100%;
     float: none;
   }
+  .flexbox .page-template-page_front-page .block article.has-post-thumbnail .article-visual,
   .flexbox .page-template-front-page .block article.has-post-thumbnail .article-visual {
     height: 300px;
     overflow: hidden;
   }
+  .flexbox .page-template-page_front-page .block article.has-post-thumbnail .article-visual img,
   .flexbox .page-template-front-page .block article.has-post-thumbnail .article-visual img {
     position: relative;
     transform: none;
@@ -4505,6 +4523,28 @@ noscript {
     height: 300px;
     width: auto;
     overflow: hidden;
+  }
+  .flexbox .full-width-content.home .block .events-table,
+  .flexbox .full-width-content.page-template-page_showalldossiers .block .events-table,
+  .flexbox .full-width-content.blog .block .events-table,
+  .flexbox .full-width-content.archive .block .events-table {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+  }
+  .flexbox .full-width-content.home .block .events-table > li,
+  .flexbox .full-width-content.page-template-page_showalldossiers .block .events-table > li,
+  .flexbox .full-width-content.blog .block .events-table > li,
+  .flexbox .full-width-content.archive .block .events-table > li {
+    flex-basis: 33%;
+    max-width: 33%;
+    padding-right: 1.5em;
+  }
+  .flexbox .full-width-content.home .block .events-table > li + li,
+  .flexbox .full-width-content.page-template-page_showalldossiers .block .events-table > li + li,
+  .flexbox .full-width-content.blog .block .events-table > li + li,
+  .flexbox .full-width-content.archive .block .events-table > li + li {
+    margin-top: 0;
   }
   .flexbox .full-width-content.home .block article,
   .flexbox .full-width-content.page-template-page_showalldossiers .block article,
@@ -6640,6 +6680,7 @@ div.dossier_overzicht_popular ul.links a:before {
   text-decoration: underline;
 }
 .home article.entry.type-page,
+.page-template-page_front-page article.entry.type-page,
 .page-template-front-page article.entry.type-page {
   border: 0;
   clip: rect(0 0 0 0);
@@ -6651,29 +6692,36 @@ div.dossier_overzicht_popular ul.links a:before {
   width: 1px;
 }
 .home article.entry.type-page .post-edit-link,
+.page-template-page_front-page article.entry.type-page .post-edit-link,
 .page-template-front-page article.entry.type-page .post-edit-link {
   display: none;
   visibility: hidden;
 }
 .home .site-inner,
+.page-template-page_front-page .site-inner,
 .page-template-front-page .site-inner {
   width: 100%;
   max-width: none;
   margin-top: 0;
 }
 .home .site-inner #reactieformulier,
+.page-template-page_front-page .site-inner #reactieformulier,
 .page-template-front-page .site-inner #reactieformulier,
 .home .site-inner .block,
+.page-template-page_front-page .site-inner .block,
 .page-template-front-page .site-inner .block,
 .home .site-inner article,
+.page-template-page_front-page .site-inner article,
 .page-template-front-page .site-inner article,
 .home .site-inner .wrap,
+.page-template-page_front-page .site-inner .wrap,
 .page-template-front-page .site-inner .wrap {
   margin: 0 auto;
   max-width: 1200px;
   overflow: visible;
 }
 .home .site-inner .linkblock,
+.page-template-page_front-page .site-inner .linkblock,
 .page-template-front-page .site-inner .linkblock {
   padding-left: 0.3em;
   padding-right: 0.6em;
@@ -6681,52 +6729,65 @@ div.dossier_overzicht_popular ul.links a:before {
   text-decoration: none;
 }
 .home .site-inner .linkblock:first-of-type,
+.page-template-page_front-page .site-inner .linkblock:first-of-type,
 .page-template-front-page .site-inner .linkblock:first-of-type {
   padding-left: 0;
 }
 .home .site-inner .linkblock p,
+.page-template-page_front-page .site-inner .linkblock p,
 .page-template-front-page .site-inner .linkblock p {
   color: #000;
   margin: 0;
 }
 .home .site-inner .linkblock h3,
+.page-template-page_front-page .site-inner .linkblock h3,
 .page-template-front-page .site-inner .linkblock h3 {
   color: #01689b;
 }
 .home .site-inner .linkblock:hover h3,
+.page-template-page_front-page .site-inner .linkblock:hover h3,
 .page-template-front-page .site-inner .linkblock:hover h3,
 .home .site-inner .linkblock:active h3,
+.page-template-page_front-page .site-inner .linkblock:active h3,
 .page-template-front-page .site-inner .linkblock:active h3,
 .home .site-inner .linkblock:focus h3,
+.page-template-page_front-page .site-inner .linkblock:focus h3,
 .page-template-front-page .site-inner .linkblock:focus h3 {
   text-decoration: underline;
   color: #000;
 }
 .home .site-inner .vollebreedte,
+.page-template-page_front-page .site-inner .vollebreedte,
 .page-template-front-page .site-inner .vollebreedte,
 .home .site-inner .driekwart,
+.page-template-page_front-page .site-inner .driekwart,
 .page-template-front-page .site-inner .driekwart,
 .home .site-inner .home-widget-area,
+.page-template-page_front-page .site-inner .home-widget-area,
 .page-template-front-page .site-inner .home-widget-area {
   width: 100%;
   overflow: hidden;
   padding-bottom: 1em;
 }
 .home .site-inner .vollebreedte .linkblock:last-of-type,
+.page-template-page_front-page .site-inner .vollebreedte .linkblock:last-of-type,
 .page-template-front-page .site-inner .vollebreedte .linkblock:last-of-type {
   padding-right: 0;
 }
 .home .site-inner .row,
+.page-template-page_front-page .site-inner .row,
 .page-template-front-page .site-inner .row {
   border-spacing: 10px;
 }
 @media only screen and (min-width: 650px) {
   .home .site-inner .driekwart,
+  .page-template-page_front-page .site-inner .driekwart,
   .page-template-front-page .site-inner .driekwart {
     width: 75%;
     float: left;
   }
   .home .site-inner .home-widget-area,
+  .page-template-page_front-page .site-inner .home-widget-area,
   .page-template-front-page .site-inner .home-widget-area {
     display: block;
     overflow: hidden;
@@ -6737,6 +6798,7 @@ div.dossier_overzicht_popular ul.links a:before {
     padding-right: 0;
   }
   .home .site-inner .row > .linkblock,
+  .page-template-page_front-page .site-inner .row > .linkblock,
   .page-template-front-page .site-inner .row > .linkblock {
     display: table-cell;
     vertical-align: top;
@@ -6747,25 +6809,31 @@ div.dossier_overzicht_popular ul.links a:before {
 }
 @media only screen and (min-width: 1200px) {
   .home .site-inner .row > .linkblock,
+  .page-template-page_front-page .site-inner .row > .linkblock,
   .page-template-front-page .site-inner .row > .linkblock {
     min-height: 10em;
     width: 24.5%;
   }
   .home .site-inner .row .linkblock:nth-child(4n+1),
+  .page-template-page_front-page .site-inner .row .linkblock:nth-child(4n+1),
   .page-template-front-page .site-inner .row .linkblock:nth-child(4n+1) {
     clear: left;
   }
 }
 .home section.onderwerpen,
+.page-template-page_front-page section.onderwerpen,
 .page-template-front-page section.onderwerpen {
   background-color: #f3f3f3;
   padding: 1em;
 }
 .home section.onderwerpen a:focus,
+.page-template-page_front-page section.onderwerpen a:focus,
 .page-template-front-page section.onderwerpen a:focus,
 .home section.onderwerpen a:active,
+.page-template-page_front-page section.onderwerpen a:active,
 .page-template-front-page section.onderwerpen a:active,
 .home section.onderwerpen a:hover,
+.page-template-page_front-page section.onderwerpen a:hover,
 .page-template-front-page section.onderwerpen a:hover {
   color: #000;
 }
@@ -6776,6 +6844,7 @@ div.dossier_overzicht_popular ul.links a:before {
 }
 @media only screen and (min-width: 650px) {
   .cssgrid .home .site-inner .row,
+  .cssgrid .page-template-page_front-page .site-inner .row,
   .cssgrid .page-template-front-page .site-inner .row {
     display: -ms-grid;
     display: grid;
@@ -6785,12 +6854,14 @@ div.dossier_overzicht_popular ul.links a:before {
     width: 100%;
   }
   .cssgrid .home .site-inner .row.driekwart,
+  .cssgrid .page-template-page_front-page .site-inner .row.driekwart,
   .cssgrid .page-template-front-page .site-inner .row.driekwart {
     -ms-grid-columns: repeat(3, auto);
     grid-template-columns: repeat(3, auto);
     width: 75%;
   }
   .cssgrid .home .site-inner .row .linkblock,
+  .cssgrid .page-template-page_front-page .site-inner .row .linkblock,
   .cssgrid .page-template-front-page .site-inner .row .linkblock {
     width: auto;
     min-height: 0;

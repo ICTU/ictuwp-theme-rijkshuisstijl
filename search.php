@@ -9,10 +9,19 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.7.6
-// * @desc.   Document CPT: mogelijkheid invoeren URL toegevoegd; layout SERP verbeterd.
+// * @version 2.12.2
+// * @desc.   Kortere check op uitschrijven nav.bar op home.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
+
+//========================================================================================================
+
+// Reposition the primary navigation menu
+if ( ( is_front_page() ) || ( is_home() ) ) {
+	add_action( 'genesis_after_header', 'genesis_do_nav' );
+}
+
+//========================================================================================================
 
 //* Force full-width-content layout
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
@@ -42,30 +51,6 @@ else {
 
 genesis();
 
-//========================================================================================================
-
-function rhswp_search_results_box() {
-
-//_x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' )
-/*
-	$termtitel = 'sadfasdf';
-	
-	// code for a completely custom loop
-	global $post;
-	$query  = isset( $_GET['s'] ) ? sanitize_text_field( $_GET['s'] ) : '';
-	$paged  = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-	$page   = isset( $_GET['swppage'] ) ? absint( $_GET['swppage'] ) : $paged;
-
-	if ( $paged > 1 ) {
-		$termtitel .= ' - pagina ' . $paged;
-	}
-
-	$title = sprintf( __( 'Documents for %s %s', 'wp-rijkshuisstijl' ), $term->name, $paged );
-
-	echo '<p>' . $title . '</p>';
-*/
-
-}
 
 //========================================================================================================
 
@@ -75,8 +60,6 @@ function rhswp_add_search_description() {
 	
 	echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "<span class="wordbreak">' . $search_text . '</span>"</h1>';
 
-	rhswp_search_results_box();	
-	  
 }
 
 //========================================================================================================
@@ -230,6 +213,13 @@ function rhswp_archive_custom_search_with_searchWP() {
 			echo '<h2>' . _x( 'Sorry', 'Title, no results text', 'wp-rijkshuisstijl' ) . '</h2>';
 			echo '<p>';
 			echo sprintf( _x( 'No results for %s.', 'No results text', 'wp-rijkshuisstijl' ), $query );
+			
+			if ( is_active_sidebar( RHSWP_NORESULT_WIDGET_AREA ) ) {
+			
+				dynamic_sidebar( RHSWP_NORESULT_WIDGET_AREA );
+			
+			}
+
 			echo '</p>';
 		
 		endif; 
