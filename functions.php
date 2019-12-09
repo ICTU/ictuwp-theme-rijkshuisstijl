@@ -63,11 +63,11 @@ define( 'RHSWP_LINK_CPT',                   'links' );
 define( 'CTAX_contentsoort',                'contentsoort' );
 define( 'CTAX_thema',                       'CTAX_thema' );
 define( 'RHSWP_HOME_WIDGET_AREA',           'home-widget-area' );
+define( 'RHSWP_NORESULT_WIDGET_AREA',       'noresult-widget-area' );
+
 define( 'RHSWP_PREFIX_TAG_CAT',             'rhswp_dossier_select_tag_category');
 define( 'RHSWP_CMB2_TAG_FIELD',             'select_tag');
 define( 'RHSWP_CMB2_TXT_FIELD',             'select_txt');
-
-define( 'RHSWP_NORESULT_WIDGET_AREA',       'noresult-widget-area' );
 
 if ( ! defined( 'RHSWP_CT_DOSSIER' ) ) {
   define( 'RHSWP_CT_DOSSIER',               'dossiers' );   // slug for custom taxonomy 'dossier'
@@ -121,6 +121,9 @@ if ( ! defined( 'RHSWP_WIDGET_LINK_TO_SINGLE_PAGE' ) ) {
 }
 if ( ! defined( 'RHSWP_CSS_BANNER' ) ) {
   define( 'RHSWP_CSS_BANNER',                 'banner-css' ); // slug for custom post type 'document'
+}
+if ( ! defined( 'RHSWP_WIDGET_NAVIGATIONMENU' ) ) {
+  define( 'RHSWP_WIDGET_NAVIGATIONMENU',      '(DO) navigation menu');
 }
 
 
@@ -327,6 +330,7 @@ require_once( RHSWP_FOLDER . '/includes/widget-newswidget.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-paginalinks.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-subpages.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-events.php' );
+require_once( RHSWP_FOLDER . '/includes/widget-navigation-menu.php' );
 
 // Add support for 2-column footer widgets
 add_theme_support( 'genesis-footer-widgets', 2 );
@@ -1956,7 +1960,6 @@ function rhswp_overwrite_widget_settings() {
     	'after_title'   => "</h3>\n"
     )
   );
-
   genesis_register_sidebar(
     array (
     	'name'          => _x( 'Widgets in de footer', 'Title of footer widget', 'wp-rijkshuisstijl' ),
@@ -3013,7 +3016,7 @@ function rhswp_write_extra_contentblokken() {
                   if ( $doimage ) {
                     echo '<div class="article-container">';
 
-                    if ( 'front-page.php' == $pagetemplate ) {
+                    if ( ( 'front-page.php' == $pagetemplate ) || ( 'page_front-page.php' == $pagetemplate ) ) {
                       printf( '<div class="article-visual" id="%s">&nbsp;</div>', 'image_featured_image_post_' . $post->ID );
                     }
                     else {

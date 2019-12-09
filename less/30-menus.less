@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.0.8
-// * @desc.   Doorklik naar evenementenpagina aan block toegevoegd. List arrow iets aangepast.
+// * @version 2.12.1
+// * @desc.   Homepage nu vanuit template file (page_front-page.php).
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -17,30 +17,30 @@
 .menus() {
 
 
-  nav.nav-primary,
-  #menu-container {
-    background: blue;
-    margin: 0 0;
-  }
+	nav.nav-primary,
+	#menu-container {
+		background: blue;
+		margin: 0 0;
+	}
 
-  .home {
-    nav.nav-primary,
-    #menu-container {
-      background: @nav_bg_color;
-    }
-  }
+	.home {
+		nav.nav-primary,
+		#menu-container {
+			background: @nav_bg_color;
+		}
+	}
 
   
   
-   body:not(.home) {
-    .nav-primary {
-      li {
-        a, span {
-          font-family: "Courier New", Courier, monospace !important;
-        }
-      }
-    }
-  }
+	body:not(.home) {
+		.nav-primary {
+			li {
+				a, span {
+					font-family: "Courier New", Courier, monospace !important;
+				}
+			}
+		}
+	}
 
   nav {
     ul, li {
@@ -382,38 +382,39 @@
 		}
 
     .page,
-    .single {
-      nav.nav-primary {
-        .current-menu-parent,
-        .current-page-parent,
-        .current_page_parent,
-        .current_page_ancestor,
-        .current-page-ancestor,
-        .current-menu-item {
-          & > a {
-            background: yellow;
-            color: @nav_li_active_color;
-            font-weight: bold;
-            font-family: @fontstrong;
-          }
-        }
-      }
-    }
+	.single {
+		nav.nav-primary {
+			.current-menu-parent,
+			.current-page-parent,
+			.current_page_parent,
+			.current_page_ancestor,
+			.current-page-ancestor,
+			.current-menu-item {
+				& > a {
+					// waarschuwing, dit is niet home
+					background: yellow;
+					color: @nav_li_active_color;
+					font-weight: bold;
+					font-family: @fontstrong;
+				}
+			}
+		}
+	}
 
-    .home {
-      nav.nav-primary {
-        .current-menu-parent,
-        .current-page-parent,
-        .current_page_parent,
-        .current_page_ancestor,
-        .current-page-ancestor,
-        .current-menu-item {
-          & > a {
-            background: @nav_li_active_bg;
-          }
-        }
-      }
-    }
+	.home {
+		nav.nav-primary {
+			.current-menu-parent,
+			.current-page-parent,
+			.current_page_parent,
+			.current_page_ancestor,
+			.current-page-ancestor,
+			.current-menu-item {
+				& > a {
+					background: @nav_li_active_bg;
+				}
+			}
+		}
+	}
         
     .blog {
       nav.nav-primary {
