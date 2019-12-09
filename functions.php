@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.11.1
-// * @desc.   Widgetruimtes opgeschoond en hernoemd; nieuwe widgetruimtes toegevoegd via plugin en nieuw navigatiemenu widget live gezet.
+// * @version 2.12.3
+// * @desc.   Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.11.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Widgetruimtes opgeschoond en hernoemd; nieuwe widgetruimtes toegevoegd via plugin en nieuw navigatiemenu widget live gezet." );
+define( 'CHILD_THEME_VERSION',              "2.12.3" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -6048,82 +6048,6 @@ function admin_enqueue_css_acf_contentblokken() {
 
 	}
 
-}
-
-//========================================================================================================
-
-// Overwrite widget settings
-add_action( 'widgets_init', 'rhswp_overwrite_widget_settings' );
-
-function rhswp_overwrite_widget_settings() {
-  //Gets rid of the default Primary Sidebar
-  unregister_sidebar( 'sidebar' );
-  unregister_sidebar( 'sidebar-alt' );
-
-  genesis_register_sidebar(
-    array (
-    	'name'          => _x( 'Eerste sidebar', 'Title of primary sidebar', 'wp-rijkshuisstijl' ),
-    	'description'   => _x( 'Primaire zijbalk met ruimte voor widgets. Wordt standaard getoond aan de rechterkant van de content op brede schermen', 'Description of primary sidebar', 'wp-rijkshuisstijl' ),
-    	'id'            => 'sidebar',
-    	'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
-    	'after_widget'  => "</div></div>\n",
-    	'before_title'  => '<h3 class="widgettitle">',
-    	'after_title'   => "</h3>\n"
-    )
-  );
-
-  genesis_register_sidebar(
-    array (
-    	'name'          => _x( 'Widgets in de footer', 'Title of footer widget', 'wp-rijkshuisstijl' ),
-    	'description'   => _x( "Ruimte voor extra menus's onder de hoofdcontent", 'Description of footer widget space', 'wp-rijkshuisstijl' ),
-    	'id'            => 'sidebar-footer',
-    	'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
-    	'after_widget'  => "</div></div>\n",
-    	'before_title'  => '<h3 class="widgettitle">',
-    	'after_title'   => "</h3>\n"
-    )
-  );
-
-		
-	genesis_register_sidebar(
-		array (
-				'name'          => _x( 'Geen resultaat op zoekpagina', 'Title of secondary sidebar', 'wp-rijkshuisstijl' ),
-				'description'   => _x( 'In deze ruimte kun je widgets opnemen die getoond worden als er geen zoekresultaten zijn voor een zoekopdracht.', 'Description of secundary sidebar', 'wp-rijkshuisstijl' ),
-				'id'            => RHSWP_NORESULT_WIDGET_AREA,
-				'before_widget' => '<div id="%1$s" class="search no-results-widget %2$s"><div class="widget-wrap">',
-				'after_widget'  => "</div></div>\n",
-				'before_title'  => '<h2>',
-				'after_title'   => "</h2>\n"
-			)
-		);
-
-	
-	unregister_widget( 'WP_Widget_Meta' );
-	unregister_widget( 'WP_Widget_Media_gallery' );
-	
-
-//	register_widget( 'WP_Nav_Menu_Widget' );
-	unregister_widget( 'WP_Widget_Archives' );
-	unregister_widget( 'WP_Widget_Calendar' );
-	unregister_widget( 'WP_Widget_Categories' );
-//	register_widget( 'WP_Widget_Custom_HTML' );
-	unregister_widget( 'WP_Widget_Media_Audio' );
-	unregister_widget( 'WP_Widget_Media_Gallery' );
-	unregister_widget( 'WP_Widget_Media_Image' );
-	unregister_widget( 'WP_Widget_Media_Video' );
-	unregister_widget( 'WP_Widget_Pages' );
-	unregister_widget( 'WP_Widget_Recent_Comments' );
-//	register_widget( 'WP_Widget_Recent_Posts' );
-	unregister_widget( 'WP_Widget_RSS' );
-//	register_widget( 'WP_Widget_Search' );
-	unregister_widget( 'WP_Widget_Tag_Cloud' );
-//	register_widget( 'WP_Widget_Text' );
-
-	unregister_widget( 'Genesis_Featured_Page' );
-	unregister_widget( 'Genesis_Featured_Post' );
-	unregister_widget( 'Genesis_User_Profile_Widget' );
-
-	
 }
 
 //========================================================================================================
