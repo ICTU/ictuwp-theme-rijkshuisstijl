@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.12.2
-  Version description: Kortere check op uitschrijven nav.bar op home.
+  Version: 2.12.3a
+  Version description: Fout op homepage door 'rhswp_pagelinks_replace_widget'.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -3971,9 +3971,10 @@ Media Queries
   display: block;
 }
 .block .links li a {
-  padding-right: 0.5em;
+  padding-right: 1em;
   text-decoration: none;
   font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
+  display: inline-block;
 }
 .block .links li a:before {
   top: 10px;
@@ -4406,14 +4407,15 @@ noscript {
     height: auto;
   }
 }
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 900px) {
+  .home .block article + article,
   .page-template-page_front-page .block article + article,
   .page-template-front-page .block article + article {
     margin-top: 1em;
     padding-bottom: 1em;
   }
 }
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 900px) {
   .flexbox .home .block section,
   .flexbox .page-template-page_showalldossiers .block section,
   .flexbox .blog .block section,
@@ -4521,6 +4523,28 @@ noscript {
     height: 300px;
     width: auto;
     overflow: hidden;
+  }
+  .flexbox .full-width-content.home .block .events-table,
+  .flexbox .full-width-content.page-template-page_showalldossiers .block .events-table,
+  .flexbox .full-width-content.blog .block .events-table,
+  .flexbox .full-width-content.archive .block .events-table {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+  }
+  .flexbox .full-width-content.home .block .events-table > li,
+  .flexbox .full-width-content.page-template-page_showalldossiers .block .events-table > li,
+  .flexbox .full-width-content.blog .block .events-table > li,
+  .flexbox .full-width-content.archive .block .events-table > li {
+    flex-basis: 33%;
+    max-width: 33%;
+    padding-right: 1.5em;
+  }
+  .flexbox .full-width-content.home .block .events-table > li + li,
+  .flexbox .full-width-content.page-template-page_showalldossiers .block .events-table > li + li,
+  .flexbox .full-width-content.blog .block .events-table > li + li,
+  .flexbox .full-width-content.archive .block .events-table > li + li {
+    margin-top: 0;
   }
   .flexbox .full-width-content.home .block article,
   .flexbox .full-width-content.page-template-page_showalldossiers .block article,
@@ -6655,7 +6679,9 @@ div.dossier_overzicht_popular ul.links a:before {
 .page-template-page_dossiersingleactueel .entry-content section a:focus h3 {
   text-decoration: underline;
 }
-.page-template-page_front-page article.entry.type-page {
+.home article.entry.type-page,
+.page-template-page_front-page article.entry.type-page,
+.page-template-front-page article.entry.type-page {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -6665,64 +6691,104 @@ div.dossier_overzicht_popular ul.links a:before {
   position: absolute;
   width: 1px;
 }
-.page-template-page_front-page article.entry.type-page .post-edit-link {
+.home article.entry.type-page .post-edit-link,
+.page-template-page_front-page article.entry.type-page .post-edit-link,
+.page-template-front-page article.entry.type-page .post-edit-link {
   display: none;
   visibility: hidden;
 }
-.page-template-page_front-page .site-inner {
+.home .site-inner,
+.page-template-page_front-page .site-inner,
+.page-template-front-page .site-inner {
   width: 100%;
   max-width: none;
   margin-top: 0;
 }
+.home .site-inner #reactieformulier,
 .page-template-page_front-page .site-inner #reactieformulier,
+.page-template-front-page .site-inner #reactieformulier,
+.home .site-inner .block,
 .page-template-page_front-page .site-inner .block,
+.page-template-front-page .site-inner .block,
+.home .site-inner article,
 .page-template-page_front-page .site-inner article,
-.page-template-page_front-page .site-inner .wrap {
+.page-template-front-page .site-inner article,
+.home .site-inner .wrap,
+.page-template-page_front-page .site-inner .wrap,
+.page-template-front-page .site-inner .wrap {
   margin: 0 auto;
   max-width: 1200px;
   overflow: visible;
 }
-.page-template-page_front-page .site-inner .linkblock {
+.home .site-inner .linkblock,
+.page-template-page_front-page .site-inner .linkblock,
+.page-template-front-page .site-inner .linkblock {
   padding-left: 0.3em;
   padding-right: 0.6em;
   margin: 2px;
   text-decoration: none;
 }
-.page-template-page_front-page .site-inner .linkblock:first-of-type {
+.home .site-inner .linkblock:first-of-type,
+.page-template-page_front-page .site-inner .linkblock:first-of-type,
+.page-template-front-page .site-inner .linkblock:first-of-type {
   padding-left: 0;
 }
-.page-template-page_front-page .site-inner .linkblock p {
+.home .site-inner .linkblock p,
+.page-template-page_front-page .site-inner .linkblock p,
+.page-template-front-page .site-inner .linkblock p {
   color: #000;
   margin: 0;
 }
-.page-template-page_front-page .site-inner .linkblock h3 {
+.home .site-inner .linkblock h3,
+.page-template-page_front-page .site-inner .linkblock h3,
+.page-template-front-page .site-inner .linkblock h3 {
   color: #01689b;
 }
+.home .site-inner .linkblock:hover h3,
 .page-template-page_front-page .site-inner .linkblock:hover h3,
+.page-template-front-page .site-inner .linkblock:hover h3,
+.home .site-inner .linkblock:active h3,
 .page-template-page_front-page .site-inner .linkblock:active h3,
-.page-template-page_front-page .site-inner .linkblock:focus h3 {
+.page-template-front-page .site-inner .linkblock:active h3,
+.home .site-inner .linkblock:focus h3,
+.page-template-page_front-page .site-inner .linkblock:focus h3,
+.page-template-front-page .site-inner .linkblock:focus h3 {
   text-decoration: underline;
   color: #000;
 }
+.home .site-inner .vollebreedte,
 .page-template-page_front-page .site-inner .vollebreedte,
+.page-template-front-page .site-inner .vollebreedte,
+.home .site-inner .driekwart,
 .page-template-page_front-page .site-inner .driekwart,
-.page-template-page_front-page .site-inner .home-widget-area {
+.page-template-front-page .site-inner .driekwart,
+.home .site-inner .home-widget-area,
+.page-template-page_front-page .site-inner .home-widget-area,
+.page-template-front-page .site-inner .home-widget-area {
   width: 100%;
   overflow: hidden;
   padding-bottom: 1em;
 }
-.page-template-page_front-page .site-inner .vollebreedte .linkblock:last-of-type {
+.home .site-inner .vollebreedte .linkblock:last-of-type,
+.page-template-page_front-page .site-inner .vollebreedte .linkblock:last-of-type,
+.page-template-front-page .site-inner .vollebreedte .linkblock:last-of-type {
   padding-right: 0;
 }
-.page-template-page_front-page .site-inner .row {
+.home .site-inner .row,
+.page-template-page_front-page .site-inner .row,
+.page-template-front-page .site-inner .row {
   border-spacing: 10px;
 }
 @media only screen and (min-width: 650px) {
-  .page-template-page_front-page .site-inner .driekwart {
+  .home .site-inner .driekwart,
+  .page-template-page_front-page .site-inner .driekwart,
+  .page-template-front-page .site-inner .driekwart {
     width: 75%;
     float: left;
   }
-  .page-template-page_front-page .site-inner .home-widget-area {
+  .home .site-inner .home-widget-area,
+  .page-template-page_front-page .site-inner .home-widget-area,
+  .page-template-front-page .site-inner .home-widget-area {
     display: block;
     overflow: hidden;
     clear: none;
@@ -6731,7 +6797,9 @@ div.dossier_overzicht_popular ul.links a:before {
     padding-left: 0.3em;
     padding-right: 0;
   }
-  .page-template-page_front-page .site-inner .row > .linkblock {
+  .home .site-inner .row > .linkblock,
+  .page-template-page_front-page .site-inner .row > .linkblock,
+  .page-template-front-page .site-inner .row > .linkblock {
     display: table-cell;
     vertical-align: top;
     float: left;
@@ -6740,21 +6808,33 @@ div.dossier_overzicht_popular ul.links a:before {
   }
 }
 @media only screen and (min-width: 1200px) {
-  .page-template-page_front-page .site-inner .row > .linkblock {
+  .home .site-inner .row > .linkblock,
+  .page-template-page_front-page .site-inner .row > .linkblock,
+  .page-template-front-page .site-inner .row > .linkblock {
     min-height: 10em;
     width: 24.5%;
   }
-  .page-template-page_front-page .site-inner .row .linkblock:nth-child(4n+1) {
+  .home .site-inner .row .linkblock:nth-child(4n+1),
+  .page-template-page_front-page .site-inner .row .linkblock:nth-child(4n+1),
+  .page-template-front-page .site-inner .row .linkblock:nth-child(4n+1) {
     clear: left;
   }
 }
-.page-template-page_front-page section.onderwerpen {
+.home section.onderwerpen,
+.page-template-page_front-page section.onderwerpen,
+.page-template-front-page section.onderwerpen {
   background-color: #f3f3f3;
   padding: 1em;
 }
+.home section.onderwerpen a:focus,
 .page-template-page_front-page section.onderwerpen a:focus,
+.page-template-front-page section.onderwerpen a:focus,
+.home section.onderwerpen a:active,
 .page-template-page_front-page section.onderwerpen a:active,
-.page-template-page_front-page section.onderwerpen a:hover {
+.page-template-front-page section.onderwerpen a:active,
+.home section.onderwerpen a:hover,
+.page-template-page_front-page section.onderwerpen a:hover,
+.page-template-front-page section.onderwerpen a:hover {
   color: #000;
 }
 @media only screen and (min-width: 650px) {
@@ -6763,7 +6843,9 @@ div.dossier_overzicht_popular ul.links a:before {
   }
 }
 @media only screen and (min-width: 650px) {
-  .cssgrid .page-template-page_front-page .site-inner .row {
+  .cssgrid .home .site-inner .row,
+  .cssgrid .page-template-page_front-page .site-inner .row,
+  .cssgrid .page-template-front-page .site-inner .row {
     display: -ms-grid;
     display: grid;
     grid-gap: 1em;
@@ -6771,12 +6853,16 @@ div.dossier_overzicht_popular ul.links a:before {
     grid-template-columns: repeat(4, auto);
     width: 100%;
   }
-  .cssgrid .page-template-page_front-page .site-inner .row.driekwart {
+  .cssgrid .home .site-inner .row.driekwart,
+  .cssgrid .page-template-page_front-page .site-inner .row.driekwart,
+  .cssgrid .page-template-front-page .site-inner .row.driekwart {
     -ms-grid-columns: repeat(3, auto);
     grid-template-columns: repeat(3, auto);
     width: 75%;
   }
-  .cssgrid .page-template-page_front-page .site-inner .row .linkblock {
+  .cssgrid .home .site-inner .row .linkblock,
+  .cssgrid .page-template-page_front-page .site-inner .row .linkblock,
+  .cssgrid .page-template-front-page .site-inner .row .linkblock {
     width: auto;
     min-height: 0;
     padding-left: 0;

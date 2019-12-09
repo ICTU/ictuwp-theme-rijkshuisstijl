@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.1
-// * @desc.   Homepage nu vanuit template file (page_front-page.php).
+// * @version 2.12.3
+// * @desc.   Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -642,8 +642,9 @@
 
 	//========================================================================================================
 
-//	.home,
-	.page-template-page_front-page {
+	.home,
+	.page-template-page_front-page,
+	.page-template-front-page {     
 
 		article.entry.type-page {
 			.visuallyhidden();
@@ -790,8 +791,9 @@
 		
 		@media only screen and ( min-width: @break_tablet ) {
 			
-//			.home,
-			.page-template-page_front-page {
+			.home,
+			.page-template-page_front-page,
+			.page-template-front-page {     
 				
 				.site-inner {
 					.row {

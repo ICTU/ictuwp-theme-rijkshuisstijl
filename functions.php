@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.2
-// * @desc.   Kortere check op uitschrijven nav.bar op home.
+// * @version 2.12.3
+// * @desc.   Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Kortere check op uitschrijven nav.bar op home." );
+define( 'CHILD_THEME_VERSION',              "2.12.3" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -3020,7 +3020,7 @@ function rhswp_write_extra_contentblokken() {
                   if ( $doimage ) {
                     echo '<div class="article-container">';
 
-                    if ( 'front-page.php' == $pagetemplate ) {
+                    if ( ( 'front-page.php' == $pagetemplate ) || ( 'page_front-page.php' == $pagetemplate ) ) {
                       printf( '<div class="article-visual" id="%s">&nbsp;</div>', 'image_featured_image_post_' . $post->ID );
                     }
                     else {

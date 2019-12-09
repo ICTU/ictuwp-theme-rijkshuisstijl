@@ -9,13 +9,13 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.2
-// * @desc.   Kortere check op uitschrijven nav.bar op home.
+// * @version 2.12.3
+// * @desc.   Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // 
  */
 
-//* Template Name: DO - Template voor home (*)
+//* Template Name: DO - Template voor home
 
 //* Force full-width-content layout
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );

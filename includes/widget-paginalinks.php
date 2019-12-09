@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.11.3
-// * @desc.   Widget voor no-result pagina verbeterd.
+// * @version 2.12.3
+// * @desc.   Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -382,8 +382,8 @@ function rhswp_pagelinks_replace_widget() {
 
 	global $post;
 	
-	if ( is_page() || is_single() ) {
-		
+	if ( ( !is_home() &&  !is_front_page() ) && ( is_page() || is_single() ) ) {
+
 		$toon_extra_links       = get_field(RHSWP_WIDGET_PAGELINKS_ID . '_widget_show_extra_links', $post->ID );
 		$widgettitle            = get_field(RHSWP_WIDGET_PAGELINKS_ID . '_widget_title', $post->ID );
 		$links                  = get_field(RHSWP_WIDGET_PAGELINKS_ID . '_widget_links', $post->ID );
