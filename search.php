@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.2
-// * @desc.   Kortere check op uitschrijven nav.bar op home.
+// * @version 2.12.4
+// * @desc.   search widgetruimte toegevoegd aan no-results.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 

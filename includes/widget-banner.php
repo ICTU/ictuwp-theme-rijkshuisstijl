@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.11.1
-// * @desc.   Widgetruimtes opgeschoond en hernoemd; nieuwe widgetruimtes toegevoegd via plugin en nieuw navigatiemenu widget live gezet.
+// * @version 2.12.4
+// * @desc.   search widgetruimte toegevoegd aan no-results.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 

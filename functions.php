@@ -1960,9 +1960,6 @@ function rhswp_overwrite_widget_settings() {
     	'after_title'   => "</h3>\n"
     )
   );
-  
-/*
-	
   genesis_register_sidebar(
     array (
     	'name'          => _x( 'Widgets in de footer', 'Title of footer widget', 'wp-rijkshuisstijl' ),
@@ -1975,7 +1972,6 @@ function rhswp_overwrite_widget_settings() {
     )
   );
 
-*/
 		
 	genesis_register_sidebar(
 		array (
