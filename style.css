@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.12.3a
-  Version description: Fout op homepage door 'rhswp_pagelinks_replace_widget'.
+  Version: 2.12.3
+  Version description: Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -6679,7 +6679,6 @@ div.dossier_overzicht_popular ul.links a:before {
 .page-template-page_dossiersingleactueel .entry-content section a:focus h3 {
   text-decoration: underline;
 }
-.home article.entry.type-page,
 .page-template-page_front-page article.entry.type-page,
 .page-template-front-page article.entry.type-page {
   border: 0;
@@ -6691,7 +6690,6 @@ div.dossier_overzicht_popular ul.links a:before {
   position: absolute;
   width: 1px;
 }
-.home article.entry.type-page .post-edit-link,
 .page-template-page_front-page article.entry.type-page .post-edit-link,
 .page-template-front-page article.entry.type-page .post-edit-link {
   display: none;
