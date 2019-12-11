@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.12.4 - Home zichtbaar voor de juiste templates.
+2.12.5 - Merge from flitspanel to master.
 
 ## Version history
+* 2.12.5 - Merge from flitspanel to master.
 * 2.12.4 - Home zichtbaar voor de juiste templates.
 * 2.12.3 - Styling eventblocks op home; fout verholpen op homepage door 'rhswp_pagelinks_replace_widget'.
 * 2.12.2 - Kortere check op uitschrijven nav.bar op home.

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.4
-// * @desc.   Home zichtbaar voor de juiste templates.
+// * @version 2.12.5
+// * @desc.   Merge from flitspanel to master.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.4" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Home zichtbaar voor de juiste templates." );
+define( 'CHILD_THEME_VERSION',              "2.12.5" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Merge from flitspanel to master." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
