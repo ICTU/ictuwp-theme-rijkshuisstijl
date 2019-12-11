@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.4
-// * @desc.   Stijlcorrectie voor toolbox cyber; kolommen voor dossiermenu beter verdeeld.
+// * @version 2.12.5
+// * @desc.   Merge from flitspanel to master.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 //
 
@@ -217,18 +217,17 @@
 
 .structure() {
 
-  .breadcrumb {
-    background: @communicatiekleur_vol;
-    color: @wit;
-    margin: 0;
-    overflow: hidden;
-    padding-left: 1em;
-  }
-  footer {
-    clear: both;
-    float: none;
-  }
-
+	.breadcrumb {
+		background: @communicatiekleur_vol;
+		color: @wit;
+		margin: 0;
+		overflow: hidden;
+		padding-left: 1em;
+	}
+	footer {
+		clear: both;
+		float: none;
+	}
 
 	.dossier-overview {
 		
@@ -284,20 +283,20 @@
 			}
 		}    
 	}  
-
-  .site-inner {
-    color: @nav_submenu_a_color_default;
-    margin-top: 1em;
-    overflow: hidden;
-    padding-bottom: 60px;
-  }
-
-  .home .breadcrumb-link-wrap a span {
-    .visuallyhidden();
-  }
-
-  .header-dossier {
-    overflow: hidden;
-  }
+		
+	.site-inner {
+		color: @nav_submenu_a_color_default;
+		margin-top: 1em;
+		overflow: hidden;
+		padding-bottom: 60px;
+	}
+	
+	.home .breadcrumb-link-wrap a span {
+		.visuallyhidden();
+	}
+	
+	.header-dossier {
+		overflow: hidden;
+	}
   
 }
