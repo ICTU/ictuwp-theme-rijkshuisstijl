@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.7
-// * @desc.   Hotfix voor IE11 en .events-table.
+// * @version 2.12.8
+// * @desc.   Nieuwe widgetruimte toegevoegd voor gebruik op de sitemap-pagina.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.7" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Hotfix voor IE11 en .events-table." );
+define( 'CHILD_THEME_VERSION',              "2.12.8" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Nieuwe widgetruimte toegevoegd voor gebruik op de sitemap-pagina." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -64,6 +64,7 @@ define( 'CTAX_contentsoort',                'contentsoort' );
 define( 'CTAX_thema',                       'CTAX_thema' );
 define( 'RHSWP_HOME_WIDGET_AREA',           'home-widget-area' );
 define( 'RHSWP_NORESULT_WIDGET_AREA',       'noresult-widget-area' );
+define( 'RHSWP_SITEMAP_WIDGET_AREA',        'sitemap-widget-area' );
 
 define( 'RHSWP_PREFIX_TAG_CAT',             'rhswp_dossier_select_tag_category');
 define( 'RHSWP_CMB2_TAG_FIELD',             'select_tag');
@@ -1686,24 +1687,66 @@ class rhswp_custom_walker_for_sitemap extends Walker_Page {
 //========================================================================================================
 
 function rhswp_get_sitemap() {
+	
+	echo '<div class="entry">';
+	
+	if ( is_404() ) {
+		rhswp_no_posts_content_header();
+	}
+	
+	echo '<div class="entry-content">';
+	if ( is_404() ) {
+		rhswp_no_posts_content();
+	}
+	else {
+		rhswp_get_sitemap_widgets();
+	}
+	rhswp_get_sitemap_content();
+	echo '</div>';
+	
+	echo '</div>';
+	
+}
 
-  echo '<div class="entry">';
+//========================================================================================================
 
-  if ( is_404() ) {
-    rhswp_no_posts_content_header();
-  }
 
-  echo '<div class="entry-content">';
+genesis_register_sidebar(
+    array(
+        'name'              => esc_html( __( "Sitemap widget area", 'wp-rijkshuisstijl' ) ),
+        'id'                => RHSWP_SITEMAP_WIDGET_AREA,
+        'description'       => esc_html( __( "Ruimte voor widgets op de sitemap", 'wp-rijkshuisstijl' ) ),
+        'before_widget' => genesis_markup( array(
+            'html5' => '<section role="complementary" id="%1$s" class="%2$s '.RHSWP_SITEMAP_WIDGET_AREA . '" aria-labelledby="title_' . RHSWP_SITEMAP_WIDGET_AREA . '">',
+            'xhtml' => '<div id="%1$s" class="widget %2$s">',
+            'echo'  => false,
+        ) ),
+        'after_widget'  => genesis_markup( array(
+            'html5' => '</section>' . "\n",
+            'xhtml' => '</div>' . "\n",
+            'echo'  => false
+        ) ),
+        'before_title'  => genesis_markup( array(
+            'html5' => '<h2 id="title_' . RHSWP_SITEMAP_WIDGET_AREA . '">',
+            'xhtml' => '<h2 id="title_' . RHSWP_SITEMAP_WIDGET_AREA . '">',
+            'echo'  => false,
+        ) ),
 
-  if ( is_404() ) {
-    rhswp_no_posts_content();
-  }
 
-  rhswp_get_sitemap_content();
-  echo '</div>';
 
-  echo '</div>';
+//        '<h2 class="widgettitle" id="title_%1$s">',
+        'after_title'   => "</h2>\n",
+    )
+);
 
+
+// add an extra widget area
+function rhswp_get_sitemap_widgets() {
+
+	if ( is_active_sidebar( RHSWP_SITEMAP_WIDGET_AREA ) ) {
+		dynamic_sidebar( RHSWP_SITEMAP_WIDGET_AREA );
+	}
+	
 }
 
 //========================================================================================================
@@ -1717,6 +1760,7 @@ function rhswp_widget_homepage() {
     echo '</div>';
   }
 }
+
 genesis_register_sidebar(
     array(
         'name'              => esc_html( __( "Homepage widget area", 'wp-rijkshuisstijl' ) ),
