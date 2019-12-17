@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.8
-// * @desc.   Nieuwe widgetruimte toegevoegd voor gebruik op de sitemap-pagina.
+// * @version 2.12.9
+// * @desc.   Meta-informatie voor een document uitgebreid (aantal pagina's en publicatiedatum).
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.8" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Nieuwe widgetruimte toegevoegd voor gebruik op de sitemap-pagina." );
+define( 'CHILD_THEME_VERSION',              "2.12.9" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Meta-informatie voor een document uitgebreid (aantal pagina's en publicatiedatum)." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -69,6 +69,10 @@ define( 'RHSWP_SITEMAP_WIDGET_AREA',        'sitemap-widget-area' );
 define( 'RHSWP_PREFIX_TAG_CAT',             'rhswp_dossier_select_tag_category');
 define( 'RHSWP_CMB2_TAG_FIELD',             'select_tag');
 define( 'RHSWP_CMB2_TXT_FIELD',             'select_txt');
+
+define( 'DO_SEPARATOR',             		' | ');
+
+
 
 if ( ! defined( 'RHSWP_CT_DOSSIER' ) ) {
   define( 'RHSWP_CT_DOSSIER',               'dossiers' );   // slug for custom taxonomy 'dossier'
@@ -3613,14 +3617,21 @@ function rhswp_archive_custom_loop() {
 					if ( 'document' == $contenttype ) {
 
 						$file 			= get_field( 'rhswp_document_upload', $post->ID );
+						$number_pages 	= get_field( 'rhswp_document_number_pages', $post->ID );
 						$filetype 		= strtoupper( $file['subtype'] );
 
 						if ( $filetype ) {
 
-							$documenttype = $filetype;
+							$documenttype = get_the_date( '', $post->ID );
+							$documenttype .= DO_SEPARATOR . $filetype;
 
 							if ( $file['filesize'] > 0 ){
 								 $documenttype .= ' (' . human_filesize( $file['filesize'] ) . ')';
+							}
+							if ( $number_pages > 0 ){
+													 
+								$documenttype .= DO_SEPARATOR . sprintf( _n( '%s pagina', "%s pagina's", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );      
+								 
 							}
 						}
 					}

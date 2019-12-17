@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.8
-// * @desc.   Tonen uitgelichte afbeelding van pagina's in contentblokken. Kleine stijl-fiksjes (.cta, padding flexblok, banner-widgets).
+// * @version 2.12.9
+// * @desc.   Meta-informatie voor een document uitgebreid (aantal pagina's en publicatiedatum).
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -105,12 +105,41 @@ if( function_exists('acf_add_local_field_group') ):
 				'append' => '',
 				'maxlength' => '',
 			),
+/*			
 			array(
 				'key' => 'field_5d6cdada82529',
 				'label' => 'Document-grootte',
 				'name' => 'rhswp_document_filesize',
 				'type' => 'text',
 				'instructions' => 'bijvoorbeeld: 372KB, of: 2MB',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5d6cdcd6d0daf',
+							'operator' => '==',
+							'value' => 'bestand',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+*/			
+			array(
+				'key' => 'field_5d6cdada82a31',
+				'label' => "Aantal pagina's",
+				'name' => 'rhswp_document_number_pages',
+				'type' => 'number',
+				'instructions' => 'getal: 1, 4 of 531',
 				'required' => 0,
 				'conditional_logic' => array(
 					array(

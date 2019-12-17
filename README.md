@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.12.8 - Nieuwe widgetruimte toegevoegd voor gebruik op de sitemap-pagina.
+2.12.9 - Meta-informatie voor een document uitgebreid (aantal pagina's en publicatiedatum).
 
 ## Version history
+* 2.12.9 - Meta-informatie voor een document uitgebreid (aantal pagina's en publicatiedatum).
 * 2.12.8 - Nieuwe widgetruimte toegevoegd voor gebruik op de sitemap-pagina.
 * 2.12.7 - Hotfix voor IE11 en .events-table.
 * 2.12.6 - CSS bugfiks voor 'widget_rhswp_navigationmenu_widget', rhswp_pagelinks_widget geheractiveerd.
