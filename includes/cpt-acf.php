@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.9
-// * @desc.   Meta-informatie voor een document uitgebreid (aantal pagina's en publicatiedatum).
+// * @version 2.12.10
+// * @desc.   Meta-infomatie verbeterd. Vertalingen bijgewerkt.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -78,62 +78,6 @@ if( function_exists('acf_add_local_field_group') ):
 				'max_size' => '',
 				'mime_types' => '',
 			),
-			array(
-				'key' => 'field_57faa99195748',
-				'label' => 'Bestandstype',
-				'name' => 'rhswp_document_filetype',
-				'type' => 'text',
-				'instructions' => 'Denk aan: PDF, Word-document, tekstbestand',
-				'required' => 0,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field' => 'field_5d6cdcd6d0daf',
-							'operator' => '==',
-							'value' => 'bestand',
-						),
-					),
-				),
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-/*			
-			array(
-				'key' => 'field_5d6cdada82529',
-				'label' => 'Document-grootte',
-				'name' => 'rhswp_document_filesize',
-				'type' => 'text',
-				'instructions' => 'bijvoorbeeld: 372KB, of: 2MB',
-				'required' => 0,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field' => 'field_5d6cdcd6d0daf',
-							'operator' => '==',
-							'value' => 'bestand',
-						),
-					),
-				),
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-*/			
 			array(
 				'key' => 'field_5d6cdada82a31',
 				'label' => "Aantal pagina's",

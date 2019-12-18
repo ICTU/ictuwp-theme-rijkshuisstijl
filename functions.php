@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.9
-// * @desc.   Meta-informatie voor een document uitgebreid (aantal pagina's en publicatiedatum).
+// * @version 2.12.10
+// * @desc.   Meta-infomatie verbeterd. Vertalingen bijgewerkt.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.9" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Meta-informatie voor een document uitgebreid (aantal pagina's en publicatiedatum)." );
+define( 'CHILD_THEME_VERSION',              "2.12.10" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Meta-infomatie verbeterd. Vertalingen bijgewerkt." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -2122,7 +2122,6 @@ function rhswp_document_add_extra_info() {
 		if ( function_exists( 'get_field' ) ) {
 			
 			$filesize_user				= get_field( 'rhswp_document_filesize', $post->ID );
-			$filetype_user  			= get_field( 'rhswp_document_filetype', $post->ID );
 			$file						= get_field( 'rhswp_document_upload', $post->ID );
 			$file_or_url				= get_field( 'rhswp_document_file_or_url', $post->ID );
 			$rhswp_document_url			= get_field( 'rhswp_document_url', $post->ID );
@@ -2211,34 +2210,44 @@ function rhswp_add_sharebuttons_after_content() {
 add_filter( 'genesis_post_info', 'rhswp_post_append_postinfo' );
 
 function rhswp_post_append_postinfo($post_info) {
-  global $wp_query;
-  global $post;
-
-  if ( is_home() ) {
-    // niks, eigenlijk
-    return '[post_date]';
-  }
-  elseif ( is_page() ) {
-    // niks, eigenlijk
-    return '[post_date]';
-  }
-  else {
-    if ( 'event' == get_post_type() ) {
-      return '';
-    }
-    elseif ( 'post' == get_post_type() ) {
-      if ( is_single() ) {
-        return '[post_categories before=""] [post_date]';
-
-      }
-      else {
-        return '[post_date]';
-      }
-    }
-    else {
-      return '[post_date]';
-    }
-  }
+	
+	global $wp_query;
+	global $post;
+	
+	if ( is_home() ) {
+		// niks, eigenlijk
+		return '[post_date]';
+	}
+	elseif ( is_page() ) {
+		// niks, eigenlijk
+		return '[post_date]';
+	}
+	else {
+		if ( 'event' == get_post_type() ) {
+			return '';
+		}
+		elseif ( 'post' == get_post_type() ) {
+			if ( is_single() ) {
+				return '[post_categories before=""] [post_date]';
+			}
+			else {
+				return '[post_date]';
+			}
+		}
+		elseif ( RHSWP_CPT_DOCUMENT == get_post_type() ) {
+			// hiero
+            $return = '[post_date]';
+			$number_pages 	= get_field( 'rhswp_document_number_pages', $post->ID );
+			if ( $number_pages > 0 ){
+				$return .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );      
+			}
+			return $return;
+		}
+		else {
+			return '[post_date]';
+		}
+	}
+	
 }
 
 //========================================================================================================
@@ -3619,20 +3628,22 @@ function rhswp_archive_custom_loop() {
 						$file 			= get_field( 'rhswp_document_upload', $post->ID );
 						$number_pages 	= get_field( 'rhswp_document_number_pages', $post->ID );
 						$filetype 		= strtoupper( $file['subtype'] );
+						$documenttype 	= get_the_date( '', $post->ID );
 
 						if ( $filetype ) {
 
-							$documenttype = get_the_date( '', $post->ID );
 							$documenttype .= DO_SEPARATOR . $filetype;
 
 							if ( $file['filesize'] > 0 ){
 								 $documenttype .= ' (' . human_filesize( $file['filesize'] ) . ')';
 							}
 							if ( $number_pages > 0 ){
-													 
-								$documenttype .= DO_SEPARATOR . sprintf( _n( '%s pagina', "%s pagina's", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );      
-								 
+								$documenttype .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );      
 							}
+						}
+						else {
+							// het is een link
+							$documenttype .= DO_SEPARATOR . _x( "external link", 'document is een link', 'wp-rijkshuisstijl' );
 						}
 					}
 					if ( 'attachment' == $contenttype ) {
