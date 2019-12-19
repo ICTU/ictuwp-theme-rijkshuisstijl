@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.7
-// * @desc.   Hotfix voor IE11 en .events-table.
+// * @version 2.12.13.1
+// * @desc.   Header image op mobiel bijgewerkt.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -698,77 +698,83 @@
 
   .element_slider();
 
-  // ====
-  .hero-image {
-    max-width: 3000px;
-    margin-left: auto;
-    margin-right: auto;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: visible;
-    border-bottom: 1px solid transparent;
-
-    .hero-image-tekst {
-      overflow: visible;
-      background: @wit;
-      padding: .25em .5em;      
-      font-size: 95%;
-      overflow: visible;
-      margin: 0 1em 1em 1em;
-
-      p,
-      ol,
-      ul {
-        margin-bottom: 0;
-      }
-      ol,
-      ul {
-        margin-left: 0;
-        padding-left: 0;
-        li {
-          list-style: none;
-          margin-left: 0;
-          margin-bottom: 0;
-          padding-left: 0;
-        	padding-left: 1em;
-          .listitem_arrow( @txt, 10px, 8px ); // done
-        }
-        a {
-          text-decoration: underline;
-          color: @txt;
-        	display: block;
-        }        
-      }
-
-      @media only screen and ( min-width: ( 768px ) ) {
-        max-width: ( 100% / 3 );
-        margin-left: 0;
-        float: left;
-      }
-    }
-    
-    @media only screen and (max-width: ( @break_tablet ) ) {
-      padding-top: 1em;
-    }
-    
-	@media only screen and (min-width: ( @break_tablet ) ) {
+	// ====
+	.hero-image {
+		max-width: 3000px;
+		margin-left: auto;
+		margin-right: auto;
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		overflow: visible;
+		border-bottom: 1px solid transparent;
 		
-		min-height: @slider_li_minheight;
-		max-width: 1600px;
-		padding: 1em;
-		
-		.wrapper {
-			max-width: @break_fullwidth;
-			margin-left: auto;        
-			margin-right: auto;       
+		.hero-image-tekst {
+			overflow: visible;
+			background: @wit;
+			padding: .25em .5em;      
+			font-size: 95%;
+			overflow: visible;
 			
-			.search-form {
-				float: right;
+			p,
+			ol,
+			ul {
+				margin-bottom: 0;
+			}
+			ol,
+			ul {
+				margin-left: 0;
+				padding-left: 0;
+				
+				li {
+					list-style: none;
+					margin-left: 0;
+					margin-bottom: 0;
+					padding-left: 0;
+					padding-left: 1em;
+					.listitem_arrow( @txt, 10px, 8px ); // done
+				}
+				a {
+					text-decoration: underline;
+					color: @txt;
+					display: block;
+				}        
+			}
+		}
+		
+		@media only screen and (max-width: ( @break_tablet ) ) {
+			max-width: @break_tablet;
+			padding-top: 150px;
+			background-size: 750px 150px;
+			background-position: center top;
+//			border: 1px solid green;
+		}
+		
+		@media only screen and (min-width: ( @break_tablet ) ) {
+		
+			min-height: @slider_li_minheight;
+			max-width: 1600px;
+			padding: 1em;
+			
+			.wrapper {
+				max-width: @break_fullwidth;
+				margin-left: auto;        
+				margin-right: auto;       
+				
+				.search-form {
+					float: right;
+				}
+			}
+
+			.hero-image-tekst {
+				max-width: ( 100% / 3 );
+				margin-left: 0;
+				float: left;
+//				border: 1px solid blue;
+				margin: 0 1em 1em 1em;
 			}
 		}
 	}
-}
 
 
 	/*

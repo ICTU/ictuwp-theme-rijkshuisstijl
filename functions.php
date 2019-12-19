@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.12
-// * @desc.   Bugfixes IE11.
+// * @version 2.12.13.1
+// * @desc.   Header image op mobiel bijgewerkt.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.12" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Bugfixes IE11." );
+define( 'CHILD_THEME_VERSION',              "2.12.13.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Header image op mobiel bijgewerkt." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -1802,43 +1802,46 @@ add_action( 'wp_enqueue_scripts', 'rhswp_enqueue_js_scripts' );
 
 function rhswp_enqueue_js_scripts() {
 
-  if ( ! is_admin() ) {
+	if ( ! is_admin() ) {
+		
+		if ( DO_MINIFY_JS ) {
 
-    if ( DO_MINIFY_JS ) {
-      // the minified file
-      wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', CHILD_THEME_VERSION, true );
-      wp_enqueue_script( 'slider2', RHSWP_THEMEFOLDER . '/js/min/scripts-min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
+			// the minified file
+			wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', CHILD_THEME_VERSION, true );
+			wp_enqueue_script( 'slider2', RHSWP_THEMEFOLDER . '/js/min/scripts-min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
+		
+		}
+		else {
+			
+			wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', CHILD_THEME_VERSION, true );
+			
+			// these are the unminified JS-files
+			wp_enqueue_script( 'wp-rijkshuisstijl-polyfill-eventlistener', RHSWP_THEMEFOLDER . '/js/polyfill-eventlistener.js', array( 'jquery' ), '', true );
+			wp_enqueue_script( 'wp-rijkshuisstijl-polyfill-matchmedia', RHSWP_THEMEFOLDER . '/js/polyfill-matchmedia.js', array( 'jquery' ), '', true );
+			wp_enqueue_script( 'slider2', RHSWP_THEMEFOLDER . '/js/carousel-actions.js', array( 'jquery' ), '', true );
+			
+			wp_enqueue_script( 'details-element', RHSWP_THEMEFOLDER . '/js/details-element.js', '', CHILD_THEME_VERSION, true );
 
-    }
-    else {
-
-      wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', CHILD_THEME_VERSION, true );
-
-      // these are the unminified JS-files
-      wp_enqueue_script( 'wp-rijkshuisstijl-polyfill-eventlistener', RHSWP_THEMEFOLDER . '/js/polyfill-eventlistener.js', array( 'jquery' ), '', true );
-      wp_enqueue_script( 'wp-rijkshuisstijl-polyfill-matchmedia', RHSWP_THEMEFOLDER . '/js/polyfill-matchmedia.js', array( 'jquery' ), '', true );
-      wp_enqueue_script( 'slider2', RHSWP_THEMEFOLDER . '/js/carousel-actions.js', array( 'jquery' ), '', true );
-
-      wp_enqueue_script( 'details-element', RHSWP_THEMEFOLDER . '/js/details-element.js', '', CHILD_THEME_VERSION, true );
-
-    }
-
-    $openclose  = _x( 'Show all details', 'Labels detailbuttons', 'wp-rijkshuisstijl' );
-    $openinit   = sprintf( _x( 'There are __NUMBER__ blocks with hidden text on this page. Use the button with \'%s\' to make the text available.', 'Labels detailbuttons', 'wp-rijkshuisstijl' ), $openclose );
-
-    // Localize the script with new data
-    $translation_array = array(
-    	'detailsbutton_init'		=> $openinit,
-    	'detailsbutton_resultclose'	=> _x( 'All detail blocks are closed', 'Labels detailbuttons', 'wp-rijkshuisstijl' ),
-    	'detailsbutton_resultopen'	=> _x( 'All detail blocks are open', 'Labels detailbuttons', 'wp-rijkshuisstijl' ),
-    	'open'  					=> $openclose,
-    	'close' 					=> _x( 'Hide all details', 'Labels detailbuttons', 'wp-rijkshuisstijl' )
-    );
-
-    wp_localize_script( 'slider2', 'detailssummarytranslate', $translation_array );
-
-
-  }
+//			wp_enqueue_script( 'menu-menu', RHSWP_THEMEFOLDER . '/js/menu.js', '', CHILD_THEME_VERSION, true );
+			
+		}
+		
+		$openclose  = _x( 'Show all details', 'Labels detailbuttons', 'wp-rijkshuisstijl' );
+		$openinit   = sprintf( _x( 'There are __NUMBER__ blocks with hidden text on this page. Use the button with \'%s\' to make the text available.', 'Labels detailbuttons', 'wp-rijkshuisstijl' ), $openclose );
+		
+		// Localize the script with new data
+		$translation_array = array(
+			'detailsbutton_init'		=> $openinit,
+			'detailsbutton_resultclose'	=> _x( 'All detail blocks are closed', 'Labels detailbuttons', 'wp-rijkshuisstijl' ),
+			'detailsbutton_resultopen'	=> _x( 'All detail blocks are open', 'Labels detailbuttons', 'wp-rijkshuisstijl' ),
+			'open'  					=> $openclose,
+			'close' 					=> _x( 'Hide all details', 'Labels detailbuttons', 'wp-rijkshuisstijl' )
+		);
+		
+		wp_localize_script( 'slider2', 'detailssummarytranslate', $translation_array );
+		
+	
+	}
 
 }
 

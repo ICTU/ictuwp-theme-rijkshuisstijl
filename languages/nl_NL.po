@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
 "POT-Creation-Date: 2019-12-18 08:19+0100\n"
-"PO-Revision-Date: 2019-12-19 12:20+0100\n"
+"PO-Revision-Date: 2019-12-19 17:13+0100\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: paul@wbvb.nl\n"
 "Language: nl_NL\n"
@@ -307,7 +307,7 @@ msgstr ""
 #, php-format
 msgctxt "title for link to homepage"
 msgid "To the homepage of %s."
-msgstr ""
+msgstr "Naar de homepage van %s."
 
 #: functions.php:2693 includes/widget-events.php:173
 msgid "all events"
