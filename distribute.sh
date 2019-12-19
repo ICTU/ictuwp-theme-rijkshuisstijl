@@ -1,7 +1,7 @@
 # shortcode: 'ictudo'
 # sh '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/distribute.sh' &>/dev/null
 
-# version 2.12.12
+# version 2.12.13.1
 
 # clear the log file
 
@@ -74,34 +74,56 @@ rsync -ah '/shared-paul-files/Webs/temp_translations/' '/shared-paul-files/Webs/
 # ------------------
 echo "bekkuppie maken ---------------------------------------------"
 
-rsync -r -a -v --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.12/'
+rsync -r -a -v --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.13.1/'
 
 # change the theme name
-sed -i '.bak' "s/Rijkshuisstijl (Digitale Overheid)/2.12.12 - Bugfixes IE11./g" '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.12/style.css'
+sed -i '.bak' "s/Rijkshuisstijl (Digitale Overheid)/2.12.13.1 - Header image op mobiel bijgewerkt./g" '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.13.1/style.css'
 
 # remove the backup
-rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.12/style.css.bak'
+rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.13.1/style.css.bak'
 
-rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.12/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.12/' 
+rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.13.1/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.13.1/' 
 
-rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.12/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.12/' 
+rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.13.1/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.13.1/' 
 
 
 # --------------------------------------------------------------------------------------------------------------------------------
 cd '/shared-paul-files/Webs/temp/';
 find . -name "*.map" -type f -delete;
 
+
 # --------------------------------------------------------------------------------------------------------------------------------
-echo "Dutchlogic --------------------------------------------------"
-rsync -r -a  --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/live-dutchlogic/wp-content/themes/wp-rijkshuisstijl/'
+# blauwe kopie maken
+rsync -r -a -v --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-blauw/'
+
+# change the theme name
+sed -i '.bak' "s/Rijkshuisstijl (Digitale Overheid)/Rijkshuisstijl Blauw (flitspanel)/g" '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-blauw/style.css'
+
+# donkergroen vervangengen door donkerblauw
+# @donkergroen_vol -> @donkerblauw_vol
+sed -i '.bak' "s/#275937/#01689b/g" '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-blauw/style.css'
+# donkergroen vervangengen door donkerblauw
+# @donkergroen_licht -> @donkerblauw_licht
+sed -i '.bak' "s/#becdc3/#cce0f1/g" '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-blauw/style.css'
+
+# donkergroen vervangengen door donkerblauw
+# @donkergroen_lichtst -> @donkerblauw_lichtst
+sed -i '.bak' "s/#dfe6e1/#e5f0f9/g" '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-blauw/style.css'
+
+
+rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-blauw/style.css.bak'
+
+
 
 # --------------------------------------------------------------------------------------------------------------------------------
 echo "Sentia Accept -----------------------------------------------"
 rsync -r -a  --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/wp-rijkshuisstijl/'
+rsync -r -a  --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-blauw/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/wp-rijkshuisstijl-blauw/'
 
 # --------------------------------------------------------------------------------------------------------------------------------
 echo "Sentia Live -------------------------------------------------"
 rsync -r -a  --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/wp-rijkshuisstijl/'
+rsync -r -a  --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-blauw/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/wp-rijkshuisstijl-blauw/'
 
 # --------------------------------------------------------------------------------------------------------------------------------
 
