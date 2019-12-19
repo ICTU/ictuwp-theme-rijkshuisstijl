@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.12.11 - Kopstructuur homepage verbeterd.
+2.12.12 - Bugfixes IE11.
 
 ## Version history
+* 2.12.12 - Bugfixes IE11.
 * 2.12.11 - Kopstructuur homepage verbeterd.
 * 2.12.10 - Meta-infomatie verbeterd. Vertalingen bijgewerkt.
 * 2.12.8 - Nieuwe widgetruimte toegevoegd voor gebruik op de sitemap-pagina.
