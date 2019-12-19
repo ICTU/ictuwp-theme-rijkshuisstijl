@@ -1,7 +1,7 @@
 # shortcode: 'ictudo'
 # sh '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/distribute.sh' &>/dev/null
 
-# version 2.12.10
+# version 2.12.11
 
 # clear the log file
 
@@ -74,17 +74,17 @@ rsync -ah '/shared-paul-files/Webs/temp_translations/' '/shared-paul-files/Webs/
 # ------------------
 echo "bekkuppie maken ---------------------------------------------"
 
-rsync -r -a -v --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.10/'
+rsync -r -a -v --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.11/'
 
 # change the theme name
-sed -i '.bak' "s/Rijkshuisstijl (Digitale Overheid)/2.12.10 - Meta-infomatie verbeterd. Vertalingen bijgewerkt./g" '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.10/style.css'
+sed -i '.bak' "s/Rijkshuisstijl (Digitale Overheid)/2.12.11 - Kopstructuur homepage verbeterd./g" '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.11/style.css'
 
 # remove the backup
-rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.10/style.css.bak'
+rm '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.11/style.css.bak'
 
-rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.10/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.10/' 
+rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.11/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.11/' 
 
-rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.10/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.10/' 
+rsync -r -a -v --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl-versie-2.12.11/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.11/' 
 
 
 # --------------------------------------------------------------------------------------------------------------------------------

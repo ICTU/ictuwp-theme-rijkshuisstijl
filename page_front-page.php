@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.4
-// * @desc.   search widgetruimte toegevoegd aan no-results.
+// * @version 2.12.11
+// * @desc.   Kopstructuur homepage verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // 
  */
@@ -71,7 +71,7 @@ function rhswp_home_onderwerpen_dossiers() {
 		$breedte = 'driekwart';
 	}
 
-	echo '<section class="onderwerpen">';
+	echo '<section class="home topics">';
 	echo '<div class="wrap">';
 	
 	if ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
@@ -81,6 +81,8 @@ function rhswp_home_onderwerpen_dossiers() {
 	if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
 		
 		if( have_rows( 'home_onderwerpen_dossiers' ) ) {
+			
+			echo '<h2 class="visuallyhidden">' . _x( 'Important topics', 'Home page kop', 'wp-rijkshuisstijl' ) . '</h2>';
 			
 			echo '<div class="row ' . $breedte . '">';
 			

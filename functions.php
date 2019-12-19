@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.10
-// * @desc.   Meta-infomatie verbeterd. Vertalingen bijgewerkt.
+// * @version 2.12.11
+// * @desc.   Kopstructuur homepage verbeterd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.10" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Meta-infomatie verbeterd. Vertalingen bijgewerkt." );
+define( 'CHILD_THEME_VERSION',              "2.12.11" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Kopstructuur homepage verbeterd." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -426,24 +426,26 @@ add_filter( 'get_the_content_more_link',  'rhswp_get_read_more_link'); // Genesi
 add_filter( 'excerpt_more',               'rhswp_get_read_more_link');
 
 function rhswp_get_read_more_link( $thepermalink ) {
+	
+	if ( ! is_archive() ) {
+		return;
+	}
+	
+	if (!$thepermalink) {
+		$thepermalink = get_permalink();
+	}
+	if ( $thepermalink == ' […]' ) {
+		$thepermalink = get_permalink();
+	}
+	$thepermalink   = get_permalink();
+	$postpagetitle  = get_the_title();
+	
+	if ( $postpagetitle ) {
+		$postpagetitle = '<span class="screen-reader-text"> ' . _x( 'about', 'verbindt de readmore met de titel', 'wp-rijkshuisstijl' ) . " '" . $postpagetitle . "'</span>";
+	}
+	
+	return ' <a href="' . $thepermalink . '" tabindex="-1">' . _x( 'Read more', 'Standaard linktekst voor lees-meer', 'wp-rijkshuisstijl' ) . $postpagetitle . '</a>';
 
-  if ( ! is_archive() ) {
-    return;
-  }
-
-  if (!$thepermalink) {
-    $thepermalink = get_permalink();
-  }
-  if ( $thepermalink == ' […]' ) {
-    $thepermalink = get_permalink();
-  }
-  $thepermalink   = get_permalink();
-  $postpagetitle  = get_the_title();
-
-  if ( $postpagetitle ) {
-    $postpagetitle = '<span class="screen-reader-text"> ' . _x( 'about', 'verbindt de readmore met de titel', 'wp-rijkshuisstijl' ) . " '" . $postpagetitle . "'</span>";
-  }
-   return ' <a href="' . $thepermalink . '" tabindex="-1">' . _x( 'Read more', 'Standaard linktekst voor lees-meer', 'wp-rijkshuisstijl' ) . $postpagetitle . '</a>';
 }
 
 //========================================================================================================
