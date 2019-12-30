@@ -7,12 +7,12 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.7.25
-// * @desc.   Versienummer beter. section weer zichbaar.
+// * @version 2.12.13.a
+// * @desc.   Menu-knop gereactiveerd voor mobiele schermen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 // Vars
-var header      = document.querySelector('#menu-container'),
+var header      = document.querySelector('#skiplinkscontainer'),
     menu        = document.querySelector('.nav-primary'),
     menuButton  = document.querySelector('.menu-button');
 
@@ -20,76 +20,79 @@ var header      = document.querySelector('#menu-container'),
 // =========================================================================================================
 
 function hideMenuButton(document, window, undefined) {
-
-  header.classList.remove('menu-met-js');
-  header.classList.remove('active');
-  header.classList.add('geen-menu-button');
-  menu.setAttribute('aria-hidden', 'false');
-
-  var ele = document.getElementById("menu-button");
-  
-  if (ele) {
-    // Remove button from page
-    header.removeChild(menuButton);
-  }
+	
+	header.classList.remove('menu-met-js');
+	header.classList.remove('active');
+	header.classList.add('geen-menu-button');
+	menu.setAttribute('aria-hidden', 'false');
+	
+	var ele = document.getElementById("menu-button");
+	
+	if (ele) {
+		// Remove button from page
+		header.removeChild(menuButton);
+	}
 }
 
 // =========================================================================================================
 
 function showMenuButton(document, window, undefined) {
+	
+	'use strict';
+	
+	header.classList.add('menu-met-js');
+	header.classList.remove('geen-menu-button');
+	
+	menuButton = document.createElement('button');
 
-  'use strict';
+	// Button properties
+	menuButton.classList.add('menu-button');
+	menuButton.setAttribute('id', 'menu-button');
+	menuButton.setAttribute('aria-label', 'Menu');
+	menuButton.setAttribute('aria-expanded', 'false');
+	menuButton.setAttribute('aria-controls', 'menu');
+	menuButton.innerHTML = '<i>&#x2261;</i><b>&nbsp;menu</b>';
+	
+	// Menu properties
+//	menu.setAttribute('aria-hidden', 'true');
+	menu.setAttribute('aria-labelledby', 'menu-button');
+	
+	// Add button to page
+	header.insertBefore(menuButton, menu);
+	// var insertedNode = parentNode.insertBefore(newNode, referenceNode);
+	
+	// Handle button click event
+	menuButton.addEventListener('click', function () {
+		
+		// If active...
+		if (menu.classList.contains('active')) {
 
-  header.classList.add('menu-met-js');
-  header.classList.remove('geen-menu-button');
-  
-  menuButton = document.createElement('button');
+			// Hide
+			
+			header.classList.remove('active');
+			
+			menu.classList.remove('active');
+			menu.setAttribute('aria-hidden', 'true');
+			menuButton.setAttribute('aria-label', 'Open menu');
+			menuButton.innerHTML = '<i>&#x2261;</i><b>&nbsp;menu</b>';
+			
+			menuButton.setAttribute('aria-expanded', 'false');
+		} 
+		else {
+			// Show
+			
+			header.classList.add('active');
+			
+			menu.classList.add('active');
+			menu.setAttribute('aria-hidden', 'false');
+			menuButton.setAttribute('aria-label', 'Sluit menu');
+			menuButton.innerHTML = '<i>X</i><b>&nbsp;Sluit menu</b>';
+			
+			menuButton.setAttribute('aria-expanded', 'true');
+			
+		}
+	}, false);
 
-    
-  // Button properties
-  menuButton.classList.add('menu-button');
-  menuButton.setAttribute('id', 'menu-button');
-  menuButton.setAttribute('aria-label', 'Menu');
-  menuButton.setAttribute('aria-expanded', 'false');
-  menuButton.setAttribute('aria-controls', 'menu');
-  menuButton.innerHTML = '<i>&#x2261;</i><b>&nbsp;menu</b>';
-  
-  // Menu properties
-  menu.setAttribute('aria-hidden', 'true');
-  menu.setAttribute('aria-labelledby', 'menu-button');
-  
-  // Add button to page
-  header.insertBefore(menuButton, menu);
-// var insertedNode = parentNode.insertBefore(newNode, referenceNode);
-  
-  // Handle button click event
-  menuButton.addEventListener('click', function () {
-    
-    // If active...
-    if (menu.classList.contains('active')) {
-      // Hide
-
-      header.classList.remove('active');
-
-      menu.classList.remove('active');
-      menu.setAttribute('aria-hidden', 'true');
-      menuButton.setAttribute('aria-label', 'Open menu');
-      menuButton.innerHTML = '<i>&#x2261;</i><b>&nbsp;menu</b>';
-      
-      menuButton.setAttribute('aria-expanded', 'false');
-    } else {
-      // Show
-
-      header.classList.add('active');
-
-      menu.classList.add('active');
-      menu.setAttribute('aria-hidden', 'false');
-      menuButton.setAttribute('aria-label', 'Sluit menu');
-      menuButton.innerHTML = '<i>X</i><b>&nbsp;Sluit menu</b>';
-
-      menuButton.setAttribute('aria-expanded', 'true');
-    }
-  }, false);
 }
 
 // =========================================================================================================

@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.12.13.1 - Header image op mobiel bijgewerkt.
+2.12.13.a - Menu-knop gereactiveerd voor mobiele schermen.
 
 ## Version history
+* 2.12.13.a - Menu-knop gereactiveerd voor mobiele schermen.
 * 2.12.13.1 - Header image op mobiel bijgewerkt.
 * 2.12.12 - Bugfixes IE11.
 * 2.12.11 - Kopstructuur homepage verbeterd.

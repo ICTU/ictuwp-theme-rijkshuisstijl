@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.13.1
-// * @desc.   Header image op mobiel bijgewerkt.
+// * @version 2.12.13.a
+// * @desc.   Menu-knop gereactiveerd voor mobiele schermen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.13.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Header image op mobiel bijgewerkt." );
+define( 'CHILD_THEME_VERSION',              "2.12.13.a" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Menu-knop gereactiveerd voor mobiele schermen." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -1822,7 +1822,7 @@ function rhswp_enqueue_js_scripts() {
 			
 			wp_enqueue_script( 'details-element', RHSWP_THEMEFOLDER . '/js/details-element.js', '', CHILD_THEME_VERSION, true );
 
-//			wp_enqueue_script( 'menu-menu', RHSWP_THEMEFOLDER . '/js/menu.js', '', CHILD_THEME_VERSION, true );
+			wp_enqueue_script( 'menu-menu', RHSWP_THEMEFOLDER . '/js/menu.js', '', CHILD_THEME_VERSION, true );
 			
 		}
 		
