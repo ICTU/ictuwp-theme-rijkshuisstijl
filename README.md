@@ -13,10 +13,11 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.12.13.1 - Header image op mobiel bijgewerkt.
+2.12.14 - Styling voor nieuwsberichten volgens nieuwe opzet.
 
 ## Version history
-* 2.12.13.1 - Header image op mobiel bijgewerkt.
+* 2.12.14 - Styling voor nieuwsberichten volgens nieuwe opzet.
+* 2.12.13 - Header image op mobiel bijgewerkt.
 * 2.12.12 - Bugfixes IE11.
 * 2.12.11 - Kopstructuur homepage verbeterd.
 * 2.12.10 - Meta-infomatie verbeterd. Vertalingen bijgewerkt.

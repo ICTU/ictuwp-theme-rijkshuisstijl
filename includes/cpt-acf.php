@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.10
-// * @desc.   Meta-infomatie verbeterd. Vertalingen bijgewerkt.
+// * @version 2.12.14
+// * @desc.   Styling voor nieuwsberichten volgens nieuwe opzet.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -2067,6 +2067,7 @@ if( function_exists('acf_add_local_field_group') ):
   					'return_format' => 'value',
   					'placeholder' => '',
   				),
+/*
   				array (
 					'key' => 'field_5804d943476f2',
 					'label'   => __( 'Toon hoeveel berichten met hun uitgelichte afbeelding', 'wp-rijkshuisstijl' ),
@@ -2107,6 +2108,7 @@ if( function_exists('acf_add_local_field_group') ):
   					'return_format' => 'value',
   					'placeholder' => '',
   				),
+	*/  				
 
   				array (
   					'key' => 'field_5804d943474a9',
