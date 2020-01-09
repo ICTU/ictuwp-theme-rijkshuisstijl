@@ -79,33 +79,6 @@ if( function_exists('acf_add_local_field_group') ):
 				'mime_types' => '',
 			),
 			array(
-				'key' => 'field_5d6cdada82a31',
-				'label' => "Aantal pagina's",
-				'name' => 'rhswp_document_number_pages',
-				'type' => 'number',
-				'instructions' => 'getal: 1, 4 of 531',
-				'required' => 0,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field' => 'field_5d6cdcd6d0daf',
-							'operator' => '==',
-							'value' => 'bestand',
-						),
-					),
-				),
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
 				'key' => 'field_5d6cdd88ba22e',
 				'label' => 'URL',
 				'name' => 'rhswp_document_url',
@@ -129,6 +102,26 @@ if( function_exists('acf_add_local_field_group') ):
 				'default_value' => '',
 				'placeholder' => '',
 			),
+			array(
+				'key' => 'field_5d6cdada82a31',
+				'label' => "Aantal pagina's",
+				'name' => 'rhswp_document_number_pages',
+				'type' => 'number',
+				'instructions' => 'getal: 1, 4 of 531',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			
 			array(
 				'key' => 'field_5d6ce2fb84f08',
 				'label' => 'Linktekst',

@@ -2154,9 +2154,6 @@ function rhswp_document_add_extra_info() {
 					$filetype = strtoupper( $file['subtype'] );
 					$filesize = human_filesize( $file['filesize'] );
 	
-					if ( $filetype_user ) {
-						$filetype = $filetype_user;
-					}
 					if ( $filesize_user ) {
 						$filesize = $filesize_user;
 					}
