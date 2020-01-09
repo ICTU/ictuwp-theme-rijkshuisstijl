@@ -3629,24 +3629,30 @@ function rhswp_archive_custom_loop() {
 
 						$file 			= get_field( 'rhswp_document_upload', $post->ID );
 						$number_pages 	= get_field( 'rhswp_document_number_pages', $post->ID );
+						$bestand_of_url = get_field( 'rhswp_document_file_or_url', $post->ID );
+						
 						$filetype 		= strtoupper( $file['subtype'] );
 						$documenttype 	= get_the_date( '', $post->ID );
 
-						if ( $filetype ) {
+						if ( 'bestand' === $bestand_of_url ) {
 
-							$documenttype .= DO_SEPARATOR . $filetype;
+							if ( $filetype ) {
+								$documenttype .= DO_SEPARATOR . $filetype;
+							}
 
 							if ( $file['filesize'] > 0 ){
 								 $documenttype .= ' (' . human_filesize( $file['filesize'] ) . ')';
-							}
-							if ( $number_pages > 0 ){
-								$documenttype .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );      
 							}
 						}
 						else {
 							// het is een link
 							$documenttype .= DO_SEPARATOR . _x( "external link", 'document is een link', 'wp-rijkshuisstijl' );
 						}
+
+						if ( $number_pages > 0 ){
+							$documenttype .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );      
+						}
+						
 					}
 					if ( 'attachment' == $contenttype ) {
 						
