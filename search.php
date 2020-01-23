@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.4
-// * @desc.   search widgetruimte toegevoegd aan no-results.
+// * @version 2.12.14
+// * @desc.   Zoekformulier kan verborgen worden in de site-instellingen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 

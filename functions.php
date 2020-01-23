@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.13.1
-// * @desc.   Header image op mobiel bijgewerkt.
+// * @version 2.12.14
+// * @desc.   Zoekformulier kan verborgen worden in de site-instellingen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.13.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Header image op mobiel bijgewerkt." );
+define( 'CHILD_THEME_VERSION',              "2.12.14" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Zoekformulier kan verborgen worden in de site-instellingen." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -838,37 +838,41 @@ add_filter( 'genesis_breadcrumb_args', 'rhswp_breadcrumb_args' );
 function rhswp_breadcrumb_args( $args ) {
 
   global $wp_query;
-
-  $separator  = __( '<span class="separator">&#8250;</span>', 'wp-rijkshuisstijl' );
-  $searchform = '';
-
-//  if ( is_home() || is_front_page() || is_search() ) {
-  if ( is_front_page() || is_search() ) {
-	  // somehow the actueel pagina was marked as 'is_home()' (digitaleoverheid.nl/actueel)
-//    $searchform = 'HOME: ' . is_home() . ' / FP: ' . is_front_page() . ' / SEARCH: ' . is_search() . '';
-  }
-  else {
-    $searchform = get_search_form( false );
-  }
-
-  $args['home']                       = esc_html( __( "Home", 'wp-rijkshuisstijl' ) );
-  $args['sep']                        = $separator ;
-  $args['list_sep']                   = ', ';
-  $args['prefix']                     = '<div class="breadcrumb"><div class="wrap"><nav class="breadlist" aria-label="' . esc_attr( _x( 'Breadcrumb', 'breadcrumb', 'wp-rijkshuisstijl' ) ) . '" >';
-  $args['suffix']                     = '</nav>' . $searchform . '</div></div>';
-  $args['heirarchial_attachments']    = true;
-  $args['heirarchial_categories']     = true;
-  $args['display']                    = true;
-  $args['labels']['prefix']           = '';
-  $args['labels']['author']           = esc_html( _x( "Authors", 'breadcrumb', 'wp-rijkshuisstijl' ) ) . $separator;
-  $args['labels']['category']         = '';
-  $args['labels']['date']             = '';
-
-  $args['labels']['tag']              = esc_html( _x( "Tags", 'breadcrumb', 'wp-rijkshuisstijl' ) ) . $separator;
-  $args['labels']['search']           = esc_html( _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) );
-  $args['labels']['tax']              = '';
-
-  if ( isset( $wp_query->query_vars['taxonomy'] ) ) {
+	
+	$separator  = __( '<span class="separator">&#8250;</span>', 'wp-rijkshuisstijl' );
+	$searchform = '';
+	
+	if ( is_front_page() || is_search() ) {
+		// somehow the actueel pagina was marked as 'is_home()' (digitaleoverheid.nl/actueel)
+	}
+	else {
+        if( 'hide' === get_field( 'siteoption_hide_searchbox', 'option') ) {
+	        // alleen als het zoekformulier expliciet op verborgen is gezet, verbergen
+        }
+        else {
+	        // zoekformulier gewoon tonen
+			$searchform = get_search_form( false );
+		}
+	}
+	
+	$args['home']                       = esc_html( __( "Home", 'wp-rijkshuisstijl' ) );
+	$args['sep']                        = $separator ;
+	$args['list_sep']                   = ', ';
+	$args['prefix']                     = '<div class="breadcrumb"><div class="wrap"><nav class="breadlist" aria-label="' . esc_attr( _x( 'Breadcrumb', 'breadcrumb', 'wp-rijkshuisstijl' ) ) . '" >';
+	$args['suffix']                     = '</nav>' . $searchform . '</div></div>';
+	$args['heirarchial_attachments']    = true;
+	$args['heirarchial_categories']     = true;
+	$args['display']                    = true;
+	$args['labels']['prefix']           = '';
+	$args['labels']['author']           = esc_html( _x( "Authors", 'breadcrumb', 'wp-rijkshuisstijl' ) ) . $separator;
+	$args['labels']['category']         = '';
+	$args['labels']['date']             = '';
+	
+	$args['labels']['tag']              = esc_html( _x( "Tags", 'breadcrumb', 'wp-rijkshuisstijl' ) ) . $separator;
+	$args['labels']['search']           = esc_html( _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) );
+	$args['labels']['tax']              = '';
+	
+	if ( isset( $wp_query->query_vars['taxonomy'] ) ) {
 
     $tax = $wp_query->query_vars['taxonomy'];
 
@@ -1180,8 +1184,19 @@ function rhswp_no_posts_content_header() {
 //========================================================================================================
 
 function rhswp_no_posts_content() {
-    echo '<p>' . sprintf( __( 'Sorry, the content you asked for is not available. Some options: <a href="%s">go to the home page</a>, or use this search form.', 'wp-rijkshuisstijl' ), home_url() ) . '</p>';
-    echo '<p>' . get_search_form() . '</p>';
+
+        if( 'hide' === get_field( 'siteoption_hide_searchbox', 'option') ) {
+	        // alleen als het zoekformulier expliciet op verborgen is gezet, verbergen
+			echo '<p>' . sprintf( __( 'Sorry, the content you asked for is not available. <a href="%s">Go to the home page</a>', 'wp-rijkshuisstijl' ), home_url() ) . '</p>';
+        }
+        else {
+	        // zoekformulier gewoon tonen
+			echo '<p>' . sprintf( __( 'Sorry, the content you asked for is not available. Some options: <a href="%s">go to the home page</a>, or use this search form.', 'wp-rijkshuisstijl' ), home_url() ) . '</p>';
+			echo '<p>' . get_search_form() . '</p>';
+			
+		}
+	
+
 }
 
 //========================================================================================================
@@ -3336,14 +3351,25 @@ function rhswp_check_caroussel_or_featured_img() {
 						echo '</div>';
 						
 						if ( is_home() || is_front_page() ) {
-							get_search_form();
+
+					        if( 'hide' === get_field( 'siteoption_hide_searchbox', 'option') ) {
+						        // alleen als het zoekformulier expliciet op verborgen is gezet, verbergen
+					        }
+					        else {
+								get_search_form();
+					        }
 						}
 						
 					}
 					else {
 						echo '&nbsp;';
 						if ( is_home() || is_front_page() ) {
-							get_search_form();
+					        if( 'hide' === get_field( 'siteoption_hide_searchbox', 'option') ) {
+						        // alleen als het zoekformulier expliciet op verborgen is gezet, verbergen
+					        }
+					        else {
+								get_search_form();
+					        }
 						}
 					}
 					echo '</div>'; // .wrapper
