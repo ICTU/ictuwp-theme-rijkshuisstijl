@@ -8,7 +8,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.15.b
+// * @version 2.12.15.c
 // * @desc.   Wijzigingen n.a.v. rapport accessibility.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
@@ -23,7 +23,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.15.b" );
+define( 'CHILD_THEME_VERSION',              "2.12.15.c" );
 define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Wijzigingen n.a.v. rapport accessibility." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
@@ -2355,7 +2355,7 @@ function rhswp_append_site_logo() {
 	
 	$label = sprintf( _x( "To the homepage of %s.", 'title for link to homepage', 'wp-rijkshuisstijl' ), $_SERVER["HTTP_HOST"] );
 	
-	// @since 2.12.15.b
+	// @since 2.12.15.c
 	echo '<a href="' . get_home_url() . '" title="' . $label . '"><span id="logotype"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitaleoverheid.svg" alt="Logo Rijksoverheid"></span></a>';
 
 }
@@ -3310,7 +3310,7 @@ function rhswp_check_caroussel_or_featured_img() {
 				else {
 					// extra array met alt-teksten voor de headerimages.
 					// indien geen tekst ingevoerd is het alt-attribuut gewoon leeg.
-					// @since 2.12.15.b
+					// @since 2.12.15.c
 					if ( WP_OVERHEID_ALT[ $digibeterclass ] ) {
 						$alttekst 	= WP_OVERHEID_ALT[ $digibeterclass ];
 					}
