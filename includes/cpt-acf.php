@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.14
-// * @desc.   Zoekformulier kan verborgen worden in de site-instellingen.
+// * @version 2.12.15
+// * @desc.   Wijzigingen n.a.v. rapport accessibility.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -549,12 +549,13 @@ endif;
 if( function_exists('acf_add_options_page') ):
 
 	$args = array(
-		'slug' => 'instellingen',
-		'title' => __( 'Instellingen theme', 'wp-rijkshuisstijl' ),
-		'parent' => 'themes.php'
+		'slug' 			=> 'instellingen',
+		'title' 		=> __( 'Instellingen theme', 'wp-rijkshuisstijl' ),
+		'capability'	=> 'manage_options',
+		'parent' 		=> 'themes.php'
 	); 
 	
-		acf_add_options_page($args);
+	acf_add_options_page($args);
 
 endif;
 
@@ -1395,41 +1396,43 @@ function cptui_register_my_cpts() {
 
 
 	$labels = array(
-		"name"                  => __( 'Carrousels', 'wp-rijkshuisstijl' ),
-		"singular_name"         => __( 'Carrousel', 'wp-rijkshuisstijl' ),
-		"menu_name"             => __( 'Carrousels', 'wp-rijkshuisstijl' ),
-		"all_items"             => __( 'Alle carrousels', 'wp-rijkshuisstijl' ),
-		"add_new"               => __( 'Nieuwe carrousel toevoegen', 'wp-rijkshuisstijl' ),
-		"add_new_item"          => __( 'Voeg nieuwe carrousel toe', 'wp-rijkshuisstijl' ),
-		"edit_item"             => __( 'Bewerk carrousel', 'wp-rijkshuisstijl' ),
-		"new_item"              => __( 'Nieuwe carrousel', 'wp-rijkshuisstijl' ),
-		"view_item"             => __( 'Bekijk carrousel', 'wp-rijkshuisstijl' ),
-		"search_items"          => __( 'Zoek carrousel', 'wp-rijkshuisstijl' ),
-		"not_found"             => __( 'Geen carrousels gevonden', 'wp-rijkshuisstijl' ),
-		"not_found_in_trash"    => __( 'Geen carrousels gevonden in de prullenbak', 'wp-rijkshuisstijl' ),
-		"featured_image"        => __( 'Uitgelichte afbeelding', 'wp-rijkshuisstijl' ),
-		"archives"              => __( 'Overzichten', 'wp-rijkshuisstijl' ),
-		"uploaded_to_this_item" => __( 'Bijbehorende bestanden', 'wp-rijkshuisstijl' ),
+		"name"          			=> __( 'Carrousels', 'wp-rijkshuisstijl' ),
+		"singular_name" 			=> __( 'Carrousel', 'wp-rijkshuisstijl' ),
+		"menu_name"     			=> __( 'Carrousels', 'wp-rijkshuisstijl' ),
+		"all_items"     			=> __( 'Alle carrousels', 'wp-rijkshuisstijl' ),
+		"add_new"       			=> __( 'Nieuwe carrousel toevoegen', 'wp-rijkshuisstijl' ),
+		"add_new_item"  			=> __( 'Voeg nieuwe carrousel toe', 'wp-rijkshuisstijl' ),
+		"edit_item"     			=> __( 'Bewerk carrousel', 'wp-rijkshuisstijl' ),
+		"new_item"      			=> __( 'Nieuwe carrousel', 'wp-rijkshuisstijl' ),
+		"view_item"     			=> __( 'Bekijk carrousel', 'wp-rijkshuisstijl' ),
+		"search_items"  			=> __( 'Zoek carrousel', 'wp-rijkshuisstijl' ),
+		"not_found"     			=> __( 'Geen carrousels gevonden', 'wp-rijkshuisstijl' ),
+		"not_found_in_trash"    	=> __( 'Geen carrousels gevonden in de prullenbak', 'wp-rijkshuisstijl' ),
+		"featured_image"			=> __( 'Uitgelichte afbeelding', 'wp-rijkshuisstijl' ),
+		"archives"      			=> __( 'Overzichten', 'wp-rijkshuisstijl' ),
+		"uploaded_to_this_item" 	=> __( 'Bijbehorende bestanden', 'wp-rijkshuisstijl' ),
 		);
 
 	$args = array(
-		"label"                 => __( 'Carrousels', '' ),
-		"labels"                => $labels,
-		"description"           => "Foto\'s en links. Toe te voegen aan pagina\'s en taxonomieen op Digitale Overheid",
-		"public"                => true,
-		"publicly_queryable"    => false,
-		"show_ui"               => true,
-		"show_in_rest"          => false,
-		"rest_base"             => "",
-		"has_archive"           => false,
-		"show_in_menu"          => true,
-		"exclude_from_search"   => false,
-		"capability_type"       => "post",
-		"map_meta_cap"          => true,
-		"hierarchical"          => false,
-		"rewrite"               => array( "slug" => "carrousel", "with_front" => false ),
-		"query_var"             => false,
-		"supports"              => array( "title", "excerpt", "revisions" ),					);
+		"label"         			=> __( 'Carrousels', '' ),
+		"labels"        			=> $labels,
+		"description"   			=> "Foto\'s en links. Toe te voegen aan pagina\'s en taxonomieen op Digitale Overheid",
+		"public"        			=> true,
+		"publicly_queryable"    	=> false,
+		"show_ui"       			=> true,
+		"show_in_rest"  			=> false,
+		"rest_base"     			=> "",
+		"has_archive"   			=> false,
+		"show_in_menu"  			=> true,
+		"exclude_from_search"   	=> false,
+		"capability_type"       	=> "post",
+		"map_meta_cap"  			=> true,
+		"hierarchical"  			=> false,
+		"rewrite"       			=> array( "slug" => "carrousel", "with_front" => false ),
+		"query_var"     			=> false,
+		"supports"      			=> array( "title", "excerpt", "revisions" ),					
+	);
+	
 	register_post_type( RHSWP_CPT_SLIDER, $args );
 
 // End of cptui_register_my_cpts()
@@ -1644,9 +1647,49 @@ if( function_exists('acf_add_local_field_group') ):
   	'active' => 1,
   	'description' => '',
   ));
+	
+	//======================================================================================================
 
-  //======================================================================================================
+	if ( ! defined( 'WP_OVERHEID_ALT' ) ) {
+		// extra array met alt-teksten voor de headerimages.
+		// indien geen tekst ingevoerd is het alt-attribuut gewoon leeg.
+		// @since 2.12.15
+	
+		define( 'WP_OVERHEID_ALT', array(
+	        'digibeter-oranje'                                    =>    "NL Digitaal - Data Agenda Overheid",
+	        'digibeter-blauw'                                     =>    "NL Digitaal - Data Agenda Overheid",
+	        'digibeter-groen'                                     =>    "NL Digitaal - Data Agenda Overheid",
+	        'digibeter-violet'                                    =>    "NL Digitaal - Data Agenda Overheid",
+	        'digibeter-paars'                                     =>    "NL Digitaal - Data Agenda Overheid",
+	        'digibeter-en-orange'                                 =>    "NL Digitaal - Digital Government Agenda",
+	        'digibeter-en-blue'                                   =>    "NL Digitaal - Digital Government Agenda",
+	        'digibeter-en-green'                                  =>    "NL Digitaal - Digital Government Agenda",
+	        'digibeter-en-violet'                                 =>    "NL Digitaal - Digital Government Agenda",
+	        'digibeter-en-purple'                                 =>    "NL Digitaal - Digital Government Agenda",
+	        'da-06'                                               =>    "NL Digitaal - Data Agenda Overheid",
+	        'da-01-problemen-oplossen'                            =>    "NL Digitaal - Data Agenda Overheid",
+	        'da-02-wetgeving-publieke-waarden'                    =>    "NL Digitaal - Data Agenda Overheid",
+	        'da-03-overheidsdata-verbeteren'                      =>    "NL Digitaal - Data Agenda Overheid",
+	        'da-04-kennis-verzamelen-verbeteren'                  =>    "NL Digitaal - Data Agenda Overheid",
+	        'da-05-mensen-organisatie-cultuurverandering'         =>    "NL Digitaal - Data Agenda Overheid",
+	        'toolbox01-kwaliteit-van-data-algoritme-en-analyse'   =>    "",
+	        'toolbox02-belanghebbenden-betrekken'                 =>    "",
+	        'toolbox03-transparantie-en-verantwoording'           =>    "",
+	        'toolbox04-wet-en-regelgeving-respecteren'            =>    "",
+	        'toolbox05-monitoren-en-evalueren'                    =>    "",
+	        'toolbox06-veiligheid-borgen'                         =>    "",
+	        'toolbox07-publieke-waarden-centraal'                 =>    "",
+	        'cyberincident01-rapporteren-report'                  =>    "Rapporteer - NL Digibeter - Agenda Digitale Overheid",
+	        'cyberincident02-beoordelen-assess'                   =>    "Beoordeel - NL Digibeter - Agenda Digitale Overheid",
+	        'cyberincident03-bijeenroepen-convene'                =>    "Roep bijeen - NL Digibeter - Agenda Digitale Overheid",
+	        'cyberincident04-uitvoeren-execute'                   =>    "Voer uit - NL Digibeter - Agenda Digitale Overheid",
+	        'cyberincident05-oplossen-resolve'                    =>    "Los op - NL Digibeter - Agenda Digitale Overheid",
+	        'cyberincident06-voorbereid'                          =>    "Wees voorbereid - NL Digibeter - Agenda Digitale Overheid",
+	
+		) );
+	}
 
+	
 	acf_add_local_field_group(array(
 		'key' => 'group_5b30e4089957f',
 		'title' => 'Kleuren voor NL Digibeter',
@@ -1685,7 +1728,7 @@ if( function_exists('acf_add_local_field_group') ):
 	  				'da-03-overheidsdata-verbeteren'					=> 'NDA H3 - Overheidsdata kwalitatief verbeteren en efficiënter benutten',
 	  				'da-04-kennis-verzamelen-verbeteren'				=> 'NDA H4 - Kennis over datagedreven werken verzamelen en delen',
 	  				'da-05-mensen-organisatie-cultuurverandering'		=> 'NDA H5 - Investeren in mensen, organisatie en cultuurverandering',
-
+	
 					'toolbox01-kwaliteit-van-data-algoritme-en-analyse'	=> 'Innovatie 1 - Kwaliteit van data algoritme en analyse',
 					'toolbox02-belanghebbenden-betrekken'     			=> 'Innovatie 2 - Belanghebbenden betrekken',
 					'toolbox03-transparantie-en-verantwoording'     	=> 'Innovatie 3 - Transparantie en verantwoording',
@@ -1864,11 +1907,11 @@ if( function_exists('acf_add_local_field_group') ):
   						'id' => '',
   					),
   					'choices' => array (
-  						'berichten'           => __( 'Automatische lijst van berichten', 'wp-rijkshuisstijl' ),
+  						'berichten'   			=> __( 'Automatische lijst van berichten', 'wp-rijkshuisstijl' ),
   						'berichten_paginas'   => __( 'Berichten of pagina\'s', 'wp-rijkshuisstijl' ),
-  						'algemeen'            => __( 'Vrije invoer: links in de volgorde die ik bepaal', 'wp-rijkshuisstijl' ),
+  						'algemeen'    			=> __( 'Vrije invoer: links in de volgorde die ik bepaal', 'wp-rijkshuisstijl' ),
   						'select_dossiers'     => __( 'Een selectie van dossiers', 'wp-rijkshuisstijl' ),
-  						'events'              => __( 'Automatische lijst van evenementen', 'wp-rijkshuisstijl' ),
+  						'events'      			=> __( 'Automatische lijst van evenementen', 'wp-rijkshuisstijl' ),
   					),
   					'allow_null' => 0,
   					'other_choice' => 0,
