@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.14
-// * @desc.   Zoekformulier kan verborgen worden in de site-instellingen.
+// * @version 2.12.15.a
+// * @desc.   Wijzigingen n.a.v. rapport accessibility.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.14" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Zoekformulier kan verborgen worden in de site-instellingen." );
+define( 'CHILD_THEME_VERSION',              "2.12.15.a" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Wijzigingen n.a.v. rapport accessibility." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -2353,10 +2353,12 @@ function cmb2_render_human_name( $field, $escaped_value, $object_id,
 add_action( 'genesis_site_title',   'rhswp_append_site_logo' );
 
 function rhswp_append_site_logo() {
+	
+	$label = sprintf( _x( "To the homepage of %s.", 'title for link to homepage', 'wp-rijkshuisstijl' ), $_SERVER["HTTP_HOST"] );
+	
+	// @since 2.12.15.a
+	echo '<a href="' . get_home_url() . '" title="' . $label . '"><span id="logotype"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitaleoverheid.svg" alt="Logo Rijksoverheid"></span></a>';
 
-  $label = sprintf( _x( "To the homepage of %s.", 'title for link to homepage', 'wp-rijkshuisstijl' ), $_SERVER["HTTP_HOST"] );
-
-  echo '<a href="' . get_home_url() . '" title="' . $label . '"><span id="logotype"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitaleoverheid.svg" alt="Logo digitaleoverheid.nl"></span></a>';
 }
 
 //========================================================================================================
@@ -3289,23 +3291,31 @@ function rhswp_check_caroussel_or_featured_img() {
 		if ( $digibeterterms ) {
 
 			echo '<div class="wrap header-image">';
+			
 			foreach( $digibeterterms as $digibeterterm ) {
 
-				$term_id    		= ' ' . $digibeterterm->term_id;
-				$acfid      		= RHSWP_CT_DIGIBETER . '_' . $term_id;
+				$acfid      		= RHSWP_CT_DIGIBETER . '_' . $digibeterterm->term_id;
 
 				$digibeterimage		= get_field( 'digibeter_term_hoofdstukplaatje', $acfid );
 				$digibeterclass 	= get_field( 'digibeter_term_achtergrondkleur', $acfid );
-				
+
 				// default image is part of this theme
 				$image				= RHSWP_THEMEFOLDER . '/images/digibeter-icons/' . $digibeterclass . '.svg';
-				$alttekst			= $digibeterclass;
+				$alttekst			= '';
 
 				// but if an image is attached to this term, show the uploaded image
 				if( $digibeterimage ) {
 					$image 		= $digibeterimage['url'];
 					$alttekst 	= $digibeterimage['alt'];
 				}					
+				else {
+					// extra array met alt-teksten voor de headerimages.
+					// indien geen tekst ingevoerd is het alt-attribuut gewoon leeg.
+					// @since 2.12.15.a
+					if ( WP_OVERHEID_ALT[ $digibeterclass ] ) {
+						$alttekst 	= WP_OVERHEID_ALT[ $digibeterclass ];
+					}
+				}
 
 				echo '<img src="' . $image . '" alt="' . $alttekst . '" width="1200" height="400" >';
 				
