@@ -8,7 +8,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.15.a
+// * @version 2.12.15
 // * @desc.   Wijzigingen n.a.v. rapport accessibility.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
@@ -1653,7 +1653,7 @@ if( function_exists('acf_add_local_field_group') ):
 	if ( ! defined( 'WP_OVERHEID_ALT' ) ) {
 		// extra array met alt-teksten voor de headerimages.
 		// indien geen tekst ingevoerd is het alt-attribuut gewoon leeg.
-		// @since 2.12.15.a
+		// @since 2.12.15
 	
 		define( 'WP_OVERHEID_ALT', array(
 	        'digibeter-oranje'                                    =>    "NL Digitaal - Data Agenda Overheid",

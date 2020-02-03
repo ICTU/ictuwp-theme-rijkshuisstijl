@@ -1,7 +1,7 @@
 # shortcode: 'ictudo'
 # sh '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/distribute.sh' &>/dev/null
 
-# version 2.12.15.a
+# version 2.12.15
 
 # clear the log file
 
@@ -78,26 +78,26 @@ rsync -ah '/Users/paul/shared-paul-files/Webs/temp_translations/' '/Users/paul/s
 # ------------------
 echo "bekkuppie maken ---------------------------------------------"
 
-rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/temp/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15.a/'
+rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/temp/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15/'
 
 # change the theme name
-sed -i '.bak' "s/Rijkshuisstijl (Digitale Overheid)/2.12.15.a - Zoekformulier kan verborgen worden in de site-instellingen./g" '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15.a/style.css'
+sed -i '.bak' "s/Rijkshuisstijl (Digitale Overheid)/2.12.15 - Zoekformulier kan verborgen worden in de site-instellingen./g" '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15/style.css'
 
 # remove the backup
-rm '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15.a/style.css.bak'
+rm '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15/style.css.bak'
 
-rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15.a/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.15.a/' 
+rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.15/' 
 
-rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15.a/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.15.a/' 
+rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.12.15/' 
 
 ## go to development folder
 cd '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/';
 
 ## create a tar ball
-tar czf wp-rijkshuisstijl-versie-2.12.15.a.tar.gz 'wp-rijkshuisstijl-versie-2.12.15.a'
+tar czf wp-rijkshuisstijl-versie-2.12.15.tar.gz 'wp-rijkshuisstijl-versie-2.12.15'
 
 ## remove the folder
-rm -rf '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15.a/'
+rm -rf '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.12.15/'
 
 # --------------------------------------------------------------------------------------------------------------------------------
 cd '/Users/paul/shared-paul-files/Webs/temp/';

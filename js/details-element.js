@@ -6,7 +6,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.15.b
+// * @version 2.12.15
 // * @desc.   Wijzigingen n.a.v. rapport accessibility.
 // * @link      https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 //

@@ -13,10 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.12.15.a - Wijzigingen n.a.v. rapport accessibility.
+2.12.15 - Wijzigingen n.a.v. rapport accessibility.
 
 ## Version history
-* 2.12.15.a - Wijzigingen n.a.v. rapport accessibility.
+* 2.12.15 - Wijzigingen n.a.v. rapport accessibility.
 * 2.12.14 - Zoekformulier kan verborgen worden in de site-instellingen.
 * 2.12.13 - Header image op mobiel bijgewerkt.
 * 2.12.12 - Bugfixes IE11.

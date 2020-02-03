@@ -8,7 +8,7 @@
 // * @author  Rian Rietveld
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.15.d
+// * @version 2.12.15
 // * @desc.   Wijzigingen n.a.v. rapport accessibility.
 // * @link    http://genesis-accessible.org/
  */
