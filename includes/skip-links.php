@@ -8,8 +8,8 @@
 // * @author  Rian Rietveld
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.20
-// * @desc.   Site-improve: alleen skiplink voor hoofdnavigatie gebruiken op homepage.
+// * @version 2.12.15.d
+// * @desc.   Wijzigingen n.a.v. rapport accessibility.
 // * @link    http://genesis-accessible.org/
  */
 
@@ -98,7 +98,9 @@ function rhswp_skip_links() {
 function rhswp_skiplinks_markup() {
 
 	add_filter( 'genesis_attr_nav-primary', 'rhswp_skiplinks_attr_nav_primary' );
-	add_filter( 'genesis_attr_content', 'rhswp_skiplinks_attr_content' );
+//	add_filter( 'genesis_attr_content', 'rhswp_skiplinks_attr_content' );
+	add_filter( 'genesis_attr_site-inner', 'rhswp_skiplinks_attr_content' );
+	
 	add_filter( 'genesis_attr_sidebar-primary', 'rhswp_sidebar_primary_attr_sidebar_primary' );
 	add_filter( 'genesis_attr_sidebar-secondary', 'rhswp_sidebar_secondary_attr_sidebar_secondary' );
 	add_filter( 'genesis_attr_footer-widgets', 'rhswp_footer_attr_footer_widgets' );
