@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.15
-// * @desc.   Wijzigingen n.a.v. rapport accessibility.
+// * @version 2.12.17
+// * @desc.   Skiplink-structuur aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.15" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Wijzigingen n.a.v. rapport accessibility." );
+define( 'CHILD_THEME_VERSION',              "2.12.17" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Skiplink-structuur aangepast." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -176,6 +176,10 @@ define( 'RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW',     'dossier-documenten' );
 if ( ! defined( 'DOPT__ACTIELIJN_CPT' ) ) {
   define( 'DOPT__ACTIELIJN_CPT',           "actielijn" );
 }
+
+// @since 2.12.17
+define( 'ID_DOSSIER_DIV', "dossier-overview" );
+
 
 //========================================================================================================
 
@@ -466,9 +470,11 @@ remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
 remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
 remove_action( 'genesis_site_description',  'genesis_seo_site_description' );
 
-add_action( 'genesis_after_header', 'genesis_do_breadcrumbs',                 18 );
-add_action( 'genesis_before_loop', 'rhswp_check_caroussel_or_featured_img',  22 );  // genesis_before_loop ipv genesis_after_header @since 2.12.15 
-add_action( 'genesis_after_header', 'rhswp_dossier_title_checker',            24 );
+add_action( 'genesis_after_header',         'genesis_do_breadcrumbs',                 18 );
+add_action( 'genesis_after_header',         'rhswp_check_caroussel_or_featured_img',  22 );
+add_action( 'genesis_after_header',         'rhswp_dossier_title_checker',            24 );
+
+
 
 //========================================================================================================
 
@@ -2355,7 +2361,7 @@ function rhswp_append_site_logo() {
 	
 	$label = sprintf( _x( "To the homepage of %s.", 'title for link to homepage', 'wp-rijkshuisstijl' ), $_SERVER["HTTP_HOST"] );
 	
-	// @since 2.12.15
+	// @since 2.12.16
 	echo '<a href="' . get_home_url() . '" title="' . $label . '"><span id="logotype"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitaleoverheid.svg" alt="Logo Rijksoverheid"></span></a>';
 
 }
@@ -2645,7 +2651,8 @@ function rhswp_write_extra_contentblokken() {
 			$type_block             = $row['extra_contentblok_type_block'];
 			$categoriefilter        = $row['extra_contentblok_categoriefilter'];
 			$maxnr_posts            = $row['extra_contentblok_maxnr_posts'];
-			$with_featured_image    = $row['extra_contentblok_maxnr_posts_with_featured_image'];
+//			$with_featured_image    = $row['extra_contentblok_maxnr_posts_with_featured_image'];
+			$with_featured_image 	= 'alle';
 			$limit                  = $row['extra_contentblok_maxnr_events'];
 
           if ( $blockidattribute_prev == $titel ) {
@@ -3310,7 +3317,7 @@ function rhswp_check_caroussel_or_featured_img() {
 				else {
 					// extra array met alt-teksten voor de headerimages.
 					// indien geen tekst ingevoerd is het alt-attribuut gewoon leeg.
-					// @since 2.12.15
+					// @since 2.12.16
 					if ( WP_OVERHEID_ALT[ $digibeterclass ] ) {
 						$alttekst 	= WP_OVERHEID_ALT[ $digibeterclass ];
 					}
@@ -3538,7 +3545,7 @@ function rhswp_archive_custom_loop() {
 	
 	if ( have_posts() ) {
 		
-		echo '<div class="block no-top">';
+		echo '<div class="block no-top archive-custom-loop">';
 		
 		$postcounter = 0;
 		
@@ -3558,7 +3565,8 @@ function rhswp_archive_custom_loop() {
 			$labelledbytitleid	= sanitize_title( 'title_' . $contenttype . '_' . $current_post_id );
 			$labelledby 		= ' aria-labelledby="' . $labelledbytitleid . '"';
 
-			if ( $postcounter <= RHSWP_NR_FEAT_IMAGES && has_post_thumbnail( $post->ID ) ) {
+//			if ( $postcounter <= RHSWP_NR_FEAT_IMAGES && has_post_thumbnail( $post->ID ) ) {
+			if ( has_post_thumbnail( $post->ID ) ) {
 				$doimage    = true;
 			}
 			else {
@@ -3748,7 +3756,6 @@ function rhswp_archive_custom_loop() {
 					printf( '<article %s %s>', $classattr, $labelledby );
 					
 					if ( $doimage ) {
-						//            printf( '<div class="article-container"><div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'featured-post-widget' ) );
 						printf( '<div class="article-container"><div class="article-visual" id="%s">&nbsp;</div>', $cssid );
 						printf( '<div class="article-excerpt"><a href="%s"><h2 id="%s">%s</h2><p class="meta">%s</p><p>%s</p></a></div></div>', get_permalink(), $labelledbytitleid, $thetitle, $postdate, $excerpt );
 					}
@@ -4093,7 +4100,7 @@ function rhswp_add_blog_archive_css() {
 .entry-content .borderframe.blue a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):focus,
 .entry-content .borderframe.blue a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):hover,
 .entry-content .borderframe.blue a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]) {
-  background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link.svg');
+  background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-white.svg');
 }
 
 .entry-content a:not([href]),
@@ -4156,7 +4163,8 @@ function rhswp_add_blog_archive_css() {
       $getid        = get_the_ID();
       $the_image_ID = 'image_featured_image_post_' . $getid;
 
-      if ( $countertje <= RHSWP_NR_FEAT_IMAGES && has_post_thumbnail( $getid ) ) {
+//      if ( $countertje <= RHSWP_NR_FEAT_IMAGES && has_post_thumbnail( $getid ) ) {
+      if ( has_post_thumbnail( $getid ) ) {
 
         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $getid ), 'full' );
 
@@ -4207,7 +4215,7 @@ function rhswp_add_blog_archive_css() {
         $categoriefilter        = $row['extra_contentblok_categoriefilter'];
         $maxnr_posts            = $row['extra_contentblok_maxnr_posts'];
         $type_block             = $row['extra_contentblok_type_block'];
-        $with_featured_image    = $row['extra_contentblok_maxnr_posts_with_featured_image'];
+//        $with_featured_image    = $row['extra_contentblok_maxnr_posts_with_featured_image'];
 
         if ( 'algemeen' == $type_block ) {
           // niks
@@ -5811,20 +5819,22 @@ dodebug_do('Terms NIET bekend :-(' );
 		
 		if( $wp_query->have_posts() ) {
 			
-			echo '<div class="posts-for-dossier flexcontainer">';
+			echo '<div class="posts-for-dossier flexcontainer page-dossiersingleactueel">';
 			echo '<div class="block no-top">';
 			
 			$postcounter = 0;
 			
-			$with_featured_image = 2;
+//			$with_featured_image = 2;
 
 			while ( $wp_query->have_posts() ) {
 				
 				$wp_query->the_post();
 				$postcounter++;
-				$doimage = false;
+				$doimage 	= false;
+				$posttype	= 'type-' . get_post_type();
 
-				if ( ( $postcounter <= $with_featured_image ) && has_post_thumbnail() ) {
+//				if ( ( $postcounter <= $with_featured_image ) && has_post_thumbnail() ) {
+				if ( has_post_thumbnail() ) {
 					$doimage = true;
 				}
 
@@ -5861,7 +5871,7 @@ dodebug_do('Terms NIET bekend :-(' );
 				$categorielinks = '';
 				
 				if ( $doimage ) {
-					echo '<article class="has-post-thumbnail"><div class="article-container">';
+					echo '<article class="has-post-thumbnail ' . $posttype . '"><div class="article-container">';
 					printf( '
 					<div class="article-visual">%s</div>
 					<div class="article-excerpt">
