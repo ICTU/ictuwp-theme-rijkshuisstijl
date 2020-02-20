@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.12.16 - Styling voor nieuwsberichten volgens nieuwe opzet.
+2.12.17 - Skiplink-structuur aangepast.
 
 ## Version history
+* 2.12.17 - Skiplink-structuur aangepast.
 * 2.12.16 - Styling voor nieuwsberichten volgens nieuwe opzet.
 * 2.12.15 - Wijzigingen n.a.v. rapport accessibility.
 * 2.12.14 - Zoekformulier kan verborgen worden in de site-instellingen.

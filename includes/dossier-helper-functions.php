@@ -10,8 +10,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.15
-// * @desc.   Wijzigingen n.a.v. rapport accessibility.
+// * @version 2.12.17
+// * @desc.   Skiplink-structuur aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -58,7 +58,10 @@ function rhswp_dossier_title_checker( ) {
 	dodebug_do('rhswp_dossier_title_checker start: ' . get_the_ID() );
 	dodebug_do('rhswp_dossier_title_checker template: ' . get_page_template_slug( get_the_ID() ) );
 		
-	if ( ( 'page_toolbox-home.php' == get_page_template_slug( get_the_ID() ) ) || ( 'page_digibeter-home.php' == get_page_template_slug( get_the_ID() ) ) || ( 'page_toolbox-cyberincident.php' == get_page_template_slug( get_the_ID() ) ) ) {
+	if ( 
+		( 'page_toolbox-home.php' == get_page_template_slug( get_the_ID() ) ) ||
+		( 'page_digibeter-home.php' == get_page_template_slug( get_the_ID() ) ) ||
+		( 'page_toolbox-cyberincident.php' == get_page_template_slug( get_the_ID() ) ) ) {
 		// toolbox layout: dus geen plaatje tonen
 		dodebug_do('rhswp_dossier_title_checker toolbox layout!');
 		return;
@@ -180,7 +183,7 @@ function rhswp_dossier_title_checker( ) {
 		
 		$args['theterm'] = $term->term_id;
 		
-		echo '<div class="dossier-overview"><div class="wrap">'; 
+		echo '<div class="dossier-overview" id="' . ID_DOSSIER_DIV . '"><div class="wrap">'; 
 		
 		$dossier_overzichtpagina  = get_field('dossier_overzichtpagina', $term );
 		$menu_voor_dossier        = get_field('menu_pages', $term );

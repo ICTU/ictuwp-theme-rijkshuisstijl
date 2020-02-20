@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.16
-// * @desc.   Styling voor nieuwsberichten volgens nieuwe opzet.
+// * @version 2.12.17
+// * @desc.   Skiplink-structuur aangepast.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.16" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Styling voor nieuwsberichten volgens nieuwe opzet." );
+define( 'CHILD_THEME_VERSION',              "2.12.17" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Skiplink-structuur aangepast." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -176,6 +176,10 @@ define( 'RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW',     'dossier-documenten' );
 if ( ! defined( 'DOPT__ACTIELIJN_CPT' ) ) {
   define( 'DOPT__ACTIELIJN_CPT',           "actielijn" );
 }
+
+// @since 2.12.17
+define( 'ID_DOSSIER_DIV', "dossier-overview" );
+
 
 //========================================================================================================
 
@@ -466,9 +470,11 @@ remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
 remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
 remove_action( 'genesis_site_description',  'genesis_seo_site_description' );
 
-add_action( 'genesis_after_header', 'genesis_do_breadcrumbs',                 18 );
-add_action( 'genesis_before_loop', 'rhswp_check_caroussel_or_featured_img',  22 );  // genesis_before_loop ipv genesis_after_header @since 2.12.16 
-add_action( 'genesis_after_header', 'rhswp_dossier_title_checker',            24 );
+add_action( 'genesis_after_header',         'genesis_do_breadcrumbs',                 18 );
+add_action( 'genesis_after_header',         'rhswp_check_caroussel_or_featured_img',  22 );
+add_action( 'genesis_after_header',         'rhswp_dossier_title_checker',            24 );
+
+
 
 //========================================================================================================
 
@@ -4094,7 +4100,7 @@ function rhswp_add_blog_archive_css() {
 .entry-content .borderframe.blue a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):focus,
 .entry-content .borderframe.blue a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]):hover,
 .entry-content .borderframe.blue a:not([href*=\"" . $_SERVER["HTTP_HOST"] . "\"]) {
-  background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link.svg');
+  background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-white.svg');
 }
 
 .entry-content a:not([href]),
