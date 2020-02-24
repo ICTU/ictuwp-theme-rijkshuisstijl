@@ -1,0 +1,14 @@
+{
+  "name": "ictu/ictuwp-theme-rijkshuisstijl",
+  "type": "wordpress-theme",
+  "license": "GPL-3.0",
+  "description": "Theme voor o.m. digitaleoverheid.nl",
+  "homepage": "https://www.digitaleoverheid.nl",
+  "authors": [
+    {
+      "name": "Paul van Buuren",
+      "email": "paul@wbvb.nl",
+      "homepage": "https://wbvb.nl"
+    }
+  ]
+}
