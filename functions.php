@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.17
-// * @desc.   Skiplink-structuur aangepast.
+// * @version 2.12.18
+// * @desc.   Alt-tekst voor beleidskleuren.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.17" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Skiplink-structuur aangepast." );
+define( 'CHILD_THEME_VERSION',              "2.12.18" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Alt-tekst voor beleidskleuren." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -3317,9 +3317,9 @@ function rhswp_check_caroussel_or_featured_img() {
 				else {
 					// extra array met alt-teksten voor de headerimages.
 					// indien geen tekst ingevoerd is het alt-attribuut gewoon leeg.
-					// @since 2.12.16
+					// @since 2.12.18
 					if ( WP_OVERHEID_ALT[ $digibeterclass ] ) {
-						$alttekst 	= WP_OVERHEID_ALT[ $digibeterclass ];
+						$alttekst   = sprintf( _x( 'Logo for %s', 'alt-tekst voor beleidskleurplaatjes', 'wp-rijkshuisstijl' ),  WP_OVERHEID_ALT[ $digibeterclass ] );      
 					}
 				}
 
