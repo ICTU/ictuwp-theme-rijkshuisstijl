@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.19
-// * @desc.   HTML-validatie voor details/summary.
+// * @version 2.12.20
+// * @desc.   Kleine CSS bugfixes.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.19" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "HTML-validatie voor details/summary." );
+define( 'CHILD_THEME_VERSION',              "2.12.20" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Kleine CSS bugfixes." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -5347,12 +5347,12 @@ function rhswp_html_for_shortcode_details_summary( $atts, $content = null ) {
 	}
 
 	// voorkomen dat $content start met een </p>
-	// @since 2.12.19
+	// @since 2.12.20
 	if ( substr( $content, 0, 4 ) === "</p>" ) {
 		$content = substr( $content, 4, strlen( $content ) );
 	}
 	// voorkomen dat $content eindigt met een <p>
-	// @since 2.12.19
+	// @since 2.12.20
 	if ( substr( $content, ( strlen( $content ) - 3 ), strlen( $content ) ) === "<p>" ) {
 		$content = substr( $content, 0, strlen( $content ) - 3 );
 	}

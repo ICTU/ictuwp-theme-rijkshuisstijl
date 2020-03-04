@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.15
-// * @desc.   Wijzigingen n.a.v. rapport accessibility.
+// * @version 2.12.20
+// * @desc.   Kleine CSS bugfixes.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -591,9 +591,23 @@
     input[type=reset],
     .search-form button[type=submit], 
     .search-form input[type=submit] {
-      border-color: @archief_button_bgcolor;
-      background-color: @archief_button_bgcolor;
+		border-color: @archief_button_bgcolor;
+		background-color: @archief_button_bgcolor;
+		color: @wit;
+		.arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @wit);
+		//icon-arrow-fat-left-white
+
+		&[aria-expanded="true"] {
+            .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @wit );
+		}
+		
     }
+
+    .search-form button[type=submit], 
+    .search-form input[type=submit] {
+      .iconaddfill('../images/svg/looking-glass.svg', @wit);
+    }
+    
     
     input[type=email],
     input[type=text],

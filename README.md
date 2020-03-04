@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.12.19 - HTML-validatie voor details/summary.
+2.12.20 - Kleine CSS bugfixes.
 
 ## Version history
+* 2.12.20 - Kleine CSS bugfixes.
 * 2.12.19 - HTML-validatie voor details/summary.
 * 2.12.18 - Alt-tekst voor beleidskleuren.
 * 2.12.17 - Skiplink-structuur aangepast.
