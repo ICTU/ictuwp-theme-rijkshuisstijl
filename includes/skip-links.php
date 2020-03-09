@@ -29,9 +29,10 @@ function rhswp_skip_links() {
 	rhswp_skiplinks_markup();
 
 	// Determine which skip links are needed
-	$links 		= array();
-	$loop 		= '';
-	$dossier	= '?';
+	$links 			= array();
+	$loop 			= '';
+	$dossier		= '?';
+	$carousselcheck	= '';
 	
 	// een default 
 	$idvoor_pagina_inhoud = 'genesis-content';
