@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.12.20
-  Version description: Kleine CSS bugfixes.
+  Version: 2.12.21
+  Version description: Filter toegevoegd voor Event Manager-plugin: melding of event al afgelopen is.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -1252,3 +1252,12 @@ nav.nav-primary .menu-item.js-menu-open > ul.sub-menu {
 .subst_genesis-accessible-dropdown-menu();
 .subst_newsletter();
 
+
+// 
+.passed-enddate {
+	background: @txt;
+	color: @wit;
+	display: inline-block;
+	padding: .25rem .5rem;
+	margin-right: .5rem;
+}
