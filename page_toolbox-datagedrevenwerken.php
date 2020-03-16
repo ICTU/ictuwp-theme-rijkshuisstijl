@@ -1,7 +1,7 @@
 <?php
 
 /**
-// * Rijkshuisstijl (Digitale Overheid) - page_toolbox-cyberincident.php
+// * Rijkshuisstijl (Digitale Overheid) - page_toolbox-datagedrevenwerken.php
 // * ----------------------------------------------------------------------------------
 // * Landingspagina voor toolbox
 // * ----------------------------------------------------------------------------------
@@ -9,14 +9,14 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.2
-// * @desc.   Kortere check op uitschrijven nav.bar op home.
+// * @version 2.13.1
+// * @desc.   Styling en functionaliteit voor Toolbox Datagedreven Werken.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // *
  */
 
 
-//* Template Name: DO - Toolbox Cyberincident
+//* Template Name: DO - Toolbox LED datagedreven werken
 
 //========================================================================================================
 
@@ -43,44 +43,47 @@ function rhswp_toolbox_append_illustrations() {
 	global $post;
 		
 	$counter = 0;
+
 	
 	$toolbox_images = array(
-		'image01-rapporteren-report'	=> 'Rapporteren',
-		'image02-beoordelen-assess'     => 'Beoordelen',
-		'image03-bijeenroepen-convene'  => 'Bijeenroepen',
-		'image04-uitvoeren-execute'     => 'Uitvoeren',
-		'image05-oplossen-resolve'		=> 'Oplossen'
+		'01-ontdekken-vraag-en-aanpak-data_veiligheid'					=> 'Ontdekken: vraag en aanpak',
+		'02-aandacht-voor-ethische-en-juridische-aspecten'  			=> 'Aandacht voor ethische en juridische aspecten',
+		'03-randvoorwaarden-scheppen'     								=> 'Randvoorwaarden scheppen',
+		'04-de-juiste-methode-voor-het-juiste-doel-clean-data'  		=> 'Aan de slag: datagedreven werken in de praktijk',
+		'05-verzamelen-bruikbaar-maken-en-verwerken-van-data-clean_data'=> 'Verzamelen, bruikbaar maken en verwerken van data',
+		'06-aan-de slag-datagedreven werken in de praktijk'				=> 'De juiste methode voor het juiste doel'
 	);
 
-	echo '<div id="toolbox-cyberincident-illustrations">';
+	$toolbox_inleiding		= get_field('toolbox_inleiding', $post->ID );
 
-	$toolbox_inleiding		= get_field('titel_boven_plaat', $post->ID );
 	if ( $toolbox_inleiding ) {
 		echo '<div class="toolbox-introduction">' . apply_filters( 'the_content', $toolbox_inleiding ) . '</div>';
 	}
 
+	echo '<div id="toolbox-datagedreven-werken-illustrations">';
+
 	foreach ( $toolbox_images as $attr => $value ) {
-		
+
 		$counter++;
 		
 		$a_start	= '';
 		$a_end		= '';
 		$link 		= '';
 		
-		$titel_stap		= get_field('titel_stap_' . $counter, $post->ID ) ? get_field('titel_stap_' . $counter, $post->ID ) : $value;
-		$titel_stap_en	= get_field('titel_stap_' . $counter . '_en', $post->ID ) ? get_field('titel_stap_' . $counter . '_en', $post->ID ) : '';
-		$link_stap		= get_field('link_stap_' . $counter, $post->ID );
+		$titel_principe		= get_field('titel_stap_' . $counter, $post->ID ) ? get_field('titel_principe_' . $counter, $post->ID ) : $value;
+		$link_principe		= get_field('link_stap_' . $counter, $post->ID );
 
-		if ( is_object( $link_stap ) ) {
-			$link 				= get_permalink( $link_stap->ID );
+
+		if ( is_object( $link_principe ) ) {
+			$link 				= get_permalink( $link_principe->ID );
 		}
 
-		if ( $titel_stap_en ) {
-			$titel_stap_en = '<br><em lang="en">' . $titel_stap_en . '</em>';
+		if ( ! $titel_principe ) {
+			$titel_principe = $value;
 		}
-		if ( $titel_stap ) {
-			$titel_stap = '<h2><span>' . $counter . '</span> ' . $titel_stap . $titel_stap_en . '</h2>';
-		}
+
+//		$titel_principe = '<h2>(' . $counter . ') ' . $titel_principe . '</h2>';
+		$titel_principe = '<h2>' . $titel_principe . '</h2>';
 
 		$has_link = '';
 
@@ -90,19 +93,16 @@ function rhswp_toolbox_append_illustrations() {
 			$has_link 	= ' has-link';
 		}
 		
-		echo '<div id="toolbox_stap_' . $counter . '" class="toolbox-img' . $has_link . '">';
+		echo '<div id="toolbox_principe_' . $counter . '" class="toolbox-img' . $has_link . '">';
 		echo $a_start;
 		
-		$svg_icons = get_stylesheet_directory()  . '/images/toolbox/cyberincident/' . $attr . '.svg';
-
+		$image = get_stylesheet_directory()  . '/images/toolbox/datagedreven-werken/' . $attr . '.png';
 		// If it exists, include it.
-		if ( file_exists( $svg_icons ) ) {
-			echo '<div class="svg">';
-			require_once( $svg_icons );
-			echo '</div>';
+		if ( file_exists( $image ) ) {
+			echo '<img src="' . get_stylesheet_directory_uri()  . '/images/toolbox/datagedreven-werken/' . $attr . '.png?3456789' . '" alt="" class="png">';
 		}
 		
-		echo $titel_stap;
+		echo $titel_principe;
 		echo $a_end;
 		echo '</div>';
 		

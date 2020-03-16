@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.17
-// * @desc.   Skiplink-structuur aangepast.
+// * @version 2.13.1
+// * @desc.   Styling en functionaliteit voor Toolbox Datagedreven Werken.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -851,6 +851,7 @@
 
 
 	#toolbox-innovatie-illustrations,
+	#toolbox-datagedreven-werken-illustrations,
 	#toolbox-cyberincident-illustrations {
 	
 		.toolbox-img {
@@ -881,6 +882,8 @@
 					.svg, h2 {
 						flex: 1;
 					}
+				}
+				.png {
 				}
 	
 				.svg {
@@ -1143,6 +1146,99 @@
 			}
 		}
 	}
+
+
+	#toolbox-datagedreven-werken-illustrations {
+		
+
+		.toolbox-img {
+			
+			h2 {
+				margin-top: 0;
+			}
+		}
+
+		@media only screen and ( max-width: ( @break_fullwidth - 1 ) ) {
+
+			.toolbox-img {
+				padding-left: 0;				
+				
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				
+				img,
+				h2 {
+					flex-grow: 1;
+					flex-basis: 1;
+					align-self: center;
+				}				
+				
+				img {
+					flex-basis: 110px;
+					max-width: 110px;
+					float: left;
+				}
+				h2 {
+					font-size: 1.1rem;
+
+					a {
+					    .icon_socmed_icon('../images/svg/list-arrow.svg', red);
+					}
+				}
+	
+			}
+		}
+
+		@media only screen and ( min-width: @break_fullwidth ) {
+
+			height: 750px;
+			background-image: url('images/toolbox/datagedreven-werken/bg-blue.svg?3456789');
+
+			h2 {
+				color: @oranje_vol;
+				text-shadow: 4px 4px 3px @wit,  -4px -4px 3px @wit,  4px -4px 3px @wit,  -4px 4px 3px @wit;
+			}
+
+			
+			.toolbox-img {
+				width: 300px;
+//				background-color: rgba(256, 256, 2, .2);
+//				img {
+//					border: 5px solid red;
+//				}
+			}
+
+			#toolbox_principe_1 {
+				top: 140px;
+				left: 480px;
+//				width: 500px;
+			}
+			#toolbox_principe_2 {
+				top: 123px;
+				left: 140px;
+			}
+			#toolbox_principe_3 {
+				top: 120px;
+				right: 70px;
+			}
+			#toolbox_principe_4 {
+				top: 440px;
+				left: 80px;
+			}
+			#toolbox_principe_5 {
+				top: 510px;
+				left: 500px;
+			}
+			#toolbox_principe_6 {
+				top: 473px;
+				right: 30px;
+			}
+		}
+		
+	}
+	
+	
 }
 
 //========================================================================================================

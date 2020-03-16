@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.12.21 - Filter toegevoegd voor Event Manager-plugin: melding of event al afgelopen is.
+2.13.1 - Styling en functionaliteit voor Toolbox Datagedreven Werken.
 
 ## Version history
+* 2.13.1 - Styling en functionaliteit voor Toolbox Datagedreven Werken.
 * 2.12.21 - Filter toegevoegd voor Event Manager-plugin: melding of event al afgelopen is.
 * 2.12.20 - Kleine CSS bugfixes.
 * 2.12.19 - HTML-validatie voor details/summary.

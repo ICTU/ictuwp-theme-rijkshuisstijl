@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="750px" viewBox="0 0 1200 750" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>toolbox / datagedreven-werken / bg-blue</title>
+    <desc>Created with Sketch.</desc>
+    <g id="toolbox-datagedreven-werken" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="toolbox-/-datagedreven-werken-/-bg">
+            <g id="background" transform="translate(0.300000, 0.000000)">
+                <g id="toolbox-/-datagedreven-werken-/-bg-blue">
+                    <rect id="Rectangle" fill-opacity="0.01" fill="#D8D8D8" x="0" y="0" width="1200" height="750"></rect>
+                    <path d="M1126.3,660.1 C1126.3,637.45 1061.05,619 980.5,619 C899.95,619 834.7,637.45 834.7,660.1 C940.584766,660.1 1095.26445,660.1 1126.3,660.1 Z" id="deze" fill="#93D5F6" fill-rule="nonzero"></path>
+                    <path d="M634.5,704.2 C715.05,704.2 780.3,685.75 780.3,663.1 C780.3,640.45 715.05,622 634.5,622 C553.95,622 488.7,640.45 488.7,663.1 C488.7,685.75 553.95,704.2 634.5,704.2 L634.5,704.2 Z" id="5" fill="#93D5F6" fill-rule="nonzero"></path>
+                    <path d="M230.8,624 C297.372531,624 351.3,608.737226 351.3,590 C351.3,571.262774 297.372531,556 230.8,556 C164.227469,556 110.3,571.262774 110.3,590 C110.423971,608.737226 164.35144,624 230.8,624 L230.8,624 Z" id="4" fill="#93D5F6" fill-rule="nonzero"></path>
+                    <path d="M957.7,293 C1013.49938,293 1058.7,280.206204 1058.7,264.5 C1058.7,248.793796 1013.49938,236 957.7,236 C901.900617,236 856.7,248.793796 856.7,264.5 C856.803909,280.310219 902.004527,293 957.7,293 L957.7,293 Z" id="3" fill="#93D5F6" fill-rule="nonzero"></path>
+                    <path d="M290.8,304 C357.372531,304 411.3,288.737226 411.3,270 C411.3,251.262774 357.372531,236 290.8,236 C224.227469,236 170.3,251.262774 170.3,270 C170.423971,288.737226 224.35144,304 290.8,304 L290.8,304 Z" id="2" fill="#93D5F6" fill-rule="nonzero"></path>
+                    <path d="M633.8,432 C753.409568,432 850.3,404.616788 850.3,371 C850.3,337.383212 753.409568,310 633.8,310 C514.190432,310 417.3,337.383212 417.3,371 C417.3,404.839416 514.190432,432 633.8,432 L633.8,432 Z" id="1" fill="#93D5F6" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
