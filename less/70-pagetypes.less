@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.13.1
-// * @desc.   Styling en functionaliteit voor Toolbox Datagedreven Werken.
+// * @version 2.13.2
+// * @desc.   Bugfixes toolbox datagedreven werken.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -1193,7 +1193,7 @@
 		@media only screen and ( min-width: @break_fullwidth ) {
 
 			height: 750px;
-			background-image: url('images/toolbox/datagedreven-werken/bg-blue.svg?3456789');
+			background-image: url('images/toolbox/datagedreven-werken/bg-blue-cachebuster1234.svg?cachebuster1234');
 
 			h2 {
 				color: @oranje_vol;
@@ -1203,16 +1203,11 @@
 			
 			.toolbox-img {
 				width: 300px;
-//				background-color: rgba(256, 256, 2, .2);
-//				img {
-//					border: 5px solid red;
-//				}
 			}
 
 			#toolbox_principe_1 {
 				top: 140px;
 				left: 480px;
-//				width: 500px;
 			}
 			#toolbox_principe_2 {
 				top: 123px;
@@ -1227,7 +1222,7 @@
 				left: 80px;
 			}
 			#toolbox_principe_5 {
-				top: 510px;
+				top: 500px;
 				left: 500px;
 			}
 			#toolbox_principe_6 {

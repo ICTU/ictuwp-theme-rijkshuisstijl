@@ -9,7 +9,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.13.1
+// * @version 2.13.2
 // * @desc.   Styling en functionaliteit voor Toolbox Datagedreven Werken.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // *
@@ -54,7 +54,7 @@ function rhswp_toolbox_append_illustrations() {
 		'06-aan-de slag-datagedreven werken in de praktijk'				=> 'De juiste methode voor het juiste doel'
 	);
 
-	$toolbox_inleiding		= get_field('toolbox_inleiding', $post->ID );
+	$toolbox_inleiding		= get_field('titel_boven_plaat', $post->ID );
 
 	if ( $toolbox_inleiding ) {
 		echo '<div class="toolbox-introduction">' . apply_filters( 'the_content', $toolbox_inleiding ) . '</div>';
@@ -70,19 +70,21 @@ function rhswp_toolbox_append_illustrations() {
 		$a_end		= '';
 		$link 		= '';
 		
-		$titel_principe		= get_field('titel_stap_' . $counter, $post->ID ) ? get_field('titel_principe_' . $counter, $post->ID ) : $value;
+		$titel_principe		= get_field('titel_stap_' . $counter, $post->ID ) ? get_field('titel_stap_' . $counter, $post->ID ) : $value;
 		$link_principe		= get_field('link_stap_' . $counter, $post->ID );
 
+
+//titel_stap_1
 
 		if ( is_object( $link_principe ) ) {
 			$link 				= get_permalink( $link_principe->ID );
 		}
 
 		if ( ! $titel_principe ) {
-			$titel_principe = $value;
+			$titel_principe = 'nee + ' . $value;
 		}
 
-//		$titel_principe = '<h2>(' . $counter . ') ' . $titel_principe . '</h2>';
+//		$titel_principe = '<h2>(' . $counter . ' / titel_stap_' . $counter . ') ' . $titel_principe . '</h2>';
 		$titel_principe = '<h2>' . $titel_principe . '</h2>';
 
 		$has_link = '';
@@ -99,7 +101,7 @@ function rhswp_toolbox_append_illustrations() {
 		$image = get_stylesheet_directory()  . '/images/toolbox/datagedreven-werken/' . $attr . '.png';
 		// If it exists, include it.
 		if ( file_exists( $image ) ) {
-			echo '<img src="' . get_stylesheet_directory_uri()  . '/images/toolbox/datagedreven-werken/' . $attr . '.png?3456789' . '" alt="" class="png">';
+			echo '<img src="' . get_stylesheet_directory_uri()  . '/images/toolbox/datagedreven-werken/' . $attr . '.png?cachebuster1234' . '" alt="" class="png">';
 		}
 		
 		echo $titel_principe;
