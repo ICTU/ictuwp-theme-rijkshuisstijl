@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.20
-// * @desc.   Kleine CSS bugfixes.
+// * @version 2.12.21
+// * @desc.   Filter toegevoegd voor Event Manager-plugin: melding of event al afgelopen is.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.12.20" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Kleine CSS bugfixes." );
+define( 'CHILD_THEME_VERSION',              "2.12.21" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Filter toegevoegd voor Event Manager-plugin: melding of event al afgelopen is." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -242,6 +242,10 @@ if ( 'accept.digitaleoverheid.nl' == $_SERVER["HTTP_HOST"] ) {
 
 // Skiplinks
 include_once( RHSWP_FOLDER . '/includes/skip-links.php' );
+
+// Extra filters for Event Manager
+// @since 2.12.21
+include_once( RHSWP_FOLDER . '/includes/eventmanager-helper-functions.php' );
 
 //========================================================================================================
 
@@ -2628,7 +2632,8 @@ function rhswp_write_extra_contentblokken() {
       if ( is_page() ) {
         $theid                    = get_the_ID();
         $contentblokken           = get_field( 'extra_contentblokken', $theid );
-        $dossier_in_content_block = get_the_terms( $theid , RHSWP_CT_DOSSIER );
+        $dossier_in_content_block2 = get_the_terms( $theid , RHSWP_CT_DOSSIER );
+        $dossier_in_content_block = $dossier_in_content_block2[0]->term_id;
       }
       elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
         $theid                    = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
