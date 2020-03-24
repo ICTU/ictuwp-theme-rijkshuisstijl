@@ -10,7 +10,7 @@
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
 // * @version 2.13.2
-// * @desc.   Styling en functionaliteit voor Toolbox Datagedreven Werken.
+// * @desc.   Bugfixes toolbox datagedreven werken.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // *
  */
@@ -46,7 +46,7 @@ function rhswp_toolbox_append_illustrations() {
 
 	
 	$toolbox_images = array(
-		'01-ontdekken-vraag-en-aanpak-data_veiligheid'					=> 'Ontdekken: vraag en aanpak',
+		'01-ontdekken-vraag-en-aanpak'					=> 'Ontdekken: vraag en aanpak',
 		'02-aandacht-voor-ethische-en-juridische-aspecten'  			=> 'Aandacht voor ethische en juridische aspecten',
 		'03-randvoorwaarden-scheppen'     								=> 'Randvoorwaarden scheppen',
 		'04-de-juiste-methode-voor-het-juiste-doel-clean-data'  		=> 'Aan de slag: datagedreven werken in de praktijk',
@@ -101,7 +101,7 @@ function rhswp_toolbox_append_illustrations() {
 		$image = get_stylesheet_directory()  . '/images/toolbox/datagedreven-werken/' . $attr . '.png';
 		// If it exists, include it.
 		if ( file_exists( $image ) ) {
-			echo '<img src="' . get_stylesheet_directory_uri()  . '/images/toolbox/datagedreven-werken/' . $attr . '.png?cachebuster1234' . '" alt="" class="png">';
+			echo '<img src="' . get_stylesheet_directory_uri()  . '/images/toolbox/datagedreven-werken/' . $attr . '.png?cachebuster34567' . '" alt="" class="png">';
 		}
 		
 		echo $titel_principe;
