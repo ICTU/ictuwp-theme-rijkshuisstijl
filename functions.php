@@ -2632,7 +2632,8 @@ function rhswp_write_extra_contentblokken() {
       if ( is_page() ) {
         $theid                    = get_the_ID();
         $contentblokken           = get_field( 'extra_contentblokken', $theid );
-        $dossier_in_content_block = get_the_terms( $theid , RHSWP_CT_DOSSIER );
+        $dossier_in_content_block2 = get_the_terms( $theid , RHSWP_CT_DOSSIER );
+        $dossier_in_content_block = $dossier_in_content_block2[0]->term_id;
       }
       elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
         $theid                    = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
