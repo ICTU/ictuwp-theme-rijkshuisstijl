@@ -8,7 +8,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.13.2.b
+// * @version 2.13.3
 // * @desc.   Styling en functionaliteit voor Toolbox Datagedreven Werken.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
@@ -3782,7 +3782,7 @@ if( function_exists('acf_add_local_field_group') ):
 	/**
 	 * velden voor de toolbox van het LED: datagedreven werken
 	 *
-	 * @since 2.13.2.b
+	 * @since 2.13.3
 	 */
 	acf_add_local_field_group(array(
 		'key' => 'group_6i41j54f0d369',
