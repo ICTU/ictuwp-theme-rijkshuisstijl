@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.13.3 - Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
+2.14.2 - Social media-deelknoppen weggehaald.
 
 ## Version history
+* 2.14.2 - Social media-deelknoppen weggehaald.
 * 2.13.3 - Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
 * 2.13.2 - Bugfixes toolbox datagedreven werken.
 * 2.13.1 - Styling en functionaliteit voor Toolbox Datagedreven Werken.
