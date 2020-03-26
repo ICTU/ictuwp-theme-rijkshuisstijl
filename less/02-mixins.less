@@ -1,4 +1,3 @@
-
 //**
 // * Rijkshuisstijl (Digitale Overheid) - mixins.less
 // * ----------------------------------------------------------------------------------
@@ -7,112 +6,120 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.20
-// * @desc.   Kleine CSS bugfixes.
+// * @version 2.13.3
+// * @desc.   Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
 
 // ========================================================================
 
-@strokeheight: 		        43px;
-@pixel:                   1px;
-@prem:                    .75rem;
-@viewport:                1vw;
-@basefontsize:            12;
-@basefont:                ( @basefontsize * @pixel );
+@strokeheight: 43px;
+@pixel: 1px;
+@prem: .75rem;
+@viewport
 
-@bigmargin:               70px;
+:
 
-@blockradius: 		        5px;
+1
+vw
 
+;
+@basefontsize: 12;
+@basefont: ( @basefontsize * @pixel );
 
-@hoogte_tooltip_button:     36;
-@hoogte_tooltip_button_px:  36px;
+@bigmargin: 70px;
 
-
-@seachform_element_height_normal:       50px;
-@seachform_element_height_xlscreen:     25px;
-
-
-@menubreakpoint:          900px;
+@blockradius: 5px;
 
 
-@widget-area:           ( @break_tablet - ( @logowidth + @padding + 5px ) );
-@search_submit_width:   70px;
-
-@filter_submit_width:   50px;
-@search_submit_width:   @filter_submit_width;
-
-@sidebar_width:         310px;
-@break_fullwidth:       1200px;
-@break_tablet:          650px;
-@break_phone:           500px;
-
-@logowidth:             450px;
-@logoheight:            92px;
-
-@padding:               16px;
-@contentpadding:        @padding;
-
-@position_navbar:       180px;
-@height_navbar:         43px;
-@adminbar:              32;
-@headerheight:          0;
-
-@headerimage_height:    150px;
-@slider_image_height:  400px;
-
-@submenu-width:         500px;
-@submenu-a-width:       250px;
+@hoogte_tooltip_button: 36;
+@hoogte_tooltip_button_px: 36px;
 
 
-@bodyfont: 				     'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
-@fontstrong:			     'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
-@fontitalic:			     'Rijksoverheid Sans italic', Helvetica, Arial, sans-serif;
-@headerfont: 				   'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
+@seachform_element_height_normal: 50px;
+@seachform_element_height_xlscreen: 25px;
 
 
-@fontsize_title_h1:     ( 2.6 * @basefontsize ); // zou moeten uitkomen op etwa 32px
-@fontsize_title_h2:     ( 2.3 * @basefontsize );
-@fontsize_title_h3:     ( 1.9 * @basefontsize );
-@fontsize_title_h4:     ( 1.7 * @basefontsize );
-@fontsize_title_h5:     ( 1.3 * @basefontsize );
-@fontsize_title_h6:     ( 1.2 * @basefontsize );
+@menubreakpoint: 900px;
+
+
+@widget-area: ( @break_tablet - ( @logowidth + @padding + 5px ) );
+@search_submit_width: 70px;
+
+@filter_submit_width: 50px;
+@search_submit_width: @filter_submit_width;
+
+@sidebar_width: 310px;
+@break_fullwidth: 1200px;
+@break_tablet: 650px;
+@break_phone: 500px;
+
+@logowidth: 450px;
+@logoheight: 92px;
+
+@padding: 16px;
+@contentpadding: @padding;
+
+@position_navbar: 180px;
+@height_navbar: 43px;
+@adminbar: 32;
+@headerheight: 0;
+
+@headerimage_height: 150px;
+@slider_image_height: 400px;
+
+@submenu-width: 500px;
+@submenu-a-width: 250px;
+
+
+@bodyfont: 'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
+@fontstrong: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
+@fontitalic: 'Rijksoverheid Sans italic', Helvetica, Arial, sans-serif;
+@headerfont: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
+
+
+@fontsize_title_h1: ( 2.6 * @basefontsize ); // zou moeten uitkomen op etwa 32px
+@fontsize_title_h2: ( 2.3 * @basefontsize );
+@fontsize_title_h3: ( 1.9 * @basefontsize );
+@fontsize_title_h4: ( 1.7 * @basefontsize );
+@fontsize_title_h5: ( 1.3 * @basefontsize );
+@fontsize_title_h6: ( 1.2 * @basefontsize );
 
 @fontverkleiner: 0.75; // gebruikt om headers op smalle schermen te verkleinen
 
 @fontsize_title_entrytitle: @fontsize_title_h1;
 
 
-@slider_li_minheight:         300px;
-@slider_li_title_minheight:   40px;
-    
-@flexbasis_twocols:           50%;
-@flexbasis_threecols:         33%;
-@flexbasis_fourcols:          25%;
+@slider_li_minheight: 300px;
+@slider_li_title_minheight: 40px;
+
+@flexbasis_twocols: 50%;
+@flexbasis_threecols: 33%;
+@flexbasis_fourcols: 25%;
 
 //=========================================================================================================
 
 .icon_separator_fill(@src, @fill-new) {
-    @data-uri: 			data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-    @replace-default: 	escape('fill="#137EC2"');
-    @replace-new: 		escape('fill="@{fill-new}"');
-    @replacesrc1: 		replace("@{data-uri}", @replace-default, @replace-new, "g");
+  @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default: escape('fill="#137EC2"');
+  @replace-new: escape('fill="@{fill-new}"');
+  @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
-    background-image: e(@replacesrc1);
+  background-image: e(@replacesrc1);
 }
 
 //=========================================================================================================
 
 .headerlinkstyling() {
-    a {
+  a {
     // color: @txt;
-    	text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-        }
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
     }
+  }
 }
 
 //=========================================================================================================
@@ -124,14 +131,14 @@
 //=========================================================================================================
 
 .visuallyhidden() {
-	border: 0;
-	clip: rect(1px, 1px, 1px, 1px);	// was 0, nu 1. @since 2.12.15
-	height: 1px;
-	width: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px); // was 0, nu 1. @since 2.12.15
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
 }
 
 //=========================================================================================================
@@ -161,24 +168,25 @@
   .sharing {
     h2 {
       font-size: 95%;
-    }    
+    }
   }
 
   .social-media {
 
     overflow: hidden;
     margin-bottom: 0;
-    
+
     &, li {
       list-style: none;
       margin-left: 0;
       padding-left: 0;
     }
+
     li {
       display: inline;
       float: left;
       margin: 0;
-      
+
       a {
         &.personallink,
         &.googleplus,
@@ -189,7 +197,7 @@
           display: block;
           width: 2em;
           height: 2em;
-          
+
           &:hover,
           &:active,
           &:focus {
@@ -198,6 +206,7 @@
           }
         }
       }
+
       .twitter {
         background: url('images/icon-twitter.png') no-repeat center center;
         .icon_socmed_icon('../images/svg/icon-twitter.svg', @blauw3);
@@ -209,6 +218,7 @@
           .icon_socmed_icon('../images/svg/icon-twitter.svg', @groen_1);
         }
       }
+
       .facebook {
         background: url('images/icon-facebook.png') no-repeat center center;
         .icon_socmed_icon('../images/svg/icon-facebook.svg', @blauw3);
@@ -220,6 +230,7 @@
           .icon_socmed_icon('../images/svg/icon-facebook.svg', @groen_1);
         }
       }
+
       .googleplus {
         background: url('images/icon-googleplus.png') no-repeat center center;
         .icon_socmed_icon('../images/svg/icon-googleplus.svg', @blauw3);
@@ -231,6 +242,7 @@
           .icon_socmed_icon('../images/svg/icon-googleplus.svg', @groen_1);
         }
       }
+
       .personallink {
         background: url('images/icon-personallink.png') no-repeat center center;
         .icon_socmed_icon('../images/svg/icon-personallink.svg', @blauw3);
@@ -242,6 +254,7 @@
           .icon_socmed_icon('../images/svg/icon-personallink.svg', @groen_1);
         }
       }
+
       .linkedin {
         background: url('images/icon-linkedin.png') no-repeat center center;
         .icon_socmed_icon('../images/svg/icon-linkedin.svg', @blauw3);
@@ -267,18 +280,18 @@
 //=========================================================================================================
 
 .inputpadding() {
-	padding: ( @padding / 2 );
-	border: 2px solid @lichtgrijs;
+  padding: ( @padding / 2 );
+  border: 2px solid @lichtgrijs;
 }
 
 //=========================================================================================================
 
 .embed_error_icon(@src, @fill-new) {
-  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-  @replace-default:   escape('fill:#FF0000;');
-  @replace-new:       escape('fill:@{fill-new}');
-  @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-  
+  @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default: escape('fill:#FF0000;');
+  @replace-new: escape('fill:@{fill-new}');
+  @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
+
   background: e(@replacesrc1);
   background-repeat: no-repeat;
   padding-left: 2em;
@@ -287,33 +300,33 @@
 //=========================================================================================================
 
 .icon_socmed_icon(@src, @fill-new) {
-  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-  @replace-default:   escape('fill="#00586F"');
-  @replace-new:       escape('fill="@{fill-new}"');
-  @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-  
+  @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default: escape('fill="#00586F"');
+  @replace-new: escape('fill="@{fill-new}"');
+  @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
+
   background-image: e(@replacesrc1);
 }
 
 //=========================================================================================================
 
 .arrow_up_and_down(@src, @fill-new) {
-  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-  @replace-default:   escape('fill="#fff"');
-  @replace-new:       escape('fill="@{fill-new}"');
-  @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-  
+  @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default: escape('fill="#fff"');
+  @replace-new: escape('fill="@{fill-new}"');
+  @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
+
   background-image: e(@replacesrc1);
 }
 
 //=========================================================================================================
 
 .iconaddfill(@src, @fill-new) {
-  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-  @replace-default:   escape('fill="#000000"');
-  @replace-new:       escape('fill="@{fill-new}"');
-  @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-  
+  @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default: escape('fill="#000000"');
+  @replace-new: escape('fill="@{fill-new}"');
+  @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
+
   background-image: e(@replacesrc1);
 }
 
@@ -321,11 +334,11 @@
 //=========================================================================================================
 
 .iconaddfill_important(@src, @fill-new) {
-  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-  @replace-default:   escape('fill="#000000"');
-  @replace-new:       escape('fill="@{fill-new}"');
-  @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-  
+  @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default: escape('fill="#000000"');
+  @replace-new: escape('fill="@{fill-new}"');
+  @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
+
   background-image: e(@replacesrc1) !important;
 }
 
@@ -335,7 +348,7 @@
   display: block;
   position: relative;
   padding-right: 1.5em;
-  
+
   &:after {
     font-weight: normal;
     font-family: "RO Icons";
@@ -352,8 +365,8 @@
     right: @leftdistance;
     top: @topdistance;
     width: 1.5em;
-  }  
-  
+  }
+
 }
 
 //=========================================================================================================
@@ -361,7 +374,7 @@
 .listitem_arrow( @itemcolor: @a_color_default, @fontsize: 1em, @topdistance: 4px, @leftdistance: 0, @width: 1.5em ) {
 
   position: relative;
-  
+
   &:before {
     speak: none;
     color: @itemcolor;
@@ -377,7 +390,7 @@
     .icon_socmed_icon('../images/svg/list-arrow.svg', @itemcolor);
     background-size: ( @fontsize * .75 ) @fontsize;
     background-repeat: no-repeat;
-  }  
+  }
 }
 
 //=========================================================================================================
@@ -385,25 +398,25 @@
 .listitem_arrow_extern( @itemcolor: @a_color_default,  @itemhover: @a_color_hover,  @itemactive: @a_color_active,  @itemvisited: @a_color_visited ) {
 
   &:before {
-    .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemcolor );
+    .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemcolor);
     background-size: 100% 100%;
-  }  
+  }
   &:hover {
-	  &:before {
-	    .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemhover );
-	  }
+    &:before {
+      .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemhover);
+    }
   }
   &:focus,
   &:active {
-	  &:before {
-	    .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemactive );
-	  }
+    &:before {
+      .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemactive);
+    }
   }
   &:visited {
-	  &:before {
-	    .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemvisited );
-	  }  
-  }  
+    &:before {
+      .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemvisited);
+    }
+  }
 
 }
 
@@ -429,7 +442,7 @@
     background-size: contain;
     float: right;
   }
-  
+
 }
 
 //=========================================================================================================
@@ -447,35 +460,36 @@
       }
     }
   }
-  
+
   .digibeter {
-    
+
     &.@{classname} {
       .streamer {
         border-color: @achtergrondkleur;
+
         &, & a {
-          color: @alttext;    
+          color: @alttext;
         }
       }
 
       details {
-    
+
         border-color: @achtergrondkleur;
         background-color: @softcolor;
-    
+
         summary {
-  
-          .arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @tekstkleur );
+
+          .arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @tekstkleur);
 
           background-repeat: no-repeat;
           background-position: 98% center;
           background-color: @achtergrondkleur;
-          color: @tekstkleur;    
-    
+          color: @tekstkleur;
+
           &, & h2, & h3, & h4, & h5 {
-            color: @tekstkleur;    
+            color: @tekstkleur;
           }
-          
+
           &:hover {
 
             .arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @txt);
@@ -484,20 +498,20 @@
             &, & h2, & h3, & h4, & h5 {
               color: @txt;
             }
-            
+
           }
-          
+
         }
-        
+
         &[open] {
           summary {
 
-            .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @tekstkleur );
+            .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @tekstkleur);
 
             &:hover {
               .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @txt);
               background-color: @wit;
-              
+
               &, & h2, & h3, & h4, & h5 {
                 color: @txt;
               }
@@ -511,7 +525,7 @@
       }
     }
   }
-  
+
 }
 
 //=========================================================================================================
@@ -522,22 +536,22 @@
     display: inline-block;
     float: right;
     padding: 1em 0;
-  	border-top: 1px solid @grijs;
-  	border-bottom: 1px solid @grijs;
-  	margin-top: 4em;
-  	margin-bottom: 4em;
+    border-top: 1px solid @grijs;
+    border-bottom: 1px solid @grijs;
+    margin-top: 4em;
+    margin-bottom: 4em;
     float: left;
     text-align: right;
     margin-right: 2em;
     margin-left: 0;
-    
+
     &.align-right {
       margin-right: 0;
       margin-left: 2em;
       float: right;
       text-align: left;
     }
-    
+
     blockquote {
       border-top-style: none;
       border-bottom-style: none;
@@ -552,11 +566,13 @@
     .pullquote-with-image.align-right {
       max-width: 50%;
     }
+
     .pullquote-with-image.align-left {
-      float: left; 
+      float: left;
     }
+
     .pullquote-with-image.align-right {
-      float: right; 
+      float: right;
     }
   }
 }
@@ -575,10 +591,10 @@
 //=========================================================================================================
 
 .archiefmarkering() {
-  
+
   .archiefmarkering {
     .breadcrumb,
-    .site-footer {      
+    .site-footer {
       background: @archief_bgcolor;
       color: @archief_txt_color;
     }
@@ -589,26 +605,25 @@
     input[type=submit],
     input[type=button],
     input[type=reset],
-    .search-form button[type=submit], 
+    .search-form button[type=submit],
     .search-form input[type=submit] {
-		border-color: @archief_button_bgcolor;
-		background-color: @archief_button_bgcolor;
-		color: @wit;
-		.arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @wit);
-		//icon-arrow-fat-left-white
+      border-color: @archief_button_bgcolor;
+      background-color: @archief_button_bgcolor;
+      color: @wit;
+      .arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @wit);
+      //icon-arrow-fat-left-white
 
-		&[aria-expanded="true"] {
-            .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @wit );
-		}
-		
+      &[aria-expanded="true"] {
+        .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @wit);
+      }
     }
 
-    .search-form button[type=submit], 
+    .search-form button[type=submit],
     .search-form input[type=submit] {
       .iconaddfill('../images/svg/looking-glass.svg', @wit);
     }
-    
-    
+
+
     input[type=email],
     input[type=text],
     input[type=password],

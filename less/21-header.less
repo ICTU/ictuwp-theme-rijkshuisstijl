@@ -8,118 +8,120 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.1.15
-// * @desc.   SVG images, Kleurcheck, CSS RHS, widgets, code-opschoning 
+// * @version 2.14.1
+// * @desc.   Payoff en site-titel weer toegevoegd aan de header.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
 
+//========================================================================================================
+
 .siteheader() {
 
-	/*
-	Site Header
-	---------------------------------------------------------------------------------------------------- */
-
-	
-  .site-header {
-  
-  	.wrap {
-      .title-area {
-        
-        a {
-          overflow: hidden;
-          display: block;
-          padding: 0 0 0 50%;
-          img {
-            margin: 0 0 10px -22px;
-          }
-        }
-      }
-  	}
-  }
+	.site-header .wrap .title-area {
 		
-	
-	.site-title {
-		line-height: 1;
-		margin: 0;
-		.headerlinkstyling();
+		display: flex;
+		flex-direction: row;
 		
-		a {
-  		display: inline-block;
-  		background-repeat: no-repeat;
-  		background-position: left center;
-  		background-size: contain;
+		.site-title,
+		.site-description {
+			background-color: transparent;
+			flex: 1 1 50%;
+			align-self: center;
+			margin: 0;
+			padding: 0 1rem;
+			font-size: 100%;
+			line-height: 1.5;
+			font-weight: normal;
+		}
+		.site-title {
+			font-family: @fontstrong;
+			.headerlinkstyling();
+			
+			a {
+		  		display: inline-block;
+		  		background-repeat: no-repeat;
+		  		background-position: left center;
+		  		background-size: contain;
+			}
+			
+		}
+		.site-description {
+			font-family: @fontitalic;
+		}
+		
+		
+		#logotype {
+			overflow: hidden;
+			flex-basis: 44px;
+			flex-grow: 0;
+			flex-shrink: 1;
+			
+			img {
+			//            margin: 0 0 10px -22px;
+			}
 		}
 	}
-	
+		
+
 	.entry-title {
 		.headerlinkstyling();
 	}
-	
-	.site-description {
-    font-weight: 300;
-    line-height: 1;
-    margin: 0;
-    padding: ( @padding / 4 ) 0;
-    font-family: @bodyfont;
-    font-size: 120%;
-    background-color: @sitedescription_bg_color;
-    
-    span {
-      overflow: hidden;
-      margin-right: ( @padding / 2);
-    }
-		p {
-			margin: 0;
-		}
-	}
-
 
 	@media only screen and (max-width: ( @break_tablet - 1 ) ) {
 	
 		.site-header .wrap {
 			margin: 0;
 			width: 100%;
+
+			.site-description {
+				text-indent: -9999em;
+			}
 		}
 	}
-
-
+	
+	
 	@media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
 
-		.site-header {
-		}
 	}
-
+	
 	@media only screen and (min-width: ( @break_tablet ) ) {
 
+		.site-header  {
+
+			.site-title,
+			.site-description {
+//				border: 1px solid red;
+			}
+			
+			.site-title {
+				text-align: right;
+//				padding-right: 2rem;
+			}			
+			
+			.site-description {
+//				padding-left: 2rem;
+				
+				span {
+					display: block;
+					margin-bottom: ( @padding / 3 );
+					clear: both;
+					float: none;
+				}
+			}
+		}
+	}
 	
-    .site-header {
-
-      .site-description {
-        margin-top: @padding;
-        
-        span {
-          display: block;
-          margin-bottom: ( @padding / 3 );
-          clear: both;
-          float: none;
-        }
-      }
-    }
-	}
-
 	@media only screen and (min-width: ( @break_fullwidth ) ) {
-
-    .site-header {
-
-      .wrap {
-
-        .nav-primary {
-          position: absolute;
-          right: 0;
-          top: 0;
-        }
-      }
-    }
+		
+		.site-header .wrap .nav-primary {
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
 	}
-}
+	
+} // .siteheader() 
+
+//========================================================================================================
+

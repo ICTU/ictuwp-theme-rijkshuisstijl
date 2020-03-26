@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.14.2
-// * @desc.   Social media-deelknoppen weggehaald.
+// * @version 2.14.1
+// * @desc.   Payoff en site-titel weer toegevoegd aan de header.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME',                 "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL',                  "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION',              "2.14.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Social media-deelknoppen weggehaald." );
+define( 'CHILD_THEME_VERSION',              "2.14.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION',  "Payoff en site-titel weer toegevoegd aan de header." );
 define( 'SHOW_CSS_DEBUG',                   false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -467,11 +467,9 @@ remove_action( 'genesis_after_header', 'genesis_do_nav' );
 remove_action( 'genesis_before_loop',       'genesis_do_breadcrumbs' );
 
 // Remove the site title
-remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
-
-// Remove the site title
-remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
-remove_action( 'genesis_site_description',  'genesis_seo_site_description' );
+// reactivated @since 2.14.1
+//remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
+//remove_action( 'genesis_site_description',  'genesis_seo_site_description' );
 
 add_action( 'genesis_after_header',         'genesis_do_breadcrumbs',                 18 );
 add_action( 'genesis_after_header',         'rhswp_check_caroussel_or_featured_img',  22 );
@@ -2267,9 +2265,9 @@ add_action( 'genesis_site_title',   'rhswp_append_site_logo' );
 function rhswp_append_site_logo() {
 
 	$label = sprintf( _x( "To the homepage of %s.", 'title for link to homepage', 'wp-rijkshuisstijl' ), $_SERVER["HTTP_HOST"] );
-
-	// @since 2.12.16
-	echo '<a href="' . get_home_url() . '" title="' . $label . '"><span id="logotype"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitaleoverheid.svg" alt="Logo Rijksoverheid"></span></a>';
+	
+	// @since 2.14.1
+	echo '<span id="logotype"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitaleoverheid.svg" alt="Logo Rijksoverheid"></span>';
 
 }
 

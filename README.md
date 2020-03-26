@@ -13,10 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.14.2 - Social media-deelknoppen weggehaald.
+2.14.1 - Payoff en site-titel weer toegevoegd aan de header.
 
 ## Version history
-* 2.14.2 - Social media-deelknoppen weggehaald.
+* 2.14.1 - Payoff en site-titel weer toegevoegd aan de header.
 * 2.13.3 - Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
 * 2.13.2 - Bugfixes toolbox datagedreven werken.
 * 2.13.1 - Styling en functionaliteit voor Toolbox Datagedreven Werken.
