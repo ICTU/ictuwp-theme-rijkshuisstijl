@@ -9,18 +9,18 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 1.2.7
-// * @desc.   Voor dossiers: automatische links toegevoegd voor berichten, events, documenten. Plus: search form in breadcrumb.
+// * @version 2.12.14
+// * @desc.   Zoekformulier kan verborgen worden in de site-instellingen.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
 $strings                  = array();
-$search_text              = apply_filters( 'genesis_search_text', __( 'Search this website', 'genesis' ) );
+$search_text              = apply_filters( 'genesis_search_text', _x( 'Search this site', 'searchform', 'wp-rijkshuisstijl' ) );
 $strings['label']         = $search_text; // apply_filters( 'genesis_search_form_label', '' );
 /** This filter is documented in wp-includes/general-template.php */
 $input_value              = apply_filters( 'the_search_query', get_search_query() ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Duplicated WordPress filter
 $strings['input_value']   = ! empty( $input_value ) ? $input_value : '';
-$strings['submit_value']  = apply_filters( 'genesis_search_button_text', esc_attr__( 'Search', 'genesis' ) );
+$strings['submit_value']  = apply_filters( 'genesis_search_button_text', esc_attr__( 'Search', 'wp-rijkshuisstijl' ) );
 $strings['placeholder']   = $search_text;
 $strings['label']         = isset( $strings['label'] ) ? $strings['label'] : $strings['placeholder'];
 

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.10.8
-// * @desc.   Tonen uitgelichte afbeelding van pagina's in contentblokken. Kleine stijl-fiksjes (.cta, padding flexblok, banner-widgets).
+// * @version 2.12.15
+// * @desc.   Wijzigingen n.a.v. rapport accessibility.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -836,6 +836,17 @@
       margin: ( @padding / 3 ) 0 @padding ( @padding / 2 );
     }
   }
+
+	.logged-in {
+		// @since 2.12.15
+		// voor redactieleden die ingelogd zijn:
+		img {
+			&:not([alt]) {
+				// een rode stippellijn als er geen alt-attribuut op een IMG zit
+				border: 10px dashed red;
+			}
+		}
+	}
 
   .wp-caption {
     

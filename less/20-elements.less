@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.13.1
-// * @desc.   Header image op mobiel bijgewerkt.
+// * @version 2.12.20
+// * @desc.   Kleine CSS bugfixes.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -310,7 +310,7 @@
 		.article-container {
 			padding: 0;
 			overflow: hidden;
-			background: @grijs_1;
+//			background: @grijs_1;
 			height: 100%;
 			display: block;
 			display: flex;
@@ -340,9 +340,9 @@
 		padding-top: 1em;      
 		padding-bottom: 1em;     
 		
-		p {
-			margin-bottom: 0;
-		}
+//		p {
+//			margin-bottom: 0;
+//		}
 	}
     
     .post-thumbnail-bg-gray {
@@ -386,69 +386,86 @@
   }
 
   
-  .dojs {
-
-    @media only screen and (max-width: ( @break_tablet ) ) {
-
-      .block {
-        article {
-          .article-container {
-            background: none;
-          }
-          .article-excerpt {
-            padding: 0;
-          }          
-          .article-visual {
-            display: none;            
-          }
-        }
-      }
-    }
-  } // .dojs
+	.dojs {
+		
+		@media only screen and (max-width: ( @break_tablet ) ) {
+			
+			.block {
+				article {
+					.article-container {
+						background: none;
+					}
+					.article-excerpt {
+						padding: 0;
+					}          
+					.article-visual {
+						display: none;            
+					}
+				}
+			}
+		}
+	} // .dojs
  
-  @media only screen and (min-width: ( @break_tablet ) ) {
+	@media only screen and (min-width: ( @break_tablet ) ) {
+		
+		.article-visual,
+		.article-excerpt {
+			width: @flexbasis_twocols;
+		}          
+		
+		.flexbox {
+			.block {
+				section,
+				article {
+					.article-visual,
+					.article-excerpt {
+						float: left;
+						&, img {
+							padding: 0;
+							margin: 0;
+						}
+					}
+					.article-excerpt {
+						width: ~"calc(100% - @{flexbasis_twocols})";
+						padding: 0 1em;
+					}      
+					
+					.article-visual {
+						width: @flexbasis_twocols;
+						position: relative;
+//						border: 1px solid red;
+						
+						img {
+							margin: 0;
+							position: absolute;
+//							top: 50%;
+							top: 0;
+							left: 50%;
+//							transform: translateY(-50%) translateX(-50%);
+							transform: translateX(-50%);
+							width: 100%;
+							height: auto;
+						}
+					}
+				}
+			}
+		}
 
-    .article-visual,
-    .article-excerpt {
-      width: @flexbasis_twocols;
-    }          
-
-    .flexbox {
-      .block {
-        section,
-        article {
-  
-          .article-visual,
-          .article-excerpt {
-            float: left;
-            &, img {
-              padding: 0;
-              margin: 0;
-            }
-          }
-          .article-excerpt {
-            width: ~"calc(100% - @{flexbasis_twocols})";
-            padding: 1em;
-          }      
-        
-          .article-visual {
-            width: @flexbasis_twocols;
-            position: relative;
-            
-            img {
-              margin: 0;
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translateY(-50%) translateX(-50%);
-              width: 100%;
-              height: auto;
-            }
-          }
-        }
-      }
-    }
-  }
+		.flexbox .block {
+			.type-post {
+				.article-visual {
+					margin-top: .4rem;
+					width: ( 100% / 4 );
+				}
+				.article-excerpt {
+					width: ( ( 100% / 4 ) * 3 );
+				}
+			}
+		}
+		.entry-header + .entry-content .posts-for-dossier {
+			margin-top: 2rem;
+		}
+	}
 
 	@media only screen and ( max-width: ( 900px ) ) {
 	
@@ -586,7 +603,7 @@
     
 	.block {
 		.has-post-thumbnail {
-			margin: 0 0 1em 0;
+			margin: 0 0 3rem 0;
 			padding: 0;
 		}   
 		
@@ -648,8 +665,8 @@
 
     .mejs-container .mejs-controls,
     .downloads {
-      background: @grijs;
-      border-bottom: 2px solid @wit;
+//      background: @grijs;
+//      border: 2px solid @grijs;
     }
     
     .downloads {
@@ -708,6 +725,16 @@
 		background-repeat: no-repeat;
 		overflow: visible;
 		border-bottom: 1px solid transparent;
+		
+		.search-form {
+			padding: 1px;
+			background: @grijs_4;
+
+			input[type="search"] {
+				border-bottom-style: none;
+				padding-left: 1rem;
+			}
+		}
 		
 		.hero-image-tekst {
 			overflow: visible;
@@ -798,6 +825,7 @@
 	.collapsible {
 		overflow: hidden;
 		padding: 1rem;
+		border: 2px solid @grijs;
 		a {
 			background-image: none !important;
 		}
@@ -810,7 +838,7 @@
 		width: 100%;
 		font-family: @fontstrong;
 		font-size: 112.5%;
-		margin: .1rem 0;
+		margin: .1rem 0 0 0;
 		border-top: 3px solid @wit;
 	
 		button {

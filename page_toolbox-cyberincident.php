@@ -70,6 +70,7 @@ function rhswp_toolbox_append_illustrations() {
 		$titel_stap		= get_field('titel_stap_' . $counter, $post->ID ) ? get_field('titel_stap_' . $counter, $post->ID ) : $value;
 		$titel_stap_en	= get_field('titel_stap_' . $counter . '_en', $post->ID ) ? get_field('titel_stap_' . $counter . '_en', $post->ID ) : '';
 		$link_stap		= get_field('link_stap_' . $counter, $post->ID );
+
 		if ( is_object( $link_stap ) ) {
 			$link 				= get_permalink( $link_stap->ID );
 		}
@@ -93,15 +94,13 @@ function rhswp_toolbox_append_illustrations() {
 		echo $a_start;
 		
 		$svg_icons = get_stylesheet_directory()  . '/images/toolbox/cyberincident/' . $attr . '.svg';
+
 		// If it exists, include it.
 		if ( file_exists( $svg_icons ) ) {
 			echo '<div class="svg">';
 			require_once( $svg_icons );
 			echo '</div>';
 		}
-//		else {
-//			echo 'Foetsie? toolbox/cyberincident/' . $attr . '.svg<br>';
-//		}
 		
 		echo $titel_stap;
 		echo $a_end;

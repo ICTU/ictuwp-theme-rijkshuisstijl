@@ -13,11 +13,21 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.12.13.a - Menu-knop gereactiveerd voor mobiele schermen.
+2.13.3 - Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
 
 ## Version history
-* 2.12.13.a - Menu-knop gereactiveerd voor mobiele schermen.
-* 2.12.13.1 - Header image op mobiel bijgewerkt.
+* 2.13.3 - Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
+* 2.13.2 - Bugfixes toolbox datagedreven werken.
+* 2.13.1 - Styling en functionaliteit voor Toolbox Datagedreven Werken.
+* 2.12.21 - Filter toegevoegd voor Event Manager-plugin: melding of event al afgelopen is.
+* 2.12.20 - Kleine CSS bugfixes.
+* 2.12.19 - HTML-validatie voor details/summary.
+* 2.12.18 - Alt-tekst voor beleidskleuren.
+* 2.12.17 - Skiplink-structuur aangepast.
+* 2.12.16 - Styling voor nieuwsberichten volgens nieuwe opzet.
+* 2.12.15 - Wijzigingen n.a.v. rapport accessibility.
+* 2.12.14 - Zoekformulier kan verborgen worden in de site-instellingen.
+* 2.12.13 - Header image op mobiel bijgewerkt.
 * 2.12.12 - Bugfixes IE11.
 * 2.12.11 - Kopstructuur homepage verbeterd.
 * 2.12.10 - Meta-infomatie verbeterd. Vertalingen bijgewerkt.
