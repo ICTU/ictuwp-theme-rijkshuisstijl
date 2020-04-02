@@ -1,7 +1,7 @@
 # shortcode: 'ictudo'
 # sh '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/wp-rijkshuisstijl/distribute.sh' &>/dev/null
 
-# version 2.13.3
+# version 2.14.2
 
 # clear the log file
 
@@ -78,26 +78,26 @@ rsync -ah '/Users/paul/shared-paul-files/Webs/temp_translations/' '/Users/paul/s
 # ------------------
 echo "bekkuppie maken ---------------------------------------------"
 
-rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/temp/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.13.3/'
+rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/temp/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.14.2/'
 
 # change the theme name
-sed -i '.bak' "s/Rijkshuisstijl (Digitale Overheid)/2.13.3 - Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje./g" '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.13.3/style.css'
+sed -i '.bak' "s/Rijkshuisstijl (Digitale Overheid)/2.14.2 - Social media-deelknoppen weggehaald./g" '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.14.2/style.css'
 
 # remove the backup
-rm '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.13.3/style.css.bak'
+rm '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.14.2/style.css.bak'
 
-rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.13.3/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.13.3/' 
+rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.14.2/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.14.2/' 
 
-rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.13.3/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.13.3/' 
+rsync -r -a -v --delete '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.14.2/' '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/XXX_oude_versies/wp-rijkshuisstijl-versie-2.14.2/' 
 
 ## go to development folder
 cd '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/';
 
 ## create a tar ball
-tar czf wp-rijkshuisstijl-versie-2.13.3.tar.gz 'wp-rijkshuisstijl-versie-2.13.3'
+tar czf wp-rijkshuisstijl-versie-2.14.2.tar.gz 'wp-rijkshuisstijl-versie-2.14.2'
 
 ## remove the folder
-rm -rf '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.13.3/'
+rm -rf '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/xxx_old_versions/wp-rijkshuisstijl-versie-2.14.2/'
 
 # --------------------------------------------------------------------------------------------------------------------------------
 cd '/Users/paul/shared-paul-files/Webs/temp/';

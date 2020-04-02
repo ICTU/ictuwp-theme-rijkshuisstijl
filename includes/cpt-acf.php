@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.13.3
-// * @desc.   Styling en functionaliteit voor Toolbox Datagedreven Werken.
+// * @version 2.14.2
+// * @desc.   Social media-deelknoppen weggehaald.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 
@@ -569,31 +569,8 @@ if( function_exists('register_field_group') ):
     // 
 register_field_group(array (
 	'key' => 'group_54e6101992f1e',
-	'title' => 'Deelknoppen en reactieformulier',
+	'title' => 'Reactieformulier',
 	'fields' => array (
-		array (
-			'key' => 'field_54e610433e1d0',
-			'label'   => __( 'Toon social-media-opties wel of niet', 'wp-rijkshuisstijl' ),
-			'name' => 'socialmedia_icoontjes',
-			'prefix' => '',
-			'type' => 'radio',
-			'instructions'   => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'choices' => array (
-				SOC_MED_YES   => __( 'Ja, toon socialmedia-icoontjes', 'wp-rijkshuisstijl' ),
-				SOC_MED_NO   => __( 'Nee, verberg socialmedia-icoontjes', 'wp-rijkshuisstijl' ),
-			),
-			'other_choice' => 0,
-			'save_other_choice' => 0,
-			'default_value' => SOC_MED_YES,
-			'layout' => 'vertical',
-		),
 		array (
 			'key'						=> 'field_54e610433e1d1',
 			'label'					=> __( 'Toon reactieformulier', 'wp-rijkshuisstijl' ),
@@ -609,13 +586,13 @@ register_field_group(array (
 				'id'	=> '',
 			),
 			'choices' 			=> array (
-				SOC_MED_YES	=> __( 'Ja, toon reactieformulier', 'wp-rijkshuisstijl' ),
-				SOC_MED_NO	=> __( 'Nee, verberg reactieformulier', 'wp-rijkshuisstijl' ),
+				RHSWP_YES	=> __( 'Ja, toon reactieformulier', 'wp-rijkshuisstijl' ),
+				RHSWP_NO	=> __( 'Nee, verberg reactieformulier', 'wp-rijkshuisstijl' ),
 				'anders'    => __( 'Anders, toon dit formulier:', 'wp-rijkshuisstijl' ) ,
 			),
 			'other_choice'			=> 0,
 			'save_other_choice'	=> 0,
-			'default_value'			=> SOC_MED_YES,
+			'default_value'			=> RHSWP_YES,
 			'layout' 						=> 'vertical',
 		),
 		
