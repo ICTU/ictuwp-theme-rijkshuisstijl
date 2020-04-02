@@ -2206,6 +2206,21 @@ function cmb2_render_human_name(
 
 //========================================================================================================
 
+// Filter the title with a custom function
+add_filter('genesis_seo_title', 'rhswp_filter_site_title' );
+
+// Make sure the text can be wrapped on smaller screens
+function rhswp_filter_site_title( $title ) {
+
+	$needle		= 'igitaleoverheid';
+	$replacer	= 'igitale&shy;overheid';
+	$title   	= str_replace( $needle, $replacer, $title );
+
+	return $title;
+}
+
+//========================================================================================================
+
 add_action( 'genesis_site_title', 'rhswp_append_site_logo' );
 
 function rhswp_append_site_logo() {
