@@ -39,6 +39,8 @@ function hideMenuButton(document, window, undefined) {
 function showMenuButton(document, window, undefined) {
 	
 	'use strict';
+
+			window.alert('menu ja');
 	
 	header.classList.add('menu-met-js');
 	header.classList.remove('geen-menu-button');
@@ -99,80 +101,33 @@ function showMenuButton(document, window, undefined) {
 
 // media query change
 function WidthChange(mq) {
-  
-  if ( mq.addListener ) {
-    if (mq.matches) {
-      // window width is at least 900px
-      // don't show menu button
-      hideMenuButton(document, window);
-    }
-    else {
-      // window width is less than 900px
-      // DO show menu button
-      showMenuButton(document, window);
-    }
-  }
+	
+	if ( mq.addListener ) {
+
+		
+		if (mq.matches) {
+			// window width is at least 900px
+			// don't show menu button
+			hideMenuButton(document, window);
+		}
+		else {
+			// window width is less than 900px
+			// DO show menu button
+			showMenuButton(document, window);
+		}
+	}
 }
 
 // =========================================================================================================
 
 // media query event handler
 if (matchMedia) {
-  var mq = window.matchMedia('(min-width: 900px)');
-  if ( mq.addListener ) {
-     mq.addListener( WidthChange );
-  }
-  WidthChange(mq);
+	var mq = window.matchMedia('(min-width: 900px)');
+	if ( mq.addListener ) {
+		mq.addListener( WidthChange );
+	}
+	WidthChange(mq);
 }
-
 
 // =========================================================================================================
 
-/*  Genesis Accessible Dropdown Menu JavaScript
-
-	Used by the Genesis Accessible Dropdown Menu Plugin
-
-	Version: 1.0
- 
-	License: GPL-2.0+
-	License URI: http://www.opensource.org/licenses/gpl-license.php
-
- */
-
-( function($) { 
-
-	$('.menu li').hover(
-		function(){$(this).addClass("js-menu-open");},
-		function(){$(this).delay('250').removeClass("js-menu-open");}
-	);
-
-var top_level_links = $(this).find('> li > a');
-
-	// Added by Terrill: (removed temporarily: doesn't fix the JAWS problem after all)
-	// Add tabindex="0" to all top-level links 
-	// Without at least one of these, JAWS doesn't read widget as a menu, despite all the other ARIA
-	//$(top_level_links).attr('tabindex','0');
-	
-	// Set tabIndex to -1 so that top_level_links can't receive focus until menu is open
-	$(top_level_links).next('ul')
-		.attr('data-test','true')
-		.attr({ 'aria-hidden': 'true', 'role': 'menu' })
-		.find('a')
-		.attr('tabIndex',-1);
-	
-
-	
-	
-  $('.menu li a').on('focus blur',
-    function(){
-//      console.log( $(this).parents(".menu-item").text() );
-//    	$(this).parents(".menu-item").toggleClass("js-menu-open");
-//    	$(this).parents(".menu-item").addClass("js-menu-open");
-    }
-	);
-	
-	}
-	
-	(jQuery)
-	
-);
