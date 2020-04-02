@@ -5337,7 +5337,12 @@ function rhswp_footer_payoff() {
 	$replacer    = '';
 	$description = str_replace( $needle, $replacer, $description );
 
-	echo '<div id="payoff"> ' . $strprefix . $title . wp_strip_all_tags( $description ) . $strsuffix . '</div>';
+	$start_title_span		= '<b id="payoff_title">';
+	$end_title_span			= '</b>';
+	$start_subtitle_span	= '<span id="payoff_subtitle">';
+	$end_subtitle_span		= '</span>';
+
+	echo '<div id="payoff"> ' . $strprefix . $start_title_span . $title . $end_title_span . $start_subtitle_span . wp_strip_all_tags( $description ) . $end_subtitle_span . $strsuffix . '</div>';
 }
 
 //========================================================================================================

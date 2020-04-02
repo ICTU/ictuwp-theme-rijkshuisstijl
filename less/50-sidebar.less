@@ -512,6 +512,16 @@
 
 		#payoff {
 			display: block;
+			font-size: 1.15em;
+	
+			@media only screen and (max-width: ( @break_tablet ) ) {
+				width: 100%;
+				margin-bottom: 2rem;
+			}
+	
+			#payoff_subtitle{
+				font-family: @fontitalic;
+			}		
 		}
 		
 		@media only screen and (min-width: ( @break_tablet ) ) {
@@ -519,8 +529,13 @@
 			#payoff {
 				width: 50%;
 				float: left;
-				font-family: @fontitalic;
-				font-size: 1.75em;
+				
+				#payoff_title{
+					font-size: 1.5em;
+				}
+				#payoff_subtitle{
+					font-size: 1.25em;
+				}
 			}
 	
 			.home-widget-area {
