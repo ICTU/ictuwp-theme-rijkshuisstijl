@@ -1,17 +1,17 @@
 <?php
 
 /**
-// * Rijkshuisstijl (Digitale Overheid) - class.taxonomy-single-term.php
-// * -------------------------------------------------------------------------------------------------------
-// * Removes and replaces the built-in taxonomy metabox with <select> or series of <input type="radio" />
-// * -------------------------------------------------------------------------------------------------------
-// * 
-// * @author  Paul van Buuren
-// * @license GPL-2.0+
-// * @package wp-rijkshuisstijl
-// * @version 2.2.8a
-// * @desc.   Default-kleur voor details-summary aangepast.
-// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+* // * Rijkshuisstijl (Digitale Overheid) - class.taxonomy-single-term.php
+* // * -------------------------------------------------------------------------------------------------------
+* // * Removes and replaces the built-in taxonomy metabox with <select> or series of <input type="radio" />
+* // * -------------------------------------------------------------------------------------------------------
+* // *
+* // * @author  Paul van Buuren
+* // * @license GPL-2.0+
+* // * @package wp-rijkshuisstijl
+* // * @version 2.2.8a
+* // * @desc.   Default-kleur voor details-summary aangepast.
+* // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
 
@@ -130,9 +130,11 @@ class Taxonomy_Single_Term {
 
 	/**
 	 * Initiates our metabox action
-	 * @since 0.1.0
+	 *
 	 * @param string $tax_slug      Taxonomy slug
 	 * @param array  $post_types    post-types to display custom metabox
+	 *
+	 *@since 0.1.0
 	 */
 	public function __construct( $tax_slug, $post_types = array(), $type = 'radio' ) {
 
@@ -407,7 +409,7 @@ class Taxonomy_Single_Term {
 			|| ! isset( $screen->post_type )
 			|| ! in_array( $screen->post_type, $taxonomy->object_type )
 		)
-			return;
+			{return;}
 
 		?>
 		<script type="text/javascript">
@@ -492,13 +494,15 @@ class Taxonomy_Single_Term {
 
 	/**
 	 * Handles resaving terms to post when bulk-editing so that only one term will be applied
-	 * @since  0.1.4
+	 *
 	 * @param  int    $object_id  Object ID.
 	 * @param  array  $terms      An array of object terms.
 	 * @param  array  $tt_ids     An array of term taxonomy IDs.
 	 * @param  string $taxonomy   Taxonomy slug.
 	 * @param  bool   $append     Whether to append new terms to the old terms.
 	 * @param  array  $old_tt_ids Old array of term taxonomy IDs.
+	 *
+	 *@since  0.1.4
 	 */
 	public function maybe_resave_terms( $object_id, $terms, $tt_ids, $taxonomy, $append ) {
 		if (
@@ -519,8 +523,8 @@ class Taxonomy_Single_Term {
 
 	/**
 	 * Gets the taxonomy object from the slug
-	 * @since 0.1.0
 	 * @return object Taxonomy object
+	 *@since 0.1.0
 	 */
 	public function taxonomy() {
 		$this->taxonomy = $this->taxonomy ? $this->taxonomy : get_taxonomy( $this->slug );
@@ -529,8 +533,8 @@ class Taxonomy_Single_Term {
 
 	/**
 	 * Gets the taxonomy's associated post_types
-	 * @since 0.1.0
 	 * @return array Taxonomy's associated post_types
+	 *@since 0.1.0
 	 */
 	public function post_types() {
 		$this->post_types = !empty( $this->post_types ) ? $this->post_types : $this->taxonomy()->object_type;
@@ -539,8 +543,8 @@ class Taxonomy_Single_Term {
 
 	/**
 	 * Gets the metabox title from the taxonomy object's labels (or uses the passed in title)
-	 * @since 0.1.0
 	 * @return string Metabox title
+	 *@since 0.1.0
 	 */
 	public function metabox_title() {
 		$this->metabox_title = !empty( $this->metabox_title ) ? $this->metabox_title : $this->taxonomy()->labels->name;
@@ -549,8 +553,8 @@ class Taxonomy_Single_Term {
 
 	/**
 	 * Gets the Taxonomy_Single_Term_Walker object for use in term_fields_list and ajax_add_term
-	 * @since 0.2.0
 	 * @return object Taxonomy_Single_Term_Walker object
+	 *@since 0.2.0
 	 */
 	public function walker() {
 		if ( $this->walker ) {
@@ -565,12 +569,12 @@ class Taxonomy_Single_Term {
 	/**
 	 * Set the object properties.
 	 *
-	 * @since 0.2.1
-	 *
 	 * @param string $property  Property in object.  Must be set in object.
 	 * @param mixed  $value     Value of property.
 	 *
 	 * @return Taxonomy_Single_Term  Returns Taxonomy_Single_Term object, allows for chaining.
+	 *@since 0.2.1
+	 *
 	 */
 	public function set( $property, $value ) {
 
@@ -584,12 +588,13 @@ class Taxonomy_Single_Term {
 	/**
 	 * Magic getter for our object.
 	 *
-	 * @since  0.2.1
-	 *
 	 * @param  string    Property in object to retrieve.
-	 * @throws Exception Throws an exception if the field is invalid.
 	 *
 	 * @return mixed     Property requested.
+	 *@throws Exception Throws an exception if the field is invalid.
+	 *
+	 * @since  0.2.1
+	 *
 	 */
 	public function __get( $property ) {
 		if ( property_exists( $this, $value ) ) {

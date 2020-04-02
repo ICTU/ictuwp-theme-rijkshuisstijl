@@ -1,18 +1,18 @@
 <?php
 
 /**
- * // * Rijkshuisstijl (Digitale Overheid) - page_toolbox-datagedrevenwerken.php
- * // * ----------------------------------------------------------------------------------
- * // * Landingspagina voor toolbox
- * // * ----------------------------------------------------------------------------------
- * // *
- * // * @author  Paul van Buuren
- * // * @license GPL-2.0+
- * // * @package wp-rijkshuisstijl
- * // * @version 2.13.3
- * // * @desc.   Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
- * // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
- * // *
+ * Rijkshuisstijl (Digitale Overheid) - page_toolbox-datagedrevenwerken.php
+ * ----------------------------------------------------------------------------------
+ * Landingspagina voor toolbox
+ * ----------------------------------------------------------------------------------
+ * 
+ * @author  Paul van Buuren
+ * @license GPL-2.0+
+ * @package wp-rijkshuisstijl
+ * @version 2.13.3
+ * @desc.   Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
+ * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+ * 
  */
 
 
