@@ -9,7 +9,7 @@
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
  * @version 2.14.2
- * @desc.   Menu herzien voor mobiel schermbreedtes.
+ * @desc.   Homegrid in gelijke blokken. Menu herzien voor mobiel schermbreedtes.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -24,7 +24,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
 define( 'CHILD_THEME_VERSION', "2.14.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Menu herzien voor mobiel schermbreedtes." );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Homegrid in gelijke blokken. Menu herzien voor mobiel schermbreedtes." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -466,7 +466,7 @@ remove_action( 'genesis_after_header', 'genesis_do_nav' );
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
 // Remove the site title
-// reactivated @since 2.14.1
+// reactivated @since 2.14.2
 //remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
 //remove_action( 'genesis_site_description',  'genesis_seo_site_description' );
 
@@ -3196,7 +3196,13 @@ function rhswp_check_caroussel_or_featured_img() {
 							if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
 								// alleen als het zoekformulier expliciet op verborgen is gezet, verbergen
 							} else {
-								get_search_form();
+
+								$searchform	= get_search_form( false );
+								$needle		= 'class="search-form"';
+								$replacer	= 'class="search-form" id="herosearchform"';
+								$searchform	= str_replace( $needle, $replacer, $searchform );
+
+								echo $searchform;
 							}
 						}
 

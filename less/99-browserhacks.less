@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.4
-// * @desc.   search widgetruimte toegevoegd aan no-results.
+// * @version 2.14.2
+// * @desc.   Homegrid in gelijke blokken. Menu herzien voor mobiel schermbreedtes.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -88,7 +88,20 @@
 	#genesis-content {
 		padding-left: 1em;
 	}
+
+	section.home.topics {
 	
+		.driekwart,
+		.vollebreedte {
+			
+			a {
+				max-width: 25%;
+				min-height: 13rem;
+				float: left;
+				padding-right: 1rem;
+			}
+		}
+	}
 }
 
 //========================================================================================================
