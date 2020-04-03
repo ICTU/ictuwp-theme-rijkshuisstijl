@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.14.1
- * @desc.   Payoff en site-titel weer toegevoegd aan de header.
+ * @version 2.14.2
+ * @desc.   Menu herzien voor mobiel schermbreedtes.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,23 +23,25 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.14.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Payoff en site-titel weer toegevoegd aan de header." );
+define( 'CHILD_THEME_VERSION', "2.14.2" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Menu herzien voor mobiel schermbreedtes." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
 if ( WP_DEBUG ) {
 	define( 'DO_MINIFY_JS', false );
-//  define( 'DO_MINIFY_JS',                   true );
+//	define( 'DO_MINIFY_JS', true );
 } else {
+//	define( 'DO_MINIFY_JS', false );
 	define( 'DO_MINIFY_JS', true );
 }
 
 if ( WP_DEBUG ) {
 	define( 'WP_LOCAL_DEV', false );
-//  define( 'WP_LOCAL_DEV',                   true );
+//	define( 'WP_LOCAL_DEV', true );
 } else {
 	define( 'WP_LOCAL_DEV', false );
+//	define( 'WP_LOCAL_DEV', true );
 }
 
 
@@ -1815,7 +1817,7 @@ add_filter( 'genesis_attr_nav-primary', 'add_class_to_menu' );
 add_filter( 'genesis_attr_nav-secondary', 'add_class_to_menu' );
 
 function add_class_to_menu( $attributes ) {
-	$attributes['class'] .= ' js-menu';
+	$attributes['class'] .= ' js-menu init';
 
 	return $attributes;
 }
