@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.14.1
- * @desc.   Payoff en site-titel weer toegevoegd aan de header.
+ * @version 2.14.2
+ * @desc.   Homegrid in gelijke blokken. Menu herzien voor mobiel schermbreedtes.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,23 +23,25 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.14.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Payoff en site-titel weer toegevoegd aan de header." );
+define( 'CHILD_THEME_VERSION', "2.14.2" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Homegrid in gelijke blokken. Menu herzien voor mobiel schermbreedtes." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
 if ( WP_DEBUG ) {
 	define( 'DO_MINIFY_JS', false );
-//  define( 'DO_MINIFY_JS',                   true );
+//	define( 'DO_MINIFY_JS', true );
 } else {
+//	define( 'DO_MINIFY_JS', false );
 	define( 'DO_MINIFY_JS', true );
 }
 
 if ( WP_DEBUG ) {
 	define( 'WP_LOCAL_DEV', false );
-//  define( 'WP_LOCAL_DEV',                   true );
+//	define( 'WP_LOCAL_DEV', true );
 } else {
 	define( 'WP_LOCAL_DEV', false );
+//	define( 'WP_LOCAL_DEV', true );
 }
 
 
@@ -464,7 +466,7 @@ remove_action( 'genesis_after_header', 'genesis_do_nav' );
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
 // Remove the site title
-// reactivated @since 2.14.1
+// reactivated @since 2.14.2
 //remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
 //remove_action( 'genesis_site_description',  'genesis_seo_site_description' );
 
@@ -1787,8 +1789,8 @@ function rhswp_enqueue_js_scripts() {
 
 			wp_enqueue_script( 'details-element', RHSWP_THEMEFOLDER . '/js/details-element.js', '', CHILD_THEME_VERSION, true );
 
-//			wp_enqueue_script( 'menu-menu', RHSWP_THEMEFOLDER . '/js/menu.js', '', CHILD_THEME_VERSION, true );
-
+			wp_enqueue_script( 'menu-menu', RHSWP_THEMEFOLDER . '/js/menu.js', '', CHILD_THEME_VERSION, true );
+			
 		}
 
 		$openclose = _x( 'Show all details', 'Labels detailbuttons', 'wp-rijkshuisstijl' );
@@ -3194,7 +3196,13 @@ function rhswp_check_caroussel_or_featured_img() {
 							if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
 								// alleen als het zoekformulier expliciet op verborgen is gezet, verbergen
 							} else {
-								get_search_form();
+
+								$searchform	= get_search_form( false );
+								$needle		= 'class="search-form"';
+								$replacer	= 'class="search-form" id="herosearchform"';
+								$searchform	= str_replace( $needle, $replacer, $searchform );
+
+								echo $searchform;
 							}
 						}
 
@@ -5352,7 +5360,12 @@ function rhswp_footer_payoff() {
 	$replacer    = '';
 	$description = str_replace( $needle, $replacer, $description );
 
-	echo '<div id="payoff"> ' . $strprefix . $title . wp_strip_all_tags( $description ) . $strsuffix . '</div>';
+	$start_title_span		= '<b id="payoff_title">';
+	$end_title_span			= '</b>';
+	$start_subtitle_span	= '<span id="payoff_subtitle">';
+	$end_subtitle_span		= '</span>';
+
+	echo '<div id="payoff"> ' . $strprefix . $start_title_span . $title . $end_title_span . $start_subtitle_span . wp_strip_all_tags( $description ) . $end_subtitle_span . $strsuffix . '</div>';
 }
 
 //========================================================================================================
