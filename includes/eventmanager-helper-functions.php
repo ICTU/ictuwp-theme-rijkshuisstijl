@@ -48,6 +48,9 @@ function mju_fn_eventmanager_styles_placeholders($replace, $EM_Event, $result) {
 			if ( $datum_start_event < $datum_vandaag ) {
 				return '<span class="passed-enddate">' . _x( 'Afgelopen', 'Melding bij een event', 'wp-rijkshuisstijl' ) . '</span>';
 			}
+			else {
+				return '';
+			}
 			
 			break;
 		
