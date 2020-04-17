@@ -237,7 +237,13 @@ function rhswp_dossier_title_checker() {
 					$args['currentpageid'] = $term->term_id;
 				}
 
-				$args['preferedtitle'] = _x( 'Inhoud', 'Standaardlabel voor het 2de item in het dossiermenu', 'wp-rijkshuisstijl' );
+				$alttitel = get_field( 'dossier_overzichtpagina_alt_titel', $term );
+				if ( 'Inhoud' !== $alttitel ) {
+					$args['preferedtitle'] = sanitize_text_field( $alttitel );
+				} else {
+					$args['preferedtitle'] = _x( 'Inhoud', 'Standaardlabel voor het 2de item in het dossiermenu', 'wp-rijkshuisstijl' );
+				}
+				
 				$subpaginas            .= rhswp_dossier_get_pagelink( $dossier_overzichtpagina, $args );
 
 			}

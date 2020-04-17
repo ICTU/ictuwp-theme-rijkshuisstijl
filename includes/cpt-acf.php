@@ -20,7 +20,7 @@
 if( function_exists('acf_add_local_field_group') ):
 
   //======================================================================================================
-  // upload voor CPT RHSWP_CPT_DOCUMENT 
+  // upload voor CPT RHSWP_CPT_DOCUMENT
   //======================================================================================================
 
 	acf_add_local_field_group(array(
@@ -121,7 +121,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'append' => '',
 				'maxlength' => '',
 			),
-			
+
 			array(
 				'key' => 'field_5d6ce2fb84f08',
 				'label' => 'Linktekst',
@@ -160,110 +160,139 @@ if( function_exists('acf_add_local_field_group') ):
 		'active' => true,
 		'description' => '',
 	));
-	
-	
-	
+
+
+
 
     //======================================================================================================
-    // metadata voor CT RHSWP_CT_DOSSIER 
+    // metadata voor CT RHSWP_CT_DOSSIER
     //======================================================================================================
-    acf_add_local_field_group(array (
-    	'key' => 'group_57f90d0a441e4',
-    	'title' => 'Dossier-informatie',
-    	'fields' => array (
-    		array (
-    			'key' => 'field_57f90d20c2fdf',
-    			'label'   => __( 'Inhoudspagina', 'wp-rijkshuisstijl' ),
-    			'name' => 'dossier_overzichtpagina',
-    			'type' => 'post_object',
-          'instructions'   => __( 'Welke pagina beschrijft de inhoud van dit dossier? Deze pagina is belangrijk, omdat we hiermee de verdere structuur van het dossier kunnen bepalen.', 'wp-rijkshuisstijl' ),  			
-    			'required' => 0,
-    			'conditional_logic' => 0,
-    			'wrapper' => array (
-    				'width' => '',
-    				'class' => '',
-    				'id' => '',
-    			),
-    			'post_type' => array (
-    				0 => 'page',
-    			),
-    			'taxonomy' => array (
-    			),
-    			'allow_null' => 0,
-    			'multiple' => 0,
-    			'return_format' => 'object',
-    			'ui' => 1,
-    		),
-    		array (
-    			'key' => 'field_57fa70f9fe7a3',
-    			'label'   => __( 'Toon inhoudspagina in het menu?', 'wp-rijkshuisstijl' ),
-    			'name' => 'toon_overzichtspagina_in_het_menu',
-    			'type' => 'radio',
-    			'instructions'   => '',
-    			'required' => 1,
-    			'conditional_logic' => 0,
-    			'wrapper' => array (
-    				'width' => '',
-    				'class' => '',
-    				'id' => '',
-    			),
-    			'choices' => array (
-    				'ja' => 'Toon wel',
-    				'nee' => 'Toon niet',
-    			),
-    			'allow_null' => 0,
-    			'other_choice' => 0,
-    			'save_other_choice' => 0,
-    			'default_value' => 'ja',
-    			'layout' => 'vertical',
-    			'return_format' => 'value',
-    		),
-    		array (
-    			'key' => 'field_57f90f281dcfb',
-    			'label'   => __( 'Andere pagina\'s in het menu', 'wp-rijkshuisstijl' ),
-    			'name' => 'menu_pages',
-    			'type' => 'relationship',
-    			'instructions'   => '',
-    			'required' => 0,
-    			'conditional_logic' => 0,
-    			'wrapper' => array (
-    				'width' => '',
-    				'class' => '',
-    				'id' => '',
-    			),
-    			'post_type' => array (
-    				0 => 'page',
-    			),
-    			'taxonomy' => array (
-    			),
-    			'filters' => array (
-    				0 => 'search',
-    				1 => 'taxonomy',
-    			),
-    			'elements' => '',
-    			'min' => '',
-    			'max' => '',
-    			'return_format' => 'object',
-    		),
-    	),
-    	'location' => array (
-    		array (
-    			array (
-    				'param' => 'taxonomy',
-    				'operator' => '==',
-    				'value' => 'dossiers',
-    			),
-    		),
-    	),
-    	'menu_order' => 0,
-    	'position' => 'normal',
-    	'style' => 'default',
-    	'label_placement' => 'top',
-    	'instruction_placement' => 'label',
-    	'hide_on_screen' => '',
-    	'active' => 1,
-    	'description' => '',
-    ));
+
+	acf_add_local_field_group(array(
+		'key' => 'group_57f90d0a441e4',
+		'title' => 'Dossier-informatie',
+		'fields' => array(
+			array(
+				'key' => 'field_57f90d20c2fdf',
+				'label' => __( 'Inhoudspagina', 'wp-rijkshuisstijl' ),
+				'name' => 'dossier_overzichtpagina',
+				'type' => 'post_object',
+				'instructions' => __( 'Welke pagina beschrijft de inhoud van dit dossier? Deze pagina is belangrijk, omdat we hiermee de verdere structuur van het dossier kunnen bepalen.', 'wp-rijkshuisstijl' ),
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'page',
+				),
+				'taxonomy' => array(
+				),
+				'allow_null' => 0,
+				'multiple' => 0,
+				'return_format' => 'object',
+				'ui' => 1,
+			),
+			array(
+				'key' => 'field_57fa70f9fe7a3',
+				'label' => __( 'Toon inhoudspagina in het menu?', 'wp-rijkshuisstijl' ),
+				'name' => 'toon_overzichtspagina_in_het_menu',
+				'type' => 'radio',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'ja' => 'Toon wel',
+					'nee' => 'Toon niet',
+				),
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'save_other_choice' => 0,
+				'default_value' => 'ja',
+				'layout' => 'vertical',
+				'return_format' => 'value',
+			),
+			array(
+				'key' => 'field_5e99949047da5',
+				'label' => 'Titel voor overzichtspagina',
+				'name' => 'dossier_overzichtpagina_alt_titel',
+				'type' => 'text',
+				'instructions' => 'Met welke tekst linken we in het menu naar de overzichtspagina? Standaard is dat \'Inhoud\', hier kun je een alternatieve titel invoeren.',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_57fa70f9fe7a3',
+							'operator' => '==',
+							'value' => 'ja',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => 'Inhoud',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_57f90f281dcfb',
+				'label' => 'Andere pagina\'s in het menu',
+				'name' => 'menu_pages',
+				'type' => 'relationship',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'page',
+				),
+				'taxonomy' => array(
+				),
+				'filters' => array(
+					0 => 'search',
+					1 => 'taxonomy',
+				),
+				'elements' => '',
+				'min' => '',
+				'max' => '',
+				'return_format' => 'object',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'taxonomy',
+					'operator' => '==',
+					'value' => 'dossiers',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+
 
 
 
@@ -281,7 +310,7 @@ if( function_exists('acf_add_local_field_group') ):
   			'type' => 'radio',
         'instructions'   => __( 'Als je niet filtert worden alle berichten getoond die aan dit dossier gekoppeld zijn. Als je wilt filteren, kun je kiezen voor een categorie. Dan worden dus alleen die berichten getoond die:
   - zowel aan dit dossier gekoppeld zijn 
-  - als aan de door jou gekozen categorie', 'wp-rijkshuisstijl' ),  			
+  - als aan de door jou gekozen categorie', 'wp-rijkshuisstijl' ),
 
   			'required' => 1,
   			'conditional_logic' => 0,
@@ -545,7 +574,7 @@ endif;
 
 //========================================================================================================
 
-// options page 
+// options page
 if( function_exists('acf_add_options_page') ):
 
 	$args = array(
@@ -553,8 +582,8 @@ if( function_exists('acf_add_options_page') ):
 		'title' 		=> __( 'Instellingen theme', 'wp-rijkshuisstijl' ),
 		'capability'	=> 'manage_options',
 		'parent' 		=> 'themes.php'
-	); 
-	
+	);
+
 	acf_add_options_page($args);
 
 endif;
@@ -566,7 +595,7 @@ if( function_exists('register_field_group') ):
 
     //====================================================================================================
     // sokmetknoppen voor twitter, linkedin, het satanische facebook
-    // 
+    //
 register_field_group(array (
 	'key' => 'group_54e6101992f1e',
 	'title' => 'Reactieformulier',
@@ -595,7 +624,7 @@ register_field_group(array (
 			'default_value'			=> RHSWP_YES,
 			'layout' 						=> 'vertical',
 		),
-		
+
 		array(
 			'key' => 'field_5c87a6bc3c29a',
 			'label' => 'Ander reactieformulier',
@@ -658,7 +687,7 @@ register_field_group(array (
 	'hide_on_screen' => '',
 ));
 
-  
+
   acf_add_local_field_group(array (
   	'key' => 'group_57dbb4a2b1368',
   	'title' => 'Alternatieve paginatitel',
@@ -668,7 +697,7 @@ register_field_group(array (
   			'label'   => __( 'Alternatieve paginatitel gebruiken?', 'wp-rijkshuisstijl' ),
   			'name' => 'alternatieve_paginatitel_gebruiken',
   			'type' => 'radio',
-        'instructions'   => esc_html( __( 'De paginatitel wordt standaard gebruikt voor ondermeer verwijzingen in menu\'s en in de <title>. Het kan zijn dat je voor de duidelijkheid een andere tekst wilt tonen in de <h1>. Als je hier \'ja\' kiest, kun je een alternatieve paginatitel invoeren.', 'wp-rijkshuisstijl' ) ),  			
+        'instructions'   => esc_html( __( 'De paginatitel wordt standaard gebruikt voor ondermeer verwijzingen in menu\'s en in de <title>. Het kan zijn dat je voor de duidelijkheid een andere tekst wilt tonen in de <h1>. Als je hier \'ja\' kiest, kun je een alternatieve paginatitel invoeren.', 'wp-rijkshuisstijl' ) ),
   			'required' => 1,
   			'conditional_logic' => 0,
   			'wrapper' => array (
@@ -734,7 +763,7 @@ register_field_group(array (
   	'active' => 1,
   	'description' => '',
   ));
-  
+
 
 endif;
 
@@ -778,7 +807,7 @@ if( function_exists('acf_add_local_field_group') ):
       			'layout' => 'vertical',
       			'return_format' => 'value',
       		),
-  
+
           array (
           		'key' => 'field_583838dde16cd',
           		'label' => 'Titel boven blok met uitgelichte onderwerpen',
@@ -801,7 +830,7 @@ if( function_exists('acf_add_local_field_group') ):
       			'label'   => __( 'Uitgelichte onderwerpen', 'wp-rijkshuisstijl' ),
       			'name' => 'uitgelichte_dossiers',
       			'type' => 'taxonomy',
-            'instructions'   => __( 'De onderwerpen die je hier kiest worden bovenaan de pagina getoond met speciale layout.', 'wp-rijkshuisstijl' ),  			
+            'instructions'   => __( 'De onderwerpen die je hier kiest worden bovenaan de pagina getoond met speciale layout.', 'wp-rijkshuisstijl' ),
       			'required' => 0,
       			'conditional_logic' => array (
           			array (
@@ -812,7 +841,7 @@ if( function_exists('acf_add_local_field_group') ):
           				),
           			),
       			),
-  
+
       			'wrapper' => array (
       				'width' => '',
       				'class' => '',
@@ -827,7 +856,7 @@ if( function_exists('acf_add_local_field_group') ):
       			'return_format' => 'id',
       			'multiple' => 0,
       		),
-  
+
       		array(
       			'key' => 'field_5ba1eaafcc2c0',
       			'label' => 'Welke dossiers wil je NIET tonen?',
@@ -850,7 +879,7 @@ if( function_exists('acf_add_local_field_group') ):
       			'return_format' => 'id',
       			'multiple' => 0,
       		),
-      		
+
       	),
       	'location' => array (
       		array (
@@ -871,7 +900,7 @@ if( function_exists('acf_add_local_field_group') ):
       	'description' => '',
       ));
 
-    
+
     acf_add_local_field_group(array (
     	'key' => 'group_57f5099923f1b',
     	'title' => 'Theme-instellingen',
@@ -941,12 +970,12 @@ if( function_exists('acf_add_local_field_group') ):
     	'active' => 1,
     	'description' => '',
     ));
-    
 
 
 
 
-    
+
+
     //====================================================================================================
     // extra info voor relevante links onder aan de pagina
     acf_add_local_field_group(array (
@@ -1009,7 +1038,7 @@ if( function_exists('acf_add_local_field_group') ):
     	'description' => '',
     ));
 
-  
+
 
   //====================================================================================================
     acf_add_local_field_group(array(
@@ -1161,7 +1190,7 @@ if( function_exists('acf_add_local_field_group') ):
 
   //====================================================================================================
   // instellingen voor contactformulier onder nieuwsberichten
-  // 
+  //
 	acf_add_local_field_group(array (
 		'key' => 'group_56a73cbfdf435',
 		'title' => 'Instellingen voor contactformulier',
@@ -1214,7 +1243,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'layout' => 'vertical',
 				'toggle' => 0,
 				'return_format' => 'value',
-			),			
+			),
 			array (
 				'key' => 'field_56a73ce794fcf',
 				'label' => 'Lege naam',
@@ -1305,7 +1334,7 @@ endif;
 //========================================================================================================
 
 if( function_exists('acf_add_local_field_group') ):
-  
+
     acf_add_local_field_group(array (
     	'key' => 'group_58da405ecc1c5',
     	'title' => ' Korte beschrijving',
@@ -1348,7 +1377,7 @@ if( function_exists('acf_add_local_field_group') ):
     	'active' => 1,
     	'description' => '',
     ));
-  
+
 
 
 endif;
@@ -1395,9 +1424,9 @@ function cptui_register_my_cpts() {
 		"hierarchical"  			=> false,
 		"rewrite"       			=> array( "slug" => "carrousel", "with_front" => false ),
 		"query_var"     			=> false,
-		"supports"      			=> array( "title", "excerpt", "revisions" ),					
+		"supports"      			=> array( "title", "excerpt", "revisions" ),
 	);
-	
+
 	register_post_type( RHSWP_CPT_SLIDER, $args );
 
 // End of cptui_register_my_cpts()
@@ -1408,7 +1437,7 @@ function cptui_register_my_cpts() {
 
 if( function_exists('acf_add_local_field_group') ):
 
-  
+
   acf_add_local_field_group(array (
   	'key' => 'group_5804da997fa03',
   	'title' => 'content voor carrousel',
@@ -1494,7 +1523,7 @@ if( function_exists('acf_add_local_field_group') ):
   					'rows' => '',
 					'new_lines' => 'None',
   				),
-  
+
   				array (
   					'key' => 'field_5808c01e6c841',
       			'label'   => __( 'Soort link', 'wp-rijkshuisstijl' ),
@@ -1612,14 +1641,14 @@ if( function_exists('acf_add_local_field_group') ):
   	'active' => 1,
   	'description' => '',
   ));
-	
+
 	//======================================================================================================
 
 	if ( ! defined( 'WP_OVERHEID_ALT' ) ) {
 		// extra array met alt-teksten voor de headerimages.
 		// indien geen tekst ingevoerd is het alt-attribuut gewoon leeg.
 		// @since 2.12.16
-	
+
 		define( 'WP_OVERHEID_ALT', array(
 	        'digibeter-oranje'                                    =>    "NL Digitaal - Data Agenda Overheid",
 	        'digibeter-blauw'                                     =>    "NL Digitaal - Data Agenda Overheid",
@@ -1650,11 +1679,11 @@ if( function_exists('acf_add_local_field_group') ):
 	        'cyberincident04-uitvoeren-execute'                   =>    "Voer uit - NL Digibeter - Agenda Digitale Overheid",
 	        'cyberincident05-oplossen-resolve'                    =>    "Los op - NL Digibeter - Agenda Digitale Overheid",
 	        'cyberincident06-voorbereid'                          =>    "Wees voorbereid - NL Digibeter - Agenda Digitale Overheid",
-	
+
 		) );
 	}
 
-	
+
 	acf_add_local_field_group(array(
 		'key' => 'group_5b30e4089957f',
 		'title' => 'Kleuren voor NL Digibeter',
@@ -1664,7 +1693,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'label' => 'Achtergrondkleur (let op: Nederlands of Engels!)',
 				'name' => 'digibeter_term_achtergrondkleur',
 				'type' => 'select',
-				
+
 				'description' => 'In de header images zit ook tekst. Let er daarom op of je wel of geen ehm "<em>Engelse</em>" kleur kiest.',
 				'instructions' => 'In de header images zit ook tekst. Let er daarom op of je wel of geen ehm "<em>Engelse</em>" kleur kiest.<img src="' . RHSWP_THEMEFOLDER . '/images/digibeter-kleuren.png" width="272" height="280" alt="">',
 				'required' => 0,
@@ -1681,20 +1710,20 @@ if( function_exists('acf_add_local_field_group') ):
 	  				'digibeter-groen'									=> 'groen digibeter (Nederlands)',
 	  				'digibeter-violet'									=> 'violet digibeter (Nederlands)',
 	  				'digibeter-paars'									=> 'paars digibeter (Nederlands)',
-	
+
 	  				'digibeter-en-orange'								=> 'oranje digibeter (Engels)',
 	  				'digibeter-en-blue'									=> 'blauw digibeter (Engels)',
 	  				'digibeter-en-green'								=> 'groen digibeter (Engels)',
 	  				'digibeter-en-violet'								=> 'violet digibeter (Engels)',
 	  				'digibeter-en-purple'								=> 'paars digibeter (Engels)',
-	  				
+
 	  				'da-06'												=> 'NDA - algemeen',
 	  				'da-01-problemen-oplossen'							=> 'NDA H1 - Problemen oplossen met datagedreven werken',
 	  				'da-02-wetgeving-publieke-waarden'					=> 'NDA H2 - Aandacht voor wetgeving en publieke waarden',
 	  				'da-03-overheidsdata-verbeteren'					=> 'NDA H3 - Overheidsdata kwalitatief verbeteren en efficiënter benutten',
 	  				'da-04-kennis-verzamelen-verbeteren'				=> 'NDA H4 - Kennis over datagedreven werken verzamelen en delen',
 	  				'da-05-mensen-organisatie-cultuurverandering'		=> 'NDA H5 - Investeren in mensen, organisatie en cultuurverandering',
-	
+
 					'toolbox01-kwaliteit-van-data-algoritme-en-analyse'	=> 'Innovatie 1 - Kwaliteit van data algoritme en analyse',
 					'toolbox02-belanghebbenden-betrekken'     			=> 'Innovatie 2 - Belanghebbenden betrekken',
 					'toolbox03-transparantie-en-verantwoording'     	=> 'Innovatie 3 - Transparantie en verantwoording',
@@ -1702,14 +1731,14 @@ if( function_exists('acf_add_local_field_group') ):
 					'toolbox05-monitoren-en-evalueren'     				=> 'Innovatie 5 - Monitoren en evalueren',
 					'toolbox06-veiligheid-borgen'     					=> 'Innovatie 6 - Veiligheid borgen',
 					'toolbox07-publieke-waarden-centraal'				=> 'Innovatie 7 - Publieke waarden centraal',
-	  	
+
 					'cyberincident01-rapporteren-report'				=> 'Cyberincident 1 - Rapporteren (report)',
 					'cyberincident02-beoordelen-assess'     			=> 'Cyberincident 2 - Beoordelen (assess)',
 					'cyberincident03-bijeenroepen-convene'     			=> 'Cyberincident 3 - Bijeenroepen (convene)',
 					'cyberincident04-uitvoeren-execute'     			=> 'Cyberincident 4 - Uitvoeren (execute)',
 					'cyberincident05-oplossen-resolve'     				=> 'Cyberincident 5 - Oplossen (resolve)',
 					'cyberincident06-voorbereid'     					=> 'Cyberincident 6 - Voorbereid',
-	  	
+
 					'datagedrevenwerken-led'							=> 'Datagedreven werken',
 					'dg1w'												=> 'DGW 1 - Ontdekken: vraag en aanpak',
 					'dg2w'     											=> 'DGW 2 - Aandacht voor ethische en juridische aspecten',
@@ -1718,7 +1747,7 @@ if( function_exists('acf_add_local_field_group') ):
 					'dg5w'     											=> 'DGW 5 - Verzamelen, bruikbaar maken en verwerken van data',
 					'dg6w'     											=> 'DGW 6 - De juiste methode voor het juiste doel'
 
-	  	
+
 				),
 				'default_value' => array(
 				),
@@ -1759,7 +1788,7 @@ if( function_exists('acf_add_local_field_group') ):
 				array(
 					'param' => 'taxonomy',
 					'operator' => '==',
-					'value' => RHSWP_CT_DIGIBETER,					
+					'value' => RHSWP_CT_DIGIBETER,
 				),
 			),
 		),
@@ -1774,7 +1803,7 @@ if( function_exists('acf_add_local_field_group') ):
 	));
 
 
-  
+
   //======================================================================================================
 
   acf_add_local_field_group(array(
@@ -1819,7 +1848,7 @@ if( function_exists('acf_add_local_field_group') ):
   	'active' => 1,
   	'description' => '',
   ));
-  
+
   //======================================================================================================
 
   //====================================================================================================
@@ -1882,11 +1911,11 @@ if( function_exists('acf_add_local_field_group') ):
   						'id' => '',
   					),
   					'choices' => array (
-  						'berichten'   			=> __( 'Automatische lijst van berichten', 'wp-rijkshuisstijl' ),
-  						'berichten_paginas'   => __( 'Berichten of pagina\'s', 'wp-rijkshuisstijl' ),
-  						'algemeen'    			=> __( 'Vrije invoer: links in de volgorde die ik bepaal', 'wp-rijkshuisstijl' ),
-  						'select_dossiers'     => __( 'Een selectie van dossiers', 'wp-rijkshuisstijl' ),
-  						'events'      			=> __( 'Automatische lijst van evenementen', 'wp-rijkshuisstijl' ),
+  						'berichten'			=> __( 'Automatische lijst van berichten', 'wp-rijkshuisstijl' ),
+  						'berichten_paginas'	=> __( 'Berichten of pagina\'s', 'wp-rijkshuisstijl' ),
+  						'algemeen'			=> __( 'Vrije invoer: links in de volgorde die ik bepaal', 'wp-rijkshuisstijl' ),
+  						'select_dossiers'	=> __( 'Een selectie van dossiers', 'wp-rijkshuisstijl' ),
+  						'events'			=> __( 'Automatische lijst van evenementen', 'wp-rijkshuisstijl' ),
   					),
   					'allow_null' => 0,
   					'other_choice' => 0,
@@ -1964,7 +1993,7 @@ if( function_exists('acf_add_local_field_group') ):
 					'label'   => __( 'Wil je de berichten filteren op categorie?', 'wp-rijkshuisstijl' ),
 					'name' => 'extra_contentblok_categoriefilter',
 					'type' => 'radio',
-					'instructions'   => __( 'Als deze pagina een dossier heeft, worden berichten sowieso gefilterd op het dossier.', 'wp-rijkshuisstijl' ),  			
+					'instructions'   => __( 'Als deze pagina een dossier heeft, worden berichten sowieso gefilterd op het dossier.', 'wp-rijkshuisstijl' ),
 					'required' => 1,
   					'conditional_logic' => array (
   						array (
@@ -2120,7 +2149,7 @@ if( function_exists('acf_add_local_field_group') ):
   					'return_format' => 'value',
   					'placeholder' => '',
   				),
-	*/  				
+	*/
 
   				array (
   					'key' => 'field_5804d943474a9',
@@ -2172,7 +2201,7 @@ if( function_exists('acf_add_local_field_group') ):
       			'label'   => __( 'Geselecteerde dossiers', 'wp-rijkshuisstijl' ),
 				'name' => 'select_dossiers_list',
 				'type' => 'taxonomy',
-				'instructions'   => __( 'De dossiers die je hier kiest worden bovenaan de pagina getoond met speciale layout.', 'wp-rijkshuisstijl' ),  			
+				'instructions'   => __( 'De dossiers die je hier kiest worden bovenaan de pagina getoond met speciale layout.', 'wp-rijkshuisstijl' ),
 				'required' => 0,
 				'conditional_logic' => array (
       				array (
@@ -2183,7 +2212,7 @@ if( function_exists('acf_add_local_field_group') ):
       					),
       				),
       			),
-  
+
       			'wrapper' => array (
       				'width' => '',
       				'class' => '',
@@ -2197,7 +2226,7 @@ if( function_exists('acf_add_local_field_group') ):
       			'load_terms' => 0,
       			'return_format' => 'id',
       			'multiple' => 0,
-  
+
 
   				),
   				array (
@@ -2266,7 +2295,7 @@ if( function_exists('acf_add_local_field_group') ):
 					'default_value' => 'nee',
 					'layout' => 'horizontal',
 					'return_format' => 'value',
-				),  				
+				),
   			),
   		),
   	),
@@ -2420,7 +2449,7 @@ if( function_exists('acf_add_local_field_group') ):
   // als er voor een dossier meer dan XX berichten zijn dan wordt, in plaats van 1 simpele link naar
   // alle berichten, een link getoond naar een pagina waarop de beschikbare berichten getoond worden
   // voor de combinatie dossier + categorie
-  // 
+  //
   acf_add_local_field_group(array(
   	'key' => 'group_5b8f9051e2a03',
   	'title' => 'Instellingen voor berichten bij een dossier',
@@ -2719,7 +2748,7 @@ if( function_exists('acf_add_local_field_group') ):
   	'active' => 1,
   	'description' => '',
   ));
-  
+
 
   //------------------------------------------------------------------------------------------------------
   // sitemap instellingen: boodschap op de sitemap pagina (obv template)
