@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.14.2
- * @desc.   Homegrid in gelijke blokken. Menu herzien voor mobiel schermbreedtes.
+ * @version 2.14.3.a
+ * @desc.   Menu responsive bij viewport-breedtewijzigingen.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.14.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Homegrid in gelijke blokken. Menu herzien voor mobiel schermbreedtes." );
+define( 'CHILD_THEME_VERSION', "2.14.3.a" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Menu responsive bij viewport-breedtewijzigingen." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -466,7 +466,7 @@ remove_action( 'genesis_after_header', 'genesis_do_nav' );
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
 // Remove the site title
-// reactivated @since 2.14.2
+// reactivated @since 2.14.3.a
 //remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
 //remove_action( 'genesis_site_description',  'genesis_seo_site_description' );
 
