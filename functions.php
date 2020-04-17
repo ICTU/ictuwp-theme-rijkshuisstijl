@@ -1817,7 +1817,7 @@ add_filter( 'genesis_attr_nav-primary', 'add_class_to_menu' );
 add_filter( 'genesis_attr_nav-secondary', 'add_class_to_menu' );
 
 function add_class_to_menu( $attributes ) {
-	$attributes['class'] .= ' js-menu';
+	$attributes['class'] .= ' js-menu init';
 
 	return $attributes;
 }
