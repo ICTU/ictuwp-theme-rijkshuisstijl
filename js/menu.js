@@ -15,7 +15,6 @@
 var header      	= document.querySelector('#genesis-nav-primary'),
     menu        	= document.querySelector('nav .wrap ul.menu'),
     menuButton  	= document.querySelector('.menu-button'),
-    menuwrapper 	= header.querySelector(".wrap"),
     herosearchform	= document.getElementById("herosearchform"),
     heroimage 		= document.querySelector('.hero-image .wrapper');
 
@@ -23,10 +22,21 @@ var header      	= document.querySelector('#genesis-nav-primary'),
 
 function hideMenuButton(document, window, undefined) {
 
-	header.classList.remove('menu-met-js');
-	header.classList.remove('active');
-	header.classList.add('geen-menu-button');
-	menu.setAttribute('aria-hidden', 'false');
+	if ( ( typeof(header) != 'undefined' && header != null) )  {
+	
+		header.classList.remove('menu-met-js');
+		header.classList.remove('active');
+		header.classList.add('geen-menu-button');
+	
+		var menuwrapper 	= header.querySelector(".wrap");
+	
+	}
+	
+	
+	if ( ( typeof(menu) != 'undefined' && menu != null) )  {
+		menu.setAttribute('aria-hidden', 'false');
+	}
+	
 	
 	if ( ( typeof(menuwrapper) != 'undefined' && menuwrapper != null) )  {
 	
@@ -77,7 +87,13 @@ function showMenuButton(document, window, undefined) {
 	
 	'use strict';
 
+
+	if ( ( typeof(header) != 'undefined' && header != null) )  {
+		var menuwrapper 	= header.querySelector(".wrap");
+	}
+
 	if ( ( typeof(menuwrapper) != 'undefined' && menuwrapper != null) )  {
+		
 
 		if ( ( typeof(herosearchform) != 'undefined' && herosearchform != null) )  {
 			menuwrapper.prepend(herosearchform);
@@ -136,36 +152,40 @@ function showMenuButton(document, window, undefined) {
 		
 	}
 
-	// Menu properties
-	menu.setAttribute('aria-labelledby', 'menu-button');
+	if ( ( typeof(menu) != 'undefined' && menu != null) )  {
 	
-	header.classList.add('menu-met-js');
-	header.classList.remove('geen-menu-button');
-
-	// Handle button click event
-	menuButton.addEventListener('click', function () {
+		// Menu properties
+		menu.setAttribute('aria-labelledby', 'menu-button');
 		
-		// If active...
-		if (menu.classList.contains('active')) {
-
-			// Hide
-			header.classList.remove('active');
-			menu.classList.remove('active');
-			menu.setAttribute('aria-hidden', 'true');
-			menuButton.setAttribute('aria-label', 'Open menu');
-			menuButton.setAttribute('aria-expanded', 'false');
-		} 
-		else {
-
-			// Show
-			header.classList.add('active');
-			menu.classList.add('active');
-			menu.setAttribute('aria-hidden', 'false');
-			menuButton.setAttribute('aria-label', 'Sluit menu');
-			menuButton.setAttribute('aria-expanded', 'true');
+		header.classList.add('menu-met-js');
+		header.classList.remove('geen-menu-button');
+	
+		// Handle button click event
+		menuButton.addEventListener('click', function () {
 			
-		}
-	}, false);
+			// If active...
+			if (menu.classList.contains('active')) {
+	
+				// Hide
+				header.classList.remove('active');
+				menu.classList.remove('active');
+				menu.setAttribute('aria-hidden', 'true');
+				menuButton.setAttribute('aria-label', 'Open menu');
+				menuButton.setAttribute('aria-expanded', 'false');
+			} 
+			else {
+	
+				// Show
+				header.classList.add('active');
+				menu.classList.add('active');
+				menu.setAttribute('aria-hidden', 'false');
+				menuButton.setAttribute('aria-label', 'Sluit menu');
+				menuButton.setAttribute('aria-expanded', 'true');
+				
+			}
+		}, false);
+	
+	}
 
 }
 
