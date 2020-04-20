@@ -29,25 +29,36 @@
 			flex: 1 1 50%;
 			align-self: center;
 			margin: 0;
-			padding: 0 1rem;
 			font-size: 100%;
 			line-height: 1.5;
 			font-weight: normal;
 		}
 		.site-title {
 			font-family: @fontstrong;
+			padding-left: 1rem;
 			.headerlinkstyling();
-			
+
 			a {
 		  		display: inline-block;
 		  		background-repeat: no-repeat;
 		  		background-position: left center;
 		  		background-size: contain;
+		  		color: @donkerblauw_vol;
+		  		&:hover,
+		  		&:focus {
+			  		color: @a_color_hover;
+		  		}
+			}
+			
+			.puntenenel {
+				font-size: 110%;
+				color: @a_color_hover;
 			}
 			
 		}
 		.site-description {
 			font-family: @fontitalic;
+			padding-right: 1rem;
 		}
 		
 		
@@ -56,11 +67,18 @@
 			flex-basis: 44px;
 			flex-grow: 0;
 			flex-shrink: 1;
-			
+		}
+		.screen-reader-text + #logotype {
+			flex-basis: 100%;
+			display: flex;
+			justify-content: center;
+			margin-bottom: 9px;
 			img {
-			//            margin: 0 0 10px -22px;
+				align-self: center;
+				align-content: center;
 			}
 		}
+		
 	}
 		
 
@@ -87,20 +105,18 @@
 	
 	@media only screen and (min-width: ( @break_tablet ) ) {
 
-		.site-header  {
+		.site-header .wrap .title-area {
 
-			.site-title,
-			.site-description {
-//				border: 1px solid red;
-			}
-			
 			.site-title {
+				font-size: 115%;
+			}			
+			.site-description {
 				text-align: right;
-//				padding-right: 2rem;
+				padding-left: 15%;
+				hyphens: none;
 			}			
 			
 			.site-description {
-//				padding-left: 2rem;
 				
 				span {
 					display: block;
@@ -114,11 +130,19 @@
 	
 	@media only screen and (min-width: ( @break_fullwidth ) ) {
 		
-		.site-header .wrap .nav-primary {
-			position: absolute;
-			right: 0;
-			top: 0;
-		}
+		.site-header .wrap {
+			.nav-primary {
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+
+			.title-area {
+				.site-description {
+					padding-left: 25%;
+				}			
+			}			
+		}			
 	}
 	
 } // .siteheader() 

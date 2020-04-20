@@ -195,12 +195,12 @@ function showMenuButton(document, window, undefined) {
 function WidthChange(mq) {
 
 	if (mq.matches) {
-		// window width is at least 900px
+		// window width is at least 760px
 		// don't show menu button
 		hideMenuButton(document, window);
 	}
 	else {
-		// window width is less than 900px
+		// window width is less than 760px
 		// DO show menu button
 		showMenuButton(document, window);
 	}
@@ -209,7 +209,7 @@ function WidthChange(mq) {
 
 // =========================================================================================================
 
-var mq = window.matchMedia('(min-width: 900px)');
+var mq = window.matchMedia('(min-width: 760px)');
 
 // media query event handler
 //if (matchMedia) {
