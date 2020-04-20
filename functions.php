@@ -8,7 +8,7 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.14.3.restyling-redesign-lynette
+ * @version 2.14.3
  * @desc.   Menu responsive bij viewport-breedtewijzigingen.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
@@ -23,7 +23,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.14.3.restyling-redesign-lynette" );
+define( 'CHILD_THEME_VERSION', "2.14.3" );
 define( 'CHILD_THEME_VERSION_DESCRIPTION', "Menu responsive bij viewport-breedtewijzigingen." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
@@ -5380,12 +5380,16 @@ add_filter('genesis_seo_title', 'rhswp_filter_site_title' );
 // and hide site title visually if necessary
 function rhswp_filter_site_title( $title ) {
 
+	$needle		= 'igitaleOverheid';
+	$replacer	= 'igitale&shy;Overheid';
+	$title   	= str_replace( $needle, $replacer, $title );
+
 	$needle		= 'igitaleoverheid';
 	$replacer	= 'igitale&shy;overheid';
 	$title   	= str_replace( $needle, $replacer, $title );
 
 	$needle		= '.nl';
-	$replacer	= '<span class="puntenenel">.</span>nl';
+	$replacer	= '<span class="tld"><span class="puntenenel">.</span>nl</span>';
 	$title   	= str_replace( $needle, $replacer, $title );
 
 	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
