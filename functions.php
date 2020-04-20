@@ -465,10 +465,7 @@ remove_action( 'genesis_after_header', 'genesis_do_nav' );
 // Reposition the breadcrumbs
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
-// Remove the site title
-// reactivated @since 2.14.3.b
-//remove_action( 'genesis_site_title',        'genesis_seo_site_title' );
-//remove_action( 'genesis_site_description',  'genesis_seo_site_description' );
+//========================================================================================================
 
 add_action( 'genesis_after_header', 'genesis_do_breadcrumbs', 18 );
 add_action( 'genesis_after_header', 'rhswp_check_caroussel_or_featured_img', 22 );
@@ -2204,34 +2201,6 @@ function cmb2_render_human_name(
 	$object_type, $field_type_object
 ) {
 	echo $field_type_object->input( array( 'type' => 'text' ) );
-}
-
-//========================================================================================================
-
-// Filter the title with a custom function
-add_filter('genesis_seo_title', 'rhswp_filter_site_title' );
-
-// Make sure the text can be wrapped on smaller screens
-function rhswp_filter_site_title( $title ) {
-
-	$needle		= 'igitaleoverheid';
-	$replacer	= 'igitale&shy;overheid';
-	$title   	= str_replace( $needle, $replacer, $title );
-
-	return $title;
-}
-
-//========================================================================================================
-
-add_action( 'genesis_site_title', 'rhswp_append_site_logo' );
-
-function rhswp_append_site_logo() {
-
-	$label = sprintf( _x( "To the homepage of %s.", 'title for link to homepage', 'wp-rijkshuisstijl' ), $_SERVER["HTTP_HOST"] );
-
-	// @since 2.14.1
-	echo '<span id="logotype"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitaleoverheid.svg" alt="Logo Rijksoverheid"></span>';
-
 }
 
 //========================================================================================================
@@ -5961,6 +5930,72 @@ function admin_enqueue_css_acf_contentblokken() {
 		wp_enqueue_style( 'admin-css-acf-contentblokken', RHSWP_THEMEFOLDER . '/css/admin-css-acf-contentblokken.css', false, CHILD_THEME_VERSION );
 
 	}
+
+}
+
+//========================================================================================================
+
+// hide site description visually if necessary
+add_filter('genesis_seo_description','jmw_site_description', 10, 3);
+
+function jmw_site_description( $description, $inside, $wrap ) {
+	
+	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
+
+	if ( 'show_payoff_in_header_no' === $showpayoff ) {
+
+		// hide visually by adding extra class .screen-reader-text
+		$custom = str_replace('class="site-description"', 'class="site-description screen-reader-text"', $description );
+		return $custom;
+		
+	}
+	else {
+		return $description;
+	}
+}
+
+//========================================================================================================
+
+add_action( 'genesis_site_title', 'rhswp_append_site_logo' );
+
+function rhswp_append_site_logo() {
+
+	// @since 2.14.1
+	echo '<span id="logotype"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitaleoverheid.svg" alt="Logo Rijksoverheid"></span>';
+
+}
+
+//========================================================================================================
+
+// Filter the title with a custom function
+add_filter('genesis_seo_title', 'rhswp_filter_site_title' );
+
+// Make sure the text can be wrapped on smaller screens
+// and hide site title visually if necessary
+function rhswp_filter_site_title( $title ) {
+
+	$needle		= 'igitaleoverheid';
+	$replacer	= 'igitale&shy;overheid';
+	$title   	= str_replace( $needle, $replacer, $title );
+
+	$needle		= '.nl';
+	$replacer	= '<span class="puntenenel">.</span>nl';
+	$title   	= str_replace( $needle, $replacer, $title );
+
+	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
+
+	if ( 'show_payoff_in_header_no' === $showpayoff ) {
+
+		// hide visually by adding extra class .screen-reader-text
+		$custom = str_replace('class="site-title"', 'class="site-title screen-reader-text"', $title);
+		return $custom;
+		
+	}
+	else {
+		return $title;
+	}
+
+//	return $title;
 
 }
 
