@@ -590,9 +590,40 @@
 						flex-basis: @flexbasis_threecols;
 						max-width: @flexbasis_threecols;
 						padding-right: 1.5em;
+
+						.article-visual,
+						.article-excerpt {
+							width: 50%;
+						}
+						.article-visual {
+							max-height: 300px;
+						}
 						  
 						&:last-of-type {
 							max-width: @flexbasis_threecols;
+						}
+					}
+					
+					&.itemcount-3 {
+						.article-container {
+							display: flex;
+							flex-direction: column;
+//							border: 10px solid red;
+							height: auto;
+							
+							.article-visual,
+							.article-excerpt {
+								flex: 1 0 100%;
+								max-height: none;
+								width: auto;
+							}
+							.article-visual {
+								position: static;
+								img {
+									position: static;
+									transform: none;
+								}
+							}
 						}
 					}
 				}
