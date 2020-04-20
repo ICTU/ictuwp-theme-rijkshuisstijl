@@ -29,15 +29,15 @@
 			flex: 1 1 50%;
 			align-self: center;
 			margin: 0;
-			padding: 0 1rem;
 			font-size: 100%;
 			line-height: 1.5;
 			font-weight: normal;
 		}
 		.site-title {
 			font-family: @fontstrong;
+			padding-left: 1rem;
 			.headerlinkstyling();
-			
+
 			a {
 		  		display: inline-block;
 		  		background-repeat: no-repeat;
@@ -48,6 +48,7 @@
 		}
 		.site-description {
 			font-family: @fontitalic;
+			padding-right: 1rem;
 		}
 		
 		
@@ -87,20 +88,18 @@
 	
 	@media only screen and (min-width: ( @break_tablet ) ) {
 
-		.site-header  {
+		.site-header .wrap .title-area {
 
-			.site-title,
-			.site-description {
-//				border: 1px solid red;
-			}
-			
 			.site-title {
+				font-size: 115%;
+			}			
+			.site-description {
 				text-align: right;
-//				padding-right: 2rem;
+				padding-left: 25%;
+				hyphens: none;
 			}			
 			
 			.site-description {
-//				padding-left: 2rem;
 				
 				span {
 					display: block;
