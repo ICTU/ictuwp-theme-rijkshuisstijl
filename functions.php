@@ -5376,9 +5376,12 @@ function rhswp_append_site_logo() {
 // Filter the title with a custom function
 add_filter('genesis_seo_title', 'rhswp_filter_site_title' );
 
-// Make sure the text can be wrapped on smaller screens
-// and hide site title visually if necessary
-function rhswp_filter_site_title( $title ) {
+// Make sure the text can be wrapped on smaller screens by
+// filtering long strings and hide site title visually if necessary
+function rhswp_filter_site_title( $title = '' ) {
+
+	$title 		= get_bloginfo( 'name' );
+	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
 
 	$needle		= 'igitaleOverheid';
 	$replacer	= 'igitale&shy;Overheid';
@@ -5392,20 +5395,18 @@ function rhswp_filter_site_title( $title ) {
 	$replacer	= '<span class="tld"><span class="puntenenel">.</span>nl</span>';
 	$title   	= str_replace( $needle, $replacer, $title );
 
-	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
+	$title 		= '<p class="site-title"><a href="' . get_bloginfo( 'url' ) . '">' . $title . '</a></p>';
 
 	if ( 'show_payoff_in_header_no' === $showpayoff ) {
 
 		// hide visually by adding extra class .screen-reader-text
-		$custom = str_replace('class="site-title"', 'class="site-title screen-reader-text"', $title);
-		return $custom;
+		$needle		= 'class="site-title"';
+		$replacer	= 'class="site-title screen-reader-text"';
+		$title   	= str_replace( $needle, $replacer, $title );
 		
 	}
-	else {
-		return $title;
-	}
 
-//	return $title;
+	return $title;
 
 }
 
