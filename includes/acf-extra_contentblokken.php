@@ -73,7 +73,19 @@ function rhswp_write_extra_contentblokken() {
 
 						if ( $algemeen_links ) {
 
-							echo '<div class="block"' . $blockidattribute . '>';
+							$columncount = 3;
+							
+							if ( 1 === count( $algemeen_links ) ) {
+								$columncount = 1;
+							}
+							elseif ( 2 === count( $algemeen_links ) ) {
+								$columncount = 2;
+							}
+							elseif ( 4 === count( $algemeen_links ) ) {
+								$columncount = 2;
+							}
+
+							echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '"' . $blockidattribute . '>';
 
 							if ( $titel ) {
 								echo '<h2>' . $titel . '</h2>';
@@ -108,7 +120,7 @@ function rhswp_write_extra_contentblokken() {
 							$slug = $termname->slug;
 						}
 
-						echo '<div class="block"' . $blockidattribute . '>';
+						echo '<div class="block ' . $type_block . '"' . $blockidattribute . '>';
 
 						if ( $titel ) {
 							echo '<h2>' . $titel . '</h2>';
@@ -143,7 +155,19 @@ function rhswp_write_extra_contentblokken() {
 
 					} elseif ( 'berichten_paginas' == $type_block ) {
 
-						echo '<div class="block"' . $blockidattribute . '>';
+						$columncount = 3;
+						
+						if ( 1 === count( $selected_content ) ) {
+							$columncount = 1;
+						}
+						elseif ( 2 === count( $selected_content ) ) {
+							$columncount = 2;
+						}
+						elseif ( 4 === count( $selected_content ) ) {
+							$columncount = 2;
+						}
+
+						echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '"' . $blockidattribute . '>';
 
 						if ( $titel ) {
 							echo '<h2>' . $titel . '</h2>';
@@ -244,7 +268,7 @@ function rhswp_write_extra_contentblokken() {
 
 								echo '<div style="border: 1px solid black; padding: .1em 1em; margin-bottom: 2em;">';
 
-								echo '<div class="block"' . $blockidattribute . '>';
+								echo '<div class="block ' . $type_block . '"' . $blockidattribute . '>';
 
 								if ( $titel ) {
 									echo '<h2>' . $titel . '</h2>';
@@ -403,8 +427,24 @@ function rhswp_write_extra_contentblokken() {
 							$contentblockposts->query( $args );
 
 							if ( $contentblockposts->have_posts() ) {
+								
+								$count = $contentblockposts->post_count;
 
-								echo '<div class="block"' . $blockidattribute . '>';
+								$columncount = 3;
+								
+								if ( 1 === $count ) {
+									$columncount = 1;
+								}
+								elseif ( 2 === $count ) {
+									$columncount = 2;
+								}
+								elseif ( 4 === $count ) {
+									$columncount = 2;
+								}
+								
+								echo '<section class="flexbox"' . $blockidattribute . '>';
+								echo '<div class="wrap">';
+								echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '">';
 
 								if ( $titel ) {
 									echo '<h2>' . $titel . '</h2>';
@@ -499,6 +539,8 @@ function rhswp_write_extra_contentblokken() {
 								}
 
 								echo '</div>';
+								echo '</div>';
+								echo '</section>';
 
 							} else {
 
@@ -510,7 +552,7 @@ function rhswp_write_extra_contentblokken() {
 
 									echo '<div style="border: 1px solid black; padding: .1em 1em; margin-bottom: 2em;">';
 
-									echo '<div class="block"' . $blockidattribute . '>';
+									echo '<div class="block ' . $type_block . '"' . $blockidattribute . '>';
 
 									if ( $titel ) {
 										echo '<h2>' . $titel . '</h2>';
@@ -539,11 +581,6 @@ function rhswp_write_extra_contentblokken() {
 
 						if ( $select_dossiers_list ) {
 
-							echo '<div class="block"' . $blockidattribute . '>';
-
-							if ( $titel ) {
-								echo '<h2>' . $titel . '</h2>';
-							}
 
 							$terms = get_terms( RHSWP_CT_DOSSIER, array(
 								'hide_empty' => false,
@@ -551,6 +588,26 @@ function rhswp_write_extra_contentblokken() {
 							) );
 
 							if ( $terms && ! is_wp_error( $terms ) ) {
+
+								$columncount = 3;
+								if ( 1 === count( $terms ) ) {
+									$columncount = 1;
+								}
+								elseif ( 2 === count( $terms ) ) {
+									$columncount = 2;
+								}
+								elseif ( 4 === count( $terms ) ) {
+									$columncount = 2;
+								}
+
+								echo '<section class="uitgelicht flexbox"' . $blockidattribute . '>';
+								echo '<div class="wrap">';
+								echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '">';
+	
+								if ( $titel ) {
+									echo '<h2>' . $titel . '</h2>';
+								}
+								
 								foreach ( $terms as $term ) {
 
 									$excerpt   = '';
@@ -565,9 +622,12 @@ function rhswp_write_extra_contentblokken() {
 									printf( '<a href="%s"><h3>%s</h3><p>%s</p></a>', $href, $term->name, $excerpt );
 									echo '</article>';
 								}
-							}
 
-							echo '</div>';
+								echo '</div>';
+								echo '</div>';
+								echo '</section>';
+								
+							}
 
 							// RESET THE QUERY
 							wp_reset_query();
@@ -586,8 +646,20 @@ function rhswp_write_extra_contentblokken() {
 							if ( $titel ) {
 								echo '<h2 class="visuallyhidden">' . $titel . '</h2>';
 							}
+							
+							$columncount = 3;
+							if ( 1 === count( $selecteer_uitgelichte_paginas_of_berichten ) ) {
+								$columncount = 1;
+							}
+							elseif ( 2 === count( $selecteer_uitgelichte_paginas_of_berichten ) ) {
+								$columncount = 2;
+							}
+							elseif ( 4 === count( $selecteer_uitgelichte_paginas_of_berichten ) ) {
+								$columncount = 2;
+							}
+							
 
-							echo '<div class="block itemcount-' . count( $selecteer_uitgelichte_paginas_of_berichten ) . '">';
+							echo '<div class="block no-top columncount-' . $columncount . '">';
 
 							$postcounter = 0;
 
@@ -618,7 +690,7 @@ function rhswp_write_extra_contentblokken() {
 								if ( has_post_thumbnail( $post ) ) {
 									printf( '<article %s>', $classattr );
 									echo '<div class="article-container">';
-									printf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'article-visual' ) );
+									printf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'widget-image-top' ) );
 									printf( '<div class="article-excerpt"><h3><a href="%s">%s</a></h3><p class="meta">%s</p><p>%s</p></div>', $permalink, get_the_title(), $postdate, $excerpt );
 									echo '</div>';
 									echo '</article>';
@@ -1107,9 +1179,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'location'              => array(
 			array(
 				array(
-					'param'    => 'page_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value'    => 'front_page',
+					'value'    => 'page',
 				),
 			),
 			array(
@@ -1126,6 +1198,15 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'value'    => 'category',
 				),
 			),
+
+			array(
+				array(
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'post',
+				),
+			),
+
 		),
 		'menu_order'            => 0,
 		'position'              => 'normal',

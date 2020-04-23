@@ -8,7 +8,7 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.14.3
+ * @version 2.14.3.restyling-redesign-lynette
  * @desc.   Menu responsive bij viewport-breedtewijzigingen.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
@@ -23,7 +23,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.14.3" );
+define( 'CHILD_THEME_VERSION', "2.14.3.restyling-redesign-lynette" );
 define( 'CHILD_THEME_VERSION_DESCRIPTION', "Menu responsive bij viewport-breedtewijzigingen." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
@@ -964,7 +964,7 @@ function rhswp_add_taxonomy_description() {
 	}
 
 	if ( $headline || $intro_text ) {
-		printf( '<div class="taxonomy-description">%s</div>', $headline . $intro_text );
+		printf( '<div class="taxonomy-description"><div class="wrap">%s</div></div>', $headline . $intro_text );
 	} else {
 		return;
 	}

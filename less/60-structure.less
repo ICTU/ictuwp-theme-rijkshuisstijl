@@ -81,20 +81,29 @@
   	width: 100%;
   }
 
+
+
+ 
+
+	.full-width-content.page-template-page_fullwidth,
 	.full-width-content.archive.tax-dossiers {
 		.site-inner {
 		  	max-width: 100%;
+		  	.block.berichten,
+		  	.block.berichten,
 		  	.taxonomy-description,
 		  	.archive-custom-loop,
 		  	.pagination {
-//				border: 10px solid red;
 				max-width: @break_fullwidth;
+		  	}
+		  	.taxonomy-description,
+		  	.archive-custom-loop,
+		  	.pagination {
 				margin-left: auto;
 				margin-right: auto;
 		  	}
 
 			.uitgelicht {
-//				border: 10px solid red;
 				background-color: @grijs_1;
 				padding: 1em;      
 			}
@@ -102,16 +111,17 @@
 		  	
 			@media only screen and (min-width: ( 900px ) ) {
 			  	.taxonomy-description {
-				  	padding-right: 33.3%;
+					.wrap {
+						padding-right: 33.3%;
+					}
 			  	}
 
 				.archive-custom-loop {
-					border: 2px solid green;
 					article {
 						&, &:last-of-type {
 							flex-basis: @flexbasis_twocols;
 							max-width: @flexbasis_twocols;
-							border: 2px solid green;
+//							border: 2px solid green;
 						}
 				  	}
 			  	}

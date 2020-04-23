@@ -583,10 +583,12 @@
 							}
 						}
 					}
+					
+					
 					article {
-						flex-basis: @flexbasis_threecols;
-						max-width: @flexbasis_threecols;
-						padding-right: 1.5em;
+						padding-left: 1.5rem;
+						padding-right: 1.5rem;
+//						border: 3px dotted blue;
 
 						.article-visual,
 						.article-excerpt {
@@ -595,31 +597,80 @@
 						.article-visual {
 							max-height: 300px;
 						}
-						  
-						&:last-of-type {
-							max-width: @flexbasis_threecols;
-						}
+
 					}
 					
-					&.itemcount-3 {
+					&.columncount-1,
+					&.columncount-2,
+					&.columncount-3 {
+						margin-left: -1.5rem;
+						margin-right: -1.5rem;
+
+					border: 2px solid green;
+
 						.article-container {
 							display: flex;
 							flex-direction: column;
-//							border: 10px solid red;
-							height: auto;
+							height: 100%;
+							background: white;
 							
 							.article-visual,
 							.article-excerpt {
-								flex: 1 0 100%;
 								max-height: none;
 								width: auto;
 							}
+
+							.article-excerpt {
+								background: white;
+								flex: 1 0 auto;
+								padding-top: .75rem;
+							}
+							
 							.article-visual {
 								position: static;
+								flex: 0 0 10rem;
+								height: 250px;
+//								border: 2px solid blue;
+								
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								padding-bottom: 1rem;
+								
 								img {
 									position: static;
 									transform: none;
+									object-fit: cover;
+									max-width: none;
+//									height: 100%;
+//									width: 100%;
+//									height: 200px;
+//									width: auto;
+//									border: 1px solid @grijs_2;
 								}
+							}
+						}						
+					}
+
+					
+					&.columncount-2 {
+
+						article {
+							&, &:last-of-type {
+								flex-basis: @flexbasis_twocols;
+								max-width: @flexbasis_twocols;
+							}
+						}
+					}
+						
+
+					
+					&.columncount-3 {
+
+						article {
+							&, &:last-of-type {
+								flex-basis: @flexbasis_threecols;
+								max-width: @flexbasis_threecols;
 							}
 						}
 					}
