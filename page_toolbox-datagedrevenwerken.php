@@ -9,8 +9,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.13.3
- * @desc.   Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
+ * @version 2.14.3
+ * @desc.   Betere styling toolbox datagedreven werken.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  * 
  */
@@ -81,7 +81,7 @@ function rhswp_toolbox_append_illustrations() {
 			$titel_principe = 'nee + ' . $value;
 		}
 
-		$titel_principe = '<h2>' . $titel_principe . '</h2>';
+		$titel_principe = '<h2><span>' . $titel_principe . '</span></h2>';
 
 		$has_link = '';
 
@@ -94,11 +94,14 @@ function rhswp_toolbox_append_illustrations() {
 		echo '<div id="toolbox_principe_' . $counter . '" class="toolbox-img' . $has_link . '">';
 		echo $a_start;
 
-		$image = get_stylesheet_directory() . '/images/toolbox/datagedreven-werken/' . $attr . '.png';
+		$image = get_stylesheet_directory() . '/images/toolbox/datagedreven-werken/' . $attr . '.svg';
 
 		// If it exists, include it.
 		if ( file_exists( $image ) ) {
-			echo '<img src="' . get_stylesheet_directory_uri() . '/images/toolbox/datagedreven-werken/' . $attr . '.png" alt="" class="png">';
+			echo '<img src="' . get_stylesheet_directory_uri() . '/images/toolbox/datagedreven-werken/' . $attr . '.svg" alt="" class="png">';
+		}
+		else {
+			echo 'File missing: ' . $image . '<br>';
 		}
 
 		echo $titel_principe;

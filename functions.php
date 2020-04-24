@@ -9,7 +9,7 @@
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
  * @version 2.14.3
- * @desc.   Menu responsive bij viewport-breedtewijzigingen.
+ * @desc.   Betere styling toolbox datagedreven werken.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -24,7 +24,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
 define( 'CHILD_THEME_VERSION', "2.14.3" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Menu responsive bij viewport-breedtewijzigingen." );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Betere styling toolbox datagedreven werken." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
