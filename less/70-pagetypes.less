@@ -7,8 +7,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.13.3
-// * @desc.   Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
+// * @version 2.14.3
+// * @desc.   Betere styling toolbox datagedreven werken.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -671,14 +671,7 @@
 			}
 			
 			.linkblock {
-				padding-left: .3em;
-				padding-right: .6em;
-				margin: 2px;
 				text-decoration: none;
-				
-				&:first-of-type {
-					padding-left: 0;
-				}
 				
 				p {
 					color: @txt;
@@ -736,26 +729,28 @@
 					padding-left: .3em;
 					padding-right: 0;
 				}
-				
-				.row > .linkblock {
-					display: table-cell;
-					vertical-align: top;
-					float: left;
-					width: 49%;
-					padding-bottom: 1em;
-				}
 			}
 
 			@media only screen and ( min-width: @break_fullwidth ) {
 				
-				.row {
-					& > .linkblock {
-						min-height: 10em;
-						width: 24.5%;
+				section.home.topics {
+
+					.driekwart,
+					.vollebreedte {
+						display: flex;
+						flex-direction: row;
+						flex-wrap: wrap;
 					}
-					
-					.linkblock:nth-child(4n+1) {
-						clear: left;
+					a {
+						padding-right: 1rem;
+						padding-bottom: 1rem;
+						margin: 2px;
+					}
+					.driekwart a {
+						flex: 0 0 32.6%;
+					}
+					.vollebreedte a {
+						flex: 0 0 24.6%;
 					}
 				}
 			}
@@ -786,43 +781,7 @@
 			}
 		}  
 	}
-	
-	.cssgrid {
-		// modernizr has detected support for CSS Grid    
-		
-		@media only screen and ( min-width: @break_tablet ) {
-			
-			.home,
-			.page-template-page_front-page,
-			.page-template-front-page {     
-				
-				.site-inner {
-					.row {
-						display: -ms-grid;
-						display: grid;
-						grid-gap: 1em;
-						-ms-grid-columns: repeat(4, auto);
-						grid-template-columns: repeat(4, auto);
-						width: 100%;
-						
-						&.driekwart {
-							-ms-grid-columns: repeat(3, auto);
-							grid-template-columns: repeat(3, auto);
-							width: 75%;
-						}
-						
-						.linkblock {
-							width: auto;
-							min-height: 0;
-							padding-left: 0;
-							padding-right: 0;
-							padding-bottom: 0;
-						}
-					}      
-				}  
-			}  
-		}
-	}  
+  
 }
 
 //========================================================================================================
@@ -882,8 +841,6 @@
 					.svg, h2 {
 						flex: 1;
 					}
-				}
-				.png {
 				}
 	
 				.svg {
@@ -1192,48 +1149,80 @@
 
 		@media only screen and ( min-width: @break_fullwidth ) {
 
-			height: 750px;
+			height: 790px;
 			background-image: url('images/toolbox/datagedreven-werken/bg-blue.svg');
 
 			h2 {
-				color: @oranje_vol;
-				text-shadow: 4px 4px 3px @wit,  -4px -4px 3px @wit,  4px -4px 3px @wit,  -4px 4px 3px @wit;
+				color: @violet_vol;
+				
+				span {
+					background: @wit;
+					padding-left: .25rem;
+					padding-right: .25rem;
+				}
 			}
 
+			a {
+				&:hover,
+				&:focus,
+				&:active {
+					border-color: @toolbox_innov_lichtblauw;
+			
+					h2 {
+						text-decoration: underline !important;
+						text-shadow: none;
+					}					
+				}
+			}
 			
 			.toolbox-img {
-				width: 300px;
+				width: 400px;
 			}
 
 			#toolbox_principe_1 {
-				top: 200px;
-				left: 500px;
+				top: 170px;
+				left: 290px;
 			}
 			#toolbox_principe_2 {
-				top: 123px;
-				left: 140px;
+				top: 20px;
+				left: 0;
 			}
 			#toolbox_principe_3 {
-				top: 120px;
-				right: 70px;
+				top: 0;
+				left: 530px;
+				width: 480px;
+
+				a {
+					position: relative;
+					height: 240px;
+					img, h2 {
+						position: absolute;
+					}
+					img {
+						left: 0;
+					}
+					h2 {
+						top: 50%;
+						right: 0;
+						max-width: 12rem;
+					}
+				}
 			}
 			#toolbox_principe_4 {
-				top: 440px;
-				left: 80px;
+				top: 350px;
+				left: 10px;
 			}
 			#toolbox_principe_5 {
-				top: 500px;
-				left: 500px;
+				top: 470px;
+				left: 380px;
 			}
 			#toolbox_principe_6 {
-				top: 473px;
-				right: 30px;
+				top: 260px;
+				right: 100px;
 			}
 		}
-		
 	}
-	
-	
+
 }
 
 //========================================================================================================

@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.20
-// * @desc.   Kleine CSS bugfixes.
+// * @version 2.14.2
+// * @desc.   Menu herzien voor mobiel schermbreedtes.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -433,15 +433,12 @@
 					.article-visual {
 						width: @flexbasis_twocols;
 						position: relative;
-//						border: 1px solid red;
 						
 						img {
 							margin: 0;
 							position: absolute;
-//							top: 50%;
 							top: 0;
 							left: 50%;
-//							transform: translateY(-50%) translateX(-50%);
 							transform: translateX(-50%);
 							width: 100%;
 							height: auto;
@@ -774,7 +771,10 @@
 			padding-top: 150px;
 			background-size: 750px 150px;
 			background-position: center top;
-//			border: 1px solid green;
+
+			.hero-image-tekst {
+				padding: .25em 1em .5em 1em;      
+			}
 		}
 		
 		@media only screen and (min-width: ( @break_tablet ) ) {

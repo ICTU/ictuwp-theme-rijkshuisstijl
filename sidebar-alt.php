@@ -12,15 +12,15 @@
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
  * @version 0.2.4
- * @desc.   Context widget added 
+ * @desc.   Context widget added
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
 //* Output primary sidebar structure
 genesis_markup( array(
 	'html5'   => '<aside %s><h2>' . _x( 'Tweede sidebar', 'Title of secondary sidebar', 'wp-rijkshuisstijl' ) . '</h2>',
-  'xhtml'   => '<div id="sidebar" class="sidebar widget-area">',
-  'context' => 'sidebar-secondary',
+	'xhtml'   => '<div id="sidebar" class="sidebar widget-area">',
+	'context' => 'sidebar-secondary',
 ) );
 
 do_action( 'genesis_before_sidebar_widget_area' );

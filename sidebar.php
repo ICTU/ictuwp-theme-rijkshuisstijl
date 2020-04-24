@@ -12,7 +12,7 @@
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
  * @version 0.2.4
- * @desc.   Context widget added 
+ * @desc.   Context widget added
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 

@@ -13,9 +13,11 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.14.1 - Payoff en site-titel weer toegevoegd aan de header.
+2.14.3 - Betere styling toolbox datagedreven werken.
 
 ## Version history
+* 2.14.3 - Betere styling toolbox datagedreven werken.
+* 2.14.2 - Homegrid in gelijke blokken. Menu herzien voor mobiel schermbreedtes.
 * 2.14.1 - Payoff en site-titel weer toegevoegd aan de header.
 * 2.13.3 - Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
 * 2.13.2 - Bugfixes toolbox datagedreven werken.

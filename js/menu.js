@@ -7,169 +7,218 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 0.7.25
-// * @desc.   Versienummer beter. section weer zichbaar.
+// * @version 2.14.2
+// * @desc.   Menu verbouwd zodat bij schermbreedtewijzigingen wel of niet de mobiele styling gebruikt wordt
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
 // Vars
-var header      = document.querySelector('#menu-container'),
-    menu        = document.querySelector('.nav-primary'),
-    menuButton  = document.querySelector('.menu-button');
-
+var header      	= document.querySelector('#genesis-nav-primary'),
+    menu        	= document.querySelector('nav .wrap ul.menu'),
+    menuButton  	= document.querySelector('.menu-button'),
+    herosearchform	= document.getElementById("herosearchform"),
+    heroimage 		= document.querySelector('.hero-image .wrapper');
 
 // =========================================================================================================
 
 function hideMenuButton(document, window, undefined) {
 
-  header.classList.remove('menu-met-js');
-  header.classList.remove('active');
-  header.classList.add('geen-menu-button');
-  menu.setAttribute('aria-hidden', 'false');
+	if ( ( typeof(header) != 'undefined' && header != null) )  {
+	
+		header.classList.remove('menu-met-js');
+		header.classList.remove('active');
+		header.classList.add('geen-menu-button');
+	
+		var menuwrapper 	= header.querySelector(".wrap");
+	
+	}
+	
+	
+	if ( ( typeof(menu) != 'undefined' && menu != null) )  {
+		menu.setAttribute('aria-hidden', 'false');
+	}
+	
+	
+	if ( ( typeof(menuwrapper) != 'undefined' && menuwrapper != null) )  {
+	
+		var div_homelink_button = document.getElementById("homelink_button");
+		
+		// search form terugplaatsen in hero-image
+		if ( ( typeof(herosearchform) != 'undefined' && herosearchform != null) )  {
+			heroimage.append(herosearchform);
+		}
 
-  var ele = document.getElementById("menu-button");
-  
-  if (ele) {
-    // Remove button from page
-    header.removeChild(menuButton);
-  }
+		if ( ( typeof(menu) != 'undefined' && menu != null) )  {
+			
+			var home_exists  = document.querySelector('li.home');
+			
+			if ( ( typeof(home_exists) != 'undefined' && home_exists != null) )  {
+				// listitem with class .home already exists
+				// no need to reinsert it
+			} else {
+
+				var lihome	= document.createElement('li');
+				lihome.setAttribute('class', 'home');
+				lihome.innerHTML 		= '<a href="/">Home</a>';
+
+				var theP = div_homelink_button.querySelector('p');
+
+				if (theP.classList.contains('is_home')) {
+
+					lihome.classList.add('current-menu-item');
+				}	
+				
+				menu.insertBefore(lihome, menu.childNodes[0]);
+			}
+		}
+
+		if ( ( typeof(div_homelink_button) != 'undefined' && div_homelink_button != null) )  {
+			// Remove button from page
+			menuwrapper.removeChild(div_homelink_button);
+		}
+		
+
+	
+	}
 }
 
 // =========================================================================================================
 
 function showMenuButton(document, window, undefined) {
+	
+	'use strict';
 
-  'use strict';
 
-  header.classList.add('menu-met-js');
-  header.classList.remove('geen-menu-button');
-  
-  menuButton = document.createElement('button');
+	if ( ( typeof(header) != 'undefined' && header != null) )  {
+		var menuwrapper 	= header.querySelector(".wrap");
+	}
 
-    
-  // Button properties
-  menuButton.classList.add('menu-button');
-  menuButton.setAttribute('id', 'menu-button');
-  menuButton.setAttribute('aria-label', 'Menu');
-  menuButton.setAttribute('aria-expanded', 'false');
-  menuButton.setAttribute('aria-controls', 'menu');
-  menuButton.innerHTML = '<i>&#x2261;</i><b>&nbsp;menu</b>';
-  
-  // Menu properties
-  menu.setAttribute('aria-hidden', 'true');
-  menu.setAttribute('aria-labelledby', 'menu-button');
-  
-  // Add button to page
-  header.insertBefore(menuButton, menu);
-// var insertedNode = parentNode.insertBefore(newNode, referenceNode);
-  
-  // Handle button click event
-  menuButton.addEventListener('click', function () {
-    
-    // If active...
-    if (menu.classList.contains('active')) {
-      // Hide
+	if ( ( typeof(menuwrapper) != 'undefined' && menuwrapper != null) )  {
+		
 
-      header.classList.remove('active');
+		if ( ( typeof(herosearchform) != 'undefined' && herosearchform != null) )  {
+			menuwrapper.prepend(herosearchform);
+		}
 
-      menu.classList.remove('active');
-      menu.setAttribute('aria-hidden', 'true');
-      menuButton.setAttribute('aria-label', 'Open menu');
-      menuButton.innerHTML = '<i>&#x2261;</i><b>&nbsp;menu</b>';
-      
-      menuButton.setAttribute('aria-expanded', 'false');
-    } else {
-      // Show
+		var listitem_home_a 	= '<a href="/">Home</a>';
+		var div_homelink_button	= document.createElement('div');
+		var lihome 				= menuwrapper.querySelector("li.home");
 
-      header.classList.add('active');
+		// Create a link to home
+		menuButton = document.createElement('p');
+		menuButton.innerHTML = listitem_home_a;
 
-      menu.classList.add('active');
-      menu.setAttribute('aria-hidden', 'false');
-      menuButton.setAttribute('aria-label', 'Sluit menu');
-      menuButton.innerHTML = '<i>X</i><b>&nbsp;Sluit menu</b>';
+		
+		div_homelink_button.setAttribute('id', 'homelink_button');
+		menuwrapper.prepend( div_homelink_button );
 
-      menuButton.setAttribute('aria-expanded', 'true');
-    }
-  }, false);
+		if ( ( typeof(lihome) != 'undefined' && lihome != null) )  {
+			// er is een list-item met class home in de wrapper
+			listitem_home_a 		= lihome.innerHTML;
+
+			if (lihome.classList.contains('current-menu-item')) {
+				menuButton.classList.add('is_home');
+			}	
+
+			lihome.remove();
+		}
+
+
+		div_homelink_button.appendChild(menuButton);
+
+		// Create a button and set properties
+		menuButton = document.createElement('button');
+		menuButton.classList.add('menu-button');
+		menuButton.setAttribute('id', 'menu-button');
+		menuButton.setAttribute('aria-label', 'Menu');
+		menuButton.setAttribute('aria-expanded', 'false');
+		menuButton.setAttribute('aria-controls', 'menu');
+		menuButton.innerHTML = '<b>menu</b>';
+		div_homelink_button.appendChild(menuButton);
+
+		if (header.classList.contains('init')) {
+
+			// Hide
+			header.classList.remove('init');
+			menu.classList.remove('active');
+			menu.setAttribute('aria-hidden', 'true');
+			menuButton.setAttribute('aria-label', 'Open menu');
+			menuButton.setAttribute('aria-expanded', 'false');
+			
+		} else {
+
+			menu.setAttribute('aria-hidden', 'true');
+
+		}
+		
+	}
+
+	if ( ( typeof(menu) != 'undefined' && menu != null) )  {
+	
+		// Menu properties
+		menu.setAttribute('aria-labelledby', 'menu-button');
+		
+		header.classList.add('menu-met-js');
+		header.classList.remove('geen-menu-button');
+	
+		// Handle button click event
+		menuButton.addEventListener('click', function () {
+			
+			// If active...
+			if (menu.classList.contains('active')) {
+	
+				// Hide
+				header.classList.remove('active');
+				menu.classList.remove('active');
+				menu.setAttribute('aria-hidden', 'true');
+				menuButton.setAttribute('aria-label', 'Open menu');
+				menuButton.setAttribute('aria-expanded', 'false');
+			} 
+			else {
+	
+				// Show
+				header.classList.add('active');
+				menu.classList.add('active');
+				menu.setAttribute('aria-hidden', 'false');
+				menuButton.setAttribute('aria-label', 'Sluit menu');
+				menuButton.setAttribute('aria-expanded', 'true');
+				
+			}
+		}, false);
+	
+	}
+
 }
 
 // =========================================================================================================
 
 // media query change
 function WidthChange(mq) {
-  
-  if ( mq.addListener ) {
-    if (mq.matches) {
-      // window width is at least 900px
-      // don't show menu button
-      hideMenuButton(document, window);
-    }
-    else {
-      // window width is less than 900px
-      // DO show menu button
-      showMenuButton(document, window);
-    }
-  }
+
+	if (mq.matches) {
+		// window width is at least 760px
+		// don't show menu button
+		hideMenuButton(document, window);
+	}
+	else {
+		// window width is less than 760px
+		// DO show menu button
+		showMenuButton(document, window);
+	}
+
 }
 
 // =========================================================================================================
+
+var mq = window.matchMedia('(min-width: 760px)');
 
 // media query event handler
-if (matchMedia) {
-  var mq = window.matchMedia('(min-width: 900px)');
-  if ( mq.addListener ) {
-     mq.addListener( WidthChange );
-  }
-  WidthChange(mq);
-}
+//if (matchMedia) {
+	
+//	if ( mq.addListener ) {
+		mq.addListener( WidthChange );
+//	}
+	WidthChange(mq);
 
+//}
 
 // =========================================================================================================
-
-/*  Genesis Accessible Dropdown Menu JavaScript
-
-	Used by the Genesis Accessible Dropdown Menu Plugin
-
-	Version: 1.0
- 
-	License: GPL-2.0+
-	License URI: http://www.opensource.org/licenses/gpl-license.php
-
- */
-
-( function($) { 
-
-	$('.menu li').hover(
-		function(){$(this).addClass("js-menu-open");},
-		function(){$(this).delay('250').removeClass("js-menu-open");}
-	);
-
-var top_level_links = $(this).find('> li > a');
-
-	// Added by Terrill: (removed temporarily: doesn't fix the JAWS problem after all)
-	// Add tabindex="0" to all top-level links 
-	// Without at least one of these, JAWS doesn't read widget as a menu, despite all the other ARIA
-	//$(top_level_links).attr('tabindex','0');
-	
-	// Set tabIndex to -1 so that top_level_links can't receive focus until menu is open
-	$(top_level_links).next('ul')
-		.attr('data-test','true')
-		.attr({ 'aria-hidden': 'true', 'role': 'menu' })
-		.find('a')
-		.attr('tabIndex',-1);
-	
-
-	
-	
-  $('.menu li a').on('focus blur',
-    function(){
-//      console.log( $(this).parents(".menu-item").text() );
-//    	$(this).parents(".menu-item").toggleClass("js-menu-open");
-//    	$(this).parents(".menu-item").addClass("js-menu-open");
-    }
-	);
-	
-	}
-	
-	(jQuery)
-	
-);
