@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.14.3.restyling-redesign-lynette
-  Version description: Menu responsive bij viewport-breedtewijzigingen.
+  Version: 2.14.3
+  Version description: Betere styling toolbox datagedreven werken.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -534,9 +534,7 @@ q blockquote {
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
   word-break: normal;
-  -webkit-hyphens: none;
-      -ms-hyphens: none;
-          hyphens: none;
+  hyphens: none;
 }
 blockquote em,
 cite {
@@ -670,9 +668,7 @@ cite a {
 .pullquote-with-image blockquote *,
 .simple-pullquote blockquote * {
   word-break: normal;
-  -webkit-hyphens: none;
-      -ms-hyphens: none;
-          hyphens: none;
+  hyphens: none;
 }
 @media only screen and (min-width: 650px) {
   .pullquote-with-image q,
@@ -854,6 +850,7 @@ details[open] summary:hover {
 }
 p {
   -webkit-hyphens: auto;
+  -moz-hyphens: auto;
   -ms-hyphens: auto;
   -o-hyphens: auto;
   hyphens: auto;
@@ -864,6 +861,7 @@ p a {
 b,
 strong {
   -webkit-hyphens: manual;
+  -moz-hyphens: manual;
   -ms-hyphens: manual;
   -o-hyphens: manual;
   hyphens: manual;
@@ -2400,6 +2398,7 @@ Accessibility Extra's
   z-index: 100000;
   line-height: normal;
   text-decoration: none;
+  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 }
 .wpacc-genesis-skip-link li {
@@ -2925,9 +2924,7 @@ main .no-results-widget.widget_search {
   .site-header .wrap .title-area .site-description {
     text-align: right;
     padding-left: 15%;
-    -webkit-hyphens: none;
-        -ms-hyphens: none;
-            hyphens: none;
+    hyphens: none;
   }
   .site-header .wrap .title-area .site-description span {
     display: block;
@@ -3413,8 +3410,7 @@ aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:focus img {
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
   filter: grayscale(100%);
-  -webkit-filter: gray;
-          filter: gray;
+  filter: gray;
 }
 aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:hover .text,
 aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:active .text,
@@ -4774,8 +4770,7 @@ noscript {
   .flexbox .full-width-content.archive .block.columncount-3 .article-container .article-visual img {
     position: static;
     transform: none;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     max-width: none;
   }
   .flexbox .full-width-content.home .block.columncount-2 article,
@@ -5397,14 +5392,12 @@ footer {
     width: 95%;
     float: left;
     display: block;
-    -moz-column-count: 2;
-         column-count: 2;
+    column-count: 2;
   }
 }
 @media only screen and (min-width: 1200px) {
   .dossier-overview nav ul {
-    -moz-column-count: 3;
-         column-count: 3;
+    column-count: 3;
   }
 }
 .site-inner {
@@ -5599,8 +5592,7 @@ div.dossier_overzicht_popular ul.links a:before {
     width: 100%;
   }
   #mixitupfilterlist.unfiltered ul.children {
-    -moz-column-count: 4;
-         column-count: 4;
+    column-count: 4;
     margin-bottom: 2rem;
   }
   #mixitupfilterlist.unfiltered ul.children li {
@@ -5639,8 +5631,7 @@ div.dossier_overzicht_popular ul.links a:before {
     max-width: 33%;
   }
   .flexbox .page-template-page_showalldossiers div.dossier_overzicht_filter_as_list ul.links {
-    -moz-column-count: 4;
-         column-count: 4;
+    column-count: 4;
   }
   .flexbox .page-template-page_showalldossiers div.dossier_overzicht_filter_as_list li {
     width: 100%;
@@ -7452,24 +7443,12 @@ a.external:after {
   background: #4d5851;
 }
 .floatingtoolbox {
-  -webkit-animation-name: floatingtoolbox;
-          animation-name: floatingtoolbox;
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
+  animation-name: floatingtoolbox;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
   margin-left: 30px;
   margin-top: 5px;
-}
-@-webkit-keyframes vergroot {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.05);
-  }
 }
 @keyframes vergroot {
   from {
@@ -7477,17 +7456,6 @@ a.external:after {
   }
   to {
     transform: scale(1.05);
-  }
-}
-@-webkit-keyframes floatingtoolbox {
-  from {
-    transform: translate(0, 0px);
-  }
-  65% {
-    transform: translate(0, 15px);
-  }
-  to {
-    transform: translate(0, 0px);
   }
 }
 @keyframes floatingtoolbox {
@@ -7624,14 +7592,10 @@ a.external:after {
   #toolbox-innovatie-illustrations .toolbox-img.has-link:hover,
   #toolbox-datagedreven-werken-illustrations .toolbox-img.has-link:hover,
   #toolbox-cyberincident-illustrations .toolbox-img.has-link:hover {
-    -webkit-animation-name: vergroot;
-            animation-name: vergroot;
-    -webkit-animation-duration: 1s;
-            animation-duration: 1s;
-    -webkit-animation-iteration-count: 1;
-            animation-iteration-count: 1;
-    -webkit-animation-timing-function: ease;
-            animation-timing-function: ease;
+    animation-name: vergroot;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
     transform: scale(1.05);
     z-index: 8888;
   }
@@ -7831,39 +7795,71 @@ a.external:after {
 }
 @media only screen and (min-width: 1200px) {
   #toolbox-datagedreven-werken-illustrations {
-    height: 750px;
+    height: 790px;
     background-image: url('images/toolbox/datagedreven-werken/bg-blue.svg');
   }
   #toolbox-datagedreven-werken-illustrations h2 {
-    color: #c25607;
-    text-shadow: 4px 4px 3px #fff, -4px -4px 3px #fff, 4px -4px 3px #fff, -4px 4px 3px #fff;
+    color: #a90061;
+  }
+  #toolbox-datagedreven-werken-illustrations h2 span {
+    background: #fff;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  #toolbox-datagedreven-werken-illustrations a:hover,
+  #toolbox-datagedreven-werken-illustrations a:focus,
+  #toolbox-datagedreven-werken-illustrations a:active {
+    border-color: #CDEAFC;
+  }
+  #toolbox-datagedreven-werken-illustrations a:hover h2,
+  #toolbox-datagedreven-werken-illustrations a:focus h2,
+  #toolbox-datagedreven-werken-illustrations a:active h2 {
+    text-decoration: underline !important;
+    text-shadow: none;
   }
   #toolbox-datagedreven-werken-illustrations .toolbox-img {
-    width: 300px;
+    width: 400px;
   }
   #toolbox-datagedreven-werken-illustrations #toolbox_principe_1 {
-    top: 200px;
-    left: 500px;
+    top: 170px;
+    left: 290px;
   }
   #toolbox-datagedreven-werken-illustrations #toolbox_principe_2 {
-    top: 123px;
-    left: 140px;
+    top: 20px;
+    left: 0;
   }
   #toolbox-datagedreven-werken-illustrations #toolbox_principe_3 {
-    top: 120px;
-    right: 70px;
+    top: 0;
+    left: 530px;
+    width: 480px;
+  }
+  #toolbox-datagedreven-werken-illustrations #toolbox_principe_3 a {
+    position: relative;
+    height: 240px;
+  }
+  #toolbox-datagedreven-werken-illustrations #toolbox_principe_3 a img,
+  #toolbox-datagedreven-werken-illustrations #toolbox_principe_3 a h2 {
+    position: absolute;
+  }
+  #toolbox-datagedreven-werken-illustrations #toolbox_principe_3 a img {
+    left: 0;
+  }
+  #toolbox-datagedreven-werken-illustrations #toolbox_principe_3 a h2 {
+    top: 50%;
+    right: 0;
+    max-width: 12rem;
   }
   #toolbox-datagedreven-werken-illustrations #toolbox_principe_4 {
-    top: 440px;
-    left: 80px;
+    top: 350px;
+    left: 10px;
   }
   #toolbox-datagedreven-werken-illustrations #toolbox_principe_5 {
-    top: 500px;
-    left: 500px;
+    top: 470px;
+    left: 380px;
   }
   #toolbox-datagedreven-werken-illustrations #toolbox_principe_6 {
-    top: 473px;
-    right: 30px;
+    top: 260px;
+    right: 100px;
   }
 }
 .toolbox01-kwaliteit-van-data-algoritme-en-analyse .sidebar-primary .widget:not(.banner),
@@ -7932,6 +7928,22 @@ a.external:after {
   -webkit-animation: cptch_rotation 800ms infinite linear;
 }
 @-webkit-keyframes cptch_rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@-moz-keyframes cptch_rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@-o-keyframes cptch_rotation {
   0% {
     -webkit-transform: rotate(0deg);
   }
