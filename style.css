@@ -7632,7 +7632,9 @@ a.external:after {
 @media only screen and (min-width: 1200px) {
   #toolbox-datagedreven-werken-illustrations {
     height: 790px;
-    background-image: url('images/toolbox/datagedreven-werken/bg-blue.svg');
+    background-image: url('images/toolbox/datagedreven-werken/bg-blue.svg?asdasd');
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
   #toolbox-datagedreven-werken-illustrations h2 {
     color: #a90061;
@@ -7665,9 +7667,8 @@ a.external:after {
     left: 0;
   }
   #toolbox-datagedreven-werken-illustrations #toolbox_principe_3 {
-    top: 0;
-    left: 530px;
-    width: 480px;
+    top: 10px;
+    left: 640px;
   }
   #toolbox-datagedreven-werken-illustrations #toolbox_principe_3 a {
     position: relative;
