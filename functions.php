@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.14.3
- * @desc.   Betere styling toolbox datagedreven werken.
+ * @version 2.15.1
+ * @desc.   Toolbox datagedreven werken live.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.14.3" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Betere styling toolbox datagedreven werken." );
+define( 'CHILD_THEME_VERSION', "2.15.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Toolbox datagedreven werken live." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
