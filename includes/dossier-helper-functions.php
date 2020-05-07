@@ -227,6 +227,7 @@ function rhswp_dossier_title_checker() {
 			$parentID = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
 
 			if ( $tonen !== 'nee' ) {
+				// niet leeg of gelijk aan ja
 				// we mogen de inhoudspagina tonen
 
 				$shownalready                    = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
@@ -246,6 +247,10 @@ function rhswp_dossier_title_checker() {
 
 				$subpaginas .= rhswp_dossier_get_pagelink( $dossier_overzichtpagina, $args );
 
+			}
+			else {
+				// leeg of 'nee'
+				$args['preferedtitle'] = _x( 'Inhoud', 'Standaardlabel voor het 2de item in het dossiermenu', 'wp-rijkshuisstijl' );
 			}
 		}
 
