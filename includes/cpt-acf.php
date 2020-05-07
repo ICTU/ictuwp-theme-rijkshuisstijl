@@ -3820,7 +3820,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'label'             => 'Stap 1',
 				'name'              => '',
 				'type'              => 'accordion',
-				'instructions'      => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/datagedreven-werken/01-ontdekken-vraag-en-aanpak-data_veiligheid.png" width="100" alt="" />',
+				'instructions'      => '<img src="/wp-content/themes/wp-rijkshuisstijl/images/toolbox/datagedreven-werken/01-ontdekken-vraag-en-aanpak.png" width="100" alt="" />',
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
