@@ -31,11 +31,9 @@ function hideMenuButton(document, window, undefined) {
 
     }
 
-
     if ((typeof (menu) != 'undefined' && menu != null)) {
         menu.setAttribute('aria-hidden', 'false');
     }
-
 
     if ((typeof (menuwrapper) != 'undefined' && menuwrapper != null)) {
 
@@ -74,8 +72,6 @@ function hideMenuButton(document, window, undefined) {
             // Remove button from page
             menuwrapper.removeChild(div_homelink_button);
         }
-
-
     }
 }
 
@@ -85,16 +81,15 @@ function showMenuButton(document, window, undefined) {
 
     'use strict';
 
-
     if ((typeof (header) != 'undefined' && header != null)) {
         var menuwrapper = header.querySelector(".wrap");
     }
 
     if ((typeof (menuwrapper) != 'undefined' && menuwrapper != null)) {
 
-
         if ((typeof (herosearchform) != 'undefined' && herosearchform != null)) {
-            menuwrapper.prepend(herosearchform);
+            menuwrapper.append(herosearchform);
+//            menuwrapper.prepend(herosearchform);
         }
 
         var listitem_home_a = '<a href="/">Home</a>';
@@ -104,7 +99,6 @@ function showMenuButton(document, window, undefined) {
         // Create a link to home
         menuButton = document.createElement('p');
         menuButton.innerHTML = listitem_home_a;
-
 
         div_homelink_button.setAttribute('id', 'homelink_button');
         menuwrapper.prepend(div_homelink_button);
@@ -119,7 +113,6 @@ function showMenuButton(document, window, undefined) {
 
             lihome.remove();
         }
-
 
         div_homelink_button.appendChild(menuButton);
 
@@ -147,7 +140,6 @@ function showMenuButton(document, window, undefined) {
             menu.setAttribute('aria-hidden', 'true');
 
         }
-
     }
 
     if ((typeof (menu) != 'undefined' && menu != null)) {
