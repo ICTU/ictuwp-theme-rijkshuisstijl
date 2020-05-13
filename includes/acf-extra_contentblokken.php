@@ -266,7 +266,7 @@ function rhswp_write_extra_contentblokken() {
 							if ( in_array( 'edit_pages', (array) $user->allcaps ) ) {
 								//The user has capability to edit pages
 
-								echo '<div style="border: 1px solid black; padding: .1em 1em; margin-bottom: 2em;">';
+								echo '<div style="border: 5px solid red; padding: .1em 1em; margin-bottom: 2em;">';
 
 								echo '<div class="block ' . $type_block . '"' . $blockidattribute . '>';
 
@@ -280,8 +280,9 @@ function rhswp_write_extra_contentblokken() {
 								echo '<p>' . __( 'Note to the editor', 'wp-rijkshuisstijl' ) . '</p>';
 								echo '<p>' . __( 'Je hebt een content-block toegevoegd die berichten zou moeten tonen, maar de functie van deze pagina <em>is</em> het tonen van berichten. Dubbelop, dus.', 'wp-rijkshuisstijl' );
 
-								echo '<br><em>' . esc_html( __( "Deze tekst wordt alleen getoond aan redacteuren die pagina's mogen wijzigen.", 'wp-rijkshuisstijl' ) ) . '</em></div>';
+								echo '<br><em>' . esc_html( __( "Deze tekst wordt alleen getoond aan redacteuren die pagina's mogen wijzigen.", 'wp-rijkshuisstijl' ) ) . '</em>';
 
+								echo '</div>';
 								echo '</div>';
 
 							}
@@ -550,9 +551,9 @@ function rhswp_write_extra_contentblokken() {
 									//The user has capability to edit pages
 
 
-									echo '<div style="border: 1px solid black; padding: .1em 1em; margin-bottom: 2em;">';
+									echo '<div style="border: 5px solid red; padding: .1em 1em; margin-bottom: 2em;">';
 
-									echo '<div class="block ' . $type_block . '"' . $blockidattribute . '>';
+									echo '<div class="block ' . $type_block . '"' . $blockidattribute . ' style="display: block;">';
 
 									if ( $titel ) {
 										echo '<h2>' . $titel . '</h2>';
@@ -563,10 +564,13 @@ function rhswp_write_extra_contentblokken() {
 									echo '<p>' . __( 'Note to the editor', 'wp-rijkshuisstijl' ) . '</p>';
 									echo '<p>' . __( 'Er is een content-block met berichten toegevoegd aan deze pagina, maar hiervoor zijn geen berichten gevonden.', 'wp-rijkshuisstijl' );
 									if ( $args ) {
+										echo '<pre>';
 										dovardump( $args );
+										echo '</pre>';
 									}
-									echo '<br><em>' . esc_html( __( "Deze tekst wordt alleen getoond aan redacteuren die pagina's mogen wijzigen.", 'wp-rijkshuisstijl' ) ) . '</em></div>';
+									echo '<br><em>' . esc_html( __( "Deze tekst wordt alleen getoond aan redacteuren die pagina's mogen wijzigen.", 'wp-rijkshuisstijl' ) ) . '</em>';
 
+									echo '</div>';
 									echo '</div>';
 
 								}
