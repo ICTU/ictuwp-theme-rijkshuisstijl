@@ -8,7 +8,7 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.15.1
+ * @version 2.16.1.a
  * @desc.   Toolbox datagedreven werken live.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
@@ -175,6 +175,11 @@ if ( ! defined( 'DOPT__ACTIELIJN_CPT' ) ) {
 
 // @since 2.12.17
 define( 'ID_DOSSIER_DIV', "dossier-overview" );
+
+// @since 2.16.1.a
+if ( ! defined( 'RHSWP_CPT_VERWIJZING' ) ) {
+  define( 'RHSWP_CPT_VERWIJZING',             'externeverwijzing' ); 
+}
 
 
 //========================================================================================================
