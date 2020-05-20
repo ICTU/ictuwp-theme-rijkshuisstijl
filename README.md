@@ -13,10 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.16.1.e - Externe verwijzingen als CPT toegevoegd
+2.16.1.f - Externe verwijzingen als CPT toegevoegd
 
 ## Version history
-* 2.16.1.e - Externe verwijzingen als CPT toegevoegd
+* 2.16.1.f - Externe verwijzingen als CPT toegevoegd
 * 2.15.1 - Toolbox datagedreven werken live.
 * 2.14.3 - Betere styling toolbox datagedreven werken.
 * 2.14.2 - Homegrid in gelijke blokken. Menu herzien voor mobiel schermbreedtes.
