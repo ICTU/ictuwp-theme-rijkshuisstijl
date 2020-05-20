@@ -8,7 +8,7 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.16.1.d
+ * @version 2.16.1.e
  * @desc.   Toolbox datagedreven werken live.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
@@ -23,7 +23,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.16.1.d" );
+define( 'CHILD_THEME_VERSION', "2.16.1.e" );
 define( 'CHILD_THEME_VERSION_DESCRIPTION', "Toolbox datagedreven werken live." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
@@ -176,7 +176,7 @@ if ( ! defined( 'DOPT__ACTIELIJN_CPT' ) ) {
 // @since 2.12.17
 define( 'ID_DOSSIER_DIV', "dossier-overview" );
 
-// @since 2.16.1.d
+// @since 2.16.1.e
 if ( ! defined( 'RHSWP_CPT_VERWIJZING' ) ) {
   define( 'RHSWP_CPT_VERWIJZING',             'externeverwijzing' ); 
 }

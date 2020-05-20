@@ -46,7 +46,7 @@ function rhswp_write_extra_contentblokken() {
 					$categoriefilter       = $row['extra_contentblok_categoriefilter'];
 					$maxnr_posts           = $row['extra_contentblok_maxnr_posts'];
 
-					$with_featured_image = 'alle';
+						$with_featured_image = 'alle';
 					$limit               = $row['extra_contentblok_maxnr_events'];
 
 					if ( $blockidattribute_prev == $titel ) {
@@ -227,19 +227,19 @@ function rhswp_write_extra_contentblokken() {
 
 								$postdate = '';
 								if ( 'post' == get_post_type() ) {
-									$postdate = get_the_date();
+									$postdate = '<p class="meta">' . get_the_date() . '</p>';										
 								}
 
 								if ( has_post_thumbnail( $post ) ) {
 									printf( '<article %s>', $classattr );
 									echo '<div class="article-container">';
 									printf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'article-visual' ) );
-									printf( '<div class="article-excerpt"><h3><a href="%s">%s</a></h3><p class="meta">%s</p><p>%s</p></div>', get_permalink(), get_the_title(), $postdate, $excerpt );
+									printf( '<div class="article-excerpt"><h3><a href="%s">%s</a></h3>%s<p>%s</p></div>', get_permalink(), get_the_title(), $postdate, $excerpt );
 									echo '</div>';
 									echo '</article>';
 								} else {
 									printf( '<article %s>', $classattr );
-									printf( '<h3><a href="%s">%s</a></h3><p class="meta">%s</p><p>%s</p>', get_permalink(), get_the_title(), $postdate, $excerpt );
+									printf( '<h3><a href="%s">%s</a></h3>%s<p>%s</p>', get_permalink(), get_the_title(), $postdate, $excerpt );
 									echo '</article>';
 								}
 
@@ -511,6 +511,11 @@ function rhswp_write_extra_contentblokken() {
 
 									printf( '<article %s>', $classattr );
 
+									if ( $postdate ) {
+										$postdate = '<p class="meta">' . $postdate . '</p>';
+									}
+
+
 									if ( $doimage ) {
 										echo '<div class="article-container">';
 
@@ -519,11 +524,11 @@ function rhswp_write_extra_contentblokken() {
 										} else {
 											printf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'article-visual' ) );
 										}
-										printf( '<div class="article-excerpt"><h3><a href="%s">%s</a></h3><p class="meta">%s</p><p>%s</p>%s</div>', $theurl, $title, $postdate, $excerpt, $categorielinks );
+										printf( '<div class="article-excerpt"><h3><a href="%s">%s</a></h3>%s<p>%s</p>%s</div>', $theurl, $title, $postdate, $excerpt, $categorielinks );
 
 										echo '</div>';
 									} else {
-										printf( '<h3><a href="%s">%s</a></h3><p class="meta">%s</p><p>%s</p>%s', $theurl, $title, $postdate, $excerpt, $categorielinks );
+										printf( '<h3><a href="%s">%s</a></h3>%s<p>%s</p>%s', $theurl, $title, $postdate, $excerpt, $categorielinks );
 									}
 
 									if ( WP_DEBUG && SHOW_CSS_DEBUG ) {
@@ -724,8 +729,9 @@ function rhswp_write_extra_contentblokken() {
 
 								$postdate = '';
 								if ( 'post' == get_post_type() ) {
-									$postdate = get_the_date();
+									$postdate = '<p class="meta">' . get_the_date() . '</p>';
 								}
+
 
 								if ( 'citaat_of_verwijzing_citaat' === get_field( 'citaat_of_verwijzing', $post->ID )  ) {
 
@@ -778,12 +784,12 @@ function rhswp_write_extra_contentblokken() {
 //									$permalink_start2 = str_replace( '<a href=', '<a tabindex="-1" href=', $permalink_start );
 //									$permalink_end2 = $permalink_end;
 									printf( '<div class="article-visual">%s%s%s</div>', $permalink_start2, get_the_post_thumbnail( $post->ID, 'article-visual-big' ), $permalink_end2 );
-									printf( '<div class="article-excerpt"><%s>%s%s%s</%s><p class="meta">%s</p><p>%s</p></div>', $headertag, $permalink_start, get_the_title(), $permalink_end, $headertag, $postdate, $excerpt );
+									printf( '<div class="article-excerpt"><%s>%s%s%s</%s>%s<p>%s</p></div>', $headertag, $permalink_start, get_the_title(), $permalink_end, $headertag, $postdate, $excerpt );
 									echo '</div>';
 									echo '</article>';
 								} else {
 									printf( '<article %s>', $classattr );
-									printf( '<%s>%s%s%s</%s><p class="meta">%s</p><p>%s</p>', $headertag, $permalink_start, get_the_title(), $permalink_end, $headertag, $postdate, $excerpt );
+									printf( '<%s>%s%s%s</%s>%s<p>%s</p>', $headertag, $permalink_start, get_the_title(), $permalink_end, $headertag, $postdate, $excerpt );
 									echo '</article>';
 								}
 
