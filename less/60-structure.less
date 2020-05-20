@@ -81,7 +81,20 @@
   	width: 100%;
   }
 
-
+	.page.full-width-content {
+		header.entry-header {
+			width: auto;
+			max-width: 800px;
+			margin-left: 0;
+			& + .entry-content {
+				& > p {
+					width: auto;
+					max-width: 800px;
+					margin-left: 0;
+				}
+			}
+		}	
+	}
 
  
 
