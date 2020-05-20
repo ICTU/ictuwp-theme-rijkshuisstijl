@@ -46,8 +46,8 @@ function rhswp_write_extra_contentblokken() {
 					$categoriefilter       = $row['extra_contentblok_categoriefilter'];
 					$maxnr_posts           = $row['extra_contentblok_maxnr_posts'];
 
-					$with_featured_image.  = 'alle';
-					$limit                 = $row['extra_contentblok_maxnr_events'];
+					$with_featured_image = 'alle';
+					$limit               = $row['extra_contentblok_maxnr_events'];
 
 					if ( $blockidattribute_prev == $titel ) {
 						$blockidattribute_name = $titel . '-' . $thecounter;
