@@ -8,7 +8,7 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.16.1.a
+ * @version 2.16.1.d
  * @desc.   Toolbox datagedreven werken live.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
@@ -23,7 +23,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.15.1" );
+define( 'CHILD_THEME_VERSION', "2.16.1.d" );
 define( 'CHILD_THEME_VERSION_DESCRIPTION', "Toolbox datagedreven werken live." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
@@ -176,7 +176,7 @@ if ( ! defined( 'DOPT__ACTIELIJN_CPT' ) ) {
 // @since 2.12.17
 define( 'ID_DOSSIER_DIV', "dossier-overview" );
 
-// @since 2.16.1.a
+// @since 2.16.1.d
 if ( ! defined( 'RHSWP_CPT_VERWIJZING' ) ) {
   define( 'RHSWP_CPT_VERWIJZING',             'externeverwijzing' ); 
 }
@@ -198,6 +198,8 @@ add_image_size( 'article-visual', 400, 400, true );
 add_image_size( 'widget-image', 100, 100, false );
 add_image_size( 'widget-image-top', 400, 1200, false );
 add_image_size( 'nieuwsbriefthumb', 88, 88, false );
+
+add_image_size( 'article-visual-big', 600, 600, true );
 
 //========================================================================================================
 
@@ -303,8 +305,6 @@ include_once( RHSWP_FOLDER . '/includes/cpt-acf.php' );
 
 //========================================================================================================
 
-//* Remove inpost layouts
-remove_theme_support( 'genesis-inpost-layouts' );
 
 //* Remove Genesis in-post SEO Settings
 remove_action( 'admin_menu', 'genesis_add_inpost_seo_box' );

@@ -1,18 +1,16 @@
 
-
-//**
-// * Rijkshuisstijl (Digitale Overheid) - 20-elements.less
-// * ----------------------------------------------------------------------------------
-// * CSS met elements
-// * ----------------------------------------------------------------------------------
-// * @author  Paul van Buuren
-// * @license GPL-2.0+
-// * @package wp-rijkshuisstijl
-// * @version 2.14.2
-// * @desc.   Menu herzien voor mobiel schermbreedtes.
-// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
-// **
-
+/*
+ * Rijkshuisstijl (Digitale Overheid) - 20-elements.less
+ * ----------------------------------------------------------------------------------
+ * CSS met elements
+ * ----------------------------------------------------------------------------------
+ * @author  Paul van Buuren
+ * @license GPL-2.0+
+ * @package wp-rijkshuisstijl
+ * @version 2.16.1.d
+ * @desc.   Toolbox datagedreven werken live.
+ * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+*/
 
 @import "22-element-slider.less";       /* all things related to the site header */
 
@@ -159,7 +157,7 @@
 				display: flex;
 				flex-flow: row wrap;
 				justify-content: flex-start;
-				
+
 				section,
 				article {
 					flex-grow: 1;
@@ -449,6 +447,7 @@
 		}
 
 		.flexbox .block {
+			
 			.type-post {
 				.article-visual {
 					margin-top: .4rem;
@@ -565,6 +564,7 @@
 			&.home,
 			&.page-template-page_showalldossiers,
 			&.blog,
+			&.page,
 			&.archive {
 				.block {
 					.events-table {
@@ -666,7 +666,8 @@
 					
 					&.columncount-2 {
 
-						article {
+						article,
+						section {
 							&, &:last-of-type {
 								flex-basis: @flexbasis_twocols;
 								max-width: @flexbasis_twocols;
@@ -678,7 +679,8 @@
 					
 					&.columncount-3 {
 
-						article {
+						article, 
+						section {
 							&, &:last-of-type {
 								flex-basis: @flexbasis_threecols;
 								max-width: @flexbasis_threecols;

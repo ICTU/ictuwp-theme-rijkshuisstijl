@@ -1,17 +1,17 @@
 
 
-//**
-// * Rijkshuisstijl (Digitale Overheid) - 10-text-styles.less
-// * ----------------------------------------------------------------------------------
-// * Bevat selectors voor tekstelementen, zowel in front-end css als back-end css
-// * ----------------------------------------------------------------------------------
-// * @author  Paul van Buuren
-// * @license GPL-2.0+
-// * @package wp-rijkshuisstijl
-// * @version 2.12.15
-// * @desc.   Wijzigingen n.a.v. rapport accessibility.
-// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
-// **
+/*
+ * Rijkshuisstijl (Digitale Overheid) - 10-text-styles.less
+ * ----------------------------------------------------------------------------------
+ * Bevat selectors voor tekstelementen, zowel in front-end css als back-end css
+ * ----------------------------------------------------------------------------------
+ * @author  Paul van Buuren
+ * @license GPL-2.0+
+ * @package wp-rijkshuisstijl
+ * @version 2.16.1.d
+ * @desc.   Toolbox datagedreven werken live.
+ * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+*/
 
 
 .10_basefont() {
@@ -548,6 +548,23 @@
     margin: ( @padding / 2 ) 0 ( @padding / 4 );
     font-family: @headerfont;
   }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+	  a {
+		  text-decoration: none;
+		  
+		  &:hover,
+		  &:focus,
+		  &:active {
+			  text-decoration: underline;
+		  }
+	  }
+  }
+  
   
   h1 {
   	.font-size( @fontsize_title_h1 );
