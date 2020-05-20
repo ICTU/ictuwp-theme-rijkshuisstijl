@@ -1997,7 +1997,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'label'             => __( 'Wil je de berichten filteren op categorie?', 'wp-rijkshuisstijl' ),
 						'name'              => 'extra_contentblok_categoriefilter',
 						'type'              => 'radio',
-						'instructions'      => __( 'Als deze pagina een dossier heeft, worden berichten sowieso gefilterd op het dossier.', 'wp-rijkshuisstijl' ),
+						'instructions'      => 'Als deze pagina een dossier heeft, worden berichten sowieso gefilterd op het dossier.',
 						'required'          => 1,
 						'conditional_logic' => array(
 							array(
@@ -2014,8 +2014,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'id'    => '',
 						),
 						'choices'           => array(
-							'ja'  => 'Ja, toon alleen berichten uit een bepaalde categorie.',
-							'nee' => 'Nee, toon alle berichten.',
+							'nee' => 'Nee, filter niet op categorie.',
+							'ja'  => 'Ja, filter op categorie, namelijk:',
 						),
 						'allow_null'        => 0,
 						'other_choice'      => 0,
