@@ -1997,7 +1997,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'label'             => __( 'Wil je de berichten filteren op categorie?', 'wp-rijkshuisstijl' ),
 						'name'              => 'extra_contentblok_categoriefilter',
 						'type'              => 'radio',
-						'instructions'      => 'Als deze pagina een dossier heeft, worden berichten sowieso gefilterd op het dossier.',
+						'instructions'      => __( 'Als deze pagina een dossier heeft, worden berichten sowieso gefilterd op het dossier.', 'wp-rijkshuisstijl' ),
 						'required'          => 1,
 						'conditional_logic' => array(
 							array(
