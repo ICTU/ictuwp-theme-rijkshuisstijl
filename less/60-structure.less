@@ -7,7 +7,7 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.16.1.f
+ * @version 2.16.1.g
  * @desc.   Toolbox datagedreven werken live.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
@@ -283,15 +283,48 @@
 	section.externeverwijzing {
 		display: flex;
 		padding-top: .5rem;
-		
-		div {
-			@media only screen and (max-width: ( ( @break_tablet - 1 ) ) ) {
-				flex: 1 0 100%;
+
+		@media only screen and (max-width: ( ( @break_tablet - 1 ) ) ) {
+
+			flex-direction: column;
+			
+			div {
+				flex-grow: 0;
+				flex-shrink: 0;
+				&.has-thumbnail {
+					flex-basis: 200px;
+					padding: 0 1rem;
+					display: flex;
+					justify-content: center;
+					img {
+						max-height: 200px;
+						width: auto;
+						margin: 0 auto 1rem auto;
+					}
+				}
+				&.blockquote {
+					flex-basis: 68%;
+				}
 			}
-			@media only screen and (min-width: ( @break_tablet ) ) {
-				flex: 1 0 50%;
+
+		}
+		
+		@media only screen and (min-width: ( @break_tablet ) ) {
+			
+			flex-direction: row;
+			
+			div {
+				flex-grow: 1;
+				flex-shrink: 0;
+				&.has-thumbnail {
+					flex-basis: 30%;
+				}
+				&.blockquote {
+					flex-basis: 68%;
+				}
 			}
 		}
+
 		
 		blockquote, p {
 			margin: 0 1rem 1rem 1rem;
@@ -299,10 +332,8 @@
 		blockquote {
 			p {
 				background:  @grijs_1;
-//				border: 2px solid red;
 				border-left: 10px solid @grijs_4;
 				padding: 2rem 2rem 2rem 2rem;
-//				margin: 1rem 0 0 0;
 				margin: 0;
 				margin-bottom: 1rem;
 				font-style: italic;
@@ -317,8 +348,9 @@
 					font-style: normal;
 					color: @grijs_4;
 					position: absolute;
-					top: -.75rem;
+					top: 0;
 					left: 1rem;
+					transform: translateY(-1rem);
 				}
 			}
 		}
@@ -418,16 +450,13 @@
 
 
 .flexcontainer {
-//	border: 10px solid red;
 	display: flex;
 	flex-wrap: wrap;
 	margin-left: ( @flexmargin / -2 );
 	margin-right: ( @flexmargin / -2 );
-//	background: yellow;
-	
+
 	section,
 	article {
-//		border: 10px solid red;
 		background: @wit;
 		flex: 1 1 46%;
 		margin: 0 ( @flexmargin / 2 ) @flexmargin ( @flexmargin / 2 );

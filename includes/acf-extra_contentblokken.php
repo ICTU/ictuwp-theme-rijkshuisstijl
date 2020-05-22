@@ -742,11 +742,11 @@ function rhswp_write_extra_contentblokken() {
 	
 										echo '<section class="' . RHSWP_CPT_VERWIJZING . '">';
 										if ( has_post_thumbnail( $post ) ) {
-											echo '<div>';
+											echo '<div class="has-thumbnail">';
 											echo get_the_post_thumbnail( $post->ID, 'widget-image-top' );
 											echo '</div>';
 										}									
-										echo '<div>';
+										echo '<div class="blockquote">';
 										printf( '<blockquote cite="%s">', $permalink );
 										printf( '<p>%s</p>', $citaat_en_auteur['verwijzing_citaat'] );
 										printf( '<footer>%s</footer>', $citaat_en_auteur['verwijzing_citaat_auteur'] );
