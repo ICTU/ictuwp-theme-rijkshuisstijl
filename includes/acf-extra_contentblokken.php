@@ -370,17 +370,33 @@ function rhswp_write_extra_contentblokken() {
 
 								if ( $chosen_category ) {
 
-									foreach ( $chosen_category as $filter ):
-
-										$terminfo = get_term_by( 'id', $filter, 'category' );
+									if ( is_array( $chosen_category ) ) {
+										
+										foreach ( $chosen_category as $filter ):
+											
+											$terminfo = get_term_by( 'id', $filter, 'category' );
+											$slugs[]  = $terminfo->slug;
+											
+											$overviewlinktext = $terminfo->name;
+											$actueelpageid    = get_option( 'page_for_posts' );
+											
+											$overviewurl = get_permalink( $actueelpageid ) . $terminfo->slug . '/'; // page_for_posts
+										
+										endforeach;
+										
+									}
+									else {
+										
+										$terminfo = get_term_by( 'id', $chosen_category, 'category' );
 										$slugs[]  = $terminfo->slug;
-
+										
 										$overviewlinktext = $terminfo->name;
 										$actueelpageid    = get_option( 'page_for_posts' );
-
+										
 										$overviewurl = get_permalink( $actueelpageid ) . $terminfo->slug . '/'; // page_for_posts
+									
+									}
 
-									endforeach;
 
 									if ( $dossier_in_content_block ) {
 
@@ -423,7 +439,7 @@ function rhswp_write_extra_contentblokken() {
 											)
 										);
 									}
-								} // if ( $chosen_category ) {
+								} // if ( $chosen_category ) 
 							}
 
 							// Assign predefined $args to your query
@@ -1004,7 +1020,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5804d0ae7e521',
-						'label'             => 'Kies de categorie',
+						'label'             => 'Kies de categorie (extra_contentblok_chosen_category)',
 						'name'              => 'extra_contentblok_chosen_category',
 						'type'              => 'taxonomy',
 						'instructions'      => '',
