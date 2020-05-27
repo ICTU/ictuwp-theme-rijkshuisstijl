@@ -1,18 +1,16 @@
 
-
-//**
-// * Rijkshuisstijl (Digitale Overheid) - 20-elements.less
-// * ----------------------------------------------------------------------------------
-// * CSS met elements
-// * ----------------------------------------------------------------------------------
-// * @author  Paul van Buuren
-// * @license GPL-2.0+
-// * @package wp-rijkshuisstijl
-// * @version 2.14.2
-// * @desc.   Menu herzien voor mobiel schermbreedtes.
-// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
-// **
-
+/*
+ * Rijkshuisstijl (Digitale Overheid) - 20-elements.less
+ * ----------------------------------------------------------------------------------
+ * CSS met elements
+ * ----------------------------------------------------------------------------------
+ * @author  Paul van Buuren
+ * @license GPL-2.0+
+ * @package wp-rijkshuisstijl
+ * @version 2.16.1.g
+ * @desc.   Toolbox datagedreven werken live.
+ * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+*/
 
 @import "22-element-slider.less";       /* all things related to the site header */
 
@@ -159,7 +157,7 @@
 				display: flex;
 				flex-flow: row wrap;
 				justify-content: flex-start;
-				
+
 				section,
 				article {
 					flex-grow: 1;
@@ -449,6 +447,7 @@
 		}
 
 		.flexbox .block {
+			
 			.type-post {
 				.article-visual {
 					margin-top: .4rem;
@@ -565,6 +564,7 @@
 			&.home,
 			&.page-template-page_showalldossiers,
 			&.blog,
+			&.page,
 			&.archive {
 				.block {
 					.events-table {
@@ -583,13 +583,95 @@
 							}
 						}
 					}
+					
+					h2 {
+						padding-left: 1.5rem;
+					}
+					p.more {
+						margin-left: 1.5rem;
+					}
+					
 					article {
-						flex-basis: @flexbasis_threecols;
-						max-width: @flexbasis_threecols;
-						padding-right: 1.5em;
-						  
-						&:last-of-type {
-							max-width: @flexbasis_threecols;
+						padding-left: 1.5rem;
+						padding-right: 1.5rem;
+//						border: 3px dotted blue;
+
+						.article-visual,
+						.article-excerpt {
+							width: 50%;
+						}
+						.article-visual {
+							max-height: 300px;
+						}
+
+					}
+					
+					&.columncount-1,
+					&.columncount-2,
+					&.columncount-3 {
+						margin-left: -1.5rem;
+						margin-right: -1.5rem;
+
+						.article-container {
+							display: flex;
+							flex-direction: column;
+							height: 100%;
+							background: white;
+
+							.article-visual,
+							.article-excerpt {
+								max-height: none;
+								width: auto;
+							}
+
+							.article-excerpt {
+								background: white;
+								flex: 1 0 auto;
+								padding-top: .75rem;
+							}
+							
+							.article-visual {
+								position: static;
+								flex: 0 0 10rem;
+								height: 250px;
+								max-height: 250px;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								padding-bottom: 1rem;
+								
+								img {
+									position: static;
+									transform: none;
+									object-fit: cover;
+									max-width: none;
+								}
+							}
+						}						
+					}
+
+					
+					&.columncount-2 {
+
+						article,
+						section {
+							&, &:last-of-type {
+								flex-basis: @flexbasis_twocols;
+								max-width: @flexbasis_twocols;
+							}
+						}
+					}
+						
+
+					
+					&.columncount-3 {
+
+						article, 
+						section {
+							&, &:last-of-type {
+								flex-basis: @flexbasis_threecols;
+								max-width: @flexbasis_threecols;
+							}
 						}
 					}
 				}

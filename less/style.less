@@ -4,7 +4,7 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.16.1.a
+  Version: 2.16.1.g
   Version description: Externe verwijzingen als CPT toegevoegd
   Text Domain: wp-rijkshuisstijl
 
@@ -1017,6 +1017,15 @@ Media Queries
 @media only screen and (min-width: ( @break_fullwidth  - 1 )) {
 
 	.full-width-content {
+		/*
+		.content {
+			border: 1px solid red;
+			max-width: @break_fullwidth;
+			margin-left: auto;
+			margin-right: auto;
+			float: none;
+		}
+		*/
 		.sharing.block,
 		.toolbox-introduction,
 		.toolbox-the-content,
@@ -1025,6 +1034,7 @@ Media Queries
 			width: 66%;
 			margin-left: auto;
 			margin-right: auto;
+			max-width: @break_fullwidth;
 		}
 	}
 
