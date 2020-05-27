@@ -472,7 +472,7 @@ function rhswp_write_extra_contentblokken() {
 									echo '<h2>' . __( 'No titel found for post', 'wp-rijkshuisstijl' ) . '</h2>';
 								}
 
-								echo '<div class="flexcontainer ' . $type_block . 'no-top columncount-' . $columncount . '">';
+								echo '<div class="flexcontainer ' . $type_block . ' no-top columncount-' . $columncount . '">';
 
 
 								$postcounter = 0;
@@ -537,12 +537,7 @@ function rhswp_write_extra_contentblokken() {
 
 									if ( $doimage ) {
 										echo '<div class="article-container">';
-
-										if ( ( 'front-page.php' == $pagetemplate ) || ( 'page_front-page.php' == $pagetemplate ) ) {
-											printf( '<div class="article-visual" id="%s">&nbsp;</div>', 'image_featured_image_post_' . $post->ID );
-										} else {
-											printf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'widget-image-top' ) );
-										}
+										printf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'article-visual' ) );
 										printf( '<div class="article-excerpt"><h3><a href="%s">%s</a></h3>%s<p>%s</p>%s</div>', $theurl, $title, $postdate, $excerpt, $categorielinks );
 
 										echo '</div>';
