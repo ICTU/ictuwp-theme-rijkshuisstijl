@@ -27,6 +27,12 @@ if ( ( is_front_page() ) || ( is_home() ) ) {
 
 //========================================================================================================
 
+if ( rhswp_extra_contentblokken_checker() ) {
+	add_action( 'genesis_entry_content', 'rhswp_write_extra_contentblokken', 14 );
+}
+
+//========================================================================================================
+
 //* Force full-width-content layout
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 

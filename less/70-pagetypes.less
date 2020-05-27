@@ -729,12 +729,30 @@
 					padding-left: .3em;
 					padding-right: 0;
 				}
+
+				.driekwart,
+				.vollebreedte {
+
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					
+					a {
+						padding-right: 1rem;
+						padding-bottom: 1rem;
+						margin: 2px;
+						flex: 0 0 45%;
+					}
+				}
+
+				
 			}
 
 			@media only screen and ( min-width: @break_fullwidth ) {
 				
 				section.home.topics {
-
+					padding: 1em;      
+					
 					.driekwart,
 					.vollebreedte {
 						display: flex;
@@ -742,9 +760,6 @@
 						flex-wrap: wrap;
 					}
 					a {
-						padding-right: 1rem;
-						padding-bottom: 1rem;
-						margin: 2px;
 					}
 					.driekwart a {
 						flex: 0 0 32.6%;
@@ -758,7 +773,6 @@
 		
 		section.home.topics {
 			background-color: @grijs_1;
-			padding: 1em;      
 			
 			a {
 				&:focus,

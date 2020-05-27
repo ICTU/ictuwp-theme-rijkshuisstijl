@@ -6,13 +6,13 @@
  *  ----------------------------------------------------------------------------------
  *  functies voor de header boven content in een dossier
  *  ----------------------------------------------------------------------------------
- * 
- *  @author  Paul van Buuren
- *  @license GPL-2.0+
- *  @package wp-rijkshuisstijl
- *  @version 2.12.17
- *  @desc.   Skiplink-structuur aangepast.
- *  @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+ *
+ * @author  Paul van Buuren
+ * @license GPL-2.0+
+ * @package wp-rijkshuisstijl
+ * @version 2.12.17
+ * @desc.   Skiplink-structuur aangepast.
+ * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
 $tellertje = 0;
@@ -227,6 +227,7 @@ function rhswp_dossier_title_checker() {
 			$parentID = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
 
 			if ( $tonen !== 'nee' ) {
+				// niet leeg of gelijk aan ja
 				// we mogen de inhoudspagina tonen
 
 				$shownalready                    = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
@@ -243,9 +244,13 @@ function rhswp_dossier_title_checker() {
 				} else {
 					$args['preferedtitle'] = _x( 'Inhoud', 'Standaardlabel voor het 2de item in het dossiermenu', 'wp-rijkshuisstijl' );
 				}
-				
-				$subpaginas            .= rhswp_dossier_get_pagelink( $dossier_overzichtpagina, $args );
 
+				$subpaginas .= rhswp_dossier_get_pagelink( $dossier_overzichtpagina, $args );
+
+			}
+			else {
+				// leeg of 'nee'
+				$args['preferedtitle'] = _x( 'Inhoud', 'Standaardlabel voor het 2de item in het dossiermenu', 'wp-rijkshuisstijl' );
 			}
 		}
 
