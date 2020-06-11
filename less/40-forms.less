@@ -340,7 +340,7 @@
   	padding: 0;
   	border: 0;
   }
-  
+
   
   /* contact form 7, cf7 */
   .wpcf7-form {
@@ -419,8 +419,24 @@
       
   }
   
-  main.content  {
-  }
+
+	form.wpcf7-form,
+	.gform_wrapper form {
+
+//		background: #DBDBDB;
+		background: @grijs_2;
+
+		input[type=email], input[type=text], input[type=password], input[type=file], input[type=date], select, textarea {
+
+		    border-top: 1px solid @grijs_3;
+		    border-right: 1px solid @grijs_3;
+		    border-left: 1px solid @grijs_3;
+		    border-bottom: 4px solid @communicatiekleur_vol;
+
+		}
+		
+	}  
+
 
 	@media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
 
