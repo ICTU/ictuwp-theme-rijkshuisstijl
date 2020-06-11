@@ -29,11 +29,11 @@ define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
 if ( WP_DEBUG ) {
-//	define( 'DO_MINIFY_JS', false );
-	define( 'DO_MINIFY_JS', true );
+	define( 'DO_MINIFY_JS', false );
+//	define( 'DO_MINIFY_JS', true );
 } else {
-//	define( 'DO_MINIFY_JS', false );
-	define( 'DO_MINIFY_JS', true );
+	define( 'DO_MINIFY_JS', false );
+//	define( 'DO_MINIFY_JS', true );
 }
 
 if ( WP_DEBUG ) {
