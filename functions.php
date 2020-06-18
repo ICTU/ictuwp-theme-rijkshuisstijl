@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.17.1
- * @desc.   Restyling contentblocks op basis van design Lynette Martina.
+ * @version 2.17.2
+ * @desc.   Styling contactforms, js-minify uitgezet.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.17.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Restyling contentblocks op basis van design Lynette Martina." );
+define( 'CHILD_THEME_VERSION', "2.17.2" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Styling contactforms, js-minify uitgezet." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -3745,7 +3745,19 @@ function rhswp_contactreactie_write_reactieform() {
 	}
 
 	if ( function_exists( 'get_field' ) ) {
+
+		$theshortcode          = '';
 		$contactformulier      = get_field( 'contactformulier', 'option' );
+		$contactformulier_bron = get_field( 'contactformulier_via_shortcode_of_selecteer_uit_lijst', 'option' );
+
+		if ( 'shortcode' === $contactformulier_bron ) {
+			$theshortcode = get_field( 'shortcode_voor_gravity_forms', 'option' );
+		} else {
+			if ( $contactformulier ) {
+				$theshortcode = '[contact-form-7 id="' . $contactformulier . '" title="' . esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) ) . '"]';
+			}
+
+		}
 		$documenttypes         = get_field( 'contactformulier_documenttypes', 'option' );
 		$toon_reactieformulier = get_field( 'toon_reactieformulier_post', $acfid );
 
@@ -3759,9 +3771,7 @@ function rhswp_contactreactie_write_reactieform() {
 				// check of posttype klopt
 				$doctype_check = in_array( $posttype, $documenttypes );
 			}
-
 		}
-
 
 		if ( 'anders' == $toon_reactieformulier ) {
 			$contactformulier = get_field( 'ander_reactieformulier', $acfid );
@@ -3791,8 +3801,8 @@ function rhswp_contactreactie_write_reactieform() {
 		echo '<section class="suggestie" id="reactieformulier" aria-labelledby="ID_reactieformulier_title">';
 		echo '<h2 id="ID_reactieformulier_title">' . $title . '</h2>';
 
-		if ( $contactformulier ) {
-			echo do_shortcode( '[contact-form-7 id="' . $contactformulier . '" title="' . esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) ) . '"]' );
+		if ( $theshortcode ) {
+			echo do_shortcode( $theshortcode );
 		} else {
 			echo '<p>' . esc_html( __( "The webmaster has not selected a form for questions or suggestions.", 'wp-rijkshuisstijl' ) ) . '</p>';
 			$user          = wp_get_current_user();
@@ -3810,6 +3820,7 @@ function rhswp_contactreactie_write_reactieform() {
 	}
 
 }
+
 
 //========================================================================================================
 
