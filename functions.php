@@ -961,11 +961,11 @@ function rhswp_add_taxonomy_description() {
 	}
 
 	if ( isset( $term->meta['intro_text'] ) && $term->meta['intro_text'] ) {
-		$intro_text = apply_filters( 'genesis_term_intro_text_output', $term->meta['intro_text'] );
+		$intro_text = apply_filters( 'the_content', $term->meta['intro_text'] );
 	}
 
 	if ( $term->description ) {
-		$intro_text = apply_filters( 'genesis_term_intro_text_output', $term->description );
+		$intro_text = apply_filters( 'the_content', $term->description );
 	}
 
 	if ( $headline || $intro_text ) {
