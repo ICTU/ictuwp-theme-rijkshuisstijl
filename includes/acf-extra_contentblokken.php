@@ -633,8 +633,13 @@ function rhswp_write_extra_contentblokken() {
 
 									$excerpt   = '';
 									$classattr = 'class="dossieroverzicht"';
-									if ( $term->description ) {
-										$excerpt = $term->description;
+									$kortebeschr  = get_field( 'dossier_korte_beschrijving_voor_dossieroverzicht', RHSWP_CT_DOSSIER . '_' . $term->term_id );
+									
+									if ( $kortebeschr ) {
+										$excerpt = 'a ' . $kortebeschr;
+									}
+									elseif ( $term->description ) {
+										$excerpt = 'b ' . $term->description;;
 									}
 									$href    = get_term_link( $term->term_id, RHSWP_CT_DOSSIER );
 									$excerpt = wp_strip_all_tags( $excerpt );
