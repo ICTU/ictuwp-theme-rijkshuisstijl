@@ -1199,142 +1199,223 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 	) );
 
 
+
 	//====================================================================================================
 	// instellingen voor contactformulier onder nieuwsberichten
 	//
-	acf_add_local_field_group( array(
-		'key'                   => 'group_56a73cbfdf435',
-		'title'                 => 'Instellingen voor contactformulier',
-		'fields'                => array(
+
+	acf_add_local_field_group(array(
+		'key' => 'group_56a73cbfdf435',
+		'title' => '00 Instellingen voor contactformulier',
+		'fields' => array(
 			array(
-				'key'               => 'field_56a73cbfe31be',
-				'label'             => 'Contact- / reactieformulier',
-				'name'              => 'contactformulier',
-				'type'              => 'post_object',
-				'instructions'      => 'Dit formulier wordt onderaan een bericht of pagina getoond als reactiemogelijkheid.',
-				'required'          => 0,
+				'key' => 'field_5eeb32aed7d4f',
+				'label' => 'Contactformulier via shortcode of selecteer uit lijst',
+				'name' => 'contactformulier_via_shortcode_of_selecteer_uit_lijst',
+				'type' => 'radio',
+				'instructions' => '',
+				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper'           => array(
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
-					'id'    => '',
+					'id' => '',
 				),
-				'post_type'         => array(
+				'choices' => array(
+					'shortcode' => 'Via een shortcode',
+					'lijst_selectie' => 'Selecteer uit lijst',
+				),
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'default_value' => 'lijst_selectie',
+				'layout' => 'vertical',
+				'return_format' => 'value',
+				'save_other_choice' => 0,
+			),
+			array(
+				'key' => 'field_5eeb3235f56e6',
+				'label' => 'Shortcode voor Gravity Forms',
+				'name' => 'shortcode_voor_gravity_forms',
+				'type' => 'text',
+				'instructions' => 'bijv: 
+	[gravityform id="3" title="true" description="true" ajax="true"]',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5eeb32aed7d4f',
+							'operator' => '==',
+							'value' => 'shortcode',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_5acb5e1575f33',
+				'label' => 'Contact- / reactieformulier',
+				'name' => 'contactformulier',
+				'type' => 'post_object',
+				'instructions' => 'Dit formulier wordt onderaan een bericht of pagina getoond als reactiemogelijkheid.',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5eeb32aed7d4f',
+							'operator' => '==',
+							'value' => 'lijst_selectie',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
 					0 => 'wpcf7_contact_form',
 				),
-				'taxonomy'          => array(),
-				'allow_null'        => 0,
-				'multiple'          => 0,
-				'return_format'     => 'id',
-				'ui'                => 1,
+				'taxonomy' => '',
+				'allow_null' => 0,
+				'multiple' => 0,
+				'return_format' => 'object',
+				'ui' => 1,
 			),
 			array(
-				'key'               => 'field_5acb5e24804dc',
-				'label'             => 'Contenttypes',
-				'name'              => 'contactformulier_documenttypes',
-				'type'              => 'checkbox',
-				'instructions'      => 'Kies de contenttypes waarvoor het reactieformulier actief moet zijn:',
-				'required'          => 0,
+				'key' => 'field_5acb5e24804dc',
+				'label' => 'contactformulier_documenttypes',
+				'name' => 'contactformulier_documenttypes',
+				'type' => 'checkbox',
+				'instructions' => '',
+				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper'           => array(
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
-					'id'    => '',
+					'id' => '',
 				),
-				'choices'           => array(
-					'post'     => 'Berichten',
-					'page'     => 'Pagina\'s',
-					'document' => 'Document',
+				'choices' => array(
+					'post' => 'Berichten',
+					'page' => 'Pagina\'s',
+					'document' => 'Documenten',
 				),
-				'allow_custom'      => 0,
-				'save_custom'       => 0,
-				'default_value'     => array(),
-				'layout'            => 'vertical',
-				'toggle'            => 0,
-				'return_format'     => 'value',
+				'allow_custom' => 0,
+				'default_value' => array(
+				),
+				'layout' => 'vertical',
+				'toggle' => 0,
+				'return_format' => 'value',
+				'save_custom' => 0,
 			),
 			array(
-				'key'               => 'field_56a73ce794fcf',
-				'label'             => 'Lege naam',
-				'name'              => 'lege_naam',
-				'type'              => 'text',
-				'instructions'      => 'Foutboodschap als naam leeg is',
-				'required'          => 0,
-				'conditional_logic' => 0,
-				'wrapper'           => array(
+				'key' => 'field_56a73ce794fcf',
+				'label' => 'lege_naam',
+				'name' => 'lege_naam',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c1a2bb267fb2',
+							'operator' => '==',
+							'value' => 'ja',
+						),
+					),
+				),
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
-					'id'    => '',
+					'id' => '',
 				),
-				'default_value'     => 'State your name, please.',
-				'placeholder'       => '',
-				'prepend'           => '',
-				'append'            => '',
-				'maxlength'         => '',
-				'readonly'          => 0,
-				'disabled'          => 0,
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
 			),
 			array(
-				'key'               => 'field_56a73d2e94fd0',
-				'label'             => 'Lege suggestie',
-				'name'              => 'lege_suggestie',
-				'type'              => 'text',
-				'instructions'      => 'Foutboodschap als er geen suggestie of vraag is ingevuld',
-				'required'          => 0,
-				'conditional_logic' => 0,
-				'wrapper'           => array(
+				'key' => 'field_56a73d2e94fd0',
+				'label' => 'lege_suggestie',
+				'name' => 'lege_suggestie',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c1a2bb267fb2',
+							'operator' => '==',
+							'value' => 'ja',
+						),
+					),
+				),
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
-					'id'    => '',
+					'id' => '',
 				),
-				'default_value'     => 'Please enter a question or a suggestion.',
-				'placeholder'       => '',
-				'prepend'           => '',
-				'append'            => '',
-				'maxlength'         => '',
-				'readonly'          => 0,
-				'disabled'          => 0,
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
 			),
 			array(
-				'key'               => 'field_56a73d6294fd1',
-				'label'             => 'Leeg mailadres',
-				'name'              => 'leeg_mailadres',
-				'type'              => 'text',
-				'instructions'      => 'Foutboodschap als er geen e-mailadres is ingevuld',
-				'required'          => 0,
-				'conditional_logic' => 0,
-				'wrapper'           => array(
+				'key' => 'field_56a73d6294fd1',
+				'label' => 'leeg_mailadres',
+				'name' => 'leeg_mailadres',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c1a2bb267fb2',
+							'operator' => '==',
+							'value' => 'ja',
+						),
+					),
+				),
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
-					'id'    => '',
+					'id' => '',
 				),
-				'default_value'     => 'Please state your email address, so we can respond to your message.',
-				'placeholder'       => '',
-				'prepend'           => '',
-				'append'            => '',
-				'maxlength'         => '',
-				'readonly'          => 0,
-				'disabled'          => 0,
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
 			),
 		),
-		'location'              => array(
+		'location' => array(
 			array(
 				array(
-					'param'    => 'options_page',
+					'param' => 'options_page',
 					'operator' => '==',
-					'value'    => 'instellingen',
+					'value' => 'instellingen',
 				),
 			),
 		),
-		'menu_order'            => 0,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
 		'instruction_placement' => 'label',
-		'hide_on_screen'        => '',
-		'active'                => 1,
-		'description'           => '',
-	) );
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
 
 
 endif;
@@ -3716,6 +3797,51 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'active'                => true,
 		'description'           => '',
 	) );
+
+
+
+
+/**
+ * Populate ACF select field options with Gravity Forms forms
+ */
+function acf_populate_gf_forms_ids( $field ) {
+
+
+
+	foreach ( $field as $key => $value) {
+		error_log( 'acf_populate_gf_forms_ids / key: ' . $key . ', value = ' . $value );
+	}
+
+	
+	$choices['12345678'] = 'Meh';
+
+	if ( class_exists( 'GFFormsModel' ) ) {
+
+		error_log( 'acf_populate_gf_forms_ids: GF is actief ' );
+
+		$choices = [];
+
+		foreach ( \GFFormsModel::get_forms() as $form ) {
+			error_log( 'acf_populate_gf_forms_ids: loop 1 ' . $form->id . ' - ' . $form->title );
+			$choices[ $form->id ] = 'GRAVITY FORMS!! ' . $form->title;
+		}
+
+
+	}
+	else {
+		error_log( 'acf_populate_gf_forms_ids: GF NIET actief ' );
+		
+	}
+
+	$field['choices'] = $choices;
+
+	return $field;
+	
+}
+
+//add_filter( 'acf/load_field/name=contactformulier', 'acf_populate_gf_forms_ids' );
+add_filter( 'acf/load_field/key=field_56a73cbfe31be', 'acf_populate_gf_forms_ids' );
+
 
 
 endif;
