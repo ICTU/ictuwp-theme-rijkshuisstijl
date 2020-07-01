@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.17.1 - Restyling contentblocks op basis van design Lynette Martina.
+2.17.2 - Styling contactforms, js-minify uitgezet.
 
 ## Version history
+* 2.17.2 - Styling contactforms, js-minify uitgezet.
 * 2.17.1 - Restyling contentblocks op basis van design Lynette Martina.
 * 2.15.1 - Toolbox datagedreven werken live.
 * 2.14.3 - Betere styling toolbox datagedreven werken.
