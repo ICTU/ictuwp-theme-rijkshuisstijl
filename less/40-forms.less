@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.4
-// * @desc.   search widgetruimte toegevoegd aan no-results.
+// * @version 2.17.3
+// * @desc.   Webkit rendering issues.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 //
 
@@ -190,26 +190,6 @@
       -webkit-border-radius: 0;
       text-indent: -9999px;
   
-/*  
-      &:before {
-        font-weight: normal;
-        font-family: "RO Icons";
-        display: inline-block;
-        vertical-align: middle;
-        speak: none;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        content: "";
-        color: @nav_li_active_color;
-        font-size: 13px;
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        left: 8px;
-        top: 3px;
-      }
-*/  
-  
       &:hover {
         background-color: @txt;
         .iconaddfill('../images/svg/looking-glass.svg', @wit );
@@ -318,7 +298,7 @@
 				line-height: 1;
 				font-size: 1.25rem;
 				border-radius: 50%;
-				speak: none;
+				speak: never;
 			}
 		
 			&:hover,
@@ -395,10 +375,13 @@
         &.wpcf7-not-valid-tip,
         &.wpcf7-not-valid {
           border-bottom: 2px solid @warning;
+border: 10px solid red;
+          
         }
       }
       .wpcf7-not-valid-tip {
-        .embed_error_icon('../images/svg/sprite-icons-messages.svg', @warning);
+//        .embed_error_icon('../images/svg/sprite-icons-messages.svg', @warning);
+border: 2px solid red;
         background-repeat: no-repeat;
         padding-left: 2em;
         display: block;

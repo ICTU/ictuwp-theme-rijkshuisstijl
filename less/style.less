@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.17.2
-  Version description: Styling contactforms, js-minify uitgezet.
+  Version: 2.17.3
+  Version description: Webkit rendering issues.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -240,6 +240,7 @@ Common Classes
 		
 		a {
 			text-decoration: none;
+
 			&:hover,
 			&:active,
 			&:focus {
@@ -252,9 +253,7 @@ Common Classes
 				display: inline-block;
 				vertical-align: middle;
 				content: "";
-				speak: none;
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
+				speak: never;
 				padding: 0 6px 0 10px;
 				display: inline-block;
 				font-size: .9375rem;
@@ -272,7 +271,7 @@ Common Classes
 	}
 
   .separator {
-    speak: none;
+    speak: never;
     display: inline-block;
     margin-left: ( @padding / 3 );
     margin-right: ( @padding / 3 );
@@ -494,7 +493,7 @@ Content Area
       display: inline-block;
       margin-left: .5em;
       margin-right: .3em;
-      speak: none;
+      speak: never;
     }
   }
 
@@ -614,13 +613,13 @@ Content Area
 		padding-left: 0;
 		&:before {
 			content: '< ';
-			speak: none;
+			speak: never;
 		}
 	}
 	.pagination-next a {
 		&:after {
 			content: ' >';
-			speak: none;
+			speak: never;
 		}
 	}
 	

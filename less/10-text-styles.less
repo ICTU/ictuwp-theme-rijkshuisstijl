@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.16.1.g
- * @desc.   Toolbox datagedreven werken live.
+ * @version 2.17.3
+ * @desc.   Webkit rendering issues.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 */
 
@@ -21,7 +21,7 @@
   font-size: 1.125rem;
   line-height: 1.625;
   font-size: 100%;
-  -webkit-text-size-adjust: 100%;  
+//  -webkit-text-size-adjust: 100%;  
 }
 
 .10_textstyles() {
@@ -494,6 +494,7 @@
 
   }
 
+
   p {
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
@@ -506,7 +507,7 @@
     }
   }
   b,strong {
-      -webkit-hyphens: manual;
+//      -webkit-hyphens: manual;
       -moz-hyphens: manual;
       -ms-hyphens: manual;
       -o-hyphens: manual;
