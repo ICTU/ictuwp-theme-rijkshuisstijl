@@ -6,8 +6,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.13.3
-// * @desc.   Laatste bugfix toolbox datagedreven werken en def achtergrondplaatje.
+// * @version 2.17.3
+// * @desc.   Webkit rendering issues.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -347,9 +347,7 @@
     display: inline-block;
     vertical-align: middle;
     content: "";
-    speak: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    speak: never;
     color: @itemcolor;
     font-size: @fontsize;
     line-height: @fontsize;
@@ -368,7 +366,7 @@
   position: relative;
 
   &:before {
-    speak: none;
+    speak: never;
     color: @itemcolor;
     display: inline-block;
     width: @width;
@@ -427,7 +425,7 @@
     content: ' ';
     display: inline-block;
     .iconaddfill('../images/icon-externe-link.svg', @blauw3);
-    speak: none;
+    speak: never;
     background-repeat: no-repeat;
     width: 20px;
     height: 20px;
