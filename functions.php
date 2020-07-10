@@ -744,9 +744,9 @@ function rhswp_add_extra_info_to_breadcrumb( $crumb = '', $args = '' ) {
 
 							}
 
-
-							$returnstring .= $span_before_start . ' <a href="' . get_term_link( $term->term_id ) . '">' . $term->name . '</a>' . $span_before_end;
-
+							if ( $term && ! is_wp_error( $term ) ) {
+								$returnstring .= $span_before_start . ' <a href="' . get_term_link( $term->term_id ) . '">' . $term->name . '</a>' . $span_before_end;
+							}
 
 							if ( get_query_var( 'category_slug' ) ) {
 
