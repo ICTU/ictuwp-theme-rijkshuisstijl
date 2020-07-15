@@ -3809,7 +3809,13 @@ $configuration = array();
 		$dependencies = $value['dependencies'];
 
 		if ( $value['version'] ) {
-			$versie = $value['version'];
+
+		    if ( 'debug' === $value['version'] ) {
+			    $versie = CHILD_THEME_VERSION;
+            } else {
+			    $versie = $value['version'];
+            }
+
 		}
 
 		wp_enqueue_style( $value['handle'], get_stylesheet_directory_uri() . $value['file'], $dependencies, $versie, 'all' );

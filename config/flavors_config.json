@@ -12,10 +12,10 @@
       }
     },
     "cssfiles": {
-      "Styling": {
+      "default": {
         "handle": "theme-default",
         "file": "/style.css",
-        "version": "",
+        "version": "debug",
         "dependencies": ""
       }
     }
@@ -24,7 +24,7 @@
     "name": "Rijkshuisstijl blauw",
     "shortname": "blauw",
     "cssfiles": {
-      "Styling": {
+      "blauw": {
         "handle": "theme-blauw",
         "file": "/css/style-blauw.css",
         "version": "",
