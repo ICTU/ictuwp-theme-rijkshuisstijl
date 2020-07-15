@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.17.3
- * @desc.   Webkit rendering issues.
+ * @version 2.18.1
+ * @desc.   Mogelijkheid een andere basiskleur te kiezen via de customizer.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.17.3" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Webkit rendering issues." );
+define( 'CHILD_THEME_VERSION', "2.18.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Mogelijkheid een andere basiskleur te kiezen via de customizer." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
