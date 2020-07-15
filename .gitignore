@@ -108,3 +108,6 @@ digitale-overheid.code-workspace
 js/details-element copy.js
 js/min/details-element copy-min.js
 images/1200px.jpg
+
+.idea/*
+
