@@ -8532,9 +8532,10 @@ CSS voor gravity forms, met name vanwege flitspanel, en hun aanmeldwidget
 .textwidget .gform_wrapper .gform_footer {
   margin-top: 0;
 }
-.textwidget div.gform_wrapper .gform_footer input[type=submit] {
+.textwidget .gform_wrapper .gform_footer input[type=submit] {
   font-size: 1rem;
   border-radius: 0;
+  border: 1px solid red !important;
 }
 .gform_validation_container,
 .gform_wrapper .gform_validation_container,
