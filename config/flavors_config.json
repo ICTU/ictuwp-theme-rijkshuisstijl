@@ -1,0 +1,49 @@
+{
+  "groen": {
+    "name": "Rijkshuisstijl groen",
+    "shortname": "groen",
+    "jsfiles": {
+      "js1": {
+        "handle": "main-min",
+        "file": "/assets/js/main-min.js",
+        "version": "",
+        "dependencies": "",
+        "infooter": ""
+      }
+    },
+    "cssfiles": {
+      "Styling": {
+        "handle": "theme-default",
+        "file": "/style.css",
+        "version": "",
+        "dependencies": ""
+      }
+    }
+  },
+  "blauw": {
+    "name": "Rijkshuisstijl blauw",
+    "shortname": "blauw",
+    "cssfiles": {
+      "Styling": {
+        "handle": "theme-blauw",
+        "file": "/css/style-blauw.css",
+        "version": "",
+        "dependencies": ""
+      }
+    }    
+  },
+  "rood": {
+    "name": "Rijkshuisstijl rood",
+    "shortname": "rood",
+    "cssfiles": {
+      "Styling": {
+        "handle": "theme-blauw",
+        "file": "/css/style-rood.css",
+        "version": "",
+        "dependencies": ""
+      }
+    }    
+  }  
+}
+
+

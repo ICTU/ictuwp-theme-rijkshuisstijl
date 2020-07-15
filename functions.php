@@ -181,6 +181,10 @@ if ( ! defined( 'RHSWP_CPT_VERWIJZING' ) ) {
   define( 'RHSWP_CPT_VERWIJZING',             'externeverwijzing' ); 
 }
 
+// constants for styling
+define( 'DEFAULTFLAVOR', 'groen' );
+define( 'FLAVORSCONFIG', 'config/flavors_config.json' );
+
 
 //========================================================================================================
 
@@ -367,6 +371,58 @@ add_action( 'genesis_loop', 'rhswp_add_title_to_blog_page', 1 );
 // ** Prevent Genesis Accessible from hooking
 
 remove_action( 'genesis_before_header', 'genwpacc_skip_links' );
+
+//========================================================================================================
+
+// set up config
+add_action( 'init', 'rhswp_customizer_read' );
+
+function rhswp_customizer_read() {
+
+}
+
+//========================================================================================================
+
+/**
+ * Add our Customizer content
+ */
+function rhswp_customizer_register( $wp_customize ) {
+
+	$wp_customize->add_section( 'gc2020_theme', [
+		'title'       => _x( 'Rijkshuisstijl Instellingen', 'customizer', 'gctheme' ),
+		'description' => _x( 'Selecteer hier het kleurenschema voor deze site. Je wijzigt hiermee de styling, logo en sommige functionaliteit van de site.', 'customizer', 'gctheme' ),
+		'priority'    => 60,
+	] );
+	//  =============================
+	//  = Select Box                =
+	//  =============================
+	$wp_customize->add_setting( 'rhswp_customizer_theme_options[flavor_select]', [
+		'default'    => DEFAULTFLAVOR,
+		'capability' => 'edit_theme_options',
+		'type'       => 'option',
+	] );
+
+	$flavors = [];
+
+	// read configuration json file
+	$configfile   = file_get_contents( trailingslashit( get_stylesheet_directory() ) . FLAVORSCONFIG );
+	$flavorsource = json_decode( $configfile, TRUE );
+	foreach ( $flavorsource as $key => $value ) {
+		$flavors[ strtolower( $key ) ] = $value['name'];
+	}
+
+	$wp_customize->add_control( 'example_select_box', [
+		'settings' => 'rhswp_customizer_theme_options[flavor_select]',
+		'label'    => _x( 'Kies het kleurenschema (' . DEFAULTFLAVOR . ') ', 'customizer', 'gctheme' ),
+		'section'  => 'gc2020_theme',
+		'type'     => 'select',
+		'choices'  => $flavors,
+	] );
+
+
+}
+
+add_action( 'customize_register', 'rhswp_customizer_register' );
 
 //========================================================================================================
 
@@ -3687,11 +3743,14 @@ add_shortcode( 'getreactietitle', 'rhswp_contactreactie_get_title' );
  * Remove Contact Form 7 scripts + styles unless we're on the contact page
  *
  */
-add_action( 'wp_enqueue_scripts', 'rhswp_remove_external_styles' );
+add_action( 'wp_enqueue_scripts', 'rhswp_remove_external_styles', 100 );
 
-add_action( 'wp_print_styles', 'rhswp_remove_external_styles', 100 );
+// niet 2x dezelfde functie
+//add_action( 'wp_print_styles', 'rhswp_remove_external_styles', 100 );
 
 function rhswp_remove_external_styles() {
+
+$configuration = array();
 
 	wp_deregister_style( 'contact-form-7' );
 	wp_deregister_style( 'toc-screen' );
@@ -3709,6 +3768,55 @@ function rhswp_remove_external_styles() {
 		wp_dequeue_style( 'wp-block-library' );
 		wp_deregister_style( 'dashicons' );
 	}
+
+
+	$configfile    = file_get_contents( trailingslashit( get_stylesheet_directory() ) . FLAVORSCONFIG );
+	$configfile    = json_decode( $configfile, TRUE );
+
+	$theme_options = get_option( 'rhswp_customizer_theme_options' );
+	$flavor        = DEFAULTFLAVOR; // default, tenzij er een smaakje is gekozen
+	if ( isset( $theme_options['flavor_select'] ) ) {
+		$flavor = $theme_options['flavor_select'];
+	}
+
+	if ( isset( $configfile[ DEFAULTFLAVOR ] ) ) {
+		$defaultsettings = $configfile[ DEFAULTFLAVOR ];
+	} else {
+		// iemand heeft een typvaud gemaakt en de in dit bestand hier
+		// gedefinieerde default staat niet in het json-bestand.
+		// Beetje jammer, maar dan nemen we -op hoop van zegen- het
+		// eerste setje configuratieregels
+		$defaultsettings = reset( $configfile );
+	}
+
+
+	if ( isset( $configfile[ $flavor ] ) ) {
+		// admin has chosen a flavor (any flavor), so let's
+		// merge the configuration of chosen flavor with the default settings
+		$configuration = wp_parse_args( $configfile[ $flavor ], $defaultsettings );
+
+	} else {
+		// no flavor chosen, so set the configuration to the default settings
+		$configuration = $defaultsettings;
+	}
+
+	// standaard CSS niet meer gebruiken
+	wp_dequeue_style('rijkshuisstijl-digitale-overheid');
+	wp_deregister_style('rijkshuisstijl-digitale-overheid');
+
+	foreach ( $configuration['cssfiles'] as $key => $value ) {
+
+		$dependencies = $value['dependencies'];
+
+		if ( $value['version'] ) {
+			$versie = $value['version'];
+		}
+
+		wp_enqueue_style( $value['handle'], get_stylesheet_directory_uri() . $value['file'], $dependencies, $versie, 'all' );
+//		$skiplinkshandle = $value['handle'];
+
+	}
+
 
 }
 
