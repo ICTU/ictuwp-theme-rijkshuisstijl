@@ -8522,4 +8522,29 @@ a.external:after {
   padding: 0.25rem 0.5rem;
   margin-right: 0.5rem;
 }
+/*
+CSS voor gravity forms, met name vanwege flitspanel, en hun aanmeldwidget
+---------------------------------------------------------------------------------------------------- */
+.textwidget .gform_wrapper .top_label input.medium,
+.textwidget .gform_wrapper .top_label select.medium {
+  width: 100%;
+}
+.textwidget .gform_wrapper .gform_footer {
+  margin-top: 0;
+}
+.textwidget div.gform_wrapper .gform_footer input[type=submit] {
+  font-size: 1rem;
+  border-radius: 0;
+}
+.gform_validation_container,
+.gform_wrapper .gform_validation_container,
+body .gform_wrapper .gform_body ul.gform_fields li.gfield.gform_validation_container,
+body .gform_wrapper li.gform_validation_container,
+body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
+  display: none !important;
+  position: absolute !important;
+  left: -9999px;
+}
+/*
+---------------------------------------------------------------------------------------------------- */
 /*# sourceMappingURL=style-rood.css.map */
