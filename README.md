@@ -13,10 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.18.2 - Mogelijkheid een andere basiskleur te kiezen via de customizer.
+2.18.2a - Mogelijkheid een andere basiskleur te kiezen via de customizer.
 
 ## Version history
-* 2.18.2 - Mogelijkheid een andere basiskleur te kiezen via de customizer.
+* 2.18.2a - Mogelijkheid een andere basiskleur te kiezen via de customizer.
 * 2.17.3 - Webkit rendering issues.
 * 2.17.2 - Styling contactforms, js-minify uitgezet.
 * 2.17.1 - Restyling contentblocks op basis van design Lynette Martina.
