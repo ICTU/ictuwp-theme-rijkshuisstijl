@@ -1,7 +1,7 @@
 {
-  "groen": {
-    "name": "Rijkshuisstijl groen",
-    "shortname": "groen",
+  "debug": {
+    "name": "Rijkshuisstijl default",
+    "shortname": "debug",
     "jsfiles": {
       "js1": {
         "handle": "main-min",
@@ -37,8 +37,20 @@
     "shortname": "rood",
     "cssfiles": {
       "Styling": {
-        "handle": "theme-blauw",
+        "handle": "theme-rood",
         "file": "/css/style-rood.css",
+        "version": "",
+        "dependencies": ""
+      }
+    }    
+  },
+  "groen": {
+    "name": "Rijkshuisstijl groen",
+    "shortname": "rood",
+    "cssfiles": {
+      "Styling": {
+        "handle": "theme-blauw",
+        "file": "/css/style-groen.css",
         "version": "",
         "dependencies": ""
       }
