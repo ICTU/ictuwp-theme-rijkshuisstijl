@@ -1,20 +1,23 @@
 
 //**
-// * Rijkshuisstijl (Digitale Overheid) - ie9.less
+// * Rijkshuisstijl (Digitale Overheid) - style-blauw.less
 // * ----------------------------------------------------------------------------------
-// * This one goes out to all 'special browsers'
+// * CSS voor blauwe variant van dit theme
 // * ----------------------------------------------------------------------------------
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.9.1
-// * @desc.   Document archive page verbeterd, filesize toegevoegd.
+// * @version 2.18.3
+// * @desc.   Mogelijkheid een andere basiskleur te kiezen via de customizer.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
 /*
 Imports
 ---------------------------------------------------------------------------------------------------- */
+@import "variables/variables-default.less";       
+@import "variables/variables-groen.less";       
+@import "variables/colors-default.less";    
 @import "variables/colors-default.less";       
 @import "02-mixins.less";       /* mixins, sizes */
 @import "03-fonts.less";        /* fonts */
@@ -28,5 +31,15 @@ Imports
 @import "60-structure.less";
 @import "70-pagetypes.less";
 @import "80-print.less";
+@import "99-browserhacks.less";
+
+// substitue css from plugins
+@import "plugins/captcha.less";
+@import "plugins/genesis-accessible-dropdown-menu.less";
+@import "plugins/newsletter.less";
+
+.03_fonts_get_webfonts_relative();
 
 
+// put it all together
+@import "output.less";

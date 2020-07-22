@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.18.3
-  Version description: Mogelijkheid een andere basiskleur te kiezen via de customizer.
+  Version: 2.19.1
+  Version description: Header-image voor bijzondere pagina's. Meer metadata voor documenten bij een dossier.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -56,7 +56,8 @@
 /*
 Imports
 ---------------------------------------------------------------------------------------------------- */
-@import "01-colors.less";       /* colors */
+@import "variables/variables-default.less";       
+@import "variables/colors-default.less";       
 @import "02-mixins.less";       /* mixins, sizes */
 @import "03-fonts.less";        /* fonts */
 @import "04-normalize.less";    /* normalize */

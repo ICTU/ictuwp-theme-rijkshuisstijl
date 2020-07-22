@@ -13,10 +13,11 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.18.2b - Mogelijkheid een andere basiskleur te kiezen via de customizer.
+2.18.2b - Header-image voor bijzondere pagina's. Meer metadata voor documenten bij een dossier.
 
 ## Version history
-* 2.18.2b - Mogelijkheid een andere basiskleur te kiezen via de customizer.
+* 2.19.1 - Header-image voor bijzondere pagina's. Meer metadata voor documenten bij een dossier.
+* 2.18.1 - Mogelijkheid een andere basiskleur te kiezen via de customizer.
 * 2.17.3 - Webkit rendering issues.
 * 2.17.2 - Styling contactforms, js-minify uitgezet.
 * 2.17.1 - Restyling contentblocks op basis van design Lynette Martina.
