@@ -7,8 +7,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.16.1.g
- * @desc.   Toolbox datagedreven werken live.
+ * @version 2.19.1
+ * @desc.   Header-image voor bijzondere pagina's. Meer metadata voor documenten bij een dossier.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -147,8 +147,27 @@
 		}
 	}
   
+	.document-overview {
+
+		.block article {
+			margin-top: 1rem;
+			position: relative;
+
+			h2 {
+				padding-left: .25rem;
+			}
+			p {
+				margin-left: 1rem;
+			}
+			
+			& + article {
+				margin-top: 0;
+			}
+		}
+	}
 
 	.post-type-archive-document,
+	.document-overview,
 	.search-results {
 
 		.block article {
