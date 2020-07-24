@@ -13,10 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.18.2b - Header-image voor bijzondere pagina's. Meer metadata voor documenten bij een dossier.
+2.18.2b - Filter voor Narrow No-Break Space [NNBSP]
 
 ## Version history
-* 2.19.1 - Header-image voor bijzondere pagina's. Meer metadata voor documenten bij een dossier.
+* 2.20.1 - Filter voor Narrow No-Break Space [NNBSP]
 * 2.18.1 - Mogelijkheid een andere basiskleur te kiezen via de customizer.
 * 2.17.3 - Webkit rendering issues.
 * 2.17.2 - Styling contactforms, js-minify uitgezet.
