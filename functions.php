@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.19.1
- * @desc.   Header-image voor bijzondere pagina's. Meer metadata voor documenten bij een dossier.
+ * @version 2.20.1
+ * @desc.   Filter voor Narrow No-Break Space [NNBSP]
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.19.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Header-image voor bijzondere pagina's. Meer metadata voor documenten bij een dossier." );
+define( 'CHILD_THEME_VERSION', "2.20.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Filter voor Narrow No-Break Space [NNBSP]" );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -5596,6 +5596,28 @@ function rhswp_filter_site_title( $title = '' ) {
 
 	return $title;
 
+}
+
+//========================================================================================================
+
+add_filter( 'the_content', 'rhswp_filter_strange_characters', 1 );
+
+/*
+ * Filter voor Narrow No-Break Space [NNBSP]
+ */
+ 
+function rhswp_filter_strange_characters( $content ) {
+ 
+    // Check if we're inside the main loop in a single Post.
+    if ( is_singular() && in_the_loop() && is_main_query() ) {
+
+		$look_for		= '/ /i'; // Narrow No-Break Space [NNBSP]
+		$replace_with 	= ' ';
+		$content		= preg_replace( $look_for, $replace_with, $content);
+
+    }
+ 
+    return $content;
 }
 
 //========================================================================================================
