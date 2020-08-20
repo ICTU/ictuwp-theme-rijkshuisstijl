@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.20.1
- * @desc.   Filter voor Narrow No-Break Space [NNBSP]
+ * @version 2.21.1
+ * @desc.   Check voor header-image weer herzien.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.20.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Filter voor Narrow No-Break Space [NNBSP]" );
+define( 'CHILD_THEME_VERSION', "2.21.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Check voor header-image weer herzien." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -2505,9 +2505,11 @@ function rhswp_check_caroussel_or_featured_img() {
 
 	global $post;
 
-	if ( ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) || ( ! taxonomy_exists( RHSWP_CT_DIGIBETER ) ) ) {
-		return;
-	}
+//	Ik weet dus for the life of me niet meer waarom dit een reden zou moeten zijn om geen header image te tonen
+//	heb dit met het oog op flitspanel.nl uitgezet
+//	if ( ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) || ( ! taxonomy_exists( RHSWP_CT_DIGIBETER ) ) ) {
+//		return;
+//	}
 
 	if ( ! function_exists( 'get_field' ) ) {
 		return;
@@ -5603,7 +5605,7 @@ function rhswp_filter_site_title( $title = '' ) {
 add_filter( 'the_content', 'rhswp_filter_strange_characters', 1 );
 
 /*
- * Filter voor Narrow No-Break Space [NNBSP]
+ * Check voor header-image weer herzien.
  */
  
 function rhswp_filter_strange_characters( $content ) {
