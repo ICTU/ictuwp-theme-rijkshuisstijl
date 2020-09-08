@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.21.1
- * @desc.   Check voor header-image weer herzien.
+ * @version 2.22.1
+ * @desc.   Styling voor Gravity Forms in theme opgenomen.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.21.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Check voor header-image weer herzien." );
+define( 'CHILD_THEME_VERSION', "2.22.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Styling voor Gravity Forms in theme opgenomen." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -3794,6 +3794,8 @@ function rhswp_remove_external_styles() {
 
 $configuration = array();
 
+	$versie = '';
+	
 	wp_deregister_style( 'contact-form-7' );
 	wp_deregister_style( 'toc-screen' );
 
@@ -3811,6 +3813,11 @@ $configuration = array();
 		wp_deregister_style( 'dashicons' );
 	}
 
+	// no more gravity forms
+	wp_deregister_style( 'gforms_formsmain_css' );
+	wp_dequeue_style( 'gforms_formsmain_css' );
+	wp_deregister_style( 'gforms_browsers_css' );
+	wp_dequeue_style( 'gforms_browsers_css' );
 
 	$configfile    = file_get_contents( trailingslashit( get_stylesheet_directory() ) . FLAVORSCONFIG );
 	$configfile    = json_decode( $configfile, TRUE );
@@ -5605,7 +5612,7 @@ function rhswp_filter_site_title( $title = '' ) {
 add_filter( 'the_content', 'rhswp_filter_strange_characters', 1 );
 
 /*
- * Check voor header-image weer herzien.
+ * Styling voor Gravity Forms in theme opgenomen.
  */
  
 function rhswp_filter_strange_characters( $content ) {

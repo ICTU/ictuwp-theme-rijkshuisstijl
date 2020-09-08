@@ -129,11 +129,43 @@
     padding:  0;
     border-style: none;
 
-    input, select, textarea {
-      display: block;
-    	box-sizing: border-box;
-    }
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	input[type="file"],
+	input[type="date"],
+	select, 
+	textarea {
+		display: block;
+		box-sizing: border-box;
+	}
+
+	[type="radio"],
+	[type="checkbox"] {
+		& + label {
+			margin-left: .5rem;
+		}
+		& + input[type="text"] {
+			border: 2px solid red;
+		}
+	}
+	
   }
+  
+	.mute-label {
+		margin-top: 0 !important;
+		
+		label {
+			.visuallyhidden();
+		}
+		.ginput_container {
+			margin-top: 0 !important;
+			margin-bottom: .5rem;
+		}
+		[type="text"] {
+			margin-bottom: 1rem;
+		}
+	}
   
 	.openbutton {
 		background: none;
@@ -155,6 +187,10 @@
 		display: block;
 		clear: both;
 		float: none;
+	}
+	
+	a.gform_save_link {
+		background-image: none !important;
 	}
 	
   
@@ -375,13 +411,12 @@
         &.wpcf7-not-valid-tip,
         &.wpcf7-not-valid {
           border-bottom: 2px solid @warning;
-border: 10px solid red;
           
         }
       }
       .wpcf7-not-valid-tip {
 //        .embed_error_icon('../images/svg/sprite-icons-messages.svg', @warning);
-border: 2px solid red;
+		border: 2px solid @warning;
         background-repeat: no-repeat;
         padding-left: 2em;
         display: block;
@@ -406,7 +441,6 @@ border: 2px solid red;
 	form.wpcf7-form,
 	.gform_wrapper form {
 
-//		background: #DBDBDB;
 		background: @grijs_2;
 
 		input[type=email], input[type=text], input[type=password], input[type=file], input[type=date], select, textarea {
@@ -415,10 +449,45 @@ border: 2px solid red;
 		    border-right: 1px solid @grijs_3;
 		    border-left: 1px solid @grijs_3;
 		    border-bottom: 4px solid @communicatiekleur_vol;
-
 		}
 		
+		button,
+		.button {
+			border-radius: 0;
+		}
+		
+		ul {
+			li {
+				margin: 0 0 .5rem;
+				width: auto;
+				max-width: 100%;
+			}
+			&, li {
+				list-style: none;
+				margin-left: 0;
+				padding-left: 0;
+			}
+			li li {
+				padding-left: .75rem;
+			}
+		}
+		
+		legend {
+			display: block;
+			padding: 0;
+			& .ginput_container {
+				margin-top: 0 !important;
+			}
+		}
+		fieldset {
+			margin: 2rem 0 0;
+		}
+		
+		
 	}  
+
+	// from plugins/gravity-forms.less	
+	.gravityforms-css();
 
 
 	@media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
