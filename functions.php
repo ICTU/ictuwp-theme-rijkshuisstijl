@@ -3811,6 +3811,10 @@ $configuration = array();
 		wp_deregister_style( 'dashicons' );
 	}
 
+	// gravity forms
+	wp_deregister_style( 'gforms_formsmain_css' );
+	wp_dequeue_style( 'gforms_formsmain_css' );
+
 
 	$configfile    = file_get_contents( trailingslashit( get_stylesheet_directory() ) . FLAVORSCONFIG );
 	$configfile    = json_decode( $configfile, TRUE );
