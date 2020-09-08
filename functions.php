@@ -3794,6 +3794,8 @@ function rhswp_remove_external_styles() {
 
 $configuration = array();
 
+	$versie = '';
+	
 	wp_deregister_style( 'contact-form-7' );
 	wp_deregister_style( 'toc-screen' );
 
@@ -3811,10 +3813,14 @@ $configuration = array();
 		wp_deregister_style( 'dashicons' );
 	}
 
-	// gravity forms
+/*
+	
+	// no more gravity forms
 	wp_deregister_style( 'gforms_formsmain_css' );
 	wp_dequeue_style( 'gforms_formsmain_css' );
-
+	wp_deregister_style( 'gforms_browsers_css' );
+	wp_dequeue_style( 'gforms_browsers_css' );
+*/
 
 	$configfile    = file_get_contents( trailingslashit( get_stylesheet_directory() ) . FLAVORSCONFIG );
 	$configfile    = json_decode( $configfile, TRUE );
