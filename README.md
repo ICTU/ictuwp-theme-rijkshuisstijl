@@ -13,9 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.18.2b - Check voor header-image weer herzien.
+2.18.2b - Styling voor Gravity Forms in theme opgenomen.
 
 ## Version history
+* 2.22.1 - Styling voor Gravity Forms in theme opgenomen.
 * 2.21.1 - Check voor header-image weer herzien.
 * 2.20.1 - Filter voor Narrow No-Break Space [NNBSP]
 * 2.18.1 - Mogelijkheid een andere basiskleur te kiezen via de customizer.
