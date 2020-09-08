@@ -145,9 +145,27 @@
 		& + label {
 			margin-left: .5rem;
 		}
+		& + input[type="text"] {
+			border: 2px solid red;
+		}
 	}
 	
   }
+  
+	.mute-label {
+		margin-top: 0 !important;
+		
+		label {
+			.visuallyhidden();
+		}
+		.ginput_container {
+			margin-top: 0 !important;
+			margin-bottom: .5rem;
+		}
+		[type="text"] {
+			margin-bottom: 1rem;
+		}
+	}
   
 	.openbutton {
 		background: none;
@@ -169,6 +187,10 @@
 		display: block;
 		clear: both;
 		float: none;
+	}
+	
+	a.gform_save_link {
+		background-image: none !important;
 	}
 	
   
@@ -453,10 +475,13 @@
 		legend {
 			display: block;
 			padding: 0;
-		}
-			fieldset {
-				margin: 2rem 0 0;
+			& .ginput_container {
+				margin-top: 0 !important;
 			}
+		}
+		fieldset {
+			margin: 2rem 0 0;
+		}
 		
 		
 	}  

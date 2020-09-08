@@ -12,10 +12,10 @@
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
-.gravityforms-css() {
+.xgravityforms-css() {
 }
 	
-.xgravityforms-css() {
+.gravityforms-css() {
 	
 	.gform_wrapper {
 		margin-bottom: 16px;
@@ -544,31 +544,21 @@
 		position: relative
 	}
 	
-	.gform_wrapper ul.gfield_checkbox,
-	.gform_wrapper ul.gfield_radio {
-		margin: 6px 0;
-		padding: 0
+	[value="gf_other_choice"] {
+		float: left;
+		& + [type="text"] {
+			
+		}
 	}
+	
 	
 	.gform_wrapper .gfield_checkbox li label,
 	.gform_wrapper .gfield_radio li label {
-		display: -moz-inline-stack;
 		display: inline-block;
-		padding: 0;
 		width: auto;
-		line-height: 1.5;
-		font-size: .875em;
 		vertical-align: middle;
 		max-width: 85%;
 		white-space: normal
-	}
-	
-	.gform_wrapper .gfield_checkbox li label {
-		margin: 0
-	}
-	
-	.gform_wrapper .gfield_radio li label {
-		margin: 2px 0 0 4px
 	}
 	
 	.gform_wrapper .gfield_checkbox li input,
@@ -783,7 +773,7 @@
 	}
 	
 	.gform_wrapper li.gfield fieldset {
-		margin: 0;
+		margin: 1rem 0 0 0;
 		padding: 0;
 		display: block;
 		position: relative;
@@ -796,7 +786,9 @@
 	
 	.gform_wrapper li.gfield fieldset legend.gfield_label {
 		width: 100%;
-		line-height: 32px
+		& + .ginput_container {
+			margin-top: 0;
+		}
 	}
 	
 	div.gf_page_steps+div.validation_error {
@@ -1830,7 +1822,7 @@
 	}
 	
 	body .gform_wrapper ul li.gfield {
-		margin-top: 16px;
+		margin-top: 1.5rem;
 		padding-top: 0
 	}
 	
