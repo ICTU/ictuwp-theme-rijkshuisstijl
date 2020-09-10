@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.12.4
-// * @desc.   search widgetruimte toegevoegd aan no-results.
+// * @version 2.22.2
+// * @desc.   Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -18,6 +18,19 @@
 
 
 .sidebar_css() {
+	
+
+	// animatie voor banner
+	@keyframes pop {
+	    0% { transform: scale(1.02, 0.98); }
+	    50% { transform: scale(1, 1); }
+	    55% { transform: rotate(3deg); }
+	    60% { transform: rotate(-3deg); }
+	    65% { transform: rotate(3deg); }
+	    70% { transform: rotate(-3deg); }
+	    100% { transform: scale(1.02, 0.98); }
+	}	
+	
 
 
 	.widget {
@@ -302,6 +315,29 @@
 			.visuallyhidden();
 		}
 	}
+	
+	.banner-widget-area {
+		margin: 1rem 0;
+
+		@media only screen and (min-width: @break_fullwidth ) {
+			&.mobile {
+				display: none;
+				border: 3px solid red;
+				&:before {
+					content: 'max width!!';
+				}
+			}
+		}
+		@media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
+			&.desktop {
+				display: none;
+				border: 3px solid green;
+				&:before {
+					content: 'min width: "@{break_fullwidth}"!!';
+				}
+			}
+		}
+	}
 
 	.page-link-widget.widget {
 		background: @grijs_1;
@@ -401,18 +437,28 @@
 		}
 	}
 	
+	
 	.cta-widget {
 		background-color: @geel_vol;
 		.widget-wrap {
 			padding: 1rem;
 		}
 		.text {
-			background-image: url('images/rhs-icons/2016-vraag-en-antwoord.svg');
-			background-repeat: no-repeat;
-			background-position: 1rem left;
-			padding-left: 100px;
-			background-size: 80px 80px;
+			&:before {
+				content: ' ';
+				display: inline-block;
+				float: right;
+				height: 64px;
+				width: 64px;
+				background-image: url('images/rhs-icons/2016-vraag-en-antwoord.svg');
+				background-repeat: no-repeat;
+				background-position: 1rem left;
+				background-size: contain;
+				animation: pop 1.2s infinite;
+				
+			}
 		}
+		
 		margin-bottom: 1rem !important;
 		border-top-style: none !important;
 		

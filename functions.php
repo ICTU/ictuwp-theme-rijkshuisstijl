@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.22.1
- * @desc.   Styling voor Gravity Forms in theme opgenomen.
+ * @version 2.22.2
+ * @desc.   Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.22.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Styling voor Gravity Forms in theme opgenomen." );
+define( 'CHILD_THEME_VERSION', "2.22.2" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -62,6 +62,7 @@ define( 'RHSWP_LINK_CPT', 'links' );
 define( 'CTAX_contentsoort', 'contentsoort' );
 define( 'CTAX_thema', 'CTAX_thema' );
 define( 'RHSWP_HOME_WIDGET_AREA', 'home-widget-area' );
+define( 'RHSWP_BANNER_WIDGET_AREA', 'banner-widget-area' );
 define( 'RHSWP_NORESULT_WIDGET_AREA', 'noresult-widget-area' );
 define( 'RHSWP_SITEMAP_WIDGET_AREA', 'sitemap-widget-area' );
 
@@ -5618,7 +5619,7 @@ function rhswp_filter_site_title( $title = '' ) {
 add_filter( 'the_content', 'rhswp_filter_strange_characters', 1 );
 
 /*
- * Styling voor Gravity Forms in theme opgenomen.
+ * Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
  */
  
 function rhswp_filter_strange_characters( $content ) {
@@ -5636,4 +5637,67 @@ function rhswp_filter_strange_characters( $content ) {
 }
 
 //========================================================================================================
+
+// append the images to the content
+add_action( 'genesis_before_entry_content', 'rhswp_banner_alert_alert_mayday_mayday_mobile', 9 );
+
+function rhswp_banner_alert_alert_mayday_mayday_desktop( ) {
+}
+function rhswp_banner_alert_alert_mayday_mayday_mobile( ) {
+}
+/*
+function rhswp_banner_alert_alert_mayday_mayday_mobile( ) {
+
+	if ( is_active_sidebar( RHSWP_BANNER_WIDGET_AREA ) ) {
+		echo '<div class="widgets ' . RHSWP_BANNER_WIDGET_AREA . ' wrap mobile">';
+		dynamic_sidebar( RHSWP_BANNER_WIDGET_AREA );
+		echo '</div>';
+	}
+
+}
+
+function rhswp_banner_alert_alert_mayday_mayday_desktop( ) {
+}
+
+function rhswp_banner_alert_alert_mayday_mayday_desktop( ) {
+	if ( is_active_sidebar( RHSWP_BANNER_WIDGET_AREA ) ) {
+		echo '<div class="widgets ' . RHSWP_BANNER_WIDGET_AREA . ' wrap desktop">';
+		dynamic_sidebar( RHSWP_BANNER_WIDGET_AREA );
+		echo '</div>';
+	}
+
+}
+
+
+// add an extra widget area
+genesis_register_sidebar(
+	array(
+		'name'          => esc_html( __( "Banner widget area", 'wp-rijkshuisstijl' ) ),
+		'id'            => RHSWP_BANNER_WIDGET_AREA,
+		'description'   => esc_html( __( "Ruimte voor blaar- en aandachttrekkende banners, direct na de pagina-titel", 'wp-rijkshuisstijl' ) ),
+		'before_widget' => genesis_markup( array(
+			'html5' => '<section role="complementary" id="%1$s" class="widget %2$s ' . RHSWP_BANNER_WIDGET_AREA . '-widget" aria-labelledby="title_' . RHSWP_BANNER_WIDGET_AREA . '"><div class="widget-wrap">',
+			'xhtml' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
+			'echo'  => false,
+		) ),
+		'after_widget'  => genesis_markup( array(
+			'html5' => '</div></section>' . "\n",
+			'xhtml' => '</div></div>' . "\n",
+			'echo'  => false
+		) ),
+		'before_title'  => genesis_markup( array(
+			'html5' => '<h2 id="title_' . RHSWP_BANNER_WIDGET_AREA . '">',
+			'xhtml' => '<h2 id="title_' . RHSWP_BANNER_WIDGET_AREA . '">',
+			'echo'  => false,
+		) ),
+
+
+//        '<h2 class="widgettitle" id="title_%1$s">',
+		'after_title'   => "</h2>\n",
+	)
+);
+*/
+
+//========================================================================================================
+
 
