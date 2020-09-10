@@ -11,7 +11,7 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.22.2
+ * @version 2.22.3.a
  * @desc.   Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
