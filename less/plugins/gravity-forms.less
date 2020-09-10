@@ -7,7 +7,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.22.3.a
+// * @version 2.22.3.c
 // * @desc.   Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
@@ -573,7 +573,6 @@
 	.gform_wrapper .gfield_description,
 	.gform_wrapper .gsection_description,
 	.gform_wrapper .instruction {
-		font-size: .813em;
 		line-height: inherit;
 		clear: both;
 		font-family: inherit;
@@ -583,11 +582,6 @@
 	.gform_wrapper .description,
 	.gform_wrapper .gfield_description,
 	.gform_wrapper .gsection_description {
-		padding: 0 16px 0 0
-	}
-	
-	.gform_wrapper .field_description_below .gfield_description {
-		padding-top: 16px
 	}
 	
 	.gform_wrapper .field_sublabel_above .description,
@@ -641,6 +635,15 @@
 		&:target {
 			border-top-width: 5px;
 			border-bottom-width: 5px;
+		}
+		.validation_message {
+			font-family: @fontitalic;
+			background-image: url('images/rhs-icons/2002-info.svg');
+			background-repeat: no-repeat;
+			background-size: 24px 24px;
+			background-position: left center;
+			padding-left: 28px;
+			margin: 12px 0 8px 0;
 		}
 	}
 	
