@@ -8,7 +8,7 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.22.3.c
+ * @version 2.22.5
  * @desc.   Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
@@ -23,7 +23,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.22.3.c" );
+define( 'CHILD_THEME_VERSION', "2.22.5" );
 define( 'CHILD_THEME_VERSION_DESCRIPTION', "Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
@@ -3871,11 +3871,9 @@ $configuration = array();
             } else {
 			    $versie = $value['version'];
             }
-
 		}
-
+	    $versie = CHILD_THEME_VERSION;
 		wp_enqueue_style( $value['handle'], get_stylesheet_directory_uri() . $value['file'], $dependencies, $versie, 'all' );
-//		$skiplinkshandle = $value['handle'];
 
 	}
 
@@ -4922,8 +4920,8 @@ function rhswp_footer_payoff() {
 	$replacer    = '';
 	$description = str_replace( $needle, $replacer, $description );
 
-	$start_title_span		= '<b id="payoff_title">';
-	$end_title_span			= '</b>';
+	$start_title_span		= '<strong id="payoff_title">';
+	$end_title_span			= '</strong>';
 	$start_subtitle_span	= '<span id="payoff_subtitle">';
 	$end_subtitle_span		= '</span>';
 
