@@ -4923,8 +4923,8 @@ function rhswp_footer_payoff() {
 	$replacer    = '';
 	$description = str_replace( $needle, $replacer, $description );
 
-	$start_title_span		= '<b id="payoff_title">';
-	$end_title_span			= '</b>';
+	$start_title_span		= '<strong id="payoff_title">';
+	$end_title_span			= '</strong>';
 	$start_subtitle_span	= '<span id="payoff_subtitle">';
 	$end_subtitle_span		= '</span>';
 
