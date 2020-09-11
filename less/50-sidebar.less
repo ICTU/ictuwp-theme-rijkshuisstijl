@@ -475,6 +475,17 @@
 		}
 		
 	}
+
+	/* Tone down the animation to avoid vestibular motion triggers like scaling or panning large objects. */
+	@media (prefers-reduced-motion) {
+		.cta-widget {
+			.text {
+				&:before {
+				    animation-name: dissolve;
+				}
+			}	
+		}	
+	}	
 	
 	
 	.home-widget-area {
