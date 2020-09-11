@@ -3871,11 +3871,8 @@ $configuration = array();
             } else {
 			    $versie = $value['version'];
             }
-
-		    $versie = CHILD_THEME_VERSION;
-
 		}
-
+	    $versie = CHILD_THEME_VERSION;
 		wp_enqueue_style( $value['handle'], get_stylesheet_directory_uri() . $value['file'], $dependencies, $versie, 'all' );
 
 	}
