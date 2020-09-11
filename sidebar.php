@@ -11,8 +11,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 0.2.4
- * @desc.   Context widget added
+ * @version 2.22.3.b
+ * @desc.   Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -24,6 +24,8 @@ genesis_markup( array(
 ) );
 
 do_action( 'genesis_before_sidebar_widget_area' );
+
+//echo rhswp_banner_alert_alert_mayday_mayday_desktop();
 
 // paginaspecifieke widget
 do_action( 'rhswp_primary_sidebar_first_action' );
