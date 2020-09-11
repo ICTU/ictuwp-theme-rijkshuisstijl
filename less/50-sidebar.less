@@ -320,21 +320,20 @@
 	
 	.banner-widget-area {
 		margin: 1rem 0;
+		h2 {
+			.visuallyhidden();
+		}
 
 		@media only screen and (min-width: @break_fullwidth ) {
 			&.mobile {
 				display: none;
-				&:before {
-					content: 'max width!!';
-				}
+//border: 10px solid red;
 			}
 		}
 		@media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
 			&.desktop {
+//border: 10px solid green;
 				display: none;
-				&:before {
-					content: 'min width: "@{break_fullwidth}"!!';
-				}
 			}
 		}
 	}

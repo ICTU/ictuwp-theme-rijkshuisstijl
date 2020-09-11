@@ -5642,10 +5642,10 @@ add_action( 'genesis_before_entry_content', 'rhswp_banner_alert_alert_mayday_may
 function rhswp_banner_alert_alert_mayday_mayday_mobile( ) {
 
 	if ( is_active_sidebar( RHSWP_BANNER_WIDGET_AREA ) ) {
-		echo '<div class="widgets ' . RHSWP_BANNER_WIDGET_AREA . ' wrap mobile">';
+		echo '<div class="widgets ' . RHSWP_BANNER_WIDGET_AREA . ' mobile"><div class="wrap">';
 		echo '<h2>' . _x( 'Banners die speciale aandacht vragen', 'Title of banner sidebar', 'wp-rijkshuisstijl' ) . '</h2>';
 		dynamic_sidebar( RHSWP_BANNER_WIDGET_AREA );
-		echo '</div>';
+		echo '</div></div>';
 	}
 
 }
