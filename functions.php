@@ -62,7 +62,6 @@ define( 'RHSWP_LINK_CPT', 'links' );
 define( 'CTAX_contentsoort', 'contentsoort' );
 define( 'CTAX_thema', 'CTAX_thema' );
 define( 'RHSWP_HOME_WIDGET_AREA', 'home-widget-area' );
-define( 'RHSWP_BANNER_WIDGET_AREA', 'banner-widget-area' );
 define( 'RHSWP_NORESULT_WIDGET_AREA', 'noresult-widget-area' );
 define( 'RHSWP_SITEMAP_WIDGET_AREA', 'sitemap-widget-area' );
 
@@ -5635,56 +5634,4 @@ function rhswp_filter_strange_characters( $content ) {
 }
 
 //========================================================================================================
-
-// append the images to the content
-add_action( 'genesis_before_entry_content', 'rhswp_banner_alert_alert_mayday_mayday_mobile', 9 );
-
-function rhswp_banner_alert_alert_mayday_mayday_mobile( ) {
-
-	if ( is_active_sidebar( RHSWP_BANNER_WIDGET_AREA ) ) {
-		echo '<div class="widgets ' . RHSWP_BANNER_WIDGET_AREA . ' mobile"><div class="wrap">';
-		echo '<h2>' . _x( 'Banners die speciale aandacht vragen', 'Title of banner sidebar', 'wp-rijkshuisstijl' ) . '</h2>';
-		dynamic_sidebar( RHSWP_BANNER_WIDGET_AREA );
-		echo '</div></div>';
-	}
-
-}
-function rhswp_banner_alert_alert_mayday_mayday_desktop( ) {
-	if ( is_active_sidebar( RHSWP_BANNER_WIDGET_AREA ) ) {
-		echo '<div class="widgets ' . RHSWP_BANNER_WIDGET_AREA . ' wrap desktop">';
-		echo '<h2>' . _x( 'Banners die speciale aandacht vragen', 'Title of banner sidebar', 'wp-rijkshuisstijl' ) . '</h2>';
-		dynamic_sidebar( RHSWP_BANNER_WIDGET_AREA );
-		echo '</div>';
-	}
-
-}
-
-
-// add an extra widget area
-genesis_register_sidebar(
-	array(
-		'name'          => esc_html( __( "Banner widget area", 'wp-rijkshuisstijl' ) ),
-		'id'            => RHSWP_BANNER_WIDGET_AREA,
-		'description'   => esc_html( __( "Ruimte voor blaar- en aandachttrekkende banners, direct na de pagina-titel", 'wp-rijkshuisstijl' ) ),
-		'before_widget' => genesis_markup( array(
-			'html5' => '<section role="complementary" id="%1$s" class="widget %2$s ' . RHSWP_BANNER_WIDGET_AREA . '-widget"><div class="widget-wrap">',
-			'xhtml' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
-			'echo'  => false,
-		) ),
-		'after_widget'  => genesis_markup( array(
-			'html5' => '</div></section>' . "\n",
-			'xhtml' => '</div></div>' . "\n",
-			'echo'  => false
-		) ),
-		'before_title'  => genesis_markup( array(
-			'html5' => '<h3 class="widgettitle">',
-			'xhtml' => '<h3 class="widgettitle">',
-			'echo'  => false,
-		) ),
-		'after_title'   => "</h3>\n",
-	)
-);
-
-//========================================================================================================
-
 
