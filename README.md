@@ -13,10 +13,10 @@ Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.n
 * eh
 
 ## Current version:
-2.22.5 - Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
+2.22.5.a - Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
 
 ## Version history
-* 2.22.5 - Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
+* 2.22.5.a - Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
 * 2.22.1 - Styling voor Gravity Forms in theme opgenomen.
 * 2.21.1 - Check voor header-image weer herzien.
 * 2.20.1 - Filter voor Narrow No-Break Space [NNBSP]

@@ -653,6 +653,27 @@
 				.visuallyhidden();
 			}
 			
+			.banner-widget-area {
+				display: block;
+				margin: 0;
+				padding: 1rem 0;
+				background: @geel_vol;
+				.widget {
+					margin-bottom: 0 !important;
+					&.cta-widget {
+						background: @geel_vol;
+						max-width: 50%;
+						margin-left: auto;
+						margin-right: auto;
+						
+						.text + p {
+							text-align: center;
+						}
+					}
+				}
+				
+			}
+						
 			.post-edit-link {
 				display: none;
 				visibility: hidden;

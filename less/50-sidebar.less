@@ -320,22 +320,8 @@
 	
 	.banner-widget-area {
 		margin: 1rem 0;
-
-		@media only screen and (min-width: @break_fullwidth ) {
-			&.mobile {
-				display: none;
-				&:before {
-					content: 'max width!!';
-				}
-			}
-		}
-		@media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
-			&.desktop {
-				display: none;
-				&:before {
-					content: 'min width: "@{break_fullwidth}"!!';
-				}
-			}
+		h2 {
+			.visuallyhidden();
 		}
 	}
 
@@ -440,10 +426,16 @@
 	
 	.cta-widget {
 		background-color: @geel_vol;
+		
+		.widgettitle {
+			margin-top: 0;
+		}
 		.widget-wrap {
 			padding: 1rem;
 		}
 		.text {
+			min-height: 68px;
+			
 			&:before {
 				content: ' ';
 				display: inline-block;
@@ -470,6 +462,17 @@
 		}
 		
 	}
+
+	/* Tone down the animation to avoid vestibular motion triggers like scaling or panning large objects. */
+	@media (prefers-reduced-motion) {
+		.cta-widget {
+			.text {
+				&:before {
+				    animation-name: dissolve;
+				}
+			}	
+		}	
+	}	
 	
 	
 	.home-widget-area {
