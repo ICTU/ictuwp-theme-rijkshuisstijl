@@ -25,8 +25,6 @@ genesis_markup( array(
 
 do_action( 'genesis_before_sidebar_widget_area' );
 
-echo rhswp_banner_alert_alert_mayday_mayday_desktop();
-
 // paginaspecifieke widget
 do_action( 'rhswp_primary_sidebar_first_action' );
 
