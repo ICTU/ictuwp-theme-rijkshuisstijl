@@ -149,6 +149,16 @@ if ( defined( 'RHSWP_DOSSIERPOSTCONTEXT' ) && defined( 'CHILD_THEME_VERSION' ) )
 	define( 'RHSWP_DOSSIERPOSTCONTEXT_OPTION', RHSWP_DOSSIERPOSTCONTEXT . CHILD_THEME_VERSION );
 }
 
+// voor de planningtool-plugin (ictuwp-plugin-planningtool)
+if ( ! defined( 'DOPT__ACTIELIJN_CPT' ) ) {
+	define( 'DOPT__ACTIELIJN_CPT', "actielijn" );
+}
+if ( ! defined( 'DOPT__GEBEURTENIS_CPT' ) ) {
+	define( 'DOPT__GEBEURTENIS_CPT', "gebeurtenis" );
+}
+
+
+
 define( 'RHSWP_DOSSIERPOSTCONTEXT_OPTION_DO_FLUSH', false );
 //define( 'RHSWP_DOSSIERPOSTCONTEXT_OPTION_DO_FLUSH', true );
 
