@@ -2,7 +2,16 @@
 
 WP-rijkshuisstijl is ontwikkeld als WordPress-theme voor [digitaleoverheid.nl](https://digitaleoverheid.nl). Opdrachtgever is ICTU (ICT Uitvoeringsorganisatie). Ontwikkelaar is Paul van Buuren ([WBVB Rotterdam](https://wbvb.nl)).
 
-Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.nl)
+Dit theme wordt gebruikt op [digitaleoverheid.nl](https://www.digitaleoverheid.nl) en [flitspanel.nl](https://www.flitspanel.nl).
+
+## Afhankelijkheden
+Dit theme functioneert niet zonder:
+* [Advanced Custom Fields (PRO)](https://www.advancedcustomfields.com/pro/) (plugin)
+* [Genesis](https://my.studiopress.com/themes/genesis/) (basis-theme)
+
+## Aanbevolen
+
+
 
 ## Contact
 * Pim Nieuwenburg
