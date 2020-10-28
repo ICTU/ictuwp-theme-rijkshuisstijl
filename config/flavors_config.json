@@ -55,7 +55,19 @@
         "dependencies": ""
       }
     }    
-  }  
+  }, 
+  "flitspanel": {
+    "name": "Flitspanel",
+    "shortname": "flitspanel",
+    "cssfiles": {
+      "Styling": {
+        "handle": "theme-rood",
+        "file": "/css/style-flitspanel.css",
+        "version": "",
+        "dependencies": ""
+      }
+    }    
+  }
 }
 
 

@@ -22,9 +22,10 @@ Dit theme functioneert niet zonder:
 * eh
 
 ## Current version:
-2.22.6 - Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
+2.23.1 - Logo en apart CSS voor flitspanel toegevoegd.
 
 ## Version history
+* 2.23.1 - Logo en apart CSS voor flitspanel toegevoegd.
 * 2.22.6 - Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
 * 2.22.1 - Styling voor Gravity Forms in theme opgenomen.
 * 2.21.1 - Check voor header-image weer herzien.

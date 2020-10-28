@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.22.6
- * @desc.   Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
+ * @version 2.23.1
+ * @desc.   Logo en apart CSS voor flitspanel toegevoegd.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.22.6" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte." );
+define( 'CHILD_THEME_VERSION', "2.23.1" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Logo en apart CSS voor flitspanel toegevoegd." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -5578,7 +5578,23 @@ add_action( 'genesis_site_title', 'rhswp_append_site_logo' );
 function rhswp_append_site_logo() {
 
 	// @since 2.14.1
-	echo '<span id="logotype"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitaleoverheid.svg" alt="Logo Rijksoverheid"></span>';
+	// flavor checken.
+	$get_theme_option = get_option( 'rhswp_customizer_theme_options' );
+	$flavor_select    = $get_theme_option['flavor_select'];
+	
+	if ( $flavor_select == "flitspanel" ) {
+		$anchorstart = '<a href="' . get_home_url() . '" aria-label="Naar de homepage van Flitspanel">';
+		$anchorend = '</a>';
+		if ( is_front_page() ) {
+			$anchorstart = '';
+			$anchorend = '';
+		}
+		echo '<span id="logotype" class="flitspanel">' . $anchorstart . '<img src="' . RHSWP_THEMEFOLDER . '/images/logos/flitspanel-logo.png?asdfsadf" alt="Logo van Flitspanel, met als ondertekst: het medwerkerspanel van en voor de publieke sector" width="300" height="123">' . $anchorend . '</span>';
+	}
+	else {
+		echo '<span id="logotype"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitaleoverheid.svg" alt="Logo Rijksoverheid"></span>';
+	}
+
 
 }
 
@@ -5626,7 +5642,7 @@ function rhswp_filter_site_title( $title = '' ) {
 add_filter( 'the_content', 'rhswp_filter_strange_characters', 1 );
 
 /*
- * Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.
+ * Logo en apart CSS voor flitspanel toegevoegd.
  */
  
 function rhswp_filter_strange_characters( $content ) {
