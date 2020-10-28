@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.14.1
-// * @desc.   Payoff en site-titel weer toegevoegd aan de header.
+// * @version 2.23.1
+// * @desc.   Logo en apart CSS voor flitspanel toegevoegd.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -66,17 +66,31 @@
 			overflow: hidden;
 			flex-basis: 44px;
 			flex-grow: 0;
-			flex-shrink: 1;
+			flex-shrink: 1;		
+			&.flitspanel {
+				flex-basis: 200px;
+			}
 		}
+
 		.screen-reader-text + #logotype {
 			flex-basis: 100%;
 			display: flex;
 			justify-content: center;
-			margin-bottom: 9px;
 			img {
 				align-self: center;
 				align-content: center;
 			}
+			&.flitspanel {
+				img {
+					max-width: 200px;
+					height: auto;
+					margin-top: 1rem;
+					margin-bottom: .5rem;
+				}
+			}
+		}
+		.screen-reader-text + #logotype {
+			margin-bottom: 9px;
 		}
 		
 	}
