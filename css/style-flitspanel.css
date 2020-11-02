@@ -6,7 +6,7 @@ Imports
 /*
 ---------------------------------------------------------------------------------------------------- */
 html.css.version {
-  content: 'Versie: 2.25.1.a';
+  content: 'Versie: 2.24.1.c';
 }
 /*
 ---------------------------------------------------------------------------------------------------- */
@@ -180,13 +180,13 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
     margin: 0;
     padding: 0;
     flex: 1 0 50%;
-    border: 2px solid red;
+    border: 2px solid green;
   }
   #reactie_verwijzingen a h3,
   #reactie_verwijzingen a h4 {
     color: #000;
     flex: 1 0 25%;
-    border: 2px solid red;
+    border: 2px solid purple;
   }
   #reactie_verwijzingen a *,
   #reactie_verwijzingen a {
@@ -195,7 +195,7 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
   #reactie_verwijzingen a .url {
     text-decoration: underline;
     flex: 1 0 35%;
-    border: 2px solid red;
+    border: 2px solid blue;
   }
   #reactie_verwijzingen a:hover,
   #reactie_verwijzingen a:active,
