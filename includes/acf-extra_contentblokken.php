@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Rijkshuisstijl (Digitale Overheid) - includes/acf-extra_contentblokken.php
+ * ----------------------------------------------------------------------------------
+ * Functies en velddefinities voor contentblock
+ * ----------------------------------------------------------------------------------
+ * @author  Paul van Buuren
+ * @license GPL-2.0+
+ * @package wp-rijkshuisstijl
+ * @version 2.23.2
+ * @desc.   Contentblokken ook tonen bij een bericht.
+ * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+ */
+
 //========================================================================================================
 
 function rhswp_write_extra_contentblokken() {
@@ -15,19 +28,22 @@ function rhswp_write_extra_contentblokken() {
 
 	if ( function_exists( 'get_field' ) && taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
 
-		if ( is_page() || is_tax() ) {
+		if ( is_page() || is_tax( RHSWP_CT_DOSSIER ) || is_singular( 'post' ) ) {
 
 			$dossier_in_content_block = '';
 
-			if ( is_page() ) {
-				$theid                     = get_the_ID();
-				$contentblokken            = get_field( 'extra_contentblokken', $theid );
-				$dossier_in_content_block2 = get_the_terms( $theid, RHSWP_CT_DOSSIER );
-				$dossier_in_content_block  = $dossier_in_content_block2[0]->term_id;
-			} elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
+			if ( is_tax( RHSWP_CT_DOSSIER ) ) {
+				// is een dossier
 				$theid                    = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
 				$contentblokken           = get_field( 'extra_contentblokken', $theid );
 				$dossier_in_content_block = get_queried_object()->term_id;
+			}
+			else {
+				// is een pagina of een bericht
+				$theid                     = get_the_ID();
+				$contentblokken            = get_field( 'extra_contentblokken', $theid );
+				$dossier_in_content_block2 = get_the_terms( $theid, RHSWP_CT_DOSSIER );
+				$dossier_in_content_block  = $dossier_in_content_block2[0]->term_id;	
 			}
 
 
