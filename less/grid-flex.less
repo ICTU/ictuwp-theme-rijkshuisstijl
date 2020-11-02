@@ -1,0 +1,89 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - grid-flex.less
+// * ----------------------------------------------------------------------------------
+// * Styling voor elementen in flex of grid blokken
+// * ----------------------------------------------------------------------------------
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.25.1.a
+// * @desc.   Styling voor nieuw soort reactieformulier.
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// **
+
+
+//=========================================================================================================
+
+.grid {
+  display: grid;
+}
+
+
+.flex {
+  display: flex;
+  padding: .5rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.flex__block {
+  flex: 1 0 100%;
+  padding: .5rem;
+}
+
+
+//=========================================================================================================
+
+#reactie_verwijzingen {
+  @media only screen and (min-width: ( @break_tablet ) ) {
+    .flex {
+      flex-direction: row;
+      margin-left: -1rem;
+      margin-right: -1rem;
+    }
+
+    .flex__block {
+      flex-basis: ( 100% / 3 );
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+
+      img {
+        margin: 0;
+        padding: 0;
+        flex: 1 0 50%;
+        border: 2px solid red;
+      }
+
+      h3, h4 {
+        color: @txt;
+        flex: 1 0 25%;
+        border: 2px solid red;
+      }
+
+      *, & {
+        text-decoration: none;
+      }
+
+      .url {
+        text-decoration: underline;
+        flex: 1 0 35%;
+        border: 2px solid red;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        outline: 2px dotted @a_color_default;
+
+        h3, h4 {
+          color: @txt;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

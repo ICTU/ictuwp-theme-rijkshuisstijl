@@ -6,7 +6,7 @@ Imports
 /*
 ---------------------------------------------------------------------------------------------------- */
 html.css.version {
-  content: 'Versie: 2.23.1';
+  content: 'Versie: 2.25.1.a';
 }
 /*
 ---------------------------------------------------------------------------------------------------- */
@@ -148,6 +148,69 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 }
 .flexcontainer.columncount-3 .article-excerpt {
   padding-right: 1.5rem;
+}
+.grid {
+  display: grid;
+}
+.flex {
+  display: flex;
+  padding: 0.5rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.flex__block {
+  flex: 1 0 100%;
+  padding: 0.5rem;
+}
+@media only screen and (min-width: 650px) {
+  #reactie_verwijzingen .flex {
+    flex-direction: row;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+  #reactie_verwijzingen .flex__block {
+    flex-basis: 33.33333333%;
+  }
+  #reactie_verwijzingen a {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  #reactie_verwijzingen a img {
+    margin: 0;
+    padding: 0;
+    flex: 1 0 50%;
+    border: 2px solid red;
+  }
+  #reactie_verwijzingen a h3,
+  #reactie_verwijzingen a h4 {
+    color: #000;
+    flex: 1 0 25%;
+    border: 2px solid red;
+  }
+  #reactie_verwijzingen a *,
+  #reactie_verwijzingen a {
+    text-decoration: none;
+  }
+  #reactie_verwijzingen a .url {
+    text-decoration: underline;
+    flex: 1 0 35%;
+    border: 2px solid red;
+  }
+  #reactie_verwijzingen a:hover,
+  #reactie_verwijzingen a:active,
+  #reactie_verwijzingen a:focus {
+    outline: 2px dotted #01689b;
+  }
+  #reactie_verwijzingen a:hover h3,
+  #reactie_verwijzingen a:active h3,
+  #reactie_verwijzingen a:focus h3,
+  #reactie_verwijzingen a:hover h4,
+  #reactie_verwijzingen a:active h4,
+  #reactie_verwijzingen a:focus h4 {
+    color: #000;
+    text-decoration: underline;
+  }
 }
 .no-svg #logotype {
   width: 160px;

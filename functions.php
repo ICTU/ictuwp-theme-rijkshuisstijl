@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.23.1
- * @desc.   Logo en apart CSS voor flitspanel toegevoegd.
+ * @version 2.25.1.a
+ * @desc.   Styling voor nieuw soort reactieformulier.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -23,8 +23,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.23.1" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Logo en apart CSS voor flitspanel toegevoegd." );
+define( 'CHILD_THEME_VERSION', "2.25.1.a" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Styling voor nieuw soort reactieformulier." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -5642,7 +5642,7 @@ function rhswp_filter_site_title( $title = '' ) {
 add_filter( 'the_content', 'rhswp_filter_strange_characters', 1 );
 
 /*
- * Logo en apart CSS voor flitspanel toegevoegd.
+ * Styling voor nieuw soort reactieformulier.
  */
  
 function rhswp_filter_strange_characters( $content ) {
