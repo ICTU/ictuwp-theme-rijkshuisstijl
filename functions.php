@@ -8,7 +8,7 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.24.1.c
+ * @version 2.24.1
  * @desc.   Styling voor nieuw soort reactieformulier.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
@@ -20,10 +20,11 @@ include_once( get_template_directory() . '/lib/init.php' );
 
 //========================================================================================================
 
+
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.24.1.c" );
+define( 'CHILD_THEME_VERSION', "2.24.1" );
 define( 'CHILD_THEME_VERSION_DESCRIPTION', "Styling voor nieuw soort reactieformulier." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );

@@ -6,7 +6,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.24.1.c
+// * @version 2.24.1
 // * @desc.   Styling voor nieuw soort reactieformulier.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
@@ -28,61 +28,109 @@
 
 .flex__block {
   flex: 1 0 100%;
-  padding: .5rem;
 }
 
 
 //=========================================================================================================
 
 #reactie_verwijzingen {
+  .flex {
+    padding: 0;
+  }
+
+  #verwijzing-digid,
+  #verwijzing-eherkenning,
+  #verwijzing-mijnoverheid {
+    a {
+      background-image: url('images/logos/logo-digid.png');
+      background-color: @wit;
+      padding-left: .5rem;
+      padding-top: 60px;
+      padding-right: .5rem;
+      padding-bottom: 1rem;
+      background-size: 100px 60px;
+      background-repeat: no-repeat;
+      background-position: center top;
+    }
+  }
+
+  #verwijzing-mijnoverheid a {
+    background-image: url('images/logos/logo-mijnoverheid-berichtenbox.png');
+  }
+
+  #verwijzing-eherkenning a {
+    background-image: url('images/logos/logo-eherkenning.png');
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    line-height: 1.4;
+    text-align: center;
+
+    h3, h4 {
+      color: @txt;
+    }
+
+    *, & {
+      text-decoration: none;
+    }
+
+    .url {
+      text-decoration: underline;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: 2px dotted @a_color_default;
+
+      h3, h4 {
+        color: @txt;
+        text-decoration: underline;
+      }
+    }
+
+  }
+
+  @media only screen and (max-width: ( @break_tablet ) ) {
+    .flex__block + .flex__block {
+      margin-top: 1rem;
+    }
+  }
+
+
   @media only screen and (min-width: ( @break_tablet ) ) {
     .flex {
       flex-direction: row;
       margin-left: -1rem;
       margin-right: -1rem;
+      padding: .5rem .5rem 0 .5rem;
     }
 
     .flex__block {
+      padding: .5rem;
       flex-basis: ( 100% / 3 );
+      padding-bottom: 0;
+    }
+
+    #verwijzing-digid,
+    #verwijzing-eherkenning,
+    #verwijzing-mijnoverheid {
+      a {
+        padding-top: 150px;
+        background-size: contain;
+      }
     }
 
     a {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
 
-      img {
-        margin: 0;
-        padding: 0;
-        flex: 1 0 50%;
-        border: 2px solid green;
-      }
-
-      h3, h4 {
-        color: @txt;
-        flex: 1 0 25%;
-        border: 2px solid purple;
-      }
-
-      *, & {
-        text-decoration: none;
-      }
-
-      .url {
-        text-decoration: underline;
-        flex: 1 0 35%;
-        border: 2px solid blue;
-      }
-
-      &:hover,
-      &:active,
-      &:focus {
-        outline: 2px dotted @a_color_default;
-
-        h3, h4 {
-          color: @txt;
-          text-decoration: underline;
-        }
+      h3, h4, .url {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 1.5rem;
       }
     }
   }
