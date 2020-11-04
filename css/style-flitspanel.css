@@ -6,7 +6,7 @@ Imports
 /*
 ---------------------------------------------------------------------------------------------------- */
 html.css.version {
-  content: 'Versie: 2.24.1';
+  content: 'Versie: 2.24.2.a';
 }
 /*
 ---------------------------------------------------------------------------------------------------- */
@@ -160,6 +160,9 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 }
 .flex__block {
   flex: 1 0 100%;
+}
+#reactie_verwijzingen {
+  background: #e6e6e6;
 }
 #reactie_verwijzingen .flex {
   padding: 0;
