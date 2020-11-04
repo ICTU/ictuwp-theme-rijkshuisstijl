@@ -6,8 +6,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
-// * @version 2.24.2.a
-// * @desc.   Styling voor nieuw soort reactieformulier.
+// * @version 2.24.2
+// * @desc.   Reactieformulier verlost van block elements in een <a> en verdere styling.
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
@@ -35,6 +35,15 @@
 
 #reactie_verwijzingen {
 	background: @grijs_2;
+	
+	h2 {
+		margin: 0;
+	}
+	
+	&.contact-pagina {
+		padding: 1rem;
+		margin: 2rem auto;
+	}
 	
   .flex {
     padding: 0;
@@ -82,6 +91,10 @@
 
     .url {
       text-decoration: underline;
+    }
+    .title {
+      font-family: @fontstrong;
+      color: @txt;
     }
 
     &:hover,
