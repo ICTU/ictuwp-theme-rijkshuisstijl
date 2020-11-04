@@ -6,7 +6,7 @@ Imports
 /*
 ---------------------------------------------------------------------------------------------------- */
 html.css.version {
-  content: 'Versie: 2.23.2';
+  content: 'Versie: 2.24.1';
 }
 /*
 ---------------------------------------------------------------------------------------------------- */
@@ -149,6 +149,104 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 .flexcontainer.columncount-3 .article-excerpt {
   padding-right: 1.5rem;
 }
+.grid {
+  display: grid;
+}
+.flex {
+  display: flex;
+  padding: 0.5rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.flex__block {
+  flex: 1 0 100%;
+}
+#reactie_verwijzingen .flex {
+  padding: 0;
+}
+#reactie_verwijzingen #verwijzing-digid a,
+#reactie_verwijzingen #verwijzing-eherkenning a,
+#reactie_verwijzingen #verwijzing-mijnoverheid a {
+  background-image: url('images/logos/logo-digid.png');
+  background-color: #fff;
+  padding-left: 0.5rem;
+  padding-top: 60px;
+  padding-right: 0.5rem;
+  padding-bottom: 1rem;
+  background-size: 100px 60px;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+#reactie_verwijzingen #verwijzing-mijnoverheid a {
+  background-image: url('images/logos/logo-mijnoverheid-berichtenbox.png');
+}
+#reactie_verwijzingen #verwijzing-eherkenning a {
+  background-image: url('images/logos/logo-eherkenning.png');
+}
+#reactie_verwijzingen a {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  line-height: 1.4;
+  text-align: center;
+}
+#reactie_verwijzingen a h3,
+#reactie_verwijzingen a h4 {
+  color: #000;
+}
+#reactie_verwijzingen a *,
+#reactie_verwijzingen a {
+  text-decoration: none;
+}
+#reactie_verwijzingen a .url {
+  text-decoration: underline;
+}
+#reactie_verwijzingen a:hover,
+#reactie_verwijzingen a:active,
+#reactie_verwijzingen a:focus {
+  outline: 2px dotted #01689b;
+}
+#reactie_verwijzingen a:hover h3,
+#reactie_verwijzingen a:active h3,
+#reactie_verwijzingen a:focus h3,
+#reactie_verwijzingen a:hover h4,
+#reactie_verwijzingen a:active h4,
+#reactie_verwijzingen a:focus h4 {
+  color: #000;
+  text-decoration: underline;
+}
+@media only screen and (max-width: 650px) {
+  #reactie_verwijzingen .flex__block + .flex__block {
+    margin-top: 1rem;
+  }
+}
+@media only screen and (min-width: 650px) {
+  #reactie_verwijzingen .flex {
+    flex-direction: row;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+  }
+  #reactie_verwijzingen .flex__block {
+    padding: 0.5rem;
+    flex-basis: 33.33333333%;
+    padding-bottom: 0;
+  }
+  #reactie_verwijzingen #verwijzing-digid a,
+  #reactie_verwijzingen #verwijzing-eherkenning a,
+  #reactie_verwijzingen #verwijzing-mijnoverheid a {
+    padding-top: 150px;
+    background-size: contain;
+  }
+  #reactie_verwijzingen a h3,
+  #reactie_verwijzingen a h4,
+  #reactie_verwijzingen a .url {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 1.5rem;
+  }
+}
 .no-svg #logotype {
   width: 160px;
   height: 120px;
@@ -231,10 +329,18 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
   }
   section.home.topics .driekwart a,
   section.home.topics .vollebreedte a {
-    max-width: 25%;
+    max-width: 24%;
+    width: 24%;
     min-height: 13rem;
     float: left;
     padding-right: 1rem;
+  }
+  #reactie_verwijzingen .flex__block {
+    max-width: 33.33%;
+    float: left;
+  }
+  #reactie_verwijzingen .flex__block + flex__block {
+    margin-left: 1rem;
   }
 }
 @font-face {
