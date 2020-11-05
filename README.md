@@ -22,9 +22,11 @@ Dit theme functioneert niet zonder:
 * eh
 
 ## Current version:
-2.23.2 - Contentblokken ook tonen bij een bericht.
+2.24.2 - Reactieformulier verlost van block elements in een <a> en verdere styling.
 
 ## Version history
+* 2.24.2 - Reactieformulier verlost van block elements in een <a> en verdere styling.
+* 2.24.1 - Styling voor nieuw soort reactieformulier.
 * 2.23.2 - Contentblokken ook tonen bij een bericht.
 * 2.23.1 - Logo en apart CSS voor flitspanel toegevoegd.
 * 2.22.6 - Verdere styling Gravity Forms. Eerste opzet voor alert-bannerruimte.

@@ -8,8 +8,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.23.2
- * @desc.   Contentblokken ook tonen bij een bericht.
+ * @version 2.24.2
+ * @desc.   Reactieformulier verlost van block elements in een <a> en verdere styling.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
@@ -20,11 +20,12 @@ include_once( get_template_directory() . '/lib/init.php' );
 
 //========================================================================================================
 
+
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
-define( 'CHILD_THEME_VERSION', "2.23.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Contentblokken ook tonen bij een bericht." );
+define( 'CHILD_THEME_VERSION', "2.24.2" );
+define( 'CHILD_THEME_VERSION_DESCRIPTION', "Reactieformulier verlost van block elements in een <a> en verdere styling." );
 define( 'SHOW_CSS_DEBUG', false );
 //define( 'SHOW_CSS_DEBUG',                   true );
 
@@ -5643,7 +5644,7 @@ function rhswp_filter_site_title( $title = '' ) {
 add_filter( 'the_content', 'rhswp_filter_strange_characters', 1 );
 
 /*
- * Contentblokken ook tonen bij een bericht.
+ * Reactieformulier verlost van block elements in een <a> en verdere styling.
  */
  
 function rhswp_filter_strange_characters( $content ) {
