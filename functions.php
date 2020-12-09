@@ -534,8 +534,13 @@ function rhswp_get_read_more_link( $thepermalink ) {
 
 //========================================================================================================
 
-// Reposition the primary navigation menu
-remove_action( 'genesis_after_header', 'genesis_do_nav' );
+// Reposition both the navigation menus
+remove_action( 'genesis_after_header', 'genesis_do_nav' ); // primary menu
+
+remove_action( 'genesis_after_header', 'genesis_do_subnav' ); // secondary menu
+add_action( 'genesis_header', 'genesis_do_subnav', 8 ); // secondary menu
+
+
 
 //========================================================================================================
 
@@ -569,7 +574,7 @@ load_child_theme_textdomain( 'wp-rijkshuisstijl', RHSWP_FOLDER . '/languages' );
 //========================================================================================================
 
 // append search box to navigation menu
-// add_filter( 'wp_nav_menu_items', 'rhswp_append_search_box_to_menu', 10, 2 );
+add_filter( 'wp_nav_menu_items', 'rhswp_append_search_box_to_menu', 10, 2 );
 
 // genesis_do_breadcrumbs
 
@@ -583,6 +588,10 @@ load_child_theme_textdomain( 'wp-rijkshuisstijl', RHSWP_FOLDER . '/languages' );
  */
 
 function rhswp_append_search_box_to_menu( $menu, $args ) {
+
+	if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
+		return $menu;
+	}
 	//* Change 'primary' to 'secondary' to add extras to the secondary navigation menu
 	if ( is_search() ) {
 		return $menu;
@@ -1988,14 +1997,14 @@ add_filter( 'tiny_mce_before_init', 'admin_set_tinymce_options' );
 
 //========================================================================================================
 
-function rhswp_register_extra_menu() {
-	register_nav_menu( 'extra-menu', __( 'Extra navigatiemenu (rechtsboven)', 'wp-rijkshuisstijl' ) );
-}
-
-//add_action( 'init', 'rhswp_register_extra_menu' );
-
-// Unregister secondary navigation menu
-add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'wp-rijkshuisstijl' ) ) );
+// Add primary and secondary navigation menu
+add_theme_support(
+	'genesis-menus',
+	array(
+		'primary'   => __( 'Primary Navigation Menu',  'wp-rijkshuisstijl' ),
+		'secondary' => __( 'Secondary Navigation Menu',  'wp-rijkshuisstijl' ),
+	)
+);
 
 //========================================================================================================
 
@@ -2666,22 +2675,6 @@ function rhswp_check_caroussel_or_featured_img() {
 						echo '<div class="hero-image-tekst">';
 						echo $image_tekst;
 						echo '</div>';
-
-						if ( is_home() || is_front_page() ) {
-
-							if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
-								// alleen als het zoekformulier expliciet op verborgen is gezet, verbergen
-							} else {
-
-								$searchform	= get_search_form( false );
-								$needle		= 'class="search-form"';
-								$replacer	= 'class="search-form" id="herosearchform"';
-								$searchform	= str_replace( $needle, $replacer, $searchform );
-
-								echo $searchform;
-							}
-						}
-
 					} else {
 						echo '&nbsp;';
 						if ( is_home() || is_front_page() ) {
@@ -5555,9 +5548,9 @@ function admin_enqueue_css_acf_contentblokken() {
 //========================================================================================================
 
 // hide site description visually if necessary
-add_filter('genesis_seo_description','jmw_site_description', 10, 3);
+add_filter('genesis_seo_description','rhswp_filter_site_description', 10, 3);
 
-function jmw_site_description( $description, $inside, $wrap ) {
+function rhswp_filter_site_description( $description, $inside, $wrap ) {
 	
 	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
 
