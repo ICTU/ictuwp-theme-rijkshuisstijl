@@ -538,7 +538,7 @@ function rhswp_get_read_more_link( $thepermalink ) {
 remove_action( 'genesis_after_header', 'genesis_do_nav' ); // primary menu
 
 remove_action( 'genesis_after_header', 'genesis_do_subnav' ); // secondary menu
-add_action( 'genesis_header', 'genesis_do_subnav', 8 ); // secondary menu
+add_action( 'genesis_before_header', 'genesis_do_subnav', 8 ); // secondary menu
 
 
 
