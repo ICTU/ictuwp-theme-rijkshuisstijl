@@ -129,6 +129,13 @@ function rhswp_skip_links() {
 		}
 	}
 	
+//	// secundaire navigatie
+//	if ( has_nav_menu( 'secondary' ) ) {
+//		if ( is_home() || is_front_page() ) {
+//			$links['genesis-nav-secondary'] =  __( 'Direct naar het tweede navigatiemenu', 'wp-rijkshuisstijl' );
+//		}
+//	}
+
 	/**
 	* Filter the skip links.
 	*
