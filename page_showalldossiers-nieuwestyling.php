@@ -92,17 +92,19 @@ function rhswp_show_all_dossiers() {
 		
 		echo '<div id="cardflex_tab1">';
 		echo '<div id="filterselector">';
-		echo '<div class="topicSearchWrapper"><form method="get" action="' . $_SERVER['REQUEST_URI'] . '" id="rhswp-searchform-onderwerpen" class="search-form filter-options">
-		<fieldset class="filter-group searchkeyword">
-		<label class="filter-form-label" for="filtertrefwoord">' . _x( 'Filter op onderwerp', 'onderwerpfilterpagina', 'wp-rijkshuisstijl' ) . ':</label>
-		<div id="filter_group_search_form_bg">
-		<input type="search" id="filtertrefwoord" name="filtertrefwoord" itemprop="query-input" placeholder="' . _x( 'onderwerp', 'onderwerpfilterpagina', 'wp-rijkshuisstijl' ) . '" value="">
-		<button type="submit" id="filterbutton">Filter</button>
-		</div>
-		</fieldset>
-		<button id="resetbutton" name="selectie" value="wis" type="submit" class="reset">' . _x( 'Verwijder filter', 'filterknop op onderwerppagina', 'wp-rijkshuisstijl' ) . '</button>
-		</form></div>';  
-		
+		/*
+				echo '<div class="topicSearchWrapper">
+		<form method="get" action="' . $_SERVER['REQUEST_URI'] . '" id="rhswp-searchform-onderwerpen" class="search-form filter-options">
+				<fieldset class="filter-group searchkeyword">
+				<label class="filter-form-label" for="filtertrefwoord">' . _x( 'Filter op onderwerp', 'onderwerpfilterpagina', 'wp-rijkshuisstijl' ) . ':</label>
+				<div id="filter_group_search_form_bg">
+				<input type="search" id="filtertrefwoord" name="filtertrefwoord" itemprop="query-input" placeholder="' . _x( 'onderwerp', 'onderwerpfilterpagina', 'wp-rijkshuisstijl' ) . '" value="">
+				<button type="submit" id="filterbutton">Filter</button>
+				</div>
+				</fieldset>
+				<button id="resetbutton" name="selectie" value="wis" type="submit" class="reset">' . _x( 'Verwijder filter', 'filterknop op onderwerppagina', 'wp-rijkshuisstijl' ) . '</button>
+				</form></div>';
+		*/
 		
 		
 		if ( $featonderwerpen ) {
