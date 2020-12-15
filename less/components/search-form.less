@@ -1,0 +1,192 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - search-form.less
+// * ----------------------------------------------------------------------------------
+// * styling voor de search form
+// * ----------------------------------------------------------------------------------
+//
+
+//===================================
+// search form
+.search-form {
+
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  background: none;
+
+  input[type="search"],
+  input[itemprop="query-input"] {
+    width: ~"calc(100% - @{filter_submit_width})";
+    border-style: none;
+    padding: 1px 1px 1px .75em;
+    font-size: 18px;
+  }
+
+  input[type="submit"],
+  button[type="submit"] {
+    width: @filter_submit_width;
+    height: @filter_submit_width;
+    background-color: @nav_bg_color; // @nav_li_active_bg;
+    color: @nav_li_active_color;
+    text-transform: none;
+    .iconaddfill('../images/svg/looking-glass.svg', @wit);
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    background-size: 45% 45%;
+    -webkit-appearance: button;
+    -webkit-border-radius: 0;
+    text-indent: -9999px;
+
+    &:hover {
+      background-color: @txt;
+      .iconaddfill('../images/svg/looking-glass.svg', @wit);
+    }
+
+  }
+
+  input[type="submit"] {
+    background-color: @txt;
+    border-color: @txt;
+
+    &:focus {
+      border-color: @wit;
+    }
+  }
+
+  input:focus {
+    border-color: @wit;
+  }
+
+
+  input[type="submit"],
+  input[type="search"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+}
+
+nav.nav-primary .search {
+  // het zoekformulier in het hoofdmenu
+  padding-right: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  form.search-form {
+    align-self: flex-end;
+    flex-basis: 350px;
+
+    input[type="search"] {
+      flex: 1 1 310px;
+    }
+
+    input[type="submit"] {
+      flex: 0 0 48px;
+    }
+  }
+
+}
+
+
+main .search-form {
+  padding: 1em;
+  background: @grijs;
+
+  input[type="search"] {
+    border-bottom: 2px solid @communicatiekleur_vol;
+    padding-left: 5px;
+  }
+
+  button,
+  input[type="submit"] {
+    background-color: @communicatiekleur_vol;
+    .iconaddfill('../images/svg/looking-glass.svg', @wit);
+    color: @wit;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: @txt;
+      background-color: @wit;
+      .iconaddfill('../images/svg/looking-glass.svg', @txt);
+    }
+  }
+}
+
+main .no-results-widget.widget_search {
+  max-width: @break_tablet;
+}
+
+
+#rhswp-searchform-onderwerpen {
+  background: @communicatiekleur_vol;
+
+  label {
+    color: @wit;
+    line-height: 1;
+    font-size: 1.3em;
+    display: block;
+    padding-bottom: .5em;
+  }
+
+
+  input[type="search"],
+  input[itemprop="query-input"] {
+    width: ~"calc(98% - @{filter_submit_width})";
+    float: left;
+  }
+
+
+  #filterbutton {
+    background-size: 21px 30px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-indent: -9999em;
+    width: @filter_submit_width;
+    height: @seachform_element_height_normal;
+    float: right;
+    .iconaddfill('../images/svg/1006-filter.svg', @wit);
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: @txt;
+      background-color: @wit;
+      .iconaddfill('../images/svg/1006-filter.svg', @txt);
+    }
+  }
+
+  #resetbutton {
+    background: none;
+    padding-left: 0;
+    border-style: none;
+    text-indent: 0;
+    width: auto;
+    white-space: nowrap;
+    color: @wit;
+
+    &:before {
+      content: '×';
+      color: @communicatiekleur_vol;
+      display: block;
+      float: left;
+      margin-right: .5rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      background: @wit;
+      line-height: 1;
+      font-size: 1.25rem;
+      border-radius: 50%;
+      speak: never;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: @wit;
+      text-decoration: underline;
+    }
+  }
+}

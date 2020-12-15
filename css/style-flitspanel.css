@@ -52,6 +52,8 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 /* all things related to the site header */
 /* assorted elements */
 /* all things related to the site header */
+/* // .menus() {
+-------------------------------------- */
 /* all things related to navigation menus */
 /* forms */
 /* sidebar styling */
@@ -143,8 +145,10 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
   display: flex;
 }
 .flexcontainer.columncount-3 .article-visual img {
-  object-fit: cover;
-  object-position: 50% 33%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 50% 33%;
+     object-position: 50% 33%;
 }
 .flexcontainer.columncount-3 .article-excerpt {
   padding-right: 1.5rem;
@@ -265,7 +269,7 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
   width: 160px;
   height: 120px;
   display: block;
-  background: url('../images/logo-digitaleoverheid.png');
+  background: url('../images/logo-digitale-overheid.png');
   background-position: left top;
   background-repeat: no-repeat;
 }
@@ -577,8 +581,6 @@ input[type="search"] {
 .entry:after,
 .entry-pagination:after,
 .footer-widgets:after,
-.nav-primary:after,
-.nav-secondary:after,
 .site-container:after,
 .site-footer:after,
 .site-header:after,
@@ -743,7 +745,9 @@ q blockquote {
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
   word-break: normal;
-  hyphens: none;
+  -webkit-hyphens: none;
+      -ms-hyphens: none;
+          hyphens: none;
 }
 blockquote em,
 cite {
@@ -877,7 +881,9 @@ cite a {
 .pullquote-with-image blockquote *,
 .simple-pullquote blockquote * {
   word-break: normal;
-  hyphens: none;
+  -webkit-hyphens: none;
+      -ms-hyphens: none;
+          hyphens: none;
 }
 @media only screen and (min-width: 650px) {
   .pullquote-with-image q,
@@ -1059,7 +1065,6 @@ details[open] summary:hover {
 }
 p {
   -webkit-hyphens: auto;
-  -moz-hyphens: auto;
   -ms-hyphens: auto;
   -o-hyphens: auto;
   hyphens: auto;
@@ -1069,10 +1074,10 @@ p a {
 }
 b,
 strong {
-  -moz-hyphens: manual;
   -ms-hyphens: manual;
   -o-hyphens: manual;
-  hyphens: manual;
+  -webkit-hyphens: manual;
+          hyphens: manual;
 }
 .attachment a,
 .gallery a {
@@ -2230,88 +2235,6 @@ Common Classes
 }
 /* Genesis
 --------------------------------------------- */
-.breadcrumb {
-  padding: 0;
-  font-size: 80%;
-}
-.breadcrumb .wrap {
-  position: relative;
-}
-@media only screen and (max-width: 650px) {
-  .breadcrumb .wrap .search-form {
-    clear: both;
-    float: none;
-    margin-bottom: 1em;
-  }
-}
-@media only screen and (min-width: 650px) {
-  .breadcrumb .wrap .search-form {
-    position: absolute;
-    right: 0;
-    top: 14px;
-  }
-}
-.breadcrumb nav {
-  color: #fff;
-  font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
-  padding-top: 18px;
-  padding-bottom: 18px;
-}
-@media only screen and (max-width: 650px) {
-  .breadcrumb nav {
-    padding-right: 18px;
-    font-size: 1.25rem;
-  }
-}
-@media only screen and (min-width: 650px) {
-  .breadcrumb nav {
-    font-size: 1.625rem;
-    padding-right: 271px;
-  }
-}
-.breadcrumb nav span {
-  padding: 10.66666667px 0;
-}
-.breadcrumb nav a {
-  text-decoration: none;
-}
-.breadcrumb nav a:hover,
-.breadcrumb nav a:active,
-.breadcrumb nav a:focus {
-  text-decoration: underline;
-}
-.breadcrumb nav a:after {
-  font-weight: normal;
-  font-family: "RO Icons";
-  vertical-align: middle;
-  content: "";
-  speak: never;
-  padding: 0 6px 0 10px;
-  display: inline-block;
-  font-size: 0.9375rem;
-  line-height: 1em;
-  margin: -3px 0 0 0;
-  text-decoration: none;
-}
-.breadcrumb nav span,
-.breadcrumb nav a {
-  color: #fff;
-  font-family: 'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
-}
-.breadcrumb .separator {
-  speak: never;
-  display: inline-block;
-  margin-left: 5.33333333px;
-  margin-right: 5.33333333px;
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-}
 .author-box-title {
   font-size: 16px;
   font-size: 1rem;
@@ -2716,7 +2639,6 @@ Accessibility Extra's
   z-index: 100000;
   line-height: normal;
   text-decoration: none;
-  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 }
 .wpacc-genesis-skip-link li {
@@ -2940,134 +2862,6 @@ fieldset [type="checkbox"] + label {
 }
 a.gform_save_link {
   background-image: none !important;
-}
-.search-form {
-  padding: 0;
-  background: none;
-}
-.search-form input[type="search"],
-.search-form input[itemprop="query-input"] {
-  width: calc(100% - 50px);
-  height: 50px;
-  border-style: none;
-  padding: 1px 1px 1px 0.75em;
-  font-size: 18px;
-}
-.search-form input[type="submit"],
-.search-form button[type="submit"] {
-  width: 50px;
-  height: 50px;
-  background-color: #01689b;
-  color: #000;
-  text-transform: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2256px%22%20height%3D%2255px%22%20viewBox%3D%220%200%2056%2055%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2040.2%20(33826)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Elooking-glass%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-search%22%20transform%3D%22translate(-4.000000%2C%20-5.000000)%22%20fill%3D%22%23fff%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(4.000000%2C%205.000000)%22%20id%3D%22looking-glass%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M54.060791%2C47.1978023%20C51.055875%2C44.2032968%2045.0460432%2C38.2142857%2042.0411273%2C35.2197802%20C41.9995847%2C35.206044%2041.9164996%2C35.1785715%2041.874957%2C35.1648352%20C41.8380299%2C35.1282052%2041.8195663%2C35.0915752%2041.8195663%2C35.0549452%20C43.03815%2C33.2600734%2043.970551%2C31.3095239%2044.6167694%2C29.2032967%20C45.2629878%2C27.0970695%2045.586097%2C24.8901098%2045.586097%2C22.5824176%20C45.586097%2C18.5164835%2044.5336841%2C14.7252747%2042.4288585%2C11.208791%20C40.4348128%2C7.8021977%2037.7206951%2C5.09157513%2034.2865057%2C3.0769233%20C30.7415356%2C1.0256411%2026.9103832%2C0%2022.7930485%2C0%20C18.6757137%2C0%2014.8445613%2C1.0256411%2011.2995913%2C3.0769233%20C7.86540182%2C5.09157513%205.13282102%2C7.8021977%203.10184887%2C11.208791%20C1.03394962%2C14.7252747%200%2C18.525641%200%2C22.60989%20C0%2C26.6941391%201.03394962%2C30.4945054%203.10184887%2C34.0109891%20C5.13282102%2C37.4175824%207.86540182%2C40.1098902%2011.2995913%2C42.0879124%20C14.8445613%2C44.1758242%2018.666482%2C45.2197801%2022.7653534%2C45.2197801%20C25.0178863%2C45.2197801%2027.2334925%2C44.8901097%2029.412172%2C44.230769%20C31.5169979%2C43.6080586%2033.4925802%2C42.6923077%2035.3389187%2C41.4835163%20C35.3758454%2C41.5384614%2035.4220038%2C41.6071429%2035.4496989%2C41.6483518%20C35.4496989%2C41.6849818%2035.4681622%2C41.7032968%2035.505089%2C41.7032968%20C39.5301069%2C45.6776558%2044.5613793%2C50.6456046%2047.5801427%2C53.6263739%20C48.4663851%2C54.5421246%2049.5557247%2C55%2050.8481616%2C55%20C52.1405986%2C55%2053.2299384%2C54.5421246%2054.1161811%2C53.6263739%20C55.0393501%2C52.7106228%2055.491703%2C51.6300366%2055.4732396%2C50.3846153%20C55.4547762%2C49.139194%2054.98396%2C48.076923%2054.060791%2C47.1978023%20L54.060791%2C47.1978023%20Z%20M22.7653534%2C37.3626374%20C20.0696994%2C37.3626374%2017.5863741%2C36.7032968%2015.3153776%2C35.3846155%20C13.0443812%2C34.0659342%2011.2257378%2C32.2710625%209.8594476%2C30.0000002%20C8.53008375%2C27.7289377%207.86540182%2C25.2564101%207.86540182%2C22.5824175%20C7.86540182%2C19.908425%208.53008375%2C17.4542126%209.8594476%2C15.2197804%20C11.2257378%2C12.9487178%2013.0443812%2C11.1446884%2015.3153776%2C9.80769212%20C17.5863741%2C8.47069584%2020.0696994%2C7.8021977%2022.7653534%2C7.8021977%20C25.4610075%2C7.8021977%2027.9535644%2C8.47069584%2030.2430243%2C9.80769212%20C32.5324841%2C11.1446884%2034.3418958%2C12.9487178%2035.6712592%2C15.2197804%20C37.0006231%2C17.4542126%2037.665305%2C19.908425%2037.665305%2C22.5824175%20C37.665305%2C25.2564101%2037.0006231%2C27.7289377%2035.6712592%2C30.0000002%20C34.3418958%2C32.2710625%2032.5324841%2C34.0659342%2030.2430243%2C35.3846155%20C27.9535644%2C36.7032968%2025.4610075%2C37.3626374%2022.7653534%2C37.3626374%20L22.7653534%2C37.3626374%20Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 60% 60%;
-  -webkit-appearance: button;
-  -webkit-border-radius: 0;
-  text-indent: -9999px;
-}
-.search-form input[type="submit"]:hover,
-.search-form button[type="submit"]:hover {
-  background-color: #000;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2256px%22%20height%3D%2255px%22%20viewBox%3D%220%200%2056%2055%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2040.2%20(33826)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Elooking-glass%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-search%22%20transform%3D%22translate(-4.000000%2C%20-5.000000)%22%20fill%3D%22%23fff%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(4.000000%2C%205.000000)%22%20id%3D%22looking-glass%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M54.060791%2C47.1978023%20C51.055875%2C44.2032968%2045.0460432%2C38.2142857%2042.0411273%2C35.2197802%20C41.9995847%2C35.206044%2041.9164996%2C35.1785715%2041.874957%2C35.1648352%20C41.8380299%2C35.1282052%2041.8195663%2C35.0915752%2041.8195663%2C35.0549452%20C43.03815%2C33.2600734%2043.970551%2C31.3095239%2044.6167694%2C29.2032967%20C45.2629878%2C27.0970695%2045.586097%2C24.8901098%2045.586097%2C22.5824176%20C45.586097%2C18.5164835%2044.5336841%2C14.7252747%2042.4288585%2C11.208791%20C40.4348128%2C7.8021977%2037.7206951%2C5.09157513%2034.2865057%2C3.0769233%20C30.7415356%2C1.0256411%2026.9103832%2C0%2022.7930485%2C0%20C18.6757137%2C0%2014.8445613%2C1.0256411%2011.2995913%2C3.0769233%20C7.86540182%2C5.09157513%205.13282102%2C7.8021977%203.10184887%2C11.208791%20C1.03394962%2C14.7252747%200%2C18.525641%200%2C22.60989%20C0%2C26.6941391%201.03394962%2C30.4945054%203.10184887%2C34.0109891%20C5.13282102%2C37.4175824%207.86540182%2C40.1098902%2011.2995913%2C42.0879124%20C14.8445613%2C44.1758242%2018.666482%2C45.2197801%2022.7653534%2C45.2197801%20C25.0178863%2C45.2197801%2027.2334925%2C44.8901097%2029.412172%2C44.230769%20C31.5169979%2C43.6080586%2033.4925802%2C42.6923077%2035.3389187%2C41.4835163%20C35.3758454%2C41.5384614%2035.4220038%2C41.6071429%2035.4496989%2C41.6483518%20C35.4496989%2C41.6849818%2035.4681622%2C41.7032968%2035.505089%2C41.7032968%20C39.5301069%2C45.6776558%2044.5613793%2C50.6456046%2047.5801427%2C53.6263739%20C48.4663851%2C54.5421246%2049.5557247%2C55%2050.8481616%2C55%20C52.1405986%2C55%2053.2299384%2C54.5421246%2054.1161811%2C53.6263739%20C55.0393501%2C52.7106228%2055.491703%2C51.6300366%2055.4732396%2C50.3846153%20C55.4547762%2C49.139194%2054.98396%2C48.076923%2054.060791%2C47.1978023%20L54.060791%2C47.1978023%20Z%20M22.7653534%2C37.3626374%20C20.0696994%2C37.3626374%2017.5863741%2C36.7032968%2015.3153776%2C35.3846155%20C13.0443812%2C34.0659342%2011.2257378%2C32.2710625%209.8594476%2C30.0000002%20C8.53008375%2C27.7289377%207.86540182%2C25.2564101%207.86540182%2C22.5824175%20C7.86540182%2C19.908425%208.53008375%2C17.4542126%209.8594476%2C15.2197804%20C11.2257378%2C12.9487178%2013.0443812%2C11.1446884%2015.3153776%2C9.80769212%20C17.5863741%2C8.47069584%2020.0696994%2C7.8021977%2022.7653534%2C7.8021977%20C25.4610075%2C7.8021977%2027.9535644%2C8.47069584%2030.2430243%2C9.80769212%20C32.5324841%2C11.1446884%2034.3418958%2C12.9487178%2035.6712592%2C15.2197804%20C37.0006231%2C17.4542126%2037.665305%2C19.908425%2037.665305%2C22.5824175%20C37.665305%2C25.2564101%2037.0006231%2C27.7289377%2035.6712592%2C30.0000002%20C34.3418958%2C32.2710625%2032.5324841%2C34.0659342%2030.2430243%2C35.3846155%20C27.9535644%2C36.7032968%2025.4610075%2C37.3626374%2022.7653534%2C37.3626374%20L22.7653534%2C37.3626374%20Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
-}
-.search-form input:focus {
-  border-color: #fff;
-}
-.search-form input[type="submit"],
-.search-form input[type="search"] {
-  -webkit-appearance: none;
-  border-radius: 0;
-}
-main .search-form {
-  padding: 1em;
-  background: #e6e6e6;
-}
-main .search-form input[type="search"] {
-  border-bottom: 2px solid #01689b;
-  padding-left: 5px;
-}
-main .search-form button,
-main .search-form input[type="submit"] {
-  background-color: #01689b;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2256px%22%20height%3D%2255px%22%20viewBox%3D%220%200%2056%2055%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2040.2%20(33826)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Elooking-glass%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-search%22%20transform%3D%22translate(-4.000000%2C%20-5.000000)%22%20fill%3D%22%23fff%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(4.000000%2C%205.000000)%22%20id%3D%22looking-glass%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M54.060791%2C47.1978023%20C51.055875%2C44.2032968%2045.0460432%2C38.2142857%2042.0411273%2C35.2197802%20C41.9995847%2C35.206044%2041.9164996%2C35.1785715%2041.874957%2C35.1648352%20C41.8380299%2C35.1282052%2041.8195663%2C35.0915752%2041.8195663%2C35.0549452%20C43.03815%2C33.2600734%2043.970551%2C31.3095239%2044.6167694%2C29.2032967%20C45.2629878%2C27.0970695%2045.586097%2C24.8901098%2045.586097%2C22.5824176%20C45.586097%2C18.5164835%2044.5336841%2C14.7252747%2042.4288585%2C11.208791%20C40.4348128%2C7.8021977%2037.7206951%2C5.09157513%2034.2865057%2C3.0769233%20C30.7415356%2C1.0256411%2026.9103832%2C0%2022.7930485%2C0%20C18.6757137%2C0%2014.8445613%2C1.0256411%2011.2995913%2C3.0769233%20C7.86540182%2C5.09157513%205.13282102%2C7.8021977%203.10184887%2C11.208791%20C1.03394962%2C14.7252747%200%2C18.525641%200%2C22.60989%20C0%2C26.6941391%201.03394962%2C30.4945054%203.10184887%2C34.0109891%20C5.13282102%2C37.4175824%207.86540182%2C40.1098902%2011.2995913%2C42.0879124%20C14.8445613%2C44.1758242%2018.666482%2C45.2197801%2022.7653534%2C45.2197801%20C25.0178863%2C45.2197801%2027.2334925%2C44.8901097%2029.412172%2C44.230769%20C31.5169979%2C43.6080586%2033.4925802%2C42.6923077%2035.3389187%2C41.4835163%20C35.3758454%2C41.5384614%2035.4220038%2C41.6071429%2035.4496989%2C41.6483518%20C35.4496989%2C41.6849818%2035.4681622%2C41.7032968%2035.505089%2C41.7032968%20C39.5301069%2C45.6776558%2044.5613793%2C50.6456046%2047.5801427%2C53.6263739%20C48.4663851%2C54.5421246%2049.5557247%2C55%2050.8481616%2C55%20C52.1405986%2C55%2053.2299384%2C54.5421246%2054.1161811%2C53.6263739%20C55.0393501%2C52.7106228%2055.491703%2C51.6300366%2055.4732396%2C50.3846153%20C55.4547762%2C49.139194%2054.98396%2C48.076923%2054.060791%2C47.1978023%20L54.060791%2C47.1978023%20Z%20M22.7653534%2C37.3626374%20C20.0696994%2C37.3626374%2017.5863741%2C36.7032968%2015.3153776%2C35.3846155%20C13.0443812%2C34.0659342%2011.2257378%2C32.2710625%209.8594476%2C30.0000002%20C8.53008375%2C27.7289377%207.86540182%2C25.2564101%207.86540182%2C22.5824175%20C7.86540182%2C19.908425%208.53008375%2C17.4542126%209.8594476%2C15.2197804%20C11.2257378%2C12.9487178%2013.0443812%2C11.1446884%2015.3153776%2C9.80769212%20C17.5863741%2C8.47069584%2020.0696994%2C7.8021977%2022.7653534%2C7.8021977%20C25.4610075%2C7.8021977%2027.9535644%2C8.47069584%2030.2430243%2C9.80769212%20C32.5324841%2C11.1446884%2034.3418958%2C12.9487178%2035.6712592%2C15.2197804%20C37.0006231%2C17.4542126%2037.665305%2C19.908425%2037.665305%2C22.5824175%20C37.665305%2C25.2564101%2037.0006231%2C27.7289377%2035.6712592%2C30.0000002%20C34.3418958%2C32.2710625%2032.5324841%2C34.0659342%2030.2430243%2C35.3846155%20C27.9535644%2C36.7032968%2025.4610075%2C37.3626374%2022.7653534%2C37.3626374%20L22.7653534%2C37.3626374%20Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
-  color: #fff;
-}
-main .search-form button:hover,
-main .search-form input[type="submit"]:hover,
-main .search-form button:active,
-main .search-form input[type="submit"]:active,
-main .search-form button:focus,
-main .search-form input[type="submit"]:focus {
-  color: #000;
-  background-color: #fff;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2256px%22%20height%3D%2255px%22%20viewBox%3D%220%200%2056%2055%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2040.2%20(33826)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Elooking-glass%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-search%22%20transform%3D%22translate(-4.000000%2C%20-5.000000)%22%20fill%3D%22%23000%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(4.000000%2C%205.000000)%22%20id%3D%22looking-glass%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M54.060791%2C47.1978023%20C51.055875%2C44.2032968%2045.0460432%2C38.2142857%2042.0411273%2C35.2197802%20C41.9995847%2C35.206044%2041.9164996%2C35.1785715%2041.874957%2C35.1648352%20C41.8380299%2C35.1282052%2041.8195663%2C35.0915752%2041.8195663%2C35.0549452%20C43.03815%2C33.2600734%2043.970551%2C31.3095239%2044.6167694%2C29.2032967%20C45.2629878%2C27.0970695%2045.586097%2C24.8901098%2045.586097%2C22.5824176%20C45.586097%2C18.5164835%2044.5336841%2C14.7252747%2042.4288585%2C11.208791%20C40.4348128%2C7.8021977%2037.7206951%2C5.09157513%2034.2865057%2C3.0769233%20C30.7415356%2C1.0256411%2026.9103832%2C0%2022.7930485%2C0%20C18.6757137%2C0%2014.8445613%2C1.0256411%2011.2995913%2C3.0769233%20C7.86540182%2C5.09157513%205.13282102%2C7.8021977%203.10184887%2C11.208791%20C1.03394962%2C14.7252747%200%2C18.525641%200%2C22.60989%20C0%2C26.6941391%201.03394962%2C30.4945054%203.10184887%2C34.0109891%20C5.13282102%2C37.4175824%207.86540182%2C40.1098902%2011.2995913%2C42.0879124%20C14.8445613%2C44.1758242%2018.666482%2C45.2197801%2022.7653534%2C45.2197801%20C25.0178863%2C45.2197801%2027.2334925%2C44.8901097%2029.412172%2C44.230769%20C31.5169979%2C43.6080586%2033.4925802%2C42.6923077%2035.3389187%2C41.4835163%20C35.3758454%2C41.5384614%2035.4220038%2C41.6071429%2035.4496989%2C41.6483518%20C35.4496989%2C41.6849818%2035.4681622%2C41.7032968%2035.505089%2C41.7032968%20C39.5301069%2C45.6776558%2044.5613793%2C50.6456046%2047.5801427%2C53.6263739%20C48.4663851%2C54.5421246%2049.5557247%2C55%2050.8481616%2C55%20C52.1405986%2C55%2053.2299384%2C54.5421246%2054.1161811%2C53.6263739%20C55.0393501%2C52.7106228%2055.491703%2C51.6300366%2055.4732396%2C50.3846153%20C55.4547762%2C49.139194%2054.98396%2C48.076923%2054.060791%2C47.1978023%20L54.060791%2C47.1978023%20Z%20M22.7653534%2C37.3626374%20C20.0696994%2C37.3626374%2017.5863741%2C36.7032968%2015.3153776%2C35.3846155%20C13.0443812%2C34.0659342%2011.2257378%2C32.2710625%209.8594476%2C30.0000002%20C8.53008375%2C27.7289377%207.86540182%2C25.2564101%207.86540182%2C22.5824175%20C7.86540182%2C19.908425%208.53008375%2C17.4542126%209.8594476%2C15.2197804%20C11.2257378%2C12.9487178%2013.0443812%2C11.1446884%2015.3153776%2C9.80769212%20C17.5863741%2C8.47069584%2020.0696994%2C7.8021977%2022.7653534%2C7.8021977%20C25.4610075%2C7.8021977%2027.9535644%2C8.47069584%2030.2430243%2C9.80769212%20C32.5324841%2C11.1446884%2034.3418958%2C12.9487178%2035.6712592%2C15.2197804%20C37.0006231%2C17.4542126%2037.665305%2C19.908425%2037.665305%2C22.5824175%20C37.665305%2C25.2564101%2037.0006231%2C27.7289377%2035.6712592%2C30.0000002%20C34.3418958%2C32.2710625%2032.5324841%2C34.0659342%2030.2430243%2C35.3846155%20C27.9535644%2C36.7032968%2025.4610075%2C37.3626374%2022.7653534%2C37.3626374%20L22.7653534%2C37.3626374%20Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
-}
-main .no-results-widget.widget_search {
-  max-width: 650px;
-}
-#rhswp-searchform-onderwerpen {
-  background: #01689b;
-}
-#rhswp-searchform-onderwerpen label {
-  color: #fff;
-  line-height: 1;
-  font-size: 1.3em;
-  display: block;
-  padding-bottom: 0.5em;
-}
-#rhswp-searchform-onderwerpen input[type="search"],
-#rhswp-searchform-onderwerpen input[itemprop="query-input"] {
-  width: calc(98% - 50px);
-  float: left;
-}
-#rhswp-searchform-onderwerpen #filterbutton {
-  background-size: 21px 30px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  text-indent: -9999em;
-  width: 50px;
-  height: 50px;
-  float: right;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2240px%22%20height%3D%2256px%22%20viewBox%3D%220%200%2040%2056%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2048.1%20(47250)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3E1006-filter%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22rhs-icons%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(-289.000000%2C%20-288.000000)%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%221006-filter%22%20transform%3D%22translate(277.000000%2C%20284.000000)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Box%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Rectangle-path%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2264%22%20height%3D%2264%22%3E%3C%2Frect%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Icon%22%20transform%3D%22translate(12.000000%2C%204.000000)%22%20fill%3D%22%23fff%22%20fill-rule%3D%22nonzero%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M39.754%2C7.6931%20C39.754%2C3.2971%2029.757%2C0%2019.877%2C0%20C9.997%2C0%200%2C3.2971%200%2C7.6931%20C0%2C9.2289%200.0038%2C11.9637%200.759%2C14.0625%20C3.3621%2C21.2963%209.821%2C30.0664%2013.0194%2C33.9358%20C14.98%2C35.8356%2020.7575%2C34.9572%2020.9186%2C34.9554%20C20.9223%2C35.0396%2020.9275%2C35.1736%2020.7328%2C35.3103%20C20.5128%2C35.4648%2018.0824%2C36.552%2014.0146%2C36.9355%20L14.9077%2C54.1018%20C14.9077%2C55.1501%2017.1326%2C56%2019.877%2C56%20C22.6214%2C56%2024.8463%2C55.1501%2024.8463%2C54.1017%20L25.8401%2C35%20C28.4784%2C31.942%2036.1193%2C22.054%2038.995%2C14.0625%20C39.7503%2C11.9636%2039.754%2C9.2288%2039.754%2C7.6931%20Z%20M19.967%2C14.12%20C11.5073%2C14.12%204.467%2C11.9607%204.467%2C9.074%20C4.467%2C6.1871%2011.5073%2C3.8469%2019.967%2C3.8469%20C28.4267%2C3.8469%2035.467%2C6.1871%2035.467%2C9.074%20C35.467%2C11.9607%2028.4267%2C14.12%2019.967%2C14.12%20Z%22%20id%3D%22Shape%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
-}
-#rhswp-searchform-onderwerpen #filterbutton:hover,
-#rhswp-searchform-onderwerpen #filterbutton:active,
-#rhswp-searchform-onderwerpen #filterbutton:focus {
-  color: #000;
-  background-color: #fff;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2240px%22%20height%3D%2256px%22%20viewBox%3D%220%200%2040%2056%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2048.1%20(47250)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3E1006-filter%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22rhs-icons%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(-289.000000%2C%20-288.000000)%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%221006-filter%22%20transform%3D%22translate(277.000000%2C%20284.000000)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Box%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Rectangle-path%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2264%22%20height%3D%2264%22%3E%3C%2Frect%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Icon%22%20transform%3D%22translate(12.000000%2C%204.000000)%22%20fill%3D%22%23000%22%20fill-rule%3D%22nonzero%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M39.754%2C7.6931%20C39.754%2C3.2971%2029.757%2C0%2019.877%2C0%20C9.997%2C0%200%2C3.2971%200%2C7.6931%20C0%2C9.2289%200.0038%2C11.9637%200.759%2C14.0625%20C3.3621%2C21.2963%209.821%2C30.0664%2013.0194%2C33.9358%20C14.98%2C35.8356%2020.7575%2C34.9572%2020.9186%2C34.9554%20C20.9223%2C35.0396%2020.9275%2C35.1736%2020.7328%2C35.3103%20C20.5128%2C35.4648%2018.0824%2C36.552%2014.0146%2C36.9355%20L14.9077%2C54.1018%20C14.9077%2C55.1501%2017.1326%2C56%2019.877%2C56%20C22.6214%2C56%2024.8463%2C55.1501%2024.8463%2C54.1017%20L25.8401%2C35%20C28.4784%2C31.942%2036.1193%2C22.054%2038.995%2C14.0625%20C39.7503%2C11.9636%2039.754%2C9.2288%2039.754%2C7.6931%20Z%20M19.967%2C14.12%20C11.5073%2C14.12%204.467%2C11.9607%204.467%2C9.074%20C4.467%2C6.1871%2011.5073%2C3.8469%2019.967%2C3.8469%20C28.4267%2C3.8469%2035.467%2C6.1871%2035.467%2C9.074%20C35.467%2C11.9607%2028.4267%2C14.12%2019.967%2C14.12%20Z%22%20id%3D%22Shape%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
-}
-#rhswp-searchform-onderwerpen #resetbutton {
-  background: none;
-  padding-left: 0;
-  border-style: none;
-  text-indent: 0;
-  width: auto;
-  white-space: nowrap;
-  color: #fff;
-}
-#rhswp-searchform-onderwerpen #resetbutton:before {
-  content: '×';
-  color: #01689b;
-  display: block;
-  float: left;
-  margin-right: 0.5rem;
-  width: 1.2rem;
-  height: 1.2rem;
-  background: #fff;
-  line-height: 1;
-  font-size: 1.25rem;
-  border-radius: 50%;
-  speak: never;
-}
-#rhswp-searchform-onderwerpen #resetbutton:hover,
-#rhswp-searchform-onderwerpen #resetbutton:active,
-#rhswp-searchform-onderwerpen #resetbutton:focus {
-  color: #fff;
-  text-decoration: underline;
 }
 .screen-reader-response {
   position: absolute;
@@ -3562,7 +3356,8 @@ body .gform_wrapper ul li.field_description_below div.ginput_container_radio {
 .gform_wrapper label.hidden_sub_label {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -4151,8 +3946,6 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   background-size: 100% 80px;
   background-position: center center;
   background-origin: border-box;
-  -webkit-box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.05);
   width: 100%;
 }
@@ -4313,7 +4106,8 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 }
 .ginput_container_password button {
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   background: 0 0;
   border: none;
   padding: 5px 0;
@@ -4779,7 +4573,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   user-select: none;
 }
 .gform_wrapper .chosen-container * {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .gform_wrapper .chosen-container .chosen-drop {
@@ -4790,7 +4583,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   border: 1px solid #aaa;
   border-top: 0;
   background: #fff;
-  -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
   display: none;
 }
@@ -4823,10 +4615,8 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   height: 25px;
   border: 1px solid #aaa;
   background-color: #fff;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #fff), color-stop(50%, #f6f6f6), color-stop(52%, #eee), to(#f4f4f4));
   background: linear-gradient(#fff 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%);
   background-clip: padding-box;
-  -webkit-box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1);
   color: #444;
   text-decoration: none;
@@ -4941,7 +4731,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
 }
 .gform_wrapper .chosen-container .chosen-results li.highlighted {
   background-color: #3875d7;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #3875d7), color-stop(90%, #2a62bc));
   background-image: linear-gradient(#3875d7 20%, #2a62bc 90%);
   color: #fff;
 }
@@ -4971,7 +4760,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   height: auto;
   border: 1px solid #aaa;
   background-color: #fff;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #eee), color-stop(15%, #fff));
   background-image: linear-gradient(#eee 1%, #fff 15%);
   cursor: text;
 }
@@ -4992,12 +4780,10 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   max-width: 100%;
   border-radius: 3px;
   background-color: #eee;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), to(#eee));
   background-image: linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
   background-size: 100% 19px;
   background-repeat: repeat-x;
   background-clip: padding-box;
-  -webkit-box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
   box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
   color: #333;
   line-height: 13px;
@@ -5023,7 +4809,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   padding-right: 5px;
   border: 1px solid #ccc;
   background-color: #e4e4e4;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), to(#eee));
   background-image: linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
   color: #666;
 }
@@ -5044,16 +4829,13 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
 }
 .gform_wrapper .chosen-container-active .chosen-single {
   border: 1px solid #5897fb;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .gform_wrapper .chosen-container-active.chosen-with-drop .chosen-single {
   border: 1px solid #aaa;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #eee), color-stop(80%, #fff));
   background-image: linear-gradient(#eee 20%, #fff 80%);
-  -webkit-box-shadow: 0 1px 0 #fff inset;
   box-shadow: 0 1px 0 #fff inset;
 }
 .gform_wrapper .chosen-container-active.chosen-with-drop .chosen-single div {
@@ -5065,7 +4847,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
 }
 .gform_wrapper .chosen-container-active .chosen-choices {
   border: 1px solid #5897fb;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .gform_wrapper .chosen-container-active .chosen-choices li.search-field input[type=text] {
@@ -5810,23 +5591,178 @@ div .gfield_repeater_cell {
     margin-left: 20%;
   }
 }
-.site-header .wrap .title-area {
+.search-form {
   display: flex;
   flex-direction: row;
+  padding: 0;
+  background: none;
+}
+.search-form input[type="search"],
+.search-form input[itemprop="query-input"] {
+  width: calc(100% - 48px);
+  border-style: none;
+  padding: 1px 1px 1px 0.75em;
+  font-size: 18px;
+}
+.search-form input[type="submit"],
+.search-form button[type="submit"] {
+  width: 48px;
+  height: 48px;
+  background-color: #01689b;
+  color: #000;
+  text-transform: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2256px%22%20height%3D%2255px%22%20viewBox%3D%220%200%2056%2055%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2040.2%20(33826)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Elooking-glass%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-search%22%20transform%3D%22translate(-4.000000%2C%20-5.000000)%22%20fill%3D%22%23fff%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(4.000000%2C%205.000000)%22%20id%3D%22looking-glass%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M54.060791%2C47.1978023%20C51.055875%2C44.2032968%2045.0460432%2C38.2142857%2042.0411273%2C35.2197802%20C41.9995847%2C35.206044%2041.9164996%2C35.1785715%2041.874957%2C35.1648352%20C41.8380299%2C35.1282052%2041.8195663%2C35.0915752%2041.8195663%2C35.0549452%20C43.03815%2C33.2600734%2043.970551%2C31.3095239%2044.6167694%2C29.2032967%20C45.2629878%2C27.0970695%2045.586097%2C24.8901098%2045.586097%2C22.5824176%20C45.586097%2C18.5164835%2044.5336841%2C14.7252747%2042.4288585%2C11.208791%20C40.4348128%2C7.8021977%2037.7206951%2C5.09157513%2034.2865057%2C3.0769233%20C30.7415356%2C1.0256411%2026.9103832%2C0%2022.7930485%2C0%20C18.6757137%2C0%2014.8445613%2C1.0256411%2011.2995913%2C3.0769233%20C7.86540182%2C5.09157513%205.13282102%2C7.8021977%203.10184887%2C11.208791%20C1.03394962%2C14.7252747%200%2C18.525641%200%2C22.60989%20C0%2C26.6941391%201.03394962%2C30.4945054%203.10184887%2C34.0109891%20C5.13282102%2C37.4175824%207.86540182%2C40.1098902%2011.2995913%2C42.0879124%20C14.8445613%2C44.1758242%2018.666482%2C45.2197801%2022.7653534%2C45.2197801%20C25.0178863%2C45.2197801%2027.2334925%2C44.8901097%2029.412172%2C44.230769%20C31.5169979%2C43.6080586%2033.4925802%2C42.6923077%2035.3389187%2C41.4835163%20C35.3758454%2C41.5384614%2035.4220038%2C41.6071429%2035.4496989%2C41.6483518%20C35.4496989%2C41.6849818%2035.4681622%2C41.7032968%2035.505089%2C41.7032968%20C39.5301069%2C45.6776558%2044.5613793%2C50.6456046%2047.5801427%2C53.6263739%20C48.4663851%2C54.5421246%2049.5557247%2C55%2050.8481616%2C55%20C52.1405986%2C55%2053.2299384%2C54.5421246%2054.1161811%2C53.6263739%20C55.0393501%2C52.7106228%2055.491703%2C51.6300366%2055.4732396%2C50.3846153%20C55.4547762%2C49.139194%2054.98396%2C48.076923%2054.060791%2C47.1978023%20L54.060791%2C47.1978023%20Z%20M22.7653534%2C37.3626374%20C20.0696994%2C37.3626374%2017.5863741%2C36.7032968%2015.3153776%2C35.3846155%20C13.0443812%2C34.0659342%2011.2257378%2C32.2710625%209.8594476%2C30.0000002%20C8.53008375%2C27.7289377%207.86540182%2C25.2564101%207.86540182%2C22.5824175%20C7.86540182%2C19.908425%208.53008375%2C17.4542126%209.8594476%2C15.2197804%20C11.2257378%2C12.9487178%2013.0443812%2C11.1446884%2015.3153776%2C9.80769212%20C17.5863741%2C8.47069584%2020.0696994%2C7.8021977%2022.7653534%2C7.8021977%20C25.4610075%2C7.8021977%2027.9535644%2C8.47069584%2030.2430243%2C9.80769212%20C32.5324841%2C11.1446884%2034.3418958%2C12.9487178%2035.6712592%2C15.2197804%20C37.0006231%2C17.4542126%2037.665305%2C19.908425%2037.665305%2C22.5824175%20C37.665305%2C25.2564101%2037.0006231%2C27.7289377%2035.6712592%2C30.0000002%20C34.3418958%2C32.2710625%2032.5324841%2C34.0659342%2030.2430243%2C35.3846155%20C27.9535644%2C36.7032968%2025.4610075%2C37.3626374%2022.7653534%2C37.3626374%20L22.7653534%2C37.3626374%20Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 45% 45%;
+  -webkit-appearance: button;
+  -webkit-border-radius: 0;
+  text-indent: -9999px;
+}
+.search-form input[type="submit"]:hover,
+.search-form button[type="submit"]:hover {
+  background-color: #000;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2256px%22%20height%3D%2255px%22%20viewBox%3D%220%200%2056%2055%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2040.2%20(33826)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Elooking-glass%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-search%22%20transform%3D%22translate(-4.000000%2C%20-5.000000)%22%20fill%3D%22%23fff%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(4.000000%2C%205.000000)%22%20id%3D%22looking-glass%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M54.060791%2C47.1978023%20C51.055875%2C44.2032968%2045.0460432%2C38.2142857%2042.0411273%2C35.2197802%20C41.9995847%2C35.206044%2041.9164996%2C35.1785715%2041.874957%2C35.1648352%20C41.8380299%2C35.1282052%2041.8195663%2C35.0915752%2041.8195663%2C35.0549452%20C43.03815%2C33.2600734%2043.970551%2C31.3095239%2044.6167694%2C29.2032967%20C45.2629878%2C27.0970695%2045.586097%2C24.8901098%2045.586097%2C22.5824176%20C45.586097%2C18.5164835%2044.5336841%2C14.7252747%2042.4288585%2C11.208791%20C40.4348128%2C7.8021977%2037.7206951%2C5.09157513%2034.2865057%2C3.0769233%20C30.7415356%2C1.0256411%2026.9103832%2C0%2022.7930485%2C0%20C18.6757137%2C0%2014.8445613%2C1.0256411%2011.2995913%2C3.0769233%20C7.86540182%2C5.09157513%205.13282102%2C7.8021977%203.10184887%2C11.208791%20C1.03394962%2C14.7252747%200%2C18.525641%200%2C22.60989%20C0%2C26.6941391%201.03394962%2C30.4945054%203.10184887%2C34.0109891%20C5.13282102%2C37.4175824%207.86540182%2C40.1098902%2011.2995913%2C42.0879124%20C14.8445613%2C44.1758242%2018.666482%2C45.2197801%2022.7653534%2C45.2197801%20C25.0178863%2C45.2197801%2027.2334925%2C44.8901097%2029.412172%2C44.230769%20C31.5169979%2C43.6080586%2033.4925802%2C42.6923077%2035.3389187%2C41.4835163%20C35.3758454%2C41.5384614%2035.4220038%2C41.6071429%2035.4496989%2C41.6483518%20C35.4496989%2C41.6849818%2035.4681622%2C41.7032968%2035.505089%2C41.7032968%20C39.5301069%2C45.6776558%2044.5613793%2C50.6456046%2047.5801427%2C53.6263739%20C48.4663851%2C54.5421246%2049.5557247%2C55%2050.8481616%2C55%20C52.1405986%2C55%2053.2299384%2C54.5421246%2054.1161811%2C53.6263739%20C55.0393501%2C52.7106228%2055.491703%2C51.6300366%2055.4732396%2C50.3846153%20C55.4547762%2C49.139194%2054.98396%2C48.076923%2054.060791%2C47.1978023%20L54.060791%2C47.1978023%20Z%20M22.7653534%2C37.3626374%20C20.0696994%2C37.3626374%2017.5863741%2C36.7032968%2015.3153776%2C35.3846155%20C13.0443812%2C34.0659342%2011.2257378%2C32.2710625%209.8594476%2C30.0000002%20C8.53008375%2C27.7289377%207.86540182%2C25.2564101%207.86540182%2C22.5824175%20C7.86540182%2C19.908425%208.53008375%2C17.4542126%209.8594476%2C15.2197804%20C11.2257378%2C12.9487178%2013.0443812%2C11.1446884%2015.3153776%2C9.80769212%20C17.5863741%2C8.47069584%2020.0696994%2C7.8021977%2022.7653534%2C7.8021977%20C25.4610075%2C7.8021977%2027.9535644%2C8.47069584%2030.2430243%2C9.80769212%20C32.5324841%2C11.1446884%2034.3418958%2C12.9487178%2035.6712592%2C15.2197804%20C37.0006231%2C17.4542126%2037.665305%2C19.908425%2037.665305%2C22.5824175%20C37.665305%2C25.2564101%2037.0006231%2C27.7289377%2035.6712592%2C30.0000002%20C34.3418958%2C32.2710625%2032.5324841%2C34.0659342%2030.2430243%2C35.3846155%20C27.9535644%2C36.7032968%2025.4610075%2C37.3626374%2022.7653534%2C37.3626374%20L22.7653534%2C37.3626374%20Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.search-form input[type="submit"] {
+  background-color: #000;
+  border-color: #000;
+}
+.search-form input[type="submit"]:focus {
+  border-color: #fff;
+}
+.search-form input:focus {
+  border-color: #fff;
+}
+.search-form input[type="submit"],
+.search-form input[type="search"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+nav.nav-primary .search {
+  padding-right: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+nav.nav-primary .search form.search-form {
+  align-self: flex-end;
+  flex-basis: 350px;
+}
+nav.nav-primary .search form.search-form input[type="search"] {
+  flex: 1 1 310px;
+}
+nav.nav-primary .search form.search-form input[type="submit"] {
+  flex: 0 0 48px;
+}
+main .search-form {
+  padding: 1em;
+  background: #e6e6e6;
+}
+main .search-form input[type="search"] {
+  border-bottom: 2px solid #01689b;
+  padding-left: 5px;
+}
+main .search-form button,
+main .search-form input[type="submit"] {
+  background-color: #01689b;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2256px%22%20height%3D%2255px%22%20viewBox%3D%220%200%2056%2055%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2040.2%20(33826)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Elooking-glass%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-search%22%20transform%3D%22translate(-4.000000%2C%20-5.000000)%22%20fill%3D%22%23fff%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(4.000000%2C%205.000000)%22%20id%3D%22looking-glass%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M54.060791%2C47.1978023%20C51.055875%2C44.2032968%2045.0460432%2C38.2142857%2042.0411273%2C35.2197802%20C41.9995847%2C35.206044%2041.9164996%2C35.1785715%2041.874957%2C35.1648352%20C41.8380299%2C35.1282052%2041.8195663%2C35.0915752%2041.8195663%2C35.0549452%20C43.03815%2C33.2600734%2043.970551%2C31.3095239%2044.6167694%2C29.2032967%20C45.2629878%2C27.0970695%2045.586097%2C24.8901098%2045.586097%2C22.5824176%20C45.586097%2C18.5164835%2044.5336841%2C14.7252747%2042.4288585%2C11.208791%20C40.4348128%2C7.8021977%2037.7206951%2C5.09157513%2034.2865057%2C3.0769233%20C30.7415356%2C1.0256411%2026.9103832%2C0%2022.7930485%2C0%20C18.6757137%2C0%2014.8445613%2C1.0256411%2011.2995913%2C3.0769233%20C7.86540182%2C5.09157513%205.13282102%2C7.8021977%203.10184887%2C11.208791%20C1.03394962%2C14.7252747%200%2C18.525641%200%2C22.60989%20C0%2C26.6941391%201.03394962%2C30.4945054%203.10184887%2C34.0109891%20C5.13282102%2C37.4175824%207.86540182%2C40.1098902%2011.2995913%2C42.0879124%20C14.8445613%2C44.1758242%2018.666482%2C45.2197801%2022.7653534%2C45.2197801%20C25.0178863%2C45.2197801%2027.2334925%2C44.8901097%2029.412172%2C44.230769%20C31.5169979%2C43.6080586%2033.4925802%2C42.6923077%2035.3389187%2C41.4835163%20C35.3758454%2C41.5384614%2035.4220038%2C41.6071429%2035.4496989%2C41.6483518%20C35.4496989%2C41.6849818%2035.4681622%2C41.7032968%2035.505089%2C41.7032968%20C39.5301069%2C45.6776558%2044.5613793%2C50.6456046%2047.5801427%2C53.6263739%20C48.4663851%2C54.5421246%2049.5557247%2C55%2050.8481616%2C55%20C52.1405986%2C55%2053.2299384%2C54.5421246%2054.1161811%2C53.6263739%20C55.0393501%2C52.7106228%2055.491703%2C51.6300366%2055.4732396%2C50.3846153%20C55.4547762%2C49.139194%2054.98396%2C48.076923%2054.060791%2C47.1978023%20L54.060791%2C47.1978023%20Z%20M22.7653534%2C37.3626374%20C20.0696994%2C37.3626374%2017.5863741%2C36.7032968%2015.3153776%2C35.3846155%20C13.0443812%2C34.0659342%2011.2257378%2C32.2710625%209.8594476%2C30.0000002%20C8.53008375%2C27.7289377%207.86540182%2C25.2564101%207.86540182%2C22.5824175%20C7.86540182%2C19.908425%208.53008375%2C17.4542126%209.8594476%2C15.2197804%20C11.2257378%2C12.9487178%2013.0443812%2C11.1446884%2015.3153776%2C9.80769212%20C17.5863741%2C8.47069584%2020.0696994%2C7.8021977%2022.7653534%2C7.8021977%20C25.4610075%2C7.8021977%2027.9535644%2C8.47069584%2030.2430243%2C9.80769212%20C32.5324841%2C11.1446884%2034.3418958%2C12.9487178%2035.6712592%2C15.2197804%20C37.0006231%2C17.4542126%2037.665305%2C19.908425%2037.665305%2C22.5824175%20C37.665305%2C25.2564101%2037.0006231%2C27.7289377%2035.6712592%2C30.0000002%20C34.3418958%2C32.2710625%2032.5324841%2C34.0659342%2030.2430243%2C35.3846155%20C27.9535644%2C36.7032968%2025.4610075%2C37.3626374%2022.7653534%2C37.3626374%20L22.7653534%2C37.3626374%20Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+  color: #fff;
+}
+main .search-form button:hover,
+main .search-form input[type="submit"]:hover,
+main .search-form button:active,
+main .search-form input[type="submit"]:active,
+main .search-form button:focus,
+main .search-form input[type="submit"]:focus {
+  color: #000;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2256px%22%20height%3D%2255px%22%20viewBox%3D%220%200%2056%2055%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2040.2%20(33826)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Elooking-glass%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-search%22%20transform%3D%22translate(-4.000000%2C%20-5.000000)%22%20fill%3D%22%23000%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(4.000000%2C%205.000000)%22%20id%3D%22looking-glass%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M54.060791%2C47.1978023%20C51.055875%2C44.2032968%2045.0460432%2C38.2142857%2042.0411273%2C35.2197802%20C41.9995847%2C35.206044%2041.9164996%2C35.1785715%2041.874957%2C35.1648352%20C41.8380299%2C35.1282052%2041.8195663%2C35.0915752%2041.8195663%2C35.0549452%20C43.03815%2C33.2600734%2043.970551%2C31.3095239%2044.6167694%2C29.2032967%20C45.2629878%2C27.0970695%2045.586097%2C24.8901098%2045.586097%2C22.5824176%20C45.586097%2C18.5164835%2044.5336841%2C14.7252747%2042.4288585%2C11.208791%20C40.4348128%2C7.8021977%2037.7206951%2C5.09157513%2034.2865057%2C3.0769233%20C30.7415356%2C1.0256411%2026.9103832%2C0%2022.7930485%2C0%20C18.6757137%2C0%2014.8445613%2C1.0256411%2011.2995913%2C3.0769233%20C7.86540182%2C5.09157513%205.13282102%2C7.8021977%203.10184887%2C11.208791%20C1.03394962%2C14.7252747%200%2C18.525641%200%2C22.60989%20C0%2C26.6941391%201.03394962%2C30.4945054%203.10184887%2C34.0109891%20C5.13282102%2C37.4175824%207.86540182%2C40.1098902%2011.2995913%2C42.0879124%20C14.8445613%2C44.1758242%2018.666482%2C45.2197801%2022.7653534%2C45.2197801%20C25.0178863%2C45.2197801%2027.2334925%2C44.8901097%2029.412172%2C44.230769%20C31.5169979%2C43.6080586%2033.4925802%2C42.6923077%2035.3389187%2C41.4835163%20C35.3758454%2C41.5384614%2035.4220038%2C41.6071429%2035.4496989%2C41.6483518%20C35.4496989%2C41.6849818%2035.4681622%2C41.7032968%2035.505089%2C41.7032968%20C39.5301069%2C45.6776558%2044.5613793%2C50.6456046%2047.5801427%2C53.6263739%20C48.4663851%2C54.5421246%2049.5557247%2C55%2050.8481616%2C55%20C52.1405986%2C55%2053.2299384%2C54.5421246%2054.1161811%2C53.6263739%20C55.0393501%2C52.7106228%2055.491703%2C51.6300366%2055.4732396%2C50.3846153%20C55.4547762%2C49.139194%2054.98396%2C48.076923%2054.060791%2C47.1978023%20L54.060791%2C47.1978023%20Z%20M22.7653534%2C37.3626374%20C20.0696994%2C37.3626374%2017.5863741%2C36.7032968%2015.3153776%2C35.3846155%20C13.0443812%2C34.0659342%2011.2257378%2C32.2710625%209.8594476%2C30.0000002%20C8.53008375%2C27.7289377%207.86540182%2C25.2564101%207.86540182%2C22.5824175%20C7.86540182%2C19.908425%208.53008375%2C17.4542126%209.8594476%2C15.2197804%20C11.2257378%2C12.9487178%2013.0443812%2C11.1446884%2015.3153776%2C9.80769212%20C17.5863741%2C8.47069584%2020.0696994%2C7.8021977%2022.7653534%2C7.8021977%20C25.4610075%2C7.8021977%2027.9535644%2C8.47069584%2030.2430243%2C9.80769212%20C32.5324841%2C11.1446884%2034.3418958%2C12.9487178%2035.6712592%2C15.2197804%20C37.0006231%2C17.4542126%2037.665305%2C19.908425%2037.665305%2C22.5824175%20C37.665305%2C25.2564101%2037.0006231%2C27.7289377%2035.6712592%2C30.0000002%20C34.3418958%2C32.2710625%2032.5324841%2C34.0659342%2030.2430243%2C35.3846155%20C27.9535644%2C36.7032968%2025.4610075%2C37.3626374%2022.7653534%2C37.3626374%20L22.7653534%2C37.3626374%20Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+main .no-results-widget.widget_search {
+  max-width: 650px;
+}
+#rhswp-searchform-onderwerpen {
+  background: #01689b;
+}
+#rhswp-searchform-onderwerpen label {
+  color: #fff;
+  line-height: 1;
+  font-size: 1.3em;
+  display: block;
+  padding-bottom: 0.5em;
+}
+#rhswp-searchform-onderwerpen input[type="search"],
+#rhswp-searchform-onderwerpen input[itemprop="query-input"] {
+  width: calc(98% - 48px);
+  float: left;
+}
+#rhswp-searchform-onderwerpen #filterbutton {
+  background-size: 21px 30px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-indent: -9999em;
+  width: 48px;
+  height: 50px;
+  float: right;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2240px%22%20height%3D%2256px%22%20viewBox%3D%220%200%2040%2056%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2048.1%20(47250)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3E1006-filter%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22rhs-icons%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(-289.000000%2C%20-288.000000)%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%221006-filter%22%20transform%3D%22translate(277.000000%2C%20284.000000)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Box%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Rectangle-path%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2264%22%20height%3D%2264%22%3E%3C%2Frect%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Icon%22%20transform%3D%22translate(12.000000%2C%204.000000)%22%20fill%3D%22%23fff%22%20fill-rule%3D%22nonzero%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M39.754%2C7.6931%20C39.754%2C3.2971%2029.757%2C0%2019.877%2C0%20C9.997%2C0%200%2C3.2971%200%2C7.6931%20C0%2C9.2289%200.0038%2C11.9637%200.759%2C14.0625%20C3.3621%2C21.2963%209.821%2C30.0664%2013.0194%2C33.9358%20C14.98%2C35.8356%2020.7575%2C34.9572%2020.9186%2C34.9554%20C20.9223%2C35.0396%2020.9275%2C35.1736%2020.7328%2C35.3103%20C20.5128%2C35.4648%2018.0824%2C36.552%2014.0146%2C36.9355%20L14.9077%2C54.1018%20C14.9077%2C55.1501%2017.1326%2C56%2019.877%2C56%20C22.6214%2C56%2024.8463%2C55.1501%2024.8463%2C54.1017%20L25.8401%2C35%20C28.4784%2C31.942%2036.1193%2C22.054%2038.995%2C14.0625%20C39.7503%2C11.9636%2039.754%2C9.2288%2039.754%2C7.6931%20Z%20M19.967%2C14.12%20C11.5073%2C14.12%204.467%2C11.9607%204.467%2C9.074%20C4.467%2C6.1871%2011.5073%2C3.8469%2019.967%2C3.8469%20C28.4267%2C3.8469%2035.467%2C6.1871%2035.467%2C9.074%20C35.467%2C11.9607%2028.4267%2C14.12%2019.967%2C14.12%20Z%22%20id%3D%22Shape%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+#rhswp-searchform-onderwerpen #filterbutton:hover,
+#rhswp-searchform-onderwerpen #filterbutton:active,
+#rhswp-searchform-onderwerpen #filterbutton:focus {
+  color: #000;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2240px%22%20height%3D%2256px%22%20viewBox%3D%220%200%2040%2056%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2048.1%20(47250)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3E1006-filter%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22rhs-icons%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(-289.000000%2C%20-288.000000)%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%221006-filter%22%20transform%3D%22translate(277.000000%2C%20284.000000)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Box%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Rectangle-path%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2264%22%20height%3D%2264%22%3E%3C%2Frect%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Icon%22%20transform%3D%22translate(12.000000%2C%204.000000)%22%20fill%3D%22%23000%22%20fill-rule%3D%22nonzero%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M39.754%2C7.6931%20C39.754%2C3.2971%2029.757%2C0%2019.877%2C0%20C9.997%2C0%200%2C3.2971%200%2C7.6931%20C0%2C9.2289%200.0038%2C11.9637%200.759%2C14.0625%20C3.3621%2C21.2963%209.821%2C30.0664%2013.0194%2C33.9358%20C14.98%2C35.8356%2020.7575%2C34.9572%2020.9186%2C34.9554%20C20.9223%2C35.0396%2020.9275%2C35.1736%2020.7328%2C35.3103%20C20.5128%2C35.4648%2018.0824%2C36.552%2014.0146%2C36.9355%20L14.9077%2C54.1018%20C14.9077%2C55.1501%2017.1326%2C56%2019.877%2C56%20C22.6214%2C56%2024.8463%2C55.1501%2024.8463%2C54.1017%20L25.8401%2C35%20C28.4784%2C31.942%2036.1193%2C22.054%2038.995%2C14.0625%20C39.7503%2C11.9636%2039.754%2C9.2288%2039.754%2C7.6931%20Z%20M19.967%2C14.12%20C11.5073%2C14.12%204.467%2C11.9607%204.467%2C9.074%20C4.467%2C6.1871%2011.5073%2C3.8469%2019.967%2C3.8469%20C28.4267%2C3.8469%2035.467%2C6.1871%2035.467%2C9.074%20C35.467%2C11.9607%2028.4267%2C14.12%2019.967%2C14.12%20Z%22%20id%3D%22Shape%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+#rhswp-searchform-onderwerpen #resetbutton {
+  background: none;
+  padding-left: 0;
+  border-style: none;
+  text-indent: 0;
+  width: auto;
+  white-space: nowrap;
+  color: #fff;
+}
+#rhswp-searchform-onderwerpen #resetbutton:before {
+  content: '×';
+  color: #01689b;
+  display: block;
+  float: left;
+  margin-right: 0.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  background: #fff;
+  line-height: 1;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  speak: never;
+}
+#rhswp-searchform-onderwerpen #resetbutton:hover,
+#rhswp-searchform-onderwerpen #resetbutton:active,
+#rhswp-searchform-onderwerpen #resetbutton:focus {
+  color: #fff;
+  text-decoration: underline;
+}
+.site-header .wrap .title-area {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  width: calc(50% - 25px);
+  float: left;
 }
 .site-header .wrap .title-area .site-title,
 .site-header .wrap .title-area .site-description {
   background-color: transparent;
-  flex: 1 1 50%;
-  align-self: center;
+  align-self: first;
   margin: 0;
   font-size: 100%;
   line-height: 1.5;
   font-weight: normal;
+  flex: 1 0 100%;
 }
 .site-header .wrap .title-area .site-title {
   font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
-  padding-left: 1rem;
 }
 .site-header .wrap .title-area .site-title a {
   text-decoration: none;
@@ -5839,7 +5775,7 @@ div .gfield_repeater_cell {
   background-repeat: no-repeat;
   background-position: left center;
   background-size: contain;
-  color: #01689b;
+  color: #000;
 }
 .site-header .wrap .title-area .site-title a:hover,
 .site-header .wrap .title-area .site-title a:focus {
@@ -5851,33 +5787,39 @@ div .gfield_repeater_cell {
 }
 .site-header .wrap .title-area .site-description {
   font-family: 'Rijksoverheid Sans italic', Helvetica, Arial, sans-serif;
-  padding-right: 1rem;
 }
-.site-header .wrap .title-area #logotype {
+.site-header .wrap #logotype {
   overflow: hidden;
-  flex-basis: 44px;
-  flex-grow: 0;
-  flex-shrink: 1;
+  float: left;
+  margin-bottom: 1rem;
 }
-.site-header .wrap .title-area #logotype.flitspanel {
-  flex-basis: 200px;
+.site-header .wrap #logotype.flitspanel {
+  margin-bottom: 0.25rem;
 }
-.site-header .wrap .title-area .screen-reader-text + #logotype {
+.site-header .wrap #logotype.flitspanel img {
+  max-width: 200px;
+  height: auto;
+  margin-top: 1rem;
+}
+.site-header .wrap #logotype.align-middle {
+  width: 100%;
+  display: block;
+  transform: none;
+}
+.site-header .wrap #logotype.align-middle img {
+  display: block;
+  margin: 1rem auto;
+}
+.site-header .wrap .screen-reader-text + #logotype {
   flex-basis: 100%;
   display: flex;
   justify-content: center;
 }
-.site-header .wrap .title-area .screen-reader-text + #logotype img {
+.site-header .wrap .screen-reader-text + #logotype img {
   align-self: center;
   align-content: center;
 }
-.site-header .wrap .title-area .screen-reader-text + #logotype.flitspanel img {
-  max-width: 200px;
-  height: auto;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-.site-header .wrap .title-area .screen-reader-text + #logotype {
+.site-header .wrap .screen-reader-text + #logotype {
   margin-bottom: 9px;
 }
 .entry-title a {
@@ -5898,11 +5840,7 @@ div .gfield_repeater_cell {
 @media only screen and (min-width: 650px) {
   .site-header .wrap .title-area .site-title {
     font-size: 115%;
-  }
-  .site-header .wrap .title-area .site-description {
-    text-align: right;
-    padding-left: 15%;
-    hyphens: none;
+    margin-top: 1.5rem;
   }
   .site-header .wrap .title-area .site-description span {
     display: block;
@@ -5917,16 +5855,10 @@ div .gfield_repeater_cell {
     right: 0;
     top: 0;
   }
-  .site-header .wrap .title-area .site-description {
-    padding-left: 25%;
-  }
 }
 nav.nav-primary,
 #menu-container {
   margin: 0 0;
-}
-.home nav.nav-primary,
-.home #menu-container {
   background: #01689b;
 }
 nav ul,
@@ -5935,20 +5867,19 @@ nav li {
   padding: 0;
 }
 nav ul {
-  display: block;
-  padding-left: 0;
-  margin-top: 1em;
-  margin-bottom: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 nav li {
-  display: block;
-}
-nav li a,
-nav li span {
-  display: block;
+  flex: 0 1 auto;
+  display: flex;
+  align-items: stretch;
 }
 nav li a {
   text-decoration: none;
+  flex: 0 1 auto;
 }
 nav li a:hover {
   text-decoration: underline;
@@ -5958,21 +5889,29 @@ nav li.selected span {
   font-weight: bold;
   font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
 }
-nav.nav-primary {
-  padding: 0.5rem 1rem 0 1rem;
-}
 nav.nav-primary ul,
 nav.nav-primary ul li,
 nav.nav-primary ul span {
   margin: 0;
   padding: 0;
 }
+nav.nav-primary ul li {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+nav.nav-primary ul li a {
+  line-height: 2;
+  display: inline-block;
+  padding: 0.1rem 1rem 0.1rem 0;
+}
+nav.nav-primary ul li:first-of-type a,
+nav.nav-primary ul li:first-of-type {
+  padding-left: 0;
+}
 nav.nav-primary a {
   margin: 0;
-  display: block;
   text-decoration: none;
-  font-size: 1.1rem;
-  padding: 0.5rem 1rem 0.5rem 0;
+  font-size: 1.25rem;
   color: #dfe6e1;
 }
 nav.nav-primary a:hover,
@@ -6022,17 +5961,16 @@ nav.nav-primary #homelink_button button:focus {
 nav.nav-primary #homelink_button button[aria-expanded="true"] {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20width%3D%2248%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23fff%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(10%2010)%22%3E%3Cpath%20d%3D%22m-3.857864%2012.142136h36v4h-36z%22%20transform%3D%22matrix(.70710678%20-.70710678%20-.70710678%20-.70710678%2014.142136%2034.142137)%22%2F%3E%3Cpath%20d%3D%22m-3.857864%2012.142136h36v4h-36z%22%20transform%3D%22matrix(.70710678%20.70710678%20-.70710678%20.70710678%2014.142136%20-5.857865)%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
-nav.nav-primary .search-form {
-  display: flex;
-  flex-direction: row;
-  margin: 1rem 0;
+nav.nav-secondary {
+  background: #F3F3F3;
 }
-nav.nav-primary .search-form input[type="submit"] {
-  background-color: #000;
-  border-color: #000;
+nav.nav-secondary ul {
+  justify-content: flex-end;
 }
-nav.nav-primary .search-form input[type="submit"]:focus {
-  border-color: #fff;
+nav.nav-secondary ul a {
+  padding-left: 1rem;
+  font-size: 1rem;
+  line-height: 2;
 }
 @media only screen and (max-width: 759px) {
   .dojs nav.nav-primary ul {
@@ -6085,20 +6023,18 @@ nav.nav-primary .search-form input[type="submit"]:focus {
     border-top-style: none;
   }
   nav.nav-primary ul a {
-    padding: 10px 15px;
     border-top-style: none;
     color: #fff;
-  }
-  nav.nav-primary .right,
-  nav.nav-primary .search,
-  nav.nav-primary .menu-item {
-    display: inline-block;
   }
   nav.nav-primary .menu-item {
     text-align: left;
   }
-  nav.nav-primary .right {
-    float: right;
+  nav.nav-primary .menu-item:hover {
+    position: static;
+  }
+  nav.nav-primary .menu-item:hover > .sub-menu {
+    left: auto;
+    opacity: 1;
   }
   nav.nav-primary .sub-menu {
     left: -9999px;
@@ -6122,7 +6058,6 @@ nav.nav-primary .search-form input[type="submit"]:focus {
   nav.nav-primary .sub-menu a span {
     padding: 10px 15px;
     width: 250px;
-    display: inline-block;
     background: #e5f0f9;
     color: #000;
     border-right: 1px solid #cce0f1;
@@ -6139,65 +6074,44 @@ nav.nav-primary .search-form input[type="submit"]:focus {
   nav.nav-primary .sub-menu li + li > a > span {
     border-top-style: none;
   }
-  nav.nav-primary .menu-item:hover {
-    position: static;
-  }
-  nav.nav-primary .menu-item:hover > .sub-menu {
-    left: auto;
-    opacity: 1;
-  }
-  nav.nav-primary li:hover {
-    background: #e5f0f9;
-  }
-  nav.nav-primary li:hover a {
-    color: #000;
-  }
-  nav.nav-primary form.search-form {
-    position: static;
-    width: 310px;
-  }
-  nav.nav-primary form.search-form input[type="submit"],
-  nav.nav-primary form.search-form input[type="search"],
-  nav.nav-primary form.search-form input[itemprop="query-input"] {
-    height: 25px;
-    font-size: 80%;
-  }
-  nav.nav-primary form.search-form input[type="search"],
-  nav.nav-primary form.search-form input[itemprop="query-input"] {
-    padding-left: 5px;
-  }
-  .page nav.nav-primary .current-menu-parent > a,
-  .single nav.nav-primary .current-menu-parent > a,
-  .page nav.nav-primary .current-page-parent > a,
-  .single nav.nav-primary .current-page-parent > a,
-  .page nav.nav-primary .current_page_parent > a,
-  .single nav.nav-primary .current_page_parent > a,
-  .page nav.nav-primary .current_page_ancestor > a,
-  .single nav.nav-primary .current_page_ancestor > a,
-  .page nav.nav-primary .current-page-ancestor > a,
-  .single nav.nav-primary .current-page-ancestor > a,
-  .page nav.nav-primary .current-menu-item > a,
-  .single nav.nav-primary .current-menu-item > a {
-    background: yellow;
-    color: #000;
+  nav.nav-primary .current-menu-parent > a,
+  nav.nav-primary .current-page-parent > a,
+  nav.nav-primary .current_page_parent > a,
+  nav.nav-primary .current_page_ancestor > a,
+  nav.nav-primary .current-page-ancestor > a,
+  nav.nav-primary .current-menu-item > a {
     font-weight: bold;
     font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
+    text-decoration: underline;
   }
-  .home nav.nav-primary .current-menu-parent > a,
-  .home nav.nav-primary .current-page-parent > a,
-  .home nav.nav-primary .current_page_parent > a,
-  .home nav.nav-primary .current_page_ancestor > a,
-  .home nav.nav-primary .current-page-ancestor > a,
-  .home nav.nav-primary .current-menu-item > a {
-    background: #e5f0f9;
+}
+@-webkit-keyframes bzzzzzt {
+  0% {
+    transform: scale(1, 1);
   }
-  .blog nav.nav-primary .current-menu-item > a {
-    background: #e5f0f9;
-    color: #000;
+  85% {
+    transform: scale(1, 1);
   }
-  .archive nav.nav-primary .current-menu-ancestor > a {
-    background: #e5f0f9;
-    color: #000;
+  88% {
+    transform: scale(1.1, 0.9);
+  }
+  90% {
+    transform: scale(1, 1);
+  }
+  92% {
+    transform: rotate(3deg);
+  }
+  94% {
+    transform: rotate(-3deg);
+  }
+  96% {
+    transform: rotate(3deg);
+  }
+  98% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: scale(1.02, 0.98);
   }
 }
 @keyframes bzzzzzt {
@@ -6417,7 +6331,8 @@ aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:focus img {
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
   filter: grayscale(100%);
-  filter: gray;
+  -webkit-filter: gray;
+          filter: gray;
 }
 aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:hover .text,
 aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:active .text,
@@ -6603,7 +6518,8 @@ aside.sidebar .widget.banner .widgettitle {
   background-repeat: no-repeat;
   background-position: 1rem left;
   background-size: contain;
-  animation: bzzzzzt 3s infinite;
+  -webkit-animation: bzzzzzt 3s infinite;
+          animation: bzzzzzt 3s infinite;
 }
 .cta-widget p {
   margin: 0;
@@ -6615,7 +6531,8 @@ aside.sidebar .widget.banner .widgettitle {
 /* Tone down the animation to avoid vestibular motion triggers like scaling or panning large objects. */
 @media (prefers-reduced-motion) {
   .cta-widget .text:before {
-    animation-name: dissolve;
+    -webkit-animation-name: dissolve;
+            animation-name: dissolve;
   }
 }
 .home-widget-area.widget_custom_html li,
@@ -6897,17 +6814,6 @@ Media Queries
   }
 }
 @media only screen and (min-width: 1199px) {
-  .full-width-content {
-    /*
-		.content {
-			border: 1px solid red;
-			max-width: @break_fullwidth;
-			margin-left: auto;
-			margin-right: auto;
-			float: none;
-		}
-		*/
-  }
   .full-width-content .sharing.block,
   .full-width-content .toolbox-introduction,
   .full-width-content .toolbox-the-content,
@@ -7871,7 +7777,8 @@ noscript {
   .flexbox .full-width-content.archive .block.columncount-3 .article-container .article-visual img {
     position: static;
     transform: none;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     max-width: none;
   }
   .flexbox .full-width-content.home .block.columncount-2 article,
@@ -8458,13 +8365,6 @@ noscript {
 .collapsetoggle button[aria-expanded="true"] {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m4.20380118%207.77825268c0-.13559325.0221294-.25324031.06638821-.35294119.0442588-.09970087.11869406-.20538384.22330577-.31704889l5.0937867-5.03688934c.09656467-.09571284.19715287-.16550346.30176462-.20937185s.22531762-.06580259.36211762-.06580259c.1448469%200%20.2695763.0219342.374188.06580259.1046118.04386839.2092235.11365901.3138352.20937185l.5673175.5623131c.0965647.09571285.1689882.20538382.2172705.32901293.0482824.12362911.0724235.24127619.0724235.35294125%200%20.13559316-.0221294.25523422-.0663882.35892317s-.1186941.20737788-.2233058.31106679l-3.75395178%203.79262218%203.74188128%203.70887342c.0885176.0877368.1569175.1954137.2051999.3230309.0482823.1276171.0724235.2432702.0724235.3469591%200%20.1355932-.0221294.2552343-.0663882.3589232-.0442588.103689-.1146706.2113659-.2112352.3230309l-.5673176.6699901c-.0965646.0957128-.1971528.1674975-.3017646.2153539-.1046117.0478564-.2293411.0717846-.374188.0717846-.1448471%200-.26756468-.0219342-.36815291-.0658026-.10058822-.0438684-.20721171-.117647-.31987047-.2213359l-5.05757499-5.04885345c-.1046117-.10368899-.18105872-.20737794-.22934106-.31106685-.04828233-.1036889-.07242349-.22731801-.07242349-.37088732z%22%20fill%3D%22%2301689b%22%20fill-rule%3D%22evenodd%22%20transform%3D%22matrix(0%201%201%200%20.203801%20-.203801)%22%2F%3E%3C%2Fsvg%3E");
 }
-.breadcrumb {
-  background: #01689b;
-  color: #fff;
-  margin: 0;
-  overflow: hidden;
-  padding-left: 1em;
-}
 footer {
   clear: both;
   float: none;
@@ -8517,12 +8417,16 @@ footer {
     width: 95%;
     float: left;
     display: block;
-    column-count: 2;
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
   }
 }
 @media only screen and (min-width: 1200px) {
   .dossier-overview nav ul {
-    column-count: 3;
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
   }
 }
 .site-inner {
@@ -8530,16 +8434,6 @@ footer {
   margin-top: 1em;
   overflow: hidden;
   padding-bottom: 60px;
-}
-.home .breadcrumb-link-wrap a span {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
 }
 .header-dossier {
   overflow: hidden;
@@ -8717,7 +8611,9 @@ div.dossier_overzicht_popular ul.links a:before {
     width: 100%;
   }
   #mixitupfilterlist.unfiltered ul.children {
-    column-count: 4;
+    -webkit-column-count: 4;
+       -moz-column-count: 4;
+            column-count: 4;
     margin-bottom: 2rem;
   }
   #mixitupfilterlist.unfiltered ul.children li {
@@ -8756,7 +8652,9 @@ div.dossier_overzicht_popular ul.links a:before {
     max-width: 33%;
   }
   .flexbox .page-template-page_showalldossiers div.dossier_overzicht_filter_as_list ul.links {
-    column-count: 4;
+    -webkit-column-count: 4;
+       -moz-column-count: 4;
+            column-count: 4;
   }
   .flexbox .page-template-page_showalldossiers div.dossier_overzicht_filter_as_list li {
     width: 100%;
@@ -10558,7 +10456,6 @@ a.external:after {
   padding: 0;
   position: absolute;
 }
-.archiefmarkering .breadcrumb,
 .archiefmarkering .site-footer {
   background: #59665D;
   color: #fff;
@@ -10604,12 +10501,24 @@ a.external:after {
   background: #4d5851;
 }
 .floatingtoolbox {
-  animation-name: floatingtoolbox;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+  -webkit-animation-name: floatingtoolbox;
+          animation-name: floatingtoolbox;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
   margin-left: 30px;
   margin-top: 5px;
+}
+@-webkit-keyframes vergroot {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
 }
 @keyframes vergroot {
   from {
@@ -10617,6 +10526,17 @@ a.external:after {
   }
   to {
     transform: scale(1.05);
+  }
+}
+@-webkit-keyframes floatingtoolbox {
+  from {
+    transform: translate(0, 0px);
+  }
+  65% {
+    transform: translate(0, 15px);
+  }
+  to {
+    transform: translate(0, 0px);
   }
 }
 @keyframes floatingtoolbox {
@@ -10753,10 +10673,14 @@ a.external:after {
   #toolbox-innovatie-illustrations .toolbox-img.has-link:hover,
   #toolbox-datagedreven-werken-illustrations .toolbox-img.has-link:hover,
   #toolbox-cyberincident-illustrations .toolbox-img.has-link:hover {
-    animation-name: vergroot;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
+    -webkit-animation-name: vergroot;
+            animation-name: vergroot;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
     transform: scale(1.05);
     z-index: 8888;
   }
@@ -11097,22 +11021,6 @@ a.external:after {
     -webkit-transform: rotate(359deg);
   }
 }
-@-moz-keyframes cptch_rotation {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-  }
-}
-@-o-keyframes cptch_rotation {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-  }
-}
 @keyframes cptch_rotation {
   0% {
     transform: rotate(0deg);
@@ -11441,4 +11349,157 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 }
 /*
 ---------------------------------------------------------------------------------------------------- */
+.breadcrumb {
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  font-size: 80%;
+}
+.breadcrumb .wrap {
+  position: relative;
+}
+.breadcrumb nav {
+  font-size: 1rem;
+}
+@media only screen and (max-width: 650px) {
+  .breadcrumb nav {
+    padding-right: 18px;
+  }
+}
+@media only screen and (min-width: 650px) {
+  .breadcrumb nav {
+    padding-right: 271px;
+  }
+}
+.breadcrumb nav span {
+  padding: 10.66666667px 0;
+}
+.breadcrumb nav a {
+  text-decoration: none;
+}
+.breadcrumb nav a:hover,
+.breadcrumb nav a:active,
+.breadcrumb nav a:focus {
+  text-decoration: underline;
+}
+.breadcrumb nav a:after {
+  font-weight: normal;
+  font-family: "RO Icons";
+  vertical-align: middle;
+  content: "";
+  speak: never;
+  padding: 0 6px 0 10px;
+  display: inline-block;
+  font-size: 0.9rem;
+  line-height: 1em;
+  margin: -3px 0 0 0;
+  text-decoration: none;
+}
+.breadcrumb nav span,
+.breadcrumb nav a {
+  font-family: 'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
+}
+.breadcrumb .separator {
+  speak: never;
+  display: inline-block;
+  margin-left: 5.33333333px;
+  margin-right: 5.33333333px;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+.site-header + .breadcrumb {
+  background: #01689b;
+  color: #fff;
+  margin: 0;
+  overflow: hidden;
+  padding-left: 1em;
+}
+.breadcrumb {
+  padding: 0;
+  font-size: 80%;
+}
+.breadcrumb .wrap {
+  position: relative;
+}
+@media only screen and (max-width: 650px) {
+  .breadcrumb .wrap .search-form {
+    clear: both;
+    float: none;
+    margin-bottom: 1em;
+  }
+}
+@media only screen and (min-width: 650px) {
+  .breadcrumb .wrap .search-form {
+    position: absolute;
+    right: 0;
+    top: 14px;
+  }
+}
+.breadcrumb nav {
+  color: #fff;
+  font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+@media only screen and (max-width: 650px) {
+  .breadcrumb nav {
+    padding-right: 18px;
+    font-size: 1.25rem;
+  }
+}
+@media only screen and (min-width: 650px) {
+  .breadcrumb nav {
+    font-size: 1.625rem;
+    padding-right: 271px;
+  }
+}
+.breadcrumb nav span {
+  padding: 10.66666667px 0;
+}
+.breadcrumb nav a {
+  text-decoration: none;
+}
+.breadcrumb nav a:hover,
+.breadcrumb nav a:active,
+.breadcrumb nav a:focus {
+  text-decoration: underline;
+}
+.breadcrumb nav a:after {
+  font-weight: normal;
+  font-family: "RO Icons";
+  vertical-align: middle;
+  content: "";
+  speak: never;
+  padding: 0 6px 0 10px;
+  display: inline-block;
+  font-size: 0.9375rem;
+  line-height: 1em;
+  margin: -3px 0 0 0;
+  text-decoration: none;
+}
+.breadcrumb nav span,
+.breadcrumb nav a {
+  color: #fff;
+  font-family: 'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
+}
+.breadcrumb .separator {
+  speak: never;
+  display: inline-block;
+  margin-left: 5.33333333px;
+  margin-right: 5.33333333px;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
 /*# sourceMappingURL=style-flitspanel.css.map */
