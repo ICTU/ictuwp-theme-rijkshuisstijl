@@ -1,0 +1,175 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - breadcrumb.less
+// * ----------------------------------------------------------------------------------
+// * styling voor de breadcrumb
+// * ----------------------------------------------------------------------------------
+//
+
+.breadcrumb {
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  font-size: 80%;
+
+  .wrap {
+    position: relative;
+    //    margin-bottom: 1rem;
+  }
+
+  nav {
+    font-size: 1rem;
+
+    @media only screen and ( max-width: @break_tablet ) {
+      padding-right: 18px;
+    }
+    @media only screen and ( min-width: @break_tablet ) {
+      padding-right: 271px;
+    }
+
+    span {
+      padding: ( @padding / 1.5 ) 0;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: underline;
+      }
+
+      &:after {
+        font-weight: normal;
+        font-family: "RO Icons";
+        display: inline-block;
+        vertical-align: middle;
+        content: "";
+        speak: never;
+        padding: 0 6px 0 10px;
+        display: inline-block;
+        font-size: .9rem;
+        line-height: 1em;
+        margin: -3px 0 0 0;
+        text-decoration: none;
+      }
+    }
+
+    span,
+    a {
+      font-family: @bodyfont;
+    }
+  }
+
+  .separator {
+    speak: never;
+    display: inline-block;
+    margin-left: ( @padding / 3 );
+    margin-right: ( @padding / 3 );
+
+    .visuallyhidden();
+
+  }
+}
+
+// backward compatibility
+
+.site-header + .breadcrumb {
+  background: @communicatiekleur_vol;
+  color: @wit;
+  margin: 0;
+  overflow: hidden;
+  padding-left: 1em;
+  border: 1px solid red;
+}
+
+.breadcrumb {
+  padding: 0;
+  font-size: 80%;
+
+  .wrap {
+    position: relative;
+
+    .search-form {
+
+      @media only screen and ( max-width: @break_tablet ) {
+        clear: both;
+        float: none;
+        margin-bottom: 1em;
+      }
+      @media only screen and ( min-width: @break_tablet ) {
+        position: absolute;
+        right: 0;
+        top: 14px;
+      }
+
+    }
+
+  }
+
+  nav {
+    color: @wit;
+    font-family: @fontstrong;
+    padding-top: 18px;
+    padding-bottom: 18px;
+
+    @media only screen and ( max-width: @break_tablet ) {
+      padding-right: 18px;
+      font-size: 1.25rem;
+    }
+    @media only screen and ( min-width: @break_tablet ) {
+      font-size: 1.625rem;
+      padding-right: 271px;
+    }
+
+    span {
+      padding: ( @padding / 1.5 ) 0;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: underline;
+      }
+
+      &:after {
+        font-weight: normal;
+        font-family: "RO Icons";
+        display: inline-block;
+        vertical-align: middle;
+        content: "";
+        speak: never;
+        padding: 0 6px 0 10px;
+        display: inline-block;
+        font-size: .9375rem;
+        line-height: 1em;
+        margin: -3px 0 0 0;
+        text-decoration: none;
+      }
+    }
+
+    span,
+    a {
+      color: @wit;
+      font-family: @bodyfont;
+    }
+  }
+
+  .separator {
+    speak: never;
+    display: inline-block;
+    margin-left: ( @padding / 3 );
+    margin-right: ( @padding / 3 );
+
+    .visuallyhidden();
+
+  }
+}
+
+
+.breadcrumb a {
+  //	text-decoration: underline;
+}
