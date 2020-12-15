@@ -1,0 +1,92 @@
+{
+    "key": "group_57f5099923f1b",
+    "title": "Theme-instellingen",
+    "fields": [
+        {
+            "key": "field_57f509b68989b",
+            "label": "Inhoudspagina voor dossier",
+            "name": "dossier_overzichtspagina",
+            "type": "post_object",
+            "instructions": "Welke pagina toont het overzicht van alle onderwerpen \/ dossiers \/ thema's?",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_57f509b70910d",
+            "label": "Link in footer",
+            "name": "footer_about_us",
+            "type": "post_object",
+            "instructions": "Naar welke pagina moet de site-titel in de footer linken?\r\nAls je dit leeg laat wordt er geen link gebruikt.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_5e9d80d71c6c9",
+            "label": "Toon tekst van site-titel en payoff in de header?",
+            "name": "siteoption_show_payoff_in_header",
+            "type": "radio",
+            "instructions": "Als je hier 'ja' kiest worden de site-titel en de -beschrijving getoond naast het rijkslogo.\r\nAls je hier 'nee' kiest wordt alleen het rijkslogo getoond.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "show_payoff_in_header_yes": "Ja, toon payoff in de header",
+                "show_payoff_in_header_no": "Nee, niet tonen"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "show_payoff_in_header_yes",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "instellingen"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1608067710
+}
