@@ -3251,61 +3251,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	//====================================================================================================
 	/**
-	 * alleen als het zoekformulier expliciet op verborgen is gezet, verbergen
-	 *
-	 * @since 1.0.0
-	 */
-	acf_add_local_field_group( array(
-		'key'                   => 'group_5e29b4d18bb2e',
-		'title'                 => 'Verberg zoekformulier?',
-		'fields'                => array(
-			array(
-				'key'               => 'field_5e29b4e1c47c7',
-				'label'             => 'Moet zoekformulier verborgen worden?',
-				'name'              => 'siteoption_hide_searchbox',
-				'type'              => 'radio',
-				'instructions'      => '',
-				'required'          => 0,
-				'conditional_logic' => 0,
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id'    => '',
-				),
-				'choices'           => array(
-					'hide' => 'Verberg zoekformulier',
-					'show' => 'Toon zoekformulier',
-				),
-				'allow_null'        => 0,
-				'other_choice'      => 0,
-				'default_value'     => 'show',
-				'layout'            => 'vertical',
-				'return_format'     => 'value',
-				'save_other_choice' => 0,
-			),
-		),
-		'location'              => array(
-			array(
-				array(
-					'param'    => 'options_page',
-					'operator' => '==',
-					'value'    => 'instellingen',
-				),
-			),
-		),
-		'menu_order'            => 0,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen'        => '',
-		'active'                => true,
-		'description'           => '',
-	) );
-
-
-	//====================================================================================================
-	/**
 	 * velden voor de toolbox van het LED: datagedreven werken
 	 *
 	 * @since 2.13.3
