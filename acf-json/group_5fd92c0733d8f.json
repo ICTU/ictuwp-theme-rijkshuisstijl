@@ -1,0 +1,48 @@
+{
+    "key": "group_5fd92c0733d8f",
+    "title": "Menu of kruimelpad op onderliggende pagina's?",
+    "fields": [
+        {
+            "key": "field_5fd92c2cce2c2",
+            "label": "Wil je menu of broodkruimelpad tonen op onderliggende pagina's?",
+            "name": "siteoption_menu_breadcrumb",
+            "type": "radio",
+            "instructions": "Met onderliggende pagina's bedoelen we: alle content behalve de homepage. In veel rijkshuisstijlsites wordt een kruimelpad getoond. Hier kun je kiezen welke van de twee opties je wil.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "toon_kruimelpad": "Toon het kruimelpad",
+                "toon_menu": "Toon het menu"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "toon_kruimelpad",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "instellingen"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1608068324
+}
