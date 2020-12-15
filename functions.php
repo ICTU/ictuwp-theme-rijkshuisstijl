@@ -159,7 +159,6 @@ if ( ! defined( 'DOPT__GEBEURTENIS_CPT' ) ) {
 }
 
 
-
 define( 'RHSWP_DOSSIERPOSTCONTEXT_OPTION_DO_FLUSH', false );
 //define( 'RHSWP_DOSSIERPOSTCONTEXT_OPTION_DO_FLUSH', true );
 
@@ -193,7 +192,7 @@ define( 'ID_DOSSIER_DIV', "dossier-overview" );
 
 // @since 2.16.1.g
 if ( ! defined( 'RHSWP_CPT_VERWIJZING' ) ) {
-  define( 'RHSWP_CPT_VERWIJZING',             'externeverwijzing' ); 
+	define( 'RHSWP_CPT_VERWIJZING', 'externeverwijzing' );
 }
 
 // constants for styling
@@ -423,7 +422,7 @@ function rhswp_customizer_register( $wp_customize ) {
 
 	// read configuration json file
 	$configfile   = file_get_contents( trailingslashit( get_stylesheet_directory() ) . FLAVORSCONFIG );
-	$flavorsource = json_decode( $configfile, TRUE );
+	$flavorsource = json_decode( $configfile, true );
 	foreach ( $flavorsource as $key => $value ) {
 		$flavors[ strtolower( $key ) ] = $value['name'];
 	}
@@ -534,26 +533,54 @@ function rhswp_get_read_more_link( $thepermalink ) {
 
 //========================================================================================================
 
-// Reposition both the navigation menus
-remove_action( 'genesis_after_header', 'genesis_do_nav' ); // primary menu
+// Tijdens het redesign van december 2020 besloten we af te stappen van alleen een broodkruimelpad als
+// menu, zoals standaard is op de meeste rijkshuisstijl-sites.
+// Voor backwards compatibility blijft de mogelijkheid voor een broodkruimelpadmenu gehandhaaft, tenzij
+// in de theme-options expliciet voor iets anders wordt gekozen.
+// zie: [admin] > Weergave > Instellingen theme > 'Menu of kruimelpad op onderliggende pagina's?'
+//
+// Veldnaam: 'siteoption_broodkruimelpadmenu'
+// variabele: $rijkshuisstijlruimelpadmenu (boolean):
+// - true: toon op onderliggende pagina's geen menu, maar alleen een broodkruimelpad
+// - false: toon op onderliggende pagina's wel een menu, en daaronder een Genesis
+// broodkruimelpad, indien gewenst (veldnaam: 'siteoption_broodkruimelpadmenu_hide_breadcrumb')
+//
 
+$rijkshuisstijlruimelpadmenu = true;
+$hide_breadcrumb             = false;
+
+if ( 'toon_menu' === get_field( 'siteoption_broodkruimelpadmenu', 'option' ) ) {
+	$rijkshuisstijlruimelpadmenu = false;
+	if ( 'hide_breadcrumb' === get_field( 'siteoption_broodkruimelpadmenu_hide_breadcrumb', 'option' ) ) {
+		$hide_breadcrumb = true;
+	}
+}
+
+if ( $rijkshuisstijlruimelpadmenu ) {
+	// toon geen menu maar een kruimelpad op onderliggende paagina's (i.e. anders dan de homepage)
+	remove_action( 'genesis_after_header', 'genesis_do_nav' ); // primary menu
+
+    // breadcrumb
+    // Reposition the breadcrumbs
+	remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
+
+	add_action( 'genesis_after_header', 'genesis_do_breadcrumbs', 18 );
+
+} else {
+	// toon een menu op onderliggende paagina's (i.e. anders dan de homepage)
+	// wel of geen kruimelpad tonen?
+}
+
+//========================================================================================================
+
+// verplaatsen van secundair menu naar direct voor de header
 remove_action( 'genesis_after_header', 'genesis_do_subnav' ); // secondary menu
 add_action( 'genesis_before_header', 'genesis_do_subnav', 8 ); // secondary menu
 
-
-
 //========================================================================================================
 
-// breadcrumb
-// Reposition the breadcrumbs
-remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
-
-//========================================================================================================
-
-add_action( 'genesis_after_header', 'genesis_do_breadcrumbs', 18 );
 add_action( 'genesis_after_header', 'rhswp_check_caroussel_or_featured_img', 22 );
 add_action( 'genesis_after_header', 'rhswp_dossier_title_checker', 24 );
-
 
 //========================================================================================================
 
@@ -912,17 +939,6 @@ function rhswp_breadcrumb_args( $args ) {
 
 	$separator  = __( '<span class="separator">&#8250;</span>', 'wp-rijkshuisstijl' );
 	$searchform = '';
-
-	if ( is_front_page() || is_search() ) {
-		// somehow the actueel pagina was marked as 'is_home()' (digitaleoverheid.nl/actueel)
-	} else {
-		if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
-			// alleen als het zoekformulier expliciet op verborgen is gezet, verbergen
-		} else {
-			// zoekformulier gewoon tonen
-			$searchform = get_search_form( false );
-		}
-	}
 
 	$args['home']                    = esc_html( __( "Home", 'wp-rijkshuisstijl' ) );
 	$args['sep']                     = $separator;
@@ -1874,7 +1890,7 @@ function rhswp_enqueue_js_scripts() {
 			wp_enqueue_script( 'details-element', RHSWP_THEMEFOLDER . '/js/details-element.js', '', CHILD_THEME_VERSION, true );
 
 			wp_enqueue_script( 'menu-menu', RHSWP_THEMEFOLDER . '/js/menu.js', '', CHILD_THEME_VERSION, true );
-			
+
 		}
 
 		$openclose = _x( 'Show all details', 'Labels detailbuttons', 'wp-rijkshuisstijl' );
@@ -2001,8 +2017,8 @@ add_filter( 'tiny_mce_before_init', 'admin_set_tinymce_options' );
 add_theme_support(
 	'genesis-menus',
 	array(
-		'primary'   => __( 'Primary Navigation Menu',  'wp-rijkshuisstijl' ),
-		'secondary' => __( 'Secondary Navigation Menu',  'wp-rijkshuisstijl' ),
+		'primary'   => __( 'Primary Navigation Menu', 'wp-rijkshuisstijl' ),
+		'secondary' => __( 'Secondary Navigation Menu', 'wp-rijkshuisstijl' ),
 	)
 );
 
@@ -2632,18 +2648,18 @@ function rhswp_check_caroussel_or_featured_img() {
 		) {
 			// dit is dus zo'n bijzondere pagina die berichten, events of documenten toont bij een dossier
 
-			$term                = get_term_by( 'slug', get_query_var( RHSWP_CT_DOSSIER ), RHSWP_CT_DOSSIER );
+			$term = get_term_by( 'slug', get_query_var( RHSWP_CT_DOSSIER ), RHSWP_CT_DOSSIER );
 
 			if ( $term ) {
-				
+
 				$theid          = RHSWP_CT_DOSSIER . '_' . $term->term_id;
 				$divid          = $term->term_id;
 				$carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
 				$currentterm    = $term->term_id;
-				
+
 			}
 
-			
+
 		} elseif ( is_page() ) {
 			$theid          = get_the_ID();
 			$divid          = $theid;
@@ -3341,7 +3357,7 @@ function rhswp_set_hsts_policy() {
 	// 2 year expiration: 63072000
 	header( 'Strict-Transport-Security: max-age=63072000; includeSubDomains; preload' );
 //	header('Content-type: text/plain; charset=utf-8'); 
-	header('Content-type: text/html; charset=utf-8'); 
+	header( 'Content-type: text/html; charset=utf-8' );
 
 }
 
@@ -3410,16 +3426,16 @@ function rhswp_add_blog_archive_css() {
 				( RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW == get_query_var( 'pagename' ) )
 			) {
 				// dit is dus zo'n bijzondere pagina die berichten, events of documenten toont bij een dossier
-	
-				$term                = get_term_by( 'slug', get_query_var( RHSWP_CT_DOSSIER ), RHSWP_CT_DOSSIER );
-	
+
+				$term = get_term_by( 'slug', get_query_var( RHSWP_CT_DOSSIER ), RHSWP_CT_DOSSIER );
+
 				if ( $term ) {
 					$theid          = RHSWP_CT_DOSSIER . '_' . $term->term_id;
 					$divid          = $term->term_id;
 					$carousselcheck = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
 					$currentterm    = $term->term_id;
 				}
-	
+
 			} elseif ( is_page() ) {
 				$theid          = get_the_ID();
 				$divid          = $theid;
@@ -3803,10 +3819,10 @@ add_action( 'wp_enqueue_scripts', 'rhswp_remove_external_styles', 100 );
 
 function rhswp_remove_external_styles() {
 
-$configuration = array();
+	$configuration = array();
 
 	$versie = '';
-	
+
 	wp_deregister_style( 'contact-form-7' );
 	wp_deregister_style( 'toc-screen' );
 
@@ -3830,8 +3846,8 @@ $configuration = array();
 	wp_deregister_style( 'gforms_browsers_css' );
 	wp_dequeue_style( 'gforms_browsers_css' );
 
-	$configfile    = file_get_contents( trailingslashit( get_stylesheet_directory() ) . FLAVORSCONFIG );
-	$configfile    = json_decode( $configfile, TRUE );
+	$configfile = file_get_contents( trailingslashit( get_stylesheet_directory() ) . FLAVORSCONFIG );
+	$configfile = json_decode( $configfile, true );
 
 	$theme_options = get_option( 'rhswp_customizer_theme_options' );
 	$flavor        = DEFAULTFLAVOR; // default, tenzij er een smaakje is gekozen
@@ -3861,22 +3877,25 @@ $configuration = array();
 	}
 
 	// standaard CSS niet meer gebruiken
-	wp_dequeue_style('rijkshuisstijl-digitale-overheid');
-	wp_deregister_style('rijkshuisstijl-digitale-overheid');
+	wp_dequeue_style( 'rijkshuisstijl-digitale-overheid' );
+	wp_deregister_style( 'rijkshuisstijl-digitale-overheid' );
 
 	foreach ( $configuration['cssfiles'] as $key => $value ) {
 
 		$dependencies = $value['dependencies'];
 
-		if ( $value['version'] ) {
+		/*
+		 *
+				if ( $value['version'] ) {
 
-		    if ( 'debug' === $value['version'] ) {
-			    $versie = CHILD_THEME_VERSION;
-            } else {
-			    $versie = $value['version'];
-            }
-		}
-	    $versie = CHILD_THEME_VERSION;
+					if ( 'debug' === $value['version'] ) {
+						$versie = CHILD_THEME_VERSION;
+					} else {
+						$versie = $value['version'];
+					}
+				}
+		 */
+		$versie = filemtime( dirname( __FILE__ ) . $value['file'] );
 		wp_enqueue_style( $value['handle'], get_stylesheet_directory_uri() . $value['file'], $dependencies, $versie, 'all' );
 
 	}
@@ -3926,8 +3945,8 @@ function rhswp_contactreactie_write_reactieform() {
 		if ( 'shortcode' === $contactformulier_bron ) {
 			$theshortcode = get_field( 'shortcode_voor_gravity_forms', 'option' );
 		} else {
-			if ( $contactformulier ) {
-				$theshortcode = '[contact-form-7 id="' . $contactformulier . '" title="' . esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) ) . '"]';
+			if ( $contactformulier->ID ) {
+				$theshortcode = '[contact-form-7 id="' . $contactformulier->ID . '" title="' . esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) ) . '"]';
 			}
 
 		}
@@ -4924,10 +4943,10 @@ function rhswp_footer_payoff() {
 	$replacer    = '';
 	$description = str_replace( $needle, $replacer, $description );
 
-	$start_title_span		= '<strong id="payoff_title">';
-	$end_title_span			= '</strong>';
-	$start_subtitle_span	= '<span id="payoff_subtitle">';
-	$end_subtitle_span		= '</span>';
+	$start_title_span    = '<strong id="payoff_title">';
+	$end_title_span      = '</strong>';
+	$start_subtitle_span = '<span id="payoff_subtitle">';
+	$end_subtitle_span   = '</span>';
 
 	echo '<div id="payoff"> ' . $strprefix . $start_title_span . $title . $end_title_span . $start_subtitle_span . wp_strip_all_tags( $description ) . $end_subtitle_span . $strsuffix . '</div>';
 }
@@ -5253,12 +5272,12 @@ function rhswp_get_documents_for_dossier() {
 	global $post;
 	global $wp_query;
 
-	$message     	= 'Alle documenten';
-	$currentpage 	= get_permalink();
-	$currentsite 	= get_site_url();
-	$postname 		= $post->post_name;
-	$paged       	= ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-	$term        	= '';
+	$message     = 'Alle documenten';
+	$currentpage = get_permalink();
+	$currentsite = get_site_url();
+	$postname    = $post->post_name;
+	$paged       = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	$term        = '';
 
 	if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
 
@@ -5301,7 +5320,7 @@ function rhswp_get_documents_for_dossier() {
 
 					if ( $currentsite && $currentpage ) {
 						$postpermalink = get_the_permalink();
-						$postname 		= $post->post_name;
+						$postname      = $post->post_name;
 						$postpermalink = str_replace( $currentsite, '', $postpermalink );
 						$postpermalink = '/' . $postname;
 						$crumb         = '/' . RHSWP_CT_DOSSIER . '/' . $term->slug . '/' . RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW;
@@ -5310,12 +5329,12 @@ function rhswp_get_documents_for_dossier() {
 						$theurl = get_the_permalink();
 					}
 
-					$excerpt		= wp_strip_all_tags( get_the_excerpt() );
-					$file     		= get_field( 'rhswp_document_upload', $post->ID );
-					$number_pages  	= get_field( 'rhswp_document_number_pages', $post->ID );
-					$bestand_of_url	= get_field( 'rhswp_document_file_or_url', $post->ID );
-					$filetype 		= strtoupper( $file['subtype'] );
-					$meta 			= get_the_date( '', $post->ID );
+					$excerpt        = wp_strip_all_tags( get_the_excerpt() );
+					$file           = get_field( 'rhswp_document_upload', $post->ID );
+					$number_pages   = get_field( 'rhswp_document_number_pages', $post->ID );
+					$bestand_of_url = get_field( 'rhswp_document_file_or_url', $post->ID );
+					$filetype       = strtoupper( $file['subtype'] );
+					$meta           = get_the_date( '', $post->ID );
 
 					if ( 'bestand' === $bestand_of_url ) {
 
@@ -5548,46 +5567,52 @@ function admin_enqueue_css_acf_contentblokken() {
 //========================================================================================================
 
 // hide site description visually if necessary
-add_filter('genesis_seo_description','rhswp_filter_site_description', 10, 3);
+add_filter( 'genesis_seo_description', 'rhswp_filter_site_description', 10, 3 );
 
 function rhswp_filter_site_description( $description, $inside, $wrap ) {
-	
+
 	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
 
 	if ( 'show_payoff_in_header_no' === $showpayoff ) {
 
 		// hide visually by adding extra class .screen-reader-text
-		$custom = str_replace('class="site-description"', 'class="site-description screen-reader-text"', $description );
+		$custom = str_replace( 'class="site-description"', 'class="site-description screen-reader-text"', $description );
+
 		return $custom;
-		
-	}
-	else {
+
+	} else {
 		return $description;
 	}
 }
 
 //========================================================================================================
 
-add_action( 'genesis_site_title', 'rhswp_append_site_logo' );
+add_action( 'genesis_header', 'rhswp_append_site_logo' );
 
 function rhswp_append_site_logo() {
 
 	// @since 2.14.1
 	// flavor checken.
-	$get_theme_option = get_option( 'rhswp_customizer_theme_options' );
-	$flavor_select    = $get_theme_option['flavor_select'];
-	
+	$get_theme_option      = get_option( 'rhswp_customizer_theme_options' );
+	$flavor_select         = $get_theme_option['flavor_select'];
+	$show_payoff_in_header = '';
+
+	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
+
+	if ( 'show_payoff_in_header_no' === $showpayoff ) {
+		$show_payoff_in_header = ' align-middle';
+	}
+
 	if ( $flavor_select == "flitspanel" ) {
 		$anchorstart = '<a href="' . get_home_url() . '" aria-label="Naar de homepage van Flitspanel">';
-		$anchorend = '</a>';
+		$anchorend   = '</a>';
 		if ( is_front_page() ) {
 			$anchorstart = '';
-			$anchorend = '';
+			$anchorend   = '';
 		}
-		echo '<span id="logotype" class="flitspanel">' . $anchorstart . '<img src="' . RHSWP_THEMEFOLDER . '/images/logos/flitspanel-logo.png?asdfsadf" alt="Logo van Flitspanel, met als ondertekst: het medwerkerspanel van en voor de publieke sector" width="300" height="123">' . $anchorend . '</span>';
-	}
-	else {
-		echo '<span id="logotype"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitaleoverheid.svg" alt="Logo Rijksoverheid"></span>';
+		echo '<span id="logotype" class="flitspanel' . $show_payoff_in_header . '">' . $anchorstart . '<img src="' . RHSWP_THEMEFOLDER . '/images/logos/flitspanel-logo.png" alt="Logo van Flitspanel, met als ondertekst: het medwerkerspanel van en voor de publieke sector" width="300" height="123">' . $anchorend . '</span>';
+	} else {
+		echo '<span id="logotype" class="' . $show_payoff_in_header . '"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitale-overheid.svg" alt="Logo Rijksoverheid"></span>';
 	}
 
 
@@ -5596,36 +5621,36 @@ function rhswp_append_site_logo() {
 //========================================================================================================
 
 // Filter the title with a custom function
-add_filter('genesis_seo_title', 'rhswp_filter_site_title' );
+add_filter( 'genesis_seo_title', 'rhswp_filter_site_title' );
 
 // Make sure the text can be wrapped on smaller screens by
 // filtering long strings and hide site title visually if necessary
 function rhswp_filter_site_title( $title = '' ) {
 
-	$title 		= get_bloginfo( 'name' );
+	$title      = get_bloginfo( 'name' );
 	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
 
-	$needle		= 'igitaleOverheid';
-	$replacer	= 'igitale&shy;Overheid';
-	$title   	= str_replace( $needle, $replacer, $title );
+	$needle   = 'igitaleOverheid';
+	$replacer = 'igitale&shy;Overheid';
+	$title    = str_replace( $needle, $replacer, $title );
 
-	$needle		= 'igitaleoverheid';
-	$replacer	= 'igitale&shy;overheid';
-	$title   	= str_replace( $needle, $replacer, $title );
+	$needle   = 'igitaleoverheid';
+	$replacer = 'igitale&shy;overheid';
+	$title    = str_replace( $needle, $replacer, $title );
 
-	$needle		= '.nl';
-	$replacer	= '<span class="tld"><span class="puntenenel">.</span>nl</span>';
-	$title   	= str_replace( $needle, $replacer, $title );
+	$needle   = '.nl';
+	$replacer = '<span class="tld"><span class="puntenenel">.</span>nl</span>';
+	$title    = str_replace( $needle, $replacer, $title );
 
-	$title 		= '<p class="site-title"><a href="' . get_bloginfo( 'url' ) . '">' . $title . '</a></p>';
+	$title = '<p class="site-title"><a href="' . get_bloginfo( 'url' ) . '">' . $title . '</a></p>';
 
 	if ( 'show_payoff_in_header_no' === $showpayoff ) {
 
 		// hide visually by adding extra class .screen-reader-text
-		$needle		= 'class="site-title"';
-		$replacer	= 'class="site-title screen-reader-text"';
-		$title   	= str_replace( $needle, $replacer, $title );
-		
+		$needle   = 'class="site-title"';
+		$replacer = 'class="site-title screen-reader-text"';
+		$title    = str_replace( $needle, $replacer, $title );
+
 	}
 
 	return $title;
@@ -5639,19 +5664,19 @@ add_filter( 'the_content', 'rhswp_filter_strange_characters', 1 );
 /*
  * Reactieformulier verlost van block elements in een <a> en verdere styling.
  */
- 
+
 function rhswp_filter_strange_characters( $content ) {
- 
-    // Check if we're inside the main loop in a single Post.
-    if ( is_singular() && in_the_loop() && is_main_query() ) {
 
-		$look_for		= '/ /i'; // Narrow No-Break Space [NNBSP]
-		$replace_with 	= ' ';
-		$content		= preg_replace( $look_for, $replace_with, $content);
+	// Check if we're inside the main loop in a single Post.
+	if ( is_singular() && in_the_loop() && is_main_query() ) {
 
-    }
- 
-    return $content;
+		$look_for     = '/ /i'; // Narrow No-Break Space [NNBSP]
+		$replace_with = ' ';
+		$content      = preg_replace( $look_for, $replace_with, $content );
+
+	}
+
+	return $content;
 }
 
 //========================================================================================================

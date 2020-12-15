@@ -5,7 +5,7 @@
         {
             "key": "field_5fd92c2cce2c2",
             "label": "Wil je menu of broodkruimelpad tonen op onderliggende pagina's?",
-            "name": "siteoption_menu_breadcrumb",
+            "name": "siteoption_broodkruimelpadmenu",
             "type": "radio",
             "instructions": "Met onderliggende pagina's bedoelen we: alle content behalve de homepage. In veel rijkshuisstijlsites wordt een kruimelpad getoond. Hier kun je kiezen welke van de twee opties je wil.",
             "required": 1,
@@ -22,6 +22,38 @@
             "allow_null": 0,
             "other_choice": 0,
             "default_value": "toon_kruimelpad",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5fd93302718c1",
+            "label": "Broodkruimelpad helemaal verbergen?",
+            "name": "siteoption_broodkruimelpadmenu_hide_breadcrumb",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fd92c2cce2c2",
+                        "operator": "==",
+                        "value": "toon_menu"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "show_breadcrumb": "Toon het kruimelpad",
+                "hide_breadcrumb": "Verberg het kruimelpad helemaal"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "show_breadcrumb",
             "layout": "vertical",
             "return_format": "value",
             "save_other_choice": 0
@@ -44,5 +76,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608068324
+    "modified": 1608070167
 }
