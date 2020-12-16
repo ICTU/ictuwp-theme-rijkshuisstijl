@@ -51,6 +51,10 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 */
 /* all things related to the site header */
 /* assorted elements */
+#genesis-nav-primary {
+  overflow: hidden;
+  border: 10px solid red;
+}
 /* all things related to the site header */
 /* // .menus() {
 -------------------------------------- */
@@ -5829,11 +5833,21 @@ main .no-results-widget.widget_search {
   text-decoration: underline;
 }
 @media only screen and (max-width: 649px) {
+  .nav-secondary {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+  }
   .site-header .wrap {
     margin: 0;
     width: 100%;
   }
-  .site-header .wrap .site-description {
+  .site-header .wrap .title-area p {
     text-indent: -9999em;
   }
 }
@@ -11454,19 +11468,8 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 .breadcrumb-only .breadcrumb .wrap {
   display: flex;
 }
-.breadcrumb-only .breadcrumb .search-form,
-.breadcrumb-only .breadcrumb nav {
-  padding: 1.1rem 0;
-}
-.breadcrumb-only .breadcrumb .search-form {
-  flex: 0 1 350px;
-}
-.breadcrumb-only .breadcrumb .search-form input {
-  height: 48px;
-}
 .breadcrumb-only .breadcrumb nav {
   color: #fff;
-  font-size: 1.625rem;
 }
 .breadcrumb-only .breadcrumb nav a span,
 .breadcrumb-only .breadcrumb nav a {
@@ -11475,5 +11478,32 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 }
 .breadcrumb-only .breadcrumb nav span {
   font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
+}
+@media only screen and (max-width: 649px) {
+  .breadcrumb-only .breadcrumb .wrap {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .breadcrumb-only .breadcrumb .wrap .search-form {
+    padding-top: 1rem;
+  }
+}
+@media only screen and (min-width: 650px) {
+  .breadcrumb-only .breadcrumb .wrap {
+    flex-direction: row;
+  }
+  .breadcrumb-only .breadcrumb .search-form,
+  .breadcrumb-only .breadcrumb nav {
+    padding: 1.1rem 0;
+  }
+  .breadcrumb-only .breadcrumb nav {
+    font-size: 1.625rem;
+  }
+  .breadcrumb-only .breadcrumb .search-form {
+    flex: 0 1 350px;
+  }
+  .breadcrumb-only .breadcrumb .search-form input {
+    height: 48px;
+  }
 }
 /*# sourceMappingURL=style-flitspanel.css.map */

@@ -122,23 +122,9 @@
       display: flex;
     }
 
-    .search-form,
-    nav {
-      padding: 1.1rem 0;
-    }
-
-
-    .search-form {
-      flex: 0 1 350px;
-
-      input {
-        height: @filter_submit_width;
-      }
-    }
 
     nav {
       color: @wit;
-      font-size: 1.625rem;
 
       a span,
       a {
@@ -151,6 +137,42 @@
       }
 
     }
+
+    @media only screen and (max-width: ( @break_tablet - 1 ) ) {
+      .wrap {
+        flex-direction: column;
+        padding: 1rem;
+
+        .search-form {
+          padding-top: 1rem;
+        }
+
+      }
+    }
+
+    @media only screen and (min-width: ( @break_tablet ) ) {
+      .wrap {
+        flex-direction: row;
+      }
+
+      .search-form,
+      nav {
+        padding: 1.1rem 0;
+      }
+
+      nav {
+        font-size: 1.625rem;
+      }
+
+      .search-form {
+        flex: 0 1 350px;
+
+        input {
+          height: @filter_submit_width;
+        }
+      }
+    }
+
 
   }
 
