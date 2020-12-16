@@ -264,6 +264,9 @@ if ( 'accept.digitaleoverheid.nl' == $_SERVER["HTTP_HOST"] ) {
 // Skiplinks
 include_once( RHSWP_FOLDER . '/includes/skip-links.php' );
 
+// Menu & header
+include_once( RHSWP_FOLDER . '/includes/menu-header.php' );
+
 // Extra filters for Event Manager
 // @since 2.12.21
 include_once( RHSWP_FOLDER . '/includes/eventmanager-helper-functions.php' );
@@ -533,82 +536,6 @@ function rhswp_get_read_more_link( $thepermalink ) {
 
 //========================================================================================================
 
-// Tijdens het redesign van december 2020 besloten we af te stappen van alleen een broodkruimelpad als
-// menu, zoals standaard is op de meeste rijkshuisstijl-sites.
-// Voor backwards compatibility blijft de mogelijkheid voor een broodkruimelpadmenu gehandhaaft, tenzij
-// in de theme-options expliciet voor iets anders wordt gekozen.
-// zie: [admin] > Weergave > Instellingen theme > 'Zoekformulier, menu, kruimelpad'
-//
-// Veldnaam: 'siteoption_kruimelpadmenu'
-// variabele: $rijkshuisstijlruimelpadmenu (boolean):
-// - true: toon op onderliggende pagina's geen menu, maar alleen een broodkruimelpad
-// - false: toon op onderliggende pagina's wel een menu, en daaronder een Genesis
-// kruimelpad, indien gewenst (veldnaam: 'siteoption_kruimelpadmenu_hide_breadcrumb')
-//
-
-$rijkshuisstijlruimelpadmenu = true;
-$hide_breadcrumb             = false;
-$show_searchform             = true;
-
-if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
-	$show_searchform = false;
-}
-
-if ( 'toon_menu' === get_field( 'siteoption_kruimelpadmenu', 'option' ) ) {
-	$rijkshuisstijlruimelpadmenu = false;
-	if ( 'hide_breadcrumb' === get_field( 'siteoption_kruimelpadmenu_hide_breadcrumb', 'option' ) ) {
-		$hide_breadcrumb = true;
-	}
-}
-
-if ( $rijkshuisstijlruimelpadmenu ) {
-	// toon geen menu maar een kruimelpad op onderliggende paagina's (i.e. anders dan de homepage)
-	remove_action( 'genesis_after_header', 'genesis_do_nav' ); // primary menu
-
-    // breadcrumb
-	add_filter( 'body_class', 'rhswp_append_body_class_breadcrumb' );
-
-    // Reposition the breadcrumbs
-	remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
-	add_action( 'genesis_after_header', 'genesis_do_breadcrumbs', 18 );
-
-} else {
-	// toon een menu op onderliggende paagina's (i.e. anders dan de homepage)
-	// wel of geen kruimelpad tonen?
-	add_filter( 'body_class', 'rhswp_append_body_class_menu' );
-
-	// Reposition the breadcrumbs
-	remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
-	add_action( 'genesis_after_header', 'genesis_do_breadcrumbs', 18 );
-
-
-}
-
-//========================================================================================================
-
-function rhswp_append_body_class_menu( $classes ) {
-	$classes[] = 'menu-and-breadcrumb';
-
-	return $classes;
-}
-
-//========================================================================================================
-
-
-function rhswp_append_body_class_breadcrumb( $classes ) {
-	$classes[] = 'breadcrumb-only';
-
-	return $classes;
-}
-
-//========================================================================================================
-
-// verplaatsen van secundair menu naar direct voor de header
-remove_action( 'genesis_after_header', 'genesis_do_subnav' ); // secondary menu
-add_action( 'genesis_before_header', 'genesis_do_subnav', 8 ); // secondary menu
-
-//========================================================================================================
-
 add_action( 'genesis_after_header', 'rhswp_check_caroussel_or_featured_img', 22 );
 add_action( 'genesis_after_header', 'rhswp_dossier_title_checker', 24 );
 
@@ -645,20 +572,23 @@ add_filter( 'wp_nav_menu_items', 'rhswp_append_search_box_to_menu', 10, 2 );
 function rhswp_append_search_box_to_menu( $menu, $args ) {
 
 	if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
+		// zoekdoos hoeft nergens getoond te worden
 		return $menu;
 	}
-	//* Change 'primary' to 'secondary' to add extras to the secondary navigation menu
+
 	if ( is_search() ) {
+		// geen extra zoekdoos op zoekresultaatpagina
 		return $menu;
 	}
 	if ( is_404() ) {
+		// geen extra zoekdoos op 404-pagina
 		return $menu;
 	}
 
 	if ( 'primary' !== $args->theme_location ) {
 		return $menu;
 	}
-	//* Uncomment this block to add a search form to the navigation menu
+
 	ob_start();
 	get_search_form();
 	$search = ob_get_clean();
@@ -974,12 +904,11 @@ function rhswp_breadcrumb_args( $args ) {
 			// alleen als het zoekformulier expliciet op verborgen is gezet, verbergen
 		} else {
 			if ( 'toon_menu' === get_field( 'siteoption_kruimelpadmenu', 'option' ) ) {
-			    // styling met menu, niet met broodkruimelmenu
-			}
-			else {
+				// styling met menu, niet met broodkruimelmenu
+			} else {
 				// zoekformulier gewoon tonen
 				$searchform = get_search_form( false );
-            }
+			}
 
 		}
 	}
@@ -5658,45 +5587,6 @@ function rhswp_append_site_logo() {
 		echo '<span id="logotype" class="' . $show_payoff_in_header . '"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitale-overheid.svg" alt="Logo Rijksoverheid"></span>';
 	}
 
-
-}
-
-//========================================================================================================
-
-// Filter the title with a custom function
-add_filter( 'genesis_seo_title', 'rhswp_filter_site_title' );
-
-// Make sure the text can be wrapped on smaller screens by
-// filtering long strings and hide site title visually if necessary
-function rhswp_filter_site_title( $title = '' ) {
-
-	$title      = get_bloginfo( 'name' );
-	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
-
-	$needle   = 'igitaleOverheid';
-	$replacer = 'igitale&shy;Overheid';
-	$title    = str_replace( $needle, $replacer, $title );
-
-	$needle   = 'igitaleoverheid';
-	$replacer = 'igitale&shy;overheid';
-	$title    = str_replace( $needle, $replacer, $title );
-
-	$needle   = '.nl';
-	$replacer = '<span class="tld"><span class="puntenenel">.</span>nl</span>';
-	$title    = str_replace( $needle, $replacer, $title );
-
-	$title = '<p class="site-title"><a href="' . get_bloginfo( 'url' ) . '">' . $title . '</a></p>';
-
-	if ( 'show_payoff_in_header_no' === $showpayoff ) {
-
-		// hide visually by adding extra class .screen-reader-text
-		$needle   = 'class="site-title"';
-		$replacer = 'class="site-title screen-reader-text"';
-		$title    = str_replace( $needle, $replacer, $title );
-
-	}
-
-	return $title;
 
 }
 
