@@ -20,13 +20,6 @@
 
 //========================================================================================================
 
-// Reposition the primary navigation menu
-if ( ( is_front_page() ) || ( is_home() ) ) {
-	add_action( 'genesis_after_header', 'genesis_do_nav' );
-}
-
-//========================================================================================================
-
 remove_filter( 'genesis_post_title_text', 'genesis_post_title_text_filter', 15 );
 
 add_filter( 'genesis_post_title_output', 'rhswp_digibeter_filter_page_title', 16 );

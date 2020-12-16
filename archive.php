@@ -16,14 +16,6 @@
 
 //========================================================================================================
 
-// Reposition the primary navigation menu
-if ( ( is_front_page() ) || ( is_home() ) ) {
-	add_action( 'genesis_after_header', 'genesis_do_nav' );
-}
-
-//========================================================================================================
-
-
 // post navigation verplaatsen tot buiten de flex-ruimte
 add_action( 'genesis_after_loop', 'genesis_posts_nav', 3 );
 

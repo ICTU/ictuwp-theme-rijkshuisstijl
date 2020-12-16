@@ -18,12 +18,6 @@
 
 //* Template Name: DO - Toolbox Innovatie
 
-//========================================================================================================
-
-// Reposition the primary navigation menu
-if ( ( is_front_page() ) || ( is_home() ) ) {
-	add_action( 'genesis_after_header', 'genesis_do_nav' );
-}
 
 //========================================================================================================
 

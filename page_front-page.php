@@ -25,13 +25,6 @@ remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 
 //========================================================================================================
 
-// Reposition the primary navigation menu
-if ( ( is_front_page() ) || ( is_home() ) ) {
-	add_action( 'genesis_after_header', 'genesis_do_nav' );
-}
-
-//========================================================================================================
-
 // dossiers (onderwerpen) + widget ruimte
 add_action( 'genesis_loop', 'rhswp_home_onderwerpen_dossiers', 12 );
 

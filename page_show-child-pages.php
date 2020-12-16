@@ -20,13 +20,6 @@
 
 //========================================================================================================
 
-// Reposition the primary navigation menu
-if ( ( is_front_page() ) || ( is_home() ) ) {
-	add_action( 'genesis_after_header', 'genesis_do_nav' );
-}
-
-//========================================================================================================
-
 add_action( 'genesis_entry_content', 'rhswp_get_page_childpages', 15 );
 
 if ( rhswp_extra_contentblokken_checker() ) {
