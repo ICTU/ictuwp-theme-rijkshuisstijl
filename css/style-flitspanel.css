@@ -8460,6 +8460,9 @@ div.dossier_overzicht_popular {
   background: #f3f3f3;
   padding: 0 1em 1em 1em;
 }
+div.dossier_overzicht_popular h2 {
+  padding-left: 0 !important;
+}
 div.dossier_overzicht_popular ul.links {
   overflow: hidden;
   margin: 0 0;
@@ -11353,23 +11356,6 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   margin: 0;
   overflow: hidden;
   padding: 0;
-  font-size: 80%;
-}
-.breadcrumb .wrap {
-  position: relative;
-}
-.breadcrumb nav {
-  font-size: 1rem;
-}
-@media only screen and (max-width: 650px) {
-  .breadcrumb nav {
-    padding-right: 18px;
-  }
-}
-@media only screen and (min-width: 650px) {
-  .breadcrumb nav {
-    padding-right: 271px;
-  }
 }
 .breadcrumb nav span {
   padding: 10.66666667px 0;
@@ -11387,7 +11373,6 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   font-family: "RO Icons";
   vertical-align: middle;
   content: "";
-  speak: never;
   padding: 0 6px 0 10px;
   display: inline-block;
   font-size: 0.9rem;
@@ -11413,83 +11398,44 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   padding: 0;
   position: absolute;
 }
-.site-header + .breadcrumb {
-  background: #01689b;
-  color: #fff;
-  margin: 0;
-  overflow: hidden;
-  padding-left: 1em;
-}
-.breadcrumb {
-  padding: 0;
+.menu-and-breadcrumb .breadcrumb {
+  padding: 1rem 0;
   font-size: 80%;
 }
-.breadcrumb .wrap {
+.menu-and-breadcrumb .breadcrumb .wrap {
   position: relative;
 }
 @media only screen and (max-width: 650px) {
-  .breadcrumb .wrap .search-form {
+  .menu-and-breadcrumb .breadcrumb .wrap .search-form {
     clear: both;
     float: none;
     margin-bottom: 1em;
   }
 }
 @media only screen and (min-width: 650px) {
-  .breadcrumb .wrap .search-form {
+  .menu-and-breadcrumb .breadcrumb .wrap .search-form {
     position: absolute;
     right: 0;
     top: 14px;
   }
 }
-.breadcrumb nav {
-  color: #fff;
-  font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
-  padding-top: 18px;
-  padding-bottom: 18px;
+.menu-and-breadcrumb .breadcrumb nav span,
+.menu-and-breadcrumb .breadcrumb nav a,
+.menu-and-breadcrumb .breadcrumb nav {
+  color: #01689b;
 }
-@media only screen and (max-width: 650px) {
-  .breadcrumb nav {
-    padding-right: 18px;
-    font-size: 1.25rem;
-  }
-}
-@media only screen and (min-width: 650px) {
-  .breadcrumb nav {
-    font-size: 1.625rem;
-    padding-right: 271px;
-  }
-}
-.breadcrumb nav span {
-  padding: 10.66666667px 0;
-}
-.breadcrumb nav a {
+.menu-and-breadcrumb .breadcrumb nav a {
   text-decoration: none;
 }
-.breadcrumb nav a:hover,
-.breadcrumb nav a:active,
-.breadcrumb nav a:focus {
+.menu-and-breadcrumb .breadcrumb nav a:hover,
+.menu-and-breadcrumb .breadcrumb nav a:active,
+.menu-and-breadcrumb .breadcrumb nav a:focus {
   text-decoration: underline;
 }
-.breadcrumb nav a:after {
-  font-weight: normal;
-  font-family: "RO Icons";
-  vertical-align: middle;
-  content: "";
-  speak: never;
-  padding: 0 6px 0 10px;
-  display: inline-block;
-  font-size: 0.9375rem;
-  line-height: 1em;
-  margin: -3px 0 0 0;
-  text-decoration: none;
+.menu-and-breadcrumb .breadcrumb nav a:after {
+  font-size: 0.7rem;
 }
-.breadcrumb nav span,
-.breadcrumb nav a {
-  color: #fff;
-  font-family: 'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
-}
-.breadcrumb .separator {
-  speak: never;
+.menu-and-breadcrumb .breadcrumb .separator {
   display: inline-block;
   margin-left: 5.33333333px;
   margin-right: 5.33333333px;
@@ -11501,5 +11447,33 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   overflow: hidden;
   padding: 0;
   position: absolute;
+}
+.breadcrumb-only .breadcrumb {
+  background: #01689b;
+}
+.breadcrumb-only .breadcrumb .wrap {
+  display: flex;
+}
+.breadcrumb-only .breadcrumb .search-form,
+.breadcrumb-only .breadcrumb nav {
+  padding: 1.1rem 0;
+}
+.breadcrumb-only .breadcrumb .search-form {
+  flex: 0 1 350px;
+}
+.breadcrumb-only .breadcrumb .search-form input {
+  height: 48px;
+}
+.breadcrumb-only .breadcrumb nav {
+  color: #fff;
+  font-size: 1.625rem;
+}
+.breadcrumb-only .breadcrumb nav a span,
+.breadcrumb-only .breadcrumb nav a {
+  color: #fff;
+  font-family: 'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
+}
+.breadcrumb-only .breadcrumb nav span {
+  font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
 }
 /*# sourceMappingURL=style-flitspanel.css.map */

@@ -1,11 +1,52 @@
 {
     "key": "group_5fd92c0733d8f",
-    "title": "Menu of kruimelpad op onderliggende pagina's?",
+    "title": "Zoekformulier, menu, kruimelpad",
     "fields": [
         {
+            "key": "field_5fd9e94de989a",
+            "label": "Waar hebben we het over",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Menu + kruimelpad eronder:<br>\r\n<img src=\"\/wp-content\/themes\/wp-rijkshuisstijl\/images\/admin\/menu-kruimelpad.png\" alt=\"\" style=\"max-width: 100%; height: auto;\">\r\n\r\nAlleen kruimelpad (rijksoverheid-stijl):<br>\r\n<img src=\"\/wp-content\/themes\/wp-rijkshuisstijl\/images\/admin\/kruimelpad.png\" alt=\"\" style=\"max-width: 100%; height: auto;\">",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5e29b4e1c47c7",
+            "label": "Zoekformulier wel of niet tonen?",
+            "name": "siteoption_hide_searchbox",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "hide": "Geen zoekformulier tonen in menu of kruimelpad",
+                "show": "Toon zoekformulier in menu of kruimelpad"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "show",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
             "key": "field_5fd92c2cce2c2",
-            "label": "Wil je menu of broodkruimelpad tonen op onderliggende pagina's?",
-            "name": "siteoption_broodkruimelpadmenu",
+            "label": "Menu of kruimelpad tonen op onderliggende pagina's?",
+            "name": "siteoption_kruimelpadmenu",
             "type": "radio",
             "instructions": "Met onderliggende pagina's bedoelen we: alle content behalve de homepage. In veel rijkshuisstijlsites wordt een kruimelpad getoond. Hier kun je kiezen welke van de twee opties je wil.",
             "required": 1,
@@ -28,8 +69,8 @@
         },
         {
             "key": "field_5fd93302718c1",
-            "label": "Broodkruimelpad helemaal verbergen?",
-            "name": "siteoption_broodkruimelpadmenu_hide_breadcrumb",
+            "label": "Kruimelpad tonen of verbergen?",
+            "name": "siteoption_kruimelpadmenu_hide_breadcrumb",
             "type": "radio",
             "instructions": "",
             "required": 0,
@@ -48,7 +89,7 @@
                 "id": ""
             },
             "choices": {
-                "show_breadcrumb": "Toon het kruimelpad",
+                "show_breadcrumb": "Toon het kruimelpad onder het menu",
                 "hide_breadcrumb": "Verberg het kruimelpad helemaal"
             },
             "allow_null": 0,
@@ -76,5 +117,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608070167
+    "modified": 1608126323
 }

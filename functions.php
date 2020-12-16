@@ -539,19 +539,24 @@ function rhswp_get_read_more_link( $thepermalink ) {
 // in de theme-options expliciet voor iets anders wordt gekozen.
 // zie: [admin] > Weergave > Instellingen theme > 'Menu of kruimelpad op onderliggende pagina's?'
 //
-// Veldnaam: 'siteoption_broodkruimelpadmenu'
+// Veldnaam: 'siteoption_kruimelpadmenu'
 // variabele: $rijkshuisstijlruimelpadmenu (boolean):
 // - true: toon op onderliggende pagina's geen menu, maar alleen een broodkruimelpad
 // - false: toon op onderliggende pagina's wel een menu, en daaronder een Genesis
-// broodkruimelpad, indien gewenst (veldnaam: 'siteoption_broodkruimelpadmenu_hide_breadcrumb')
+// kruimelpad, indien gewenst (veldnaam: 'siteoption_kruimelpadmenu_hide_breadcrumb')
 //
 
 $rijkshuisstijlruimelpadmenu = true;
 $hide_breadcrumb             = false;
+$show_searchform             = true;
 
-if ( 'toon_menu' === get_field( 'siteoption_broodkruimelpadmenu', 'option' ) ) {
+if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
+	$show_searchform = false;
+}
+
+if ( 'toon_menu' === get_field( 'siteoption_kruimelpadmenu', 'option' ) ) {
 	$rijkshuisstijlruimelpadmenu = false;
-	if ( 'hide_breadcrumb' === get_field( 'siteoption_broodkruimelpadmenu_hide_breadcrumb', 'option' ) ) {
+	if ( 'hide_breadcrumb' === get_field( 'siteoption_kruimelpadmenu_hide_breadcrumb', 'option' ) ) {
 		$hide_breadcrumb = true;
 	}
 }
@@ -561,14 +566,39 @@ if ( $rijkshuisstijlruimelpadmenu ) {
 	remove_action( 'genesis_after_header', 'genesis_do_nav' ); // primary menu
 
     // breadcrumb
+	add_filter( 'body_class', 'rhswp_append_body_class_breadcrumb' );
+
     // Reposition the breadcrumbs
 	remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
-
 	add_action( 'genesis_after_header', 'genesis_do_breadcrumbs', 18 );
 
 } else {
 	// toon een menu op onderliggende paagina's (i.e. anders dan de homepage)
 	// wel of geen kruimelpad tonen?
+	add_filter( 'body_class', 'rhswp_append_body_class_menu' );
+
+	// Reposition the breadcrumbs
+	remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
+	add_action( 'genesis_after_header', 'genesis_do_breadcrumbs', 18 );
+
+
+}
+
+//========================================================================================================
+
+function rhswp_append_body_class_menu( $classes ) {
+	$classes[] = 'menu-and-breadcrumb';
+
+	return $classes;
+}
+
+//========================================================================================================
+
+
+function rhswp_append_body_class_breadcrumb( $classes ) {
+	$classes[] = 'breadcrumb-only';
+
+	return $classes;
 }
 
 //========================================================================================================
@@ -602,8 +632,6 @@ load_child_theme_textdomain( 'wp-rijkshuisstijl', RHSWP_FOLDER . '/languages' );
 
 // append search box to navigation menu
 add_filter( 'wp_nav_menu_items', 'rhswp_append_search_box_to_menu', 10, 2 );
-
-// genesis_do_breadcrumbs
 
 /**
  * Filter menu items, appending either a search form or today's date.
@@ -939,6 +967,22 @@ function rhswp_breadcrumb_args( $args ) {
 
 	$separator  = __( '<span class="separator">&#8250;</span>', 'wp-rijkshuisstijl' );
 	$searchform = '';
+	if ( is_front_page() || is_search() ) {
+		// somehow the actueel pagina was marked as 'is_home()' (digitaleoverheid.nl/actueel)
+	} else {
+		if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
+			// alleen als het zoekformulier expliciet op verborgen is gezet, verbergen
+		} else {
+			if ( 'toon_menu' === get_field( 'siteoption_kruimelpadmenu', 'option' ) ) {
+			    // styling met menu, niet met broodkruimelmenu
+			}
+			else {
+				// zoekformulier gewoon tonen
+				$searchform = get_search_form( false );
+            }
+
+		}
+	}
 
 	$args['home']                    = esc_html( __( "Home", 'wp-rijkshuisstijl' ) );
 	$args['sep']                     = $separator;
