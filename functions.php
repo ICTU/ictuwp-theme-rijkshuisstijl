@@ -537,7 +537,7 @@ function rhswp_get_read_more_link( $thepermalink ) {
 // menu, zoals standaard is op de meeste rijkshuisstijl-sites.
 // Voor backwards compatibility blijft de mogelijkheid voor een broodkruimelpadmenu gehandhaaft, tenzij
 // in de theme-options expliciet voor iets anders wordt gekozen.
-// zie: [admin] > Weergave > Instellingen theme > 'Menu of kruimelpad op onderliggende pagina's?'
+// zie: [admin] > Weergave > Instellingen theme > 'Zoekformulier, menu, kruimelpad'
 //
 // Veldnaam: 'siteoption_kruimelpadmenu'
 // variabele: $rijkshuisstijlruimelpadmenu (boolean):
@@ -1916,24 +1916,24 @@ function rhswp_enqueue_js_scripts() {
 
 	if ( ! is_admin() ) {
 
+		$versie = filemtime( dirname( __FILE__ ) . '/js/menu.js' );
+
 		if ( DO_MINIFY_JS ) {
 
 			// the minified file
-			wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', CHILD_THEME_VERSION, true );
-			wp_enqueue_script( 'allscripts', RHSWP_THEMEFOLDER . '/js/min/scripts-min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
+			wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', $versie, true );
+			wp_enqueue_script( 'allscripts', RHSWP_THEMEFOLDER . '/js/min/scripts-min.js', array( 'jquery' ), $versie, true );
 
 		} else {
 
-			wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', CHILD_THEME_VERSION, true );
+			wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', $versie, true );
 
 			// these are the unminified JS-files
 			wp_enqueue_script( 'wp-rijkshuisstijl-polyfill-eventlistener', RHSWP_THEMEFOLDER . '/js/polyfill-eventlistener.js', array( 'jquery' ), '', true );
 			wp_enqueue_script( 'wp-rijkshuisstijl-polyfill-matchmedia', RHSWP_THEMEFOLDER . '/js/polyfill-matchmedia.js', array( 'jquery' ), '', true );
 			wp_enqueue_script( 'allscripts', RHSWP_THEMEFOLDER . '/js/carousel-actions.js', array( 'jquery' ), '', true );
-
-			wp_enqueue_script( 'details-element', RHSWP_THEMEFOLDER . '/js/details-element.js', '', CHILD_THEME_VERSION, true );
-
-			wp_enqueue_script( 'menu-menu', RHSWP_THEMEFOLDER . '/js/menu.js', '', CHILD_THEME_VERSION, true );
+			wp_enqueue_script( 'details-element', RHSWP_THEMEFOLDER . '/js/details-element.js', '', $versie, true );
+			wp_enqueue_script( 'menu-menu', RHSWP_THEMEFOLDER . '/js/menu.js', '', $versie, true );
 
 		}
 
@@ -1958,7 +1958,6 @@ function rhswp_enqueue_js_scripts() {
 //========================================================================================================
 
 add_filter( 'genesis_attr_nav-primary', 'add_class_to_menu' );
-add_filter( 'genesis_attr_nav-secondary', 'add_class_to_menu' );
 
 function add_class_to_menu( $attributes ) {
 	$attributes['class'] .= ' js-menu init';
