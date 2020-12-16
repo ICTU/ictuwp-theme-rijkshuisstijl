@@ -105,7 +105,11 @@ global $site_show_searchform;
 
 	echo '<div id="menu-container">';
 	echo '<div class="wrap">';
+	echo '<div class="buttons-title">';
 	echo '<p id="site_title_mobile">' . $title . '</p>';
+	echo '<button class="open" id="zoekdinges">Sluit zoeken</button>';
+	echo '<button class="close" id="menudinges">Sluit menu</button>';
+	echo '</div>'; // .buttons-title
 
 	echo '<nav class="nav-primary js-menu init geen-menu-button" role="navigation">';
 	if ( has_nav_menu( 'primary' ) ) {

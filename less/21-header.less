@@ -68,6 +68,7 @@
         font-family: @fontitalic;
       }
     }
+
     #logotype {
       overflow: hidden;
       float: left;
@@ -75,16 +76,19 @@
 
       &.flitspanel {
         margin-bottom: .25rem;
+
         img {
           max-width: 200px;
           height: auto;
           margin-top: 1rem;
         }
       }
+
       &.align-middle {
         width: 100%;
         display: block;
         transform: none;
+
         img {
           display: block;
           margin: 1rem auto;
@@ -120,20 +124,21 @@
 
   @media only screen and (max-width: ( @break_tablet - 1 ) ) {
 
+    .nav-secondary {
+      .visuallyhidden();
+    }
+
     .site-header .wrap {
       margin: 0;
       width: 100%;
 
-      .site-description {
+      .title-area p {
         text-indent: -9999em;
       }
     }
   }
 
 
-  @media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
-
-  }
 
   @media only screen and (min-width: ( @break_tablet ) ) {
 
@@ -168,7 +173,24 @@
 
 }
 
-// .siteheader()
-
 //========================================================================================================
 
+#genesis-nav-primary {
+  overflow: hidden;
+  border: 10px solid red;
+}
+
+#site_title_mobile {
+  // titel verbergen
+  display: none;
+
+  @media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
+    // tenzij we op een klein scherm zitten
+    display: block;
+    color: @wit;
+    font-weight: bold;
+    font-family: @fontstrong;
+  }
+
+
+}

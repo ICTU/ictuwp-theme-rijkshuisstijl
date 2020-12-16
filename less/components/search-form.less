@@ -66,27 +66,28 @@
   }
 }
 
-nav.nav-primary .search {
-  // het zoekformulier in het hoofdmenu
-  padding-right: 0;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+@media only screen and (min-width: ( @break_fullwidth ) ) {
+  nav.nav-primary .search {
+    // het zoekformulier in het hoofdmenu
+    padding-right: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 
-  form.search-form {
-    align-self: flex-end;
-    flex-basis: 350px;
+    form.search-form {
+      align-self: flex-end;
+      flex-basis: 350px;
 
-    input[type="search"] {
-      flex: 1 1 310px;
-    }
+      input[type="search"] {
+        flex: 1 1 310px;
+      }
 
-    input[type="submit"] {
-      flex: 0 0 48px;
+      input[type="submit"] {
+        flex: 0 0 48px;
+      }
     }
   }
-
 }
 
 

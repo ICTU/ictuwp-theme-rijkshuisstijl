@@ -11,7 +11,6 @@
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
-
 .menus() {
 
   nav.nav-primary,
@@ -20,6 +19,7 @@
     background: @nav_bg_color;
   }
 
+
   nav {
 
     ul, li {
@@ -27,12 +27,6 @@
       padding: 0;
     }
 
-    ul {
-      margin: 0;
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-    }
 
     li {
 
@@ -58,7 +52,145 @@
     }
 
     &.nav-primary {
-//      padding: .5rem 1rem 0 1rem;
+      a {
+        margin: 0;
+        text-decoration: none;
+        color: @nav_a_color_default;
+
+        &:hover,
+        &:active,
+        &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &.nav-secondary {
+      background: #F3F3F3;
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin: 0;
+
+        a {
+          padding-left: 1rem;
+          font-size: 1rem;
+          line-height: 2;
+        }
+      }
+    }
+
+  }
+
+  @media only screen and (max-width: ( @menubreakpoint - 1 ) ) {
+
+    .buttons-title {
+      display: flex;
+      flex-direction: row;
+
+      button, p {
+        line-height: 2rem;
+      }
+
+      p {
+        flex: 1 1 100%;
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: .5rem .5rem;
+        flex: 1 1 50px;
+        white-space: nowrap;
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 2rem;
+        background-size: 1.5rem 1.5rem;
+        text-indent: -9999rem;
+
+        &.open {
+          text-indent: unset;
+        }
+      }
+
+      #menudinges {
+        .iconaddfill('../images/svg/menu-open.svg?v3', @wit);
+        border: 1px solid @button_bg_default;
+
+        &.close {
+          .iconaddfill('../images/svg/menu-close.svg?v3', @wit);
+        }
+      }
+      #zoekdinges {
+        .iconaddfill('../images/svg/menu-search.svg?v3', @wit);
+      }
+
+    }
+
+    #site_title_mobile {
+      padding-left: 1rem;
+      margin: 0;
+      line-height: 2;
+    }
+    .nav-primary {
+      ul {
+        border-bottom: 1px solid @nav_a_color_default;
+        margin: 0 0 .5rem 0;
+
+        li {
+          padding: 0 1rem;
+          border-top: 1px solid @nav_a_color_default;
+          a {
+            flex-basis: 100%;
+            line-height: 2;
+            margin: .25rem 0;
+          }
+          &.search {
+            form {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  @media only screen and (min-width: ( @menubreakpoint ) ) {
+    nav.nav-primary {
+      ul {
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+        li {
+          padding-top: .75rem;
+          padding-bottom: .75rem;
+
+          a {
+            font-size: 1.25rem;
+            line-height: 2;
+          }
+        }
+
+      }
+    }
+
+  }
+
+
+}
+
+.xmenus() {
+
+
+  nav {
+
+    &.nav-primary {
 
       ul {
         &, li, span {
@@ -71,7 +203,6 @@
           padding-bottom: .75rem;
 
           a {
-            line-height: 2;
             display: inline-block;
             padding: .1rem 1rem .1rem 0;
           }
@@ -84,19 +215,6 @@
         }
       }
 
-      a {
-        margin: 0;
-        text-decoration: none;
-        font-size: 1.25rem;
-        color: @nav_a_color_default;
-//        padding: .5rem .25rem;
-
-        &:hover,
-        &:active,
-        &:focus {
-          text-decoration: underline;
-        }
-      }
 
       #homelink_button {
         display: flex;
@@ -123,7 +241,7 @@
           flex-grow: 0;
           flex-shrink: 0;
           background-color: @button_bg_default;
-          .iconaddfill('../images/svg/menu-open.svg', @wit);
+          .iconaddfill('../images/svg/menu-open.svg?v3', @wit);
           background-repeat: no-repeat;
           background-position: right center;
           padding-right: 2rem;
@@ -145,7 +263,7 @@
           }
 
           &[aria-expanded="true"] {
-            .iconaddfill('../images/svg/menu-close.svg', @wit);
+            .iconaddfill('../images/svg/menu-close.svg?v3', @wit);
           }
 
         }
@@ -154,18 +272,6 @@
 
     }
 
-    &.nav-secondary {
-      background: #F3F3F3;
-      ul {
-        justify-content: flex-end;
-
-        a {
-          padding-left: 1rem;
-          font-size: 1rem;
-          line-height: 2;
-        }
-      }
-    }
   }
 
   @media only screen and (max-width: ( @menubreakpoint - 1 ) ) {
