@@ -5919,7 +5919,7 @@ nav li.current-menu-item > a {
 nav.nav-primary a {
   margin: 0;
   text-decoration: none;
-  color: #dfe6e1;
+  color: #fff;
 }
 nav.nav-primary a:hover,
 nav.nav-primary a:active,
