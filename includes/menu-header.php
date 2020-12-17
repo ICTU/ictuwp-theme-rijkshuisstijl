@@ -98,28 +98,55 @@ remove_action( 'genesis_after_header', 'genesis_do_subnav' );
  */
 function rhswp_header_navigation() {
 
-global $site_show_searchform;
+	global $site_show_searchform;
 
 
-	$title = rhswp_clean_site_title( get_bloginfo( 'name' ) );
+	$title    = rhswp_clean_site_title( get_bloginfo( 'name' ) );
+	$idmenu   = 'primary-menu';
+	$idsearch = 'search-menu';
 
 	echo '<div id="menu-container">';
 	echo '<div class="wrap">';
 	echo '<div class="buttons-title">';
 	echo '<p id="site_title_mobile">' . $title . '</p>';
-	echo '<button class="open" id="zoekdinges">Sluit zoeken</button>';
-	echo '<button class="close" id="menudinges">Sluit menu</button>';
+	echo '<button class="open" id="zoekdinges" aria-expanded="false" aria-controls="' . $idsearch . '">Sluit zoeken</button>';
+	echo '<button class="close" id="menudinges" aria-expanded="false" aria-controls="' . $idmenu . '">Sluit menu</button>';
 	echo '</div>'; // .buttons-title
 
 	echo '<nav class="nav-primary js-menu init geen-menu-button" role="navigation">';
 	if ( has_nav_menu( 'primary' ) ) {
 		wp_nav_menu( array(
 			'theme_location'  => 'primary',
-			'menu_id'         => 'primary-menu',
+			'menu_id'         => $idmenu,
 			'container_class' => ''
 		) );
 	}
 	echo '</nav>';
+	$args = array(
+		'echo' => false
+	);
+
+	$search = get_search_form( $args );
+
+	if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
+		// zoekdoos hoeft nergens getoond te worden
+		$search = '';
+	}
+
+	if ( is_search() ) {
+		// geen extra zoekdoos op zoekresultaatpagina
+		$search = '';
+	}
+	if ( is_404() ) {
+		// geen extra zoekdoos op 404-pagina
+		$search = '';
+	}
+
+	if ( $search ) {
+		echo '<div id="' . $idsearch . '">';
+		echo $search;
+		echo '</div>';
+	}
 
 	echo '</div>'; // .wrap
 	echo '</div>'; // #nav_container
@@ -177,6 +204,48 @@ function rhswp_clean_site_title( $title = '' ) {
 
 	return $title;
 
+}
+
+//========================================================================================================
+
+// append search box to navigation menu
+//add_filter( 'wp_nav_menu_items', 'rhswp_append_search_box_to_menu', 10, 2 );
+
+/**
+ * Filter menu items, appending either a search form or today's date.
+ *
+ * @param string $menu HTML string of list items.
+ * @param stdClass $args Menu arguments.
+ *
+ * @return string Amended HTML string of list items.
+ */
+
+function rhswp_append_search_box_to_menu( $menu, $args ) {
+
+	if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
+		// zoekdoos hoeft nergens getoond te worden
+		return $menu;
+	}
+
+	if ( is_search() ) {
+		// geen extra zoekdoos op zoekresultaatpagina
+		return $menu;
+	}
+	if ( is_404() ) {
+		// geen extra zoekdoos op 404-pagina
+		return $menu;
+	}
+
+	if ( 'primary' !== $args->theme_location ) {
+		return $menu;
+	}
+
+	ob_start();
+	get_search_form();
+	$search = ob_get_clean();
+	$menu   .= '<li class="right search">' . $search . '</li>';
+
+	return $menu;
 }
 
 //========================================================================================================

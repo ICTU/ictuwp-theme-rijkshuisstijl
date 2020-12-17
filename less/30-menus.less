@@ -49,6 +49,20 @@
           font-family: @fontstrong;
         }
       }
+
+      &.current-menu-parent,
+      &.current-page-parent,
+      &.current_page_parent,
+      &.current_page_ancestor,
+      &.current-page-ancestor,
+      &.current-menu-item {
+        & > a {
+          font-weight: bold;
+          font-family: @fontstrong;
+          text-decoration: underline;
+        }
+      }
+
     }
 
     &.nav-primary {
@@ -86,6 +100,10 @@
 
   @media only screen and (max-width: ( @menubreakpoint - 1 ) ) {
 
+    #search-menu {
+      padding: 0 1rem .5rem 1rem;
+    }
+
     .buttons-title {
       display: flex;
       flex-direction: row;
@@ -109,7 +127,6 @@
         background-position: right center;
         padding-right: 2rem;
         background-size: 1.5rem 1.5rem;
-        text-indent: -9999rem;
 
         &.open {
           text-indent: unset;
@@ -124,6 +141,7 @@
           .iconaddfill('../images/svg/menu-close.svg?v3', @wit);
         }
       }
+
       #zoekdinges {
         .iconaddfill('../images/svg/menu-search.svg?v3', @wit);
       }
@@ -135,6 +153,7 @@
       margin: 0;
       line-height: 2;
     }
+
     .nav-primary {
       ul {
         border-bottom: 1px solid @nav_a_color_default;
@@ -143,11 +162,13 @@
         li {
           padding: 0 1rem;
           border-top: 1px solid @nav_a_color_default;
+
           a {
             flex-basis: 100%;
             line-height: 2;
             margin: .25rem 0;
           }
+
           &.search {
             form {
               width: 100%;
@@ -171,18 +192,42 @@
           padding-top: .75rem;
           padding-bottom: .75rem;
 
+          & + li {
+            margin-left: 2rem;
+          }
+
           a {
             font-size: 1.25rem;
-            line-height: 2;
+            line-height: 2.5;
           }
         }
-
       }
     }
 
+    #menu-container .wrap {
+      display: flex;
+      flex-direction: row;
+
+      .buttons-title {
+        display: none;
+      }
+
+      nav {
+        flex: 1 1 100%;
+      }
+
+      #search-menu {
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+        flex: 1 1 368px;
+      }
+    }
+
+    #menudinges,
+    #zoekdinges {
+      display: none;
+    }
   }
-
-
 }
 
 .xmenus() {
@@ -214,7 +259,6 @@
           }
         }
       }
-
 
       #homelink_button {
         display: flex;
@@ -268,7 +312,6 @@
 
         }
       }
-
 
     }
 
@@ -394,18 +437,6 @@
     }
 
     nav.nav-primary {
-      .current-menu-parent,
-      .current-page-parent,
-      .current_page_parent,
-      .current_page_ancestor,
-      .current-page-ancestor,
-      .current-menu-item {
-        & > a {
-          font-weight: bold;
-          font-family: @fontstrong;
-          text-decoration: underline;
-        }
-      }
     }
   }
 }

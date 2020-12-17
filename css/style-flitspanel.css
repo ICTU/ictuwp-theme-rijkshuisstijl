@@ -53,7 +53,6 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 /* assorted elements */
 #genesis-nav-primary {
   overflow: hidden;
-  border: 10px solid red;
 }
 #site_title_mobile {
   display: none;
@@ -5907,6 +5906,16 @@ nav li.selected span {
   font-weight: bold;
   font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
 }
+nav li.current-menu-parent > a,
+nav li.current-page-parent > a,
+nav li.current_page_parent > a,
+nav li.current_page_ancestor > a,
+nav li.current-page-ancestor > a,
+nav li.current-menu-item > a {
+  font-weight: bold;
+  font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
+  text-decoration: underline;
+}
 nav.nav-primary a {
   margin: 0;
   text-decoration: none;
@@ -5932,6 +5941,9 @@ nav.nav-secondary ul a {
   line-height: 2;
 }
 @media only screen and (max-width: 759px) {
+  #search-menu {
+    padding: 0 1rem 0.5rem 1rem;
+  }
   .buttons-title {
     display: flex;
     flex-direction: row;
@@ -5954,20 +5966,19 @@ nav.nav-secondary ul a {
     background-position: right center;
     padding-right: 2rem;
     background-size: 1.5rem 1.5rem;
-    text-indent: -9999rem;
   }
   .buttons-title button.open {
     text-indent: unset;
   }
   .buttons-title #menudinges {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2232px%22%20height%3D%2232px%22%20viewBox%3D%220%200%2032%2032%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3Emenu-open%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22menu-open%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22Rectangle%22%20fill%3D%22%23FFFFFF%22%20fill-rule%3D%22nonzero%22%20points%3D%2223%209%2023%2011.8%209%2011.8%209%209%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22Rectangle%22%20fill%3D%22%23FFFFFF%22%20fill-rule%3D%22nonzero%22%20points%3D%2223%2014.6%2023%2017.4%209%2017.4%209%2014.6%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22Rectangle%22%20fill%3D%22%23FFFFFF%22%20fill-rule%3D%22nonzero%22%20points%3D%2223%2020.2%2023%2023%209%2023%209%2020.2%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23fff%22%20fill-rule%3D%22nonzero%22%3E%3Cpath%20d%3D%22m23%209v2.8h-14v-2.8z%22%2F%3E%3Cpath%20d%3D%22m23%2014.6v2.8h-14v-2.8z%22%2F%3E%3Cpath%20d%3D%22m23%2020.2v2.8h-14v-2.8z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
     border: 1px solid #01689b;
   }
   .buttons-title #menudinges.close {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2232px%22%20height%3D%2232px%22%20viewBox%3D%220%200%2032%2032%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3Emenu-close%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22menu-close%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(7.000000%2C%207.000000)%22%20fill%3D%22%23FFFFFF%22%20fill-rule%3D%22nonzero%22%20id%3D%22Path%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%2218%2015.2548137%2011.7463555%208.99987941%2018%202.7454275%2015.2548505%200%209.00072355%206.25421072%202.74659663%200%200.00120591703%202.7454275%206.25557402%208.99987941%200%2015.2548137%202.74514953%2018%209.00072355%2011.7448245%2015.2548505%2018%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m18%2015.2548137-6.2536445-6.25493429%206.2536445-6.25445191-2.7451495-2.7454275-6.25412695%206.25421072-6.25412692-6.25421072-2.74539071%202.7454275%206.2543681%206.25445191-6.25557402%206.25493429%202.74514953%202.7451863%206.25557402-6.2551755%206.25412695%206.2551755z%22%20fill%3D%22%23fff%22%20transform%3D%22translate(7%207)%22%2F%3E%3C%2Fsvg%3E");
   }
   .buttons-title #zoekdinges {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2232px%22%20height%3D%2232px%22%20viewBox%3D%220%200%2032%2032%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3Emenu-search%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22menu-search%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M24.4647522%2C21.6335677%20L19.9173163%2C17.0939416%20C20.4374014%2C16.1287005%2020.7339341%2C15.0263257%2020.7339341%2C13.8556843%20C20.7339341%2C10.0753985%2017.6532222%2C7%2013.8664658%2C7%20C10.0803109%2C7%207%2C10.0753985%207%2C13.8556843%20C7%2C17.636971%2010.0803109%2C20.7133705%2013.8664658%2C20.7133705%20C15.0237252%2C20.7133705%2016.1133174%2C20.4232877%2017.0708833%2C19.9163935%20L21.6276423%2C24.4662296%20C22.3404034%2C25.1779235%2023.5014721%2C25.1779235%2024.214133%2C24.4662296%20L24.4647522%2C24.2159856%20C25.179418%2C23.5024899%2025.1774131%2C22.3470634%2024.4647522%2C21.6335677%20Z%20M9.70668773%2C13.8556843%20C9.70668773%2C11.5626486%2011.5699916%2C9.70263507%2013.8664658%2C9.70263507%20C16.1639424%2C9.70263507%2018.0272463%2C11.5626486%2018.0272463%2C13.8556843%20C18.0272463%2C16.150722%2016.1639424%2C18.0107355%2013.8664658%2C18.0107355%20C11.5699916%2C18.0107355%209.70668773%2C16.150722%209.70668773%2C13.8556843%20Z%22%20fill%3D%22%23FFFFFF%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m24.4647522%2021.6335677-4.5474359-4.5396261c.5200851-.9652411.8166178-2.0676159.8166178-3.2382573%200-3.7802858-3.0807119-6.8556843-6.8674683-6.8556843-3.7861549%200-6.8664658%203.0753985-6.8664658%206.8556843%200%203.7812867%203.0803109%206.8576862%206.8664658%206.8576862%201.1572594%200%202.2468516-.2900828%203.2044175-.796977l4.556759%204.5498361c.7127611.7116939%201.8738298.7116939%202.5864907%200l.2506192-.250244c.7146658-.7134957.7126609-1.8689222%200-2.5824179zm-14.75806447-7.7778834c0-2.2930357%201.86330387-4.15304923%204.15977807-4.15304923%202.2974766%200%204.1607805%201.86001353%204.1607805%204.15304923%200%202.2950377-1.8633039%204.1550512-4.1607805%204.1550512-2.2964742%200-4.15977807-1.8600135-4.15977807-4.1550512z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E");
   }
   #site_title_mobile {
     padding-left: 1rem;
@@ -6002,9 +6013,31 @@ nav.nav-secondary ul a {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
   }
+  nav.nav-primary ul li + li {
+    margin-left: 2rem;
+  }
   nav.nav-primary ul li a {
     font-size: 1.25rem;
-    line-height: 2;
+    line-height: 2.5;
+  }
+  #menu-container .wrap {
+    display: flex;
+    flex-direction: row;
+  }
+  #menu-container .wrap .buttons-title {
+    display: none;
+  }
+  #menu-container .wrap nav {
+    flex: 1 1 100%;
+  }
+  #menu-container .wrap #search-menu {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    flex: 1 1 368px;
+  }
+  #menudinges,
+  #zoekdinges {
+    display: none;
   }
 }
 @-webkit-keyframes bzzzzzt {
@@ -11305,6 +11338,11 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 .breadcrumb nav span,
 .breadcrumb nav a {
   font-family: 'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
+}
+@media only screen and (max-width: 650px) {
+  .breadcrumb nav {
+    padding-left: 1rem;
+  }
 }
 .breadcrumb .separator {
   speak: never;

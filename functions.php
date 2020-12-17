@@ -557,48 +557,6 @@ load_child_theme_textdomain( 'wp-rijkshuisstijl', RHSWP_FOLDER . '/languages' );
 
 //========================================================================================================
 
-// append search box to navigation menu
-add_filter( 'wp_nav_menu_items', 'rhswp_append_search_box_to_menu', 10, 2 );
-
-/**
- * Filter menu items, appending either a search form or today's date.
- *
- * @param string $menu HTML string of list items.
- * @param stdClass $args Menu arguments.
- *
- * @return string Amended HTML string of list items.
- */
-
-function rhswp_append_search_box_to_menu( $menu, $args ) {
-
-	if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
-		// zoekdoos hoeft nergens getoond te worden
-		return $menu;
-	}
-
-	if ( is_search() ) {
-		// geen extra zoekdoos op zoekresultaatpagina
-		return $menu;
-	}
-	if ( is_404() ) {
-		// geen extra zoekdoos op 404-pagina
-		return $menu;
-	}
-
-	if ( 'primary' !== $args->theme_location ) {
-		return $menu;
-	}
-
-	ob_start();
-	get_search_form();
-	$search = ob_get_clean();
-	$menu   .= '<li class="right search">' . $search . '</li>';
-
-	return $menu;
-}
-
-//========================================================================================================
-
 add_filter( 'genesis_single_crumb', 'rhswp_add_extra_info_to_breadcrumb', 10, 2 );
 add_filter( 'genesis_page_crumb', 'rhswp_add_extra_info_to_breadcrumb', 10, 2 );
 add_filter( 'genesis_archive_crumb', 'rhswp_add_extra_info_to_breadcrumb', 10, 2 );
