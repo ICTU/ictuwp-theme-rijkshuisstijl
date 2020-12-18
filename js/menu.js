@@ -44,6 +44,70 @@ function hidemenu_button(document, window, undefined) {
 
 function showmenu_button(document, window, undefined) {
 
+    // is er uberhaupt een zoekformulier?
+    if (typeof (search_container) !== 'undefined' && search_container !== null) {
+
+        // ja, er is een zoekformulier
+
+        // dan checken of de button voor het zoeken al bestaat
+        if (typeof (search_button) === 'undefined' || search_button === null) {
+            // bestaat nog niet, dus maken
+            search_button = document.createElement('button');
+            search_button.setAttribute('id', 'search_button');
+            search_button.setAttribute('class', 'open');
+            search_button.setAttribute('aria-expanded', 'false');
+            search_button.setAttribute('aria-controls', 'menu_container');
+            search_button.innerHTML = '<span class="label">' + search_open + '</span><span class="icon">&nbsp;</span>';
+            buttons_container.appendChild(search_button);
+        }
+
+
+        if (typeof (search_button) !== 'undefined' && search_button !== null) {
+
+            search_button.classList.remove('init');
+            search_button.classList.add('closed');
+
+            search_container.classList.remove('init');
+            search_container.classList.add('closed');
+            search_container.hidden = true;
+            search_container.setAttribute('aria-expanded', 'false');
+
+            search_button.addEventListener('click', function () {
+
+                // Als het zoekformulier niet zichtbaar is
+                if (search_container.classList.contains('closed')) {
+
+                    // ..dan maken we het weer zichtbaar
+                    search_container.classList.remove('closed');
+                    search_container.classList.add('opened');
+                    search_container.setAttribute('aria-expanded', 'true');
+                    search_container.hidden = false;
+
+                    search_button.setAttribute('aria-label', search_open);
+                    search_button.setAttribute('aria-expanded', 'false');
+                    search_button.classList.remove('closed');
+                    search_button.classList.add('opened');
+                    search_button.querySelector('.label').innerHTML = search_close;
+
+                } else {
+
+                    // zoekformulier is wel zichtbaar, dus weer verbergen
+                    search_container.classList.add('closed');
+                    search_container.classList.remove('opened');
+                    search_container.setAttribute('aria-expanded', 'false');
+                    search_container.hidden = true;
+
+                    search_button.setAttribute('aria-label', search_close);
+                    search_button.setAttribute('aria-expanded', 'true');
+                    search_button.classList.remove('opened');
+                    search_button.classList.add('closed');
+                    search_button.querySelector('.label').innerHTML = search_close;
+
+                }
+            }, false);
+        }
+    }
+
     // is er uberhaupt een menu?
     if (typeof (menu_container) !== 'undefined' && menu_container !== null) {
 
@@ -109,69 +173,7 @@ function showmenu_button(document, window, undefined) {
         }
     }
 
-    // is er uberhaupt een zoekformulier?
-    if (typeof (search_container) !== 'undefined' && search_container !== null) {
 
-        // ja, er is een zoekformulier
-
-        // dan checken of de button voor het zoeken al bestaat
-        if (typeof (search_button) === 'undefined' || search_button === null) {
-            // bestaat nog niet, dus maken
-            search_button = document.createElement('button');
-            search_button.setAttribute('id', 'search_button');
-            search_button.setAttribute('class', 'open');
-            search_button.setAttribute('aria-expanded', 'false');
-            search_button.setAttribute('aria-controls', 'menu_container');
-            search_button.innerHTML = '<span class="label">' + search_open + '</span><span class="icon">&nbsp;</span>';
-            buttons_container.appendChild(search_button);
-        }
-
-
-        if (typeof (search_button) !== 'undefined' && search_button !== null) {
-
-            search_button.classList.remove('init');
-            search_button.classList.add('closed');
-
-            search_container.classList.remove('init');
-            search_container.classList.add('closed');
-            search_container.hidden = true;
-            search_container.setAttribute('aria-expanded', 'false');
-
-            search_button.addEventListener('click', function () {
-
-                // Als het zoekformulier niet zichtbaar is
-                if (search_container.classList.contains('closed')) {
-
-                    // ..dan maken we het weer zichtbaar
-                    search_container.classList.remove('closed');
-                    search_container.classList.add('opened');
-                    search_container.setAttribute('aria-expanded', 'true');
-                    search_container.hidden = false;
-
-                    search_button.setAttribute('aria-label', search_open);
-                    search_button.setAttribute('aria-expanded', 'false');
-                    search_button.classList.remove('closed');
-                    search_button.classList.add('opened');
-                    search_button.querySelector('.label').innerHTML = search_close;
-
-                } else {
-
-                    // zoekformulier is wel zichtbaar, dus weer verbergen
-                    search_container.classList.add('closed');
-                    search_container.classList.remove('opened');
-                    search_container.setAttribute('aria-expanded', 'false');
-                    search_container.hidden = true;
-
-                    search_button.setAttribute('aria-label', search_close);
-                    search_button.setAttribute('aria-expanded', 'true');
-                    search_button.classList.remove('opened');
-                    search_button.classList.add('closed');
-                    search_button.querySelector('.label').innerHTML = search_close;
-
-                }
-            }, false);
-        }
-    }
 }
 
 

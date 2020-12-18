@@ -5805,11 +5805,13 @@ main .no-results-widget.widget_search {
   float: left;
   margin-bottom: 1rem;
 }
+.site-header .wrap #logotype .container,
 .site-header .wrap #logotype a {
   overflow: hidden;
   display: block;
 }
 @media only screen and (max-width: 759px) {
+  .site-header .wrap #logotype .container,
   .site-header .wrap #logotype a {
     width: 40px;
     height: 60px;
@@ -5818,6 +5820,7 @@ main .no-results-widget.widget_search {
     background-repeat: no-repeat;
     background-size: 40px 80px;
   }
+  .site-header .wrap #logotype .container img,
   .site-header .wrap #logotype a img {
     display: none;
   }

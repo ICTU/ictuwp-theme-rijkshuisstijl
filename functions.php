@@ -5553,8 +5553,8 @@ function rhswp_append_site_logo() {
 	}
 
 	if ( is_front_page() ) {
-		$anchorstart = '';
-		$anchorend   = '';
+		$anchorstart = '<span class="container">';
+		$anchorend   = '</span>';
 	}
 
 	if ( $flavor_select == "flitspanel" ) {
