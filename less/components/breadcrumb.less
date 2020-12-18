@@ -43,10 +43,6 @@
     a {
       font-family: @bodyfont;
     }
-    @media only screen and ( max-width: @break_tablet ) {
-      padding-left: 1rem;
-    }
-
   }
 
   .separator {
@@ -124,8 +120,11 @@
 
     .wrap {
       display: flex;
-    }
 
+      @media only screen and (max-width: @break_fullwidth ) {
+        padding-left: 1rem;
+      }
+    }
 
     nav {
       color: @wit;
@@ -166,6 +165,7 @@
 
       nav {
         font-size: 1.625rem;
+        flex: 0 1 100%;
       }
 
       .search-form {

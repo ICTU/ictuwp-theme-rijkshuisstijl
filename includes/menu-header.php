@@ -28,18 +28,26 @@
 // - false: toon op onderliggende pagina's wel een menu, en daaronder een Genesis
 // kruimelpad, indien gewenst (veldnaam: 'siteoption_kruimelpadmenu_hide_breadcrumb')
 //
+// Defaults:
+// - we tonen een kruimelpad en geen menu
+// - we tonen wel het zoekformulier
 
 $site_show_rijkshuisstijlruimelpadmenu = true;
 $site_hide_genesis_breadcrumb          = false;
 $site_show_searchform                  = true;
+
 
 if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
 	$site_show_searchform = false;
 }
 
 if ( 'toon_menu' === get_field( 'siteoption_kruimelpadmenu', 'option' ) ) {
+	// - in plaats van een kruimelpad tonen we het menu
 	$site_show_rijkshuisstijlruimelpadmenu = false;
+
+	// kijken of we onder het menu wel of geen kruimelpad willen tonen?
 	if ( 'hide_breadcrumb' === get_field( 'siteoption_kruimelpadmenu_hide_breadcrumb', 'option' ) ) {
+		// nee, we willen geen kruimelpad tonen
 		$site_hide_genesis_breadcrumb = true;
 	}
 }
@@ -101,55 +109,72 @@ function rhswp_header_navigation() {
 	global $site_show_searchform;
 
 
-	$title    = rhswp_clean_site_title( get_bloginfo( 'name' ) );
-	$idmenu   = 'primary-menu';
-	$idsearch = 'search-menu';
+	$title       = rhswp_clean_site_title( get_bloginfo( 'name' ) );
+	$idmenu      = 'menu_container';
+	$idsearch    = 'search_container';
+	$anchorstart = '<a href="' . get_bloginfo( 'url' ) . '">';
+	$anchorend   = '</a>';
 
-	echo '<div id="menu-container">';
-	echo '<div class="wrap">';
-	echo '<div class="buttons-title">';
-	echo '<p id="site_title_mobile">' . $title . '</p>';
-	echo '<button class="open" id="zoekdinges" aria-expanded="false" aria-controls="' . $idsearch . '">Sluit zoeken</button>';
-	echo '<button class="close" id="menudinges" aria-expanded="false" aria-controls="' . $idmenu . '">Sluit menu</button>';
-	echo '</div>'; // .buttons-title
-
-	echo '<nav class="nav-primary js-menu init geen-menu-button" role="navigation">';
-	if ( has_nav_menu( 'primary' ) ) {
-		wp_nav_menu( array(
-			'theme_location'  => 'primary',
-			'menu_id'         => $idmenu,
-			'container_class' => ''
-		) );
-	}
-	echo '</nav>';
-	$args = array(
-		'echo' => false
-	);
-
-	$search = get_search_form( $args );
-
-	if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
-		// zoekdoos hoeft nergens getoond te worden
-		$search = '';
+	if ( is_front_page() ) {
+		$anchorstart = '';
+		$anchorend   = '';
 	}
 
-	if ( is_search() ) {
-		// geen extra zoekdoos op zoekresultaatpagina
-		$search = '';
-	}
-	if ( is_404() ) {
-		// geen extra zoekdoos op 404-pagina
-		$search = '';
-	}
 
-	if ( $search ) {
-		echo '<div id="' . $idsearch . '">';
-		echo $search;
-		echo '</div>';
-	}
+	if ( is_front_page() || ( 'toon_menu' === get_field( 'siteoption_kruimelpadmenu', 'option' ) ) ) {
+		// - in plaats van een kruimelpad tonen we het menu
+		$site_show_rijkshuisstijlruimelpadmenu = false;
 
-	echo '</div>'; // .wrap
-	echo '</div>'; // #nav_container
+		if ( has_nav_menu( 'primary' ) ) {
+
+			echo '<div id="menu-container">';
+			echo '<div class="wrap">';
+			echo '<div id="buttons-title">';
+			echo '<p id="site_title_mobile">' . $anchorstart . $title . $anchorend . '</p>';
+			echo '<div id="buttons_container"> ';
+			echo '</div>'; // #buttons_container
+			echo '</div>'; // #buttons-title
+
+			echo '<nav class="nav-primary init" role="navigation" id="' . $idmenu . '">';
+			wp_nav_menu( array(
+				'theme_location'  => 'primary',
+				'menu_id'         => 'ul_nav_primary',
+				'container_class' => ''
+			) );
+			echo '</nav>';
+
+			$args = array(
+				'echo' => false
+			);
+
+			$search = get_search_form( $args );
+
+			if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
+				// zoekdoos hoeft nergens getoond te worden
+				$search = '';
+			}
+
+			if ( is_search() ) {
+				// geen extra zoekdoos op zoekresultaatpagina
+				$search = '';
+			}
+			if ( is_404() ) {
+				// geen extra zoekdoos op 404-pagina
+				$search = '';
+			}
+
+			if ( $search ) {
+				echo '<div id="' . $idsearch . '" class="init">';
+				echo $search;
+				echo '</div>';
+			}
+
+			echo '</div>'; // .wrap
+			echo '</div>'; // #nav_container
+
+		}
+
+	}
 
 }
 
@@ -165,13 +190,17 @@ add_filter( 'genesis_seo_title', 'rhswp_filter_site_title' );
 // filtering long strings and hide site title visually if necessary
 function rhswp_filter_site_title( $title = '' ) {
 
-	$title      = rhswp_clean_site_title( get_bloginfo( 'name' ) );
-	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
+	$title       = rhswp_clean_site_title( get_bloginfo( 'name' ) );
+	$showpayoff  = get_field( 'siteoption_show_payoff_in_header', 'option' );
+	$anchorstart = '<a href="' . get_bloginfo( 'url' ) . '">';
+	$anchorend   = '</a>';
 
-	$anchor_start = '<a href="' . get_bloginfo( 'url' ) . '">';
-	$anchor_end   = '</a>';
+	if ( is_front_page() ) {
+		$anchorstart = '';
+		$anchorend   = '';
+	}
 
-	$title = '<p class="site-title" id="menu_site_description">' . $anchor_start . $title . $anchor_end . '</p>';
+	$title = '<p class="site-title" id="menu_site_description">' . $anchorstart . $title . $anchorend . '</p>';
 
 	if ( 'show_payoff_in_header_no' === $showpayoff ) {
 

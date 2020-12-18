@@ -5650,23 +5650,16 @@ div .gfield_repeater_cell {
   -webkit-appearance: none;
   border-radius: 0;
 }
-@media only screen and (min-width: 1200px) {
-  nav.nav-primary .search {
-    padding-right: 0;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+@media only screen and (max-width: 759px) {
+  #search_container {
+    padding: 0.5rem 1rem 1rem 1rem;
   }
-  nav.nav-primary .search form.search-form {
-    align-self: flex-end;
-    flex-basis: 350px;
+  .search-form input[type="search"] {
+    font-size: 1rem;
   }
-  nav.nav-primary .search form.search-form input[type="search"] {
-    flex: 1 1 310px;
-  }
-  nav.nav-primary .search form.search-form input[type="submit"] {
-    flex: 0 0 48px;
+  .search-form input[type="submit"] {
+    height: 40px;
+    width: 40px;
   }
 }
 main .search-form {
@@ -5774,6 +5767,12 @@ main .no-results-widget.widget_search {
   font-weight: normal;
   flex: 1 0 100%;
 }
+@media only screen and (max-width: 1200px) {
+  .site-header .wrap .title-area .site-title,
+  .site-header .wrap .title-area .site-description {
+    padding-left: 1rem;
+  }
+}
 .site-header .wrap .title-area .site-title {
   font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
 }
@@ -5805,6 +5804,23 @@ main .no-results-widget.widget_search {
   overflow: hidden;
   float: left;
   margin-bottom: 1rem;
+}
+.site-header .wrap #logotype a {
+  overflow: hidden;
+  display: block;
+}
+@media only screen and (max-width: 759px) {
+  .site-header .wrap #logotype a {
+    width: 40px;
+    height: 60px;
+    background-image: url('../images/svg/logo-digitale-overheid.svg');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 40px 80px;
+  }
+  .site-header .wrap #logotype a img {
+    display: none;
+  }
 }
 .site-header .wrap #logotype.flitspanel {
   margin-bottom: 0.25rem;
@@ -5941,44 +5957,82 @@ nav.nav-secondary ul a {
   line-height: 2;
 }
 @media only screen and (max-width: 759px) {
-  #search-menu {
-    padding: 0 1rem 0.5rem 1rem;
+  #buttons-title {
+    position: relative;
   }
-  .buttons-title {
-    display: flex;
-    flex-direction: row;
-  }
-  .buttons-title button,
-  .buttons-title p {
+  #buttons-title button,
+  #buttons-title p {
     line-height: 2rem;
   }
-  .buttons-title p {
-    flex: 1 1 100%;
+  #buttons-title p {
     padding: 0.5rem 1rem;
     font-size: 1.25rem;
   }
-  .buttons-title button {
+  #buttons-title p a {
+    color: #fff;
+    text-decoration: none;
+  }
+  #buttons-title p a:hover,
+  #buttons-title p a:focus,
+  #buttons-title p a:active {
+    text-decoration: underline;
+  }
+  #buttons-title #buttons_container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  #buttons-title button {
     font-size: 1rem;
-    padding: 0.5rem 0.5rem;
-    flex: 1 1 50px;
+    padding: 0;
+    background-color: #01689b;
+    border: 1px solid #01689b;
+    margin: 0 2px;
+  }
+  #buttons-title button .label {
+    white-space: nowrap;
+    display: inline-block;
+    padding-left: 0.5rem;
+  }
+  #buttons-title button .icon {
     white-space: nowrap;
     background-repeat: no-repeat;
-    background-position: right center;
-    padding-right: 2rem;
+    background-position: center center;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
     background-size: 1.5rem 1.5rem;
   }
-  .buttons-title button.open {
-    text-indent: unset;
+  #buttons-title button.closed .label {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
   }
-  .buttons-title #menudinges {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23fff%22%20fill-rule%3D%22nonzero%22%3E%3Cpath%20d%3D%22m23%209v2.8h-14v-2.8z%22%2F%3E%3Cpath%20d%3D%22m23%2014.6v2.8h-14v-2.8z%22%2F%3E%3Cpath%20d%3D%22m23%2020.2v2.8h-14v-2.8z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-    border: 1px solid #01689b;
+  #buttons-title button:hover,
+  #buttons-title button:focus {
+    background-color: #01689b;
+    border-color: #fff;
+    color: #fff;
   }
-  .buttons-title #menudinges.close {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m18%2015.2548137-6.2536445-6.25493429%206.2536445-6.25445191-2.7451495-2.7454275-6.25412695%206.25421072-6.25412692-6.25421072-2.74539071%202.7454275%206.2543681%206.25445191-6.25557402%206.25493429%202.74514953%202.7451863%206.25557402-6.2551755%206.25412695%206.2551755z%22%20fill%3D%22%23fff%22%20transform%3D%22translate(7%207)%22%2F%3E%3C%2Fsvg%3E");
+  #buttons-title #menu_button .icon {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2232px%22%20height%3D%2232px%22%20viewBox%3D%220%200%2032%2032%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3Emenu-open%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22menu-open%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(9.000000%2C%209.000000)%22%20fill%3D%22%23fff%22%20fill-rule%3D%22nonzero%22%20id%3D%22Rectangle%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%2214%206.66133815e-16%2014%202.8%200%202.8%200%206.66133815e-16%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%2214%205.6%2014%208.4%200%208.4%200%205.6%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%2214%2011.2%2014%2014%200%2014%200%2011.2%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
   }
-  .buttons-title #zoekdinges {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m24.4647522%2021.6335677-4.5474359-4.5396261c.5200851-.9652411.8166178-2.0676159.8166178-3.2382573%200-3.7802858-3.0807119-6.8556843-6.8674683-6.8556843-3.7861549%200-6.8664658%203.0753985-6.8664658%206.8556843%200%203.7812867%203.0803109%206.8576862%206.8664658%206.8576862%201.1572594%200%202.2468516-.2900828%203.2044175-.796977l4.556759%204.5498361c.7127611.7116939%201.8738298.7116939%202.5864907%200l.2506192-.250244c.7146658-.7134957.7126609-1.8689222%200-2.5824179zm-14.75806447-7.7778834c0-2.2930357%201.86330387-4.15304923%204.15977807-4.15304923%202.2974766%200%204.1607805%201.86001353%204.1607805%204.15304923%200%202.2950377-1.8633039%204.1550512-4.1607805%204.1550512-2.2964742%200-4.15977807-1.8600135-4.15977807-4.1550512z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E");
+  #buttons-title #menu_button.opened .icon {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2232px%22%20height%3D%2232px%22%20viewBox%3D%220%200%2032%2032%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3Emenu-close%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22menu-close%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(7.000000%2C%207.000000)%22%20fill%3D%22%23fff%22%20fill-rule%3D%22nonzero%22%20id%3D%22Path%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%2218%2015.2548137%2011.7463555%208.99987941%2018%202.7454275%2015.2548505%200%209.00072355%206.25421072%202.74659663%200%200.00120591703%202.7454275%206.25557402%208.99987941%200%2015.2548137%202.74514953%2018%209.00072355%2011.7448245%2015.2548505%2018%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+  }
+  #buttons-title #search_button .icon {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2232px%22%20height%3D%2232px%22%20viewBox%3D%220%200%2032%2032%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3Emenu-search%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22menu-search%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(7.000000%2C%207.000000)%22%20fill%3D%22%23fff%22%20fill-rule%3D%22nonzero%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M17.4647522%2C14.6335677%20L12.9173163%2C10.0939416%20C13.4374014%2C9.12870048%2013.7339341%2C8.02632567%2013.7339341%2C6.85568429%20C13.7339341%2C3.07539851%2010.6532222%2C0%206.86646579%2C0%20C3.08031089%2C0%200%2C3.07539851%200%2C6.85568429%20C0%2C10.636971%203.08031089%2C13.7133705%206.86646579%2C13.7133705%20C8.02372517%2C13.7133705%209.11331735%2C13.4232877%2010.0708833%2C12.9163935%20L14.6276423%2C17.4662296%20C15.3404034%2C18.1779235%2016.5014721%2C18.1779235%2017.214133%2C17.4662296%20L17.4647522%2C17.2159856%20C18.179418%2C16.5024899%2018.1774131%2C15.3470634%2017.4647522%2C14.6335677%20Z%20M2.70668773%2C6.85568429%20C2.70668773%2C4.56264858%204.56999162%2C2.70263507%206.86646579%2C2.70263507%20C9.16394244%2C2.70263507%2011.0272463%2C4.56264858%2011.0272463%2C6.85568429%20C11.0272463%2C9.15072195%209.16394244%2C11.0107355%206.86646579%2C11.0107355%20C4.56999162%2C11.0107355%202.70668773%2C9.15072195%202.70668773%2C6.85568429%20Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+  }
+  #buttons-title #search_button.opened .icon {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2232px%22%20height%3D%2232px%22%20viewBox%3D%220%200%2032%2032%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3Emenu-close%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22menu-close%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(7.000000%2C%207.000000)%22%20fill%3D%22%23fff%22%20fill-rule%3D%22nonzero%22%20id%3D%22Path%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%2218%2015.2548137%2011.7463555%208.99987941%2018%202.7454275%2015.2548505%200%209.00072355%206.25421072%202.74659663%200%200.00120591703%202.7454275%206.25557402%208.99987941%200%2015.2548137%202.74514953%2018%209.00072355%2011.7448245%2015.2548505%2018%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
   }
   #site_title_mobile {
     padding-left: 1rem;
@@ -6024,19 +6078,19 @@ nav.nav-secondary ul a {
     display: flex;
     flex-direction: row;
   }
-  #menu-container .wrap .buttons-title {
+  #menu-container .wrap #buttons-title {
     display: none;
   }
   #menu-container .wrap nav {
     flex: 1 1 100%;
   }
-  #menu-container .wrap #search-menu {
+  #menu-container .wrap #search_container {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     flex: 1 1 368px;
   }
-  #menudinges,
-  #zoekdinges {
+  #menu_button,
+  #search_button {
     display: none;
   }
 }
@@ -11339,11 +11393,6 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 .breadcrumb nav a {
   font-family: 'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
 }
-@media only screen and (max-width: 650px) {
-  .breadcrumb nav {
-    padding-left: 1rem;
-  }
-}
 .breadcrumb .separator {
   speak: never;
   display: inline-block;
@@ -11414,6 +11463,11 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 .breadcrumb-only .breadcrumb .wrap {
   display: flex;
 }
+@media only screen and (max-width: 1200px) {
+  .breadcrumb-only .breadcrumb .wrap {
+    padding-left: 1rem;
+  }
+}
 .breadcrumb-only .breadcrumb nav {
   color: #fff;
 }
@@ -11444,6 +11498,7 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   }
   .breadcrumb-only .breadcrumb nav {
     font-size: 1.625rem;
+    flex: 0 1 100%;
   }
   .breadcrumb-only .breadcrumb .search-form {
     flex: 0 1 350px;

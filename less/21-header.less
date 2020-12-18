@@ -38,6 +38,9 @@
         line-height: 1.5;
         font-weight: normal;
         flex: 1 0 100%;
+        @media only screen and (max-width: @break_fullwidth ) {
+          padding-left: 1rem;
+        }
       }
 
       .site-title {
@@ -73,6 +76,27 @@
       overflow: hidden;
       float: left;
       margin-bottom: 1rem;
+
+      a {
+        overflow: hidden;
+        display: block;
+      }
+
+      @media only screen and (max-width: ( @menubreakpoint - 1 ) ) {
+
+        a {
+          width: 40px;
+          height: 60px;
+          background-image: url('@{base_url}images/svg/logo-digitale-overheid.svg');
+          background-position: bottom center;
+          background-repeat: no-repeat;
+          background-size: 40px 80px;
+
+          img {
+            display: none;
+          }
+        }
+      }
 
       &.flitspanel {
         margin-bottom: .25rem;
@@ -190,6 +214,4 @@
     font-weight: bold;
     font-family: @fontstrong;
   }
-
-
 }

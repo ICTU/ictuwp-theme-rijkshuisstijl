@@ -10,173 +10,170 @@
 // * @desc.   Menu verbouwd zodat bij schermbreedtewijzigingen wel of niet de mobiele styling gebruikt wordt
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 
+
+var menu_open = menumenu.menu_open,
+    menu_close = menumenu.menu_close,
+    search_open = menumenu.search_open,
+    search_close = menumenu.search_close;
+
+
 // Vars
-var header = document.querySelector('#genesis-nav-primary'),
-    menu = document.querySelector('nav .wrap ul.menu'),
-    menuButton = document.querySelector('.menu-button'),
-    herosearchform = document.getElementById("herosearchform"),
-    heroimage = document.querySelector('.hero-image .wrapper');
+var buttons_container = document.getElementById("buttons_container"),
+    menu_container = document.getElementById("menu_container"),
+    menu_button = document.getElementById("menu_button"),
+    search_container = document.getElementById("search_container"),
+    search_button = document.getElementById("search_button");
 
 // =========================================================================================================
 
-function hideMenuButton(document, window, undefined) {
+function hidemenu_button(document, window, undefined) {
 
-    if ((typeof (header) != 'undefined' && header != null)) {
-
-        header.classList.remove('menu-met-js');
-        header.classList.remove('active');
-        header.classList.add('geen-menu-button');
-
-        var menuwrapper = header.querySelector(".wrap");
-
+    if (typeof (menu_container) !== 'undefined' && menu_container !== null) {
+        menu_container.hidden = false;
+    }
+    if (typeof (search_container) !== 'undefined' && search_container !== null) {
+        search_container.hidden = false;
     }
 
-    if ((typeof (menu) != 'undefined' && menu != null)) {
-        menu.setAttribute('aria-hidden', 'false');
-    }
+}
 
-    if ((typeof (menuwrapper) != 'undefined' && menuwrapper != null)) {
+// =========================================================================================================
 
-        var div_homelink_button = document.getElementById("homelink_button");
 
-        // search form terugplaatsen in hero-image
-        if ((typeof (herosearchform) != 'undefined' && herosearchform != null)) {
-            heroimage.append(herosearchform);
+// =========================================================================================================
+
+function showmenu_button(document, window, undefined) {
+
+    // is er uberhaupt een menu?
+    if (typeof (menu_container) !== 'undefined' && menu_container !== null) {
+
+        // ja, er is een menu
+
+        // dan eerst checken of de button voor het menu al bestaat
+        if (typeof (menu_button) === 'undefined' || menu_button === null) {
+            // bestaat nog niet, dus maken
+            // Create a link to home
+            menu_button = document.createElement('button');
+            menu_button.setAttribute('id', 'menu_button');
+            menu_button.setAttribute('class', 'closed');
+            menu_button.setAttribute('aria-expanded', 'false');
+            menu_button.setAttribute('aria-controls', 'menu_container');
+            menu_button.innerHTML = '<span class="label">' + menu_open + '</span><span class="icon">&nbsp;</span>';
+            buttons_container.appendChild(menu_button);
         }
 
-        if ((typeof (menu) != 'undefined' && menu != null)) {
 
-            var home_exists = document.querySelector('li.home');
+        if (typeof (menu_button) !== 'undefined' && menu_button !== null) {
 
-            if ((typeof (home_exists) != 'undefined' && home_exists != null)) {
-                // listitem with class .home already exists
-                // no need to reinsert it
-            } else {
+            menu_button.classList.remove('init');
+            menu_button.classList.add('closed');
 
-                var lihome = document.createElement('li');
-                lihome.setAttribute('class', 'home');
-                lihome.innerHTML = '<a href="/">Home</a>';
+            menu_container.classList.remove('init');
+            menu_container.classList.add('closed');
+            menu_container.hidden = true;
+            menu_container.setAttribute('aria-expanded', 'false');
 
-                var theP = div_homelink_button.querySelector('p');
+            menu_button.addEventListener('click', function () {
 
-                if (theP.classList.contains('is_home')) {
+                // Als het menu niet zichtbaar is
+                if (menu_container.classList.contains('closed')) {
 
-                    lihome.classList.add('current-menu-item');
+                    // ..dan maken we het weer zichtbaar
+                    menu_container.classList.remove('closed');
+                    menu_container.classList.add('opened');
+                    menu_container.setAttribute('aria-expanded', 'true');
+                    menu_container.hidden = false;
+
+                    menu_button.setAttribute('aria-label', menu_open);
+                    menu_button.setAttribute('aria-expanded', 'true');
+                    menu_button.classList.remove('closed');
+                    menu_button.classList.add('opened');
+                    menu_button.querySelector('.label').innerHTML = menu_close;
+
+                } else {
+
+                    // menu is wel zichtbaar, dus weer verbergen
+                    menu_container.classList.add('closed');
+                    menu_container.classList.remove('opened');
+                    menu_container.setAttribute('aria-expanded', 'false');
+                    menu_container.hidden = true;
+
+                    menu_button.setAttribute('aria-label', menu_close);
+                    menu_button.setAttribute('aria-expanded', 'false');
+                    menu_button.classList.remove('opened');
+                    menu_button.classList.add('closed');
+                    menu_button.querySelector('.label').innerHTML = menu_close;
+
                 }
+            }, false);
+        }
+    }
 
-                menu.insertBefore(lihome, menu.childNodes[0]);
-            }
+    // is er uberhaupt een zoekformulier?
+    if (typeof (search_container) !== 'undefined' && search_container !== null) {
+
+        // ja, er is een zoekformulier
+
+        // dan checken of de button voor het zoeken al bestaat
+        if (typeof (search_button) === 'undefined' || search_button === null) {
+            // bestaat nog niet, dus maken
+            search_button = document.createElement('button');
+            search_button.setAttribute('id', 'search_button');
+            search_button.setAttribute('class', 'open');
+            search_button.setAttribute('aria-expanded', 'false');
+            search_button.setAttribute('aria-controls', 'menu_container');
+            search_button.innerHTML = '<span class="label">' + search_open + '</span><span class="icon">&nbsp;</span>';
+            buttons_container.appendChild(search_button);
         }
 
-        if ((typeof (div_homelink_button) != 'undefined' && div_homelink_button != null)) {
-            // Remove button from page
-            menuwrapper.removeChild(div_homelink_button);
+
+        if (typeof (search_button) !== 'undefined' && search_button !== null) {
+
+            search_button.classList.remove('init');
+            search_button.classList.add('closed');
+
+            search_container.classList.remove('init');
+            search_container.classList.add('closed');
+            search_container.hidden = true;
+            search_container.setAttribute('aria-expanded', 'false');
+
+            search_button.addEventListener('click', function () {
+
+                // Als het zoekformulier niet zichtbaar is
+                if (search_container.classList.contains('closed')) {
+
+                    // ..dan maken we het weer zichtbaar
+                    search_container.classList.remove('closed');
+                    search_container.classList.add('opened');
+                    search_container.setAttribute('aria-expanded', 'true');
+                    search_container.hidden = false;
+
+                    search_button.setAttribute('aria-label', search_open);
+                    search_button.setAttribute('aria-expanded', 'false');
+                    search_button.classList.remove('closed');
+                    search_button.classList.add('opened');
+                    search_button.querySelector('.label').innerHTML = search_close;
+
+                } else {
+
+                    // zoekformulier is wel zichtbaar, dus weer verbergen
+                    search_container.classList.add('closed');
+                    search_container.classList.remove('opened');
+                    search_container.setAttribute('aria-expanded', 'false');
+                    search_container.hidden = true;
+
+                    search_button.setAttribute('aria-label', search_close);
+                    search_button.setAttribute('aria-expanded', 'true');
+                    search_button.classList.remove('opened');
+                    search_button.classList.add('closed');
+                    search_button.querySelector('.label').innerHTML = search_close;
+
+                }
+            }, false);
         }
     }
 }
 
-// =========================================================================================================
-
-function showMenuButton(document, window, undefined) {
-
-    'use strict';
-
-    if ((typeof (header) != 'undefined' && header != null)) {
-        var menuwrapper = header.querySelector(".wrap");
-    }
-
-    if ((typeof (menuwrapper) != 'undefined' && menuwrapper != null)) {
-
-        if ((typeof (herosearchform) != 'undefined' && herosearchform != null)) {
-            menuwrapper.append(herosearchform);
-//            menuwrapper.prepend(herosearchform);
-        }
-
-        var listitem_home_a = '<a href="/">Home</a>';
-        var div_homelink_button = document.createElement('div');
-        var lihome = menuwrapper.querySelector("li.home");
-
-        // Create a link to home
-        menuButton = document.createElement('p');
-        menuButton.innerHTML = listitem_home_a;
-
-        div_homelink_button.setAttribute('id', 'homelink_button');
-        menuwrapper.prepend(div_homelink_button);
-
-        if ((typeof (lihome) != 'undefined' && lihome != null)) {
-            // er is een list-item met class home in de wrapper
-            listitem_home_a = lihome.innerHTML;
-
-            if (lihome.classList.contains('current-menu-item')) {
-                menuButton.classList.add('is_home');
-            }
-
-            lihome.remove();
-        }
-
-        div_homelink_button.appendChild(menuButton);
-
-        // Create a button and set properties
-        menuButton = document.createElement('button');
-        menuButton.classList.add('menu-button');
-        menuButton.setAttribute('id', 'menu-button');
-        menuButton.setAttribute('aria-label', 'Menu');
-        menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.setAttribute('aria-controls', 'menu');
-        menuButton.innerHTML = '<b>menu</b>';
-        div_homelink_button.appendChild(menuButton);
-
-        if (header.classList.contains('init')) {
-
-            // Hide
-            header.classList.remove('init');
-            menu.classList.remove('active');
-            menu.setAttribute('aria-hidden', 'true');
-            menuButton.setAttribute('aria-label', 'Open menu');
-            menuButton.setAttribute('aria-expanded', 'false');
-
-        } else {
-
-            menu.setAttribute('aria-hidden', 'true');
-
-        }
-    }
-
-    if ((typeof (menu) != 'undefined' && menu != null)) {
-
-        // Menu properties
-        menu.setAttribute('aria-labelledby', 'menu-button');
-
-        header.classList.add('menu-met-js');
-        header.classList.remove('geen-menu-button');
-
-        // Handle button click event
-        menuButton.addEventListener('click', function () {
-
-            // If active...
-            if (menu.classList.contains('active')) {
-
-                // Hide
-                header.classList.remove('active');
-                menu.classList.remove('active');
-                menu.setAttribute('aria-hidden', 'true');
-                menuButton.setAttribute('aria-label', 'Open menu');
-                menuButton.setAttribute('aria-expanded', 'false');
-            } else {
-
-                // Show
-                header.classList.add('active');
-                menu.classList.add('active');
-                menu.setAttribute('aria-hidden', 'false');
-                menuButton.setAttribute('aria-label', 'Sluit menu');
-                menuButton.setAttribute('aria-expanded', 'true');
-
-            }
-        }, false);
-
-    }
-
-}
 
 // =========================================================================================================
 
@@ -186,11 +183,11 @@ function WidthChange(mq) {
     if (mq.matches) {
         // window width is at least 760px
         // don't show menu button
-        hideMenuButton(document, window);
+        hidemenu_button(document, window);
     } else {
         // window width is less than 760px
         // DO show menu button
-        showMenuButton(document, window);
+        showmenu_button(document, window);
     }
 
 }

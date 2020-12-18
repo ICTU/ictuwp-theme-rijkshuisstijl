@@ -1803,7 +1803,7 @@ function rhswp_enqueue_js_scripts() {
 
 	if ( ! is_admin() ) {
 
-		$versie = filemtime( dirname( __FILE__ ) . '/js/menu.js' );
+		$versie = filemtime( dirname( __FILE__ ) . '/js/min/menu-min.js1' );
 
 		if ( DO_MINIFY_JS ) {
 
@@ -1820,7 +1820,19 @@ function rhswp_enqueue_js_scripts() {
 			wp_enqueue_script( 'wp-rijkshuisstijl-polyfill-matchmedia', RHSWP_THEMEFOLDER . '/js/polyfill-matchmedia.js', array( 'jquery' ), '', true );
 			wp_enqueue_script( 'allscripts', RHSWP_THEMEFOLDER . '/js/carousel-actions.js', array( 'jquery' ), '', true );
 			wp_enqueue_script( 'details-element', RHSWP_THEMEFOLDER . '/js/details-element.js', '', $versie, true );
-			wp_enqueue_script( 'menu-menu', RHSWP_THEMEFOLDER . '/js/menu.js', '', $versie, true );
+			wp_enqueue_script( 'menumenu', RHSWP_THEMEFOLDER . '/js/min/menu-min.js', '', $versie, true );
+
+
+			// Localize the script with new data
+			$translation_array = array(
+				'search_open'  => _x( 'Open zoeken', 'Labels menu buttons', 'wp-rijkshuisstijl' ),
+				'search_close' => _x( 'Sluit zoeken', 'Labels menu buttons', 'wp-rijkshuisstijl' ),
+				'menu_open'    => _x( 'Open menu', 'Labels menu buttons', 'wp-rijkshuisstijl' ),
+				'menu_close'   => _x( 'Sluit menu', 'Labels menu buttons', 'wp-rijkshuisstijl' ),
+			);
+
+			wp_localize_script( 'menumenu', 'menumenu', $translation_array );
+
 
 		}
 
@@ -5526,6 +5538,13 @@ function rhswp_append_site_logo() {
 	$get_theme_option      = get_option( 'rhswp_customizer_theme_options' );
 	$flavor_select         = $get_theme_option['flavor_select'];
 	$show_payoff_in_header = '';
+	$anchorstart           = '<a href="' . get_bloginfo( 'url' ) . '">';
+	$anchorend             = '</a>';
+
+//	$title = '<p class="site-title" id="menu_site_description">' . $anchorstart . $title . $anchorend . '</p>';
+	if ( $flavor_select == "flitspanel" ) {
+		$anchorstart = '<a href="' . get_home_url() . '" aria-label="Naar de homepage van Flitspanel">';
+	}
 
 	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
 
@@ -5533,16 +5552,15 @@ function rhswp_append_site_logo() {
 		$show_payoff_in_header = ' align-middle';
 	}
 
+	if ( is_front_page() ) {
+		$anchorstart = '';
+		$anchorend   = '';
+	}
+
 	if ( $flavor_select == "flitspanel" ) {
-		$anchorstart = '<a href="' . get_home_url() . '" aria-label="Naar de homepage van Flitspanel">';
-		$anchorend   = '</a>';
-		if ( is_front_page() ) {
-			$anchorstart = '';
-			$anchorend   = '';
-		}
 		echo '<span id="logotype" class="flitspanel' . $show_payoff_in_header . '">' . $anchorstart . '<img src="' . RHSWP_THEMEFOLDER . '/images/logos/flitspanel-logo.png" alt="Logo van Flitspanel, met als ondertekst: het medwerkerspanel van en voor de publieke sector" width="300" height="123">' . $anchorend . '</span>';
 	} else {
-		echo '<span id="logotype" class="' . $show_payoff_in_header . '"><img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitale-overheid.svg" alt="Logo Rijksoverheid"></span>';
+		echo '<span id="logotype" class="' . $show_payoff_in_header . '">' . $anchorstart . '<img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitale-overheid.svg" alt="Logo Rijksoverheid">' . $anchorend . '</span>';
 	}
 
 
