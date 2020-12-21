@@ -22,12 +22,16 @@ var buttons_container = document.getElementById("buttons_container"),
     menu_container = document.getElementById("menu_container"),
     menu_button = document.getElementById("menu_button"),
     search_container = document.getElementById("search_container"),
-    search_button = document.getElementById("search_button");
+    search_button = document.getElementById("search_button"),
+    navsecondary = document.getElementsByClassName('nav-secondary')[0];
 
 // =========================================================================================================
 
 function hidemenu_button(document, window, undefined) {
 
+    if (typeof (navsecondary) !== 'undefined' && navsecondary !== null) {
+        navsecondary.hidden = false;
+    }
     if (typeof (menu_container) !== 'undefined' && menu_container !== null) {
         menu_container.hidden = false;
     }
@@ -173,6 +177,9 @@ function showmenu_button(document, window, undefined) {
         }
     }
 
+    if (typeof (navsecondary) !== 'undefined' && navsecondary !== null) {
+        navsecondary.hidden = true;
+    }
 
 }
 
