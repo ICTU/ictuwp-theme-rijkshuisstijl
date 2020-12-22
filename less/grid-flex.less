@@ -34,24 +34,25 @@
 //=========================================================================================================
 
 #reactie_verwijzingen {
-	background: @grijs_2;
-	
-	h2 {
-		margin: 0;
-	}
-	
-	&.contact-pagina {
-		padding: 1rem;
-		margin: 2rem auto;
-	}
-	
+  background: @grijs_2;
+
+  h2 {
+    margin: 0;
+  }
+
+  &.contact-pagina {
+    padding: 1rem;
+    margin: 2rem auto;
+  }
+
   .flex {
     padding: 0;
   }
 
   #verwijzing-digid,
   #verwijzing-eherkenning,
-  #verwijzing-mijnoverheid {
+  #verwijzing-mijnoverheid,
+  #verwijzing-berichtenbox-bedrijven {
     a {
       background-image: url('images/logos/logo-digid.png');
       background-color: @wit;
@@ -73,6 +74,13 @@
     background-image: url('images/logos/logo-eherkenning.png');
   }
 
+  #verwijzing-eherkenning a {
+    background-image: url('images/logos/logo-eherkenning.png');
+  }
+  #verwijzing-berichtenbox-bedrijven a {
+    background-image: url('images/logos/logo-mijnoverheid-berichtenbox-bedrijven.png');
+  }
+
   a {
     display: flex;
     flex-direction: column;
@@ -92,6 +100,7 @@
     .url {
       text-decoration: underline;
     }
+
     .title {
       font-family: @fontstrong;
       color: @txt;
@@ -123,16 +132,28 @@
       margin-left: -1rem;
       margin-right: -1rem;
       padding: .5rem .5rem 0 .5rem;
+//      border: 1px solid red;
+
+      .flex__block {
+        flex-basis: ( 100% / 3 );
+//        border: 1px solid green;
+      }
+
+      &.cols4 {
+        .flex__block {
+          flex-basis: calc( 25% - 1rem);
+        }
+      }
     }
 
     .flex__block {
       padding: .5rem;
-      flex-basis: ( 100% / 3 );
       padding-bottom: 0;
     }
 
     #verwijzing-digid,
     #verwijzing-eherkenning,
+    #verwijzing-berichtenbox-bedrijven,
     #verwijzing-mijnoverheid {
       a {
         padding-top: 150px;
@@ -146,6 +167,10 @@
         flex-grow: 1;
         flex-shrink: 0;
         flex-basis: 1.5rem;
+      }
+      .url {
+        word-break: break-word;
+        text-overflow: ellipsis;
       }
     }
   }

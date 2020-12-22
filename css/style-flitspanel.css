@@ -143,8 +143,10 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
   display: flex;
 }
 .flexcontainer.columncount-3 .article-visual img {
-  object-fit: cover;
-  object-position: 50% 33%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 50% 33%;
+     object-position: 50% 33%;
 }
 .flexcontainer.columncount-3 .article-excerpt {
   padding-right: 1.5rem;
@@ -176,7 +178,8 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 }
 #reactie_verwijzingen #verwijzing-digid a,
 #reactie_verwijzingen #verwijzing-eherkenning a,
-#reactie_verwijzingen #verwijzing-mijnoverheid a {
+#reactie_verwijzingen #verwijzing-mijnoverheid a,
+#reactie_verwijzingen #verwijzing-berichtenbox-bedrijven a {
   background-image: url('images/logos/logo-digid.png');
   background-color: #fff;
   padding-left: 0.5rem;
@@ -192,6 +195,12 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 }
 #reactie_verwijzingen #verwijzing-eherkenning a {
   background-image: url('images/logos/logo-eherkenning.png');
+}
+#reactie_verwijzingen #verwijzing-eherkenning a {
+  background-image: url('images/logos/logo-eherkenning.png');
+}
+#reactie_verwijzingen #verwijzing-berichtenbox-bedrijven a {
+  background-image: url('images/logos/logo-mijnoverheid-berichtenbox-bedrijven.png');
 }
 #reactie_verwijzingen a {
   display: flex;
@@ -242,13 +251,19 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
     margin-right: -1rem;
     padding: 0.5rem 0.5rem 0 0.5rem;
   }
+  #reactie_verwijzingen .flex .flex__block {
+    flex-basis: 33.33333333%;
+  }
+  #reactie_verwijzingen .flex.cols4 .flex__block {
+    flex-basis: calc(25% - 1rem);
+  }
   #reactie_verwijzingen .flex__block {
     padding: 0.5rem;
-    flex-basis: 33.33333333%;
     padding-bottom: 0;
   }
   #reactie_verwijzingen #verwijzing-digid a,
   #reactie_verwijzingen #verwijzing-eherkenning a,
+  #reactie_verwijzingen #verwijzing-berichtenbox-bedrijven a,
   #reactie_verwijzingen #verwijzing-mijnoverheid a {
     padding-top: 150px;
     background-size: contain;
@@ -259,6 +274,10 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: 1.5rem;
+  }
+  #reactie_verwijzingen a .url {
+    word-break: break-word;
+    text-overflow: ellipsis;
   }
 }
 .no-svg #logotype {
@@ -616,9 +635,6 @@ footer .widget-area {
   overflow: hidden;
   clear: both;
 }
-*[aria-hidden="true"] {
-  display: none;
-}
 /* Text styles, shared with admin CSS
 --------------------------------------------- */
 a {
@@ -629,13 +645,17 @@ a:visited {
 }
 a:hover {
   color: #A02F1D;
+  text-decoration: underline;
 }
 a:active,
 a:focus {
   color: #A02F1D;
 }
-a:hover {
-  text-decoration: underline;
+a:focus {
+  outline: 2px dotted #000;
+  z-index: 1010;
+  outline-offset: 0;
+  box-shadow: 0 0 0 2px #fff;
 }
 a.extern:before {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2052.5%20(67469)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Eicon-list-external-link%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cg%20id%3D%22icon-list-external-link%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon-list-external-link-v2%22%20transform%3D%22translate(0.000000%2C%204.000000)%22%20fill%3D%22%2301689b%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M15.5555555%2C0.433781643%20C15.4251851%2C0.280150675%2015.2651851%2C0.164927419%2015.0755555%2C0.0881118751%20C14.8859259%2C0.0112963316%2014.6903703%2C-0.0152936233%2014.4888888%2C0.00834201048%20C10.6785184%2C0.00834201048%205.91555551%2C0.00834201048%203.05777774%2C0.00834201048%20C2.60740735%2C0.00834201048%202.25185179%2C0.150155221%201.99111108%2C0.433781643%20C1.83703704%2C0.563777096%201.71851852%2C0.723316973%201.63555552%2C0.912401274%20C1.55259252%2C1.10148558%201.517037%2C1.29647878%201.52888896%2C1.4973809%20C1.57629632%2C1.97600056%201.63555552%2C2.57427514%201.67111104%2C2.93323988%20C1.67111104%2C3.32322624%201.82518514%2C3.67775933%202.13333333%2C3.99683914%20C2.44148153%2C4.26864781%202.79703708%2C4.42227884%203.2%2C4.45773223%20C4.9540741%2C4.45773223%207.14666672%2C4.45773223%208.46222229%2C4.45773223%20C6.46222229%2C6.47413913%202.46222229%2C10.5069529%200.462222293%2C12.5233599%20C0.319999976%2C12.6533553%200.207407348%2C12.8128952%200.124444409%2C13.0019795%20C0.0414814696%2C13.1910638%200%2C13.386057%200%2C13.5869591%20C0%2C13.7878612%200.0414814696%2C13.9828544%200.124444409%2C14.1719387%20C0.207407348%2C14.361023%200.319999976%2C14.5205629%200.462222293%2C14.6505584%20C0.76444451%2C14.9400937%201.14222228%2C15.3020129%201.36888894%2C15.5191645%20C1.4992593%2C15.6727954%201.65925929%2C15.7880187%201.84888891%2C15.8648342%20C2.03851852%2C15.9416498%202.23407409%2C15.9859664%202.43555561%2C15.9977842%20C2.63703701%2C16.0096019%202.83259255%2C15.9741486%203.02222222%2C15.8914242%20C3.2118519%2C15.8086998%203.37185192%2C15.6846132%203.50222228%2C15.5191645%20C6.19851854%2C12.8306219%209.56888888%2C9.46994373%2011.5911111%2C7.45353683%20C11.6088889%2C8.81405751%2011.6444445%2C11.5350989%2011.6622223%2C12.8956196%20C11.6622223%2C13.0965217%2011.7037038%2C13.2915149%2011.7866667%2C13.4805992%20C11.8696296%2C13.6696835%2011.9822222%2C13.8292234%2012.1244444%2C13.9592188%20C12.4444444%2C14.2310276%2012.8%2C14.3846586%2013.1911111%2C14.4201119%20C13.6177777%2C14.4201119%2014.151111%2C14.4201119%2014.471111%2C14.4201119%20C14.6725926%2C14.4201119%2014.8651852%2C14.3787497%2015.0488889%2C14.2960253%20C15.2325926%2C14.2133009%2015.3955555%2C14.1069409%2015.5377777%2C13.9769455%20C15.68%2C13.8351323%2015.7925927%2C13.6696835%2015.8755556%2C13.4805992%20C15.9585185%2C13.2915149%2016%2C13.0965217%2016%2C12.8956196%20C16%2C9.09620669%2016%2C4.34694057%2016%2C1.4973809%20C16%2C1.04830564%2015.8518518%2C0.69377255%2015.5555555%2C0.433781643%20Z%22%20id%3D%22path_%EE%A8%8A_0%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
@@ -743,7 +763,9 @@ q blockquote {
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
   word-break: normal;
-  hyphens: none;
+  -webkit-hyphens: none;
+      -ms-hyphens: none;
+          hyphens: none;
 }
 blockquote em,
 cite {
@@ -877,7 +899,9 @@ cite a {
 .pullquote-with-image blockquote *,
 .simple-pullquote blockquote * {
   word-break: normal;
-  hyphens: none;
+  -webkit-hyphens: none;
+      -ms-hyphens: none;
+          hyphens: none;
 }
 @media only screen and (min-width: 650px) {
   .pullquote-with-image q,
@@ -1059,7 +1083,6 @@ details[open] summary:hover {
 }
 p {
   -webkit-hyphens: auto;
-  -moz-hyphens: auto;
   -ms-hyphens: auto;
   -o-hyphens: auto;
   hyphens: auto;
@@ -1069,10 +1092,10 @@ p a {
 }
 b,
 strong {
-  -moz-hyphens: manual;
   -ms-hyphens: manual;
   -o-hyphens: manual;
-  hyphens: manual;
+  -webkit-hyphens: manual;
+          hyphens: manual;
 }
 .attachment a,
 .gallery a {
@@ -2716,7 +2739,6 @@ Accessibility Extra's
   z-index: 100000;
   line-height: normal;
   text-decoration: none;
-  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 }
 .wpacc-genesis-skip-link li {
@@ -3562,7 +3584,8 @@ body .gform_wrapper ul li.field_description_below div.ginput_container_radio {
 .gform_wrapper label.hidden_sub_label {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -4151,8 +4174,6 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   background-size: 100% 80px;
   background-position: center center;
   background-origin: border-box;
-  -webkit-box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.05);
   width: 100%;
 }
@@ -4313,7 +4334,8 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 }
 .ginput_container_password button {
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   background: 0 0;
   border: none;
   padding: 5px 0;
@@ -4779,7 +4801,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   user-select: none;
 }
 .gform_wrapper .chosen-container * {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .gform_wrapper .chosen-container .chosen-drop {
@@ -4790,7 +4811,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   border: 1px solid #aaa;
   border-top: 0;
   background: #fff;
-  -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
   display: none;
 }
@@ -4823,10 +4843,8 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   height: 25px;
   border: 1px solid #aaa;
   background-color: #fff;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #fff), color-stop(50%, #f6f6f6), color-stop(52%, #eee), to(#f4f4f4));
   background: linear-gradient(#fff 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%);
   background-clip: padding-box;
-  -webkit-box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1);
   color: #444;
   text-decoration: none;
@@ -4941,7 +4959,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
 }
 .gform_wrapper .chosen-container .chosen-results li.highlighted {
   background-color: #3875d7;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #3875d7), color-stop(90%, #2a62bc));
   background-image: linear-gradient(#3875d7 20%, #2a62bc 90%);
   color: #fff;
 }
@@ -4971,7 +4988,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   height: auto;
   border: 1px solid #aaa;
   background-color: #fff;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #eee), color-stop(15%, #fff));
   background-image: linear-gradient(#eee 1%, #fff 15%);
   cursor: text;
 }
@@ -4992,12 +5008,10 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   max-width: 100%;
   border-radius: 3px;
   background-color: #eee;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), to(#eee));
   background-image: linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
   background-size: 100% 19px;
   background-repeat: repeat-x;
   background-clip: padding-box;
-  -webkit-box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
   box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
   color: #333;
   line-height: 13px;
@@ -5023,7 +5037,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
   padding-right: 5px;
   border: 1px solid #ccc;
   background-color: #e4e4e4;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), to(#eee));
   background-image: linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
   color: #666;
 }
@@ -5044,16 +5057,13 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
 }
 .gform_wrapper .chosen-container-active .chosen-single {
   border: 1px solid #5897fb;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .gform_wrapper .chosen-container-active.chosen-with-drop .chosen-single {
   border: 1px solid #aaa;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #eee), color-stop(80%, #fff));
   background-image: linear-gradient(#eee 20%, #fff 80%);
-  -webkit-box-shadow: 0 1px 0 #fff inset;
   box-shadow: 0 1px 0 #fff inset;
 }
 .gform_wrapper .chosen-container-active.chosen-with-drop .chosen-single div {
@@ -5065,7 +5075,6 @@ body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
 }
 .gform_wrapper .chosen-container-active .chosen-choices {
   border: 1px solid #5897fb;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .gform_wrapper .chosen-container-active .chosen-choices li.search-field input[type=text] {
@@ -5902,7 +5911,9 @@ div .gfield_repeater_cell {
   .site-header .wrap .title-area .site-description {
     text-align: right;
     padding-left: 15%;
-    hyphens: none;
+    -webkit-hyphens: none;
+        -ms-hyphens: none;
+            hyphens: none;
   }
   .site-header .wrap .title-area .site-description span {
     display: block;
@@ -6200,6 +6211,35 @@ nav.nav-primary .search-form input[type="submit"]:focus {
     color: #000;
   }
 }
+@-webkit-keyframes bzzzzzt {
+  0% {
+    transform: scale(1, 1);
+  }
+  85% {
+    transform: scale(1, 1);
+  }
+  88% {
+    transform: scale(1.1, 0.9);
+  }
+  90% {
+    transform: scale(1, 1);
+  }
+  92% {
+    transform: rotate(3deg);
+  }
+  94% {
+    transform: rotate(-3deg);
+  }
+  96% {
+    transform: rotate(3deg);
+  }
+  98% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: scale(1.02, 0.98);
+  }
+}
 @keyframes bzzzzzt {
   0% {
     transform: scale(1, 1);
@@ -6417,7 +6457,8 @@ aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:focus img {
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
   filter: grayscale(100%);
-  filter: gray;
+  -webkit-filter: gray;
+          filter: gray;
 }
 aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:hover .text,
 aside.sidebar .widget.banner .widget-wrap.text-over-plaatje a:active .text,
@@ -6603,7 +6644,8 @@ aside.sidebar .widget.banner .widgettitle {
   background-repeat: no-repeat;
   background-position: 1rem left;
   background-size: contain;
-  animation: bzzzzzt 3s infinite;
+  -webkit-animation: bzzzzzt 3s infinite;
+          animation: bzzzzzt 3s infinite;
 }
 .cta-widget p {
   margin: 0;
@@ -6615,7 +6657,8 @@ aside.sidebar .widget.banner .widgettitle {
 /* Tone down the animation to avoid vestibular motion triggers like scaling or panning large objects. */
 @media (prefers-reduced-motion) {
   .cta-widget .text:before {
-    animation-name: dissolve;
+    -webkit-animation-name: dissolve;
+            animation-name: dissolve;
   }
 }
 .home-widget-area.widget_custom_html li,
@@ -7871,7 +7914,8 @@ noscript {
   .flexbox .full-width-content.archive .block.columncount-3 .article-container .article-visual img {
     position: static;
     transform: none;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     max-width: none;
   }
   .flexbox .full-width-content.home .block.columncount-2 article,
@@ -8517,12 +8561,16 @@ footer {
     width: 95%;
     float: left;
     display: block;
-    column-count: 2;
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
   }
 }
 @media only screen and (min-width: 1200px) {
   .dossier-overview nav ul {
-    column-count: 3;
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
   }
 }
 .site-inner {
@@ -8717,7 +8765,9 @@ div.dossier_overzicht_popular ul.links a:before {
     width: 100%;
   }
   #mixitupfilterlist.unfiltered ul.children {
-    column-count: 4;
+    -webkit-column-count: 4;
+       -moz-column-count: 4;
+            column-count: 4;
     margin-bottom: 2rem;
   }
   #mixitupfilterlist.unfiltered ul.children li {
@@ -8756,7 +8806,9 @@ div.dossier_overzicht_popular ul.links a:before {
     max-width: 33%;
   }
   .flexbox .page-template-page_showalldossiers div.dossier_overzicht_filter_as_list ul.links {
-    column-count: 4;
+    -webkit-column-count: 4;
+       -moz-column-count: 4;
+            column-count: 4;
   }
   .flexbox .page-template-page_showalldossiers div.dossier_overzicht_filter_as_list li {
     width: 100%;
@@ -10604,12 +10656,24 @@ a.external:after {
   background: #4d5851;
 }
 .floatingtoolbox {
-  animation-name: floatingtoolbox;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+  -webkit-animation-name: floatingtoolbox;
+          animation-name: floatingtoolbox;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
   margin-left: 30px;
   margin-top: 5px;
+}
+@-webkit-keyframes vergroot {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
 }
 @keyframes vergroot {
   from {
@@ -10617,6 +10681,17 @@ a.external:after {
   }
   to {
     transform: scale(1.05);
+  }
+}
+@-webkit-keyframes floatingtoolbox {
+  from {
+    transform: translate(0, 0px);
+  }
+  65% {
+    transform: translate(0, 15px);
+  }
+  to {
+    transform: translate(0, 0px);
   }
 }
 @keyframes floatingtoolbox {
@@ -10753,10 +10828,14 @@ a.external:after {
   #toolbox-innovatie-illustrations .toolbox-img.has-link:hover,
   #toolbox-datagedreven-werken-illustrations .toolbox-img.has-link:hover,
   #toolbox-cyberincident-illustrations .toolbox-img.has-link:hover {
-    animation-name: vergroot;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
+    -webkit-animation-name: vergroot;
+            animation-name: vergroot;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
     transform: scale(1.05);
     z-index: 8888;
   }
@@ -11090,22 +11169,6 @@ a.external:after {
   -webkit-animation: cptch_rotation 800ms infinite linear;
 }
 @-webkit-keyframes cptch_rotation {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-  }
-}
-@-moz-keyframes cptch_rotation {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-  }
-}
-@-o-keyframes cptch_rotation {
   0% {
     -webkit-transform: rotate(0deg);
   }

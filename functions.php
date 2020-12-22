@@ -1856,24 +1856,26 @@ function rhswp_enqueue_js_scripts() {
 
 	if ( ! is_admin() ) {
 
+		$versie = filemtime( dirname( __FILE__ ) . '/js/menu.js' );
+
 		if ( DO_MINIFY_JS ) {
 
 			// the minified file
-			wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', CHILD_THEME_VERSION, true );
-			wp_enqueue_script( 'allscripts', RHSWP_THEMEFOLDER . '/js/min/scripts-min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
+			wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', $versie, true );
+			wp_enqueue_script( 'allscripts', RHSWP_THEMEFOLDER . '/js/min/scripts-min.js', array( 'jquery' ), $versie, true );
 
 		} else {
 
-			wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', CHILD_THEME_VERSION, true );
+			wp_enqueue_script( 'modernizr', RHSWP_THEMEFOLDER . '/js/modernizr-custom.js', '', $versie, true );
 
 			// these are the unminified JS-files
 			wp_enqueue_script( 'wp-rijkshuisstijl-polyfill-eventlistener', RHSWP_THEMEFOLDER . '/js/polyfill-eventlistener.js', array( 'jquery' ), '', true );
 			wp_enqueue_script( 'wp-rijkshuisstijl-polyfill-matchmedia', RHSWP_THEMEFOLDER . '/js/polyfill-matchmedia.js', array( 'jquery' ), '', true );
 			wp_enqueue_script( 'allscripts', RHSWP_THEMEFOLDER . '/js/carousel-actions.js', array( 'jquery' ), '', true );
 
-			wp_enqueue_script( 'details-element', RHSWP_THEMEFOLDER . '/js/details-element.js', '', CHILD_THEME_VERSION, true );
+			wp_enqueue_script( 'details-element', RHSWP_THEMEFOLDER . '/js/details-element.js', '', $versie, true );
 
-			wp_enqueue_script( 'menu-menu', RHSWP_THEMEFOLDER . '/js/menu.js', '', CHILD_THEME_VERSION, true );
+			wp_enqueue_script( 'menu-menu', RHSWP_THEMEFOLDER . '/js/menu.js', '', $versie, true );
 			
 		}
 
@@ -3876,9 +3878,8 @@ $configuration = array();
 			    $versie = $value['version'];
             }
 		}
-	    $versie = CHILD_THEME_VERSION;
+		$versie = filemtime( dirname( __FILE__ ) . $value['file'] );
 		wp_enqueue_style( $value['handle'], get_stylesheet_directory_uri() . $value['file'], $dependencies, $versie, 'all' );
-
 	}
 
 
@@ -3926,8 +3927,8 @@ function rhswp_contactreactie_write_reactieform() {
 		if ( 'shortcode' === $contactformulier_bron ) {
 			$theshortcode = get_field( 'shortcode_voor_gravity_forms', 'option' );
 		} else {
-			if ( $contactformulier ) {
-				$theshortcode = '[contact-form-7 id="' . $contactformulier . '" title="' . esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) ) . '"]';
+			if ( $contactformulier->ID ) {
+				$theshortcode = '[contact-form-7 id="' . $contactformulier->ID . '" title="' . esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) ) . '"]';
 			}
 
 		}
