@@ -1803,7 +1803,7 @@ function rhswp_enqueue_js_scripts() {
 
 	if ( ! is_admin() ) {
 
-		$versie = filemtime( dirname( __FILE__ ) . '/js/min/menu-min.js1' );
+		$versie = filemtime( dirname( __FILE__ ) . '/js/menu.js' );
 
 		if ( DO_MINIFY_JS ) {
 
@@ -1832,7 +1832,6 @@ function rhswp_enqueue_js_scripts() {
 			);
 
 			wp_localize_script( 'menumenu', 'menumenu', $translation_array );
-
 
 		}
 
@@ -3839,7 +3838,6 @@ function rhswp_remove_external_styles() {
 		 */
 		$versie = filemtime( dirname( __FILE__ ) . $value['file'] );
 		wp_enqueue_style( $value['handle'], get_stylesheet_directory_uri() . $value['file'], $dependencies, $versie, 'all' );
-
 	}
 
 
