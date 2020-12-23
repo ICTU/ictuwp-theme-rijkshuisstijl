@@ -3824,18 +3824,6 @@ function rhswp_remove_external_styles() {
 	foreach ( $configuration['cssfiles'] as $key => $value ) {
 
 		$dependencies = $value['dependencies'];
-
-		/*
-		 *
-				if ( $value['version'] ) {
-
-					if ( 'debug' === $value['version'] ) {
-						$versie = CHILD_THEME_VERSION;
-					} else {
-						$versie = $value['version'];
-					}
-				}
-		 */
 		$versie = filemtime( dirname( __FILE__ ) . $value['file'] );
 		wp_enqueue_style( $value['handle'], get_stylesheet_directory_uri() . $value['file'], $dependencies, $versie, 'all' );
 	}
