@@ -954,222 +954,153 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'description'           => '',
 	) );
 
-	//====================================================================================================
-	// instellingen voor contactformulier onder nieuwsberichten
-	//
 
-	acf_add_local_field_group(array(
-		'key' => 'group_56a73cbfdf435',
-		'title' => '00 Instellingen voor contactformulier',
-		'fields' => array(
+	//====================================================================================================
+	acf_add_local_field_group( array(
+		'key'                   => 'group_5804cc93cdcc6',
+		'title'                 => 'Carrousel of header-image',
+		'fields'                => array(
 			array(
-				'key' => 'field_5eeb32aed7d4f',
-				'label' => 'Contactformulier via shortcode of selecteer uit lijst',
-				'name' => 'contactformulier_via_shortcode_of_selecteer_uit_lijst',
-				'type' => 'radio',
-				'instructions' => '',
-				'required' => 0,
+				'key'               => 'field_5804ccac137a5',
+				'label'             => 'Wil je hier een header-image of carrousel tonen?',
+				'name'              => 'carrousel_tonen_op_deze_pagina',
+				'type'              => 'radio',
+				'instructions'      => '',
+				'required'          => 1,
 				'conditional_logic' => 0,
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'choices' => array(
-					'shortcode' => 'Via een shortcode',
-					'lijst_selectie' => 'Selecteer uit lijst',
+				'choices'           => array(
+					'ja'                => 'Ja, toon een carrousel',
+					'show_header_image' => 'Ja, toon een afbeelding (evt met tekst)',
+					'nee'               => 'Nee',
 				),
-				'allow_null' => 0,
-				'other_choice' => 0,
-				'default_value' => 'lijst_selectie',
-				'layout' => 'vertical',
-				'return_format' => 'value',
+				'allow_null'        => 0,
+				'other_choice'      => 0,
 				'save_other_choice' => 0,
+				'default_value'     => 'nee',
+				'layout'            => 'horizontal',
+				'return_format'     => 'value',
 			),
 			array(
-				'key' => 'field_5eeb3235f56e6',
-				'label' => 'Shortcode voor Gravity Forms',
-				'name' => 'shortcode_voor_gravity_forms',
-				'type' => 'text',
-				'instructions' => 'bijv: 
-	[gravityform id="3" title="true" description="true" ajax="true"]',
-				'required' => 0,
+				'key'               => 'field_5804cd037c566',
+				'label'             => 'Kies carrousel',
+				'name'              => 'kies_carrousel',
+				'type'              => 'post_object',
+				'instructions'      => '',
+				'required'          => 1,
 				'conditional_logic' => array(
 					array(
 						array(
-							'field' => 'field_5eeb32aed7d4f',
+							'field'    => 'field_5804ccac137a5',
 							'operator' => '==',
-							'value' => 'shortcode',
+							'value'    => 'ja',
 						),
 					),
 				),
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
+				'post_type'         => array(
+					0 => 'carrousel',
+				),
+				'taxonomy'          => array(),
+				'allow_null'        => 0,
+				'multiple'          => 0,
+				'return_format'     => 'object',
+				'ui'                => 1,
 			),
 			array(
-				'key' => 'field_5acb5e1575f33',
-				'label' => 'Contact- / reactieformulier',
-				'name' => 'contactformulier',
-				'type' => 'post_object',
-				'instructions' => 'Dit formulier wordt onderaan een bericht of pagina getoond als reactiemogelijkheid.',
-				'required' => 0,
+				'key'               => 'field_5b55f5085efb5',
+				'label'             => 'Kies header-image',
+				'name'              => 'kies_header_image',
+				'type'              => 'image',
+				'instructions'      => 'De afbeelding moet minimaal ' . RHSWP_MIN_HERO_IMAGE_WIDTH . ' pixels breed en 300 pixels hoog zijn.',
+				'required'          => 1,
 				'conditional_logic' => array(
 					array(
 						array(
-							'field' => 'field_5eeb32aed7d4f',
+							'field'    => 'field_5804ccac137a5',
 							'operator' => '==',
-							'value' => 'lijst_selectie',
+							'value'    => 'show_header_image',
 						),
 					),
 				),
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'post_type' => array(
-					0 => 'wpcf7_contact_form',
-				),
-				'taxonomy' => '',
-				'allow_null' => 0,
-				'multiple' => 0,
-				'return_format' => 'object',
-				'ui' => 1,
+				'return_format'     => 'array',
+				'preview_size'      => 'thumbnail',
+				'library'           => 'all',
+				'min_width'         => RHSWP_MIN_HERO_IMAGE_WIDTH,
+				'min_height'        => '',
+				'min_size'          => '',
+				'max_width'         => '',
+				'max_height'        => '',
+				'max_size'          => '',
+				'mime_types'        => '',
 			),
 			array(
-				'key' => 'field_5acb5e24804dc',
-				'label' => 'contactformulier_documenttypes',
-				'name' => 'contactformulier_documenttypes',
-				'type' => 'checkbox',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'choices' => array(
-					'post' => 'Berichten',
-					'page' => 'Pagina\'s',
-					'document' => 'Documenten',
-				),
-				'allow_custom' => 0,
-				'default_value' => array(
-				),
-				'layout' => 'vertical',
-				'toggle' => 0,
-				'return_format' => 'value',
-				'save_custom' => 0,
-			),
-			array(
-				'key' => 'field_56a73ce794fcf',
-				'label' => 'lege_naam',
-				'name' => 'lege_naam',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
+				'key'               => 'field_5b560fba61073',
+				'label'             => 'Tekst over afbeelding',
+				'name'              => 'kies_header_image_tekst',
+				'type'              => 'wysiwyg',
+				'instructions'      => '',
+				'required'          => 0,
 				'conditional_logic' => array(
 					array(
 						array(
-							'field' => 'field_5c1a2bb267fb2',
+							'field'    => 'field_5804ccac137a5',
 							'operator' => '==',
-							'value' => 'ja',
+							'value'    => 'show_header_image',
 						),
 					),
 				),
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_56a73d2e94fd0',
-				'label' => 'lege_suggestie',
-				'name' => 'lege_suggestie',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field' => 'field_5c1a2bb267fb2',
-							'operator' => '==',
-							'value' => 'ja',
-						),
-					),
-				),
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_56a73d6294fd1',
-				'label' => 'leeg_mailadres',
-				'name' => 'leeg_mailadres',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field' => 'field_5c1a2bb267fb2',
-							'operator' => '==',
-							'value' => 'ja',
-						),
-					),
-				),
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
+				'default_value'     => '',
+				'tabs'              => 'all',
+				'toolbar'           => 'basic',
+				'media_upload'      => 0,
+				'delay'             => 1,
 			),
 		),
-		'location' => array(
+		'location'              => array(
 			array(
 				array(
-					'param' => 'options_page',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'instellingen',
+					'value'    => 'page',
+				),
+			),
+			array(
+				array(
+					'param'    => 'taxonomy',
+					'operator' => '==',
+					'value'    => 'dossiers',
 				),
 			),
 		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
+		'menu_order'            => 0,
+		'position'              => 'acf_after_title',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
+		'hide_on_screen'        => '',
+		'active'                => 1,
+		'description'           => '',
+	) );
+
 
 
 endif;
