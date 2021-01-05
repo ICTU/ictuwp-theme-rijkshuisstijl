@@ -1,0 +1,211 @@
+{
+    "key": "group_56a73cbfdf435",
+    "title": "00 Instellingen voor contactformulier",
+    "fields": [
+        {
+            "key": "field_5eeb32aed7d4f",
+            "label": "Contactformulier via shortcode of selecteer uit lijst",
+            "name": "contactformulier_via_shortcode_of_selecteer_uit_lijst",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "shortcode": "Via een shortcode",
+                "lijst_selectie": "Selecteer uit lijst"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "lijst_selectie",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5eeb3235f56e6",
+            "label": "Shortcode voor Gravity Forms",
+            "name": "shortcode_voor_gravity_forms",
+            "type": "text",
+            "instructions": "bijv: \r\n\t[gravityform id=\"3\" title=\"true\" description=\"true\" ajax=\"true\"]",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5eeb32aed7d4f",
+                        "operator": "==",
+                        "value": "shortcode"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5acb5e1575f33",
+            "label": "Contact- \/ reactieformulier",
+            "name": "contactformulier",
+            "type": "post_object",
+            "instructions": "Dit formulier wordt onderaan een bericht of pagina getoond als reactiemogelijkheid.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5eeb32aed7d4f",
+                        "operator": "==",
+                        "value": "lijst_selectie"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "wpcf7_contact_form"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_5acb5e24804dc",
+            "label": "Toon contactformulier bij deze documenttypes",
+            "name": "contactformulier_documenttypes",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "post": "Berichten",
+                "page": "Pagina's",
+                "document": "Documenten"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_56a73ce794fcf",
+            "label": "Foutboodschap bij lege naam",
+            "name": "lege_naam",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5eeb32aed7d4f",
+                        "operator": "==",
+                        "value": "lijst_selectie"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_56a73d2e94fd0",
+            "label": "Foutboodschap bij lege suggestie",
+            "name": "lege_suggestie",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5eeb32aed7d4f",
+                        "operator": "==",
+                        "value": "lijst_selectie"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_56a73d6294fd1",
+            "label": "Foutboodschap bij lege mailadres",
+            "name": "leeg_mailadres",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5eeb32aed7d4f",
+                        "operator": "==",
+                        "value": "lijst_selectie"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "instellingen"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1608717326
+}
