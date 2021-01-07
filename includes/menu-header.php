@@ -194,13 +194,15 @@ function rhswp_filter_site_title( $title = '' ) {
 	$showpayoff  = get_field( 'siteoption_show_payoff_in_header', 'option' );
 	$anchorstart = '<a href="' . get_bloginfo( 'url' ) . '">';
 	$anchorend   = '</a>';
+	$titletag    = 'p';
 
 	if ( is_front_page() ) {
 		$anchorstart = '';
 		$anchorend   = '';
+		$titletag    = 'h1';
 	}
 
-	$title = '<p class="site-title" id="menu_site_description">' . $anchorstart . $title . $anchorend . '</p>';
+	$title = '<' . $titletag . ' class="site-title" id="menu_site_description">' . $anchorstart . $title . $anchorend . '</' . $titletag . '>';
 
 	if ( 'show_payoff_in_header_no' === $showpayoff ) {
 
