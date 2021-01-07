@@ -26,8 +26,6 @@ define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
 define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
 define( 'CHILD_THEME_VERSION', "2.24.2" );
 define( 'CHILD_THEME_VERSION_DESCRIPTION', "Reactieformulier verlost van block elements in een <a> en verdere styling." );
-define( 'SHOW_CSS_DEBUG', false );
-//define( 'SHOW_CSS_DEBUG',                   true );
 
 if ( WP_DEBUG ) {
 	define( 'DO_MINIFY_JS', false );
@@ -40,9 +38,11 @@ if ( WP_DEBUG ) {
 if ( WP_DEBUG ) {
 	define( 'WP_LOCAL_DEV', false );
 //	define( 'WP_LOCAL_DEV', true );
+	define( 'SHOW_CSS_DEBUG', false );
+//	define( 'SHOW_CSS_DEBUG', true );
 } else {
-	define( 'WP_LOCAL_DEV', false );
-//	define( 'WP_LOCAL_DEV', true );
+    define( 'WP_LOCAL_DEV', false );
+    define( 'SHOW_CSS_DEBUG', false );
 }
 
 
@@ -199,6 +199,10 @@ if ( ! defined( 'RHSWP_CPT_VERWIJZING' ) ) {
 define( 'DEFAULTFLAVOR', 'groen' );
 define( 'FLAVORSCONFIG', 'config/flavors_config.json' );
 
+define( 'IMAGESIZE_16x9', 'image-16x9' );
+define( 'IMAGESIZE_4x3', 'image-4x3' );
+define( 'IMAGESIZE_SQUARE', 'image-square' );
+
 
 //========================================================================================================
 
@@ -218,6 +222,16 @@ add_image_size( 'widget-image-top', 400, 1200, false );
 add_image_size( 'nieuwsbriefthumb', 88, 88, false );
 
 add_image_size( 'article-visual-big', 600, 600, true );
+
+$base_width  = 800;
+$base_height = ( ( $base_width / 16 ) * 9 );
+$docrop      = true;
+add_image_size( IMAGESIZE_16x9, $base_width, $base_height, $docrop );
+
+$base_height = ( ( $base_width / 4 ) * 3 );
+add_image_size( IMAGESIZE_4x3, $base_width, $base_height, $docrop );
+
+add_image_size( IMAGESIZE_SQUARE, $base_width, $base_width, $docrop );
 
 //========================================================================================================
 
@@ -3530,7 +3544,7 @@ function rhswp_add_blog_archive_css() {
 
 						$slugs = array();
 
-						if ( $chosen_category ) {
+						if ( is_array( $chosen_category ) ) {
 
 							foreach ( $chosen_category as $filter ):
 
@@ -3824,7 +3838,7 @@ function rhswp_remove_external_styles() {
 	foreach ( $configuration['cssfiles'] as $key => $value ) {
 
 		$dependencies = $value['dependencies'];
-		$versie = filemtime( dirname( __FILE__ ) . $value['file'] );
+		$versie       = filemtime( dirname( __FILE__ ) . $value['file'] );
 		wp_enqueue_style( $value['handle'], get_stylesheet_directory_uri() . $value['file'], $dependencies, $versie, 'all' );
 	}
 
@@ -5576,3 +5590,14 @@ function rhswp_filter_strange_characters( $content ) {
 
 //========================================================================================================
 
+// ervoor zorgen dat voor het veld 'home_row_1_cell_1_post' dat alleen *gepubliceerde* content te selecteren is
+add_filter( 'acf/fields/relationship/query/name=home_row_1_cell_1_post', 'acf_relationshipfield_only_use_published_content', 10, 3 );
+add_filter( 'acf/fields/relationship/query/name=home_row_1_cell_2_post', 'acf_relationshipfield_only_use_published_content', 10, 3 );
+
+function acf_relationshipfield_only_use_published_content( $options, $field, $post_id ) {
+	$options['post_status'] = [ 'publish' ];
+
+	return $options;
+}
+
+//========================================================================================================
