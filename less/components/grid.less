@@ -1,0 +1,32 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - grid.less
+// * ----------------------------------------------------------------------------------
+// * styling voor een container met blokken
+// * ----------------------------------------------------------------------------------
+//
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .grid-item {
+    flex: 1 1 100%;
+  }
+
+  @media only screen and (max-width: ( @break_tablet ) ) {
+  }
+
+  @media only screen and (min-width: ( @break_tablet ) ) {
+    margin-left: -1rem;
+    margin-right: -1rem;
+
+    .grid-item {
+      flex: 1 1 calc( 33.3% - 2rem );
+
+      &.colspan-2 {
+        flex: 1 1 calc( 66.6% - 2rem );
+      }
+    }
+  }
+}

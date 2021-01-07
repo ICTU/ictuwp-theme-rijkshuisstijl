@@ -1,0 +1,68 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - grid-item.less
+// * ----------------------------------------------------------------------------------
+// * styling voor items in een grid
+// * ----------------------------------------------------------------------------------
+//
+
+.grid-item {
+  margin: 0 1rem 1rem 1rem;
+
+  h2, h3 {
+    margin: 0;
+  }
+
+  &.float-text {
+    position: relative;
+    background-color: @txt;
+
+    &:before {
+      content: ' ';
+      background-image: url('@{base_url}images/svg/float-text-bg.svg');
+      background-repeat: repeat-x;
+      background-position: left bottom;
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    img {
+      margin: 0;
+      display: block;
+    }
+
+    .text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 2rem;
+
+      a {
+        color: @wit;
+      }
+
+
+      .badge {
+        background: @txt;
+        color: @wit;
+        padding: 0 .5rem;
+        margin-bottom: .75rem;
+      }
+    }
+
+    &.colspan-2 {
+      h2, h3 {
+        line-height: 1.4;
+        font-size: 2.75rem;
+      }
+    }
+
+  }
+
+
+  &.float-text {
+  }
+
+}
