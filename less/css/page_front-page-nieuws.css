@@ -1,0 +1,11 @@
+main .container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid #C2C2C2;
+  padding-top: 1rem;
+}
+main .container > h2,
+main .container > h3 {
+  margin-top: 0;
+}
+/*# sourceMappingURL=page_front-page-nieuws.css.map */
