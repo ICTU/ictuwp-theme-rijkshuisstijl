@@ -41,8 +41,8 @@ if ( WP_DEBUG ) {
 	define( 'SHOW_CSS_DEBUG', false );
 //	define( 'SHOW_CSS_DEBUG', true );
 } else {
-    define( 'WP_LOCAL_DEV', false );
-    define( 'SHOW_CSS_DEBUG', false );
+	define( 'WP_LOCAL_DEV', false );
+	define( 'SHOW_CSS_DEBUG', false );
 }
 
 
@@ -200,8 +200,11 @@ define( 'DEFAULTFLAVOR', 'groen' );
 define( 'FLAVORSCONFIG', 'config/flavors_config.json' );
 
 define( 'IMAGESIZE_16x9', 'image-16x9' );
+define( 'IMAGESIZE_16x9_SMALL', 'image-16x9-small' );
 define( 'IMAGESIZE_4x3', 'image-4x3' );
+define( 'IMAGESIZE_4x3_SMALL', 'image-4x3-small' );
 define( 'IMAGESIZE_SQUARE', 'image-square' );
+define( 'IMAGESIZE_SQUARE_SMALL', 'image-square-small' );
 
 
 //========================================================================================================
@@ -223,15 +226,22 @@ add_image_size( 'nieuwsbriefthumb', 88, 88, false );
 
 add_image_size( 'article-visual-big', 600, 600, true );
 
-$base_width  = 800;
+$docrop     = true;
+$base_width = 800;
+add_image_size( IMAGESIZE_SQUARE, $base_width, $base_width, $docrop );
 $base_height = ( ( $base_width / 16 ) * 9 );
-$docrop      = true;
 add_image_size( IMAGESIZE_16x9, $base_width, $base_height, $docrop );
-
 $base_height = ( ( $base_width / 4 ) * 3 );
 add_image_size( IMAGESIZE_4x3, $base_width, $base_height, $docrop );
 
-add_image_size( IMAGESIZE_SQUARE, $base_width, $base_width, $docrop );
+// SMALL VERSIONS
+$base_width = 450;
+add_image_size( IMAGESIZE_SQUARE_SMALL, $base_width, $base_width, $docrop );
+$base_height = ( ( $base_width / 16 ) * 9 );
+add_image_size( IMAGESIZE_16x9_SMALL, $base_width, $base_height, $docrop );
+$base_height = ( ( $base_width / 4 ) * 3 );
+add_image_size( IMAGESIZE_4x3_SMALL, $base_width, $base_height, $docrop );
+
 
 //========================================================================================================
 
@@ -3311,7 +3321,7 @@ function rhswp_set_hsts_policy() {
 
 	// 2 year expiration: 63072000
 	header( 'Strict-Transport-Security: max-age=63072000; includeSubDomains; preload' );
-//	header('Content-type: text/plain; charset=utf-8'); 
+//	header('Content-type: text/plain; charset=utf-8');
 	header( 'Content-type: text/html; charset=utf-8' );
 
 }
@@ -5622,4 +5632,3 @@ function rhswp_get_sublabel( $post_id ) {
 }
 
 //========================================================================================================
-
