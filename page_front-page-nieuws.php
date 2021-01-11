@@ -350,7 +350,7 @@ function rhswp_home_onderwerpen_dossiers() {
 									$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
 								}
 								$itemtitle .= '<h3><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></h3>';
-								$itemtitle .= '<p class="publishdaet">' . $itemdate . '</p>';
+								$itemtitle .= '<p class="meta">' . $itemdate . '</p>';
 								$excerpt   = wp_strip_all_tags( get_the_excerpt( $contentblock_post_id ) );
 								if ( $contentblock_image && $contentblock_url ) {
 									$contentblock_image = '<a tabindex="-1" href="' . $contentblock_url . '">' . $contentblock_image . '</a>';
