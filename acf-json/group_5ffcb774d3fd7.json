@@ -1,0 +1,85 @@
+{
+    "key": "group_5ffcb774d3fd7",
+    "title": "Widget social media",
+    "fields": [
+        {
+            "key": "field_5ffcb7916f461",
+            "label": "Links",
+            "name": "widget_socmed_links",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5ffcb7cf6f463",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5ffcb7b86f462",
+                    "label": "Link",
+                    "name": "widget_socmed_link",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_5ffcb7cf6f463",
+                    "label": "Type",
+                    "name": "widget_socmed_class",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "mail": "Mail",
+                        "twitter": "Twitter",
+                        "linkedin": "LinkedIn"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "twitter",
+                    "layout": "vertical",
+                    "return_format": "value",
+                    "save_other_choice": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "widget",
+                "operator": "==",
+                "value": "rhswp_socialmedia_widget"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1610398819
+}

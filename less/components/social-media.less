@@ -10,19 +10,100 @@
     display: list-item;
     float: none;
 
-    .iconaddfill('../images/svg/icon-social.svg', @txt, #fff );
+    .iconaddfill('../images/svg/icon-social.svg', @txt, #fff);
     padding-left: 2rem;
     background-position: left center;
     background-repeat: no-repeat;
 
     &.social-media--mail {
-      .iconaddfill('../images/svg/icon-mail.svg', @txt, #fff );
+      .iconaddfill('../images/svg/icon-mail.svg', @txt, #fff);
     }
+
     &.social-media--twitter {
-      .iconaddfill('../images/svg/icon-twitter.svg', @txt, #fff );
+      .iconaddfill('../images/svg/icon-twitter.svg', @txt, #fff);
     }
+
     &.social-media--linkedin {
-      .iconaddfill('../images/svg/icon-linkedin.svg', @txt, #fff );
+      .iconaddfill('../images/svg/icon-linkedin.svg', @txt, #fff);
+    }
+  }
+}
+
+
+.social-media-widget {
+  .social-media {
+    margin-top: 0;
+
+    li {
+
+      .iconaddfill('../images/svg/icon-social.svg', @a_color_default, #fff);
+
+      &.social-media--mail {
+        .iconaddfill('../images/svg/icon-mail.svg', @a_color_default, #fff);
+      }
+
+      &.social-media--twitter {
+        .iconaddfill('../images/svg/icon-twitter.svg', @a_color_default, #fff);
+      }
+
+      &.social-media--linkedin {
+        .iconaddfill('../images/svg/icon-linkedin.svg', @a_color_default, #fff);
+      }
+
+
+      a {
+        color: @a_color_default; // @txt;
+
+        &:visited {
+          color: @a_color_default;
+        }
+
+        &:hover {
+          color: @a_color_hover;
+          text-decoration: underline;
+        }
+      }
+
+      & + li {
+        margin-top: .5rem;
+      }
+    }
+  }
+}
+
+.footer-widget-area {
+  // heeft een blauwe achtergrondkleur, dus alles wit maken
+  &.social-media-widget {
+    .social-media {
+      li {
+        .iconaddfill('../images/svg/icon-social.svg', @wit, #fff);
+
+        &.social-media--mail {
+          .iconaddfill('../images/svg/icon-mail.svg', @wit, #fff);
+        }
+
+        &.social-media--twitter {
+          .iconaddfill('../images/svg/icon-twitter.svg', @wit, #fff);
+        }
+
+        &.social-media--linkedin {
+          .iconaddfill('../images/svg/icon-linkedin.svg', @wit, #fff);
+        }
+
+
+        a {
+          color: @wit; // @txt;
+
+          &:visited {
+            color: @wit;
+          }
+
+          &:hover {
+            color: @wit;
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 }

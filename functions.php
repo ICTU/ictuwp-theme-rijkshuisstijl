@@ -125,7 +125,9 @@ if ( ! defined( 'RHSWP_WIDGET_LINK_TO_SINGLE_PAGE' ) ) {
 if ( ! defined( 'RHSWP_CTA_WIDGET' ) ) {
 	define( 'RHSWP_CTA_WIDGET', '(DO) CTA - Call To Action widget' );
 }
-
+if ( ! defined( 'RHSWP_WIDGET_SOCIALMEDIA' ) ) {
+	define( 'RHSWP_WIDGET_SOCIALMEDIA', '(DO) socialmedia-links' );
+}
 if ( ! defined( 'RHSWP_CSS_BANNER' ) ) {
 	define( 'RHSWP_CSS_BANNER', 'banner-css' ); // slug for custom post type 'document'
 }
@@ -391,6 +393,8 @@ require_once( RHSWP_FOLDER . '/includes/widget-subpages.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-events.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-navigation-menu.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-cta-banner.php' );
+require_once( RHSWP_FOLDER . '/includes/widget-socialmedia.php' );
+
 
 
 // Add support for 2-column footer widgets
