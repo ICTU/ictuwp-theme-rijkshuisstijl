@@ -1,0 +1,28 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - social-media.less
+// * ----------------------------------------------------------------------------------
+// * styling voor een container met blokken
+// * ----------------------------------------------------------------------------------
+//
+
+.social-media {
+  li {
+    display: list-item;
+    float: none;
+
+    .iconaddfill('../images/svg/icon-social.svg', @txt, #fff );
+    padding-left: 2rem;
+    background-position: left center;
+    background-repeat: no-repeat;
+
+    &.social-media--mail {
+      .iconaddfill('../images/svg/icon-mail.svg', @txt, #fff );
+    }
+    &.social-media--twitter {
+      .iconaddfill('../images/svg/icon-twitter.svg', @txt, #fff );
+    }
+    &.social-media--linkedin {
+      .iconaddfill('../images/svg/icon-linkedin.svg', @txt, #fff );
+    }
+  }
+}

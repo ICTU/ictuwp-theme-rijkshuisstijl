@@ -42,6 +42,7 @@
 @sidebar_width: 310px;
 @break_fullwidth: 1200px;
 @break_tablet: 650px;
+@break_phablet2: 900px;
 @break_phone: 500px;
 
 @logowidth: 450px;
@@ -310,9 +311,9 @@
 
 //=========================================================================================================
 
-.iconaddfill(@src, @fill-new) {
+.iconaddfill(@src, @fill-new, @fill-old: #000000) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-  @replace-default: escape('fill="#000000"');
+  @replace-default: escape('fill="@{fill-old}"');
   @replace-new: escape('fill="@{fill-new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
