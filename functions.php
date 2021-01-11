@@ -5601,3 +5601,25 @@ function acf_relationshipfield_only_use_published_content( $options, $field, $po
 }
 
 //========================================================================================================
+
+// Haalt voor een pagina of een bericht in opsommingen (zoals de homepage) een extra labeltje waarmee
+// het bericht extra context krijgt
+function rhswp_get_sublabel( $post_id ) {
+	$return = '';
+
+	if ( $post_id ) {
+		if ( get_field( 'post_label', $post_id ) ) {
+			$return = get_field( 'post_label', $post_id );
+		} else {
+			$uitgelicht_dossier = get_the_terms( $post_id, RHSWP_CT_DOSSIER );
+			if ( $uitgelicht_dossier ) {
+				$return = $uitgelicht_dossier[0]->name;
+			}
+		}
+	}
+
+	return $return;
+}
+
+//========================================================================================================
+

@@ -1,0 +1,50 @@
+{
+    "key": "group_5ffc81f124579",
+    "title": "Label (subheader)",
+    "fields": [
+        {
+            "key": "field_5ffc822623b01",
+            "label": "Extra label",
+            "name": "post_label",
+            "type": "text",
+            "instructions": "Niet verplicht. Gebruik 1 woord. Dit kun je toevoegen om dit bericht (deze pagina) te voorzien van extra context. Deze tekst zou ervoor moeten zorgen dat in opsommingen van berichten extra duidelijk is waar het bericht over gaat.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 30
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1610384136
+}
