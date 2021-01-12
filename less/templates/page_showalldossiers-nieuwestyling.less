@@ -1,0 +1,86 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - page_showalldossiers-nieuwestyling.less
+// * ----------------------------------------------------------------------------------
+// * styling voor page_front-page-nieuws.php
+// * ----------------------------------------------------------------------------------
+//
+
+.dossier-sortering {
+  font-family: @fontstrong;
+
+  a {
+    display: inline-block;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: @a_color_default;
+    color: @wit;
+    padding: .1rem .5rem;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+.page-template-page_showalldossiers-nieuwestyling {
+  .dossier-list {
+    & a, & li a {
+      text-decoration: none;
+
+      &:hover,
+      &:active {
+        text-decoration: underline;
+      }
+    }
+
+    .term-children {
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .alphabet {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: .5rem 0 1rem 0;
+    padding: .5rem 0 1rem 0;
+    a {
+      flex: 0 0 2rem;
+      margin: 0 .25rem .25rem 0;
+      border: 1px solid @a_color_default;
+      text-align: center;
+      color: @a_color_default; // @txt;
+      text-decoration: none;
+
+      &:hover,
+      &:active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  *:target {
+    background: @a_color_default;
+    padding: 0 .5rem;
+    color: @wit;
+  }
+
+  .column-layout {
+    columns: 1 auto;
+
+    @media only screen and (min-width: ( @break_tablet ) ) {
+      column-count: 2;
+    }
+    @media only screen and (min-width: ( @break_phablet2 ) ) {
+      column-count: 3;
+    }
+  }
+}
