@@ -14,6 +14,10 @@
 
 // ========================================================================
 
+@import "auxilary/auxilary.less";
+
+// ========================================================================
+
 @strokeheight: 43px;
 @pixel: 1px;
 @prem: .75rem;
@@ -116,39 +120,6 @@
 
 .red() {
   border: 1px solid @warning;
-}
-
-//=========================================================================================================
-
-.visuallyhidden() {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px); // was 0, nu 1. @since 2.12.15
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-}
-
-//=========================================================================================================
-
-.visuallyvisual() {
-  border: inherit;
-  clip: auto;
-  height: auto;
-  margin: auto;
-  overflow: auto;
-  padding: inherit;
-  position: inherit;
-  width: auto;
-}
-
-//=========================================================================================================
-
-.showvisuallyhidden() {
-  clip: auto;
-  overflow: visible;
 }
 
 //=========================================================================================================

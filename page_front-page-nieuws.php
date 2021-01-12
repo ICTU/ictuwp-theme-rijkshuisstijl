@@ -136,7 +136,7 @@ function rhswp_home_onderwerpen_dossiers() {
 		if ( $uitgelicht_titel ) {
 			// een soort fallback: als er geen uitgelichte content is, dan tonen we de samenvatting van de etalage
 
-			echo '<div class="grid-item">';
+			echo '<div class="grid-item colspan-1 hide-on-mobile">';
 			echo '<h2' . $uitgelicht_titel_class . '><a href="' . $uitgelicht_url2 . '">' . $uitgelicht_titel . '</a></h2>';
 			if ( $uitgelicht_image ) {
 				echo '<a href="' . $uitgelicht_url2 . '" tabindex="-1">';
@@ -150,7 +150,7 @@ function rhswp_home_onderwerpen_dossiers() {
 			echo '</div>';
 
 		} else {
-			echo '<div class="grid-item">';
+			echo '<div class="grid-item colspan-1">';
 			echo $etalage_excerpt;
 			echo '</div>';
 
@@ -178,7 +178,7 @@ function rhswp_home_onderwerpen_dossiers() {
 
 						echo '<div class="' . $gridclass . '">';
 						foreach ( $row['home_row_freeform'] as $row2 ) {
-							$itemclass = 'grid-item';
+							$itemclass = 'grid-item colspan-1';
 							$excerpt   = $row2['home_row_freeform_text'];
 							$itemtitle = '<h2>' . $row2['home_row_freeform_title'] . '</h2>';
 							if ( $row2['home_row_freeform_width'] ) {
@@ -226,7 +226,7 @@ function rhswp_home_onderwerpen_dossiers() {
 
 								$excerpt       = get_the_excerpt( $event['post_id'] );
 								$itemtitle     = '<h3><a href="' . get_the_permalink( $event['post_id'] ) . '">' . $event['event_name'] . '</a></h3>';
-								$itemclass     = 'grid-item';
+								$itemclass     = 'grid-item colspan-1';
 								$EM_Event      = new EM_Event( $event['event_id'] );
 								$datum         = $EM_Event->output( '#_EVENTDATES' );
 								$tijd          = $EM_Event->output( '#_EVENTTIMES' );
@@ -319,7 +319,7 @@ function rhswp_home_onderwerpen_dossiers() {
 						while ( $contentblockposts->have_posts() ) : $contentblockposts->the_post();
 							$contentblock_post_id = $post->ID;
 							$skip_posts[]         = $contentblock_post_id;
-							$itemclass            = 'grid-item';
+							$itemclass            = 'grid-item colspan-1';
 							$itemdate             = get_the_date( get_option( 'date_format' ), $contentblock_post_id );
 							$contentblock_image   = get_the_post_thumbnail( $contentblock_post_id, IMAGESIZE_4x3_SMALL );
 							$contentblock_titel   = get_the_title( $contentblock_post_id );
@@ -329,7 +329,7 @@ function rhswp_home_onderwerpen_dossiers() {
 							$contentblock_label   = rhswp_get_sublabel( $contentblock_post_id );
 
 							if ( $row['home_row_type'] === 'posts_featured' ) {
-								$itemclass          = 'grid-item float-text';
+								$itemclass          = 'grid-item colspan-1 float-text';
 								$contentblock_image = get_the_post_thumbnail( $contentblock_post_id, IMAGESIZE_SQUARE_SMALL );
 								$itemtitle          = '<div class="text">';
 								if ( $contentblock_label ) {
@@ -370,6 +370,34 @@ function rhswp_home_onderwerpen_dossiers() {
 						echo '</div>';
 						echo '<p class="more"><a href="' . $more_url . '">' . $more_text . '</a></p>';
 						echo '</div>';
+
+					}
+
+					if ( $row['home_row_type'] === 'posts_featured' ) {
+
+
+						if ( $uitgelicht_titel ) {
+							// een soort fallback: als er geen uitgelichte content is, dan tonen we de samenvatting van de etalage
+
+							echo '<div class="hide-on-larger-than-mobile" aria-hidden="true">';
+							echo '<h2' . $uitgelicht_titel_class . '><a href="' . $uitgelicht_url2 . '">' . $uitgelicht_titel . '</a></h2>';
+							if ( $uitgelicht_image ) {
+								echo '<a href="' . $uitgelicht_url2 . '" tabindex="-1">';
+								echo $uitgelicht_image;
+								echo '</a>';
+							}
+							if ( $uitgelicht_label ) {
+								echo '<div class="label">' . $uitgelicht_label . '</div>';
+							}
+							echo $uitgelicht_excerpt;
+							echo '</div>';
+
+						} else {
+							echo '<div class="grid-item colspan-1">';
+							echo $etalage_excerpt;
+							echo '</div>';
+
+						}
 
 					}
 
