@@ -396,7 +396,6 @@ require_once( RHSWP_FOLDER . '/includes/widget-cta-banner.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-socialmedia.php' );
 
 
-
 // Add support for 2-column footer widgets
 add_theme_support( 'genesis-footer-widgets', 2 );
 
@@ -2468,6 +2467,7 @@ function rhswp_dossiercontext_add_query_vars( $vars ) {
 	$vars[] = RHSWP_DOSSIERCONTEXTEVENTOVERVIEW;
 	$vars[] = RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW;
 	$vars[] = 'searchwpquery';
+	$vars[] = 'sortdossier'; // wordt gebruikt door template page_showalldossiers-nieuwestyling.php
 
 	return $vars;
 }
@@ -5619,16 +5619,33 @@ function acf_relationshipfield_only_use_published_content( $options, $field, $po
 // Haalt voor een pagina of een bericht in opsommingen (zoals de homepage) een extra labeltje waarmee
 // het bericht extra context krijgt
 function rhswp_get_sublabel( $post_id ) {
-	$return = '';
+	$return = '&nbsp;';
 
 	if ( $post_id ) {
 		if ( get_field( 'post_label', $post_id ) ) {
 			$return = get_field( 'post_label', $post_id );
 		} else {
-			$uitgelicht_dossier = get_the_terms( $post_id, RHSWP_CT_DOSSIER );
-			if ( $uitgelicht_dossier ) {
-				$return = $uitgelicht_dossier[0]->name;
+			if ( class_exists( 'WPSEO_Primary_Term' ) ) {
+
+				// Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+				$wpseo_primary_term = new WPSEO_Primary_Term( RHSWP_CT_DOSSIER, $post_id );
+				$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+				$term               = get_term( $wpseo_primary_term );
+
+				if ( is_wp_error( $term ) ) {
+					// whoopsy, but return nothing
+				} else {
+					$return = $term->name;
+				}
+
+			} else {
+				$uitgelicht_dossier = get_the_terms( $post_id, RHSWP_CT_DOSSIER );
+				if ( $uitgelicht_dossier ) {
+					$return = $uitgelicht_dossier[0]->name;
+				}
 			}
+
+
 		}
 	}
 
