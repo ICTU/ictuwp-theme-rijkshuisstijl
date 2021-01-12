@@ -49,5 +49,49 @@
 <!--                                                            -->
 	
  
- */.taxonomy-dossiers .form-table [data-name=extra_contentblokken] .acf-input,.taxonomy-dossiers .form-table [data-name=extra_contentblokken] .acf-label{display:block!important;clear:both;width:100%}.taxonomy-dossiers .form-table [data-name=extra_contentblokken] .acf-input td,.taxonomy-dossiers .form-table [data-name=extra_contentblokken] .acf-label td{display:table-cell}.taxonomy-dossiers .form-table [data-name=extra_contentblokken] .acf-fields.-left>.acf-field>.acf-input{width:98%}
+ */
+@media only screen and (max-width: 900px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .hide-on-larger-than-mobile {
+    display: none;
+  }
+}
+/* mixins, sizes */
+/*
+Webfonts voor style.css
+---------------------------------------------------------------------------------------------------- */
+/*
+Webfonts voor andere css-bestanden
+---------------------------------------------------------------------------------------------------- */
+/* fonts */
+/*
+ * Rijkshuisstijl (Digitale Overheid) - 10-text-styles.less
+ * ----------------------------------------------------------------------------------
+ * Bevat selectors voor tekstelementen, zowel in front-end css als back-end css
+ * ----------------------------------------------------------------------------------
+ * @author  Paul van Buuren
+ * @license GPL-2.0+
+ * @package wp-rijkshuisstijl
+ * @version 2.17.3
+ * @desc.   Webkit rendering issues.
+ * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+*/
+/* font-styles, shared with admin editor-styles.less */
+.taxonomy-dossiers .form-table [data-name="extra_contentblokken"] .acf-label,
+.taxonomy-dossiers .form-table [data-name="extra_contentblokken"] .acf-input {
+  display: block !important;
+  clear: both;
+  width: 100%;
+}
+.taxonomy-dossiers .form-table [data-name="extra_contentblokken"] .acf-label td,
+.taxonomy-dossiers .form-table [data-name="extra_contentblokken"] .acf-input td {
+  display: table-cell;
+}
+.taxonomy-dossiers .form-table [data-name="extra_contentblokken"] .acf-fields.-left > .acf-field > .acf-input {
+  width: 98%;
+}
 /*# sourceMappingURL=admin-css-acf-contentblokken.css.map */

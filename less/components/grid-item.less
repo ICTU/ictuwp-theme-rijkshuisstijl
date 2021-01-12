@@ -23,7 +23,6 @@
     position: relative;
     background-color: @txt;
     object-fit: cover;
-    min-height: 300px;
 
     img {
       margin: 0;
@@ -37,9 +36,6 @@
       bottom: 0;
       right: 0;
       left: 0;
-      background-image: url('@{base_url}images/svg/float-text-bg.svg');
-      background-repeat: repeat-x;
-      background-position: left bottom;
 
       &, * {
         color: @wit;
@@ -59,6 +55,11 @@
       left: 0;
       padding: 1rem;
 
+      background-image: url('@{base_url}images/svg/float-text-bg-v4.svg?v3');
+      background-repeat: repeat-x;
+      background-position: left bottom;
+      background-size: contain;
+
       .label {
         background: @txt;
         color: @wit;
@@ -72,6 +73,28 @@
         font-weight: 100;
       }
     }
+  }
+
+  &.colspan-2 {
+    &.float-text {
+      object-fit: cover;
+
+      img {
+        object-fit: none;
+        object-position: 50% 50%; /* default value: image is centered*/
+      }
+
+      a {
+        background-repeat: repeat-x;
+        background-position: left bottom;
+        background-size: contain;
+        background-image: url('@{base_url}images/svg/float-text-bg-v1.svg');
+      }
+      .text {
+        background-image: none;
+      }
+    }
+
   }
 
   @media only screen and (min-width: ( @break_tablet ) ) {
@@ -92,25 +115,6 @@
           }
         }
       }
-    }
-  }
-
-  @media only screen and (min-width: ( @break_phablet2 ) ) {
-
-    margin: 1rem 1rem 1rem 1rem;
-    flex: 1 1 calc(33.3% - 2rem);
-
-
-    &.colspan-1 {
-      flex: 0 1 calc(33.3% - 2rem);
-    }
-
-    &.colspan-2 {
-      flex: 1 1 calc(66.6% - 2rem);
-    }
-
-    &.colspan-3 {
-      flex: 1 1 calc(100% - 2rem);
     }
   }
 
