@@ -1,0 +1,34 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - columns.less
+// * ----------------------------------------------------------------------------------
+// * styling voor de breadcrumb
+// * ----------------------------------------------------------------------------------
+//
+
+.column-layout {
+
+  columns: 1 auto;
+
+  @media only screen and (min-width: ( @break_tablet ) ) {
+    column-count: 2;
+  }
+  @media only screen and (min-width: ( @break_phablet2 ) ) {
+    column-count: 3;
+  }
+}
+
+.entry-content .column-layout {
+
+  &, ul, ol {
+    list-style: none;
+
+    li {
+      margin-left: 0;
+      list-style: none;
+    }
+
+    li::before {
+      content: "\200B";
+    }
+  }
+}
