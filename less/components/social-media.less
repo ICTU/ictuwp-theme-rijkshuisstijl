@@ -41,11 +41,16 @@ h2, h3, h4 {
 }
 
 .social-media-widget {
+
+  h2, h3, h4 {
+    & + ul.social-media {
+      margin-top: 1rem;
+    }
+  }
+
   .social-media {
-    margin-top: 0;
 
     li {
-
       .iconaddfill('../images/svg/icon-social.svg', @a_color_default, #fff);
 
       &.social-media--mail {
