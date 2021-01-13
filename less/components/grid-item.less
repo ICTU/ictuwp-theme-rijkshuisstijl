@@ -8,7 +8,7 @@
 .griditem {
 
   h2, h3 {
-    margin: 0;
+    margin: 0 0 .25rem 0;
   }
 
   img {
@@ -98,6 +98,21 @@
   }
 
   @media only screen and (min-width: ( @break_650px ) ) {
+
+    &.griditem--post {
+      h3 {
+        margin-top: .75rem;
+      }
+      .label {
+        margin-top: .75rem;
+        margin-bottom: .75rem;
+        & + h3 {
+          margin-top: 0;
+        }
+      }
+    }
+
+
     &.griditem--textoverimage {
       &.colspan-1 {
         .text {
