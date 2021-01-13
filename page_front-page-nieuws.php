@@ -137,12 +137,12 @@ function rhswp_home_onderwerpen_dossiers() {
 			// een soort fallback: als er geen uitgelichte content is, dan tonen we de samenvatting van de etalage
 
 			echo '<div class="griditem colspan-1 hide-on-mobile">';
-			echo '<h2' . $uitgelicht_titel_class . '><a href="' . $uitgelicht_url2 . '">' . $uitgelicht_titel . '</a></h2>';
 			if ( $uitgelicht_image ) {
 				echo '<a href="' . $uitgelicht_url2 . '" tabindex="-1">';
 				echo $uitgelicht_image;
 				echo '</a>';
 			}
+			echo '<h2' . $uitgelicht_titel_class . '><a href="' . $uitgelicht_url2 . '">' . $uitgelicht_titel . '</a></h2>';
 			if ( $uitgelicht_label ) {
 				echo '<div class="label">' . $uitgelicht_label . '</div>';
 			}
