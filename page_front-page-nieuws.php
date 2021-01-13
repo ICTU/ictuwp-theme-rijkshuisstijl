@@ -117,7 +117,7 @@ function rhswp_home_onderwerpen_dossiers() {
 
 		echo '<section class="grid">';
 
-		echo '<div class="grid-item float-text colspan-2">';
+		echo '<div class="griditem griditem--textoverimage colspan-2">';
 
 		echo $etalage_image . '<a href="' . $etalage_url . '">';
 
@@ -136,7 +136,7 @@ function rhswp_home_onderwerpen_dossiers() {
 		if ( $uitgelicht_titel ) {
 			// een soort fallback: als er geen uitgelichte content is, dan tonen we de samenvatting van de etalage
 
-			echo '<div class="grid-item colspan-1 hide-on-mobile">';
+			echo '<div class="griditem colspan-1 hide-on-mobile">';
 			echo '<h2' . $uitgelicht_titel_class . '><a href="' . $uitgelicht_url2 . '">' . $uitgelicht_titel . '</a></h2>';
 			if ( $uitgelicht_image ) {
 				echo '<a href="' . $uitgelicht_url2 . '" tabindex="-1">';
@@ -150,7 +150,7 @@ function rhswp_home_onderwerpen_dossiers() {
 			echo '</div>';
 
 		} else {
-			echo '<div class="grid-item colspan-1">';
+			echo '<div class="griditem colspan-1">';
 			echo $etalage_excerpt;
 			echo '</div>';
 
@@ -178,7 +178,7 @@ function rhswp_home_onderwerpen_dossiers() {
 
 						echo '<div class="' . $gridclass . '">';
 						foreach ( $row['home_row_freeform'] as $row2 ) {
-							$itemclass = 'grid-item colspan-1';
+							$itemclass = 'griditem colspan-1';
 							$excerpt   = $row2['home_row_freeform_text'];
 							$itemtitle = '<h2>' . $row2['home_row_freeform_title'] . '</h2>';
 							if ( $row2['home_row_freeform_width'] ) {
@@ -226,7 +226,7 @@ function rhswp_home_onderwerpen_dossiers() {
 
 								$excerpt       = get_the_excerpt( $event['post_id'] );
 								$itemtitle     = '<h3><a href="' . get_the_permalink( $event['post_id'] ) . '">' . $event['event_name'] . '</a></h3>';
-								$itemclass     = 'grid-item colspan-1';
+								$itemclass     = 'griditem colspan-1';
 								$EM_Event      = new EM_Event( $event['event_id'] );
 								$datum         = $EM_Event->output( '#_EVENTDATES' );
 								$tijd          = $EM_Event->output( '#_EVENTTIMES' );
@@ -309,6 +309,7 @@ function rhswp_home_onderwerpen_dossiers() {
 					$contentblockposts->query( $args );
 
 					if ( $contentblockposts->have_posts() ) {
+						$itemcounter = 0;
 						echo '<div class="container">';
 						if ( $titel ) {
 							echo '<h2>' . $titel . '</h2>';
@@ -317,32 +318,36 @@ function rhswp_home_onderwerpen_dossiers() {
 						echo '<div class="' . $gridclass . '">';
 
 						while ( $contentblockposts->have_posts() ) : $contentblockposts->the_post();
+							$itemcounter++;
 							$contentblock_post_id = $post->ID;
 							$skip_posts[]         = $contentblock_post_id;
-							$itemclass            = 'grid-item colspan-1';
 							$itemdate             = get_the_date( get_option( 'date_format' ), $contentblock_post_id );
 							$contentblock_image   = get_the_post_thumbnail( $contentblock_post_id, IMAGESIZE_4x3_SMALL );
 							$contentblock_titel   = get_the_title( $contentblock_post_id );
 							$contentblock_url     = get_permalink( $contentblock_post_id );
 							$excerpt              = '';
 							$itemtitle            = '';
+							$itemclass            = 'griditem griditem--post colspan-1 itemcounter-' . $itemcounter;
 							$contentblock_label   = rhswp_get_sublabel( $contentblock_post_id );
 
 							if ( $row['home_row_type'] === 'posts_featured' ) {
-								$itemclass          = 'grid-item colspan-1 float-text';
 								$contentblock_image = get_the_post_thumbnail( $contentblock_post_id, IMAGESIZE_SQUARE_SMALL );
-								$itemtitle          = '<div class="text">';
 								if ( $contentblock_label ) {
 									$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
 								}
-								$itemtitle .= '<h2>' . $contentblock_titel . '</h2>';
-								$itemtitle .= '</div>';
+								$itemtitle .= '<h3>' . $contentblock_titel . '</h3>';
 
 								// het hele blok klikbaar maken
-								echo '<div class="' . $itemclass . '">';
-								echo $contentblock_image . '<a href="' . $contentblock_url . '">';
+								echo '<div class="' . $itemclass . ' datefield griditem--textoverimage">';
+								echo $contentblock_image;
+								echo '<div class="joeperdepoep">';
+								echo '<a href="' . $contentblock_url . '">';
+								echo '<div class="text">';
 								echo $itemtitle;
+								echo '</div>';
 								echo '</a>';
+								echo '<p class="meta">' . $itemdate . '</p>';
+								echo '</div>';
 								echo '</div>';
 
 							} else {
@@ -351,15 +356,17 @@ function rhswp_home_onderwerpen_dossiers() {
 								}
 								$itemtitle .= '<h3><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></h3>';
 								$itemtitle .= '<p class="meta">' . $itemdate . '</p>';
-								$excerpt   = wp_strip_all_tags( get_the_excerpt( $contentblock_post_id ) );
+								$excerpt   .= '<p class="excerpt">' . wp_strip_all_tags( get_the_excerpt( $contentblock_post_id ) ) . '</p>';
 								if ( $contentblock_image && $contentblock_url ) {
-									$contentblock_image = '<a tabindex="-1" href="' . $contentblock_url . '">' . $contentblock_image . '</a>';
+									$contentblock_image = '<a tabindex="-1" href="' . $contentblock_url . '" class="contentblock_image">' . $contentblock_image . '</a>';
 								}
 
 								echo '<div class="' . $itemclass . '">';
 								echo $contentblock_image;
+								echo '<div>';
 								echo $itemtitle;
 								echo $excerpt;
+								echo '</div>';
 								echo '</div>';
 
 							}
@@ -393,7 +400,7 @@ function rhswp_home_onderwerpen_dossiers() {
 							echo '</div>';
 
 						} else {
-							echo '<div class="grid-item colspan-1">';
+							echo '<div class="griditem colspan-1">';
 							echo $etalage_excerpt;
 							echo '</div>';
 

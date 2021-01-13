@@ -1,104 +1,201 @@
 //**
-// * Rijkshuisstijl (Digitale Overheid) - grid-item.less
+// * Rijkshuisstijl (Digitale Overheid) - griditem.less
 // * ----------------------------------------------------------------------------------
 // * styling voor items in een grid
 // * ----------------------------------------------------------------------------------
 //
 
-.grid-item {
-  margin: 1rem 0;
-  flex: 1 1 100%;
+//========================================================================================================
+
+.textoverimage() {
+
+  @datumhoogte: 2.5rem;
+  @stop1: 0%;
+  @distancestop2: 55%;
+  @colorstop2: rgba(0, 0, 0, 0.60);
+  //    @colorstop3: rgba(0,0,0,0.66);
+  @colorstop3: @colorstop2;
+
+  position: relative;
+  background-color: @txt;
+  object-fit: cover;
+
+  img {
+    margin: 0;
+    display: block;
+    border-style: none;
+  }
+
+  a {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    &, * {
+      color: @wit;
+    }
+
+    &:hover,
+    &:focus {
+      h2, h3 {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 4rem 1rem 1rem 1rem;
+    background: black;
+    background: rgba(150, 150, 150, 0);
+    /*    background: -moz-linear-gradient(top, rgba(150, 150, 150, 0) 0%, @colorstop2 @distancestop2, @colorstop3 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(150, 150, 150, 0)), color-stop(@distancestop2, rgba(0, 0, 0, 0.66)), color-stop(100%, @colorstop3));
+        background: -webkit-linear-gradient(top, rgba(150, 150, 150, 0) 0%, @colorstop2 @distancestop2, @colorstop3 100%);
+        background: -o-linear-gradient(top, rgba(150, 150, 150, 0) 0%, @colorstop2 @distancestop2, @colorstop3 100%);
+        background: -ms-linear-gradient(top, rgba(150, 150, 150, 0) 0%, @colorstop2 @distancestop2, @colorstop3 100%); */
+    background: linear-gradient(to bottom, rgba(150, 150, 150, 0) 0%, @colorstop2 @distancestop2, @colorstop3 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#969696', endColorstr='#000000', GradientType=0);
+
+    .label {
+      background: @txt;
+      color: @wit;
+      display: inline-block;
+      padding: 0 .5rem;
+      margin-bottom: .5rem;
+    }
+
+    h2, h3 {
+      line-height: 1.2;
+      font-size: 1.2rem;
+      font-weight: 100;
+    }
+  }
+  .meta {
+    min-height: @datumhoogte;
+    background: white;
+    position: absolute;
+    padding-top: .5rem;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0;
+  }
+
+  &.datefield {
+    img {
+      margin-bottom: @datumhoogte;
+    }
+
+    a {
+      bottom: @datumhoogte;
+    }
+  }
+
+  @media only screen and (min-width: ( @break_tablet ) ) {
+    .text {
+      h2, h3 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  @media only screen and (min-width: ( @break_fullwidth ) ) {
+    .text {
+      h2, h3 {
+        font-size: 2rem;
+      }
+    }
+  }
+
+}
+
+//========================================================================================================
+
+.griditem {
 
   h2, h3 {
     margin: 0;
   }
 
-  .meta {
-    font-family: @fontstrong;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+  img {
+    display: block;
+    border: 1px solid #ececec;
   }
 
-  &.float-text {
-    position: relative;
-    background-color: @txt;
-    object-fit: cover;
-
-    img {
-      margin: 0;
-      display: block;
+  a {
+    &, h2, h3 {
+      text-decoration: none;
     }
+  }
 
+  &.griditem--textoverimage {
     a {
       display: block;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
+    }
+  }
 
-      &, * {
-        color: @wit;
+  &.griditem--newsblock {
+    border: 2px solid red;
+  }
+
+  @media only screen and (max-width: ( @break_phone ) ) {
+    &.griditem--post {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      margin-bottom: 1rem;
+
+      .contentblock_image,
+      img {
+        flex: 0 1 120px;
+        height: auto;
+        max-width: 120px;
+
+        & + div {
+          flex: 1 0 65%;
+          padding-left: .5rem;
+        }
       }
 
-      &:hover,
-      &:focus {
-        h2, h3 {
-          text-decoration: underline;
-        }
+      .excerpt,
+      .label {
+        .visuallyhidden();
       }
     }
 
-    .text {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      padding: 1rem;
+    &.colspan-2.griditem--textoverimage,
+    &.itemcounter-1.griditem--textoverimage {
+      .textoverimage();
+    }
 
-      background-image: url('@{base_url}images/svg/float-text-bg-v4.svg?v3');
-      background-repeat: repeat-x;
-      background-position: left bottom;
-      background-size: contain;
-
-      .label {
-        background: @txt;
-        color: @wit;
-        padding: 0 .5rem;
-        margin-bottom: .5rem;
-      }
-
-      h2, h3 {
-        line-height: 1.2;
-        font-size: 1.2rem;
-        font-weight: 100;
+    &.itemcounter-1.griditem--textoverimage {
+      img {
+        flex: 1 0 100%;
+        max-width: unset;
       }
     }
   }
 
-  &.colspan-2 {
-    &.float-text {
-      object-fit: cover;
-
-      img {
-        object-fit: none;
-        object-position: 50% 50%; /* default value: image is centered*/
-      }
-
-      a {
-        background-repeat: repeat-x;
-        background-position: left bottom;
-        background-size: contain;
-        background-image: url('@{base_url}images/svg/float-text-bg-v1.svg');
-      }
-      .text {
-        background-image: none;
-      }
+  @media only screen and (min-width: ( @break_phone ) ) {
+    .meta {
+      font-family: @fontstrong;
+      margin-top: .5rem;
+      margin-bottom: .5rem;
     }
 
+    &.griditem--textoverimage {
+      .textoverimage();
+    }
   }
 
   @media only screen and (min-width: ( @break_tablet ) ) {
-    &.float-text {
+    &.griditem--textoverimage {
       &.colspan-1 {
         .text {
           h2, h3 {
@@ -109,6 +206,11 @@
 
       &.colspan-2,
       &.colspan-3 {
+        img {
+          min-width: 100%;
+          width: 100%;
+          height: auto;
+        }
         .text {
           h2, h3 {
             font-size: 1.5rem;
@@ -119,7 +221,7 @@
   }
 
   @media only screen and (min-width: ( @break_fullwidth ) ) {
-    &.float-text {
+    &.griditem--textoverimage {
 
       .text {
         h2, h3 {
@@ -130,6 +232,9 @@
       &.colspan-2,
       &.colspan-3 {
         .text {
+          padding-right: 4rem;
+          padding-left: 2rem;
+          padding-bottom: 2rem;
           h2, h3 {
             font-size: 2.75rem;
           }
@@ -137,4 +242,6 @@
       }
     }
   }
+
 }
+
