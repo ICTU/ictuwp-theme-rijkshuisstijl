@@ -231,11 +231,14 @@ function rhswp_home_onderwerpen_dossiers() {
 								$datum         = $EM_Event->output( '#_EVENTDATES' );
 								$tijd          = $EM_Event->output( '#_EVENTTIMES' );
 								$location_town = $EM_Event->output( '#_LOCATIONTOWN' );
+								$location_type = $EM_Event->event_location_type;
+
+
 
 								echo '<div class="' . $itemclass . '">';
 								echo $itemtitle;
 								echo $excerpt;
-								if ( $datum || $tijd || $location_town ) {
+								if ( $datum || $tijd || $location_town || $location_type ) {
 
 									echo '<ul class="event-meta">';
 									if ( $datum ) {
@@ -246,6 +249,9 @@ function rhswp_home_onderwerpen_dossiers() {
 									}
 									if ( $location_town ) {
 										echo '<li class="event-town">' . $location_town . '</li>';
+									}
+									if ( $location_type === 'url' ) {
+										echo '<li class="event-online">' . _x( 'Online', 'event type', 'wp-rijkshuisstijl' ) . '</li>';
 									}
 									echo '</ul>';
 								}
