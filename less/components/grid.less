@@ -16,26 +16,26 @@
     align-items: stretch;
   }
 
-  @media only screen and (min-width: ( @break_tablet ) ) {
+  @media only screen and (min-width: ( @break_650px ) ) {
     margin-left: -1rem;
     margin-right: -1rem;
   }
 
   .griditem {
 
-    @media only screen and (max-width: ( @break_tablet ) ) {
+    @media only screen and (max-width: ( @break_650px ) ) {
 
      &.colspan-1 {
         max-width: 450px;
       }
     }
 
-    @media only screen and (min-width: @break_phone) {
+    @media only screen and (min-width: @break_500px) {
       margin: .5rem .5rem .5rem .5rem;
     }
 
-    //  @media only screen and (min-width: ( @break_phone ) ) and max-width: 700px {
-    @media only screen and (min-width: @break_phone) and (max-width: ( @break_phablet2 - 1 ) ) {
+    //  @media only screen and (min-width: ( @break_500px ) ) and max-width: 700px {
+    @media only screen and (min-width: @break_500px) and (max-width: ( @break_900px - 1 ) ) {
       &.colspan-1 {
 //        max-width: 50%;
         flex-basis: calc(50% - 2rem);
@@ -43,7 +43,7 @@
       }
     }
 
-    @media only screen and (min-width: ( @break_phablet2 ) ) {
+    @media only screen and (min-width: ( @break_900px ) ) {
 
       margin: 1rem 1rem 1rem 1rem;
 

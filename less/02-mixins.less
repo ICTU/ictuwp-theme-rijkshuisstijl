@@ -40,14 +40,14 @@
 @menubreakpoint: 760px;
 
 
-@widget-area: ( @break_tablet - ( @logowidth + @padding + 5px ) );
+@widget-area: ( @break_650px - ( @logowidth + @padding + 5px ) );
 @filter_submit_width: 48px;
 
 @sidebar_width: 310px;
-@break_phone: 500px;
-@break_tablet: 650px;
-@break_phablet2: 900px;
-@break_fullwidth: 1200px;
+@break_500px: 500px;
+@break_650px: 650px;
+@break_900px: 900px;
+@break_1200px: 1200px;
 
 @logowidth: 450px;
 @logoheight: 92px;
@@ -520,7 +520,7 @@
     }
   }
 
-  @media only screen and (min-width: ( @break_fullwidth ) ) {
+  @media only screen and (min-width: ( @break_1200px ) ) {
     .pullquote-with-image.align-left,
     .pullquote-with-image.align-right {
       max-width: 50%;

@@ -38,7 +38,7 @@
         line-height: 1.5;
         font-weight: normal;
         flex: 1 0 100%;
-        @media only screen and (max-width: @break_fullwidth ) {
+        @media only screen and (max-width: @break_1200px ) {
           padding-left: 1rem;
         }
       }
@@ -148,7 +148,7 @@
     .headerlinkstyling();
   }
 
-  @media only screen and (max-width: ( @break_tablet - 1 ) ) {
+  @media only screen and (max-width: ( @break_650px - 1 ) ) {
 
     .nav-secondary {
       .visuallyhidden();
@@ -169,7 +169,7 @@
 
 
 
-  @media only screen and (min-width: ( @break_tablet ) ) {
+  @media only screen and (min-width: ( @break_650px ) ) {
 
     .site-header .wrap .title-area {
 
@@ -188,8 +188,13 @@
       }
     }
   }
+  @media only screen and (max-width: ( @break_900px ) ) {
+    .site-description {
+      .visuallyhidden();
+    }
+  }
 
-  @media only screen and (min-width: ( @break_fullwidth ) ) {
+  @media only screen and (min-width: ( @break_1200px ) ) {
 
     .site-header .wrap {
       .nav-primary {
@@ -212,7 +217,7 @@
   // titel verbergen
   display: none;
 
-  @media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
+  @media only screen and (max-width: ( @break_1200px  - 1 ) ) {
     // tenzij we op een klein scherm zitten
     display: block;
     color: @wit;

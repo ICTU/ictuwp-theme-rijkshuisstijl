@@ -26,7 +26,7 @@
   .site-inner,
   .wrap {
   	margin: 0 auto;
-  	max-width: @break_fullwidth;
+  	max-width: @break_1200px;
   	overflow: visible;
 
     &.header-image {
@@ -46,7 +46,7 @@
   .content-sidebar-sidebar .content-sidebar-wrap,
   .sidebar-content-sidebar .content-sidebar-wrap,
   .sidebar-sidebar-content .content-sidebar-wrap {
-  	width: ( @break_fullwidth - ( 1 * ( @padding + @sidebar_width ) ) );
+  	width: ( @break_1200px - ( 1 * ( @padding + @sidebar_width ) ) );
   }
   
   .content-sidebar-sidebar .content-sidebar-wrap {
@@ -74,7 +74,7 @@
   .content-sidebar-sidebar .content,
   .sidebar-content-sidebar .content,
   .sidebar-sidebar-content .content {
-  	width: ( @break_fullwidth - ( 2 * ( @padding + @sidebar_width ) ) );
+  	width: ( @break_1200px - ( 2 * ( @padding + @sidebar_width ) ) );
   }
   
   .full-width-content .content {
@@ -107,7 +107,7 @@
 		  	.taxonomy-description,
 		  	.archive-custom-loop,
 		  	.pagination {
-				max-width: @break_fullwidth;
+				max-width: @break_1200px;
 		  	}
 		  	.taxonomy-description,
 		  	.archive-custom-loop,
@@ -173,7 +173,7 @@
 		.block article {
 			
 			//========================================================================================================
-			@media only screen and (min-width: ( @break_tablet ) ) {
+			@media only screen and (min-width: ( @break_650px ) ) {
 	
 				.listitem_arrow( @a_color_default, 12px, 12px ); // done
 				
@@ -303,7 +303,7 @@
 		display: flex;
 		padding-top: .5rem;
 
-		@media only screen and (max-width: ( ( @break_tablet - 1 ) ) ) {
+		@media only screen and (max-width: ( ( @break_650px - 1 ) ) ) {
 
 			flex-direction: column;
 			
@@ -328,7 +328,7 @@
 
 		}
 		
-		@media only screen and (min-width: ( @break_tablet ) ) {
+		@media only screen and (min-width: ( @break_650px ) ) {
 			
 			flex-direction: row;
 			
@@ -406,7 +406,7 @@
 			padding-bottom: 1em;
 		}
 		
-		@media only screen and ( max-width: ( @break_fullwidth ) ) {
+		@media only screen and ( max-width: ( @break_1200px ) ) {
 			nav,
 			.entry-title,
 			.taxonomy-title {
@@ -421,7 +421,7 @@
 			}      
 		}
 		
-		@media only screen and (min-width: ( @break_tablet ) ) {
+		@media only screen and (min-width: ( @break_650px ) ) {
 			nav {
 				ul {
 					width: 95%;
@@ -432,7 +432,7 @@
 			}
 		}    
 		
-		@media only screen and (min-width: ( @break_fullwidth ) ) {
+		@media only screen and (min-width: ( @break_1200px ) ) {
 			nav {
 				ul {
 					column-count: 3;

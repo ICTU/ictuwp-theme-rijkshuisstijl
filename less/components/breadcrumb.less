@@ -68,12 +68,12 @@
 
       .search-form {
 
-        @media only screen and ( max-width: @break_tablet ) {
+        @media only screen and ( max-width: @break_650px ) {
           clear: both;
           float: none;
           margin-bottom: 1em;
         }
-        @media only screen and ( min-width: @break_tablet ) {
+        @media only screen and ( min-width: @break_650px ) {
           position: absolute;
           right: 0;
           top: 14px;
@@ -121,7 +121,7 @@
     .wrap {
       display: flex;
 
-      @media only screen and (max-width: @break_fullwidth ) {
+      @media only screen and (max-width: @break_1200px ) {
         padding-left: 1rem;
       }
     }
@@ -141,7 +141,7 @@
 
     }
 
-    @media only screen and (max-width: ( @break_tablet - 1 ) ) {
+    @media only screen and (max-width: ( @break_650px - 1 ) ) {
       .wrap {
         flex-direction: column;
         padding: 1rem;
@@ -153,7 +153,7 @@
       }
     }
 
-    @media only screen and (min-width: ( @break_tablet ) ) {
+    @media only screen and (min-width: ( @break_650px ) ) {
       .wrap {
         flex-direction: row;
       }
