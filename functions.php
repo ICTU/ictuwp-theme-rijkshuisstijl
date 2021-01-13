@@ -229,7 +229,7 @@ add_image_size( 'nieuwsbriefthumb', 88, 88, false );
 add_image_size( 'article-visual-big', 600, 600, true );
 
 $docrop     = true;
-$base_width = 800;
+$base_width = 900;
 add_image_size( IMAGESIZE_SQUARE, $base_width, $base_width, $docrop );
 $base_height = ( ( $base_width / 16 ) * 9 );
 add_image_size( IMAGESIZE_16x9, $base_width, $base_height, $docrop );
@@ -237,7 +237,7 @@ $base_height = ( ( $base_width / 4 ) * 3 );
 add_image_size( IMAGESIZE_4x3, $base_width, $base_height, $docrop );
 
 // SMALL VERSIONS
-$base_width = 450;
+$base_width = 400;
 add_image_size( IMAGESIZE_SQUARE_SMALL, $base_width, $base_width, $docrop );
 $base_height = ( ( $base_width / 16 ) * 9 );
 add_image_size( IMAGESIZE_16x9_SMALL, $base_width, $base_height, $docrop );
