@@ -3,13 +3,45 @@
     "title": "Label (subheader)",
     "fields": [
         {
-            "key": "field_5ffc822623b01",
-            "label": "Extra label",
+            "key": "field_600058725e7e4",
+            "label": "Label toevoegen?",
+            "name": "label_toevoegen",
+            "type": "radio",
+            "instructions": "Het label voegt in opsommingen extra informatie toe aan pagina's en berichten. Niet verplicht, maar zeker voor berichten wel aangeraden.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "nee": "nee",
+                "ja": "ja"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "nee",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_60005bbfc5020",
+            "label": "Extra label (!)",
             "name": "post_label",
             "type": "text",
             "instructions": "Niet verplicht. Gebruik 1 woord. Dit kun je toevoegen om dit bericht (deze pagina) te voorzien van extra context. Deze tekst zou ervoor moeten zorgen dat in opsommingen van berichten extra duidelijk is waar het bericht over gaat.",
-            "required": 0,
-            "conditional_logic": 0,
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_600058725e7e4",
+                        "operator": "!=",
+                        "value": "nee"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -39,5 +71,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1610450614
+    "modified": 1610636274
 }
