@@ -5622,9 +5622,11 @@ function rhswp_get_sublabel( $post_id ) {
 	$return = '';
 
 	if ( $post_id ) {
-		if ( get_field( 'post_label', $post_id ) ) {
+
+		if ( 'ja' === get_field( 'label_toevoegen', $post_id ) && get_field( 'post_label', $post_id ) ) {
 			$return = get_field( 'post_label', $post_id );
 		} else {
+			// staat post dan in een dossier?
 			if ( class_exists( 'WPSEO_Primary_Term' ) ) {
 
 				// Show the post's 'Primary' category, if this Yoast feature is available, & one is set
@@ -5644,8 +5646,20 @@ function rhswp_get_sublabel( $post_id ) {
 					$return = $uitgelicht_dossier[0]->name;
 				}
 			}
+		}
+		if ( ! $return ) {
+			// geen label en geen dossier, dan dus eerst checken of het ding een tag heeft
+			$posttags = get_the_tags();
+			if ( $posttags ) {
+				$return = $posttags[0]->name;
+			} else {
+				// dan maar de categorie teruggeven
 
-
+				$categories = get_the_category();
+				if ( $categories ) {
+					$return = $categories[0]->name;
+				}
+			}
 		}
 	}
 
