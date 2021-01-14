@@ -234,7 +234,6 @@ function rhswp_home_onderwerpen_dossiers() {
 								$location_type = $EM_Event->event_location_type;
 
 
-
 								echo '<div class="' . $itemclass . '">';
 								echo $itemtitle;
 								echo $excerpt;
@@ -324,11 +323,11 @@ function rhswp_home_onderwerpen_dossiers() {
 						echo '<div class="' . $gridclass . '">';
 
 						while ( $contentblockposts->have_posts() ) : $contentblockposts->the_post();
-							$itemcounter++;
+							$itemcounter ++;
 							$contentblock_post_id = $post->ID;
 							$skip_posts[]         = $contentblock_post_id;
 							$itemdate             = get_the_date( get_option( 'date_format' ), $contentblock_post_id );
-							$imgcontainer   = get_the_post_thumbnail( $contentblock_post_id, IMAGESIZE_4x3_SMALL );
+							$imgcontainer         = get_the_post_thumbnail( $contentblock_post_id, IMAGESIZE_4x3_SMALL );
 							$contentblock_titel   = get_the_title( $contentblock_post_id );
 							$contentblock_url     = get_permalink( $contentblock_post_id );
 							$excerpt              = '';
