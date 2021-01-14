@@ -28,7 +28,7 @@ $checker       = '';
 
 $sortering = get_query_var( 'sortdossier' );
 
-add_action( 'genesis_entry_content', 'rhswp_show_dossiers_sort_markering', 15 );
+//add_action( 'genesis_entry_content', 'rhswp_show_dossiers_sort_markering', 15 );
 
 if ( 'group' === $sortering ) {
 	$sortering = 'group';
@@ -69,7 +69,7 @@ function rhswp_show_dossiers_sort_markering() {
 	}
 	$markering .= '</p>';
 
-	echo $markering;
+	return $markering;
 
 }
 
@@ -100,15 +100,18 @@ function rhswp_show_dossiers_by_alphabet() {
 		$letter = '';
 		$tag = '';
 
+		echo '<div class="dossier-metainfo">';
+		echo rhswp_show_dossiers_sort_markering();
 		echo '<div class="alphabet">';
 		foreach ( $terms as $term ) {
 			$huidigeletter = substr( strtolower( $term->name ), 0, 1 );
 			if ( $huidigeletter !== $letter ) {
-				echo '<a href="#list_' . strtolower( $huidigeletter ) . '">' . strtoupper( $huidigeletter ) . '</a>';
+				echo '<a href="#list_' . strtolower( $huidigeletter ) . '"><span>' . strtoupper( $huidigeletter ) . '</span></a>';
 				$letter = $huidigeletter;
 			}
 		}
-		echo '</div>'; // .dossier-list column-layout
+		echo '</div>'; // .alphabet
+		echo '</div>'; // .dossier-metainfo
 
 		$letter = '';
 		$tag = '';
@@ -168,6 +171,10 @@ function rhswp_show_dossiers_by_group() {
 	$terms = get_terms( RHSWP_CT_DOSSIER, $args );
 
 	if ( $terms && ! is_wp_error( $terms ) ) {
+
+		echo '<div class="dossier-metainfo">';
+		echo rhswp_show_dossiers_sort_markering();
+		echo '</div>'; // .dossier-metainfo
 
 		echo '<div class="dossier-list">';
 		foreach ( $terms as $term ) {
