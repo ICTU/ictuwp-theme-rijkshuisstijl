@@ -29,7 +29,7 @@ add_action( 'genesis_before_loop', 'rhswp_add_taxonomy_description', 15 );
 
 /** Replace the standard loop with our custom loop */
 remove_action( 'genesis_loop', 'genesis_do_loop' );
-add_action( 'genesis_loop', 'rhswp_archive_custom_loop' );
+add_action( 'genesis_loop', 'rhswp_archive_loop' );
 
 //========================================================================================================
 

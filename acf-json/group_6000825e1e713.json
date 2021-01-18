@@ -1,0 +1,81 @@
+{
+    "key": "group_6000825e1e713",
+    "title": "Instellingen voor actueel-pagina",
+    "fields": [
+        {
+            "key": "field_600082a69547d",
+            "label": "Styling categorie",
+            "name": "styling_categorie",
+            "type": "taxonomy",
+            "instructions": "Welke categorie moet de styling gebruike voor achtergrond-artikelen?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "field_type": "checkbox",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 0
+        },
+        {
+            "key": "field_60016ca878cc5",
+            "label": "Aantal berichten",
+            "name": "styling_categorie_maxnr",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_600082a69547d",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "3": "3 berichten",
+                "4": "4 berichten",
+                "6": "6 berichten",
+                "8": "8 berichten",
+                "12": "12 berichten"
+            },
+            "default_value": 3,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "posts_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1610706220
+}
