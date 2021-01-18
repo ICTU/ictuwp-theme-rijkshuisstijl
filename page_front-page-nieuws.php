@@ -50,6 +50,7 @@ function rhswp_home_onderwerpen_dossiers() {
 
 	$theid                  = $post->ID;
 	$etalage_titel          = '';
+	$etalage                = '';
 	$etalage_url            = '';
 	$etalage_image          = '';
 	$etalage_label          = '';
@@ -63,29 +64,48 @@ function rhswp_home_onderwerpen_dossiers() {
 	$skip_posts             = array(); // array with IDs for posts to be skipped in loop
 
 	if ( 'method_auto' === get_field( 'home_row_1_cell_1_method', $theid ) ) {
+
 		$etalage_post    = get_field( 'home_row_1_cell_1_post', $theid );
-		$etalage_post_id = $etalage_post[0]->ID;
-		$etalage_titel   = get_the_title( $etalage_post_id );
-		$etalage_url     = get_permalink( $etalage_post_id );
-		$etalage_excerpt = get_the_excerpt( $etalage_post_id );
-		$etalage_image   = get_the_post_thumbnail( $etalage_post_id, IMAGESIZE_16x9 );
-		$etalage_label   = rhswp_get_sublabel( $etalage_post_id );
-		$skip_posts[]    = $etalage_post_id;
+		$skip_posts[]    = $etalage_post[0]->ID;
+		$etalage_excerpt = get_the_excerpt( $etalage_post[0]->ID );
+
+		$args2 = array(
+			'ID'        => $etalage_post[0]->ID,
+			'cssid'     => 'etalage',
+			'type'      => 'posts_featured',
+			'itemclass' => 'griditem griditem--textoverimage colspan-2',
+		);
+
+		$etalage = rhswp_get_grid_item( $args2 );
+
 	} elseif ( get_field( 'home_row_1_cell_1_featured_link', $theid ) ) {
 		// er is geen featured post uitgekozen; misschien zijn er wel een plaatje en link ingevoerd?
+
+		$etalage_label = '';
+		$image_ID      = '';
 		$etalage_link  = get_field( 'home_row_1_cell_1_featured_link', $theid );
 		$etalage_titel = $etalage_link['title'];
-		$etalage_url   = $etalage_link['url'];
-		if ( get_field( 'home_row_1_cell_1_featured_image', $theid ) ) {
-			$image = get_field( 'home_row_1_cell_1_featured_image', $theid );
-			if ( $image['ID'] ) {
-				$etalage_image = wp_get_attachment_image( $image['ID'], IMAGESIZE_16x9 );
-			}
-		}
 		if ( get_field( 'home_row_1_cell_1_featured_label', $theid ) ) {
 			$etalage_label = get_field( 'home_row_1_cell_1_featured_label', $theid );
 		}
+		if ( get_field( 'home_row_1_cell_1_featured_image', $theid ) ) {
+			$image = get_field( 'home_row_1_cell_1_featured_image', $theid );
+			if ( $image ) {
+				$image_ID = $image['ID'];
+			}
+		}
+		$args2         = array(
+			'cssid'              => 'etalage',
+			'type'               => 'posts_manual',
+			'contentblock_title' => $etalage_link['title'],
+			'contentblock_url'   => $etalage_link['url'],
+			'contentblock_imgid' => $image_ID,
+			'contentblock_label' => $etalage_label,
+			'itemclass'          => 'griditem griditem--textoverimage colspan-2',
+		);
+		$etalage = rhswp_get_grid_item( $args2 );
 	}
+
 
 	if ( 'method_auto' === get_field( 'home_row_1_cell_2_method', $theid ) ) {
 		$uitgelicht_post    = get_field( 'home_row_1_cell_2_post', $theid );
@@ -93,7 +113,7 @@ function rhswp_home_onderwerpen_dossiers() {
 		$uitgelicht_titel   = get_the_title( $uitgelicht_post_id );
 		$uitgelicht_url2    = get_permalink( $uitgelicht_post_id );
 		$uitgelicht_excerpt = get_the_excerpt( $uitgelicht_post_id );
-		$uitgelicht_image   = get_the_post_thumbnail( $uitgelicht_post_id, IMAGESIZE_16x9 );
+		$uitgelicht_image   = get_the_post_thumbnail( $uitgelicht_post_id, IMAGESIZE_5x3 );
 		$skip_posts[]       = $uitgelicht_post_id;
 	} elseif ( get_field( 'home_row_1_cell_2_textcontent', $theid ) ) {
 		$uitgelicht_titel       = _x( "Uitgelicht", 'breadcrumb', 'wp-rijkshuisstijl' );
@@ -102,36 +122,15 @@ function rhswp_home_onderwerpen_dossiers() {
 		if ( get_field( 'home_row_1_cell_2_featured_image', $theid ) ) {
 			$image = get_field( 'home_row_1_cell_2_featured_image', $theid );
 			if ( $image['ID'] ) {
-				$uitgelicht_image = wp_get_attachment_image( $image['ID'], IMAGESIZE_16x9 );
+				$uitgelicht_image = wp_get_attachment_image( $image['ID'], IMAGESIZE_5x3 );
 			}
 		}
 	}
 
-
-	$maxnr      = 4;
-	$rowcounter = 0;
-	$breedte    = 'vollebreedte';
-
-
 	if ( $uitgelicht_titel || $etalage_titel ) {
 
 		echo '<section class="grid">';
-
-		echo '<div class="griditem griditem--textoverimage colspan-2" id="etalage">';
-
-		echo $etalage_image . '<a href="' . $etalage_url . '">';
-
-		$itemtitle = '<div class="text">';
-		if ( $etalage_label ) {
-			$itemtitle .= '<div class="label">' . $etalage_label . '</div>';
-		}
-		$itemtitle .= '<h2>' . $etalage_titel . '</h2>';
-		$itemtitle .= '</div>';
-
-		echo $itemtitle;
-		echo '</a>';
-		echo '</div>';
-
+		echo $etalage;
 
 		if ( $uitgelicht_titel ) {
 			// een soort fallback: als er geen uitgelichte content is, dan tonen we de samenvatting van de etalage
@@ -191,8 +190,6 @@ function rhswp_home_onderwerpen_dossiers() {
 							echo $itemtitle;
 							echo $excerpt;
 							echo '</div>';
-
-//							dovardump2( $row2 );
 						}
 						echo '</div>';
 
@@ -324,10 +321,28 @@ function rhswp_home_onderwerpen_dossiers() {
 
 						while ( $contentblockposts->have_posts() ) : $contentblockposts->the_post();
 							$itemcounter ++;
+
 							$contentblock_post_id = $post->ID;
 							$skip_posts[]         = $contentblock_post_id;
+
+							$args2 = array(
+								'ID' => $contentblock_post_id,
+							);
+
+							if ( $row['home_row_type'] === 'posts_featured' ) {
+								$args2['type']      = 'posts_featured';
+								$args2['itemclass'] = 'griditem griditem--post colspan-1 griditem--post colspan-1 griditem--post colspan-1';
+
+							} else {
+								$args2['itemclass'] = 'griditem griditem--post colspan-1';
+								$args2['type']      = 'posts_normal';
+							}
+
+							echo rhswp_get_grid_item( $args2 );
+
+							/*
 							$itemdate             = get_the_date( get_option( 'date_format' ), $contentblock_post_id );
-							$imgcontainer         = get_the_post_thumbnail( $contentblock_post_id, IMAGESIZE_4x3_SMALL );
+							$imgcontainer         = get_the_post_thumbnail( $contentblock_post_id, IMAGESIZE_10x3_SMALL );
 							$contentblock_titel   = get_the_title( $contentblock_post_id );
 							$contentblock_url     = get_permalink( $contentblock_post_id );
 							$excerpt              = '';
@@ -375,8 +390,9 @@ function rhswp_home_onderwerpen_dossiers() {
 								echo $excerpt;
 								echo '</div>'; // .txtcontainer
 								echo '</div>'; // .$itemclass
-
 							}
+							 *
+							 */
 
 
 						endwhile;
