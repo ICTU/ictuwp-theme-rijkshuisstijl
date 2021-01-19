@@ -28,6 +28,11 @@ if ( rhswp_extra_contentblokken_checker() ) {
 
 //========================================================================================================
 
+// Ter vervanging van de vervallen widget-ruimte en de 'extra links'-widget daarin
+add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 14 );
+
+//========================================================================================================
+
 genesis();
 
 //========================================================================================================

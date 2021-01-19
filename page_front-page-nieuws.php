@@ -1,17 +1,17 @@
 <?php
 
 /**
- * // * Rijkshuisstijl (Digitale Overheid) - page_front-page-nieuws.php
- * // * ----------------------------------------------------------------------------------
- * // * speciale functionaliteit voor de nieuwe homepage
- * // * ----------------------------------------------------------------------------------
+ * Rijkshuisstijl (Digitale Overheid) - page_front-page-nieuws.php
+ * ----------------------------------------------------------------------------------
+ * speciale functionaliteit voor de nieuwe homepage
+ * ----------------------------------------------------------------------------------
  * //
- * // * @author  Paul van Buuren
- * // * @license GPL-2.0+
- * // * @package wp-rijkshuisstijl
- * // * @version 2.12.11
- * // * @desc.   Kopstructuur homepage verbeterd.
- * // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+ * @author  Paul van Buuren
+ * @license GPL-2.0+
+ * @package wp-rijkshuisstijl
+ * @version 2.12.11
+ * @desc.   Kopstructuur homepage verbeterd.
+ * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  * //
  */
 
