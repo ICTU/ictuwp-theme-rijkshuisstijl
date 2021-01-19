@@ -253,7 +253,7 @@ function rhswp_blog_page_add_title() {
 				$totaal = 0;
 				if ( $alle_categorieen ) {
 					echo '<div class="test">';
-					echo '<h2>Overzicht van alle categorieën</h2>';
+					echo '<h2>Test: overzicht van alle categorieën</h2>';
 					echo '<ul>';
 					foreach ( $alle_categorieen as $styling_category ) {
 						$more_url = get_category_link( $styling_category );
@@ -270,7 +270,7 @@ function rhswp_blog_page_add_title() {
 				 *
 				 */
 				echo '<div class="test">';
-				echo '<h2>Paginering</h2>';
+				echo '<h2>Test: paginering</h2>';
 				echo '<ul>';
 				$more_url = get_the_permalink( $actueelpageid );
 				for ($paginanummer = 1; ; $paginanummer++) {
@@ -282,6 +282,12 @@ function rhswp_blog_page_add_title() {
 				}
 				echo '</ul>'; // .grid
 				echo '</div>'; // .test
+
+			}
+			else {
+
+				// geen aparte categorie geselecteerd, dus wel paginering tonen
+				add_action( 'genesis_after_loop', 'genesis_posts_nav', 3 );
 
 			}
 
