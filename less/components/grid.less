@@ -16,6 +16,11 @@
     align-items: stretch;
   }
 
+  & + .more {
+    // geen bovenmarge voor een readmore-link na een grid
+    margin-top: 0;
+  }
+
   @media only screen and (min-width: @break_500px) {
 
     margin-left: -.5rem;

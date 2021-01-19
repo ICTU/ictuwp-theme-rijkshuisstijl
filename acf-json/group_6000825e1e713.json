@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_6006c034fb9bb",
-            "label": "toon deze categorieen op de eerste pagina van de actueelpagina",
+            "label": "Categorieen voor de eerste pagina van de actueelpagina",
             "name": "actueel_rows",
             "type": "repeater",
             "instructions": "",
@@ -23,7 +23,7 @@
             "sub_fields": [
                 {
                     "key": "field_6006c07ffb9bc",
-                    "label": "actueel_row_category",
+                    "label": "Kies de categorie",
                     "name": "actueel_row_category",
                     "type": "taxonomy",
                     "instructions": "",
@@ -45,7 +45,7 @@
                 },
                 {
                     "key": "field_6006c1f4fb9bd",
-                    "label": "actueel_row_styling",
+                    "label": "Welke opmaak?",
                     "name": "actueel_row_styling",
                     "type": "radio",
                     "instructions": "",
@@ -69,7 +69,7 @@
                 },
                 {
                     "key": "field_6006c285896b4",
-                    "label": "actueel_row_number",
+                    "label": "Aantal berichten",
                     "name": "actueel_row_number",
                     "type": "select",
                     "instructions": "",
@@ -114,5 +114,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1611056537
+    "modified": 1611063566
 }

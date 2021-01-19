@@ -248,41 +248,6 @@ function rhswp_blog_page_add_title() {
 				// op de eerste pagina van de page_for_posts dus geen andere berichten meer tonen
 				remove_action( 'genesis_loop', 'rhswp_archive_loop' );
 
-				// TODO: weghalen opsomming van alle mogelijke categorieen
-				$alle_categorieen = get_categories();
-				$totaal = 0;
-				if ( $alle_categorieen ) {
-					echo '<div class="test">';
-					echo '<h2>Test: overzicht van alle categorieën</h2>';
-					echo '<ul>';
-					foreach ( $alle_categorieen as $styling_category ) {
-						$more_url = get_category_link( $styling_category );
-						echo '<li><a href="' . $more_url . '">' . $styling_category->name . ' (' . $styling_category->count . ' berichten)</a></li>';
-						$totaal = ( $totaal + $styling_category->count );
-					}
-					echo '</ul>'; // .grid
-					echo '<p>Totaal: ' . $totaal . ' gepubliceerde berichten.</p>'; // .grid
-					echo '</div>'; // .test
-				}
-
-				// TODO: weghalen
-				/*
-				 *
-				 */
-				echo '<div class="test">';
-				echo '<h2>Test: paginering</h2>';
-				echo '<ul>';
-				$more_url = get_the_permalink( $actueelpageid );
-				for ($paginanummer = 1; ; $paginanummer++) {
-					$link = $more_url . 'page/' . $paginanummer;
-					if ($paginanummer > 10) {
-						break;
-					}
-					echo '<li><a href="' . $link . '">pagina ' . $paginanummer . '</a></li>';
-				}
-				echo '</ul>'; // .grid
-				echo '</div>'; // .test
-
 			}
 			else {
 
