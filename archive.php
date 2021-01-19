@@ -31,6 +31,10 @@ add_action( 'genesis_before_loop', 'rhswp_add_taxonomy_description', 15 );
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'rhswp_archive_loop' );
 
+// full width
+add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
+
 //========================================================================================================
 
 genesis();
