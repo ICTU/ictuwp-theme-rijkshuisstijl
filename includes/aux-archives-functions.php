@@ -151,7 +151,11 @@ add_action( 'genesis_loop', 'rhswp_blog_page_add_title', 1 );
 function rhswp_blog_page_add_title() {
 
 	if ( is_home() && 'page' == get_option( 'show_on_front' ) ) {
+
 		// dit is de blogpagina met ALLE berichten
+		/** Replace the standard loop with our custom loop */
+		remove_action( 'genesis_loop', 'genesis_do_loop' );
+		add_action( 'genesis_loop', 'rhswp_archive_loop' );
 
 		global $wp_query;
 		$actueelpageid    = get_option( 'page_for_posts' );
@@ -165,8 +169,8 @@ function rhswp_blog_page_add_title() {
 		}
 		echo '<header class="entry-header"><h1 class="entry-title" itemprop="headline">' . $actueelpagetitle . '</h1> </header>';
 		echo '<p>' . _x( 'All posts related to the Digital Governement.', 'Tekst op de actueelpagina', 'wp-rijkshuisstijl' ) . $paging . '</p>';
-		if ( $paged === 1 ) {
 
+		if ( $paged === 1 ) {
 
 			// TODO: weghalen opsomming van alle mogelijke categorieen
 			$styling_categorie = get_categories();
@@ -176,7 +180,7 @@ function rhswp_blog_page_add_title() {
 				foreach ( $styling_categorie as $styling_category ) {
 //					dovardump2( $styling_category );
 					$more_url  = get_category_link( $styling_category );
-					echo '<li><a href="' . $more_url . '">' . $styling_category->name . '</a></li>';
+					echo '<li><a href="' . $more_url . '">' . $styling_category->name . ' (' . $styling_category->count . ' berichten)</a></li>';
 				}
 				echo '</ul>'; // .grid
 			}
@@ -228,13 +232,14 @@ function rhswp_blog_page_add_title() {
 					// RESET THE QUERY
 					wp_reset_query();
 				}
+				// geen paginering
+				remove_action( 'genesis_after_loop', 'genesis_posts_nav' );
+//				add_action( 'genesis_after_loop', 'genesis_posts_nav', 3 );
 			}
+		} else {
+			// post navigation verplaatsen tot buiten de flex-ruimte
+			add_action( 'genesis_after_loop', 'genesis_posts_nav', 3 );
 		}
-		/** Replace the standard loop with our custom loop */
-		remove_action( 'genesis_loop', 'genesis_do_loop' );
-		add_action( 'genesis_loop', 'rhswp_archive_loop' );
-		// post navigation verplaatsen tot buiten de flex-ruimte
-		add_action( 'genesis_after_loop', 'genesis_posts_nav', 3 );
 	}
 }
 
