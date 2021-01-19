@@ -3,11 +3,11 @@
     "title": "Instellingen voor actueel-pagina",
     "fields": [
         {
-            "key": "field_600082a69547d",
-            "label": "Styling categorie",
-            "name": "styling_categorie",
-            "type": "taxonomy",
-            "instructions": "Welke categorie moet de styling gebruike voor achtergrond-artikelen?",
+            "key": "field_6006c034fb9bb",
+            "label": "toon deze categorieen op de eerste pagina van de actueelpagina",
+            "name": "actueel_rows",
+            "type": "repeater",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -15,49 +15,86 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "category",
-            "field_type": "checkbox",
-            "add_term": 0,
-            "save_terms": 0,
-            "load_terms": 0,
-            "return_format": "id",
-            "multiple": 0,
-            "allow_null": 0
-        },
-        {
-            "key": "field_60016ca878cc5",
-            "label": "Aantal berichten",
-            "name": "styling_categorie_maxnr",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_600082a69547d",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "3": "3 berichten",
-                "4": "4 berichten",
-                "6": "6 berichten",
-                "8": "8 berichten",
-                "12": "12 berichten"
-            },
-            "default_value": 3,
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
+            "collapsed": "field_6006c07ffb9bc",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "categorie toevoegen",
+            "sub_fields": [
+                {
+                    "key": "field_6006c07ffb9bc",
+                    "label": "actueel_row_category",
+                    "name": "actueel_row_category",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "category",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_6006c1f4fb9bd",
+                    "label": "actueel_row_styling",
+                    "name": "actueel_row_styling",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "actueel_row_styling_plain": "Titel en samenvatting",
+                        "actueel_row_styling_title_on_image": "Titel over foto"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "actueel_row_styling_plain",
+                    "layout": "vertical",
+                    "return_format": "value",
+                    "save_other_choice": 0
+                },
+                {
+                    "key": "field_6006c285896b4",
+                    "label": "actueel_row_number",
+                    "name": "actueel_row_number",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "3": "3 berichten",
+                        "4": "4 berichten",
+                        "6": "6 berichten",
+                        "12": "12 berichten"
+                    },
+                    "default_value": false,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -77,5 +114,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1610706220
+    "modified": 1611056537
 }

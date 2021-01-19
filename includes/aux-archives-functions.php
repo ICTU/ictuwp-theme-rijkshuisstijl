@@ -17,7 +17,7 @@
 function rhswp_get_grid_item( $args = array() ) {
 	$defaults = array(
 		'ID'                 => 0,
-		'type'               => 'posts_featured',
+		'type'               => 'posts_plain',
 		'headerlevel'        => 'h3',
 		'itemclass'          => 'griditem griditem--post colspan-1',
 		'cssid'              => '',
@@ -157,6 +157,9 @@ function rhswp_blog_page_add_title() {
 		remove_action( 'genesis_loop', 'genesis_do_loop' );
 		add_action( 'genesis_loop', 'rhswp_archive_loop' );
 
+		// full width layout
+		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
 		global $wp_query;
 		$actueelpageid    = get_option( 'page_for_posts' );
 		$actueelpagetitle = rhswp_filter_alternative_title( $actueelpageid, get_the_title( $actueelpageid ) );
@@ -172,74 +175,142 @@ function rhswp_blog_page_add_title() {
 
 		if ( $paged === 1 ) {
 
-			// TODO: weghalen opsomming van alle mogelijke categorieen
-			$styling_categorie = get_categories();
-			if ( $styling_categorie ) {
-				echo '<h2>Overzicht van alle categorieen</h2>';
-				echo '<ul>';
-				foreach ( $styling_categorie as $styling_category ) {
-//					dovardump2( $styling_category );
-					$more_url  = get_category_link( $styling_category );
-					echo '<li><a href="' . $more_url . '">' . $styling_category->name . ' (' . $styling_category->count . ' berichten)</a></li>';
-				}
-				echo '</ul>'; // .grid
-			}
-
 			// alleen op de eerste pagina van de blog page tonen we eerst een aantal berichten uit de
 			// uitgelichte categorie
-			$styling_categorie       = get_field( 'styling_categorie', $actueelpageid ); // haal de bijzondere categorieen op die niet op deze pagina getoond moeten worden
-			$styling_categorie_maxnr = get_field( 'styling_categorie_maxnr', $actueelpageid );
-			if ( ! $styling_categorie_maxnr ) {
-				$styling_categorie_maxnr = 3;
-			}
-			if ( $styling_categorie ) {
-				foreach ( $styling_categorie as $styling_category ) {
-					$args                    = array(
-						'post_type'      => 'post',
-						'post_status'    => 'publish',
-						'posts_per_page' => $styling_categorie_maxnr,
-						'tax_query'      => array(
-							array(
-								'taxonomy' => 'category',
-								'field'    => 'term_id',
-								'terms'    => $styling_category,
-							)
-						),
-					);
-					$styling_categorie_posts = new WP_query();
-					$styling_categorie_posts->query( $args );
-					if ( $styling_categorie_posts->have_posts() ) {
-						$cat_name  = get_cat_name( $styling_category );
-						$more_text = _x( "Alle berichten onder %s", 'readmore home', 'wp-rijkshuisstijl' );
-						$more_url  = get_category_link( $styling_category );
-						if ( strpos( $more_text, '%s' ) ) {
-							$more_text = sprintf( $more_text, strtolower( $cat_name ) );
-						}
-						echo '<h2>' . $cat_name . '</h2>';
-						echo '<div class="grid">';
-						while ( $styling_categorie_posts->have_posts() ) : $styling_categorie_posts->the_post();
-							$postcounter ++;
-							$contentblock_post_id = get_the_ID();
-							$args2                = array(
-								'ID'   => $contentblock_post_id,
-								'type' => 'posts_featured',
-							);
-							echo rhswp_get_grid_item( $args2 );
-						endwhile;
-						echo '</div>'; // .grid
-						echo '<p class="more"><a href="' . $more_url . '">' . $more_text . '</a></p>';
+
+			if ( get_field( 'actueel_rows', $actueelpageid ) ) {
+
+				// Loop through rows.
+				while ( have_rows( 'actueel_rows', $actueelpageid ) ) : the_row();
+
+					$actueel_row_category = get_sub_field( 'actueel_row_category' );
+					$actueel_row_number   = get_sub_field( 'actueel_row_number' );
+					$actueel_row_styling  = get_sub_field( 'actueel_row_styling' );
+
+					if ( ! is_numeric( $actueel_row_number ) ) {
+						$actueel_row_number = 3;
 					}
-					// RESET THE QUERY
-					wp_reset_query();
-				}
-				// geen paginering
-				remove_action( 'genesis_after_loop', 'genesis_posts_nav' );
+					if ( $actueel_row_category ) {
+
+						$args                       = array(
+							'post_type'      => 'post',
+							'post_status'    => 'publish',
+							'posts_per_page' => $actueel_row_number,
+							'tax_query'      => array(
+								array(
+									'taxonomy' => 'category',
+									'field'    => 'term_id',
+									'terms'    => $actueel_row_category,
+								)
+							),
+						);
+						$actueel_row_category_posts = new WP_query();
+						$actueel_row_category_posts->query( $args );
+						if ( $actueel_row_category_posts->have_posts() ) {
+							$cat_name  = get_cat_name( $actueel_row_category );
+							$more_text = _x( "Alle berichten onder %s", 'readmore home', 'wp-rijkshuisstijl' );
+							$more_url  = get_category_link( $actueel_row_category );
+							if ( strpos( $more_text, '%s' ) ) {
+								$more_text = sprintf( $more_text, strtolower( $cat_name ) );
+							}
+							echo '<h2>' . $cat_name . '</h2>';
+							echo '<div class="grid">';
+							while ( $actueel_row_category_posts->have_posts() ) : $actueel_row_category_posts->the_post();
+								$postcounter ++;
+								$contentblock_post_id = get_the_ID();
+								$args2                = array(
+									'ID'   => $contentblock_post_id,
+								);
+
+								if ( 'actueel_row_styling_title_on_image' === $actueel_row_styling) {
+									$args2['type'] = 'posts_featured';
+								}
+								else {
+//									$args2['type'] = 'posts_plain';
+								}
+								echo rhswp_get_grid_item( $args2 );
+							endwhile;
+							echo '</div>'; // .grid
+							echo '<p class="more"><a href="' . $more_url . '">' . $more_text . '</a></p>';
+						}
+						// RESET THE QUERY
+						wp_reset_query();
+
+						// geen paginering
+						remove_action( 'genesis_after_loop', 'genesis_posts_nav' );
 //				add_action( 'genesis_after_loop', 'genesis_posts_nav', 3 );
+					}
+
+
+					// End loop.
+				endwhile;
+
+				// op de eerste pagina van de page_for_posts dus geen andere berichten meer tonen
+				remove_action( 'genesis_loop', 'rhswp_archive_loop' );
+
+				// TODO: weghalen opsomming van alle mogelijke categorieen
+				$alle_categorieen = get_categories();
+				$totaal = 0;
+				if ( $alle_categorieen ) {
+					echo '<div class="test">';
+					echo '<h2>Overzicht van alle categorieën</h2>';
+					echo '<ul>';
+					foreach ( $alle_categorieen as $styling_category ) {
+						$more_url = get_category_link( $styling_category );
+						echo '<li><a href="' . $more_url . '">' . $styling_category->name . ' (' . $styling_category->count . ' berichten)</a></li>';
+						$totaal = ( $totaal + $styling_category->count );
+					}
+					echo '</ul>'; // .grid
+					echo '<p>Totaal: ' . $totaal . ' gepubliceerde berichten.</p>'; // .grid
+					echo '</div>'; // .test
+				}
+
+				// TODO: weghalen
+				/*
+				 *
+				 */
+				echo '<div class="test">';
+				echo '<h2>Paginering</h2>';
+				echo '<ul>';
+				$more_url = get_the_permalink( $actueelpageid );
+				for ($paginanummer = 1; ; $paginanummer++) {
+					$link = $more_url . 'page/' . $paginanummer;
+					if ($paginanummer > 10) {
+						break;
+					}
+					echo '<li><a href="' . $link . '">pagina ' . $paginanummer . '</a></li>';
+				}
+				echo '</ul>'; // .grid
+				echo '</div>'; // .test
+
 			}
+
+
 		} else {
 			// post navigation verplaatsen tot buiten de flex-ruimte
 			add_action( 'genesis_after_loop', 'genesis_posts_nav', 3 );
 		}
+	}
+}
+
+//========================================================================================================
+
+add_action( 'pre_get_posts', 'rhswp_modify_query_for_page_for_posts' );
+/**
+ * Voor de blog-pagina ( is_home() / 'page_for_posts ) willen we dat de eerste pagina ('paged' = 1) alleen de 
+ * geselecteerde categorieen toont
+ *
+ * @param object $query data
+ *
+ */
+function rhswp_modify_query_for_page_for_posts( $query ) {
+
+	if ( $query->is_main_query() && ! is_admin() && ( is_home() && 'page' == get_option( 'show_on_front' ) ) ) {
+
+		//* Force full-width-content layout
+		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
+		return $query;
 	}
 }
 

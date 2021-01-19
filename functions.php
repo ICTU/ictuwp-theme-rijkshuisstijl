@@ -4084,28 +4084,3 @@ function rhswp_get_sublabel( $post_id ) {
 
 //========================================================================================================
 
-add_action( 'pre_get_posts', 'rhswp_modify_query_for_page_for_posts' );
-/**
- * Voor de blog-pagina ( is_home() / 'page_for_posts ) willen we voorkomen dat de categorie voor
- * achtergrondartikelen getoond wordt.
- *
- * @param object $query data
- *
- */
-function rhswp_modify_query_for_page_for_posts( $query ) {
-	if ( $query->is_main_query() && ! is_admin() && ( is_home() && 'page' == get_option( 'show_on_front' ) ) ) {
-		//* Force full-width-content layout
-		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-		$actueelpageid     = get_option( 'page_for_posts' );
-		$styling_categorie = get_field( 'styling_categorie', $actueelpageid ); // haal de bijzondere categorieen op die niet op deze pagina getoond moeten worden
-		if ( $styling_categorie ) {
-			// sluit de bijz. categorie uit van de blog pagina
-			$query->set( 'category__not_in', $styling_categorie );
-		}
-
-		return $query;
-	}
-}
-
-//========================================================================================================
-
