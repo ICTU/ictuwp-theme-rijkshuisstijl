@@ -45,6 +45,7 @@ function rhswp_get_grid_item( $args = array() ) {
 	$itemtitle          = "";
 	$cssclasses         = explode( ' ', $args['itemclass'] );
 	$contentblock_label = rhswp_get_sublabel( $args['ID'] );
+	// TODO: weghalen tekstlengte
 	$contentblock_titel .= ' <span class="tekstlengte"><span>' . strlen( $contentblock_titel ) . '</span></span>';
 	if ( $args['cssid'] ) {
 		$cssid = ' id="' . $args['cssid'] . '"';
@@ -165,6 +166,21 @@ function rhswp_blog_page_add_title() {
 		echo '<header class="entry-header"><h1 class="entry-title" itemprop="headline">' . $actueelpagetitle . '</h1> </header>';
 		echo '<p>' . _x( 'All posts related to the Digital Governement.', 'Tekst op de actueelpagina', 'wp-rijkshuisstijl' ) . $paging . '</p>';
 		if ( $paged === 1 ) {
+
+
+			// TODO: weghalen opsomming van alle mogelijke categorieen
+			$styling_categorie = get_categories();
+			if ( $styling_categorie ) {
+				echo '<h2>Overzicht van alle categorieen</h2>';
+				echo '<ul>';
+				foreach ( $styling_categorie as $styling_category ) {
+//					dovardump2( $styling_category );
+					$more_url  = get_category_link( $styling_category );
+					echo '<li><a href="' . $more_url . '">' . $styling_category->name . '</a></li>';
+				}
+				echo '</ul>'; // .grid
+			}
+
 			// alleen op de eerste pagina van de blog page tonen we eerst een aantal berichten uit de
 			// uitgelichte categorie
 			$styling_categorie       = get_field( 'styling_categorie', $actueelpageid ); // haal de bijzondere categorieen op die niet op deze pagina getoond moeten worden
