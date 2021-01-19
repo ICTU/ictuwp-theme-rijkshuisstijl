@@ -231,7 +231,6 @@ include_once( RHSWP_FOLDER . '/includes/aux-eventmanager-helper-functions.php' )
 include_once( RHSWP_FOLDER . '/includes/aux-archives-functions.php' );
 
 
-
 //========================================================================================================
 // Include to alter the dossier taxonomy on pages: use radiobuttons instead of checkboxes.
 include_once( RHSWP_FOLDER . '/includes/class.taxonomy-single-term.php' );
@@ -4068,13 +4067,23 @@ function rhswp_get_sublabel( $post_id ) {
 			// geen label en geen dossier, dan dus eerst checken of het ding een tag heeft
 			$posttags = get_the_tags();
 			if ( $posttags ) {
-				$return = $posttags[0]->name;
-			} else {
-				// dan maar de categorie teruggeven
-				$categories = get_the_category();
-				if ( $categories ) {
-					$return = $categories[0]->name;
+				// geen verboden woorden, svp
+				foreach ( $posttags as $value ) {
+					$verboden = 'nieuwsbrief'; // voor de nieuwsbrief worden tags gebruikt en die willen we niet zien
+					$gevonden = strpos( $value->name, $verboden );
+					if ( $gevonden === false ) {
+						$return = $value->name;
+						break;
+					}
 				}
+			}
+		}
+
+		if ( ! $return ) {
+			// nog steeds niks dan maar de categorie teruggeven
+			$categories = get_the_category();
+			if ( $categories ) {
+				$return = $categories[0]->name;
 			}
 		}
 	}
