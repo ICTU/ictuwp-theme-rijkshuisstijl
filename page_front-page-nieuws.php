@@ -73,6 +73,7 @@ function rhswp_home_onderwerpen_dossiers() {
 			'ID'        => $etalage_post[0]->ID,
 			'cssid'     => 'etalage',
 			'type'      => 'posts_featured',
+			'datefield' => false,
 			'itemclass' => 'griditem griditem--textoverimage colspan-2',
 		);
 
@@ -94,7 +95,7 @@ function rhswp_home_onderwerpen_dossiers() {
 				$image_ID = $image['ID'];
 			}
 		}
-		$args2         = array(
+		$args2   = array(
 			'cssid'              => 'etalage',
 			'type'               => 'posts_manual',
 			'contentblock_title' => $etalage_link['title'],
@@ -339,61 +340,6 @@ function rhswp_home_onderwerpen_dossiers() {
 							}
 
 							echo rhswp_get_grid_item( $args2 );
-
-							/*
-							$itemdate             = get_the_date( get_option( 'date_format' ), $contentblock_post_id );
-							$imgcontainer         = get_the_post_thumbnail( $contentblock_post_id, IMAGESIZE_10x3_SMALL );
-							$contentblock_titel   = get_the_title( $contentblock_post_id );
-							$contentblock_url     = get_permalink( $contentblock_post_id );
-							$excerpt              = '';
-							$itemtitle            = '';
-							$itemclass            = 'griditem griditem--post colspan-1 itemcounter-' . $itemcounter;
-							$contentblock_label   = rhswp_get_sublabel( $contentblock_post_id );
-
-							if ( $row['home_row_type'] === 'posts_featured' ) {
-								$imgcontainer = get_the_post_thumbnail( $contentblock_post_id, IMAGESIZE_SQUARE_SMALL );
-								if ( $contentblock_label ) {
-									$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
-								}
-								$itemtitle .= '<h3>' . $contentblock_titel . '</h3>';
-
-								// het hele blok klikbaar maken
-								echo '<div class="' . $itemclass . ' datefield griditem--textoverimage">';
-								echo '<div class="imgcontainer">';
-								echo $imgcontainer;
-								echo '</div>'; // .imgcontainer
-								echo '<div class="txtcontainer">';
-								echo '<a href="' . $contentblock_url . '">';
-								echo '<div class="text">';
-								echo $itemtitle;
-								echo '</div>'; // .text
-								echo '</a>';
-								echo '<p class="meta">' . $itemdate . '</p>';
-								echo '</div>'; // .txtcontainer
-								echo '</div>';
-
-							} else {
-								if ( $contentblock_label ) {
-									$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
-								}
-								$itemtitle .= '<h3><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></h3>';
-								$itemtitle .= '<p class="meta">' . $itemdate . '</p>';
-								$excerpt   .= '<p class="excerpt">' . wp_strip_all_tags( get_the_excerpt( $contentblock_post_id ) ) . '</p>';
-								if ( $imgcontainer && $contentblock_url ) {
-									$imgcontainer = '<a tabindex="-1" href="' . $contentblock_url . '" class="imgcontainer">' . $imgcontainer . '</a>';
-								}
-
-								echo '<div class="' . $itemclass . '">';
-								echo $imgcontainer;
-								echo '<div class="txtcontainer">';
-								echo $itemtitle;
-								echo $excerpt;
-								echo '</div>'; // .txtcontainer
-								echo '</div>'; // .$itemclass
-							}
-							 *
-							 */
-
 
 						endwhile;
 
