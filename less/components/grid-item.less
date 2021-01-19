@@ -358,7 +358,7 @@
 //========================================================================================================
 
 
-.titellengte {
+.tekstlengte {
   background: red;
   color: white;
   float: right;
@@ -375,25 +375,25 @@
     height: 100%;
     border: 1px solid white;
   }
-
 }
 
-.griditem--textoverimage {
-  .titellengte {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-  }
-}
-
+.griditem--textoverimage,
 .griditem--post {
-  h2, h3 {
+  h2, h3, .excerpt {
     position: relative;
   }
 
-  .titellengte {
+  .tekstlengte {
     position: absolute;
     bottom: 0;
     right: 0;
+    opacity: .2;
   }
+
+  &:hover {
+    .tekstlengte {
+      opacity: 1;
+    }
+  }
+
 }

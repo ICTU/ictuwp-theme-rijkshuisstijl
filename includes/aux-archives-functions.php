@@ -26,6 +26,7 @@ function rhswp_get_grid_item( $args = array() ) {
 		'contentblock_url'   => '',
 		'contentblock_label' => '',
 		'tagcontainer'       => 'div',
+		'datefield'          => true,
 		'echo'               => false
 	);
 	// Parse incoming $args into an array and merge it with $defaults
@@ -44,7 +45,7 @@ function rhswp_get_grid_item( $args = array() ) {
 	$itemtitle          = "";
 	$cssclasses         = explode( ' ', $args['itemclass'] );
 	$contentblock_label = rhswp_get_sublabel( $args['ID'] );
-	$contentblock_titel .= ' <span class="titellengte"><span>' . strlen( $contentblock_titel ) . '</span></span>';
+	$contentblock_titel .= ' <span class="tekstlengte"><span>' . strlen( $contentblock_titel ) . '</span></span>';
 	if ( $args['cssid'] ) {
 		$cssid = ' id="' . $args['cssid'] . '"';
 	}
@@ -86,7 +87,9 @@ function rhswp_get_grid_item( $args = array() ) {
 			$imgcontainer = get_the_post_thumbnail( $args['ID'], IMAGESIZE_5x3 );
 		}
 		$cssclasses[] = 'griditem--textoverimage';
-		$cssclasses[] = 'datefield';
+		if ( $args['datefield'] ) {
+			$cssclasses[] = 'datefield';
+		}
 		if ( $contentblock_label ) {
 			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
 		}
@@ -102,7 +105,9 @@ function rhswp_get_grid_item( $args = array() ) {
 		$return .= $itemtitle;
 		$return .= '</div>'; // .text
 		$return .= '</a>';
-		$return .= '<p class="meta">' . $itemdate . '</p>';
+		if ( $args['datefield'] ) {
+			$return .= '<p class="meta">' . $itemdate . '</p>';
+		}
 		$return .= '</div>'; // .txtcontainer
 		$return .= '</' . $args['tagcontainer'] . '>';
 	} else {
@@ -111,7 +116,11 @@ function rhswp_get_grid_item( $args = array() ) {
 		}
 		$itemtitle .= '<' . $args['headerlevel'] . '><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></' . $args['headerlevel'] . '>';
 		$itemtitle .= '<p class="meta">' . $itemdate . '</p>';
-		$excerpt   .= '<p class="excerpt">' . wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) . '</p>';
+		$excerpt   .= '<p class="excerpt">';
+		$excerpt   .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
+		$excerpt   .= ' <span class="tekstlengte"><span>' . strlen( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) . '</span></span>';
+		$excerpt   .= '</p>';
+
 		if ( $imgcontainer && $contentblock_url ) {
 			$imgcontainer = '<a tabindex="-1" href="' . $contentblock_url . '">' . $imgcontainer . '</a>';
 		}
@@ -226,7 +235,7 @@ function rhswp_archive_loop() {
 		while ( have_posts() ) : the_post();
 			$postcounter ++;
 			$current_post_id = isset( $post->ID ) ? $post->ID : 0;
-			$args2 = array(
+			$args2           = array(
 				'ID'        => $current_post_id,
 				'itemclass' => 'griditem griditem--post colspan-1',
 				'type'      => 'posts_normal'
