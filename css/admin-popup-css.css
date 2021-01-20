@@ -17,6 +17,41 @@
     display: none;
   }
 }
+.hide-on-larger-than-mobile {
+  display: flex;
+  border-top: 1px solid #C2C2C2;
+}
+@media only screen and (max-width: 900px) {
+  .hide-on-larger-than-mobile {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .hide-on-larger-than-mobile h2 {
+    flex: 1 0 100%;
+  }
+  .hide-on-larger-than-mobile .txtcontainer,
+  .hide-on-larger-than-mobile .featured-image-link {
+    flex: 0 1 50%;
+  }
+  .hide-on-larger-than-mobile .txtcontainer {
+    padding-left: 0.5rem;
+  }
+  .hide-on-larger-than-mobile .featured-image-link {
+    padding-right: 0.5rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .hide-on-larger-than-mobile {
+    flex-direction: column;
+  }
+  .hide-on-larger-than-mobile h2,
+  .hide-on-larger-than-mobile .txtcontainer,
+  .hide-on-larger-than-mobile .featured-image-link {
+    flex: 1 0 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 @media only screen and (min-width: 900px) {
   .hide-on-larger-than-mobile {
     display: none;

@@ -20,6 +20,10 @@ main .container {
 
 @media only screen and (max-width: 350px ) {
   #etalage {
+    background: @wit;
+    padding: .25rem;
+    border: 1px solid @grijs_4;
+
     * {
       position: unset;
     }
@@ -34,8 +38,11 @@ main .container {
     }
     .text {
       padding: 0;
+      background: none;
     }
+    h1,
     h2 {
+      color: @a_color_default;
       margin: 5px;
     }
   }
@@ -49,6 +56,7 @@ main .container {
 }
 
 #uitgelicht {
+  h1,
   h2 {
     padding-top: 1rem;
     padding-bottom: .5rem;

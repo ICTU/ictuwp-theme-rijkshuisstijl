@@ -16,7 +16,43 @@
     display: none;
   }
 }
+
 .hide-on-larger-than-mobile {
+
+  display: flex;
+  border-top: 1px solid #C2C2C2;
+
+  @media only screen and ( max-width: @break_mobile_show ) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    h2 {
+      flex: 1 0 100%;
+    }
+    .txtcontainer,
+    .featured-image-link {
+      flex: 0 1 50%;
+    }
+    .txtcontainer {
+      padding-left: .5rem;
+    }
+    .featured-image-link {
+      padding-right: .5rem;
+    }
+  }
+
+  @media only screen and ( max-width: 400px ) {
+    flex-direction: column;
+
+    h2,
+    .txtcontainer,
+    .featured-image-link {
+      flex: 1 0 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+
   @media only screen and ( min-width: ( @break_mobile_show ) ) {
     display: none;
   }
