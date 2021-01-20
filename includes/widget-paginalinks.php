@@ -103,7 +103,7 @@ class rhswp_pagelinks_widget extends WP_Widget {
 				// do nothing
 			}
 		} else {
-            // do nothing
+			// do nothing
 		}
 	}
 }
@@ -133,6 +133,7 @@ function rhswp_pagelinks_replace_widget() {
 		if ( 'ja' == $toon_extra_links && $links ) {
 			$title_id = sanitize_title( $widgettitle );
 			echo '<section aria-labelledby="' . $title_id . '" class="page-links">';
+
 			echo '<h2 id="' . $title_id . '">' . $widgettitle . '</h2>';
 			echo '<ul>';
 			foreach ( $links as $link ) {
@@ -142,16 +143,19 @@ function rhswp_pagelinks_replace_widget() {
 				$url_extern                  = $link['url_extern'];
 				$linktekst_voor_externe_link = $link['linktekst_voor_externe_link'];
 				$content                     = '';
+
 				if ( 'ja' == $externe_link && $url_extern ) {
 					// externe link dus
 					if ( $url_extern ) {
+					    // TODO
 						$content = '<li><a href="' . $url_extern . '" class="extern">' . $linktekst_voor_externe_link . '</a></li>';
 					} else {
 						$content = '<li><a href="' . $url_extern . '" class="extern">' . $url_extern . '</a></li>';
 					}
 				} else {
 					// interne link
-					$interne_link = get_sub_field( 'interne_link' );
+					// TODO
+					$interne_link                = $link['interne_link'];
 					foreach ( $interne_link as $linkobject ) {
 						$content .= '<li><a href="' . get_permalink( $linkobject->ID ) . '">' . $linkobject->post_title . '</a></li>';
 					}
