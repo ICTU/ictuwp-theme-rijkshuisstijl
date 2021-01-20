@@ -70,11 +70,12 @@ function rhswp_home_onderwerpen_dossiers() {
 		$etalage_excerpt = get_the_excerpt( $etalage_post[0]->ID );
 
 		$args2 = array(
-			'ID'        => $etalage_post[0]->ID,
-			'cssid'     => 'etalage',
-			'type'      => 'posts_featured',
-			'datefield' => false,
-			'itemclass' => 'griditem griditem--textoverimage colspan-2',
+			'ID'          => $etalage_post[0]->ID,
+			'cssid'       => 'etalage',
+			'type'        => 'posts_featured',
+			'datefield'   => false,
+			'headerlevel' => 'h1',
+			'itemclass'   => 'griditem griditem--textoverimage colspan-2',
 		);
 
 		$etalage = rhswp_get_grid_item( $args2 );
@@ -102,6 +103,7 @@ function rhswp_home_onderwerpen_dossiers() {
 			'contentblock_url'   => $etalage_link['url'],
 			'contentblock_imgid' => $image_ID,
 			'contentblock_label' => $etalage_label,
+			'headerlevel'        => 'h2',
 			'itemclass'          => 'griditem griditem--textoverimage colspan-2',
 		);
 		$etalage = rhswp_get_grid_item( $args2 );
@@ -358,15 +360,18 @@ function rhswp_home_onderwerpen_dossiers() {
 							echo '<div class="hide-on-larger-than-mobile" aria-hidden="true">';
 							echo '<h2' . $uitgelicht_titel_class . '><a href="' . $uitgelicht_url2 . '">' . $uitgelicht_titel . '</a></h2>';
 							if ( $uitgelicht_image ) {
-								echo '<a href="' . $uitgelicht_url2 . '" tabindex="-1">';
+								echo '<a href="' . $uitgelicht_url2 . '" tabindex="-1" class="featured-image-link">';
 								echo $uitgelicht_image;
 								echo '</a>';
 							}
+
+							echo '<div class="txtcontainer">';
 							if ( $uitgelicht_label ) {
 								echo '<div class="label">' . $uitgelicht_label . '</div>';
 							}
 							echo $uitgelicht_excerpt;
-							echo '</div>';
+							echo '</div>'; // .txtcontainer
+							echo '</div>'; // .hide-on-larger-than-mobile
 
 						} else {
 							echo '<div class="griditem colspan-1">';

@@ -45,6 +45,7 @@ function rhswp_get_grid_item( $args = array() ) {
 	$itemtitle          = "";
 	$cssclasses         = explode( ' ', $args['itemclass'] );
 	$contentblock_label = rhswp_get_sublabel( $args['ID'] );
+
 	if ( WP_DEBUG_SHOWTEXTLENGTH ) {
 		// TODO: weghalen tekstlengte
 		$contentblock_titel .= ' <span class="tekstlengte"><span>' . strlen( $contentblock_titel ) . '</span></span>';
