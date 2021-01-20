@@ -45,8 +45,10 @@ function rhswp_get_grid_item( $args = array() ) {
 	$itemtitle          = "";
 	$cssclasses         = explode( ' ', $args['itemclass'] );
 	$contentblock_label = rhswp_get_sublabel( $args['ID'] );
-	// TODO: weghalen tekstlengte
-	$contentblock_titel .= ' <span class="tekstlengte"><span>' . strlen( $contentblock_titel ) . '</span></span>';
+	if ( WP_DEBUG_SHOWTEXTLENGTH ) {
+		// TODO: weghalen tekstlengte
+		$contentblock_titel .= ' <span class="tekstlengte"><span>' . strlen( $contentblock_titel ) . '</span></span>';
+	}
 	if ( $args['cssid'] ) {
 		$cssid = ' id="' . $args['cssid'] . '"';
 	}
@@ -119,7 +121,10 @@ function rhswp_get_grid_item( $args = array() ) {
 		$itemtitle .= '<p class="meta">' . $itemdate . '</p>';
 		$excerpt   .= '<p class="excerpt">';
 		$excerpt   .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
-		$excerpt   .= ' <span class="tekstlengte"><span>' . strlen( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) . '</span></span>';
+		if ( WP_DEBUG_SHOWTEXTLENGTH ) {
+			// TODO
+			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) . '</span></span>';
+		}
 		$excerpt   .= '</p>';
 
 		if ( $imgcontainer && $contentblock_url ) {

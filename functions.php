@@ -162,6 +162,13 @@ define( 'IMAGESIZE_10x3', 'image-4x3' );
 define( 'IMAGESIZE_10x3_SMALL', 'image-4x3-small' );
 define( 'IMAGESIZE_SQUARE', 'image-square' );
 define( 'IMAGESIZE_SQUARE_SMALL', 'image-square-small' );
+
+// TODO
+define( 'WP_DEBUG_FULL_WIDTH', true );
+//define( 'WP_DEBUG_FULL_WIDTH', false );
+//define( 'WP_DEBUG_SHOWTEXTLENGTH', true );
+define( 'WP_DEBUG_SHOWTEXTLENGTH', false );
+
 //========================================================================================================
 //* Remove the edit link
 add_filter( 'genesis_edit_post_link', '__return_false' );
@@ -2212,9 +2219,13 @@ function human_filesize( $bytes, $decimals = 1 ) {
 }
 
 //========================================================================================================
+
 add_action( 'genesis_entry_content', 'rhswp_single_add_featured_image', 9 );
+
 function rhswp_single_add_featured_image() {
+
 	global $post;
+
 	if ( ( is_single() && ( 'post' == get_post_type() ) || ( 'page' == get_post_type() ) ) && ( has_post_thumbnail() ) && ( ! is_front_page() && ! is_home() ) ) {
 		$theid                    = get_the_ID();
 		$carousselcheck           = get_field( 'carrousel_tonen_op_deze_pagina', $theid );
@@ -2234,6 +2245,9 @@ function rhswp_single_add_featured_image() {
 					// the TOC+ plugin is active
 					$alignment = ' alignleft toc-active';
 				}
+// TODO
+//				$alignment .= ' test';
+
 				$theimageobject  = get_post( get_post_thumbnail_id() );
 				$get_description = $theimageobject->post_excerpt;
 				// check for an image caption
@@ -2242,6 +2256,7 @@ function rhswp_single_add_featured_image() {
 				} else {
 					echo '<div class="featured ' . $alignment . '">';
 				}
+				// todo
 				echo get_the_post_thumbnail( $postid, 'article-visual', array( 'class' => 'alignright' ) );
 				// write the image caption if any
 				if ( ! empty( $theimageobject->post_excerpt ) ) {
