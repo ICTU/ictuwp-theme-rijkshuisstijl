@@ -164,8 +164,8 @@ define( 'IMAGESIZE_SQUARE', 'image-square' );
 define( 'IMAGESIZE_SQUARE_SMALL', 'image-square-small' );
 
 // TODO
-define( 'WP_DEBUG_FULL_WIDTH', true );
-//define( 'WP_DEBUG_FULL_WIDTH', false );
+//define( 'WP_DEBUG_FULL_WIDTH', true );
+define( 'WP_DEBUG_FULL_WIDTH', false );
 //define( 'WP_DEBUG_SHOWTEXTLENGTH', true );
 define( 'WP_DEBUG_SHOWTEXTLENGTH', false );
 
@@ -4055,19 +4055,24 @@ function acf_relationshipfield_only_use_published_content( $options, $field, $po
 // Haalt voor een pagina of een bericht in opsommingen (zoals de homepage) een extra labeltje waarmee
 // het bericht extra context krijgt
 function rhswp_get_sublabel( $post_id ) {
+
 	$return = '';
+
 	if ( $post_id ) {
+
 		if ( 'ja' === get_field( 'label_toevoegen', $post_id ) && get_field( 'post_label', $post_id ) ) {
 			$return = get_field( 'post_label', $post_id );
-		} else {
-			// staat post dan in een dossier?
+		} elseif ( has_term( '', RHSWP_CT_DOSSIER, $post_id ) ) {
+			$return = 'dossier ' . $post_id;
 			if ( class_exists( 'WPSEO_Primary_Term' ) ) {
 				// Show the post's 'Primary' category, if this Yoast feature is available, & one is set
 				$wpseo_primary_term = new WPSEO_Primary_Term( RHSWP_CT_DOSSIER, $post_id );
 				$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
 				$term               = get_term( $wpseo_primary_term );
+
 				if ( is_wp_error( $term ) ) {
 					// whoopsy, but return nothing
+					$return = '';
 				} else {
 					$return = $term->name;
 				}
@@ -4077,10 +4082,10 @@ function rhswp_get_sublabel( $post_id ) {
 					$return = $uitgelicht_dossier[0]->name;
 				}
 			}
-		}
-		if ( ! $return ) {
+		} elseif ( get_the_tags( $post_id ) ) {
+
 			// geen label en geen dossier, dan dus eerst checken of het ding een tag heeft
-			$posttags = get_the_tags();
+			$posttags = get_the_tags( $post_id );
 			if ( $posttags ) {
 				// geen verboden woorden, svp
 				foreach ( $posttags as $value ) {
@@ -4092,15 +4097,15 @@ function rhswp_get_sublabel( $post_id ) {
 					}
 				}
 			}
-		}
-
-		if ( ! $return ) {
+		} elseif ( get_the_category( $post_id) ) {
 			// nog steeds niks dan maar de categorie teruggeven
-			$categories = get_the_category();
+			$categories = get_the_category( $post_id );
 			if ( $categories ) {
 				$return = $categories[0]->name;
 			}
-		}
+		} else {
+			$return = 'Geen label gevonden';
+        }
 	}
 
 	return $return;
