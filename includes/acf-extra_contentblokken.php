@@ -60,9 +60,8 @@ function rhswp_write_extra_contentblokken() {
 					$type_block            = $row['extra_contentblok_type_block'];
 					$categoriefilter       = $row['extra_contentblok_categoriefilter'];
 					$maxnr_posts           = $row['extra_contentblok_maxnr_posts'];
-
-					$with_featured_image = 'alle';
-					$limit               = $row['extra_contentblok_maxnr_events'];
+					$with_featured_image   = 'alle';
+					$limit                 = $row['extra_contentblok_maxnr_events'];
 
 					if ( $blockidattribute_prev == $titel ) {
 						$blockidattribute_name = $titel . '-' . $thecounter;
@@ -470,8 +469,8 @@ function rhswp_write_extra_contentblokken() {
 									$columncount = 2;
 								}
 
-								echo '<section class="flexbox"' . $blockidattribute . '>';
-								echo '<div class="wrap">';
+								echo '<section class="flexbox contentblocks"' . $blockidattribute . '>';
+//								echo '<div class="wrap">';
 //								echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '">';
 
 								if ( $titel ) {
@@ -480,8 +479,13 @@ function rhswp_write_extra_contentblokken() {
 									echo '<h2>' . __( 'No titel found for post', 'wp-rijkshuisstijl' ) . '</h2>';
 								}
 
-								echo '<div class="flexcontainer ' . $type_block . ' no-top columncount-' . $columncount . '">';
-
+//								echo '<div class="flexcontainer ' . $type_block . ' no-top columncount-' . $columncount . '">';
+								if ( is_singular( 'post' ) ) {
+									// een bericht heeft inmiddels full width, dus lekker 3 kolommen
+									echo '<div class="grid">';
+								} else {
+									echo '<div class="grid columns-2">';
+								}
 
 								$postcounter = 0;
 
@@ -509,10 +513,19 @@ function rhswp_write_extra_contentblokken() {
 									$title          = get_the_title();
 									$categorielinks = '';
 									$permalink_cat  = '';
+									$block          = '';
 
-									if ( $currentsite && $currentpage && $toonlinksindossiercontext ) {
+									//fuckup
+									//puckuf
+									// TODO
+
+
+									if ( $currentsite && $currentpage && get_query_var( RHSWP_DOSSIERCONTEXTPOSTOVERVIEW ) && $toonlinksindossiercontext ) {
+										// TODO
 										// aaaaa, what a fuckup.
 										// o holy ToDo: make me use a page for this URL (bug:
+										echo '$currentsite : ' . $currentsite . '<br>';
+										echo '$currentpage : ' . $currentpage . '<br>';
 
 										if ( is_page() ) {
 											// RHSWP_DOSSIERCONTEXTPOSTOVERVIEW
@@ -532,26 +545,37 @@ function rhswp_write_extra_contentblokken() {
 												$theurl = trailingslashit( get_term_link( $toonlinksindossiercontext ) . RHSWP_DOSSIERCONTEXTPOSTOVERVIEW . $postpermalink );
 											}
 										}
+
+										$block = sprintf( '<article %s>', $classattr );
+										if ( $postdate ) {
+											$postdate = '<p class="meta">' . $postdate . '</p>';
+										}
+
+										if ( $doimage ) {
+											$block .= '<div class="article-container">';
+											$block .= sprintf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'article-visual' ) );
+											$block .= sprintf( '<div class="article-excerpt"><h3><a href="%s">%s</a></h3>%s<p>%s</p>%s</div>', $theurl, $title, $postdate, $excerpt, $categorielinks );
+											$block .= '</div>';
+										} else {
+											$block .= sprintf( '<h3><a href="%s">%s</a></h3>%s<p>%s</p>%s', $theurl, $title, $postdate, $excerpt, $categorielinks );
+										}
+										$block .= '</article>';
+
 									} else {
-										$theurl = get_the_permalink();
+
+										$args2 = array(
+											'ID'   => get_the_ID(),
+											'type' => 'posts_plain'
+										);
+
+										$block = rhswp_get_grid_item( $args2 );
+
 									}
 
-									printf( '<article %s>', $classattr );
+									echo $block;
 
-									if ( $postdate ) {
-										$postdate = '<p class="meta">' . $postdate . '</p>';
-									}
+//									printf( '<article %s>', $classattr );
 
-
-									if ( $doimage ) {
-										echo '<div class="article-container">';
-										printf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'article-visual' ) );
-										printf( '<div class="article-excerpt"><h3><a href="%s">%s</a></h3>%s<p>%s</p>%s</div>', $theurl, $title, $postdate, $excerpt, $categorielinks );
-
-										echo '</div>';
-									} else {
-										printf( '<h3><a href="%s">%s</a></h3>%s<p>%s</p>%s', $theurl, $title, $postdate, $excerpt, $categorielinks );
-									}
 
 									if ( WP_DEBUG && SHOW_CSS_DEBUG ) {
 										dodebug_do( 'Check category & dossier:' );
@@ -559,18 +583,17 @@ function rhswp_write_extra_contentblokken() {
 										dodebug_do( get_the_term_list( $post->ID, RHSWP_CT_DOSSIER, 'Topics', ', ' ) );
 									}
 
-									echo '</article>';
-
 									do_action( 'genesis_after_entry' );
 
 								endwhile;
+
+								echo '</div>'; // .grid
 
 								if ( $overviewurl && $overviewlinktext ) {
 									echo '<p class="more"><a href="' . $overviewurl . '">' . $overviewlinktext . '</a></p>';
 								}
 
-								echo '</div>';
-								echo '</div>';
+//								echo '</div>'; // .wrap
 								echo '</section>';
 
 							} else {
@@ -606,7 +629,8 @@ function rhswp_write_extra_contentblokken() {
 
 						}
 
-					} elseif ( 'select_dossiers' == $type_block ) {
+					} elseif
+					( 'select_dossiers' == $type_block ) {
 
 						if ( $select_dossiers_list ) {
 
@@ -839,7 +863,7 @@ function rhswp_write_extra_contentblokken() {
 		}
 	}
 
-	// RESET THE QUERY
+// RESET THE QUERY
 	wp_reset_query();
 
 

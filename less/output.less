@@ -827,10 +827,9 @@ Media Queries
 		.toolbox-introduction,
 		.toolbox-the-content,
 		#reactieformulier {
-			width: 66%;
 			margin-left: auto;
 			margin-right: auto;
-			max-width: @break_1200px;
+			.fullwidth_maxwidth();
 		}
 	}
 
@@ -1102,8 +1101,11 @@ CSS voor gravity forms, met name vanwege flitspanel, en hun aanmeldwidget
 @import "components/widgets.less";
 @import "components/social-media.less";
 @import "components/columns.less";
+@import "components/contentblocks.less";
+
 
 // templates
+@import "templates/single-post.less";
 @import "templates/page_front-page-nieuws.less";
 @import "templates/page_showalldossiers-nieuwestyling.less";
 
