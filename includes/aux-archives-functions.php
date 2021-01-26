@@ -126,7 +126,7 @@ function rhswp_get_grid_item( $args = array() ) {
 			// TODO
 			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) . '</span></span>';
 		}
-		$excerpt   .= '</p>';
+		$excerpt .= '</p>';
 
 		if ( $imgcontainer && $contentblock_url ) {
 			$imgcontainer = '<a tabindex="-1" href="' . $contentblock_url . '">' . $imgcontainer . '</a>';
@@ -225,13 +225,12 @@ function rhswp_blog_page_add_title() {
 								$postcounter ++;
 								$contentblock_post_id = get_the_ID();
 								$args2                = array(
-									'ID'   => $contentblock_post_id,
+									'ID' => $contentblock_post_id,
 								);
 
-								if ( 'actueel_row_styling_title_on_image' === $actueel_row_styling) {
+								if ( 'actueel_row_styling_title_on_image' === $actueel_row_styling ) {
 									$args2['type'] = 'posts_featured';
-								}
-								else {
+								} else {
 //									$args2['type'] = 'posts_plain';
 								}
 								echo rhswp_get_grid_item( $args2 );
@@ -254,8 +253,7 @@ function rhswp_blog_page_add_title() {
 				// op de eerste pagina van de page_for_posts dus geen andere berichten meer tonen
 				remove_action( 'genesis_loop', 'rhswp_archive_loop' );
 
-			}
-			else {
+			} else {
 
 				// geen aparte categorie geselecteerd, dus wel paginering tonen
 				add_action( 'genesis_after_loop', 'genesis_posts_nav', 3 );
@@ -274,7 +272,7 @@ function rhswp_blog_page_add_title() {
 
 add_action( 'pre_get_posts', 'rhswp_modify_query_for_page_for_posts' );
 /**
- * Voor de blog-pagina ( is_home() / 'page_for_posts ) willen we dat de eerste pagina ('paged' = 1) alleen de 
+ * Voor de blog-pagina ( is_home() / 'page_for_posts ) willen we dat de eerste pagina ('paged' = 1) alleen de
  * geselecteerde categorieen toont
  *
  * @param object $query data
@@ -498,4 +496,15 @@ function rhswp_archive_custom_loop() {
 	}
 }
 
+//========================================================================================================
+
+function rhswp_post_laatstgewijzigd( $atts ) {
+	global $post;
+	$publicatie_datum = get_the_date( get_option( 'date_format' ), $post->ID );
+	$wijzigings_datum = get_the_modified_date( get_option( 'date_format' ), $post->ID );
+	return 'publicatie: ' . esc_html( $publicatie_datum ) . ' - laatst gewijzigd: ' . $wijzigings_datum;
+
+}
+
+add_shortcode( 'post_laatstgewijzigd', 'rhswp_post_laatstgewijzigd' );
 //========================================================================================================

@@ -164,10 +164,10 @@ define( 'IMAGESIZE_SQUARE', 'image-square' );
 define( 'IMAGESIZE_SQUARE_SMALL', 'image-square-small' );
 
 // TODO
-//define( 'WP_DEBUG_FULL_WIDTH', true );
-define( 'WP_DEBUG_FULL_WIDTH', false );
-//define( 'WP_DEBUG_SHOWTEXTLENGTH', true );
-define( 'WP_DEBUG_SHOWTEXTLENGTH', false );
+define( 'WP_DEBUG_FULL_WIDTH', true );
+//define( 'WP_DEBUG_FULL_WIDTH', false );
+define( 'WP_DEBUG_SHOWTEXTLENGTH', true );
+//define( 'WP_DEBUG_SHOWTEXTLENGTH', false );
 
 //========================================================================================================
 //* Remove the edit link
@@ -1581,21 +1581,25 @@ function rhswp_document_add_extra_info() {
 //========================================================================================================
 // Customize the entry meta in the entry header (requires HTML5 theme support)
 add_filter( 'genesis_post_info', 'rhswp_post_append_postinfo' );
+
 function rhswp_post_append_postinfo( $post_info ) {
+
 	global $wp_query;
 	global $post;
+
 	if ( is_home() ) {
 		// niks, eigenlijk
 		return '[post_date]';
 	} elseif ( is_page() ) {
-		// niks, eigenlijk
-		return '[post_date]';
+		// de publicatiedatum
+//		return '[post_date]';
+		return 'publicatie en laatste wijzigiging: [post_laatstgewijzigd]';
 	} else {
 		if ( 'event' == get_post_type() ) {
 			return '';
 		} elseif ( 'post' == get_post_type() ) {
 			if ( is_single() ) {
-				return '[post_categories before=""] [post_date]';
+				return '[post_categories before=""] [post_laatstgewijzigd]';
 			} else {
 				return '[post_date]';
 			}
