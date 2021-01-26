@@ -2224,7 +2224,6 @@ function human_filesize( $bytes, $decimals = 1 ) {
 
 //========================================================================================================
 
-add_action( 'genesis_entry_content', 'rhswp_single_add_featured_image', 9 );
 
 function rhswp_single_add_featured_image() {
 
