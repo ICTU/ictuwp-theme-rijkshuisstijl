@@ -25,6 +25,21 @@
       .fullwidth_container();
     }
 
+    & > p,
+    & > h2,
+    & > h3,
+    & > h4,
+    & > h5,
+    & > h6,
+    & > h6 {
+      .fullwidth_padding();
+    }
+
+    & > ul,
+    & > ol {
+      .fullwidth_listpadding();
+    }
+
     div.wp-caption {
       &.alignnone {
         width: 100% !important;
@@ -58,3 +73,21 @@
 .fullwidth_maxwidth() {
   max-width: ( ( 765 / 16 ) * 1rem );
 }
+
+//========================================================================================================
+// mixin fullwidth_maxwidth()
+.fullwidth_padding() {
+  //  border: 2px solid green;
+  @media only screen and (min-width: ( @break_1200px ) ) {
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
+}
+
+//========================================================================================================
+// mixin fullwidth_maxwidth()
+.fullwidth_listpadding() {
+  padding-left: 5rem;
+  padding-right: 2rem;
+}
+
