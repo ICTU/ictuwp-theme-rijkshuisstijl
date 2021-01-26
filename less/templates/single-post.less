@@ -57,6 +57,28 @@
   }
 }
 
+.entry-header {
+
+  @media only screen and (min-width: ( @break_1200px ) ) {
+    display: flex;
+    flex-direction: column;
+
+    .entry-meta,
+    .entry-title {
+      flex: 1 0 100%;
+    }
+    .entry-meta {
+      order: 1;
+    }
+    .entry-title {
+      order: 2;
+      font-size: 3rem;
+    }
+
+
+  }
+}
+
 
 //========================================================================================================
 // mixin fullwidth_container()
