@@ -11,8 +11,10 @@
 
   .otherlinks {
 
-    border-top: 5px solid @txt;
-    padding: 1rem 0 0 0;
+    ul & {
+      border-top: 5px solid @txt;
+      padding: 1rem 0 0 0;
+    }
 
     &, li {
       list-style: none;
@@ -21,53 +23,59 @@
 
     li {
       padding: 0;
+    }
+    a {
+      display: block;
+      padding: .75rem;
+      background: @communicatiekleur_vol;
+      font-family: @fontstrong;
+      color: @wit;
+      text-decoration: none;
+      overflow: hidden;
 
-      a {
-        display: block;
-        padding: .75rem;
-        background: @communicatiekleur_vol;
-        font-family: @fontstrong;
+      &:visited {
         color: @wit;
-        text-decoration: none;
-        overflow: hidden;
+      }
 
-        &:visited {
-          color: @wit;
-        }
-
-        &:hover {
-          color: @wit;
-          text-decoration: underline;
-        }
+      &:hover,
+      &:focus {
+        color: @wit;
+        text-decoration: underline;
+      }
 
 
-        &.page,
-        &.document {
-          &:before {
-            content: ' ';
-            display: block;
-            float: left;
-            margin-right: 1rem;
-            width: 3rem;
-            height: 3rem;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-          }
+      &.page,
+      &.document {
+        &:before {
+          content: ' ';
+          display: block;
+          float: left;
+          margin-right: 1rem;
+          width: 3rem;
+          height: 3rem;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
         }
-        &.document {
-          &:before {
-            .iconaddfill('../images/svg/icon-pdf.svg', @wit, #fff);
-          }
+      }
+      &.document {
+        &:before {
+          .iconaddfill('../images/svg/icon-pdf.svg', @wit, #fff);
         }
-        &.page {
-          &:before {
-            .iconaddfill('../images/svg/icon-dossier.svg', @wit, #fff);
-          }
+      }
+      &.page {
+        &:before {
+          .iconaddfill('../images/svg/icon-dossier.svg', @wit, #fff);
         }
-
       }
     }
+
+    &.griditem {
+      a {
+        margin: .25rem 1rem .25rem .5rem;
+      }
+    }
+
   }
 }
 

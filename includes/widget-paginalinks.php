@@ -188,24 +188,43 @@ function rhswp_pagelinks_replace_widget() {
 				echo '<h2 id="' . $title_id . '">' . $widgettitle . '</h2>';
 
 				echo '<div class="grid">';
-				foreach ( $internal_posts as $content ) {
-					echo $content;
-				}
-				if ( $internal_other || $external ) {
-					echo '<div class="griditem colspan-1">';
-					echo '<ul class="otherlinks">';
-					foreach ( $internal_other as $content ) {
-						echo '<li>';
+				if ( $internal_posts ) {
+				    // berichten als losse items plus 1 block voor pagina's documenten en wat hef joe not
+					foreach ( $internal_posts as $content ) {
 						echo $content;
-						echo '</li>';
 					}
-					foreach ( $external as $content ) {
-						echo '<li>';
-						echo $content;
-						echo '</li>';
+					if ( $internal_other || $external ) {
+						echo '<div class="griditem colspan-1">';
+						echo '<ul class="otherlinks">';
+						foreach ( $internal_other as $content ) {
+							echo '<li>';
+							echo $content;
+							echo '</li>';
+						}
+						foreach ( $external as $content ) {
+							echo '<li>';
+							echo $content;
+							echo '</li>';
+						}
+						echo '</ul>';
+						echo '</div>';
 					}
-					echo '</ul>';
-					echo '</div>';
+
+				} else {
+					if ( $internal_other || $external ) {
+						foreach ( $internal_other as $content ) {
+							echo '<div class="griditem colspan-1 otherlinks">';
+							echo $content;
+							echo '</div>';
+						}
+						foreach ( $external as $content ) {
+							echo '<div class="griditem colspan-1 otherlinks">';
+							echo $content;
+							echo '</div>';
+						}
+						echo '</div>';
+					}
+
 				}
 
 				echo '</div>';
