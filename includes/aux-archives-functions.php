@@ -53,25 +53,33 @@ function rhswp_get_grid_item( $args = array() ) {
 	if ( $args['cssid'] ) {
 		$cssid = ' id="' . $args['cssid'] . '"';
 	}
+	if ( 'post' != get_post_type( $args['ID'] ) ) {
+		$args['type'] = 'posts_manual';
+	}
 
 	if ( $args['type'] === 'posts_manual' ) {
-		if ( in_array( 'colspan-1', $cssclasses ) ) {
-			// voor blokken die 1 kolom breed zijn, gebruiken we een vierkant plaatje
-			$imgcontainer = wp_get_attachment_image( $args['contentblock_imgid'], IMAGESIZE_SQUARE_SMALL );
+		if ( $args['contentblock_imgid'] ) {
+			if ( in_array( 'colspan-1', $cssclasses ) ) {
+				// voor blokken die 1 kolom breed zijn, gebruiken we een vierkant plaatje
+				$imgcontainer = wp_get_attachment_image( $args['contentblock_imgid'], IMAGESIZE_SQUARE_SMALL );
+			}
+			if ( in_array( 'colspan-2', $cssclasses ) ) {
+				// voor blokken die 2 kolommen breed zijn, gebruiken we een 16:9 plaatje
+				$imgcontainer = wp_get_attachment_image( $args['contentblock_imgid'], IMAGESIZE_5x3 );
+			}
 		}
-		if ( in_array( 'colspan-2', $cssclasses ) ) {
-			// voor blokken die 2 kolommen breed zijn, gebruiken we een 16:9 plaatje
-			$imgcontainer = wp_get_attachment_image( $args['contentblock_imgid'], IMAGESIZE_5x3 );
-		}
+
 		if ( $contentblock_label ) {
 			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
 		}
 		$itemtitle .= '<' . $args['headerlevel'] . '>' . $contentblock_titel . '</' . $args['headerlevel'] . '>';
 
 		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . ' "' . $cssid . '>';
-		$return .= '<div class="imgcontainer">';
-		$return .= $imgcontainer;
-		$return .= '</div>'; // .imgcontainer
+		if ( $imgcontainer ) {
+			$return .= '<div class="imgcontainer">';
+			$return .= $imgcontainer;
+			$return .= '</div>'; // .imgcontainer
+		}
 		$return .= '<div class="txtcontainer">';
 		$return .= '<a href="' . $contentblock_url . '">';
 		$return .= '<div class="text">';
@@ -115,6 +123,7 @@ function rhswp_get_grid_item( $args = array() ) {
 		$return .= '</div>'; // .txtcontainer
 		$return .= '</' . $args['tagcontainer'] . '>';
 	} else {
+		// $args['type'] === 'posts_plain'
 		if ( $contentblock_label ) {
 			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
 		}
@@ -220,7 +229,7 @@ function rhswp_blog_page_add_title() {
 								$more_text = sprintf( $more_text, strtolower( $cat_name ) );
 							}
 							echo '<h2>' . $cat_name . '</h2>';
-							echo '<div class="grid">';
+							echo '<div class="grid itemcount-' . $actueel_row_number . '">';
 							while ( $actueel_row_category_posts->have_posts() ) : $actueel_row_category_posts->the_post();
 								$postcounter ++;
 								$contentblock_post_id = get_the_ID();
@@ -502,6 +511,7 @@ function rhswp_post_laatstgewijzigd( $atts ) {
 	global $post;
 	$publicatie_datum = get_the_date( get_option( 'date_format' ), $post->ID );
 	$wijzigings_datum = get_the_modified_date( get_option( 'date_format' ), $post->ID );
+
 	return 'publicatie: ' . esc_html( $publicatie_datum ) . ' - laatst gewijzigd: ' . $wijzigings_datum;
 
 }

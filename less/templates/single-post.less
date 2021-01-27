@@ -8,7 +8,8 @@
 
 .single.full-width-content {
   .entry-header {
-    .fullwidth_container();
+    .mixin_fullwidth_container();
+    .fullwidth_padding();
   }
 
   .entry-content {
@@ -22,7 +23,7 @@
     & > h5,
     & > h6,
     & > h6 {
-      .fullwidth_container();
+      .mixin_fullwidth_container();
     }
 
     & > p,
@@ -43,7 +44,7 @@
     div.wp-caption {
       &.alignnone {
         width: 100% !important;
-        .fullwidth_maxwidth();
+        .mixin_fullwidth_maxwidth();
         margin-left: auto;
         margin-right: auto;
       }
@@ -59,45 +60,68 @@
 
 .entry-header {
 
+  .entry-categories {
+    a {
+      color: @color_meta;
+    }
+  }
+
   @media only screen and (min-width: ( @break_1200px ) ) {
     display: flex;
     flex-direction: column;
+    margin-bottom: .5rem;
 
     .entry-meta,
     .entry-title {
       flex: 1 0 100%;
+      margin-bottom: .5rem;
     }
     .entry-meta {
       order: 1;
+
+      .entry-categories,
+      .entry-time {
+        float: left;
+        & + .entry-time,
+        & + .entry-categories {
+         .mixin_separator();
+       }
+      }
+
     }
     .entry-title {
       order: 2;
       font-size: 3rem;
     }
-
-
   }
 }
 
 
+.share-bar {
+  .mixin_fullwidth_container();
+  .fullwidth_padding();
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 //========================================================================================================
-// mixin fullwidth_container()
-.fullwidth_container() {
+// mixin mixin_fullwidth_container()
+.mixin_fullwidth_container() {
   //  border: 1px solid red;
   //  max-width: ( ( 650 / 16 ) * 1rem );
-  .fullwidth_maxwidth();
+  .mixin_fullwidth_maxwidth();
   margin-left: auto;
   margin-right: auto;
 }
 
 //========================================================================================================
-// mixin fullwidth_maxwidth()
-.fullwidth_maxwidth() {
+// mixin mixin_fullwidth_maxwidth()
+.mixin_fullwidth_maxwidth() {
   max-width: ( ( 765 / 16 ) * 1rem );
 }
 
 //========================================================================================================
-// mixin fullwidth_maxwidth()
+// mixin mixin_fullwidth_maxwidth()
 .fullwidth_padding() {
   //  border: 2px solid green;
   @media only screen and (min-width: ( @break_1200px ) ) {
@@ -107,7 +131,7 @@
 }
 
 //========================================================================================================
-// mixin fullwidth_maxwidth()
+// mixin mixin_fullwidth_maxwidth()
 .fullwidth_listpadding() {
   padding-left: 5rem;
   padding-right: 2rem;

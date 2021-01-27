@@ -1592,16 +1592,17 @@ function rhswp_post_append_postinfo( $post_info ) {
 		return '[post_date]';
 	} elseif ( is_page() ) {
 		// de publicatiedatum
-//		return '[post_date]';
-		return 'publicatie en laatste wijzigiging: [post_laatstgewijzigd]';
+		return '[post_date]';
 	} else {
 		if ( 'event' == get_post_type() ) {
 			return '';
 		} elseif ( 'post' == get_post_type() ) {
 			if ( is_single() ) {
-				return '[post_categories before=""] [post_laatstgewijzigd]';
+//				return '[post_date] [post_categories before=""]';
+				return '[post_categories before=""] [post_date] ';
+				// voor in het archief: er is ook een shortcode: [post_laatstgewijzigd]
 			} else {
-				return '[post_date]';
+				return '';
 			}
 		} elseif ( RHSWP_CPT_DOCUMENT == get_post_type() ) {
 			// hiero
@@ -4100,15 +4101,19 @@ function rhswp_get_sublabel( $post_id ) {
 					}
 				}
 			}
-		} elseif ( get_the_category( $post_id) ) {
+		} elseif ( get_the_category( $post_id ) ) {
 			// nog steeds niks dan maar de categorie teruggeven
 			$categories = get_the_category( $post_id );
 			if ( $categories ) {
 				$return = $categories[0]->name;
 			}
-		} else {
+		} elseif ( 'post' === get_post_type( $post_id ) ) {
 			$return = 'Geen label gevonden';
-        }
+		} elseif ( 'actielijn' === get_post_type( $post_id ) ) {
+			$return = '';
+		} else {
+			$return = get_post_type( $post_id );
+		}
 	}
 
 	return $return;
@@ -4116,3 +4121,38 @@ function rhswp_get_sublabel( $post_id ) {
 
 //========================================================================================================
 
+function wbvb_d2e_socialbuttons( $doecho = true ) {
+
+	global $post;
+
+	if ( is_single() && 'post' == get_post_type() ) {
+
+		$thelink       = urlencode( get_permalink( $post->ID ) );
+		$thetitle      = urlencode( $post->post_title );
+		$sitetitle     = urlencode( get_bloginfo( 'name' ) );
+		$summary       = urlencode( $post->post_excerpt );
+		$popup         = ' onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"';
+		$cta           =  _x( 'Deel dit artikel', 'share buttons CTA', 'wp-rijkshuisstijl' );
+		$mailadres     = urlencode( 'geaddresseerd@voorbeeld.nl' );
+		$return        = '';
+		$mailonderwerp = urlencode( sprintf( _x( 'Leestip: %s', 'share buttons mail onderwerp', 'wp-rijkshuisstijl' ), $post->post_title ) );
+
+		if ( $thelink ) {
+			$return = '<div class="share-bar"><span class="cta">' . $cta . '</span>';
+			$return .= '<ul>';
+			$return .= '<li><a href="mailto:' . $mailadres . '?subject=' . $mailonderwerp . '&body=' . $thetitle . ' - ' . $thelink . '" target="_blank"><span class="social-media-icon social-media--mail">&nbsp;</span><span class="visuallyhidden">' . _x( "Deel via mail", 'share buttons mail', 'wp-rijkshuisstijl' ) . '</span></a></li>';
+			$return .= '<li><a href="https://twitter.com/share?url=' . $thelink . '&via=digioverheid&text=' . $thetitle . '" data-url="' . $thelink . '" data-text="' . $thetitle . '" data-via="@digioverheid"' . $popup . '><span class="social-media-icon social-media--twitter">&nbsp;</span><span class="visuallyhidden">' . _x( "Deel via Twitter", 'share buttons Twitter', 'wp-rijkshuisstijl' ) . '</span></a></li>';
+			$return .= '<li><a href="http://www.linkedin.com/shareArticle?mini=true&url=' . $thelink . '&title=' . $thetitle . '&summary=' . $summary . '&source=' . $sitetitle . '"' . $popup . '><span class="social-media-icon social-media--linkedin">&nbsp;</span><span class="visuallyhidden">' . _x( "Deel via LinkedIn", 'share buttons LinkedIn', 'wp-rijkshuisstijl' ) . '</span></a></li>';
+			$return .= '</ul>';
+			$return .= '</div>';
+		}
+
+		if ( $return ) {
+			echo $return;
+		}
+	}
+
+}
+
+
+//========================================================================================================

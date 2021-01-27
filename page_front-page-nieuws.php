@@ -173,6 +173,12 @@ function rhswp_home_onderwerpen_dossiers() {
 			$limit     = $row['home_row_max_nr'];
 			$gridclass = 'grid';
 
+			if ( 'free_form' === $row['home_row_type'] ) {
+				$gridclass .= ' itemcount-3';
+			} elseif ( $limit ) {
+				$gridclass .= ' itemcount-' . $limit;
+			}
+
 			switch ( $row['home_row_type'] ) {
 
 				case 'free_form':
@@ -180,7 +186,7 @@ function rhswp_home_onderwerpen_dossiers() {
 
 						echo '<div class="' . $gridclass . '">';
 						foreach ( $row['home_row_freeform'] as $row2 ) {
-							$itemclass = 'griditem colspan-1';
+							$itemclass = 'griditem';
 							$excerpt   = $row2['home_row_freeform_text'];
 							$itemtitle = '<h2>' . $row2['home_row_freeform_title'] . '</h2>';
 							if ( $row2['home_row_freeform_width'] ) {

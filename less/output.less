@@ -283,7 +283,7 @@ Content Area
 
 .entry-meta {
   font-size: 80%;
-  color: @grijs_7;
+  color: @color_meta;
 
   a {
     text-decoration: none;
@@ -296,16 +296,18 @@ Content Area
     }
   }
 
-  .entry-categories {
-    &:after {
-      content: '|';
-      display: inline-block;
-      margin-left: .5em;
-      margin-right: .3em;
-      speak: never;
-    }
-  }
+	/*
+      .entry-categories {
+        &:after {
+          content: '|';
+          display: inline-block;
+          margin-left: .5em;
+          margin-right: .3em;
+          speak: never;
+        }
+      }
 
+     */
 }
 
 
@@ -829,7 +831,7 @@ Media Queries
 		#reactieformulier {
 			margin-left: auto;
 			margin-right: auto;
-			.fullwidth_maxwidth();
+			.mixin_fullwidth_maxwidth();
 		}
 	}
 
@@ -1104,7 +1106,7 @@ CSS voor gravity forms, met name vanwege flitspanel, en hun aanmeldwidget
 @import "components/contentblocks.less";
 @import "components/site-footer.less";
 @import "components/payoff.less";
-
+@import "components/related-content.less";
 
 // templates
 @import "templates/single-post.less";

@@ -11,7 +11,6 @@
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
-
 // ========================================================================
 
 @import "auxilary/auxilary.less";
@@ -551,4 +550,48 @@
 }
 
 //=========================================================================================================
+
+.mixin_separator() {
+
+  &:before {
+    content: '|';
+    display: inline-block;
+    float: left;
+    margin: 0 .5rem;
+  }
+}
+
+//=========================================================================================================
+
+.mixin_socmedicons( @replacewith: @txt, @replacewhat: #fff) {
+  .iconaddfill('../images/svg/icon-social.svg', @replacewith, @replacewhat);
+
+  &.social-media--mail {
+    .iconaddfill('../images/svg/icon-mail.svg', @replacewith, @replacewhat);
+  }
+
+  &.social-media--twitter {
+    .iconaddfill('../images/svg/icon-twitter.svg', @replacewith, @replacewhat);
+  }
+
+  &.social-media--linkedin {
+    .iconaddfill('../images/svg/icon-linkedin.svg', @replacewith, @replacewhat);
+  }
+
+  a {
+    color: @replacewith; // @txt;
+
+    &:visited {
+      color: @replacewith;
+    }
+
+    &:hover {
+      color: @replacewith;
+      text-decoration: underline;
+    }
+  }
+}
+
+//=========================================================================================================
+
 
