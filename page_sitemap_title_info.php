@@ -61,6 +61,9 @@ function paginatitels() {
 		echo '<tr>';
 		echo '<th scope="col">Datum</th>';
 		echo '<th scope="col">Titel</th>';
+		echo '<th scope="col">Content-blokken</th>';
+		echo '<th scope="col">Gerelateerde links</th>';
+
 		echo '<th scope="col">Lengte titel</th>';
 		echo '<th scope="col">Lengte samenvatting</th>';
 		echo '<th scope="col">Heeft uitgelichte afbeelding</th>';
@@ -68,8 +71,6 @@ function paginatitels() {
 		echo '<th scope="col">afbeelding W </th>';
 		echo '<th scope="col">Automatisch invoegen?</th>';
 		echo '<th scope="col">Caroussel</th>';
-		echo '<th scope="col">Content-blokken</th>';
-		echo '<th scope="col">Gerelateerde links</th>';
 		echo '<th scope="col">Categorie</th>';
 		echo '<th scope="col">Tag</th>';
 		echo '<th scope="col">Dossier</th>';
@@ -114,38 +115,6 @@ function paginatitels() {
 
 
 			echo '<td><a href="' . get_the_permalink() . '">' . $title . '</a></td>';
-			echo '<td>' . $strlength . '</td>';
-
-			//$excerpt
-			echo '<td>' . strlen( $excerpt ) . '</td>';
-
-			//Heeft uitgelichte afbeelding
-			echo '<td>';
-			if ( has_post_thumbnail() ) {
-
-				$size   = 'full';
-				$meta   = wp_get_attachment_metadata( get_post_thumbnail_id( $theid ) );
-				$width  = $meta['width'];
-				$height = $meta['height'];
-
-				echo 'Ja';
-				echo '</td><td>' . $height;
-				echo '</td><td>' . $width;
-
-				echo '</td><td>' . $featimg_automatic_insert;
-
-			} else {
-				echo 'Nee';
-				echo '</td><td>&nbsp;'; // hoogte
-				echo '</td><td>&nbsp;'; // breedte
-
-				// automatisch invoegen
-				echo '<td>&nbsp;';
-			}
-			echo '</td>';
-
-
-			echo '<td>' . $carousselcheck . '</td>';
 
 
 			echo '<td>';
@@ -222,6 +191,40 @@ function paginatitels() {
 				echo 'nee';
 			}
 			echo '</td>';
+
+			echo '<td>' . $strlength . '</td>';
+
+			//$excerpt
+			echo '<td>' . strlen( $excerpt ) . '</td>';
+
+			//Heeft uitgelichte afbeelding
+			echo '<td>';
+			if ( has_post_thumbnail() ) {
+
+				$size   = 'full';
+				$meta   = wp_get_attachment_metadata( get_post_thumbnail_id( $theid ) );
+				$width  = $meta['width'];
+				$height = $meta['height'];
+
+				echo 'Ja';
+				echo '</td><td>' . $height;
+				echo '</td><td>' . $width;
+
+				echo '</td><td>' . $featimg_automatic_insert;
+
+			} else {
+				echo 'Nee';
+				echo '</td><td>&nbsp;'; // hoogte
+				echo '</td><td>&nbsp;'; // breedte
+
+				// automatisch invoegen
+				echo '<td>&nbsp;';
+			}
+			echo '</td>';
+
+
+			echo '<td>' . $carousselcheck . '</td>';
+
 
 			//Categorie
 			echo '<td>';
