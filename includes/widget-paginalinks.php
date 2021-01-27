@@ -132,12 +132,11 @@ function rhswp_pagelinks_replace_widget() {
 
 		if ( 'ja' == $toon_extra_links && $links ) {
 			$title_id = sanitize_title( $widgettitle );
-			echo '<section aria-labelledby="' . $title_id . '" class="related-content">';
 
 
 			$internal_posts = array();
 			$internal_other = array();
-			$external = array();
+			$external       = array();
 
 
 			foreach ( $links as $link ) {
@@ -162,39 +161,44 @@ function rhswp_pagelinks_replace_widget() {
 
 					foreach ( $interne_link as $linkobject ) {
 
-						$args    = array(
+						$args = array(
 							'ID'        => $linkobject->ID,
 							'type'      => 'posts_plain',
 							'itemclass' => 'griditem griditem--post colspan-1',
 						);
 
-						if ( 'post' != get_post_type( $args['ID'] ) ) {
-						    // dit is geen bericht (post)
-							$internal_other[] = rhswp_get_grid_item( $args );
-						}
-						else {
-						    // het is wel een bericht (post)
+						if ( 'post' != get_post_type( $linkobject->ID ) ) {
+							// dit is geen bericht (post)
+							$post_url         = get_the_permalink( $linkobject->ID );
+							$post_type        = get_post_type( $linkobject->ID );
+							$post_title       = get_the_title( $linkobject->ID );
+							$internal_other[] = '<a href="' . $post_url . '" class="intern ' . $post_type . '">' . $post_title . '</a>';
+						} else {
+							// het is wel een bericht (post)
 							$internal_posts[] = rhswp_get_grid_item( $args );
-                        }
+						}
 
 					}
 				}
 				echo $content;
 			}
 
-			echo '<h2 id="' . $title_id . '">' . $widgettitle . '</h2>';
 			if ( $internal_posts || $internal_other || $external ) {
+				echo '<section aria-labelledby="' . $title_id . '" class="related-content">';
+				echo '<h2 id="' . $title_id . '">' . $widgettitle . '</h2>';
+
 				echo '<div class="grid">';
 				foreach ( $internal_posts as $content ) {
 					echo $content;
 				}
-				foreach ( $internal_other as $content ) {
-					echo $content;
-				}
-
-				if ( $external ) {
-                    echo '<div class="griditem colspan-1 ">';
-					echo '<ul>';
+				if ( $internal_other || $external ) {
+					echo '<div class="griditem colspan-1">';
+					echo '<ul class="otherlinks">';
+					foreach ( $internal_other as $content ) {
+						echo '<li>';
+						echo $content;
+						echo '</li>';
+					}
 					foreach ( $external as $content ) {
 						echo '<li>';
 						echo $content;
@@ -202,12 +206,11 @@ function rhswp_pagelinks_replace_widget() {
 					}
 					echo '</ul>';
 					echo '</div>';
-                }
+				}
 
 				echo '</div>';
-
-            }
-			echo "</section>";
+				echo "</section>";
+			}
 		}
 	}
 }

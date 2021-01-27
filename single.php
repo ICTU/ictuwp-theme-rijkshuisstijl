@@ -30,7 +30,7 @@ if ( WP_DEBUG_FULL_WIDTH ) {
 	add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 16 );
 
 	// social media share buttons
-	add_action( 'genesis_entry_content', 'wbvb_d2e_socialbuttons', 14 );
+	add_action( 'genesis_entry_content', 'rhswp_append_socialbuttons', 14 );
 
 }
 

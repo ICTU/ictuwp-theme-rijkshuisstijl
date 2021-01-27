@@ -4121,7 +4121,7 @@ function rhswp_get_sublabel( $post_id ) {
 
 //========================================================================================================
 
-function wbvb_d2e_socialbuttons( $doecho = true ) {
+function rhswp_append_socialbuttons( $doecho = true ) {
 
 	global $post;
 

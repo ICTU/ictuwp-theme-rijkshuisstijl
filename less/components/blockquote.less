@@ -1,0 +1,233 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - related-content.less
+// * ----------------------------------------------------------------------------------
+// * Het blok met gerelateerde content
+// * ----------------------------------------------------------------------------------
+//
+
+
+.simple-pullquote {
+  &.align-none {
+
+  }
+}
+
+blockquote em,
+cite {
+  font-style: italic;
+  display: block;
+  clear: both;
+  text-align: right;
+}
+
+
+q
+blockquote {
+  margin: 1em 0 1em 0;
+  padding: .5em;
+  font-family: @fontitalic;
+  font-size: 1.3rem;
+  font-style: normal;
+  line-height: 1.3;
+
+  border-top: 1px solid @grijs;
+  border-bottom: 1px solid @grijs;
+  word-break: normal;
+  hyphens: none;
+}
+
+blockquote em,
+cite {
+  display: block;
+  clear: both;
+  text-align: left;
+  font-size: 75%;
+  margin-top: .5em;
+
+  a {
+    padding-left: .75em;
+    .icon_socmed_icon('../images/svg/list-arrow.svg', @donkerblauw_vol);
+    background-repeat: no-repeat;
+    background-position: left center;
+    display: inline-block;
+  }
+}
+
+
+@img_pullquote_max_width: 140px;
+@img_pullquote_mobile_max_width: 75px;
+
+
+.pullquote-with-image {
+
+  min-height: @img_pullquote_mobile_max_width;
+  @media only screen and (min-width: ( @break_650px ) ) {
+    min-height: @img_pullquote_max_width;
+  }
+
+  float: none;
+  clear: both;
+  overflow: hidden;
+  border-top-style: none;
+  border-bottom-style: none;
+  position: relative;
+  padding: 0;
+  margin: 1em 1em 1em 1em;
+  font-style: normal;
+
+  q,
+  blockquote {
+    border-top-style: none;
+    border-bottom-style: none;
+    overflow: hidden;
+
+    min-height: @img_pullquote_mobile_max_width;
+    @media only screen and (min-width: ( @break_650px ) ) {
+      min-height: @img_pullquote_max_width;
+    }
+
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+  }
+
+  // dit is een soort blockquote, maar heeft een plaatje van de auteur van de uitspraak en waarschijnlijk een link
+  div.pullquote-img {
+    float: right;
+    border-radius: 50%;
+
+    width: @img_pullquote_mobile_max_width;
+    height: @img_pullquote_mobile_max_width;
+
+    @media only screen and (max-width: ( @break_650px ) ) {
+      width: @img_pullquote_mobile_max_width;
+      height: @img_pullquote_mobile_max_width;
+      top: 50%;
+      margin-top: ( -1 * ( @img_pullquote_max_width / 2 ) );
+    }
+    @media only screen and (min-width: ( @break_650px ) ) {
+      width: @img_pullquote_max_width;
+      height: @img_pullquote_max_width;
+      top: 0;
+    }
+
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    right: 0;
+  }
+
+  div.quote {
+    min-height: @img_pullquote_max_width;
+    border-top: 3px solid @donkerblauw_vol;
+    border-bottom: 3px solid @donkerblauw_vol;
+    @media only screen and (max-width: ( @break_650px ) ) {
+      max-width: ~"calc(99% - @{img_pullquote_mobile_max_width})";
+    }
+    @media only screen and (min-width: ( @break_650px ) ) {
+      max-width: ~"calc(99% - @{img_pullquote_max_width})";
+    }
+    margin: 0;
+    padding: .5em 1em .5em 0;
+    float: left;
+    overflow: hidden;
+    font-style: normal;
+    font-family: @fontitalic;
+
+    p {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  &.align-left {
+
+    div.pullquote-img {
+      right: .5em;
+    }
+  }
+
+  &.align-right {
+    float: right;
+
+    div.quote {
+      float: right;
+      padding: .5em 0 .5em 1em;
+    }
+
+    div.pullquote-img {
+      right: auto;
+      left: .5em;
+    }
+  }
+}
+
+.pullquote-with-image,
+.simple-pullquote {
+
+  q,
+  blockquote {
+    &, * {
+      word-break: normal;
+      hyphens: none;
+    }
+
+    @media only screen and (min-width: ( @break_650px ) ) {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.simple-pullquote {
+
+
+  @media only screen and (min-width: ( @break_650px ) ) {
+
+    &.align-none {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+      float: none;
+      .mixin_fullwidth_container();
+
+    }
+
+    &.align-left {
+      margin-right: 1em;
+      max-width: 50%;
+      float: left;
+    }
+
+    &.align-right {
+      float: right;
+      margin-left: 1em;
+      max-width: 50%;
+      float: left;
+    }
+  }
+
+  q,
+  blockquote {
+
+    &:after,
+    &:before {
+      content: '';
+    }
+
+    font-family: @fontitalic;
+    line-height: 1.4;
+    text-align: left;
+    display: block;
+    margin: .5em;
+
+    @media only screen and (min-width: ( @break_650px ) ) {
+      padding: 1rem 0;
+    }
+
+  }
+}
+
+
+//simple-pullquote align-none
