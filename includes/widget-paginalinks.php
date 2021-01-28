@@ -161,6 +161,9 @@ function rhswp_pagelinks_replace_widget() {
 
 					foreach ( $interne_link as $linkobject ) {
 
+						$post_url         = get_the_permalink( $linkobject->ID );
+						$post_type        = get_post_type( $linkobject->ID );
+						$post_title       = get_the_title( $linkobject->ID );
 						$args = array(
 							'ID'        => $linkobject->ID,
 							'type'      => 'posts_plain',
@@ -169,13 +172,11 @@ function rhswp_pagelinks_replace_widget() {
 
 						if ( 'post' != get_post_type( $linkobject->ID ) ) {
 							// dit is geen bericht (post)
-							$post_url         = get_the_permalink( $linkobject->ID );
-							$post_type        = get_post_type( $linkobject->ID );
-							$post_title       = get_the_title( $linkobject->ID );
 							$internal_other[] = '<a href="' . $post_url . '" class="intern ' . $post_type . '">' . $post_title . '</a>';
 						} else {
 							// het is wel een bericht (post)
-							$internal_posts[] = rhswp_get_grid_item( $args );
+//							$internal_posts[] = rhswp_get_grid_item( $args );
+							$internal_other[] = '<a href="' . $post_url . '" class="intern ' . $post_type . '">' . $post_title . '</a>';
 						}
 
 					}
@@ -186,6 +187,11 @@ function rhswp_pagelinks_replace_widget() {
 			if ( $internal_posts || $internal_other || $external ) {
 				echo '<section aria-labelledby="' . $title_id . '" class="related-content">';
 				echo '<h2 id="' . $title_id . '">' . $widgettitle . '</h2>';
+
+				/*
+				 * TODO: dit in nette vormgeving presenteren.
+				 * Nog wat uitwerken over hoe de nieuwe vormgeving om gaat gaan met bestaande berichten
+				 * Daarom tot die tijd nog even de lijst als vanouds tonen, onder een bericht.
 
 				echo '<div class="grid">';
 				if ( $internal_posts ) {
@@ -224,10 +230,29 @@ function rhswp_pagelinks_replace_widget() {
 						}
 						echo '</div>';
 					}
-
 				}
-
 				echo '</div>';
+
+				*/
+				echo '<ul class="">';
+				foreach ( $internal_posts as $content ) {
+					echo '<li>';
+					echo $content;
+					echo '</li>';
+				}
+				foreach ( $internal_other as $content ) {
+					echo '<li>';
+					echo $content;
+					echo '</li>';
+				}
+				foreach ( $external as $content ) {
+					echo '<li>';
+					echo $content;
+					echo '</li>';
+				}
+				echo '</ul>';
+
+
 				echo "</section>";
 			}
 		}
