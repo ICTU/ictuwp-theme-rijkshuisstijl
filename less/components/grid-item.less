@@ -61,7 +61,7 @@
 
     &.colspan-2.griditem--textoverimage,
     &.itemcounter-1.griditem--textoverimage {
-      .textoverimage();
+      .mixin_textoverimage();
     }
 
     &.itemcounter-1.griditem--textoverimage {
@@ -107,7 +107,7 @@
     }
 
     &.griditem--textoverimage {
-      .textoverimage();
+      .mixin_textoverimage();
     }
 
     &.griditem--post.colspan-1 {
@@ -244,9 +244,13 @@
 }
 
 
+.event-meta {
+  
+}
+
 //========================================================================================================
-// mixin textoverimage()
-.textoverimage() {
+// mixin mixin_textoverimage()
+.mixin_textoverimage() {
 
   position: relative;
   background-color: @txt;
@@ -315,7 +319,6 @@
       bottom: @datumhoogte;
     }
   }
-
 }
 
 //========================================================================================================

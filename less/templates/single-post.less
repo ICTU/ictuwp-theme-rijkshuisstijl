@@ -9,7 +9,7 @@
 .single.full-width-content {
   .entry-header {
     .mixin_fullwidth_container();
-    .fullwidth_padding();
+    .mixin_fullwidth_padding();
   }
 
   .entry-content {
@@ -34,7 +34,7 @@
     & > h5,
     & > h6,
     & > h6 {
-      .fullwidth_padding();
+      .mixin_fullwidth_padding();
     }
 
     & > p {
@@ -126,7 +126,7 @@
 
 .share-bar {
   .mixin_fullwidth_container();
-  .fullwidth_padding();
+  .mixin_fullwidth_padding();
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
@@ -149,7 +149,7 @@
 
 //========================================================================================================
 // mixin mixin_fullwidth_maxwidth()
-.fullwidth_padding() {
+.mixin_fullwidth_padding() {
   //  border: 2px solid green;
   @media only screen and (min-width: ( @break_1200px ) ) {
     padding-left: 3rem;
