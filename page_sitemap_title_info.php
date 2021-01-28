@@ -63,8 +63,9 @@ function paginatitels() {
 		echo '<th scope="col">Titel</th>';
 		echo '<th scope="col">Content-blokken</th>';
 		echo '<th scope="col">Gerelateerde links</th>';
-
+		echo '<th scope="col">Check inhoud</th>';
 		echo '<th scope="col">Lengte titel</th>';
+		echo '<th scope="col">Auteurs</th>';
 		echo '<th scope="col">Lengte samenvatting</th>';
 		echo '<th scope="col">Heeft uitgelichte afbeelding</th>';
 		echo '<th scope="col">afbeelding H </th>';
@@ -192,7 +193,39 @@ function paginatitels() {
 			}
 			echo '</td>';
 
+			// Check inhoud
+			echo '<td>';
+			$post_content = apply_filters( 'the_content', get_the_content() );
+			$result       = '';
+
+			if (preg_match('/<img.*>/', $post_content ) ) {
+				$result .= '<li>Bevat plaatje &lt;img&gt; </pre></li>';
+			}
+			if (preg_match('/<blockquote.*>/', $post_content ) ) {
+				$result .= '<li>Bevat citaat (&lt;blockquote&gt;) </pre></li>';
+			}
+			if (preg_match('/class="borderframe.*>/', $post_content ) ) {
+				$result .= '<li>Bevat kader (class="borderframe") </pre></li>';
+			}
+			if (preg_match('/<details.*>/', $post_content ) ) {
+				$result .= '<li>Bevat uitklapblok (&lt;details&gt;) </pre></li>';
+			}
+
+			if ( $result ) {
+				echo '<ul>';
+				echo $result;
+				echo '</ul>';
+			}
+
+			echo '&nbsp;';
+			echo '</td>';
+
+			// lengte titel
 			echo '<td>' . $strlength . '</td>';
+
+			// auteur
+
+			echo '<td>' . get_the_author_meta( 'display_name' ) . ' &nbsp;</td>';
 
 			//$excerpt
 			echo '<td>' . strlen( $excerpt ) . '</td>';
