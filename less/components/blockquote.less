@@ -30,8 +30,8 @@ blockquote {
   font-style: normal;
   line-height: 1.3;
 
-  border-top: 1px solid @grijs;
-  border-bottom: 1px solid @grijs;
+//  border-top: 1px solid @grijs;
+//  border-bottom: 1px solid @grijs;
   word-break: normal;
   hyphens: none;
 }
@@ -63,6 +63,7 @@ cite {
   min-height: @img_pullquote_mobile_max_width;
   @media only screen and (min-width: ( @break_650px ) ) {
     min-height: @img_pullquote_max_width;
+    .mixin_fullwidth_container();
   }
 
   float: none;
@@ -121,8 +122,8 @@ cite {
 
   div.quote {
     min-height: @img_pullquote_max_width;
-    border-top: 3px solid @donkerblauw_vol;
-    border-bottom: 3px solid @donkerblauw_vol;
+//    border-top: 3px solid @donkerblauw_vol;
+//    border-bottom: 3px solid @donkerblauw_vol;
     @media only screen and (max-width: ( @break_650px ) ) {
       max-width: ~"calc(99% - @{img_pullquote_mobile_max_width})";
     }

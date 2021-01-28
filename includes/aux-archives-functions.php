@@ -48,7 +48,7 @@ function rhswp_get_grid_item( $args = array() ) {
 
 	if ( WP_DEBUG_SHOWTEXTLENGTH ) {
 		// TODO: weghalen tekstlengte
-		$contentblock_titel .= ' <span class="tekstlengte"><span>' . strlen( $contentblock_titel ) . '</span></span>';
+		$contentblock_titel .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( $contentblock_titel ) ) . '</span></span>';
 	}
 	if ( $args['cssid'] ) {
 		$cssid = ' id="' . $args['cssid'] . '"';
@@ -133,7 +133,7 @@ function rhswp_get_grid_item( $args = array() ) {
 		$excerpt   .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
 		if ( WP_DEBUG_SHOWTEXTLENGTH ) {
 			// TODO
-			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) . '</span></span>';
+			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) ) . '</span></span>';
 		}
 		$excerpt .= '</p>';
 

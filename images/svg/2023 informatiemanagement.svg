@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>2023 informatiemanagement</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="2023-informatiemanagement" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g filter="url(#filter-1)">
+            <g>
+                <g id="Box">
+                    <rect id="Rectangle" x="0" y="0" width="64" height="64"></rect>
+                </g>
+                <g id="Icon" transform="translate(2.000000, 11.000000)" fill="#000000" fill-rule="nonzero">
+                    <path d="M56,4 L27,4 L27,2 C27,0.8954 26.1046,0 25,0 L10,0 C8.8954,0 8,0.8954 8,2 C8,4.21 8,4.6829 8,6.688 C15.1292,7.1527 48.0935,9.307 48.5876,9.4381 C48.8646,9.5116 48.963,9.652 48.9921,9.774 C48.9922,9.8133 49.0135,10.0056 48.9812,10 L2.5264,10 C1.2363,10 0.2837,11.2033 0.5797,12.4589 L7.6366,42.4589 C7.911,43.6227 8.8147,44 10,44 C16.7012,44 14.5464,44 56,44 C57.1062,44 58,43.1032 58,42 L58,6 C58,4.8953 57.1045,4 56,4 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
