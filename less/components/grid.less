@@ -21,6 +21,8 @@
     margin-top: 0;
   }
 
+
+
   @media only screen and (min-width: @break_500px) {
 
     margin-left: -.5rem;
@@ -33,6 +35,9 @@
         flex: 0 1 calc(50% - 1rem);
       }
     }
+  }
+
+  @media only screen and (min-width: @break_500px) and (max-width: @break_900px) {
 
     &.itemcount-3 {
 
@@ -53,36 +58,6 @@
               margin-bottom: 0;
             }
           }
-/*
-
-          &.griditem--textoverimage {
-            background: none;
-
-            a {
-              position: initial;
-              &, * {
-                color: @a_color_default;
-              }
-            }
-
-            .imgcontainer {
-              padding: 0;
-              margin-bottom: 0;
-              background: none;
-              img {
-                margin-bottom: 0;
-              }
-            }
-
-            .meta,
-            .text {
-              background: none;
-              position: initial;
-              padding: 0;
-            }
-          }
- */
-
         }
       }
     }
