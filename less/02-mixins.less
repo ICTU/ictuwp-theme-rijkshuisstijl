@@ -96,10 +96,10 @@
 
 //=========================================================================================================
 
-.icon_separator_fill(@src, @fill-new) {
+.icon_separator_fill(@src, @fill_new) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
   @replace-default: escape('fill="#137EC2"');
-  @replace-new: escape('fill="@{fill-new}"');
+  @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background-image: e(@replacesrc1);
@@ -249,10 +249,10 @@
 
 //=========================================================================================================
 
-.embed_error_icon(@src, @fill-new) {
+.embed_error_icon(@src, @fill_new) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
   @replace-default: escape('fill:#FF0000;');
-  @replace-new: escape('fill:@{fill-new}');
+  @replace-new: escape('fill:@{fill_new}');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background: e(@replacesrc1);
@@ -262,10 +262,10 @@
 
 //=========================================================================================================
 
-.icon_socmed_icon(@src, @fill-new) {
+.icon_socmed_icon(@src, @fill_new) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
   @replace-default: escape('fill="#00586F"');
-  @replace-new: escape('fill="@{fill-new}"');
+  @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background-image: e(@replacesrc1);
@@ -273,10 +273,10 @@
 
 //=========================================================================================================
 
-.arrow_up_and_down(@src, @fill-new) {
+.arrow_up_and_down(@src, @fill_new) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
   @replace-default: escape('fill="#fff"');
-  @replace-new: escape('fill="@{fill-new}"');
+  @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background-image: e(@replacesrc1);
@@ -284,10 +284,10 @@
 
 //=========================================================================================================
 
-.iconaddfill(@src, @fill-new, @fill-old: #000000) {
+.mixin_iconaddfill(@src, @fill_new, @fill_old: #000000) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-  @replace-default: escape('fill="@{fill-old}"');
-  @replace-new: escape('fill="@{fill-new}"');
+  @replace-default: escape('fill="@{fill_old}"');
+  @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background-image: e(@replacesrc1);
@@ -296,10 +296,10 @@
 
 //=========================================================================================================
 
-.iconaddfill_important(@src, @fill-new) {
+.iconaddfill_important(@src, @fill_new) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
   @replace-default: escape('fill="#000000"');
-  @replace-new: escape('fill="@{fill-new}"');
+  @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background-image: e(@replacesrc1) !important;
@@ -395,7 +395,7 @@
   a.external:after {
     content: ' ';
     display: inline-block;
-    .iconaddfill('../images/icon-externe-link.svg', @blauw3);
+    .mixin_iconaddfill('../images/icon-externe-link.svg', @blauw3);
     speak: never;
     background-repeat: no-repeat;
     width: 20px;
@@ -564,18 +564,18 @@
 //=========================================================================================================
 
 .mixin_socmedicons( @replacewith: @txt, @replacewhat: #fff) {
-  .iconaddfill('../images/svg/icon-social.svg', @replacewith, @replacewhat);
+  .mixin_iconaddfill('../images/svg/icon-social.svg', @replacewith, @replacewhat);
 
   &.social-media--mail {
-    .iconaddfill('../images/svg/icon-mail.svg', @replacewith, @replacewhat);
+    .mixin_iconaddfill('../images/svg/icon-mail.svg', @replacewith, @replacewhat);
   }
 
   &.social-media--twitter {
-    .iconaddfill('../images/svg/icon-twitter.svg', @replacewith, @replacewhat);
+    .mixin_iconaddfill('../images/svg/icon-twitter.svg', @replacewith, @replacewhat);
   }
 
   &.social-media--linkedin {
-    .iconaddfill('../images/svg/icon-linkedin.svg', @replacewith, @replacewhat);
+    .mixin_iconaddfill('../images/svg/icon-linkedin.svg', @replacewith, @replacewhat);
   }
 
   a {

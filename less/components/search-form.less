@@ -29,7 +29,7 @@
     background-color: @nav_bg_color; // @nav_li_active_bg;
     color: @nav_li_active_color;
     text-transform: none;
-    .iconaddfill('../images/svg/looking-glass.svg', @wit);
+    .mixin_iconaddfill('../images/svg/looking-glass.svg', @wit);
     background-position: center center;
     background-repeat: no-repeat;
 
@@ -40,7 +40,7 @@
 
     &:hover {
       background-color: @txt;
-      .iconaddfill('../images/svg/looking-glass.svg', @wit);
+      .mixin_iconaddfill('../images/svg/looking-glass.svg', @wit);
     }
 
   }
@@ -97,7 +97,7 @@ main .search-form {
   button,
   input[type="submit"] {
     background-color: @communicatiekleur_vol;
-    .iconaddfill('../images/svg/looking-glass.svg', @wit);
+    .mixin_iconaddfill('../images/svg/looking-glass.svg', @wit);
     color: @wit;
 
     &:hover,
@@ -105,7 +105,7 @@ main .search-form {
     &:focus {
       color: @txt;
       background-color: @wit;
-      .iconaddfill('../images/svg/looking-glass.svg', @txt);
+      .mixin_iconaddfill('../images/svg/looking-glass.svg', @txt);
     }
   }
 }
@@ -142,14 +142,14 @@ main .no-results-widget.widget_search {
     width: @filter_submit_width;
     height: @seachform_element_height_normal;
     float: right;
-    .iconaddfill('../images/svg/1006-filter.svg', @wit);
+    .mixin_iconaddfill('../images/svg/1006-filter.svg', @wit);
 
     &:hover,
     &:active,
     &:focus {
       color: @txt;
       background-color: @wit;
-      .iconaddfill('../images/svg/1006-filter.svg', @txt);
+      .mixin_iconaddfill('../images/svg/1006-filter.svg', @txt);
     }
   }
 

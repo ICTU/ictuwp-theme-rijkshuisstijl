@@ -9,7 +9,6 @@
 .related-content {
   overflow: hidden;
   // TODO implementeren nieuwe vormgeving
-  /*
   .otherlinks {
 
     ul & {
@@ -46,6 +45,8 @@
 
 
       &.page,
+      &.post,
+      &.event,
       &.document {
         &:before {
           content: ' ';
@@ -61,28 +62,37 @@
       }
       &.document {
         &:before {
-          .iconaddfill('../images/svg/icon-pdf.svg', @wit, #fff);
+          .mixin_iconaddfill('../images/svg/icon-pdf.svg', @wit, #fff);
         }
       }
       &.page {
         &:before {
-          .iconaddfill('../images/svg/icon-dossier.svg', @wit, #fff);
+          .mixin_iconaddfill('../images/svg/icon-dossier.svg', @wit, #fff);
         }
       }
-    }
-
-    &.griditem {
-      a {
-        margin: .25rem 1rem .25rem .5rem;
+      &.post {
+        &:before {
+          .mixin_iconaddfill('../images/svg/2051 electronische paraaf.svg', @wit, #000);
+        }
       }
+      &.event {
+        &:before {
+          .mixin_iconaddfill('../images/svg/2001 kalender.svg', @wit, #000);
+        }
+      }
+
     }
 
+    .griditem {
+      padding: .5rem;
+    }
   }
+  /*
    */
 
 
-  .mixin_fullwidth_container();
-  .mixin_fullwidth_padding();
+//  .mixin_fullwidth_container();
+//  .mixin_fullwidth_padding();
 
   h2 {
     padding-top: 1rem;
