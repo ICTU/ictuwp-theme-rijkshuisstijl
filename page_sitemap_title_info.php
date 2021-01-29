@@ -201,6 +201,9 @@ function paginatitels() {
 			if (preg_match('/<img.*>/', $post_content ) ) {
 				$result .= '<li>Bevat plaatje &lt;img&gt; </pre></li>';
 			}
+			if (preg_match('/style="width:/', $post_content ) ) {
+				$result .= '<li>Bevat &lt;style="width:&gt; </pre></li>';
+			}
 			if (preg_match('/<blockquote.*>/', $post_content ) ) {
 				$result .= '<li>Bevat citaat (&lt;blockquote&gt;) </pre></li>';
 			}

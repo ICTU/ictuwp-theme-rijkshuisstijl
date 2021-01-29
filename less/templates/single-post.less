@@ -71,11 +71,13 @@
         margin-bottom: 2rem;
       }
 
-      .wp-caption.alignright {
-        margin-right: 15rem;
+      .wp-caption.alignright,
+      .wp-caption.alignleft {
+        padding-top: .5rem;
         .wp-caption-text {
           margin: 0;
         }
+
         &[style*="width:"] {
           // style attribute contains any value for 'width:'
           img {
@@ -83,6 +85,13 @@
             height: auto;
           }
         }
+      }
+
+      .wp-caption.alignleft {
+        margin-left: 15rem;
+      }
+      .wp-caption.alignright {
+        margin-right: 15rem;
       }
 
     }
