@@ -209,7 +209,14 @@ function rhswp_home_onderwerpen_dossiers() {
 
 					if ( class_exists( 'EM_Events' ) ) {
 
-						$events_link = em_get_link( __( 'all events', 'events-manager' ) );
+						if ( $row['home_row_readmore'] ) {
+							$more_text = $row['home_row_readmore'];
+						}
+						else {
+							$more_text = _x( "Alle evenementen", 'readmore home', 'wp-rijkshuisstijl' );
+						}
+						$events_link = em_get_link( $more_text );
+
 						$args        = array(
 							'scope' => 'future',
 							'limit' => $limit,
