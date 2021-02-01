@@ -3495,10 +3495,10 @@ function override_mce_options( $initArray ) {
 //add_filter('tiny_mce_before_init', 'override_mce_options');
 //========================================================================================================
 function rhswp_footer_payoff() {
-	$title       = get_bloginfo( 'title' );
-	$description = get_bloginfo( 'description' );
-	$strprefix   = '';
-	$strsuffix   = '';
+	$site_title       = get_bloginfo( 'title' );
+	$site_description = get_bloginfo( 'description' );
+	$strprefix        = '';
+	$strsuffix        = '';
 	if ( function_exists( 'get_field' ) ) {
 		if ( get_field( 'footer_about_us', 'option' ) ) {
 			$footer_about_us = get_field( 'footer_about_us', 'option' );
@@ -3508,21 +3508,29 @@ function rhswp_footer_payoff() {
 			}
 		}
 	}
-	if ( $title ) {
-		$title = wp_strip_all_tags( $title ) . '<br>';
+	if ( $site_title ) {
+		$site_title = wp_strip_all_tags( $site_title ) . '<br>';
 	}
+	$site_description = wp_strip_all_tags( $site_description ) ;
+
 	$needle              = '&lt;strong&gt;';
 	$replacer            = '';
-	$description         = str_replace( $needle, $replacer, $description );
+	$site_description    = str_replace( $needle, $replacer, $site_description );
 	$needle              = '&lt;/strong&gt;';
 	$replacer            = '';
-	$description         = str_replace( $needle, $replacer, $description );
+	$site_description    = str_replace( $needle, $replacer, $site_description );
+
+	$needle              = 'werken aan digitalisering';
+	$replacer            = 'werken aan<br>digitalisering';
+	$site_description    = str_replace( $needle, $replacer, $site_description );
+
 	$start_title_span    = '<strong id="payoff_title">';
 	$end_title_span      = '</strong>';
 	$start_subtitle_span = '<span id="payoff_subtitle">';
 	$end_subtitle_span   = '</span>';
-	echo '<div id="payoff"> ' . $strprefix . $start_title_span . $title . $end_title_span . $start_subtitle_span . wp_strip_all_tags( $description ) . $end_subtitle_span . $strsuffix . '</div>';
+	echo '<div id="payoff"> ' . $strprefix . $start_title_span . $site_title . $end_title_span . $start_subtitle_span . $site_description . $end_subtitle_span . $strsuffix . '</div>';
 }
+
 
 //========================================================================================================
 // activate the page filters
@@ -4132,7 +4140,7 @@ function rhswp_append_socialbuttons( $doecho = true ) {
 		$sitetitle     = urlencode( get_bloginfo( 'name' ) );
 		$summary       = urlencode( $post->post_excerpt );
 		$popup         = ' onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"';
-		$cta           =  _x( 'Deel dit artikel', 'share buttons CTA', 'wp-rijkshuisstijl' );
+		$cta           = _x( 'Deel dit artikel', 'share buttons CTA', 'wp-rijkshuisstijl' );
 		$mailadres     = urlencode( 'geaddresseerd@voorbeeld.nl' );
 		$return        = '';
 		$mailonderwerp = urlencode( sprintf( _x( 'Leestip: %s', 'share buttons mail onderwerp', 'wp-rijkshuisstijl' ), $post->post_title ) );
