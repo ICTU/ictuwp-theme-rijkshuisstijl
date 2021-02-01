@@ -51,6 +51,7 @@
                     },
                     "choices": {
                         "mail": "Mail",
+                        "rss": "RSS",
                         "twitter": "Twitter",
                         "linkedin": "LinkedIn"
                     },
@@ -81,5 +82,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1610398819
+    "modified": 1612221011
 }
