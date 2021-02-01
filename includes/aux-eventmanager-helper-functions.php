@@ -37,7 +37,18 @@ function mju_fn_eventmanager_styles_placeholders($replace, $EM_Event, $result) {
 	global $post;
 	
 	switch( $result ){
-		
+
+		case '#_LOCATIONONLINE':
+
+			$location_type = $EM_Event->event_location_type;
+			if ( $location_type === 'url' ) {
+				return '<li class="event-online">' . _x( 'Online', 'event type', 'wp-rijkshuisstijl' ) . '</li>';
+			}
+			else {
+				return '';
+			}
+			break;
+
 		case '#_AVAILABILITYCHECK':
 
 			$is_open            = $EM_Event->get_bookings()->is_open(); //whether there are any available tickets right now
