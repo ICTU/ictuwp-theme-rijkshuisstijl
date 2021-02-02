@@ -17,9 +17,12 @@ include_once( get_template_directory() . '/lib/init.php' );
 //========================================================================================================
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
-define( 'CHILD_THEME_URL', "https://wbvb.nl/themes/wp-rijkshuisstijl" );
 define( 'CHILD_THEME_VERSION', "2.24.2" );
-define( 'CHILD_THEME_VERSION_DESCRIPTION', "Reactieformulier verlost van block elements in een <a> en verdere styling." );
+
+// TODO
+define( 'WP_DEBUG_FULL_WIDTH', true );
+//define( 'WP_DEBUG_FULL_WIDTH', false );
+
 if ( WP_DEBUG ) {
 	define( 'DO_MINIFY_JS', false );
 //	define( 'DO_MINIFY_JS', true );
@@ -32,9 +35,12 @@ if ( WP_DEBUG ) {
 //	define( 'WP_LOCAL_DEV', true );
 	define( 'SHOW_CSS_DEBUG', false );
 //	define( 'SHOW_CSS_DEBUG', true );
+	define( 'WP_DEBUG_SHOWTEXTLENGTH', false );
+//	define( 'WP_DEBUG_SHOWTEXTLENGTH', true );
 } else {
 	define( 'WP_LOCAL_DEV', false );
 	define( 'SHOW_CSS_DEBUG', false );
+    define( 'WP_DEBUG_SHOWTEXTLENGTH', false );
 }
 define( 'ID_ZOEKEN', 'rhswp-searchform-nav-primary' );
 define( 'RHSWP_NO', 'socmed_nee' );
@@ -163,11 +169,6 @@ define( 'IMAGESIZE_10x3_SMALL', 'image-4x3-small' );
 define( 'IMAGESIZE_SQUARE', 'image-square' );
 define( 'IMAGESIZE_SQUARE_SMALL', 'image-square-small' );
 
-// TODO
-define( 'WP_DEBUG_FULL_WIDTH', true );
-//define( 'WP_DEBUG_FULL_WIDTH', false );
-define( 'WP_DEBUG_SHOWTEXTLENGTH', true );
-//define( 'WP_DEBUG_SHOWTEXTLENGTH', false );
 
 //========================================================================================================
 //* Remove the edit link
