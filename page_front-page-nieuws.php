@@ -186,9 +186,14 @@ function rhswp_home_onderwerpen_dossiers() {
 
 						echo '<div class="' . $gridclass . '">';
 						foreach ( $row['home_row_freeform'] as $row2 ) {
+							$itemtitle = '';
 							$itemclass = 'griditem';
 							$excerpt   = $row2['home_row_freeform_text'];
-							$itemtitle = '<h2>' . $row2['home_row_freeform_title'] . '</h2>';
+
+							if ( $row2['home_row_freeform_title'] ) {
+								$itemtitle = '<h2>' . $row2['home_row_freeform_title'] . '</h2>';
+							}
+
 							if ( $row2['home_row_freeform_width'] ) {
 								$itemclass .= ' ' . $row2['home_row_freeform_width'];
 							} else {
@@ -211,13 +216,12 @@ function rhswp_home_onderwerpen_dossiers() {
 
 						if ( $row['home_row_readmore'] ) {
 							$more_text = $row['home_row_readmore'];
-						}
-						else {
+						} else {
 							$more_text = _x( "Alle evenementen", 'readmore home', 'wp-rijkshuisstijl' );
 						}
 						$events_link = em_get_link( $more_text );
 
-						$args        = array(
+						$args = array(
 							'scope' => 'future',
 							'limit' => $limit,
 							'array' => true
