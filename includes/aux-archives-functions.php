@@ -176,17 +176,19 @@ function rhswp_blog_page_add_title() {
 		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
 		global $wp_query;
-		$actueelpageid    = get_option( 'page_for_posts' );
-		$actueelpagetitle = rhswp_filter_alternative_title( $actueelpageid, get_the_title( $actueelpageid ) );
-		$paging           = '';
-		$aantalpaginas    = $wp_query->max_num_pages;
-		$paged            = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-		$actueelpageid    = get_option( 'page_for_posts' );
+		$actueelpageid         = get_option( 'page_for_posts' );
+		$actueelpagetitle      = rhswp_filter_alternative_title( $actueelpageid, get_the_title( $actueelpageid ) );
+		$paging                = '';
+		$aantalpaginas         = $wp_query->max_num_pages;
+		$paged                 = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+		$actueelpage_inleiding = get_field( 'actueel_inleiding', $actueelpageid );
 		if ( $paged > 1 ) {
 			$paging = ' Pagina ' . $paged . ' van ' . $aantalpaginas . '.';
 		}
 		echo '<header class="entry-header"><h1 class="entry-title" itemprop="headline">' . $actueelpagetitle . '</h1> </header>';
-		echo '<p>' . _x( 'All posts related to the Digital Governement.', 'Tekst op de actueelpagina', 'wp-rijkshuisstijl' ) . $paging . '</p>';
+		if ( $actueelpage_inleiding ) {
+			echo '<p>' . $actueelpage_inleiding . '</p>';
+		}
 
 		if ( $paged === 1 ) {
 
@@ -201,6 +203,7 @@ function rhswp_blog_page_add_title() {
 					$actueel_row_category = get_sub_field( 'actueel_row_category' );
 					$actueel_row_number   = get_sub_field( 'actueel_row_number' );
 					$actueel_row_styling  = get_sub_field( 'actueel_row_styling' );
+					$more_text            = get_sub_field( 'actueel_row_readmore' );
 
 					if ( ! is_numeric( $actueel_row_number ) ) {
 						$actueel_row_number = 3;
@@ -222,9 +225,11 @@ function rhswp_blog_page_add_title() {
 						$actueel_row_category_posts = new WP_query();
 						$actueel_row_category_posts->query( $args );
 						if ( $actueel_row_category_posts->have_posts() ) {
-							$cat_name  = get_cat_name( $actueel_row_category );
-							$more_text = _x( "Alle berichten onder %s", 'readmore home', 'wp-rijkshuisstijl' );
-							$more_url  = get_category_link( $actueel_row_category );
+							$cat_name = get_cat_name( $actueel_row_category );
+							$more_url = get_category_link( $actueel_row_category );
+							if ( ! $more_text ) {
+								$more_text = _x( "Alle berichten onder %s", 'readmore home', 'wp-rijkshuisstijl' );
+							}
 							if ( strpos( $more_text, '%s' ) ) {
 								$more_text = sprintf( $more_text, strtolower( $cat_name ) );
 							}
