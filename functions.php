@@ -2745,6 +2745,11 @@ function rhswp_contactreactie_write_reactieform() {
 	if ( is_search() ) {
 		return;
 	}
+	if ( is_home() && 'page' == get_option( 'show_on_front' ) ) {
+		// op de pagina met blogberichten tonen we NOOIT het contactformulier, blijkbaar
+		return;
+	}
+
 	if ( function_exists( 'get_field' ) ) {
 		$theshortcode          = '';
 		$contactformulier      = get_field( 'contactformulier', 'option' );

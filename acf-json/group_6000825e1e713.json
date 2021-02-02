@@ -3,6 +3,25 @@
     "title": "Instellingen voor actueel-pagina",
     "fields": [
         {
+            "key": "field_60188fa6e9c2e",
+            "label": "Inleiding",
+            "name": "actueel_inleiding",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
             "key": "field_6006c034fb9bb",
             "label": "Categorieen voor de eerste pagina van de actueelpagina",
             "name": "actueel_rows",
@@ -93,6 +112,25 @@
                     "return_format": "value",
                     "ajax": 0,
                     "placeholder": ""
+                },
+                {
+                    "key": "field_6018906fa5683",
+                    "label": "'Lees meer'-tekst",
+                    "name": "actueel_row_readmore",
+                    "type": "text",
+                    "instructions": "voorbeeld: 'alle berichten onder %s', waarbij %s zal worden vervangen door de naam van de categorie.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "alle berichten onder %s",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
@@ -114,5 +152,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1611063566
+    "modified": 1612222711
 }
