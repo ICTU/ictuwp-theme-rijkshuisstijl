@@ -1097,7 +1097,6 @@ class rhswp_custom_walker_for_taxonomies extends Walker_Category {
 	function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
 		extract( $args );
 		$cat_name = esc_attr( $category->name );
-		$excerpt  = esc_attr( wp_strip_all_tags( $category->description ) );
 		$headline = get_term_meta( $category->term_id, 'headline', true );
 		if ( isset( $headline[0] ) && ( strlen( $headline[0] ) > 0 ) ) {
 			if ( is_array( $headline ) ) {
@@ -1107,14 +1106,7 @@ class rhswp_custom_walker_for_taxonomies extends Walker_Category {
 			}
 			$cat_name .= ' - ' . wp_strip_all_tags( $headline );
 		}
-		if ( $excerpt ) {
-			if ( is_array( $excerpt ) ) {
-				$excerpt = strval( $excerpt[0] );
-			} else {
-				$excerpt = strval( $excerpt );
-			}
-			$excerpt = wp_strip_all_tags( $excerpt );
-		}
+
 		$link = '<a href="' . esc_url( get_term_link( $category ) ) . '" ';
 		$link .= '>';
 		$link .= $cat_name . '</a>';
@@ -1137,10 +1129,7 @@ class rhswp_custom_walker_for_taxonomies extends Walker_Category {
 				}
 			}
 			$output .= ' class="' . $class . '"';
-//        $output .= ' data-mixible data-titel="' . strtolower( $cat_name ) . '"';
-			$output .= ' data-mixible data-titel="' . strtolower( $cat_name ) . ' ' . strtolower( $excerpt ) . '"';
 			$output .= ">$link\n";
-			$output .= '<span class="excerpt">' . $excerpt . "</span>\n";
 		} else {
 			$output .= "\t$link<br />\n";
 		}
@@ -3516,18 +3505,18 @@ function rhswp_footer_payoff() {
 	if ( $site_title ) {
 		$site_title = wp_strip_all_tags( $site_title ) . '<br>';
 	}
-	$site_description = wp_strip_all_tags( $site_description ) ;
+	$site_description = wp_strip_all_tags( $site_description );
 
-	$needle              = '&lt;strong&gt;';
-	$replacer            = '';
-	$site_description    = str_replace( $needle, $replacer, $site_description );
-	$needle              = '&lt;/strong&gt;';
-	$replacer            = '';
-	$site_description    = str_replace( $needle, $replacer, $site_description );
+	$needle           = '&lt;strong&gt;';
+	$replacer         = '';
+	$site_description = str_replace( $needle, $replacer, $site_description );
+	$needle           = '&lt;/strong&gt;';
+	$replacer         = '';
+	$site_description = str_replace( $needle, $replacer, $site_description );
 
-	$needle              = 'werken aan digitalisering';
-	$replacer            = 'werken aan<br>digitalisering';
-	$site_description    = str_replace( $needle, $replacer, $site_description );
+	$needle           = 'werken aan digitalisering';
+	$replacer         = 'werken aan<br>digitalisering';
+	$site_description = str_replace( $needle, $replacer, $site_description );
 
 	$start_title_span    = '<strong id="payoff_title">';
 	$end_title_span      = '</strong>';

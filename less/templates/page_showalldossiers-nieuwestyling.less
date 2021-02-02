@@ -6,25 +6,19 @@
 //
 
 .dossier-metainfo {
-  border-top: 1px solid #C2C2C2;
-  border-bottom: 1px solid #C2C2C2;
-  padding: 1rem 0;
   margin-bottom: 2rem;
   margin-top: 1rem;
 }
 
 
 .dossier-sortering {
-  font-family: @fontstrong;
 
   a {
+    font-family: @fontstrong;
     display: inline-block;
     margin-left: 1rem;
     margin-right: 1rem;
-    background: @a_color_default;
-    color: @wit;
-    padding: .1rem .5rem;
-    text-decoration: none;
+    color: @a_color_default;
 
     &:hover,
     &:active {
@@ -36,6 +30,7 @@
 
 .page-template-page_showalldossiers-nieuwestyling {
   .dossier-list {
+    border-top: 1px solid #C0C0C0; // TODO GRIJSTINTEN UNIFORM
     & a, & li a {
       text-decoration: none;
 
@@ -46,8 +41,13 @@
     }
 
     .term-children {
-      margin-top: 1rem;
-      margin-bottom: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    & > .cat-item {
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #C0C0C0; // TODO GRIJSTINTEN UNIFORM
     }
   }
 
@@ -68,6 +68,7 @@
       text-align: center;
       color: @a_color_default; // @txt;
       text-decoration: none;
+
       span {
         display: block;
       }
