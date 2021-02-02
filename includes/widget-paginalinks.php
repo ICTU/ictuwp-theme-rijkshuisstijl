@@ -234,19 +234,19 @@ function rhswp_pagelinks_replace_widget() {
 				echo '</div>';
 
 				*/
-				echo '<ul class="">';
+				echo '<ul class="otherlinks">';
 				foreach ( $internal_posts as $content ) {
-					echo '<li>';
+					echo '<li class="griditem colspan-1">';
 					echo $content;
 					echo '</li>';
 				}
 				foreach ( $internal_other as $content ) {
-					echo '<li>';
+					echo '<li class="griditem colspan-1">';
 					echo $content;
 					echo '</li>';
 				}
 				foreach ( $external as $content ) {
-					echo '<li>';
+					echo '<li class="griditem colspan-1">';
 					echo $content;
 					echo '</li>';
 				}
