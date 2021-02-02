@@ -16,8 +16,6 @@
   a {
     font-family: @fontstrong;
     display: inline-block;
-    margin-left: 1rem;
-    margin-right: 1rem;
     color: @a_color_default;
 
     &:hover,
@@ -27,10 +25,16 @@
   }
 }
 
+.separator {
+  background: @a_color_default;
+  display: inline-block;
+  margin: 0 1rem;
+  width: 2px;
+}
 
 .page-template-page_showalldossiers-nieuwestyling {
   .dossier-list {
-    border-top: 1px solid @bordercolor;
+
     & a, & li a {
       text-decoration: none;
 
