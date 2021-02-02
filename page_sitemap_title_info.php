@@ -38,8 +38,6 @@ function paginatitels() {
 	$args = array(
 		'post_type'      => 'post',
 		'post_status'    => 'publish',
-//		'orderby'        => 'name',
-//		'order'          => 'ASC',
 		'posts_per_page' => - 1,
 
 	);
@@ -55,9 +53,11 @@ function paginatitels() {
 	$grootstelengte_titel = '';
 	$woordenlijst         = array();
 
+	echo '<a href="#paginas" id="top"> Pagina\'s </a> en <a href="#berichten"> Berichten </a>';
+
 	if ( $contentblockposts->have_posts() ) {
 
-		echo '<h2>Berichten</h2>';
+		echo '<h2 id="berichten">Berichten <a href="#top" style="position: fixed; background: white !important; display: block; color: black; padding: 1rem !important; border: 1px solid black; border-radius: 50%; font-size: 2rem; top: 2rem; right: 2rem;">top</a></h2>';
 		echo '<table>';
 		echo '<tr>';
 		echo '<th scope="col">Publicatiedatum</th>';
@@ -335,7 +335,7 @@ function paginatitels() {
 
 	if ( $contentblockposts->have_posts() ) {
 
-		echo '<h2>Pagina\'s</h2>';
+		echo '<h2 id="paginas">Pagina\'s (<a href="#top">top</a>)</h2>';
 		echo '<table>';
 		echo '<tr>';
 		echo '<th scope="col">Publicatiedatum</th>';
