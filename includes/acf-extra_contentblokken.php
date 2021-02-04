@@ -470,7 +470,7 @@ function rhswp_write_extra_contentblokken() {
 								}
 
 								echo '<section class="flexbox contentblocks"' . $blockidattribute . '>';
-//								echo '<div class="wrap">';
+								echo '<div class="wrap">';
 //								echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '">';
 
 								if ( $titel ) {
@@ -482,6 +482,10 @@ function rhswp_write_extra_contentblokken() {
 //								echo '<div class="flexcontainer ' . $type_block . ' no-top columncount-' . $columncount . '">';
 								if ( is_singular( 'post' ) ) {
 									// een bericht heeft inmiddels full width, dus lekker 3 kolommen
+									echo '<div class="grid">';
+								}
+								elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
+									// een dossier full width, dus lekker 3 kolommen
 									echo '<div class="grid">';
 								} else {
 									echo '<div class="grid columns-2">';
@@ -593,7 +597,7 @@ function rhswp_write_extra_contentblokken() {
 									echo '<p class="more"><a href="' . $overviewurl . '">' . $overviewlinktext . '</a></p>';
 								}
 
-//								echo '</div>'; // .wrap
+								echo '</div>'; // .wrap
 								echo '</section>';
 
 							} else {
