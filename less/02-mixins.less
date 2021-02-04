@@ -564,34 +564,47 @@
 
 //=========================================================================================================
 
-.mixin_socmedicons( @replacewith: @txt, @replacewhat: #fff) {
+.mixin_socmedicons( @replacewith: @txt, @replacewhat: #fff, @hovercolor: @a_color_hover ) {
   .mixin_iconaddfill('../images/svg/icon-social.svg', @replacewith, @replacewhat);
 
   &.social-media--mail {
     .mixin_iconaddfill('../images/svg/icon-mail.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-mail.svg', @hovercolor, @replacewhat);
+    }
   }
 
   &.social-media--twitter {
     .mixin_iconaddfill('../images/svg/icon-twitter.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-twitter.svg', @hovercolor, @replacewhat);
+    }
   }
 
   &.social-media--linkedin {
     .mixin_iconaddfill('../images/svg/icon-linkedin.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-linkedin.svg', @hovercolor, @replacewhat);
+    }
   }
 
   &.social-media--rss {
     .mixin_iconaddfill('../images/svg/icon-rss.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-rss.svg', @hovercolor, @replacewhat);
+    }
   }
 
   a {
     color: @replacewith; // @txt;
+    text-decoration: none;
 
     &:visited {
       color: @replacewith;
     }
 
     &:hover {
-      color: @replacewith;
+      color: @hovercolor;
       text-decoration: underline;
     }
   }
