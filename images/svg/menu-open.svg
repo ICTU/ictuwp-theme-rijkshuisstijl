@@ -1,1 +1,11 @@
-<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><g fill="#000000" fill-rule="evenodd"><path d="m6 34h36v4h-36z"/><path d="m6 22h36v4h-36z"/><path d="m6 10h36v4h-36z"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>menu-open</title>
+    <g id="menu-open" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(9.000000, 9.000000)" fill="#000000" fill-rule="nonzero" id="Rectangle">
+            <polygon points="14 6.66133815e-16 14 2.8 0 2.8 0 6.66133815e-16"></polygon>
+            <polygon points="14 5.6 14 8.4 0 8.4 0 5.6"></polygon>
+            <polygon points="14 11.2 14 14 0 14 0 11.2"></polygon>
+        </g>
+    </g>
+</svg>

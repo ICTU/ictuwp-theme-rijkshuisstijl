@@ -15,7 +15,7 @@
 @import "22-element-slider.less";       /* all things related to the site header */
 
 
-.20_elements() {
+.mixins20elements() {
     
   @anispeed2:               460s;
   @minheightmobile:         150px;
@@ -146,7 +146,6 @@
 
 
 	.flexbox {
-		.page-template-page_showalldossiers,
 		.page-template-page_show-child-pages,
 		.home,
 		.blog,
@@ -188,66 +187,9 @@
 				}
 			}
 		}  
-	}  
-  
-	ul.events-table {
-		&, li {
-			list-style: none;
-		}
-		
-		li {
-			.listitem_arrow( @a_color_default, 10px, 9px ); // done
-			padding-left: 1.5rem;
-			margin-left: 0;
-
-			& + li {
-				margin-top: 1em;
-			}
-
-			
-			.event-meta {
-				margin-left: 0;
-				
-				li {
-					margin-top: 0;
-					margin-bottom: 0;
-					
-					background-image: url('@{base_url}images/rhs-icons/1007-locatie-marker.svg');
-					background-repeat: no-repeat;
-					background-position: left center;
-					background-size: 1.1rem 1.1rem;
-					
-					&:before {
-						content: none;
-					}
-					
-					&.event-date {
-						background-image: url('@{base_url}images/rhs-icons/2001-kalender.svg');
-					}
-					&.event-time {
-						background-image: url('@{base_url}images/rhs-icons/2010-klok.svg');
-					}
-					&.event-town {
-						background-image: url('@{base_url}images/rhs-icons/1007-locatie-marker.svg');
-					}
-				}
-			}
-			
-			
-			a {
-			    font-family: @headerfont;
-				font-size: 1.125em;
-				line-height: 1.4;
-				text-decoration: none;
-				
-				&:hover,
-				&:active,
-				&:focus {
-					text-decoration: underline;
-				}
-			}
-		}
 	}
+
+
   
   .block {
     h2,
@@ -386,7 +328,7 @@
   
 	.dojs {
 		
-		@media only screen and (max-width: ( @break_tablet ) ) {
+		@media only screen and (max-width: ( @break_650px ) ) {
 			
 			.block {
 				article {
@@ -404,7 +346,7 @@
 		}
 	} // .dojs
  
-	@media only screen and (min-width: ( @break_tablet ) ) {
+	@media only screen and (min-width: ( @break_650px ) ) {
 		
 		.article-visual,
 		.article-excerpt {
@@ -481,8 +423,6 @@
   @media only screen and (min-width: ( 900px ) ) {
 	.flexbox {
 		.home,
-		.page-template-page_showalldossiers,
-		.blog,
 		.flexcontainer,
 		.archive {
 			.block {
@@ -562,7 +502,6 @@
 	.flexbox {
 		.full-width-content {
 			&.home,
-			&.page-template-page_showalldossiers,
 			&.blog,
 			&.page,
 			&.archive {
@@ -721,7 +660,7 @@
     
   }
 
-  @media only screen and (min-width: ( @break_fullwidth ) ) {
+  @media only screen and (min-width: ( @break_1200px ) ) {
     .flexbox {
       .home,
       .blog,
@@ -848,8 +787,8 @@
 			}
 		}
 		
-		@media only screen and (max-width: ( @break_tablet ) ) {
-			max-width: @break_tablet;
+		@media only screen and (max-width: ( @break_650px ) ) {
+			max-width: @break_650px;
 			padding-top: 150px;
 			background-size: 750px 150px;
 			background-position: center top;
@@ -859,14 +798,14 @@
 			}
 		}
 		
-		@media only screen and (min-width: ( @break_tablet ) ) {
+		@media only screen and (min-width: ( @break_650px ) ) {
 		
 			min-height: @slider_li_minheight;
 			max-width: 1600px;
 			padding: 1em;
 			
 			.wrapper {
-				max-width: @break_fullwidth;
+				max-width: @break_1200px;
 				margin-left: auto;        
 				margin-right: auto;       
 				

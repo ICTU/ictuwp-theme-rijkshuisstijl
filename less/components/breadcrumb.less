@@ -1,0 +1,184 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - breadcrumb.less
+// * ----------------------------------------------------------------------------------
+// * styling voor de breadcrumb
+// * ----------------------------------------------------------------------------------
+//
+
+.breadcrumb {
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+
+  nav {
+    span {
+      padding: ( @padding / 1.5 ) 0;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: underline;
+      }
+
+      &:after {
+        font-weight: normal;
+        font-family: "RO Icons";
+        display: inline-block;
+        vertical-align: middle;
+        content: "";
+        padding: 0 6px 0 10px;
+        display: inline-block;
+        font-size: .9rem;
+        line-height: 1em;
+        margin: -3px 0 0 0;
+        text-decoration: none;
+      }
+    }
+
+    span,
+    a {
+      font-family: @bodyfont;
+    }
+  }
+
+  .separator {
+    speak: never;
+    display: inline-block;
+    margin-left: ( @padding / 3 );
+    margin-right: ( @padding / 3 );
+
+    .visuallyhidden();
+
+  }
+}
+
+.menu-and-breadcrumb {
+  // toon zowel een menu als een breadcrumb
+
+  .breadcrumb {
+    padding: 1rem;
+    font-size: 80%;
+
+    .wrap {
+      position: relative;
+
+      .search-form {
+
+        @media only screen and ( max-width: @break_650px ) {
+          clear: both;
+          float: none;
+          margin-bottom: 1em;
+        }
+        @media only screen and ( min-width: @break_650px ) {
+          position: absolute;
+          right: 0;
+          top: 14px;
+        }
+      }
+    }
+
+    nav {
+      span, a, & {
+        color: @a_color_default;
+      }
+
+      a {
+        text-decoration: none;
+
+        &:hover,
+        &:active,
+        &:focus {
+          text-decoration: underline;
+        }
+
+        &:after {
+          font-size: .7rem;
+        }
+      }
+    }
+
+    .separator {
+      display: inline-block;
+      margin-left: ( @padding / 3 );
+      margin-right: ( @padding / 3 );
+
+      .visuallyhidden();
+
+    }
+  }
+
+}
+
+.breadcrumb-only {
+  // toon alleen breadcrumb, geen menu
+  .breadcrumb {
+    background: @communicatiekleur_vol;
+
+    .wrap {
+      display: flex;
+
+      @media only screen and (max-width: @break_1200px ) {
+        padding-left: 1rem;
+      }
+    }
+
+    nav {
+      color: @wit;
+
+      a span,
+      a {
+        color: @wit;
+        font-family: @bodyfont;
+      }
+
+      span {
+        font-family: @fontstrong;
+      }
+
+    }
+
+    @media only screen and (max-width: ( @break_650px - 1 ) ) {
+      .wrap {
+        flex-direction: column;
+        padding: 1rem;
+
+        .search-form {
+          padding-top: 1rem;
+        }
+
+      }
+    }
+
+    @media only screen and (min-width: ( @break_650px ) ) {
+      .wrap {
+        flex-direction: row;
+      }
+
+      .search-form,
+      nav {
+        padding: 1.1rem 0;
+      }
+
+      nav {
+        font-size: 1.625rem;
+        flex: 0 1 100%;
+      }
+
+      .search-form {
+        flex: 0 1 350px;
+
+        input {
+          height: @filter_submit_width;
+        }
+      }
+    }
+
+
+  }
+
+
+}

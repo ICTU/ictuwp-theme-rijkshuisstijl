@@ -1,2 +1,207 @@
-#insert_rhswp_streamer_with_image_button .wp-media-buttons-icon{content:'”';font-size:200%}#TB_window,#TB_window *{box-sizing:content-box}#TB_window #TB_ajaxContent{min-width:90%!important;min-height:90%!important}#TB_window .cmb-td,#TB_window .cmb-th{padding:0;margin:0 0 1em 0}#TB_window .cmb-th{width:24%}#TB_window .cmb-td{width:75%}#TB_window .cmb2-wrap textarea{width:100%}#TB_window .error{border:3px solid red;color:red;font-weight:700}#TB_window #rhswp_insert_aside_errormessages{border:3px solid #fff;padding:0;margin:0}#TB_window #rhswp_insert_aside_errormessages.error{border:3px solid red;padding:1em;margin-bottom:1em}#TB_window #insert_rhswp_streamer_with_image_confirm{background:#007bc7;color:#fff;margin-left:20%}#TB_window div.divider{overflow:hidden;width:680px;margin-bottom:1em}#TB_window div.divider label{width:20%;font-weight:700}#TB_window div.divider input[type=text],#TB_window div.divider input[type=url],#TB_window div.divider textarea{width:75%}#TB_window div.divider input[type=text],#TB_window div.divider input[type=url],#TB_window div.divider textarea{height:32px}#TB_window div.divider textarea{height:150px}#TB_window div.divider input[type=text],#TB_window div.divider input[type=url],#TB_window div.divider label,#TB_window div.divider small,#TB_window div.divider textarea{display:inline-block;float:left}#TB_window div.divider small{padding-left:20%;clear:both;width:auto}#TB_window div.divider #rhswp_quote_image{width:320px}.streamer{max-width:30%;display:inline-block;float:right;padding:1em 0;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;margin-top:4em;margin-bottom:4em;float:left;text-align:right;margin-right:2em;margin-left:0}.streamer.align-right{margin-right:0;margin-left:2em;float:right;text-align:left}.streamer blockquote{border-top-style:none;border-bottom-style:none;font-style:normal;padding:0;margin:0}@media only screen and (min-width:1200px){.pullquote-with-image.align-left,.pullquote-with-image.align-right{max-width:50%}.pullquote-with-image.align-left{float:left}.pullquote-with-image.align-right{float:right}}
+/*
+//**
+// * Rijkshuisstijl (Digitale Overheid) - editor-styles.less
+// * ----------------------------------------------------------------------------------
+// * CSS voor de admin
+// * ----------------------------------------------------------------------------------
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 1.1.10
+// * @desc.   Invoeren pullquotes aangepast: nu 2 soorten (simple & met foto).
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// **
+*/
+@media only screen and (max-width: 900px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+.hide-on-larger-than-mobile {
+  display: flex;
+}
+.hide-on-larger-than-mobile.has-border {
+  border-top: 1px solid #C2C2C2;
+}
+@media only screen and (max-width: 900px) {
+  .hide-on-larger-than-mobile {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .hide-on-larger-than-mobile h2 {
+    flex: 1 0 100%;
+  }
+  .hide-on-larger-than-mobile .txtcontainer,
+  .hide-on-larger-than-mobile .featured-image-link {
+    flex: 0 1 50%;
+  }
+  .hide-on-larger-than-mobile .txtcontainer {
+    padding-left: 0.5rem;
+  }
+  .hide-on-larger-than-mobile .featured-image-link {
+    padding-right: 0.5rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .hide-on-larger-than-mobile {
+    flex-direction: column;
+  }
+  .hide-on-larger-than-mobile h2,
+  .hide-on-larger-than-mobile .txtcontainer,
+  .hide-on-larger-than-mobile .featured-image-link {
+    flex: 1 0 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .hide-on-larger-than-mobile {
+    display: none;
+  }
+}
+/* mixins, sizes */
+/*
+Webfonts voor style.css
+---------------------------------------------------------------------------------------------------- */
+/*
+Webfonts voor andere css-bestanden
+---------------------------------------------------------------------------------------------------- */
+/* fonts */
+/*
+ * Rijkshuisstijl (Digitale Overheid) - 10-text-styles.less
+ * ----------------------------------------------------------------------------------
+ * Bevat selectors voor tekstelementen, zowel in front-end css als back-end css
+ * ----------------------------------------------------------------------------------
+ * @author  Paul van Buuren
+ * @license GPL-2.0+
+ * @package wp-rijkshuisstijl
+ * @version 2.17.3
+ * @desc.   Webkit rendering issues.
+ * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+*/
+/* font-styles, shared with admin editor-styles.less */
+#insert_rhswp_streamer_with_image_button .wp-media-buttons-icon {
+  content: '”';
+  font-size: 200%;
+}
+#TB_window *,
+#TB_window {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+#TB_window #TB_ajaxContent {
+  min-width: 90% !important;
+  min-height: 90% !important;
+}
+#TB_window .cmb-th,
+#TB_window .cmb-td {
+  padding: 0;
+  margin: 0 0 1em 0;
+}
+#TB_window .cmb-th {
+  width: 24%;
+}
+#TB_window .cmb-td {
+  width: 75%;
+}
+#TB_window .cmb2-wrap textarea {
+  width: 100%;
+}
+#TB_window .error {
+  border: 3px solid red;
+  color: red;
+  font-weight: bold;
+}
+#TB_window #rhswp_insert_aside_errormessages {
+  border: 3px solid white;
+  padding: 0;
+  margin: 0;
+}
+#TB_window #rhswp_insert_aside_errormessages.error {
+  border: 3px solid red;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+#TB_window #insert_rhswp_streamer_with_image_confirm {
+  background: #007bc7;
+  color: #fff;
+  margin-left: 20%;
+}
+#TB_window div.divider {
+  overflow: hidden;
+  width: 680px;
+  margin-bottom: 1em;
+}
+#TB_window div.divider label {
+  width: 20%;
+  font-weight: bold;
+}
+#TB_window div.divider input[type="text"],
+#TB_window div.divider input[type="url"],
+#TB_window div.divider textarea {
+  width: 75%;
+}
+#TB_window div.divider input[type="text"],
+#TB_window div.divider input[type="url"],
+#TB_window div.divider textarea {
+  height: 32px;
+}
+#TB_window div.divider textarea {
+  height: 150px;
+}
+#TB_window div.divider input[type="text"],
+#TB_window div.divider input[type="url"],
+#TB_window div.divider textarea,
+#TB_window div.divider small,
+#TB_window div.divider label {
+  display: inline-block;
+  float: left;
+}
+#TB_window div.divider small {
+  padding-left: 20%;
+  clear: both;
+  width: auto;
+}
+#TB_window div.divider #rhswp_quote_image {
+  width: 320px;
+}
+.streamer {
+  max-width: 30%;
+  display: inline-block;
+  float: right;
+  padding: 1em 0;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  margin-top: 4em;
+  margin-bottom: 4em;
+  float: left;
+  text-align: right;
+  margin-right: 2em;
+  margin-left: 0;
+}
+.streamer.align-right {
+  margin-right: 0;
+  margin-left: 2em;
+  float: right;
+  text-align: left;
+}
+.streamer blockquote {
+  border-top-style: none;
+  border-bottom-style: none;
+  font-style: normal;
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (min-width: 1200px) {
+  .pullquote-with-image.align-left,
+  .pullquote-with-image.align-right {
+    max-width: 50%;
+  }
+  .pullquote-with-image.align-left {
+    float: left;
+  }
+  .pullquote-with-image.align-right {
+    float: right;
+  }
+}
 /*# sourceMappingURL=admin-popup-css.css.map */

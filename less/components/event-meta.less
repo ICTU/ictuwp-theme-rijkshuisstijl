@@ -1,0 +1,74 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - event-meta.less
+// * ----------------------------------------------------------------------------------
+// * styling voor meta informatie van events
+// * ----------------------------------------------------------------------------------
+//
+
+
+.event-meta {
+
+  padding-left: 0;
+  margin-left: 0;
+
+  &, li {
+    list-style: none !important;
+  }
+
+
+  li {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 1.5rem;
+
+    background-image: url('@{base_url}images/rhs-icons/1007-locatie-marker.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 1.1rem 1.1rem;
+
+    &:before {
+      content: none;
+    }
+
+    &.event-date {
+      background-image: url('@{base_url}images/rhs-icons/2001-kalender.svg');
+    }
+    &.event-time {
+      background-image: url('@{base_url}images/rhs-icons/2010-klok.svg');
+    }
+    &.event-town {
+      background-image: url('@{base_url}images/rhs-icons/1007-locatie-marker.svg');
+    }
+    &.event-online {
+      background-image: url('@{base_url}images/rhs-icons/2050-videovergaderen.svg');
+    }
+
+    & + li {
+      margin-top: .5em;
+    }
+
+  }
+}
+
+ul.events-table {
+
+  li {
+    //			.listitem_arrow( @a_color_default, 10px, 9px ); // done
+    padding-left: 1.5rem;
+    margin-left: 0;
+
+
+    a {
+      font-family: @headerfont;
+      font-size: 1.125em;
+      line-height: 1.4;
+      text-decoration: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+}

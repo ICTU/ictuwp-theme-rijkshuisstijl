@@ -118,103 +118,6 @@ Common Classes
 /* Genesis
 --------------------------------------------- */
 
-.breadcrumb,
-.archive-description,
-.author-box {
-//	margin-bottom: @padding;
-}
-
-.breadcrumb {
-  padding: 0;
-  font-size: 80%;
-
-  .wrap {
-    position: relative;
-
-    .search-form {
-
-      @media only screen and ( max-width: @break_tablet ) {
-        clear: both;
-        float: none;
-        margin-bottom: 1em;
-      }
-      @media only screen and ( min-width: @break_tablet ) {
-        position: absolute;
-        right: 0;
-        top: 14px;
-      }
-
-    }
-
-  }
-
-	nav {
-		color: @wit;
-		font-family: @fontstrong;
-		padding-top: 18px;
-		padding-bottom: 18px;
-		
-		@media only screen and ( max-width: @break_tablet ) {
-			padding-right: 18px;
-			font-size: 1.25rem;
-		}
-		@media only screen and ( min-width: @break_tablet ) {
-			font-size: 1.625rem;
-			padding-right: 271px;
-		}
-		
-		span {
-			padding: ( @padding / 1.5 ) 0;
-		}
-		
-		a {
-			text-decoration: none;
-
-			&:hover,
-			&:active,
-			&:focus {
-				text-decoration: underline;
-			}
-		
-			&:after {
-				font-weight: normal;
-				font-family: "RO Icons";
-				display: inline-block;
-				vertical-align: middle;
-				content: "";
-				speak: never;
-				padding: 0 6px 0 10px;
-				display: inline-block;
-				font-size: .9375rem;
-				line-height: 1em;
-				margin: -3px 0 0 0;
-				text-decoration: none;
-			}
-		}
-		
-		span,
-		a {
-			color: @wit;
-			font-family: @bodyfont;
-		}
-	}
-
-  .separator {
-    speak: never;
-    display: inline-block;
-    margin-left: ( @padding / 3 );
-    margin-right: ( @padding / 3 );
-
-    .visuallyhidden();
-
-  }
-}
-
-
-.breadcrumb a {
-//	text-decoration: underline;
-}
-
 
 .author-box-title {
 // color: @txt;
@@ -380,7 +283,7 @@ Content Area
 
 .entry-meta {
   font-size: 80%;
-  color: @a_color_visited;
+  color: @color_meta;
 
   a {
     text-decoration: none;
@@ -393,16 +296,18 @@ Content Area
     }
   }
 
-  .entry-categories {
-    &:after {
-      content: '|';
-      display: inline-block;
-      margin-left: .5em;
-      margin-right: .3em;
-      speak: never;
-    }
-  }
+	/*
+      .entry-categories {
+        &:after {
+          content: '|';
+          display: inline-block;
+          margin-left: .5em;
+          margin-right: .3em;
+          speak: never;
+        }
+      }
 
+     */
 }
 
 
@@ -728,7 +633,7 @@ input[type="text"] {
 	}
 }
 
-@media only screen and (min-width: ( @break_tablet ) ) {
+@media only screen and (min-width: ( @break_650px ) ) {
 
   .category {
     main.content {
@@ -781,7 +686,7 @@ input[type="text"] {
 Media Queries
 ---------------------------------------------------------------------------------------------------- */
 
-@media only screen and (max-width: ( @break_fullwidth - 1 ) ) {
+@media only screen and (max-width: ( @break_1200px - 1 ) ) {
 
 	.site-inner,
 	.wrap {
@@ -813,7 +718,7 @@ Media Queries
 
 }
 
-@media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
+@media only screen and (max-width: ( @break_1200px  - 1 ) ) {
 
 
 	.content,
@@ -863,7 +768,7 @@ Media Queries
 
 }
 
-@media only screen and (max-width: ( @break_tablet - 1 ) ) {
+@media only screen and (max-width: ( @break_650px - 1 ) ) {
 
 	.five-sixths,
 	.four-sixths,
@@ -882,7 +787,7 @@ Media Queries
 
 }
 
-@media only screen and (max-width: ( @break_tablet ) ) {
+@media only screen and (max-width: ( @break_650px ) ) {
 
     .wrap .toggle-menu {
         top: @padding;
@@ -894,7 +799,7 @@ Media Queries
 
 }
 
-@media only screen and (min-width: ( @break_tablet ) ) {
+@media only screen and (min-width: ( @break_650px ) ) {
 
   .sidebar {
     .widget {
@@ -917,27 +822,16 @@ Media Queries
   }
 }
 
-@media only screen and (min-width: ( @break_fullwidth  - 1 )) {
+@media only screen and (min-width: ( @break_1200px  - 1 )) {
 
 	.full-width-content {
-		/*
-		.content {
-			border: 1px solid red;
-			max-width: @break_fullwidth;
-			margin-left: auto;
-			margin-right: auto;
-			float: none;
-		}
-		*/
 		.sharing.block,
 		.toolbox-introduction,
 		.toolbox-the-content,
-		.entry-header,
 		#reactieformulier {
-			width: 66%;
 			margin-left: auto;
 			margin-right: auto;
-			max-width: @break_fullwidth;
+			.mixin_fullwidth_maxwidth();
 		}
 	}
 
@@ -1007,7 +901,7 @@ Media Queries
   }
 }
 
-.20_elements();
+.mixins20elements();
 
 .structure();
 
@@ -1154,8 +1048,6 @@ nav.nav-primary .menu-item.js-menu-open > ul.sub-menu {
 	.visuallyhidden();
 }
 
-.archiefmarkering();
-
 .toolboxillustrations();
 .toolboxwidgets();
 
@@ -1202,3 +1094,57 @@ CSS voor gravity forms, met name vanwege flitspanel, en hun aanmeldwidget
 /*
 ---------------------------------------------------------------------------------------------------- */
 
+// components
+@import "components/breadcrumb.less";
+@import "components/label.less";
+@import "components/grid.less";
+@import "components/grid-item.less";
+@import "components/event-meta.less";
+@import "components/widgets.less";
+@import "components/social-media.less";
+@import "components/columns.less";
+@import "components/contentblocks.less";
+@import "components/site-footer.less";
+@import "components/payoff.less";
+@import "components/related-content.less";
+@import "components/blockquote.less";
+
+// templates
+@import "templates/single-post.less";
+@import "templates/page_front-page-nieuws.less";
+@import "templates/page_showalldossiers-nieuwestyling.less";
+
+// plugins
+@import "plugins/events-manager.less";
+
+/*
+MEUK!
+---------------------------------------------------------------------------------------------------- */
+.test {
+	background: yellow;
+	padding: 0 2rem;
+}
+
+// TODO: weghalen tekstlengte
+.tekstlengte {
+	float: right;
+	border: 1px solid black;
+	border-radius: 50%;
+	display: block;
+	line-height: 1;
+	font-size: 1rem;
+	font-family: 'comic sans ms', cursive;
+	font-weight: bold;
+	color: black !important;
+	background: yellow;
+
+	span {
+		padding: .5rem;
+		display: block;
+		border-radius: 50%;
+		width: 100%;
+		height: 100%;
+		border: 1px solid yellow;
+		color: black !important;
+	}
+}

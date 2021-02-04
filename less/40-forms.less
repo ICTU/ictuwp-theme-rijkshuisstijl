@@ -1,5 +1,3 @@
-
-
 //**
 // * Rijkshuisstijl (Digitale Overheid) - 40-forms.less
 // * ----------------------------------------------------------------------------------
@@ -16,21 +14,20 @@
 .formstyling() {
 
 
-
   form {
     padding: 1em;
     background: @grijs_1;
-    
+
     a {
       color: @txt;
-      
+
       &:focus,
       &:hover {
         color: @txt;
-        
+
       }
     }
-    
+
   }
 
   input[type="text"],
@@ -40,14 +37,14 @@
   input[type="date"],
   select,
   textarea {
-  	background-color: @wit;
-  	box-shadow: 1px 1px 3px #eee inset;
-  // color: @txt;
-  	.font-size(14);
-  	.inputpadding();
-  	width: 100%;
+    background-color: @wit;
+    box-shadow: 1px 1px 3px #eee inset;
+    // color: @txt;
+    .font-size(14);
+    .inputpadding();
+    width: 100%;
   }
-  
+
   input[type="text"],
   input[type="email"],
   input[type="password"],
@@ -59,21 +56,21 @@
     border-right: 1px solid @wit;
     border-left: 1px solid @wit;
     border-bottom: 2px solid @communicatiekleur_vol;
-  }  
+  }
 
   input:focus,
   textarea:focus {
-  	border-color: darken(@blauw, 20%);
+    border-color: darken(@blauw, 20%);
   }
-  
+
   ::-moz-placeholder {
-  	opacity: 1;
+    opacity: 1;
   }
-  
+
   ::-webkit-input-placeholder, ::-moz-placeholder {
-  // color: lighten(@txt, 40%);
+    // color: lighten(@txt, 40%);
   }
-  
+
   button,
   input[type="button"],
   input[type="reset"],
@@ -88,301 +85,154 @@
     .inputpadding();
     border-color: @button_bg_default;
   }
-  
-  
-  
+
+
   button:hover,
   input:hover[type="button"],
   input:hover[type="reset"],
   input:hover[type="submit"],
   .button:hover,
   .entry-content .button:hover {
-  	background-color: @button_bg_hover;
+    background-color: @button_bg_hover;
     color: @button_color_hover;
-  	text-decoration: underline;
+    text-decoration: underline;
   }
-  
+
   button:focus,
   input:focus[type="button"],
   input:focus[type="reset"],
   input:focus[type="submit"],
   .button:focus,
   .entry-content .button:focus {
-  	background-color: @button_bg_focus;
+    background-color: @button_bg_focus;
     color: @button_color_focus;
-  	text-decoration: underline;
+    text-decoration: underline;
   }
-  
+
   .button {
-      border-radius: @blockradius;
-  	display: inline-block;
+    border-radius: @blockradius;
+    display: inline-block;
   }
-  
+
   input[type="search"]::-webkit-search-cancel-button,
   input[type="search"]::-webkit-search-results-button {
-  	display: none;
+    display: none;
   }
-  
+
 
   fieldset {
-    margin:  0;
-    padding:  0;
+    margin: 0;
+    padding: 0;
     border-style: none;
 
-	input[type="text"],
-	input[type="email"],
-	input[type="password"],
-	input[type="file"],
-	input[type="date"],
-	select, 
-	textarea {
-		display: block;
-		box-sizing: border-box;
-	}
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="file"],
+    input[type="date"],
+    select,
+    textarea {
+      display: block;
+      box-sizing: border-box;
+    }
 
-	[type="radio"],
-	[type="checkbox"] {
-		margin-left: 3px;
-		& + label {
-			margin-left: .55rem;
-		}
-		& + input[type="text"] {
-			//
-		}
-	}
-	
+    [type="radio"],
+    [type="checkbox"] {
+      margin-left: 3px;
+
+      & + label {
+        margin-left: .55rem;
+      }
+
+      & + input[type="text"] {
+        //
+      }
+    }
+
   }
-  
-	.mute-label {
-		margin-top: 0 !important;
-		
-		label {
-			.visuallyhidden();
-		}
-		.ginput_container {
-			margin-top: 0 !important;
-			margin-bottom: .5rem;
-		}
-		[type="text"] {
-			margin-bottom: 1rem;
-		}
-	}
-  
-	.openbutton {
-		background: none;
-		border: 1px solid @txt;
-		display: block;
-		color: @txt;
-		float: right;
-		clear: both;
-		text-align: right;
-		margin: .25rem 0;
-		
-		& + details {
-			clear: both;
-			float: none;
-		}
-	}
 
-	.detail-buttons {
-		display: block;
-		clear: both;
-		float: none;
-	}
-	
-	a.gform_save_link {
-		background-image: none !important;
-	}
-	
-  
-  //===================================
-  // search form
-  .search-form {
-    
-    padding: 0;
+  .mute-label {
+    margin-top: 0 !important;
+
+    label {
+      .visuallyhidden();
+    }
+
+    .ginput_container {
+      margin-top: 0 !important;
+      margin-bottom: .5rem;
+    }
+
+    [type="text"] {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .openbutton {
     background: none;
-    
-    input[type="search"],
-    input[itemprop="query-input"] {
-      width: ~"calc(100% - @{search_submit_width})";
-      height: @seachform_element_height_normal;
-      border-style: none;
-      padding: 1px 1px 1px .75em;
-      font-size: 18px;
-    }
-    
-    input[type="submit"],
-    button[type="submit"] {     
-      width: @search_submit_width;
-      height: @seachform_element_height_normal;
-      background-color: @nav_bg_color; // @nav_li_active_bg;
-      color: @nav_li_active_color;
-      text-transform: none;
-      .iconaddfill('../images/svg/looking-glass.svg', @wit);
-      background-position: center center;
-      background-repeat: no-repeat;
+    border: 1px solid @txt;
+    display: block;
+    color: @txt;
+    float: right;
+    clear: both;
+    text-align: right;
+    margin: .25rem 0;
 
-      background-size: 60% 60%;
-      -webkit-appearance: button;
-      -webkit-border-radius: 0;
-      text-indent: -9999px;
-  
-      &:hover {
-        background-color: @txt;
-        .iconaddfill('../images/svg/looking-glass.svg', @wit );
-      }
-      
-    }
-    
-    input:focus {
-      border-color: @wit;
-    }	
-    
-    
-    input[type="submit"], 
-    input[type="search"] {
-      -webkit-appearance: none;	
-      border-radius: 0;
+    & + details {
+      clear: both;
+      float: none;
     }
   }
 
-  main .search-form  {
-    padding: 1em;
-    background: @grijs;
-
-    input[type="search"] {
-      border-bottom: 2px solid @communicatiekleur_vol;
-      padding-left: 5px;
-    }
-
-    button,
-    input[type="submit"] {
-      background-color: @communicatiekleur_vol;
-      .iconaddfill('../images/svg/looking-glass.svg', @wit);
-      color: @wit;
-      
-      &:hover,
-      &:active,
-      &:focus {
-        color: @txt;
-        background-color: @wit;
-      .iconaddfill('../images/svg/looking-glass.svg', @txt);
-      }
-    }
+  .detail-buttons {
+    display: block;
+    clear: both;
+    float: none;
   }
 
-	main .no-results-widget.widget_search {
-		max-width: @break_tablet;
-	}
+  a.gform_save_link {
+    background-image: none !important;
+  }
 
 
-	#rhswp-searchform-onderwerpen {
-		background: @communicatiekleur_vol;
-		
-		label {
-			color: @wit;
-			line-height: 1;
-			font-size: 1.3em;
-			display: block;
-			padding-bottom: .5em;
-		}
-		
-		
-		input[type="search"],
-		input[itemprop="query-input"] {
-			width: ~"calc(98% - @{filter_submit_width})";
-			float: left;
-		}
-		
-		
-		#filterbutton {
-			background-size: 21px 30px;
-			background-position: center center;
-			background-repeat: no-repeat;
-			text-indent: -9999em;
-			width: @filter_submit_width;
-			height: @seachform_element_height_normal;
-			float: right;
-			.iconaddfill('../images/svg/1006-filter.svg', @wit);
-			
-			&:hover,
-			&:active,
-			&:focus {
-				color: @txt;
-				background-color: @wit;
-				.iconaddfill('../images/svg/1006-filter.svg', @txt);
-			}
-		}
-		
-		#resetbutton {
-			background: none;
-			padding-left: 0;
-			border-style: none;
-			text-indent: 0;
-			width: auto;
-			white-space: nowrap;
-			color: @wit;
-
-			&:before {
-				content: '×';
-				color: @communicatiekleur_vol;
-				display: block;
-				float: left;
-				margin-right: .5rem;
-				width: 1.2rem;
-				height: 1.2rem;
-				background: @wit;
-				line-height: 1;
-				font-size: 1.25rem;
-				border-radius: 50%;
-				speak: never;
-			}
-		
-			&:hover,
-			&:active,
-			&:focus {
-				color: @wit;
-				text-decoration: underline;
-			}
-		}
-	}
 
   .screen-reader-response {
-  	position: absolute;
-  	overflow: hidden;
-  	clip: rect(1px, 1px, 1px, 1px);
-  	height: 1px;
-  	width: 1px;
-  	margin: 0;
-  	padding: 0;
-  	border: 0;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
   }
 
-  
+
   /* contact form 7, cf7 */
   .wpcf7-form {
-    
+
     label,
     .wpcf7-form-control-wrap {
       float: none;
       width: 100%;
       display: block;
     }
+
     p {
       overflow: hidden;
       display: block;
       margin-bottom: 0;
     }
-    
+
     .wpcf7-display-none {
-    	display: none;
+      display: none;
     }
 
     .wpcf7-list-item {
       overflow: hidden;
       display: block;
       padding-left: .2rem;
-      
+
       span, input[type="radio"] {
         display: block;
         vertical-align: middle;
@@ -390,16 +240,18 @@
         line-height: 2rem;
         margin-right: .5rem;
       }
+
       span {
         width: 88%;
         float: right;
       }
+
       input[type="radio"] {
         float: right;
       }
-      
-    }		
-    
+
+    }
+
     .wpcf7-form-control-wrap {
 
       input[type="text"],
@@ -412,117 +264,116 @@
         &.wpcf7-not-valid-tip,
         &.wpcf7-not-valid {
           border-bottom: 2px solid @warning;
-          
+
         }
       }
+
       .wpcf7-not-valid-tip {
-//        .embed_error_icon('../images/svg/sprite-icons-messages.svg', @warning);
-		border: 2px solid @warning;
+        //        .embed_error_icon('../images/svg/sprite-icons-messages.svg', @warning);
+        border: 2px solid @warning;
         background-repeat: no-repeat;
         padding-left: 2em;
         display: block;
         line-height: 1.2;
       }
     }
-    
+
     .wpcf7-response-output {
-	    background: @success;
-	    color: @wit;
-	    padding: .25em .5em;
-	    
-	    &.wpcf7-validation-errors {
-		   background: @warning; 
-	    }
-	    
+      background: @success;
+      color: @wit;
+      padding: .25em .5em;
+
+      &.wpcf7-validation-errors {
+        background: @warning;
+      }
+
     }
-      
+
   }
-  
-
-	form.wpcf7-form,
-	.gform_wrapper form {
-
-		background: @grijs_2;
-
-		input[type=email], input[type=text], input[type=password], input[type=file], input[type=date], select, textarea {
-
-		    border-top: 1px solid @grijs_3;
-		    border-right: 1px solid @grijs_3;
-		    border-left: 1px solid @grijs_3;
-		    border-bottom: 4px solid @communicatiekleur_vol;
-		}
-		
-		button,
-		.button {
-			border-radius: 0;
-		}
-		
-		ul {
-			li {
-				margin: 0 0 .5rem;
-				width: auto;
-				max-width: 100%;
-			}
-			&, li {
-				list-style: none;
-				margin-left: 0;
-				padding-left: 0;
-			}
-			li li {
-				padding-left: .75rem;
-			}
-		}
-		
-		legend {
-			display: block;
-			padding: 0;
-			& .ginput_container {
-				margin-top: 0 !important;
-			}
-		}
-		fieldset {
-			margin: 2rem 0 0;
-		}
-		
-		
-	}  
-
-	// from plugins/gravity-forms.less	
-	.gravityforms-css();
 
 
-	@media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
+  form.wpcf7-form,
+  .gform_wrapper form {
 
-	}
-	
-	@media only screen and (min-width: ( @break_tablet ) ) {
-  	.nav-primary {
-    	li.search {
-      	&:hover {
-        	background: none;
-      	}
-    	}
-  	}
-  	
-  	.entry-content {
+    background: @grijs_2;
+
+    input[type=email], input[type=text], input[type=password], input[type=file], input[type=date], select, textarea {
+
+      border-top: 1px solid @grijs_3;
+      border-right: 1px solid @grijs_3;
+      border-left: 1px solid @grijs_3;
+      border-bottom: 4px solid @communicatiekleur_vol;
+    }
+
+    button,
+    .button {
+      border-radius: 0;
+    }
+
+    ul {
+      li {
+        margin: 0 0 .5rem;
+        width: auto;
+        max-width: 100%;
+      }
+
+      &, li {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 0;
+      }
+
+      li li {
+        padding-left: .75rem;
+      }
+    }
+
+    legend {
+      display: block;
+      padding: 0;
+
+      & .ginput_container {
+        margin-top: 0 !important;
+      }
+    }
+
+    fieldset {
+      margin: 2rem 0 0;
+    }
+
+
+  }
+
+  // from plugins/gravity-forms.less
+  .gravityforms-css();
+
+
+  @media only screen and (max-width: ( @break_1200px  - 1 ) ) {
+
+  }
+
+  @media only screen and (min-width: ( @break_650px ) ) {
+
+    .entry-content {
       .gform_wrapper {
-      	.gfield {
-        	padding-right: 1em;
-      	}
-      	.top_label {
-        	*.medium {
+        .gfield {
+          padding-right: 1em;
+        }
+
+        .top_label {
+          *.medium {
             width: 99.9%;
-        	}
-      	}
-  
-      	.gfield.half {
-        	width: 50%;
-        	float: left;
-        	clear: none;
-      	}
-    	}
-  	}
-    
+          }
+        }
+
+        .gfield.half {
+          width: 50%;
+          float: left;
+          clear: none;
+        }
+      }
+    }
+
     main {
       .wpcf7-form {
         label,
@@ -532,22 +383,25 @@
           clear: none;
           margin-bottom: 1em;
         }
+
         label {
-          width: 20%;        
+          width: 20%;
         }
+
         .wpcf7-form-control-wrap {
-          width: 79%;        
+          width: 79%;
         }
+
         input[type="submit"] {
           margin-left: 20%;
         }
       }
     }
-	}
+  }
 
-	@media only screen and (min-width: ( @break_fullwidth ) ) {
-  
 
-	
-	}
+  // components
+  @import "components/search-form.less";
+
+
 }

@@ -1,0 +1,115 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - social-media.less
+// * ----------------------------------------------------------------------------------
+// * styling voor een container met blokken
+// * ----------------------------------------------------------------------------------
+//
+
+
+.social-media {
+  li {
+    display: list-item;
+    float: none;
+    padding-left: 2rem;
+    margin-bottom: 8px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    .mixin_socmedicons(@a_color_default, #fff);
+  }
+}
+
+
+ul.social-media {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+h2, h3, h4 {
+  & + ul.social-media {
+    margin-top: 0;
+  }
+}
+
+.social-media-widget {
+
+  h2, h3, h4 {
+    & + ul.social-media {
+      margin-top: 1rem;
+    }
+  }
+
+  .social-media {
+
+    li {
+      .mixin_socmedicons(@a_color_default, #fff);
+
+      & + li {
+        margin-top: .5rem;
+      }
+    }
+  }
+}
+
+.footer-widget-area {
+  // heeft een blauwe achtergrondkleur, dus alles wit maken
+  &.social-media-widget {
+    .social-media {
+      li {
+        .mixin_socmedicons(@wit, #fff, @wit);
+      }
+    }
+  }
+}
+
+.share-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+
+  .cta {
+    font-family: @fontstrong;
+    margin-right: 1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+
+    &, li {
+      list-style: none !important;
+    }
+
+    li {
+      flex: 0 0 auto;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      float: left;
+
+      &, * {
+        line-height: 1;
+      }
+
+      a {
+        overflow: hidden;
+        display: inline-block;
+        margin: .25rem;
+
+        .social-media-icon {
+          .mixin_socmedicons(@txt, #fff);
+          background-repeat: no-repeat;
+          background-position: center center;
+          display: inline-block;
+          width: 2rem;
+          height: 2rem;
+          float: left;
+        }
+      }
+    }
+  }
+}
+

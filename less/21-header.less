@@ -1,5 +1,3 @@
-
-
 //**
 // * Rijkshuisstijl (Digitale Overheid) - 21-header.less
 // * ----------------------------------------------------------------------------------
@@ -16,150 +14,214 @@
 
 //========================================================================================================
 
+@sigarenbandje_breedte: 50px;
+@sigarenbandje_breedte_helft: ( @sigarenbandje_breedte / 2 );
+
 .siteheader() {
 
-	.site-header .wrap .title-area {
-		
-		display: flex;
-		flex-direction: row;
-		
-		.site-title,
-		.site-description {
-			background-color: transparent;
-			flex: 1 1 50%;
-			align-self: center;
-			margin: 0;
-			font-size: 100%;
-			line-height: 1.5;
-			font-weight: normal;
-		}
-		.site-title {
-			font-family: @fontstrong;
-			padding-left: 1rem;
-			.headerlinkstyling();
+  .site-header .wrap {
 
-			a {
-		  		display: inline-block;
-		  		background-repeat: no-repeat;
-		  		background-position: left center;
-		  		background-size: contain;
-		  		color: @donkerblauw_vol;
-		  		&:hover,
-		  		&:focus {
-			  		color: @a_color_hover;
-		  		}
-			}
-			
-			.puntenenel {
-				font-size: 110%;
-				color: @communicatiekleur_vol;
-			}
-			
-		}
-		.site-description {
-			font-family: @fontitalic;
-			padding-right: 1rem;
-		}
-		
-		
-		#logotype {
-			overflow: hidden;
-			flex-basis: 44px;
-			flex-grow: 0;
-			flex-shrink: 1;		
-			&.flitspanel {
-				flex-basis: 200px;
-			}
-		}
+    .title-area {
 
-		.screen-reader-text + #logotype {
-			flex-basis: 100%;
-			display: flex;
-			justify-content: center;
-			img {
-				align-self: center;
-				align-content: center;
-			}
-			&.flitspanel {
-				img {
-					max-width: 200px;
-					height: auto;
-					margin-top: 1rem;
-					margin-bottom: .5rem;
-				}
-			}
-		}
-		.screen-reader-text + #logotype {
-			margin-bottom: 9px;
-		}
-		
-	}
-		
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      width: ~"calc(50% - @{sigarenbandje_breedte_helft})";
+      float: left;
 
-	.entry-title {
-		.headerlinkstyling();
-	}
+      .site-title,
+      .site-description {
+        background-color: transparent;
+        align-self: first;
+        margin: 0;
+        font-size: 100%;
+        line-height: 1.5;
+        font-weight: normal;
+        flex: 1 0 100%;
+        @media only screen and (max-width: @break_1200px ) {
+          padding-left: 1rem;
+        }
+      }
 
-	@media only screen and (max-width: ( @break_tablet - 1 ) ) {
-	
-		.site-header .wrap {
-			margin: 0;
-			width: 100%;
+      .site-title {
+        font-family: @fontstrong;
+        .headerlinkstyling();
 
-			.site-description {
-				text-indent: -9999em;
-			}
-		}
-	}
-	
-	
-	@media only screen and (max-width: ( @break_fullwidth  - 1 ) ) {
+        a {
+          display: inline-block;
+          background-repeat: no-repeat;
+          background-position: left center;
+          background-size: contain;
+          color: @txt;
 
-	}
-	
-	@media only screen and (min-width: ( @break_tablet ) ) {
+          &:hover,
+          &:focus {
+            color: @a_color_hover;
+          }
+        }
 
-		.site-header .wrap .title-area {
+        .puntenenel {
+          font-size: 110%;
+          color: @communicatiekleur_vol;
+        }
 
-			.site-title {
-				font-size: 115%;
-			}			
-			.site-description {
-				text-align: right;
-				padding-left: 15%;
-				hyphens: none;
-			}			
-			
-			.site-description {
-				
-				span {
-					display: block;
-					margin-bottom: ( @padding / 3 );
-					clear: both;
-					float: none;
-				}
-			}
-		}
-	}
-	
-	@media only screen and (min-width: ( @break_fullwidth ) ) {
-		
-		.site-header .wrap {
-			.nav-primary {
-				position: absolute;
-				right: 0;
-				top: 0;
-			}
+      }
 
-			.title-area {
-				.site-description {
-					padding-left: 25%;
-				}			
-			}			
-		}			
-	}
-	
-} // .siteheader() 
+      .site-description {
+        font-family: @fontitalic;
+      }
+    }
+
+    #logotype {
+      overflow: hidden;
+      float: left;
+      margin-bottom: 1rem;
+
+      .container,
+      a {
+        overflow: hidden;
+        display: block;
+      }
+
+      @media only screen and (max-width: ( @menubreakpoint_865px - 1 ) ) {
+
+        .container,
+        a {
+          width: 40px;
+          height: 60px;
+          background-image: url('@{base_url}images/svg/logo-digitale-overheid.svg');
+          background-position: bottom center;
+          background-repeat: no-repeat;
+          background-size: 40px 80px;
+
+          img {
+            display: none;
+          }
+        }
+      }
+
+      &.flitspanel {
+        margin-bottom: .25rem;
+
+        img {
+          max-width: 200px;
+          height: auto;
+          margin-top: 1rem;
+        }
+      }
+
+      &.align-middle {
+        width: 100%;
+        display: block;
+        transform: none;
+
+        img {
+          display: block;
+          margin: 1rem auto;
+        }
+      }
+    }
+
+    .screen-reader-text + #logotype {
+      flex-basis: 100%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        align-self: center;
+        align-content: center;
+      }
+
+      &.flitspanel {
+      }
+    }
+
+    .screen-reader-text + #logotype {
+      margin-bottom: 9px;
+    }
+
+
+  }
+
+
+  .entry-title {
+    .headerlinkstyling();
+  }
+
+  @media only screen and (max-width: ( @break_650px - 1 ) ) {
+
+    .nav-secondary {
+      .visuallyhidden();
+    }
+
+    .site-header .wrap {
+      margin: 0;
+      width: 100%;
+
+      .title-area {
+        h1,
+        p {
+          text-indent: -9999em;
+        }
+      }
+    }
+  }
+
+
+
+  @media only screen and (min-width: ( @break_650px ) ) {
+
+    .site-header .wrap .title-area {
+
+      .site-title {
+        font-size: 115%;
+        margin-top: 1.5rem;
+      }
+
+      .site-description {
+        span {
+          display: block;
+          margin-bottom: ( @padding / 3 );
+          clear: both;
+          float: none;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: ( @break_900px ) ) {
+    .site-description {
+      .visuallyhidden();
+    }
+  }
+
+  @media only screen and (min-width: ( @break_1200px ) ) {
+
+    .site-header .wrap {
+      .nav-primary {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+  }
+
+}
 
 //========================================================================================================
 
+#genesis-nav-primary {
+  overflow: hidden;
+}
+
+#site_title_mobile {
+  // titel verbergen
+  display: none;
+
+  @media only screen and (max-width: ( @break_1200px  - 1 ) ) {
+    // tenzij we op een klein scherm zitten
+    display: block;
+    color: @wit;
+    font-weight: bold;
+    font-family: @fontstrong;
+  }
+}

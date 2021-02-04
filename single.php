@@ -15,14 +15,28 @@
 
 //========================================================================================================
 
-// Reposition the primary navigation menu
-if ( ( is_front_page() ) || ( is_home() ) ) {
-	add_action( 'genesis_after_header', 'genesis_do_nav' );
+// Geen uitgelichte afbeelding meer
+//add_action( 'genesis_entry_content', 'rhswp_single_add_featured_image', 9 );
+
+//========================================================================================================
+
+if ( WP_DEBUG_FULL_WIDTH ) {
+
+	// TODO
+	// full width
+	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
+	// Ter vervanging van de vervallen widget-ruimte en de 'extra links'-widget daarin
+	add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 16 );
+
+	// social media share buttons
+	add_action( 'genesis_entry_content', 'rhswp_append_socialbuttons', 14 );
+
 }
 
 //========================================================================================================
 
-add_action( 'genesis_entry_content', 'rhswp_write_extra_contentblokken', 14 );
+add_action( 'genesis_entry_content', 'rhswp_write_extra_contentblokken', 16 );
 
 //========================================================================================================
 

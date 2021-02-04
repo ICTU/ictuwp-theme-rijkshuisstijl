@@ -1,0 +1,207 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - single-post.less
+// * ----------------------------------------------------------------------------------
+// * styling voor een enkel bericht
+// * ----------------------------------------------------------------------------------
+//
+
+
+.single.full-width-content {
+  .entry-header {
+    .mixin_fullwidth_container();
+    .mixin_fullwidth_padding();
+  }
+
+  .entry-content {
+
+    & > p,
+    & > ul,
+    & > ol,
+    & > h2,
+    & > h3,
+    & > h4,
+    & > h5,
+    & > h6,
+    & > h6,
+    & > .borderframe {
+      .mixin_fullwidth_container();
+    }
+
+    & > details {
+      .mixin_fullwidth_maxwidth_no_padding();
+    }
+
+    & > p,
+    & > h2,
+    & > h3,
+    & > h4,
+    & > h5,
+    & > h6,
+    & > h6 {
+      .mixin_fullwidth_padding();
+    }
+
+    & > h3,
+    & > p {
+      img {
+        &.alignleft,
+        &.alignright {
+          border: 1px solid #ececec;
+        }
+
+        &.alignleft {
+          margin: 0 2rem 2rem 0;
+        }
+
+        &.alignright {
+          margin: 0 0 2rem 2rem;
+        }
+      }
+    }
+
+
+    @media only screen and (min-width: ( @break_1200px ) ) {
+      & > ul,
+      & > ol {
+        .fullwidth_listpadding();
+      }
+
+      & > .borderframe {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .wp-caption.alignright,
+      .wp-caption.alignleft {
+        padding-top: .5rem;
+        .wp-caption-text {
+          margin: 0;
+        }
+
+        &[style*="width:"] {
+          // style attribute contains any value for 'width:'
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+
+      .wp-caption.alignleft {
+        margin-left: 15rem;
+      }
+      .wp-caption.alignright {
+        margin-right: 15rem;
+      }
+
+    }
+
+
+    div.wp-caption {
+      &.alignnone {
+        width: 100% !important;
+        .mixin_fullwidth_maxwidth();
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .wp-caption-text {
+        margin-bottom: 2rem;
+      }
+    }
+
+
+  }
+}
+
+.entry-header {
+
+  .entry-categories {
+    a {
+      color: @color_meta;
+    }
+  }
+
+  @media only screen and (min-width: ( @break_1200px ) ) {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5rem;
+
+    .entry-meta,
+    .entry-title {
+      flex: 1 0 100%;
+      margin-bottom: .5rem;
+    }
+
+    .entry-meta {
+      order: 1;
+
+      .entry-categories,
+      .entry-time {
+        float: left;
+
+        & + .entry-time,
+        & + .entry-categories {
+          .mixin_separator();
+        }
+      }
+
+    }
+
+    .entry-title {
+      order: 2;
+      font-size: 3rem;
+    }
+  }
+}
+
+
+.share-bar {
+  .mixin_fullwidth_container();
+  .mixin_fullwidth_padding();
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+//========================================================================================================
+// mixin mixin_fullwidth_container()
+.mixin_fullwidth_container() {
+  //  border: 1px solid red;
+  //  max-width: ( ( 650 / 16 ) * 1rem );
+  .mixin_fullwidth_maxwidth();
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//========================================================================================================
+// mixin mixin_fullwidth_maxwidth()
+.mixin_fullwidth_maxwidth() {
+  max-width: ( ( 765 / 16 ) * 1rem );
+}
+
+
+//========================================================================================================
+// mixin mixin_fullwidth_maxwidth()
+.mixin_fullwidth_maxwidth_no_padding() {
+  max-width: ( ( 669 / 16 ) * 1rem );
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//========================================================================================================
+// mixin mixin_fullwidth_maxwidth()
+.mixin_fullwidth_padding() {
+  //  border: 2px solid green;
+  @media only screen and (min-width: ( @break_1200px ) ) {
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
+}
+
+//========================================================================================================
+// mixin mixin_fullwidth_maxwidth()
+.fullwidth_listpadding() {
+  padding-left: 5rem;
+  padding-right: 2rem;
+}
+

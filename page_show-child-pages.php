@@ -20,18 +20,20 @@
 
 //========================================================================================================
 
-// Reposition the primary navigation menu
-if ( ( is_front_page() ) || ( is_home() ) ) {
-	add_action( 'genesis_after_header', 'genesis_do_nav' );
-}
-
-//========================================================================================================
-
 add_action( 'genesis_entry_content', 'rhswp_get_page_childpages', 15 );
 
 if ( rhswp_extra_contentblokken_checker() ) {
   add_action( 'genesis_entry_content', 'rhswp_write_extra_contentblokken', 14 );
 }
+
+//========================================================================================================
+
+// social media share buttons
+add_action( 'genesis_entry_content', 'rhswp_append_socialbuttons', 14 );
+
+
+// Ter vervanging van de vervallen widget-ruimte en de 'extra links'-widget daarin
+add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 16 );
 
 //========================================================================================================
 

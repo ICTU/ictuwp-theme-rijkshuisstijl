@@ -11,6 +11,9 @@
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
+// ========================================================================
+
+@import "auxilary/auxilary.less";
 
 // ========================================================================
 
@@ -33,19 +36,21 @@
 @seachform_element_height_xlscreen: 25px;
 
 
-@menubreakpoint: 760px;
+// 865px wordt ook gebruikt in menu.js; verander je het hier, dan moet je het daar ook veranderen.
+@menubreakpoint_865px: 865px;
 
 
-@widget-area: ( @break_tablet - ( @logowidth + @padding + 5px ) );
-@search_submit_width: 70px;
-
-@filter_submit_width: 50px;
-@search_submit_width: @filter_submit_width;
+@widget-area: ( @break_650px - ( @logowidth + @padding + 5px ) );
+@filter_submit_width: 48px;
 
 @sidebar_width: 310px;
-@break_fullwidth: 1200px;
-@break_tablet: 650px;
-@break_phone: 500px;
+@break_500px: 500px;
+@break_650px: 650px;
+@break_900px: 900px;
+@break_1200px: 1200px;
+
+@breakpoint_show_payoff: 800px; // was: @break_650px
+@breakpoint_footerwidgets_1: 450px; // vanaf deze breedte verdelen we de footer widgets over 2 kolommen
 
 @logowidth: 450px;
 @logoheight: 92px;
@@ -92,10 +97,10 @@
 
 //=========================================================================================================
 
-.icon_separator_fill(@src, @fill-new) {
+.icon_separator_fill(@src, @fill_new) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
   @replace-default: escape('fill="#137EC2"');
-  @replace-new: escape('fill="@{fill-new}"');
+  @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background-image: e(@replacesrc1);
@@ -118,39 +123,6 @@
 
 .red() {
   border: 1px solid @warning;
-}
-
-//=========================================================================================================
-
-.visuallyhidden() {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px); // was 0, nu 1. @since 2.12.15
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-}
-
-//=========================================================================================================
-
-.visuallyvisual() {
-  border: inherit;
-  clip: auto;
-  height: auto;
-  margin: auto;
-  overflow: auto;
-  padding: inherit;
-  position: inherit;
-  width: auto;
-}
-
-//=========================================================================================================
-
-.showvisuallyhidden() {
-  clip: auto;
-  overflow: visible;
 }
 
 //=========================================================================================================
@@ -278,10 +250,10 @@
 
 //=========================================================================================================
 
-.embed_error_icon(@src, @fill-new) {
+.embed_error_icon(@src, @fill_new) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
   @replace-default: escape('fill:#FF0000;');
-  @replace-new: escape('fill:@{fill-new}');
+  @replace-new: escape('fill:@{fill_new}');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background: e(@replacesrc1);
@@ -291,10 +263,10 @@
 
 //=========================================================================================================
 
-.icon_socmed_icon(@src, @fill-new) {
+.icon_socmed_icon(@src, @fill_new) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
   @replace-default: escape('fill="#00586F"');
-  @replace-new: escape('fill="@{fill-new}"');
+  @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background-image: e(@replacesrc1);
@@ -302,10 +274,10 @@
 
 //=========================================================================================================
 
-.arrow_up_and_down(@src, @fill-new) {
+.arrow_up_and_down(@src, @fill_new) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
   @replace-default: escape('fill="#fff"');
-  @replace-new: escape('fill="@{fill-new}"');
+  @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background-image: e(@replacesrc1);
@@ -313,10 +285,10 @@
 
 //=========================================================================================================
 
-.iconaddfill(@src, @fill-new) {
+.mixin_iconaddfill(@src, @fill_new, @fill_old: #000000) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-  @replace-default: escape('fill="#000000"');
-  @replace-new: escape('fill="@{fill-new}"');
+  @replace-default: escape('fill="@{fill_old}"');
+  @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background-image: e(@replacesrc1);
@@ -325,10 +297,10 @@
 
 //=========================================================================================================
 
-.iconaddfill_important(@src, @fill-new) {
+.iconaddfill_important(@src, @fill_new) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
   @replace-default: escape('fill="#000000"');
-  @replace-new: escape('fill="@{fill-new}"');
+  @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background-image: e(@replacesrc1) !important;
@@ -424,7 +396,7 @@
   a.external:after {
     content: ' ';
     display: inline-block;
-    .iconaddfill('../images/icon-externe-link.svg', @blauw3);
+    .mixin_iconaddfill('../images/icon-externe-link.svg', @blauw3);
     speak: never;
     background-repeat: no-repeat;
     width: 20px;
@@ -551,7 +523,7 @@
     }
   }
 
-  @media only screen and (min-width: ( @break_fullwidth ) ) {
+  @media only screen and (min-width: ( @break_1200px ) ) {
     .pullquote-with-image.align-left,
     .pullquote-with-image.align-right {
       max-width: 50%;
@@ -580,56 +552,64 @@
 
 //=========================================================================================================
 
-.archiefmarkering() {
+.mixin_separator() {
 
-  .archiefmarkering {
-    .breadcrumb,
-    .site-footer {
-      background: @archief_bgcolor;
-      color: @archief_txt_color;
+  &:before {
+    content: '|';
+    display: inline-block;
+    float: left;
+    margin: 0 .5rem;
+  }
+}
+
+//=========================================================================================================
+
+.mixin_socmedicons( @replacewith: @txt, @replacewhat: #fff, @hovercolor: @a_color_hover ) {
+  .mixin_iconaddfill('../images/svg/icon-social.svg', @replacewith, @replacewhat);
+
+  &.social-media--mail {
+    .mixin_iconaddfill('../images/svg/icon-mail.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-mail.svg', @hovercolor, @replacewhat);
+    }
+  }
+
+  &.social-media--twitter {
+    .mixin_iconaddfill('../images/svg/icon-twitter.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-twitter.svg', @hovercolor, @replacewhat);
+    }
+  }
+
+  &.social-media--linkedin {
+    .mixin_iconaddfill('../images/svg/icon-linkedin.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-linkedin.svg', @hovercolor, @replacewhat);
+    }
+  }
+
+  &.social-media--rss {
+    .mixin_iconaddfill('../images/svg/icon-rss.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-rss.svg', @hovercolor, @replacewhat);
+    }
+  }
+
+  a {
+    color: @replacewith; // @txt;
+    text-decoration: none;
+
+    &:visited {
+      color: @replacewith;
     }
 
-    .button,
-    .entry-content .button,
-    button,
-    input[type=submit],
-    input[type=button],
-    input[type=reset],
-    .search-form button[type=submit],
-    .search-form input[type=submit] {
-      border-color: @archief_button_bgcolor;
-      background-color: @archief_button_bgcolor;
-      color: @wit;
-      .arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @wit);
-      //icon-arrow-fat-left-white
-
-      &[aria-expanded="true"] {
-        .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @wit);
-      }
-    }
-
-    .search-form button[type=submit],
-    .search-form input[type=submit] {
-      .iconaddfill('../images/svg/looking-glass.svg', @wit);
-    }
-
-
-    input[type=email],
-    input[type=text],
-    input[type=password],
-    input[type=file],
-    input[type=date],
-    select,
-    textarea {
-      border-bottom-color: @archief_button_bgcolor;
-    }
-
-    aside.sidebar .widget.banner .widget-wrap.do-groen {
-      border-color: @archief_button_bgcolor;
-      background: @archief_button_bgcolor;
+    &:hover {
+      color: @hovercolor;
+      text-decoration: underline;
     }
   }
 }
 
 //=========================================================================================================
+
 

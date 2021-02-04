@@ -37,13 +37,12 @@ function rhswp_write_extra_contentblokken() {
 				$theid                    = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
 				$contentblokken           = get_field( 'extra_contentblokken', $theid );
 				$dossier_in_content_block = get_queried_object()->term_id;
-			}
-			else {
+			} else {
 				// is een pagina of een bericht
 				$theid                     = get_the_ID();
 				$contentblokken            = get_field( 'extra_contentblokken', $theid );
 				$dossier_in_content_block2 = get_the_terms( $theid, RHSWP_CT_DOSSIER );
-				$dossier_in_content_block  = $dossier_in_content_block2[0]->term_id;	
+				$dossier_in_content_block  = $dossier_in_content_block2[0]->term_id;
 			}
 
 
@@ -61,9 +60,8 @@ function rhswp_write_extra_contentblokken() {
 					$type_block            = $row['extra_contentblok_type_block'];
 					$categoriefilter       = $row['extra_contentblok_categoriefilter'];
 					$maxnr_posts           = $row['extra_contentblok_maxnr_posts'];
-
-						$with_featured_image = 'alle';
-					$limit               = $row['extra_contentblok_maxnr_events'];
+					$with_featured_image   = 'alle';
+					$limit                 = $row['extra_contentblok_maxnr_events'];
 
 					if ( $blockidattribute_prev == $titel ) {
 						$blockidattribute_name = $titel . '-' . $thecounter;
@@ -90,14 +88,12 @@ function rhswp_write_extra_contentblokken() {
 						if ( $algemeen_links ) {
 
 							$columncount = 3;
-							
+
 							if ( 1 === count( $algemeen_links ) ) {
 								$columncount = 1;
-							}
-							elseif ( 2 === count( $algemeen_links ) ) {
+							} elseif ( 2 === count( $algemeen_links ) ) {
 								$columncount = 2;
-							}
-							elseif ( 4 === count( $algemeen_links ) ) {
+							} elseif ( 4 === count( $algemeen_links ) ) {
 								$columncount = 2;
 							}
 
@@ -172,20 +168,18 @@ function rhswp_write_extra_contentblokken() {
 					} elseif ( 'berichten_paginas' == $type_block ) {
 
 						$columncount = 3;
-						
+
 						if ( 1 === count( $selected_content ) ) {
 							$columncount = 1;
-						}
-						elseif ( 2 === count( $selected_content ) ) {
+						} elseif ( 2 === count( $selected_content ) ) {
 							$columncount = 2;
-						}
-						elseif ( 4 === count( $selected_content ) ) {
+						} elseif ( 4 === count( $selected_content ) ) {
 							$columncount = 2;
 						}
 
 						echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '"' . $blockidattribute . '>';
 						echo '<div class="wrap">';
-						
+
 						if ( $titel ) {
 							echo '<h2>' . $titel . '</h2>';
 						}
@@ -243,7 +237,7 @@ function rhswp_write_extra_contentblokken() {
 
 								$postdate = '';
 								if ( 'post' == get_post_type() ) {
-									$postdate = '<p class="meta">' . get_the_date() . '</p>';										
+									$postdate = '<p class="meta">' . get_the_date() . '</p>';
 								}
 
 								if ( has_post_thumbnail( $post ) ) {
@@ -269,7 +263,7 @@ function rhswp_write_extra_contentblokken() {
 
 						echo '</div>'; //  class="wrap"
 						echo '</div>';
-						
+
 					} elseif ( 'berichten' == $type_block ) {
 						// dus $type_block != 'algemeen' && $type_block != 'berichten_paginas'
 
@@ -387,30 +381,29 @@ function rhswp_write_extra_contentblokken() {
 								if ( $chosen_category ) {
 
 									if ( is_array( $chosen_category ) ) {
-										
+
 										foreach ( $chosen_category as $filter ):
-											
+
 											$terminfo = get_term_by( 'id', $filter, 'category' );
 											$slugs[]  = $terminfo->slug;
-											
+
 											$overviewlinktext = $terminfo->name;
 											$actueelpageid    = get_option( 'page_for_posts' );
-											
+
 											$overviewurl = get_permalink( $actueelpageid ) . $terminfo->slug . '/'; // page_for_posts
-										
+
 										endforeach;
-										
-									}
-									else {
-										
+
+									} else {
+
 										$terminfo = get_term_by( 'id', $chosen_category, 'category' );
 										$slugs[]  = $terminfo->slug;
-										
+
 										$overviewlinktext = $terminfo->name;
 										$actueelpageid    = get_option( 'page_for_posts' );
-										
+
 										$overviewurl = get_permalink( $actueelpageid ) . $terminfo->slug . '/'; // page_for_posts
-									
+
 									}
 
 
@@ -463,22 +456,20 @@ function rhswp_write_extra_contentblokken() {
 							$contentblockposts->query( $args );
 
 							if ( $contentblockposts->have_posts() ) {
-								
+
 								$count = $contentblockposts->post_count;
 
 								$columncount = 3;
-								
+
 								if ( 1 === $count ) {
 									$columncount = 1;
-								}
-								elseif ( 2 === $count ) {
+								} elseif ( 2 === $count ) {
+									$columncount = 2;
+								} elseif ( 4 === $count ) {
 									$columncount = 2;
 								}
-								elseif ( 4 === $count ) {
-									$columncount = 2;
-								}
-								
-								echo '<section class="flexbox"' . $blockidattribute . '>';
+
+								echo '<section class="flexbox contentblocks"' . $blockidattribute . '>';
 								echo '<div class="wrap">';
 //								echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '">';
 
@@ -488,8 +479,17 @@ function rhswp_write_extra_contentblokken() {
 									echo '<h2>' . __( 'No titel found for post', 'wp-rijkshuisstijl' ) . '</h2>';
 								}
 
-								echo '<div class="flexcontainer ' . $type_block . ' no-top columncount-' . $columncount . '">';
-
+//								echo '<div class="flexcontainer ' . $type_block . ' no-top columncount-' . $columncount . '">';
+								if ( is_singular( 'post' ) ) {
+									// een bericht heeft inmiddels full width, dus lekker 3 kolommen
+									echo '<div class="grid">';
+								}
+								elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
+									// een dossier full width, dus lekker 3 kolommen
+									echo '<div class="grid">';
+								} else {
+									echo '<div class="grid columns-2">';
+								}
 
 								$postcounter = 0;
 
@@ -517,10 +517,19 @@ function rhswp_write_extra_contentblokken() {
 									$title          = get_the_title();
 									$categorielinks = '';
 									$permalink_cat  = '';
+									$block          = '';
 
-									if ( $currentsite && $currentpage && $toonlinksindossiercontext ) {
+									//fuckup
+									//puckuf
+									// TODO
+
+
+									if ( $currentsite && $currentpage && get_query_var( RHSWP_DOSSIERCONTEXTPOSTOVERVIEW ) && $toonlinksindossiercontext ) {
+										// TODO
 										// aaaaa, what a fuckup.
 										// o holy ToDo: make me use a page for this URL (bug:
+										echo '$currentsite : ' . $currentsite . '<br>';
+										echo '$currentpage : ' . $currentpage . '<br>';
 
 										if ( is_page() ) {
 											// RHSWP_DOSSIERCONTEXTPOSTOVERVIEW
@@ -540,26 +549,37 @@ function rhswp_write_extra_contentblokken() {
 												$theurl = trailingslashit( get_term_link( $toonlinksindossiercontext ) . RHSWP_DOSSIERCONTEXTPOSTOVERVIEW . $postpermalink );
 											}
 										}
+
+										$block = sprintf( '<article %s>', $classattr );
+										if ( $postdate ) {
+											$postdate = '<p class="meta">' . $postdate . '</p>';
+										}
+
+										if ( $doimage ) {
+											$block .= '<div class="article-container">';
+											$block .= sprintf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'article-visual' ) );
+											$block .= sprintf( '<div class="article-excerpt"><h3><a href="%s">%s</a></h3>%s<p>%s</p>%s</div>', $theurl, $title, $postdate, $excerpt, $categorielinks );
+											$block .= '</div>';
+										} else {
+											$block .= sprintf( '<h3><a href="%s">%s</a></h3>%s<p>%s</p>%s', $theurl, $title, $postdate, $excerpt, $categorielinks );
+										}
+										$block .= '</article>';
+
 									} else {
-										$theurl = get_the_permalink();
+
+										$args2 = array(
+											'ID'   => get_the_ID(),
+											'type' => 'posts_plain'
+										);
+
+										$block = rhswp_get_grid_item( $args2 );
+
 									}
 
-									printf( '<article %s>', $classattr );
+									echo $block;
 
-									if ( $postdate ) {
-										$postdate = '<p class="meta">' . $postdate . '</p>';
-									}
+//									printf( '<article %s>', $classattr );
 
-
-									if ( $doimage ) {
-										echo '<div class="article-container">';
-										printf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'article-visual' ) );
-										printf( '<div class="article-excerpt"><h3><a href="%s">%s</a></h3>%s<p>%s</p>%s</div>', $theurl, $title, $postdate, $excerpt, $categorielinks );
-
-										echo '</div>';
-									} else {
-										printf( '<h3><a href="%s">%s</a></h3>%s<p>%s</p>%s', $theurl, $title, $postdate, $excerpt, $categorielinks );
-									}
 
 									if ( WP_DEBUG && SHOW_CSS_DEBUG ) {
 										dodebug_do( 'Check category & dossier:' );
@@ -567,18 +587,17 @@ function rhswp_write_extra_contentblokken() {
 										dodebug_do( get_the_term_list( $post->ID, RHSWP_CT_DOSSIER, 'Topics', ', ' ) );
 									}
 
-									echo '</article>';
-
 									do_action( 'genesis_after_entry' );
 
 								endwhile;
+
+								echo '</div>'; // .grid
 
 								if ( $overviewurl && $overviewlinktext ) {
 									echo '<p class="more"><a href="' . $overviewurl . '">' . $overviewlinktext . '</a></p>';
 								}
 
-								echo '</div>';
-								echo '</div>';
+								echo '</div>'; // .wrap
 								echo '</section>';
 
 							} else {
@@ -614,7 +633,8 @@ function rhswp_write_extra_contentblokken() {
 
 						}
 
-					} elseif ( 'select_dossiers' == $type_block ) {
+					} elseif
+					( 'select_dossiers' == $type_block ) {
 
 						if ( $select_dossiers_list ) {
 
@@ -629,32 +649,29 @@ function rhswp_write_extra_contentblokken() {
 								$columncount = 3;
 								if ( 1 === count( $terms ) ) {
 									$columncount = 1;
-								}
-								elseif ( 2 === count( $terms ) ) {
+								} elseif ( 2 === count( $terms ) ) {
 									$columncount = 2;
-								}
-								elseif ( 4 === count( $terms ) ) {
+								} elseif ( 4 === count( $terms ) ) {
 									$columncount = 2;
 								}
 
 								echo '<section class="uitgelicht flexbox"' . $blockidattribute . '>';
 								echo '<div class="wrap">';
 								echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '">';
-	
+
 								if ( $titel ) {
 									echo '<h2>' . $titel . '</h2>';
 								}
-								
+
 								foreach ( $terms as $term ) {
 
-									$excerpt   = '';
-									$classattr = 'class="dossieroverzicht"';
-									$kortebeschr  = get_field( 'dossier_korte_beschrijving_voor_dossieroverzicht', RHSWP_CT_DOSSIER . '_' . $term->term_id );
-									
+									$excerpt     = '';
+									$classattr   = 'class="dossieroverzicht"';
+									$kortebeschr = get_field( 'dossier_korte_beschrijving_voor_dossieroverzicht', RHSWP_CT_DOSSIER . '_' . $term->term_id );
+
 									if ( $kortebeschr ) {
 										$excerpt = $kortebeschr;
-									}
-									elseif ( $term->description ) {
+									} elseif ( $term->description ) {
 										$excerpt = $term->description;;
 									}
 									$href    = get_term_link( $term->term_id, RHSWP_CT_DOSSIER );
@@ -668,7 +685,7 @@ function rhswp_write_extra_contentblokken() {
 								echo '</div>';
 								echo '</div>';
 								echo '</section>';
-								
+
 							}
 
 							// RESET THE QUERY
@@ -690,18 +707,16 @@ function rhswp_write_extra_contentblokken() {
 								echo '<h2>' . $titel . '</h2>';
 								$headertag = 'h3';
 							}
-							
+
 							$columncount = 3;
 							if ( 1 === count( $selecteer_uitgelichte_paginas_of_berichten ) ) {
 								$columncount = 1;
-							}
-							elseif ( 2 === count( $selecteer_uitgelichte_paginas_of_berichten ) ) {
+							} elseif ( 2 === count( $selecteer_uitgelichte_paginas_of_berichten ) ) {
+								$columncount = 2;
+							} elseif ( 4 === count( $selecteer_uitgelichte_paginas_of_berichten ) ) {
 								$columncount = 2;
 							}
-							elseif ( 4 === count( $selecteer_uitgelichte_paginas_of_berichten ) ) {
-								$columncount = 2;
-							}
-							
+
 
 							echo '<div class="flexcontainer no-top columncount-' . $columncount . '">';
 
@@ -713,15 +728,15 @@ function rhswp_write_extra_contentblokken() {
 
 								$postcounter ++;
 
-								$classattr 			= genesis_attr( 'entry' );
-								$permalink 			= '';
-								$permalink_start 	= '';
-								$permalink_end		= '';
-								$permalink_start2	= '';
-								$permalink_end2 	= '';
-								$excerpt 			= '';
-								$excerpt 			= '';
-								$link 				= '';
+								$classattr        = genesis_attr( 'entry' );
+								$permalink        = '';
+								$permalink_start  = '';
+								$permalink_end    = '';
+								$permalink_start2 = '';
+								$permalink_end2   = '';
+								$excerpt          = '';
+								$excerpt          = '';
+								$link             = '';
 
 								do_action( 'genesis_before_entry' );
 
@@ -729,18 +744,16 @@ function rhswp_write_extra_contentblokken() {
 
 								if ( get_post_type() === RHSWP_CPT_VERWIJZING ) {
 //									$excerpt   = wp_strip_all_tags( get_the_content( $post ) );
-									$excerpt   = get_field( 'verwijzing_beschrijving', $post->ID );
+									$excerpt = get_field( 'verwijzing_beschrijving', $post->ID );
 									if ( get_field( 'verwijzing_url', $post->ID ) ) {
-										$link 		= get_field( 'verwijzing_url', $post->ID );
+										$link = get_field( 'verwijzing_url', $post->ID );
 										if ( is_array( $link ) ) {
-											$permalink	= $link['url'];
-										}
-										else {
-											$permalink	= $link;
+											$permalink = $link['url'];
+										} else {
+											$permalink = $link;
 										}
 									}
-								}
-								else {
+								} else {
 									$permalink = get_permalink();
 									$excerpt   = wp_strip_all_tags( get_the_excerpt( $post ) );
 								}
@@ -751,16 +764,15 @@ function rhswp_write_extra_contentblokken() {
 
 								if ( $permalink ) {
 									$permalink_start = sprintf( '<a href="%s">', $permalink );
-									$permalink_end = '</a>';
+									$permalink_end   = '</a>';
 								}
-								
+
 								if ( has_post_thumbnail( $post ) ) {
 									$classattr = preg_replace( '|class="|i', 'class="has-post-thumbnail ', $classattr );
-								}
-								else {
+								} else {
 									$classattr = preg_replace( '|class="|i', 'class="no-post-thumbnail ', $classattr );
 								}
-							
+
 
 								$postdate = '';
 								if ( 'post' == get_post_type() ) {
@@ -768,19 +780,19 @@ function rhswp_write_extra_contentblokken() {
 								}
 
 
-								if ( 'citaat_of_verwijzing_citaat' === get_field( 'citaat_of_verwijzing', $post->ID )  ) {
+								if ( 'citaat_of_verwijzing_citaat' === get_field( 'citaat_of_verwijzing', $post->ID ) ) {
 
 									$citaat_en_auteur = get_field( 'citaat_en_auteur', $post->ID );
-									
-									
+
+
 									if ( $citaat_en_auteur ) {
-	
+
 										echo '<section class="' . RHSWP_CPT_VERWIJZING . '">';
 										if ( has_post_thumbnail( $post ) ) {
 											echo '<div class="has-thumbnail">';
 											echo get_the_post_thumbnail( $post->ID, 'widget-image-top' );
 											echo '</div>';
-										}									
+										}
 										echo '<div class="blockquote">';
 										printf( '<blockquote cite="%s">', $permalink );
 										printf( '<p>%s</p>', $citaat_en_auteur['verwijzing_citaat'] );
@@ -791,31 +803,29 @@ function rhswp_write_extra_contentblokken() {
 
 											if ( ! $link['title'] ) {
 
-												$title = $link['url'];
-												$title = preg_replace( '|https://|i', '', $title );
-												$title = preg_replace( '|http://|i', '', $title );
+												$title      = $link['url'];
+												$title      = preg_replace( '|https://|i', '', $title );
+												$title      = preg_replace( '|http://|i', '', $title );
 												$titlearray = explode( '/', $title );
 												if ( $titlearray[0] ) {
 													$title = $titlearray[0];
-												}						
+												}
 
-											}
-											else {
+											} else {
 												$title = $link['title'];
 											}
 											printf( '<p class="more"><a href="%s">%s</a></p>', $link['url'], $title );
 										}
 										echo '</div>';
 										echo '</section>';
-									
+
 									}
 
-								}
-								elseif ( has_post_thumbnail( $post ) ) {
+								} elseif ( has_post_thumbnail( $post ) ) {
 									printf( '<article %s>', $classattr );
 									echo '<div class="article-container">';
 
-									
+
 //									$permalink_start2 = str_replace( '<a href=', '<a tabindex="-1" href=', $permalink_start );
 //									$permalink_end2 = $permalink_end;
 									printf( '<div class="article-visual">%s%s%s</div>', $permalink_start2, get_the_post_thumbnail( $post->ID, 'article-visual-big' ), $permalink_end2 );
@@ -857,7 +867,7 @@ function rhswp_write_extra_contentblokken() {
 		}
 	}
 
-	// RESET THE QUERY
+// RESET THE QUERY
 	wp_reset_query();
 
 
@@ -1288,7 +1298,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							0 => 'post',
 							1 => 'page',
 							2 => RHSWP_CPT_VERWIJZING,
-							
+
 						),
 						'taxonomy'          => '',
 						'filters'           => array(

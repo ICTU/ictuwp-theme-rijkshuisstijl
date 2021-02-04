@@ -1,0 +1,126 @@
+{
+    "key": "group_57dbb4a2b1368",
+    "title": "Alternatieve paginatitel en label",
+    "fields": [
+        {
+            "key": "field_57dbb4bb70f6f",
+            "label": "Alternatieve paginatitel gebruiken?",
+            "name": "alternatieve_paginatitel_gebruiken",
+            "type": "radio",
+            "instructions": "De paginatitel wordt standaard gebruikt voor ondermeer verwijzingen in menu's en in de &lt;title&gt;. Het kan zijn dat je voor de duidelijkheid een andere tekst wilt tonen in de &lt;H1&gt;. Als je hier 'ja' kiest, kun je een alternatieve paginatitel invoeren.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "nee": "nee",
+                "ja": "ja"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "nee",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_57dbb54b70f70",
+            "label": "Alternatieve paginatitel",
+            "name": "alternatieve_paginatitel",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_57dbb4bb70f6f",
+                        "operator": "==",
+                        "value": "ja"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6000574c6fb9f",
+            "label": "Label toevoegen?",
+            "name": "label_toevoegen",
+            "type": "radio",
+            "instructions": "Het label voegt in opsommingen extra informatie toe aan pagina's en berichten. Niet verplicht, maar zeker voor berichten wel aangeraden.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "nee": "nee",
+                "ja": "ja"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "nee",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5ffc822623b01",
+            "label": "Extra label",
+            "name": "post_label",
+            "type": "text",
+            "instructions": "Niet verplicht. Gebruik 1 woord. Dit kun je toevoegen om dit bericht (deze pagina) te voorzien van extra context. Deze tekst zou ervoor moeten zorgen dat in opsommingen van berichten extra duidelijk is waar het bericht over gaat.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6000574c6fb9f",
+                        "operator": "==",
+                        "value": "ja"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1610635769
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>2001 kalender</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="2001-kalender" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g filter="url(#filter-1)">
+            <g>
+                <g id="_x36_4px_Boxes">
+                    <rect id="Rectangle" x="0" y="0" width="64" height="64"></rect>
+                </g>
+                <g id="Production" transform="translate(7.000000, 7.000000)" fill="#000000" fill-rule="nonzero">
+                    <g id="Group">
+                        <path d="M48,6 L41.0779,6 L39.3672,11.7498 C39.2617,12.075 39,11.9751 39,11.9751 L39,6 L38.9926,6 C38.9781,4.7422 38.9356,2.6533 38.8101,1.8789 C38.7012,1.2139 38.5835,0 37.6143,0 L34.7588,0 C33.79,0 33.5825,1.228 33.4746,1.8935 C33.3491,2.6669 33.1751,4.7462 33.0764,6 L17.0779,6 L15.3672,11.75 C15.2617,12.0752 15,11.9751 15,11.9751 L15,6 L14.9926,6 C14.9781,4.7422 14.9356,2.6533 14.8101,1.8789 C14.7012,1.2139 14.5835,0 13.6143,0 L10.7588,0 C9.79,0 9.5825,1.228 9.4746,1.8935 C9.3491,2.6669 9.1751,4.7462 9.0764,6 L2,6 C0.8955,6 0,6.8955 0,8 L0,48 C0,49.1045 0.8955,50 2,50 L48,50 C49.1045,50 50,49.1045 50,48 L50,8 C50,6.8955 49.1045,6 48,6 Z M45,45 L5,45 L5,19 L45,19 L45,45 Z" id="Shape"></path>
+                        <rect id="Rectangle" x="9" y="24" width="8" height="6"></rect>
+                        <rect id="Rectangle" x="21" y="24" width="8" height="6"></rect>
+                        <rect id="Rectangle" x="33" y="24" width="8" height="6"></rect>
+                        <rect id="Rectangle" x="9" y="34" width="8" height="6"></rect>
+                        <rect id="Rectangle" x="21" y="34" width="8" height="6"></rect>
+                        <rect id="Rectangle" x="33" y="34" width="8" height="6"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

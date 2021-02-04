@@ -1,0 +1,653 @@
+{
+    "key": "group_5fe260b71b067",
+    "title": "Home - instellingen",
+    "fields": [
+        {
+            "key": "field_5ff490292004c",
+            "label": "Etalage en uitgelicht",
+            "name": "home_row_1",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": []
+        },
+        {
+            "key": "field_5ff4907df1955",
+            "label": "Etalage: automatisch vullen of handmatig vullen?",
+            "name": "home_row_1_cell_1_method",
+            "type": "radio",
+            "instructions": "Je kunt dit blok automatisch laten vullen als er een artikel beschikbaar is met een foto in het juiste formaat",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "method_auto": "Automatisch",
+                "method_man": "Handmatig"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "method_auto",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5ff48eb99caa1",
+            "label": "Kies bericht voor etalage",
+            "name": "home_row_1_cell_1_post",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ff4907df1955",
+                        "operator": "==",
+                        "value": "method_auto"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post",
+                "page",
+                "event",
+                "document"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "min": 1,
+            "max": 1,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5ff5f80f9ca0f",
+            "label": "Etalage: afbeelding",
+            "name": "home_row_1_cell_1_featured_image",
+            "type": "image",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ff4907df1955",
+                        "operator": "==",
+                        "value": "method_man"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "image-16x9",
+            "library": "all",
+            "min_width": 800,
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5ff5f83e32ff9",
+            "label": "Etalage: link",
+            "name": "home_row_1_cell_1_featured_link",
+            "type": "link",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ff4907df1955",
+                        "operator": "==",
+                        "value": "method_man"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_5ff8502f30d75",
+            "label": "Etalage: label",
+            "name": "home_row_1_cell_1_featured_label",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ff4907df1955",
+                        "operator": "==",
+                        "value": "method_man"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_5ff848bcd8c00",
+            "label": "Uitgelicht",
+            "name": "group_uitgelicht",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": []
+        },
+        {
+            "key": "field_5ff83b86a7e1d",
+            "label": "Uitgelicht: automatisch vullen of handmatig vullen?",
+            "name": "home_row_1_cell_2_method",
+            "type": "radio",
+            "instructions": "Je kunt dit blok automatisch laten vullen als er een artikel beschikbaar is met een foto in het juiste formaat",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "method_auto": "Automatisch",
+                "method_man": "Handmatig"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "method_auto",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5ff745db31faa",
+            "label": "Kies content voor uitgelicht",
+            "name": "home_row_1_cell_2_post",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ff83b86a7e1d",
+                        "operator": "==",
+                        "value": "method_auto"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post",
+                "page",
+                "event",
+                "document"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "min": 1,
+            "max": 1,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5ff848f2f16a0",
+            "label": "Uitgelicht: afbeelding",
+            "name": "home_row_1_cell_2_featured_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ff83b86a7e1d",
+                        "operator": "==",
+                        "value": "method_man"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "image-16x9",
+            "library": "all",
+            "min_width": 800,
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5ff84954f16a1",
+            "label": "Uitgelicht: tekst",
+            "name": "home_row_1_cell_2_textcontent",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ff83b86a7e1d",
+                        "operator": "==",
+                        "value": "method_man"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_5ff83a5dac6ef",
+            "label": "Overige blokken",
+            "name": "overige_blokken",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [],
+            "layout": "block"
+        },
+        {
+            "key": "field_5ff5fcddd9ee5",
+            "label": "Rij",
+            "name": "home_rows",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5ff5fec22077b",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "nieuwe rij toevoegen",
+            "sub_fields": [
+                {
+                    "key": "field_5ff5fcebd9ee6",
+                    "label": "Type",
+                    "name": "home_row_type",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "posts_featured": "Uitgelichte berichten",
+                        "posts_normal": "Berichten",
+                        "events": "Evenementen",
+                        "free_form": "Vrije invoer"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "",
+                    "layout": "vertical",
+                    "return_format": "value",
+                    "save_other_choice": 0
+                },
+                {
+                    "key": "field_5ff5fec22077b",
+                    "label": "Titel",
+                    "name": "home_row_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "posts_featured"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "posts_normal"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "events"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ff885e9512dd",
+                    "label": "'Lees meer'-tekst",
+                    "name": "home_row_readmore",
+                    "type": "text",
+                    "instructions": "voorbeeld: 'alle berichten onder %s', waarbij %s zal worden vervangen door de naam van de categorie. Voor events voer je beter geen tekst met '%s' in.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "posts_featured"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "posts_normal"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "events"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "alle berichten onder %s",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ff5fed42077c",
+                    "label": "Maximaal aantal",
+                    "name": "home_row_max_nr",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "posts_featured"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "posts_normal"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "events"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "3": "3 berichten",
+                        "6": "6 berichten",
+                        "12": "12 berichten",
+                        "15": "15 berichten",
+                        "18": "18 berichten",
+                        "24": "24 berichten"
+                    },
+                    "default_value": 3,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5ff753a5c3d6b",
+                    "label": "Categorie",
+                    "name": "home_row_category",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "posts_featured"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "posts_normal"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "category",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_5ff886c975486",
+                    "label": "Blokken voor vrije invoer",
+                    "name": "home_row_freeform",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ff5fcebd9ee6",
+                                "operator": "==",
+                                "value": "free_form"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "field_5ff8899290ce4",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "row",
+                    "button_label": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ff8899290ce4",
+                            "label": "Titel",
+                            "name": "home_row_freeform_title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5ff889b490ce5",
+                            "label": "Tekst",
+                            "name": "home_row_freeform_text",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_5ff88a476541a",
+                            "label": "Kolombreedte",
+                            "name": "home_row_freeform_width",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "colspan-1": "1 Kolom",
+                                "colspan-2": "2 Kolommen",
+                                "colspan-3": "3 Kolommen"
+                            },
+                            "default_value": false,
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page_front-page-nieuws.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": true,
+    "description": "",
+    "modified": 1612201520
+}

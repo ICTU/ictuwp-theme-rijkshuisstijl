@@ -1,0 +1,156 @@
+{
+    "key": "group_6000825e1e713",
+    "title": "Instellingen voor actueel-pagina",
+    "fields": [
+        {
+            "key": "field_60188fa6e9c2e",
+            "label": "Inleiding",
+            "name": "actueel_inleiding",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_6006c034fb9bb",
+            "label": "Categorieen voor de eerste pagina van de actueelpagina",
+            "name": "actueel_rows",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_6006c07ffb9bc",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "categorie toevoegen",
+            "sub_fields": [
+                {
+                    "key": "field_6006c07ffb9bc",
+                    "label": "Kies de categorie",
+                    "name": "actueel_row_category",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "category",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_6006c1f4fb9bd",
+                    "label": "Welke opmaak?",
+                    "name": "actueel_row_styling",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "actueel_row_styling_plain": "Titel en samenvatting",
+                        "actueel_row_styling_title_on_image": "Titel over foto"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "actueel_row_styling_plain",
+                    "layout": "vertical",
+                    "return_format": "value",
+                    "save_other_choice": 0
+                },
+                {
+                    "key": "field_6006c285896b4",
+                    "label": "Aantal berichten",
+                    "name": "actueel_row_number",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "3": "3 berichten",
+                        "4": "4 berichten",
+                        "6": "6 berichten",
+                        "12": "12 berichten"
+                    },
+                    "default_value": false,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_6018906fa5683",
+                    "label": "'Lees meer'-tekst",
+                    "name": "actueel_row_readmore",
+                    "type": "text",
+                    "instructions": "voorbeeld: 'alle berichten onder %s', waarbij %s zal worden vervangen door de naam van de categorie.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "alle berichten onder %s",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "posts_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1612222711
+}

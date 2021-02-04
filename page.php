@@ -21,10 +21,12 @@ if ( rhswp_extra_contentblokken_checker() ) {
 
 //========================================================================================================
 
-// Reposition the primary navigation menu
-if ( ( is_front_page() ) || ( is_home() ) ) {
-	add_action( 'genesis_after_header', 'genesis_do_nav' );
-}
+// social media share buttons
+add_action( 'genesis_entry_content', 'rhswp_append_socialbuttons', 14 );
+
+
+// Ter vervanging van de vervallen widget-ruimte en de 'extra links'-widget daarin
+add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 16 );
 
 //========================================================================================================
 

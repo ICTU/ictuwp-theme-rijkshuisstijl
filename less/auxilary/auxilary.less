@@ -1,0 +1,97 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - page_front-page-nieuws.less
+// * ----------------------------------------------------------------------------------
+// * styling voor page_front-page-nieuws.php
+// * ----------------------------------------------------------------------------------
+//
+
+
+@break_mobile_show: 900px;
+
+
+//========================================================================================================
+
+.hide-on-mobile {
+  @media only screen and ( max-width: ( @break_mobile_show ) ) {
+    display: none;
+  }
+}
+
+.hide-on-larger-than-mobile {
+
+  display: flex;
+  &.has-border {
+    border-top: 1px solid @bordercolor;
+  }
+
+  @media only screen and ( max-width: @break_mobile_show ) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    h2 {
+      flex: 1 0 100%;
+    }
+    .txtcontainer,
+    .featured-image-link {
+      flex: 0 1 50%;
+    }
+    .txtcontainer {
+      padding-left: .5rem;
+    }
+    .featured-image-link {
+      padding-right: .5rem;
+    }
+  }
+
+  @media only screen and ( max-width: 400px ) {
+    flex-direction: column;
+
+    h2,
+    .txtcontainer,
+    .featured-image-link {
+      flex: 1 0 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+
+  @media only screen and ( min-width: ( @break_mobile_show ) ) {
+    display: none;
+  }
+}
+
+//=========================================================================================================
+
+.visuallyhidden() {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px); // was 0, nu 1. @since 2.12.15
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+//=========================================================================================================
+
+.visuallyvisual() {
+  border: inherit;
+  clip: auto;
+  height: auto;
+  margin: auto;
+  overflow: auto;
+  padding: inherit;
+  position: inherit;
+  width: auto;
+}
+
+//=========================================================================================================
+
+.showvisuallyhidden() {
+  clip: auto;
+  overflow: visible;
+}
+
+//=========================================================================================================
+

@@ -21,7 +21,7 @@
     width: 160px;
     height: 120px;
     display: block;
-    background: url('@{base_url}images/logo-digitaleoverheid.png');
+    background: url('@{base_url}images/logo-digitale-overheid.png');
     background-position: left top;
     background-repeat: no-repeat;
     img {
@@ -59,7 +59,6 @@
     // IE10+ CSS here
 
 	.flexbox {
-		.page-template-page_showalldossiers,
 		.page-template-page_show-child-pages,
 		.page-template-page_front-page,
 		.blog,
@@ -119,6 +118,44 @@
 			}
 		}
 	}
+
+	.title-area {
+		height: 100%;
+		display: block!important;
+		.site-title,
+		.site-description {
+			display: block;
+			width: 100%;
+			overflow: hidden;
+		}
+	}
+
+	.grid {
+		padding: 0;
+		overflow: hidden;
+		.griditem {
+			float: left;
+			margin: 5px !important;
+			padding: 0 .25rem .25rem 0;
+
+			&.colspan-1 {
+				width: 32%;
+			}
+
+			&.colspan-2 {
+				width: 64%;
+			}
+
+			&.colspan-3 {
+				width: 99%;
+			}
+
+			&.griditem--textoverimage {
+				padding: 0;
+			}
+		}
+	}
+
 }
 
 //========================================================================================================

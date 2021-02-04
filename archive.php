@@ -16,14 +16,6 @@
 
 //========================================================================================================
 
-// Reposition the primary navigation menu
-if ( ( is_front_page() ) || ( is_home() ) ) {
-	add_action( 'genesis_after_header', 'genesis_do_nav' );
-}
-
-//========================================================================================================
-
-
 // post navigation verplaatsen tot buiten de flex-ruimte
 add_action( 'genesis_after_loop', 'genesis_posts_nav', 3 );
 
@@ -37,7 +29,11 @@ add_action( 'genesis_before_loop', 'rhswp_add_taxonomy_description', 15 );
 
 /** Replace the standard loop with our custom loop */
 remove_action( 'genesis_loop', 'genesis_do_loop' );
-add_action( 'genesis_loop', 'rhswp_archive_custom_loop' );
+add_action( 'genesis_loop', 'rhswp_archive_loop' );
+
+// full width
+add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
 
 //========================================================================================================
 

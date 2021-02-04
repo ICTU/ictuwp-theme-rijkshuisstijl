@@ -1,0 +1,33 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - payoff.less
+// * ----------------------------------------------------------------------------------
+// * styling voor een container met blokken
+// * ----------------------------------------------------------------------------------
+//
+
+
+
+#payoff {
+
+  @media only screen and (max-width: ( @breakpoint_show_payoff ) ) {
+    .visuallyhidden();
+  }
+
+  @media only screen and (min-width: ( ( @breakpoint_show_payoff + 1 ) ) ) {
+    display: block;
+    font-size: 1.15em;
+    width: 50%;
+    float: left;
+    line-height: 1.4;
+
+    #payoff_title {
+      font-size: 1.65em;
+    }
+
+    #payoff_subtitle {
+      line-height: 1.6;
+      font-family: @fontitalic;
+      font-size: 1.05em;
+    }
+  }
+}

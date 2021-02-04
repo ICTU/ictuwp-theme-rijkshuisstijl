@@ -32,204 +32,8 @@
 		}
 	}
 
-
-	#cardflex_tab1 {
-		overflow: hidden;
-	}
-	#filterselector {
-		overflow: hidden;
-		margin-bottom: 1em;
-	}
-	
-	div.dossier_overzicht_popular {
-		background: @grijs_1;
-		padding: 0 1em 1em 1em;
-		
-		ul.links {
-			overflow: hidden;
-			margin: 0 0;
-			
-			a {
-				.listitem_arrow( @txt, 10px, 10px ); // done
-				color: @txt;
-				font-family: @fontstrong;
-			}
-		}
-	}        
-
-	@media only screen and (max-width: ( @break_fullwidth ) ) {
-		
-		#filterselector {
-			display: flex;
-			width: 100%;
-			flex-wrap: wrap;
-		}
-		
-		div.topicSearchWrapper {
-			order: 2;      
-		}
-		div.dossier_overzicht_popular {
-			order: 1;      
-		}
-		
-		div.topicSearchWrapper,
-		div.dossier_overzicht_popular {
-			width: 100%;
-			min-width: 100%;
-			margin-bottom: 1em;
-		}  
-	}        
-
-	#mixitupfilterlist {
-	    
-	    li:before {
-	      color: @a_color_default;
-	      top: 12px;
-	    }
-	
-		&.unfiltered {
-			li, div {
-	
-				span {
-					.visuallyhidden();
-				}
-	
-				a {
-					text-decoration: none;
-					display: inline-block;
-					overflow: hidden;
-					
-					&:focus,
-					&:active,
-					&:hover {
-						text-decoration: underline;
-					}
-				}
-				
-				&.term-children {
-					li {
-			            padding-left: .75em;
-			            .listitem_arrow( @a_color_default, 10px, 10px ); // done
-					}
-				}
-			}
-		}
-	
-		&.filtered {
-	
-			li:before {
-				content: '';
-			}
-			li,div {
-				&:not([style*="display: block"]) {
-					.visuallyhidden();
-				}
-				&[style*="display: block"] {
-					.visuallyvisual();
-					
-					span {
-						.visuallyvisual();
-						display: block;
-						clear: both;
-						padding: 0 0 1em 0 !important;
-						
-						margin-bottom: 1em;
-						border-bottom: 1px solid @lichtgrijs;
-						
-						@media only screen and (min-width: ( @break_fullwidth ) ) {
-							width: 66%;
-							margin-left: 0;
-						}
-					}
-				}
-			}
-		}
-	}
-
-
 	//========================================================================================================
-	@media only screen and (min-width: ( @break_tablet ) ) {
-		
-		#mixitupfilterlist.unfiltered {
-			
-			div.cat-item {
-				width: 25%;
-				
-				&.term-children {
-					width: 100%;
-				}
-			}
-			
-			ul.children {
-				column-count: 4;
-				margin-bottom: 2rem;
-				
-				li {
-					line-height: 1.5;
-					margin: 0;
-					padding: 0 0 0 .75em;
-				}        
-			}
-		}
-	}
 
-  //========================================================================================================
-
-	@media only screen and (min-width: ( @break_fullwidth ) ) {
-		.flexbox {
-			.topicSearchWrapper {
-				width: 50%;
-				float: left;
-				padding-right: 1em;
-				h2 {
-					.visuallyhidden();
-				}
-			}
-			.topicSearchWrapper + .dossier_overzicht_filter_as_list_plus {
-				width: 50%;
-				float: left;
-				clear: right;
-				padding-left: 1em;
-			}
-			
-			.page-template-page_showalldossiers {
-				.block {
-					article {
-						flex-basis: @flexbasis_threecols;
-						max-width: @flexbasis_threecols;
-					
-						&:last-of-type {
-							max-width: @flexbasis_threecols;
-						}
-					}
-				}
-				
-				div.dossier_overzicht_filter_as_list {
-					
-					ul.links {
-						column-count: 4;
-					}
-					li {
-						width: 100%;
-						float: none;
-						overflow: hidden;
-						a {
-							display: block;
-						}
-					}
-					
-					li {
-						&:nth-child(odd) {
-							clear: none;
-						}            
-					}
-				}
-			}
-		}
-	}  
-	
-	//========================================================================================================
-	
 	.page-template-page_show-child-pages {
 		.content {
 			section {
@@ -245,7 +49,7 @@
 	
 	//========================================================================================================
 	
-	@media only screen and (min-width: ( @break_tablet ) ) {
+	@media only screen and (min-width: ( @break_650px ) ) {
 		.error404 .site-inner,
 		.page-template-page_sitemap .site-inner {
 
@@ -509,7 +313,7 @@
 	
 	
 
-	@media only screen and (max-width: ( @break_fullwidth ) ) {
+	@media only screen and (max-width: ( @break_1200px ) ) {
 		.page-template-page_fullwidth {
 			.entry-header {
 				width: 100%;
@@ -519,7 +323,7 @@
 		}  
 	}  
 
-	@media only screen and (min-width: ( @break_fullwidth ) ) {
+	@media only screen and (min-width: ( @break_1200px ) ) {
 		
 		.page-template-page_fullwidth {
 			
@@ -693,7 +497,7 @@
 //			article,
 			.wrap {
 				margin: 0 auto;
-				max-width: @break_fullwidth;
+				max-width: @break_1200px;
 				overflow: visible;
 			}
 			
@@ -740,7 +544,7 @@
 				border-spacing: 10px;
 			}
 
-			@media only screen and ( min-width: @break_tablet ) {
+			@media only screen and ( min-width: @break_650px ) {
 				
 				.driekwart {
 					width: 75%;
@@ -775,7 +579,7 @@
 				
 			}
 
-			@media only screen and ( min-width: @break_fullwidth ) {
+			@media only screen and ( min-width: @break_1200px ) {
 				
 				section.home.topics {
 					padding: 1em;      
@@ -814,7 +618,7 @@
 	//========================================================================================================
 	
 	.no-cssgrid {
-		@media only screen and ( min-width: @break_tablet ) {
+		@media only screen and ( min-width: @break_650px ) {
 			.row.driekwart {
 				.linkblock:nth-child(3n+1) {
 					clear: left;
@@ -862,7 +666,7 @@
 			}
 		}
 		
-		@media only screen and ( max-width: @break_fullwidth ) {
+		@media only screen and ( max-width: @break_1200px ) {
 	
 			display: flex;
 			flex-direction: column;
@@ -900,7 +704,7 @@
 			}
 		}
 		
-		@media only screen and ( min-width: @break_fullwidth ) {
+		@media only screen and ( min-width: @break_1200px ) {
 			overflow: hidden;
 			background-image: url('@{base_url}images/toolbox/toolbox-background.svg');
 			background-repeat: no-repeat;
@@ -978,7 +782,7 @@
 			}
 		}
 				
-		@media only screen and ( max-width: ( @break_fullwidth - 1 ) ) {
+		@media only screen and ( max-width: ( @break_1200px - 1 ) ) {
 
 
 			h2 {
@@ -1017,7 +821,7 @@
 		}
 
 		
-		@media only screen and ( min-width: @break_fullwidth ) {
+		@media only screen and ( min-width: @break_1200px ) {
 
 			height: 750px;
 			background-image: url('@{base_url}images/toolbox/cyberincident/background-violet.svg');
@@ -1099,7 +903,7 @@
 			}
 		}
 
-		@media only screen and ( min-width: @break_fullwidth ) {
+		@media only screen and ( min-width: @break_1200px ) {
 
 			h2 {
 				color: @oranje_vol;
@@ -1155,7 +959,7 @@
 			}
 		}
 
-		@media only screen and ( max-width: ( @break_fullwidth - 1 ) ) {
+		@media only screen and ( max-width: ( @break_1200px - 1 ) ) {
 
 			.toolbox-img {
 				padding-left: 0;				
@@ -1187,7 +991,7 @@
 			}
 		}
 
-		@media only screen and ( min-width: @break_fullwidth ) {
+		@media only screen and ( min-width: @break_1200px ) {
 
 			height: 790px;
 			background-image: url('@{base_url}images/toolbox/datagedreven-werken/bg-blue.svg?asdasd');

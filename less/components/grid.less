@@ -1,0 +1,119 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - grid.less
+// * ----------------------------------------------------------------------------------
+// * styling voor een container met blokken
+// * ----------------------------------------------------------------------------------
+//
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  &.stretch {
+    align-items: stretch;
+  }
+
+  & + .more {
+    // geen bovenmarge voor een readmore-link na een grid
+    margin-top: 0;
+  }
+
+  @media only screen and (max-width: @break_500px) {
+    flex-direction: column;
+  }
+
+  @media only screen and (min-width: @break_500px) {
+
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+
+    .griditem {
+      margin: .5rem .5rem .5rem .5rem;
+
+      &.colspan-1 {
+        flex: 0 1 calc(50% - 1rem);
+      }
+    }
+  }
+
+  @media only screen and (min-width: @break_500px) and (max-width: @break_900px) {
+
+    &.itemcount-3 {
+
+      .griditem {
+        &.colspan-1 {
+          flex-basis: 100%;
+        }
+
+        &.griditem--post:not(.griditem--textoverimage) {
+          // zie ook de extra styling in grid-item.less
+          .mixin_rowdesign();
+
+          .imgcontainer {
+            padding: 0;
+            margin-bottom: 0;
+            background: none;
+            img {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  @media only screen and (min-width: ( @break_650px ) ) {
+    margin-left: -1rem;
+    margin-right: -1rem;
+
+    .griditem {
+      margin: 1rem 1rem 1rem 1rem;
+
+      &.colspan-1 {
+        flex-basis: calc(50% - 2rem);
+      }
+    }
+  }
+
+  @media only screen and (min-width: ( @break_900px ) ) {
+    .griditem {
+
+      &.colspan-1 {
+        flex: 0 1 calc(33.3% - 2rem);
+      }
+
+      &.colspan-2 {
+        flex: 1 1 calc(66.6% - 2rem);
+      }
+
+      &.colspan-3 {
+        flex: 1 1 calc(100% - 2rem);
+      }
+    }
+
+    &.columns-2 {
+
+      // TODO styling voor contentblock onderaan een bericht
+      .griditem {
+
+        &.colspan-1 {
+          flex-basis: calc(50% - 2rem);
+        }
+      }
+    }
+
+    &.itemcount-3 {
+
+      .griditem {
+        &.colspan-1 {
+          flex: 0 1 calc(33.3% - 2rem);
+        }
+      }
+    }
+  }
+
+}
+
