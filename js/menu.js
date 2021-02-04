@@ -190,11 +190,11 @@ function showmenu_button(document, window, undefined) {
 function WidthChange(mq) {
 
     if (mq.matches) {
-        // window width is at least 760px
+        // window width is at least 865px
         // don't show menu button
         hidemenu_button(document, window);
     } else {
-        // window width is less than 760px
+        // window width is less than 865px
         // DO show menu button
         showmenu_button(document, window);
     }
@@ -203,7 +203,9 @@ function WidthChange(mq) {
 
 // =========================================================================================================
 
-var mq = window.matchMedia('(min-width: 760px)');
+// 865px wordt ook gebruikt als waarde voor @menubreakpoint_865px in 02-mixins.less;
+// verander je het hier, dan moet je het daar ook veranderen.
+var mq = window.matchMedia('(min-width: 865px)');
 
 // media query event handler
 //if (matchMedia) {

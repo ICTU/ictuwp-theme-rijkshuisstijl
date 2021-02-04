@@ -374,7 +374,7 @@ function rhswp_home_onderwerpen_dossiers() {
 						if ( $uitgelicht_titel ) {
 							// een soort fallback: als er geen uitgelichte content is, dan tonen we de samenvatting van de etalage
 
-							echo '<div class="hide-on-larger-than-mobile" aria-hidden="true">';
+							echo '<div class="hide-on-larger-than-mobile has-border" aria-hidden="true">';
 							echo '<h2' . $uitgelicht_titel_class . '><a href="' . $uitgelicht_url2 . '">' . $uitgelicht_titel . '</a></h2>';
 							if ( $uitgelicht_image ) {
 								echo '<a href="' . $uitgelicht_url2 . '" tabindex="-1" class="featured-image-link">';
