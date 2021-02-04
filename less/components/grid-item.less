@@ -17,6 +17,7 @@
 
 .griditem {
 
+
   h1, h2, h3 {
     margin: 0 0 .25rem 0;
   }
@@ -54,9 +55,8 @@
 
   @media only screen and (max-width: ( @break_500px - 1 ) ) {
     &.griditem--post {
-
+      // alle items krijgen 
       .mixin_rowdesign();
-
     }
 
     &.colspan-2.griditem--textoverimage,
@@ -354,31 +354,6 @@
 
 }
 
-//========================================================================================================
-
-// TODO: weghalen tekstlengte
-.tekstlengte {
-  float: right;
-  border: 1px solid black;
-  border-radius: 50%;
-  display: block;
-  line-height: 1;
-  font-size: 1rem;
-  font-family: 'comic sans ms', cursive;
-  font-weight: bold;
-  color: black !important;
-  background: yellow;
-
-  span {
-    padding: .5rem;
-    display: block;
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-    border: 1px solid yellow;
-    color: black !important;
-  }
-}
 
 .griditem--textoverimage,
 .griditem--post {
@@ -398,5 +373,4 @@
       opacity: 1;
     }
   }
-
 }

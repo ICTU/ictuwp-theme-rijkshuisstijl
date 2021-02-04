@@ -351,11 +351,11 @@ function rhswp_home_onderwerpen_dossiers() {
 
 							if ( $row['home_row_type'] === 'posts_featured' ) {
 								$args2['type']      = 'posts_featured';
-								$args2['itemclass'] = 'griditem griditem--post colspan-1 griditem--post colspan-1 griditem--post colspan-1';
+								$args2['itemclass'] = 'griditem griditem--post colspan-1 griditem--post griditem--post colspan-1 itemcounter-' . $itemcounter;
 
 							} else {
-								$args2['itemclass'] = 'griditem griditem--post colspan-1';
 								$args2['type']      = 'posts_normal';
+								$args2['itemclass'] = 'griditem griditem--post colspan-1 itemcounter-' . $itemcounter;
 							}
 
 							echo rhswp_get_grid_item( $args2 );
