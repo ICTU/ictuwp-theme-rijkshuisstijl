@@ -60,7 +60,7 @@ function rhswp_show_dossiers_sort_markering() {
 	$permalink = get_the_permalink();
 	$separator = ' <span class="separator">&nbsp;</span> ';
 	$alfabet   = _x( 'Sorted alphabetically', 'sortering onderwerppagina', 'wp-rijkshuisstijl' );
-	$group     = _x( 'Group by topic', 'sortering onderwerppagina', 'wp-rijkshuisstijl' );
+	$group     = _x( 'Grouped by topic', 'sortering onderwerppagina', 'wp-rijkshuisstijl' );
 	$markering = '<p class="dossier-sortering">';
 
 	if ( 'group' === $sortering ) {
