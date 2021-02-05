@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
-"POT-Creation-Date: 2021-02-05 13:32+0100\n"
-"PO-Revision-Date: 2021-02-05 13:32+0100\n"
+"POT-Creation-Date: 2021-02-05 13:43+0100\n"
+"PO-Revision-Date: 2021-02-05 13:43+0100\n"
 "Last-Translator: Paul van Buuren <poedit@wbvb.nl>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1588,22 +1588,22 @@ msgstr ""
 
 #: page_showalldossiers-nieuwestyling.php:62
 msgctxt "sortering onderwerppagina"
-msgid "Gesorteerd op alfabet"
+msgid "Sorted alphabetically"
 msgstr ""
 
 #: page_showalldossiers-nieuwestyling.php:63
 msgctxt "sortering onderwerppagina"
-msgid "Gegroepeerd op thema"
+msgid "Group by topic"
 msgstr ""
 
 #: page_showalldossiers-nieuwestyling.php:67
-msgctxt "sortering onderwerppagina"
-msgid "Sorteer alfabetisch"
+msgctxt "sortering onderwerppagina link"
+msgid "Sort alphabetically"
 msgstr ""
 
 #: page_showalldossiers-nieuwestyling.php:69
-msgctxt "sortering onderwerppagina"
-msgid "Groepeer per thema"
+msgctxt "sortering onderwerppagina link"
+msgid "Group by topic"
 msgstr ""
 
 #: search.php:50 search.php:60 searchform.php:18

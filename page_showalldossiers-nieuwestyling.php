@@ -59,14 +59,14 @@ function rhswp_show_dossiers_sort_markering() {
 	$sortering = get_query_var( 'sortdossier' );
 	$permalink = get_the_permalink();
 	$separator = ' <span class="separator">&nbsp;</span> ';
-	$alfabet   = _x( 'Gesorteerd op alfabet', 'sortering onderwerppagina', 'wp-rijkshuisstijl' );
-	$group     = _x( 'Gegroepeerd op thema', 'sortering onderwerppagina', 'wp-rijkshuisstijl' );
+	$alfabet   = _x( 'Sorted alphabetically', 'sortering onderwerppagina', 'wp-rijkshuisstijl' );
+	$group     = _x( 'Group by topic', 'sortering onderwerppagina', 'wp-rijkshuisstijl' );
 	$markering = '<p class="dossier-sortering">';
 
 	if ( 'group' === $sortering ) {
-		$markering .= $group . $separator . ' <a href="' . $permalink . '?sortdossier=alfabet">' . _x( 'Sorteer alfabetisch', 'sortering onderwerppagina', 'wp-rijkshuisstijl' ) . '</a>';
+		$markering .= $group . $separator . ' <a href="' . $permalink . '?sortdossier=alfabet">' . _x( 'Sort alphabetically', 'sortering onderwerppagina link', 'wp-rijkshuisstijl' ) . '</a>';
 	} else {
-		$markering .= $alfabet . $separator . ' <a href="' . $permalink . '?sortdossier=group">' . _x( 'Groepeer per thema', 'sortering onderwerppagina', 'wp-rijkshuisstijl' ) . '</a>';
+		$markering .= $alfabet . $separator . ' <a href="' . $permalink . '?sortdossier=group">' . _x( 'Group by topic', 'sortering onderwerppagina link', 'wp-rijkshuisstijl' ) . '</a>';
 	}
 	$markering .= '</p>';
 
