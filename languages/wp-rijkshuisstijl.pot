@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
-"POT-Creation-Date: 2021-02-05 13:43+0100\n"
+"POT-Creation-Date: 2021-02-05 13:46+0100\n"
 "PO-Revision-Date: 2019-04-02 22:40+0200\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: Paul van Buuren <paul@wbvb.nl>\n"
@@ -1579,7 +1579,7 @@ msgstr ""
 
 #: page_showalldossiers-nieuwestyling.php:63
 msgctxt "sortering onderwerppagina"
-msgid "Group by topic"
+msgid "Grouped by topic"
 msgstr ""
 
 #: page_showalldossiers-nieuwestyling.php:67
