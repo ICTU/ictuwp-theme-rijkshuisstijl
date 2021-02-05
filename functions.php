@@ -1319,10 +1319,10 @@ function rhswp_enqueue_js_scripts() {
 			wp_enqueue_script( 'menumenu', RHSWP_THEMEFOLDER . '/js/min/menu-min.js', '', $versie, true );
 			// Localize the script with new data
 			$translation_array = array(
-				'search_open'  => _x( 'Open zoeken', 'Labels menu buttons', 'wp-rijkshuisstijl' ),
-				'search_close' => _x( 'Sluit zoeken', 'Labels menu buttons', 'wp-rijkshuisstijl' ),
+				'search_open'  => _x( 'Show search bar', 'Labels menu buttons', 'wp-rijkshuisstijl' ),
+				'search_close' => _x( 'Close search bar', 'Labels menu buttons', 'wp-rijkshuisstijl' ),
 				'menu_open'    => _x( 'Open menu', 'Labels menu buttons', 'wp-rijkshuisstijl' ),
-				'menu_close'   => _x( 'Sluit menu', 'Labels menu buttons', 'wp-rijkshuisstijl' ),
+				'menu_close'   => _x( 'Close menu', 'Labels menu buttons', 'wp-rijkshuisstijl' ),
 			);
 			wp_localize_script( 'menumenu', 'menumenu', $translation_array );
 		}
@@ -4135,17 +4135,17 @@ function rhswp_append_socialbuttons( $doecho = true ) {
 		$sitetitle     = urlencode( get_bloginfo( 'name' ) );
 		$summary       = urlencode( $post->post_excerpt );
 		$popup         = ' onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"';
-		$cta           = _x( 'Deel dit artikel', 'share buttons CTA', 'wp-rijkshuisstijl' );
+		$cta           = _x( 'Share this post', 'share buttons CTA', 'wp-rijkshuisstijl' );
 		$mailadres     = urlencode( 'geaddresseerd@voorbeeld.nl' );
 		$return        = '';
-		$mailonderwerp = urlencode( sprintf( _x( 'Leestip: %s', 'share buttons mail onderwerp', 'wp-rijkshuisstijl' ), $post->post_title ) );
+		$mailonderwerp = urlencode( sprintf( _x( 'Read this: %s', 'share buttons mail onderwerp', 'wp-rijkshuisstijl' ), $post->post_title ) );
 
 		if ( $thelink ) {
 			$return = '<div class="share-bar"><span class="cta">' . $cta . '</span>';
 			$return .= '<ul>';
-			$return .= '<li><a href="mailto:' . $mailadres . '?subject=' . $mailonderwerp . '&body=' . $thetitle . ' - ' . $thelink . '" target="_blank"><span class="social-media-icon social-media--mail">&nbsp;</span><span class="visuallyhidden">' . _x( "Deel via mail", 'share buttons mail', 'wp-rijkshuisstijl' ) . '</span></a></li>';
-			$return .= '<li><a href="https://twitter.com/share?url=' . $thelink . '&via=digioverheid&text=' . $thetitle . '" data-url="' . $thelink . '" data-text="' . $thetitle . '" data-via="@digioverheid"' . $popup . '><span class="social-media-icon social-media--twitter">&nbsp;</span><span class="visuallyhidden">' . _x( "Deel via Twitter", 'share buttons Twitter', 'wp-rijkshuisstijl' ) . '</span></a></li>';
-			$return .= '<li><a href="http://www.linkedin.com/shareArticle?mini=true&url=' . $thelink . '&title=' . $thetitle . '&summary=' . $summary . '&source=' . $sitetitle . '"' . $popup . '><span class="social-media-icon social-media--linkedin">&nbsp;</span><span class="visuallyhidden">' . _x( "Deel via LinkedIn", 'share buttons LinkedIn', 'wp-rijkshuisstijl' ) . '</span></a></li>';
+			$return .= '<li><a href="mailto:' . $mailadres . '?subject=' . $mailonderwerp . '&body=' . $thetitle . ' - ' . $thelink . '" target="_blank"><span class="social-media-icon social-media--mail">&nbsp;</span><span class="visuallyhidden">' . _x( "Share via email", 'share buttons mail', 'wp-rijkshuisstijl' ) . '</span></a></li>';
+			$return .= '<li><a href="https://twitter.com/share?url=' . $thelink . '&via=digioverheid&text=' . $thetitle . '" data-url="' . $thelink . '" data-text="' . $thetitle . '" data-via="@digioverheid"' . $popup . '><span class="social-media-icon social-media--twitter">&nbsp;</span><span class="visuallyhidden">' . _x( "Share on Twitter", 'share buttons Twitter', 'wp-rijkshuisstijl' ) . '</span></a></li>';
+			$return .= '<li><a href="http://www.linkedin.com/shareArticle?mini=true&url=' . $thelink . '&title=' . $thetitle . '&summary=' . $summary . '&source=' . $sitetitle . '"' . $popup . '><span class="social-media-icon social-media--linkedin">&nbsp;</span><span class="visuallyhidden">' . _x( "Share on LinkedIn", 'share buttons LinkedIn', 'wp-rijkshuisstijl' ) . '</span></a></li>';
 			$return .= '</ul>';
 			$return .= '</div>';
 		}
