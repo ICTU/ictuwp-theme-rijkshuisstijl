@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
-"POT-Creation-Date: 2021-02-05 13:01+0100\n"
+"POT-Creation-Date: 2021-02-05 13:43+0100\n"
 "PO-Revision-Date: 2019-04-02 22:40+0200\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: Paul van Buuren <paul@wbvb.nl>\n"
@@ -216,12 +216,12 @@ msgstr ""
 
 #: functions.php:1322
 msgctxt "Labels menu buttons"
-msgid "Open zoeken"
+msgid "Show search bar"
 msgstr ""
 
 #: functions.php:1323
 msgctxt "Labels menu buttons"
-msgid "Sluit zoeken"
+msgid "Close search bar"
 msgstr ""
 
 #: functions.php:1324
@@ -231,7 +231,7 @@ msgstr ""
 
 #: functions.php:1325
 msgctxt "Labels menu buttons"
-msgid "Sluit menu"
+msgid "Close menu"
 msgstr ""
 
 #: functions.php:1329
@@ -731,28 +731,28 @@ msgstr ""
 
 #: functions.php:4138
 msgctxt "share buttons CTA"
-msgid "Deel dit artikel"
+msgid "Share this post"
 msgstr ""
 
 #: functions.php:4141
 #, php-format
 msgctxt "share buttons mail onderwerp"
-msgid "Leestip: %s"
+msgid "Read this: %s"
 msgstr ""
 
 #: functions.php:4146
 msgctxt "share buttons mail"
-msgid "Deel via mail"
+msgid "Share via email"
 msgstr ""
 
 #: functions.php:4147
 msgctxt "share buttons Twitter"
-msgid "Deel via Twitter"
+msgid "Share on Twitter"
 msgstr ""
 
 #: functions.php:4148
 msgctxt "share buttons LinkedIn"
-msgid "Deel via LinkedIn"
+msgid "Share on LinkedIn"
 msgstr ""
 
 #: ignore/mailtemplates/digi-overheid-events/block.php:22
@@ -933,7 +933,7 @@ msgstr ""
 msgid "Beschrijving"
 msgstr ""
 
-#: includes/aux-archives-functions.php:231 page_front-page-nieuws.php:316
+#: includes/aux-archives-functions.php:231
 #, php-format
 msgctxt "readmore home"
 msgid "Alle berichten onder %s"
@@ -1542,7 +1542,13 @@ msgstr ""
 
 #: page_front-page-nieuws.php:220
 msgctxt "readmore home"
-msgid "Alle evenementen"
+msgid "All events"
+msgstr ""
+
+#: page_front-page-nieuws.php:316
+#, php-format
+msgctxt "readmore home"
+msgid "All posts for %s"
 msgstr ""
 
 #: page_front-page.php:71 page_showalldossiers-nieuwestyling.php:145
@@ -1568,22 +1574,22 @@ msgstr ""
 
 #: page_showalldossiers-nieuwestyling.php:62
 msgctxt "sortering onderwerppagina"
-msgid "Gesorteerd op alfabet"
+msgid "Sorted alphabetically"
 msgstr ""
 
 #: page_showalldossiers-nieuwestyling.php:63
 msgctxt "sortering onderwerppagina"
-msgid "Gegroepeerd op thema"
+msgid "Group by topic"
 msgstr ""
 
 #: page_showalldossiers-nieuwestyling.php:67
-msgctxt "sortering onderwerppagina"
-msgid "Sorteer alfabetisch"
+msgctxt "sortering onderwerppagina link"
+msgid "Sort alphabetically"
 msgstr ""
 
 #: page_showalldossiers-nieuwestyling.php:69
-msgctxt "sortering onderwerppagina"
-msgid "Groepeer per thema"
+msgctxt "sortering onderwerppagina link"
+msgid "Group by topic"
 msgstr ""
 
 #: search.php:50 search.php:60 searchform.php:18
