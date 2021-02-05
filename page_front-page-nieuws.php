@@ -217,7 +217,7 @@ function rhswp_home_onderwerpen_dossiers() {
 						if ( $row['home_row_readmore'] ) {
 							$more_text = $row['home_row_readmore'];
 						} else {
-							$more_text = _x( "Alle evenementen", 'readmore home', 'wp-rijkshuisstijl' );
+							$more_text = _x( "All events", 'readmore home', 'wp-rijkshuisstijl' );
 						}
 						$events_link = em_get_link( $more_text );
 
@@ -313,7 +313,7 @@ function rhswp_home_onderwerpen_dossiers() {
 						);
 
 						$cat_name  = get_cat_name( $slugs );
-						$more_text = _x( "Alle berichten onder %s", 'readmore home', 'wp-rijkshuisstijl' );
+						$more_text = _x( "All posts for %s", 'readmore home', 'wp-rijkshuisstijl' );
 						$more_url  = get_category_link( $slugs );
 						if ( $row['home_row_readmore'] ) {
 							$more_text = $row['home_row_readmore'];
