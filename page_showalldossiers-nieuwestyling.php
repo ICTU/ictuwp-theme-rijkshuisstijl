@@ -81,17 +81,17 @@ function rhswp_show_dossiers_by_alphabet() {
 	$taxonomy_name     = RHSWP_CT_DOSSIER;
 	$args              = array(
 		'taxonomy'           => RHSWP_CT_DOSSIER,
-		'hide_empty'         => false,
-		'orderby'            => 'name',
-		'order'              => 'ASC',
-		'ignore_custom_sort' => true,
+//		'parent'             => 0,
 		'echo'               => 0,
 		'hierarchical'       => false,
-		'title_li'           => ''
+		'title_li'           => '',
 	);
 	$hiddenonderwerpen = get_field( 'dossier_overzicht_hide_dossiers', $post->ID );
 	if ( $hiddenonderwerpen ) {
 		$args['exclude'] = $hiddenonderwerpen;
+
+		dovardump2($hiddenonderwerpen);
+
 	}
 
 	$terms = get_terms( RHSWP_CT_DOSSIER, $args );
@@ -99,7 +99,7 @@ function rhswp_show_dossiers_by_alphabet() {
 	if ( $terms && ! is_wp_error( $terms ) ) {
 
 		$letter = '';
-		$tag = '';
+		$tag    = '';
 
 		echo '<div class="dossier-metainfo">';
 		echo rhswp_show_dossiers_sort_markering();
@@ -115,7 +115,7 @@ function rhswp_show_dossiers_by_alphabet() {
 		echo '</div>'; // .dossier-metainfo
 
 		$letter = '';
-		$tag = '';
+		$tag    = '';
 
 		echo '<div class="dossier-list column-layout">';
 		foreach ( $terms as $term ) {
@@ -124,7 +124,7 @@ function rhswp_show_dossiers_by_alphabet() {
 				echo $tag . '<h2 id="list_' . strtolower( $huidigeletter ) . '">' . strtoupper( $huidigeletter ) . '</h2>';
 				echo '<ul>';
 				$letter = $huidigeletter;
-				$tag = "</ul>\n\n\n";
+				$tag    = "</ul>\n\n\n";
 			}
 			echo '<li class="cat-item cat-item-' . $term->term_id . '">';
 			echo '<a href="' . get_term_link( $term, $taxonomy_name ) . '">';

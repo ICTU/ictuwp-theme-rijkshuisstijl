@@ -4,10 +4,10 @@
     "fields": [
         {
             "key": "field_5ba1eaafcc2c0",
-            "label": "Welke dossiers wil je NIET tonen?",
+            "label": "Vink ALLE dossiers aan die je niet wil tonen in de lijst",
             "name": "dossier_overzicht_hide_dossiers",
             "type": "taxonomy",
-            "instructions": "",
+            "instructions": "Hier moet je ALLE dossiers die je niet wil tonen aanvinken. Alleen het aanvinken van een thema werkt <em>niet</em> om de onderliggende dossiers te verbergen.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
