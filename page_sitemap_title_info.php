@@ -44,25 +44,25 @@ function paginatitels() {
 	echo '<h2 id="top">Toon:</h2>';
 	echo '<ul>';
 	if ( 'page' === $sitemap_type ) {
-		echo '<li>Pagina\'s</li>';
+		echo '<li><span style="background: black; color: white;padding: .25rem;">Pagina\'s</span></li>';
 	} else {
 		echo '<li><a href="' . $permalink . '?sitemap_type=page"> Pagina\'s </a></li>';
 	}
 
 	if ( 'post' === $sitemap_type ) {
-		echo '<li>Berichten</li>';
+		echo '<li><span style="background: black; color: white;padding: .25rem;">Berichten</span></li>';
 	} else {
 		echo '<li><a href="' . $permalink . '?sitemap_type=post"> Berichten </a></li>';
 	}
 
 	if ( 'dossier' === $sitemap_type ) {
-		echo '<li>Dossiers</li>';
+		echo '<li><span style="background: black; color: white;padding: .25rem;">Dossiers</span></li>';
 	} else {
 		echo '<li><a href="' . $permalink . '?sitemap_type=dossier"> Dossiers </a></li>';
 	}
 
 	if ( 'document' === $sitemap_type ) {
-		echo '<li>Documenten</li>';
+		echo '<li><span style="background: black; color: white;padding: .25rem;">Documenten</span></li>';
 	} else {
 		echo '<li><a href="' . $permalink . '?sitemap_type=document"> Documenten </a></li>';
 	}
@@ -191,7 +191,7 @@ function paginatitels() {
 						if ( $limit ) {
 							echo ' - $limit (events): ' . $limit;
 						}
-						echo '</li>';
+						echo '</span></li>';
 
 					}
 					echo '</ul>';
@@ -247,22 +247,22 @@ function paginatitels() {
 				$result       = '';
 
 				if ( preg_match( '/<img.*>/', $post_content ) ) {
-					$result .= '<li>Bevat plaatje &lt;img&gt; </pre></li>';
+					$result .= '<li>Bevat plaatje &lt;img&gt; </pre></span></li>';
 				}
 				if ( preg_match( '/style="width:/', $post_content ) ) {
-					$result .= '<li>Bevat &lt;style="width:&gt; </pre></li>';
+					$result .= '<li>Bevat &lt;style="width:&gt; </pre></span></li>';
 				}
 				if ( preg_match( '/<blockquote.*>/', $post_content ) ) {
-					$result .= '<li>Bevat citaat (&lt;blockquote&gt;) </pre></li>';
+					$result .= '<li>Bevat citaat (&lt;blockquote&gt;) </pre></span></li>';
 				}
 				if ( preg_match( '/class="borderframe.*>/', $post_content ) ) {
-					$result .= '<li>Bevat kader (class="borderframe") </pre></li>';
+					$result .= '<li>Bevat kader (class="borderframe") </pre></span></li>';
 				}
 				if ( preg_match( '/<details.*>/', $post_content ) ) {
-					$result .= '<li>Bevat uitklapblok (&lt;details&gt;) </pre></li>';
+					$result .= '<li>Bevat uitklapblok (&lt;details&gt;) </pre></span></li>';
 				}
 				if ( preg_match( '/<tabel.*>/', $post_content ) ) {
-					$result .= '<li>Bevat tabel (&lt;tabel&gt;) </pre></li>';
+					$result .= '<li>Bevat tabel (&lt;tabel&gt;) </pre></span></li>';
 				}
 
 				if ( $result ) {
@@ -340,7 +340,7 @@ function paginatitels() {
 				if ( $terms ) {
 					echo '<ul>';
 					foreach ( $terms as $category ) {
-						echo '<li>' . $category->name . '</li>';
+						echo '<li>' . $category->name . '</span></li>';
 					}
 					echo '</ul>';
 				}
@@ -477,7 +477,7 @@ function paginatitels() {
 						if ( $limit ) {
 							echo ' - $limit (events): ' . $limit;
 						}
-						echo '</li>';
+						echo '</span></li>';
 
 					}
 					echo '</ul>';
@@ -533,22 +533,22 @@ function paginatitels() {
 				$result       = '';
 
 				if ( preg_match( '/<img.*>/', $post_content ) ) {
-					$result .= '<li>Bevat plaatje &lt;img&gt; </pre></li>';
+					$result .= '<li>Bevat plaatje &lt;img&gt; </pre></span></li>';
 				}
 				if ( preg_match( '/style="width:/', $post_content ) ) {
-					$result .= '<li>Bevat &lt;style="width:&gt; </pre></li>';
+					$result .= '<li>Bevat &lt;style="width:&gt; </pre></span></li>';
 				}
 				if ( preg_match( '/<blockquote.*>/', $post_content ) ) {
-					$result .= '<li>Bevat citaat (&lt;blockquote&gt;) </pre></li>';
+					$result .= '<li>Bevat citaat (&lt;blockquote&gt;) </pre></span></li>';
 				}
 				if ( preg_match( '/class="borderframe.*>/', $post_content ) ) {
-					$result .= '<li>Bevat kader (class="borderframe") </pre></li>';
+					$result .= '<li>Bevat kader (class="borderframe") </pre></span></li>';
 				}
 				if ( preg_match( '/<details.*>/', $post_content ) ) {
-					$result .= '<li>Bevat uitklapblok (&lt;details&gt;) </pre></li>';
+					$result .= '<li>Bevat uitklapblok (&lt;details&gt;) </pre></span></li>';
 				}
 				if ( preg_match( '/<tabel.*>/', $post_content ) ) {
-					$result .= '<li>Bevat tabel (&lt;tabel&gt;) </pre></li>';
+					$result .= '<li>Bevat tabel (&lt;tabel&gt;) </pre></span></li>';
 				}
 
 				if ( $result ) {
@@ -626,7 +626,7 @@ function paginatitels() {
 				if ( $terms ) {
 					echo '<ul>';
 					foreach ( $terms as $category ) {
-						echo '<li>' . $category->name . '</li>';
+						echo '<li>' . $category->name . '</span></li>';
 					}
 					echo '</ul>';
 				}
@@ -740,7 +740,7 @@ function paginatitels() {
 						if ( $limit ) {
 							echo ' - $limit (events): ' . $limit;
 						}
-						echo '</li>';
+						echo '</span></li>';
 
 					}
 					echo '</ul>';
@@ -852,7 +852,7 @@ function paginatitels() {
 				if ( $terms ) {
 					echo '<ul>';
 					foreach ( $terms as $category ) {
-						echo '<li>' . $category->name . '</li>';
+						echo '<li>' . $category->name . '</span></li>';
 					}
 					echo '</ul>';
 				}
@@ -928,7 +928,7 @@ function paginatitels() {
 						if ( $limit ) {
 							echo ' - $limit (events): ' . $limit;
 						}
-						echo '</li>';
+						echo '</span></li>';
 
 					}
 					echo '</ul>';
