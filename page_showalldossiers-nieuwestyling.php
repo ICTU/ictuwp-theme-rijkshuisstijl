@@ -89,9 +89,6 @@ function rhswp_show_dossiers_by_alphabet() {
 	$hiddenonderwerpen = get_field( 'dossier_overzicht_hide_dossiers', $post->ID );
 	if ( $hiddenonderwerpen ) {
 		$args['exclude'] = $hiddenonderwerpen;
-
-		dovardump2($hiddenonderwerpen);
-
 	}
 
 	$terms = get_terms( RHSWP_CT_DOSSIER, $args );
