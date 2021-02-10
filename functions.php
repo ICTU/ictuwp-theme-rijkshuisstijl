@@ -4157,5 +4157,14 @@ function rhswp_append_socialbuttons( $doecho = true ) {
 
 }
 
+//========================================================================================================
+
+function rhswp_append_query_vars( $query_vars ) {
+	$query_vars[] = 'sitemap_type';
+	return $query_vars;
+}
+
+add_filter( 'query_vars', 'rhswp_append_query_vars' );
 
 //========================================================================================================
+
