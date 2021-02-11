@@ -4167,4 +4167,24 @@ function rhswp_append_query_vars( $query_vars ) {
 add_filter( 'query_vars', 'rhswp_append_query_vars' );
 
 //========================================================================================================
+/*
+ * Deze shortcde voegt een hidden field toe als er iets van een verwijzende pagina bekend is bij de server
+ * Dit is de shortcode:
+ * [nieuwsbriefreferrer]
+ * Meer niet.
+ * Deze shortcode wordt gebruikt in het aanmeldformulier voor de nieuwsbrief
+ */
+
+function rhswp_nieuwsbrief_get_referrer( $atts ) {
+
+	if ( $_SERVER['HTTP_REFERER'] ) {
+		return '<'.'!-'.'- HTTP_REFERER --'.'>' . '<input type="hidden" name="nr" value="' . $_SERVER['HTTP_REFERER'] . '">';
+    }
+
+	return '';
+}
+
+add_shortcode( 'nieuwsbriefreferrer', 'rhswp_nieuwsbrief_get_referrer' );
+
+//========================================================================================================
 
