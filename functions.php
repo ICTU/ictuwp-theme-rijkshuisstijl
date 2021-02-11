@@ -4178,7 +4178,7 @@ add_filter( 'query_vars', 'rhswp_append_query_vars' );
 function rhswp_nieuwsbrief_get_referrer( $atts ) {
 
 	if ( $_SERVER['HTTP_REFERER'] ) {
-		return '<'.'!-'.'- HTTP_REFERER --'.'>' . '<input type="hidden" name="nr" value="' . $_SERVER['HTTP_REFERER'] . '">';
+		return '<'.'!-'.'- HTTP_REFERER --'.'>' . '<input type="hidden" name="nr" value="' . esc_url_raw( $_SERVER['HTTP_REFERER'] ) . '">';
     }
 
 	return '';
