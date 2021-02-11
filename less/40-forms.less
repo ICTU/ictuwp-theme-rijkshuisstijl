@@ -52,10 +52,7 @@
   input[type="date"],
   select,
   textarea {
-    border-top: 1px solid @wit;
-    border-right: 1px solid @wit;
-    border-left: 1px solid @wit;
-    border-bottom: 2px solid @communicatiekleur_vol;
+    border: 2px solid @grijs_4;
   }
 
   input:focus,
@@ -399,9 +396,11 @@
     }
   }
 
-
   // components
   @import "components/search-form.less";
 
+  // zie het formulier op:
+  // https://www.digitaleoverheid.nl/nieuwsbrief/
+  @import "components/mailinglijst-form.less";
 
 }
