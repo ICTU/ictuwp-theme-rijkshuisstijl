@@ -1978,7 +1978,6 @@ img {
   .post-type-archive-document .block article:before,
   .document-overview .block article:before,
   .search-results .block article:before {
-    speak: never;
     color: #01689b;
     display: inline-block;
     width: 1.5em;
@@ -2326,18 +2325,6 @@ Content Area
 .entry-meta {
   font-size: 80%;
   color: #535353;
-  /*
-      .entry-categories {
-        &:after {
-          content: '|';
-          display: inline-block;
-          margin-left: .5em;
-          margin-right: .3em;
-          speak: never;
-        }
-      }
-
-     */
 }
 .entry-meta a {
   text-decoration: none;
@@ -2488,12 +2475,10 @@ Content Area
 .em-pagination .pagination-previous a:before,
 .archive-pagination .pagination-previous a:before {
   content: '< ';
-  speak: never;
 }
 .em-pagination .pagination-next a:after,
 .archive-pagination .pagination-next a:after {
   content: ' >';
-  speak: never;
 }
 .single .archive-pagination {
   margin: 0 16px;
@@ -5690,7 +5675,6 @@ main .no-results-widget.widget_search {
   line-height: 1;
   font-size: 1.25rem;
   border-radius: 50%;
-  speak: never;
 }
 #rhswp-searchform-onderwerpen #resetbutton:hover,
 #rhswp-searchform-onderwerpen #resetbutton:active,
@@ -6529,7 +6513,6 @@ aside.sidebar .widget.banner .widgettitle {
 .home-widget-area.widget_custom_html li:before,
 .home-widget-area.widget_rhswp_navigationmenu_widget li:before,
 .home-widget-area.widget_nav_menu li:before {
-  speak: never;
   color: #01689b;
   display: inline-block;
   width: 1.5em;
@@ -6765,7 +6748,6 @@ Media Queries
 .sidebar .context-info ul a:before,
 .sidebar .widget_rhswp_navigationmenu_widget a:before,
 .sidebar .widget_nav_menu a:before {
-  speak: never;
   color: #01689b;
   display: inline-block;
   width: 1.5em;
@@ -7135,7 +7117,6 @@ noscript {
 .all-events-link:before,
 .read-more:before,
 .more:before {
-  speak: never;
   color: #01689b;
   display: inline-block;
   width: 1.5em;
@@ -7674,7 +7655,6 @@ noscript {
 }
 .dojs .slider .slidenav button:after {
   content: ' ';
-  speak: never;
 }
 .dojs .slider .slidenav button[data-start] {
   background-image: url('images/button-play.png');
@@ -7947,7 +7927,6 @@ noscript {
 }
 .hero-image .hero-image-tekst ol li:before,
 .hero-image .hero-image-tekst ul li:before {
-  speak: never;
   color: #000;
   display: inline-block;
   width: 1.5em;
@@ -8087,7 +8066,6 @@ footer {
   position: relative;
 }
 .dossier-overview nav li:before {
-  speak: never;
   color: #000;
   display: inline-block;
   width: 1.5em;
@@ -8205,7 +8183,6 @@ footer {
   display: inline-block;
   margin-left: 0.5em;
   margin-right: 0.3em;
-  speak: never;
 }
 .page-template-page_search article,
 .search article {
@@ -9871,7 +9848,6 @@ a.external:after {
   content: ' ';
   display: inline-block;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%20width%3D%2226%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22m-5-4.854913h36v36h-36z%22%2F%3E%3Cpath%20d%3D%22m25.231725%202.878425c-.1927687-1.15959375-1.0749938-2.04181875-2.23515-2.23515-3.3530062-.55895625-8.9417812-.55895625-10.059075-.55895625-1.1172937%200-6.70606875%200-10.059075.55895625-1.16015625.19333125-2.04238125%201.07555625-2.23515%202.23515-.558675%203.35300625-.558675%208.9415-.558675%2010.059075s0%206.7060688.558675%2010.059075c.19276875%201.1595938%201.07499375%202.0418188%202.23515%202.23515%203.35300625.5589563%208.9417813.5589563%2010.059075.5589563%201.1172938%200%206.7060688%200%2010.059075-.5589563%201.1601562-.1933312%202.0423813-1.0755562%202.23515-2.23515.5586187-3.3530062.5586187-8.9415.5586187-10.059075%200-3.35469375%200-6.70606875-.5586187-10.059075zm-3.6358875%202.99019375-1.1953125%2010.15987505c-.0802125.6809062-.6311812%201.2096-1.3150687%201.260675-.0362813.0027562-.0719438.0041625-.108225.0041625-.6399563%200-1.2090375-.4279501-1.3804313-1.0541813l-.6522187-2.3841s1.4509125-2.961%201.5696-3.2027062c.1088437-.2216813-.0416813-.2612813-.0421876-.2613938l-7.1060625%207.1058938c-.8119124.8121375-1.7556187.3526312-2.54722495-.4397625-.79318125-.7923938-1.25240625-1.7366626-.44055-2.5485188l5.16223125-5.1622875-3.90481875-1.06835625c-.6613875-.18073125-1.101375-.80499375-1.0503-1.488375.0516375-.68360625.58005-1.2351375%201.260675-1.31506875l10.16015625-1.1953125c.436725-.0516375.8706938.09973125%201.1799563.4095.3103312.309825.4608562.7446375.4097812%201.17995625z%22%20fill%3D%22%23000%22%20fill-rule%3D%22nonzero%22%20transform%3D%22translate(.0625%20.207587)%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-  speak: never;
   background-repeat: no-repeat;
   width: 20px;
   height: 20px;
@@ -10809,7 +10785,6 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   font-family: 'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
 }
 .breadcrumb .separator {
-  speak: never;
   display: inline-block;
   margin-left: 5.33333333px;
   margin-right: 5.33333333px;
@@ -12398,7 +12373,6 @@ main .container > h3 {
 }
 @media only screen and (min-width: 500px) {
   .separator {
-    background: #01689b;
     display: inline-block;
     margin: 0 1rem;
     width: 2px;
