@@ -5854,6 +5854,13 @@ nav.nav-secondary ul a {
   font-size: 1rem;
   line-height: 2;
 }
+nav.nav-secondary ul a:visited {
+  color: #01689b;
+}
+nav.nav-secondary ul a:hover,
+nav.nav-secondary ul a:active {
+  color: #A02F1D;
+}
 @media only screen and (max-width: 864px) {
   #buttons-title {
     position: relative;
