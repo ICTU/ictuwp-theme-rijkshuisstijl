@@ -5708,7 +5708,7 @@ main .no-results-widget.widget_search {
 .site-header .wrap .title-area .site-title,
 .site-header .wrap .title-area .site-description {
   background-color: transparent;
-  align-self: first;
+  align-self: flex-start;
   margin: 0;
   font-size: 100%;
   line-height: 1.5;
