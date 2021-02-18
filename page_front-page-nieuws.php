@@ -141,7 +141,7 @@ function rhswp_home_onderwerpen_dossiers() {
 			echo '<div class="griditem colspan-1 hide-on-mobile" id="uitgelicht">';
 			if ( $uitgelicht_image ) {
 				echo '<a href="' . $uitgelicht_url2 . '" tabindex="-1">';
-				echo $uitgelicht_image;
+				echo rhswp_check_alt_attribute( $uitgelicht_image, $uitgelicht_titel );
 				echo '</a>';
 			}
 			echo '<h2' . $uitgelicht_titel_class . '><a href="' . $uitgelicht_url2 . '">' . $uitgelicht_titel . '</a></h2>';
@@ -378,7 +378,7 @@ function rhswp_home_onderwerpen_dossiers() {
 							echo '<h2' . $uitgelicht_titel_class . '><a href="' . $uitgelicht_url2 . '">' . $uitgelicht_titel . '</a></h2>';
 							if ( $uitgelicht_image ) {
 								echo '<a href="' . $uitgelicht_url2 . '" tabindex="-1" class="featured-image-link">';
-								echo $uitgelicht_image;
+								echo rhswp_check_alt_attribute( $uitgelicht_image, $uitgelicht_titel );
 								echo '</a>';
 							}
 
