@@ -7,8 +7,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.24.2
- * @desc.   Reactieformulier verlost van block elements in een <a> en verdere styling.
+ * @version 2.25.1
+ * @desc.   CSS-validatie en div. kleine accessibility correcties.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 //========================================================================================================
@@ -17,7 +17,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 //========================================================================================================
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
-define( 'CHILD_THEME_VERSION', "2.24.2" );
+define( 'CHILD_THEME_VERSION', "2.25.1" );
 
 // TODO
 define( 'WP_DEBUG_FULL_WIDTH', true );
@@ -4035,7 +4035,7 @@ function rhswp_append_site_logo() {
 //========================================================================================================
 add_filter( 'the_content', 'rhswp_filter_strange_characters', 1 );
 /*
- * Reactieformulier verlost van block elements in een <a> en verdere styling.
+ * CSS-validatie en div. kleine accessibility correcties.
  */
 function rhswp_filter_strange_characters( $content ) {
 	// Check if we're inside the main loop in a single Post.
