@@ -75,6 +75,7 @@ function rhswp_get_grid_item( $args = array() ) {
 		$itemtitle .= '<' . $args['headerlevel'] . '>' . $contentblock_titel . '</' . $args['headerlevel'] . '>';
 
 		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . ' "' . $cssid . '>';
+
 		if ( $imgcontainer ) {
 			$return .= '<div class="imgcontainer">';
 			$return .= $imgcontainer;
@@ -98,6 +99,7 @@ function rhswp_get_grid_item( $args = array() ) {
 			// voor blokken die 2 kolommen breed zijn, gebruiken we een 16:9 plaatje
 			$imgcontainer = get_the_post_thumbnail( $args['ID'], IMAGESIZE_5x3 );
 		}
+
 		$cssclasses[] = 'griditem--textoverimage';
 		if ( $args['datefield'] ) {
 			$cssclasses[] = 'datefield';
@@ -137,8 +139,9 @@ function rhswp_get_grid_item( $args = array() ) {
 		}
 		$excerpt .= '</p>';
 
+
 		if ( $imgcontainer && $contentblock_url ) {
-			$imgcontainer = '<a tabindex="-1" href="' . $contentblock_url . '">' . $imgcontainer . '</a>';
+			$imgcontainer = '<a tabindex="-1" aria-hidden="true" href="' . $contentblock_url . '">' . rhswp_check_alt_attribute( $imgcontainer, $contentblock_titel ) . '</a>';
 		}
 		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . ' "' . $cssid . '>';
 		$return .= '<div class="imgcontainer">';
@@ -511,6 +514,33 @@ function rhswp_archive_custom_loop() {
 }
 
 //========================================================================================================
+/*
+functie om te checken dat een image die gebruikt wordt in een linke daadwerkelijk een gevuld alt-attribuut heeft
+zodat de link een linktekst heeft
+*/
+function rhswp_check_alt_attribute( $imagetag, $title ) {
+	global $post;
+	if ( ! $imagetag ) {
+		return;
+	}
+	if ( ! $title ) {
+		return;
+	}
+
+	if ( preg_match( '|alt=""|', $imagetag ) ) {
+		// alt-attribuut is dus leeg
+		// we vullen het met de titel
+		$alt_attr = sprintf( 'alt="Link naar %s"', wp_strip_all_tags( $title ) );
+		$imagetag = preg_replace( '|alt=""|', $alt_attr, $imagetag );
+	}
+
+	return $imagetag;
+
+}
+
+add_shortcode( 'post_laatstgewijzigd', 'rhswp_post_laatstgewijzigd' );
+
+//========================================================================================================
 
 function rhswp_post_laatstgewijzigd( $atts ) {
 	global $post;
@@ -522,4 +552,5 @@ function rhswp_post_laatstgewijzigd( $atts ) {
 }
 
 add_shortcode( 'post_laatstgewijzigd', 'rhswp_post_laatstgewijzigd' );
+
 //========================================================================================================
