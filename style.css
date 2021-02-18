@@ -6500,7 +6500,7 @@ aside.sidebar .widget.banner .widgettitle {
   width: 64px;
   background-image: url('images/rhs-icons/2016-vraag-en-antwoord.svg');
   background-repeat: no-repeat;
-  background-position: 1rem left;
+  background-position: top left;
   background-size: contain;
   -webkit-animation: bzzzzzt 3s infinite;
           animation: bzzzzzt 3s infinite;
