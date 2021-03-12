@@ -112,6 +112,8 @@ function paginatitels() {
 			echo '<th scope="col">Categorie</th>';
 			echo '<th scope="col">Tag</th>';
 			echo '<th scope="col">Dossier</th>';
+			echo '<th scope="col">Toon reactieformulier</th>';
+			echo '<th scope="col">Toon socialmedia-dinges</th>';
 			echo '</tr>';
 
 			while ( $contentblockposts->have_posts() ) : $contentblockposts->the_post();
@@ -346,6 +348,37 @@ function paginatitels() {
 				}
 				echo '&nbsp;</td>';
 
+				//Toon reactieformulier
+				echo '<td>';
+				$toon_reactieformulier = get_field( 'toon_reactieformulier_post', $theid );
+				echo $toon_reactieformulier;
+				if ( RHSWP_YES === $toon_reactieformulier ) {
+					echo ' Toon WEL reactieformulier';
+				} elseif ( RHSWP_NO === $toon_reactieformulier ) {
+					echo ' Toon GEEN reactieformulier';
+				} else {
+					echo ' ANDERS reactieformulier';
+				}
+
+				echo '&nbsp;</td>';
+
+				//Toon socialmedia-dinges
+				$socialmedia_icoontjes = get_field( 'socialmedia_icoontjes', $theid );
+				echo '<td>';
+				echo $socialmedia_icoontjes;
+				if ( $socialmedia_icoontjes ) {
+					if ( RHSWP_YES === $socialmedia_icoontjes ) {
+						echo ' Toon WEL soc.med icoontjes';
+					} elseif ( RHSWP_NO === $socialmedia_icoontjes ) {
+						echo ' Toon GEEN soc.med icoontjes';
+					} else {
+						echo ' ANDERS soc.med icoontjes';
+					}
+				} else {
+					echo '(geen keuze gemaakt)';
+				}
+				echo '&nbsp;</td>';
+
 
 				echo '</tr>';
 			endwhile;
@@ -394,6 +427,8 @@ function paginatitels() {
 			echo '<th scope="col">Categorie</th>';
 			echo '<th scope="col">Tag</th>';
 			echo '<th scope="col">Dossier</th>';
+			echo '<th scope="col">Toon reactieformulier</th>';
+			echo '<th scope="col">Toon socialmedia-dinges</th>';
 			echo '</tr>';
 
 			while ( $contentblockposts->have_posts() ) : $contentblockposts->the_post();
@@ -629,6 +664,36 @@ function paginatitels() {
 						echo '<li>' . $category->name . '</span></li>';
 					}
 					echo '</ul>';
+				}
+				echo '&nbsp;</td>';
+
+				//Toon reactieformulier
+				echo '<td>';
+				$toon_reactieformulier = get_field( 'toon_reactieformulier_post', $theid );
+				echo $toon_reactieformulier;
+				if ( RHSWP_YES === $toon_reactieformulier ) {
+					echo ' Toon WEL reactieformulier';
+				} elseif ( RHSWP_NO === $toon_reactieformulier ) {
+					echo ' Toon GEEN reactieformulier';
+				} else {
+					echo ' ANDERS reactieformulier';
+				}
+				echo '&nbsp;</td>';
+
+				//Toon socialmedia-dinges
+				$socialmedia_icoontjes = get_field( 'socialmedia_icoontjes', $theid );
+				echo '<td>';
+				echo $socialmedia_icoontjes;
+				if ( $socialmedia_icoontjes ) {
+					if ( RHSWP_YES === $socialmedia_icoontjes ) {
+						echo ' Toon WEL soc.med icoontjes';
+					} elseif ( RHSWP_NO === $socialmedia_icoontjes ) {
+						echo ' Toon GEEN soc.med icoontjes';
+					} else {
+						echo ' ANDERS soc.med icoontjes';
+					}
+				} else {
+					echo '(geen keuze gemaakt)';
 				}
 				echo '&nbsp;</td>';
 
