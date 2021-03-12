@@ -538,8 +538,6 @@ function rhswp_check_alt_attribute( $imagetag, $title ) {
 
 }
 
-add_shortcode( 'post_laatstgewijzigd', 'rhswp_post_laatstgewijzigd' );
-
 //========================================================================================================
 
 function rhswp_post_laatstgewijzigd( $atts ) {

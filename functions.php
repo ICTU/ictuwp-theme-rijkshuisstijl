@@ -3423,6 +3423,9 @@ function rhswp_add_detailssummary_funcs() {
 }
 
 //========================================================================================================
+/*
+ * Deze shortcde zorgt voor een uitklapblok via <details>
+ */
 function rhswp_html_for_shortcode_details_summary( $atts, $content = null ) {
 	global $post;
 	$a = shortcode_atts( array(
