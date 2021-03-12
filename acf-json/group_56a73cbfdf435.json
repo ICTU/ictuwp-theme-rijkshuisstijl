@@ -43,7 +43,7 @@
         {
             "key": "field_6049016a5e3bc",
             "label": "Pagina met contactformulier",
-            "name": "contactformulier_post",
+            "name": "option_contactformulier",
             "type": "post_object",
             "instructions": "",
             "required": 1,

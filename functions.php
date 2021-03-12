@@ -2724,7 +2724,7 @@ function rhswp_contacformulier_referrer( $atts ) {
 	$postid    = (int) $_GET['postid']; // een normaal contenttype
 
 	if ( wp_verify_nonce( $_REQUEST['referrersource'], 'postid_' . $postid ) ) {
-	    // de verificatie klopt voor een normaal contenttype
+		// de verificatie klopt voor een normaal contenttype
 		$return = get_permalink( $postid );
 	} elseif ( wp_verify_nonce( $_REQUEST['referrersource'], 'dossierid_' . $dossierid ) ) {
 		// de verificatie klopt voor een dossier
@@ -2781,7 +2781,7 @@ function rhswp_contactreactie_write_reactieform() {
 		$documenttypes                = get_field( 'contactformulier_documenttypes', 'option' );
 		$contactformulier_titel       = get_field( 'contactformulier_titel', 'option' );
 		$contactformulier_vrije_tekst = get_field( 'contactformulier_vrije_tekst', 'option' );
-		$contactformulier_post        = get_field( 'contactformulier_post', 'option' );
+		$option_contactformulier      = get_field( 'option_contactformulier', 'option' );
 		$contactformulier_linktekst   = get_field( 'contactformulier_linktekst', 'option' );
 		$andere_diensten              = get_field( 'contactform_andere_overheidsdiensten', 'option' );
 
@@ -2807,11 +2807,15 @@ function rhswp_contactreactie_write_reactieform() {
 		$toon_reactieformulier = RHSWP_YES;
 	}
 
-	if ( ( $post->ID === $contactformulier_post->ID ) || ( ( RHSWP_YES == $toon_reactieformulier || 'anders' == $toon_reactieformulier ) && $doctype_check ) ) {
 
-		$bare_url     = get_permalink( $contactformulier_post->ID ) . '?' . $querystring . '=' . $postid;
-		$complete_url = wp_nonce_url( $bare_url, $querystring . '_' . $postid, 'referrersource' );
+	if ( $option_contactformulier->ID && ( ( $post->ID === $option_contactformulier->ID ) || ( ( RHSWP_YES == $toon_reactieformulier || 'anders' == $toon_reactieformulier ) && $doctype_check ) ) ) {
+        // als er een contactformulier is ingevoerd via de site-instellingen
+        // en een van deze twee is waar:
+        // - dit is die pagina met het contactformulier
+        // - dit is van een documenttype waarop een reactieformulier getoond mag worden
 
+		$link_contactformulier = get_permalink( $option_contactformulier->ID ) . '?' . $querystring . '=' . $postid;
+		$complete_url          = wp_nonce_url( $link_contactformulier, $querystring . '_' . $postid, 'referrersource' );
 
 		echo '<section class="suggestie" id="reactieformulier" aria-labelledby="ID_reactieformulier_title">';
 		echo '<div class="wrap">';
@@ -2824,7 +2828,7 @@ function rhswp_contactreactie_write_reactieform() {
 			echo '</div>';
 		} else {
 			echo '<h2 id="ID_reactieformulier_title">' . $contactformulier_titel . '</h2>';
-        }
+		}
 
 		if ( $andere_diensten ) {
 

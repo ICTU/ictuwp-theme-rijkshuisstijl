@@ -277,16 +277,6 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 .flex__block {
   flex: 1 0 100%;
 }
-.wpcf7-response-output[aria-hidden="true"] {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-}
 #reactie_verwijzingen {
   background: #e6e6e6;
 }
@@ -2943,6 +2933,9 @@ a.gform_save_link {
 }
 .wpcf7-form .wpcf7-response-output.wpcf7-validation-errors {
   background: #d52b1e;
+}
+.wpcf7-form .wpcf7-response-output:empty {
+  display: none;
 }
 form.wpcf7-form,
 .gform_wrapper form {
