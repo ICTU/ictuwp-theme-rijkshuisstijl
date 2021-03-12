@@ -349,9 +349,10 @@ function paginatitels() {
 				echo '&nbsp;</td>';
 
 				//Toon reactieformulier
-				echo '<td>';
 				$toon_reactieformulier = get_field( 'toon_reactieformulier_post', $theid );
+				echo '<td>Reactieformulier: "';
 				echo $toon_reactieformulier;
+				echo '"<br>';
 				if ( RHSWP_YES === $toon_reactieformulier ) {
 					echo ' Toon WEL reactieformulier';
 				} elseif ( RHSWP_NO === $toon_reactieformulier ) {
@@ -364,8 +365,9 @@ function paginatitels() {
 
 				//Toon socialmedia-dinges
 				$socialmedia_icoontjes = get_field( 'socialmedia_icoontjes', $theid );
-				echo '<td>';
+				echo '<td>Social media: "';
 				echo $socialmedia_icoontjes;
+				echo '"<br>';
 				if ( $socialmedia_icoontjes ) {
 					if ( RHSWP_YES === $socialmedia_icoontjes ) {
 						echo ' Toon WEL soc.med icoontjes';
@@ -670,7 +672,9 @@ function paginatitels() {
 				//Toon reactieformulier
 				echo '<td>';
 				$toon_reactieformulier = get_field( 'toon_reactieformulier_post', $theid );
+				echo '<td>Reactieformulier: "';
 				echo $toon_reactieformulier;
+				echo '"<br>';
 				if ( RHSWP_YES === $toon_reactieformulier ) {
 					echo ' Toon WEL reactieformulier';
 				} elseif ( RHSWP_NO === $toon_reactieformulier ) {
@@ -682,8 +686,9 @@ function paginatitels() {
 
 				//Toon socialmedia-dinges
 				$socialmedia_icoontjes = get_field( 'socialmedia_icoontjes', $theid );
-				echo '<td>';
+				echo '<td>Social media: "';
 				echo $socialmedia_icoontjes;
+				echo '"<br>';
 				if ( $socialmedia_icoontjes ) {
 					if ( RHSWP_YES === $socialmedia_icoontjes ) {
 						echo ' Toon WEL soc.med icoontjes';
