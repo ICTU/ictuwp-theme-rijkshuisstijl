@@ -212,6 +212,9 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 .flexcontainer.columncount-3 .article-excerpt {
   padding-right: 1.5rem;
 }
+.uitgelicht {
+  overflow: hidden;
+}
 .grid {
   display: grid;
 }
@@ -1903,16 +1906,15 @@ img {
 .full-width-content .content {
   width: 100%;
 }
-.page.full-width-content header.entry-header {
-  width: auto;
-  max-width: 800px;
-  margin-left: 0;
-}
 .page.full-width-content header.entry-header + .entry-content > .block-audio-video,
 .page.full-width-content header.entry-header + .entry-content > p {
-  width: auto;
-  max-width: 800px;
-  margin-left: 0;
+  max-width: 47.8125rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.page.full-width-content header.entry-header + .entry-content > .block-audio-video {
+  margin-left: auto;
+  margin-right: auto;
 }
 .full-width-content.page-template-page_fullwidth .site-inner,
 .full-width-content.archive.tax-dossiers .site-inner {
@@ -2698,7 +2700,7 @@ input[type="file"],
 input[type="date"],
 select,
 textarea {
-  border: 2px solid #b4b4b4;
+  border: 1px solid #999999;
 }
 input:focus,
 textarea:focus {
@@ -2874,10 +2876,11 @@ a.gform_save_link {
 .wpcf7-form .wpcf7-form-control-wrap input[type="date"].wpcf7-not-valid,
 .wpcf7-form .wpcf7-form-control-wrap select.wpcf7-not-valid,
 .wpcf7-form .wpcf7-form-control-wrap textarea.wpcf7-not-valid {
-  border-bottom: 2px solid #d52b1e;
+  border-color: #d52b1e;
 }
 .wpcf7-form .wpcf7-form-control-wrap .wpcf7-not-valid-tip {
-  border: 2px solid #d52b1e;
+  background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20enable-background%3D%22new%200%200%202021%2021%22%20height%3D%2221%22%20viewBox%3D%220%200%202021%2021%22%20width%3D%222021%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m4.5%202.1h12v15.4h-12z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22m0%200v21h21v-21zm11.9%2015.7h-3v-2h3.1v2zm0-3.8h-3v-6.6h3.1v6.6z%22%20fill%3D%22%23d52b1e%22%2F%3E%3Cpath%20d%3D%22m861-49.7h1z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22m985.5%202.1h12v15.4h-12z%22%2F%3E%3Cpath%20d%3D%22m981%200v21h21v-21zm11.9%2015.7h-3.1v-2h3.1zm0-3.8h-3.1v-6.6h3.1z%22%20fill%3D%22%23d52b1e%22%2F%3E%3Cpath%20d%3D%22m2004.5%202.1h12v15.4h-12z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22m2000%200v21h21v-21zm11.9%2015.7h-3.1v-2h3.1zm0-3.8h-3.1v-6.6h3.1z%22%20fill%3D%22%23d52b1e%22%2F%3E%3C%2Fsvg%3E");
+  border: 1px solid #d52b1e;
   background-repeat: no-repeat;
   padding-left: 2em;
   display: block;
@@ -2893,26 +2896,8 @@ a.gform_save_link {
 }
 form.wpcf7-form,
 .gform_wrapper form {
-  background: #e6e6e6;
-}
-form.wpcf7-form input[type=email],
-.gform_wrapper form input[type=email],
-form.wpcf7-form input[type=text],
-.gform_wrapper form input[type=text],
-form.wpcf7-form input[type=password],
-.gform_wrapper form input[type=password],
-form.wpcf7-form input[type=file],
-.gform_wrapper form input[type=file],
-form.wpcf7-form input[type=date],
-.gform_wrapper form input[type=date],
-form.wpcf7-form select,
-.gform_wrapper form select,
-form.wpcf7-form textarea,
-.gform_wrapper form textarea {
-  border-top: 1px solid #cccccc;
-  border-right: 1px solid #cccccc;
-  border-left: 1px solid #cccccc;
-  border-bottom: 4px solid #d52b1e;
+  background: none;
+  padding: 0;
 }
 form.wpcf7-form button,
 .gform_wrapper form button,
@@ -4438,7 +4423,7 @@ body .gform_wrapper img.delete_list_item {
 }
 .gfield .html-active .switch-html,
 .gfield .tmce-active .switch-tmce {
-  border-bottom-color: #f5f5f5;
+  border-bottom-color: #f3f3f3;
 }
 .gfield .mce-edit-area iframe {
   width: 99.9% !important;
@@ -5536,21 +5521,33 @@ div .gfield_repeater_cell {
     float: left;
     clear: none;
   }
-  main .wpcf7-form label,
+  main .wpcf7-form {
+    /*
+
+                label,
+                .wpcf7-form-control-wrap {
+                  float: left;
+                  display: block;
+                  clear: none;
+                  margin-bottom: 1em;
+                }
+
+                label {
+                  width: 20%;
+                }
+
+                .wpcf7-form-control-wrap {
+                  width: 79%;
+                }
+         */
+  }
   main .wpcf7-form .wpcf7-form-control-wrap {
-    float: left;
     display: block;
-    clear: none;
+    clear: both;
     margin-bottom: 1em;
   }
-  main .wpcf7-form label {
-    width: 20%;
-  }
-  main .wpcf7-form .wpcf7-form-control-wrap {
-    width: 79%;
-  }
   main .wpcf7-form input[type="submit"] {
-    margin-left: 20%;
+    float: right;
   }
 }
 .search-form {
@@ -5699,6 +5696,32 @@ main .no-results-widget.widget_search {
 #rhswp-searchform-onderwerpen #resetbutton:focus {
   color: #fff;
   text-decoration: underline;
+}
+#referer_form {
+  border: 2px solid red;
+  background: none;
+}
+#reactieformulier {
+  background: #f3f3f3;
+  padding: 2rem 0;
+}
+@media only screen and (min-width: 1200px) {
+  #reactieformulier h2,
+  #reactieformulier .inleiding {
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
+}
+#reactieformulier h2 {
+  margin-top: 0;
+}
+#reactieformulier .inleiding + .related-content--services {
+  margin-top: 4rem;
+}
+#reactieformulier .wrap {
+  max-width: 47.8125rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 .mailinglijst-form {
   display: flex;
@@ -6665,8 +6688,7 @@ Media Queries
 @media only screen and (min-width: 1199px) {
   .full-width-content .sharing.block,
   .full-width-content .toolbox-introduction,
-  .full-width-content .toolbox-the-content,
-  .full-width-content #reactieformulier {
+  .full-width-content .toolbox-the-content {
     margin-left: auto;
     margin-right: auto;
     max-width: 47.8125rem;
@@ -11951,6 +11973,39 @@ Footer Widgets
   padding-top: 1rem;
   border-top: 1px solid #979797;
 }
+.related-content--services .related-content__stroke {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+.related-content--services .related-content__stroke img {
+  max-width: 80px;
+  height: auto;
+  margin-right: 1rem;
+}
+.related-content--services .related-content__stroke div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.related-content--services .related-content__stroke div h3,
+.related-content--services .related-content__stroke div span {
+  flex: 0 0 auto;
+}
+.related-content--services .related-content__stroke h3 {
+  color: #000;
+  text-decoration: none;
+  margin: 0;
+}
+.related-content--services .related-content__stroke span {
+  color: #01689b;
+  text-decoration: underline;
+}
+.related-content--services .related-content__stroke:hover h3,
+.related-content--services .related-content__stroke:hover span {
+  text-decoration: underline;
+}
 blockquote em,
 cite {
   font-style: italic;
@@ -12143,98 +12198,145 @@ cite a {
     padding: 1rem 0;
   }
 }
+.page.full-width-content .entry-header,
 .single.full-width-content .entry-header {
   max-width: 47.8125rem;
   margin-left: auto;
   margin-right: auto;
 }
 @media only screen and (min-width: 1200px) {
+  .page.full-width-content .entry-header,
   .single.full-width-content .entry-header {
     padding-left: 3rem;
     padding-right: 2rem;
   }
 }
+.page.full-width-content .entry-content > p,
 .single.full-width-content .entry-content > p,
+.page.full-width-content .entry-content > ul,
 .single.full-width-content .entry-content > ul,
+.page.full-width-content .entry-content > ol,
 .single.full-width-content .entry-content > ol,
+.page.full-width-content .entry-content > h2,
 .single.full-width-content .entry-content > h2,
+.page.full-width-content .entry-content > h3,
 .single.full-width-content .entry-content > h3,
+.page.full-width-content .entry-content > h4,
 .single.full-width-content .entry-content > h4,
+.page.full-width-content .entry-content > h5,
 .single.full-width-content .entry-content > h5,
+.page.full-width-content .entry-content > h6,
 .single.full-width-content .entry-content > h6,
+.page.full-width-content .entry-content > h6,
 .single.full-width-content .entry-content > h6,
+.page.full-width-content .entry-content > .wpcf7,
+.single.full-width-content .entry-content > .wpcf7,
+.page.full-width-content .entry-content .gform_wrapper form,
+.single.full-width-content .entry-content .gform_wrapper form,
+.page.full-width-content .entry-content > .borderframe,
 .single.full-width-content .entry-content > .borderframe {
   max-width: 47.8125rem;
   margin-left: auto;
   margin-right: auto;
 }
+.page.full-width-content .entry-content > details,
 .single.full-width-content .entry-content > details {
   max-width: 41.8125rem;
   margin-left: auto;
   margin-right: auto;
 }
 @media only screen and (min-width: 1200px) {
+  .page.full-width-content .entry-content > p,
   .single.full-width-content .entry-content > p,
+  .page.full-width-content .entry-content > h2,
   .single.full-width-content .entry-content > h2,
+  .page.full-width-content .entry-content > h3,
   .single.full-width-content .entry-content > h3,
+  .page.full-width-content .entry-content > h4,
   .single.full-width-content .entry-content > h4,
+  .page.full-width-content .entry-content > h5,
   .single.full-width-content .entry-content > h5,
+  .page.full-width-content .entry-content > h6,
   .single.full-width-content .entry-content > h6,
+  .page.full-width-content .entry-content > .wpcf7,
+  .single.full-width-content .entry-content > .wpcf7,
+  .page.full-width-content .entry-content > h6,
   .single.full-width-content .entry-content > h6 {
     padding-left: 3rem;
     padding-right: 2rem;
   }
 }
+.page.full-width-content .entry-content > h3 img.alignleft,
 .single.full-width-content .entry-content > h3 img.alignleft,
+.page.full-width-content .entry-content > p img.alignleft,
 .single.full-width-content .entry-content > p img.alignleft,
+.page.full-width-content .entry-content > h3 img.alignright,
 .single.full-width-content .entry-content > h3 img.alignright,
+.page.full-width-content .entry-content > p img.alignright,
 .single.full-width-content .entry-content > p img.alignright {
   border: 1px solid #ececec;
 }
+.page.full-width-content .entry-content > h3 img.alignleft,
 .single.full-width-content .entry-content > h3 img.alignleft,
+.page.full-width-content .entry-content > p img.alignleft,
 .single.full-width-content .entry-content > p img.alignleft {
   margin: 0 2rem 2rem 0;
 }
+.page.full-width-content .entry-content > h3 img.alignright,
 .single.full-width-content .entry-content > h3 img.alignright,
+.page.full-width-content .entry-content > p img.alignright,
 .single.full-width-content .entry-content > p img.alignright {
   margin: 0 0 2rem 2rem;
 }
 @media only screen and (min-width: 1200px) {
+  .page.full-width-content .entry-content > ul,
   .single.full-width-content .entry-content > ul,
+  .page.full-width-content .entry-content > ol,
   .single.full-width-content .entry-content > ol {
     padding-left: 5rem;
     padding-right: 2rem;
   }
+  .page.full-width-content .entry-content > .borderframe,
   .single.full-width-content .entry-content > .borderframe {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
+  .page.full-width-content .entry-content .wp-caption.alignright,
   .single.full-width-content .entry-content .wp-caption.alignright,
+  .page.full-width-content .entry-content .wp-caption.alignleft,
   .single.full-width-content .entry-content .wp-caption.alignleft {
     padding-top: 0.5rem;
   }
+  .page.full-width-content .entry-content .wp-caption.alignright .wp-caption-text,
   .single.full-width-content .entry-content .wp-caption.alignright .wp-caption-text,
+  .page.full-width-content .entry-content .wp-caption.alignleft .wp-caption-text,
   .single.full-width-content .entry-content .wp-caption.alignleft .wp-caption-text {
     margin: 0;
   }
+  .page.full-width-content .entry-content .wp-caption.alignright[style*="width:"] img,
   .single.full-width-content .entry-content .wp-caption.alignright[style*="width:"] img,
+  .page.full-width-content .entry-content .wp-caption.alignleft[style*="width:"] img,
   .single.full-width-content .entry-content .wp-caption.alignleft[style*="width:"] img {
     width: 100%;
     height: auto;
   }
+  .page.full-width-content .entry-content .wp-caption.alignleft,
   .single.full-width-content .entry-content .wp-caption.alignleft {
     margin-left: 15rem;
   }
+  .page.full-width-content .entry-content .wp-caption.alignright,
   .single.full-width-content .entry-content .wp-caption.alignright {
     margin-right: 15rem;
   }
 }
+.page.full-width-content .entry-content div.wp-caption.alignnone,
 .single.full-width-content .entry-content div.wp-caption.alignnone {
   width: 100% !important;
   max-width: 47.8125rem;
   margin-left: auto;
   margin-right: auto;
 }
+.page.full-width-content .entry-content div.wp-caption .wp-caption-text,
 .single.full-width-content .entry-content div.wp-caption .wp-caption-text {
   margin-bottom: 2rem;
 }

@@ -40,7 +40,7 @@ if ( WP_DEBUG ) {
 } else {
 	define( 'WP_LOCAL_DEV', false );
 	define( 'SHOW_CSS_DEBUG', false );
-    define( 'WP_DEBUG_SHOWTEXTLENGTH', false );
+	define( 'WP_DEBUG_SHOWTEXTLENGTH', false );
 }
 define( 'ID_ZOEKEN', 'rhswp-searchform-nav-primary' );
 define( 'RHSWP_NO', 'socmed_nee' );
@@ -2712,23 +2712,58 @@ function rhswp_remove_external_styles() {
 }
 
 //========================================================================================================
+
+// Deze functie checkt of een referrer op de juiste manier is doorgegeven
+
+function rhswp_contacformulier_referrer( $atts ) {
+	global $post;
+	$return = '';
+
+	// de referrer kan een dossier zijn of een normaal contenttype
+	$dossierid = (int) $_GET['dossierid']; // een dossier
+	$postid    = (int) $_GET['postid']; // een normaal contenttype
+
+	if ( wp_verify_nonce( $_REQUEST['referrersource'], 'postid_' . $postid ) ) {
+	    // de verificatie klopt voor een normaal contenttype
+		$return = get_permalink( $postid );
+	} elseif ( wp_verify_nonce( $_REQUEST['referrersource'], 'dossierid_' . $dossierid ) ) {
+		// de verificatie klopt voor een dossier
+		$return = get_term_link( $dossierid );
+	}
+
+	return esc_html( $return );
+
+}
+
+add_shortcode( 'contacformulier_referrer', 'rhswp_contacformulier_referrer' );
+
+//========================================================================================================
+
 /**
  * Adds contact form. This form is set in the site's options (admin > Appearance > options)
  *
  */
-add_action( 'genesis_after_loop', 'rhswp_contactreactie_write_reactieform', 15 );
+//add_action( 'genesis_after_loop', 'rhswp_contactreactie_write_reactieform', 15 );
+add_action( 'genesis_before_footer', 'rhswp_contactreactie_write_reactieform', 15 );
+
 function rhswp_contactreactie_write_reactieform() {
+
 	global $post;
-	$contactformulier      = '';
-	$posttype              = '';
-	$toon_reactieformulier = 'default';
-	$documenttypes         = array( 'post', 'page' );
-	$doctype_check         = false;
-	$postid                = isset( $post->ID ) ? $post->ID : 0;
-	$title                 = esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) );
+	$posttype               = '';
+	$toon_reactieformulier  = 'default';
+	$documenttypes          = array( 'post', 'page' );
+	$doctype_check          = false;
+	$postid                 = isset( $post->ID ) ? $post->ID : 0;
+	$permalink              = get_the_permalink( $postid );
+	$size                   = 'thumbnail';
+	$querystring            = 'postid';
+	$contactformulier_titel = esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) );
+
 	if ( is_tax( RHSWP_CT_DOSSIER ) ) {
-		$postid = get_queried_object()->term_id;
-		$acfid  = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
+		$postid      = get_queried_object()->term_id;
+		$acfid       = RHSWP_CT_DOSSIER . '_' . get_queried_object()->term_id;
+		$permalink   = get_term_link( $postid );
+		$querystring = 'dossierid';
 	} else {
 		$acfid = $postid;
 	}
@@ -2740,19 +2775,16 @@ function rhswp_contactreactie_write_reactieform() {
 		return;
 	}
 
+
 	if ( function_exists( 'get_field' ) ) {
-		$theshortcode          = '';
-		$contactformulier      = get_field( 'contactformulier', 'option' );
-		$contactformulier_bron = get_field( 'contactformulier_via_shortcode_of_selecteer_uit_lijst', 'option' );
-		if ( 'shortcode' === $contactformulier_bron ) {
-			$theshortcode = get_field( 'shortcode_voor_gravity_forms', 'option' );
-		} else {
-			if ( $contactformulier->ID ) {
-				$theshortcode = '[contact-form-7 id="' . $contactformulier->ID . '" title="' . esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) ) . '"]';
-			}
-		}
-		$documenttypes         = get_field( 'contactformulier_documenttypes', 'option' );
-		$toon_reactieformulier = get_field( 'toon_reactieformulier_post', $acfid );
+		$toon_reactieformulier        = get_field( 'toon_reactieformulier_post', $acfid );
+		$documenttypes                = get_field( 'contactformulier_documenttypes', 'option' );
+		$contactformulier_titel       = get_field( 'contactformulier_titel', 'option' );
+		$contactformulier_vrije_tekst = get_field( 'contactformulier_vrije_tekst', 'option' );
+		$contactformulier_post        = get_field( 'contactformulier_post', 'option' );
+		$contactformulier_linktekst   = get_field( 'contactformulier_linktekst', 'option' );
+		$andere_diensten              = get_field( 'contactform_andere_overheidsdiensten', 'option' );
+
 		if ( is_tax( RHSWP_CT_DOSSIER ) ) {
 			$doctype_check = true;
 		} else {
@@ -2762,9 +2794,7 @@ function rhswp_contactreactie_write_reactieform() {
 				$doctype_check = in_array( $posttype, $documenttypes );
 			}
 		}
-		if ( 'anders' == $toon_reactieformulier ) {
-			$contactformulier = get_field( 'ander_reactieformulier', $acfid );
-		}
+
 		if ( ! $toon_reactieformulier ) {
 			// lege waarde, dus we zetten 'm terug naar default
 			$toon_reactieformulier = 'default';
@@ -2776,26 +2806,66 @@ function rhswp_contactreactie_write_reactieform() {
 		// er is niet bewust een waarde ingevuld bij deze post, we maken er 'ja' van
 		$toon_reactieformulier = RHSWP_YES;
 	}
-	if ( ( RHSWP_YES == $toon_reactieformulier || 'anders' == $toon_reactieformulier ) && $doctype_check ) {
-		if ( get_the_title( $contactformulier ) ) {
-			$title = get_the_title( $contactformulier );
-		}
+
+	if ( ( $post->ID === $contactformulier_post->ID ) || ( ( RHSWP_YES == $toon_reactieformulier || 'anders' == $toon_reactieformulier ) && $doctype_check ) ) {
+
+		$bare_url     = get_permalink( $contactformulier_post->ID ) . '?' . $querystring . '=' . $postid;
+		$complete_url = wp_nonce_url( $bare_url, $querystring . '_' . $postid, 'referrersource' );
+
+
 		echo '<section class="suggestie" id="reactieformulier" aria-labelledby="ID_reactieformulier_title">';
-		echo '<h2 id="ID_reactieformulier_title">' . $title . '</h2>';
-		if ( $theshortcode ) {
-			echo do_shortcode( $theshortcode );
+		echo '<div class="wrap">';
+
+		if ( ( RHSWP_YES == $toon_reactieformulier || 'anders' == $toon_reactieformulier ) && $doctype_check ) {
+
+			echo '<h2 id="ID_reactieformulier_title">' . $contactformulier_titel . '</h2>';
+			echo '<div class="inleiding">';
+			echo wpautop( $contactformulier_vrije_tekst . ' <a href="' . $complete_url . '">' . $contactformulier_linktekst . '</a>' );
+			echo '</div>';
 		} else {
-			echo '<p>' . esc_html( __( "The webmaster has not selected a form for questions or suggestions.", 'wp-rijkshuisstijl' ) ) . '</p>';
-			$user          = wp_get_current_user();
-			$allowed_roles = array( 'editor', 'administrator', 'author' );
-			if ( array_intersect( $allowed_roles, $user->roles ) ) {
-				echo '<p>' . esc_html( __( "Selecteer een contactformulier. \nVia: Admin > Weergave > Options", 'wp-rijkshuisstijl' ) ) . '</p>';
+			echo '<h2 id="ID_reactieformulier_title">' . $contactformulier_titel . '</h2>';
+        }
+
+		if ( $andere_diensten ) {
+
+			echo '<div class="related-content related-content--services">';
+
+			foreach ( $andere_diensten as $andere_dienst ) {
+				$image = $andere_dienst['contactform_andere_overheidsdienst_logo'];
+				$titel = $andere_dienst['contactform_andere_overheidsdienst_titel'];
+				$url   = $andere_dienst['contactform_andere_overheidsdienst_url'];
+
+				if ( $image && filter_var( $url, FILTER_VALIDATE_URL ) ) {
+
+					$thumb    = $image['sizes'][ $size ];
+					$width    = $image['sizes'][ $size . '-width' ];
+					$height   = $image['sizes'][ $size . '-height' ];
+					$url_name = preg_replace( '|https://|i', '', $url );
+					$url_name = preg_replace( '|http://|i', '', $url_name );
+					$url_name = preg_replace( '|www.|i', '', $url_name );
+					$url_name = rtrim( $url_name, '/' );
+
+					echo '<a href="' . $url . '" class="related-content__stroke">';
+					echo '<img src="' . $thumb . '" alt="Bekijk de pagina ' . $titel . '" width="' . $width . '" height="' . $height . '" />';
+					echo '<div class="">';
+					echo '<h3>' . $titel . '</h3>';
+					echo '<span>';
+					echo $url_name;
+					echo '</span>';
+					echo '</div>';
+					echo '</a>';
+				}
+
 			}
+			echo '</ul>';
 		}
+
+		echo '</div>';
 		echo '</section>';
 	} else {
 		// wu wei
 	}
+
 }
 
 //========================================================================================================
@@ -4161,6 +4231,7 @@ function rhswp_append_socialbuttons( $doecho = true ) {
 
 function rhswp_append_query_vars( $query_vars ) {
 	$query_vars[] = 'sitemap_type';
+
 	return $query_vars;
 }
 
@@ -4178,8 +4249,8 @@ add_filter( 'query_vars', 'rhswp_append_query_vars' );
 function rhswp_nieuwsbrief_get_referrer( $atts ) {
 
 	if ( $_SERVER['HTTP_REFERER'] ) {
-		return '<'.'!-'.'- HTTP_REFERER --'.'>' . '<input type="hidden" name="nr" value="' . esc_url_raw( $_SERVER['HTTP_REFERER'] ) . '">';
-    }
+		return '<' . '!-' . '- HTTP_REFERER --' . '>' . '<input type="hidden" name="nr" value="' . esc_url_raw( $_SERVER['HTTP_REFERER'] ) . '">';
+	}
 
 	return '';
 }

@@ -83,16 +83,19 @@
   .page.full-width-content {
 
     header.entry-header {
-      width: auto;
-      max-width: 800px;
-      margin-left: 0;
 
       & + .entry-content {
         & > .block-audio-video,
         & > p {
-          width: auto;
-          max-width: 800px;
-          margin-left: 0;
+//          width: auto;
+//          max-width: 800px;
+          .mixin_fullwidth_container();
+
+        }
+        & > .block-audio-video {
+//          margin-left: 0;
+          margin-left: auto;
+          margin-right: auto;
         }
       }
     }
@@ -557,4 +560,8 @@
   }
 }
 
+
+.uitgelicht {
+  overflow: hidden;
+}
 
