@@ -1,0 +1,93 @@
+{
+    "key": "group_54e6101992f1e",
+    "title": "Deelknoppen en reactieformulier",
+    "fields": [
+        {
+            "key": "field_54e610433e1d0",
+            "label": "Toon social-media-opties wel of niet",
+            "name": "socialmedia_icoontjes",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "socmed_ja": "Ja, toon socialmedia-icoontjes",
+                "socmed_nee": "Nee, verberg socialmedia-icoontjes"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "ja",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_54e610433e1d1",
+            "label": "Toon reactieformulier",
+            "name": "toon_reactieformulier_post",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "socmed_ja": "Ja",
+                "socmed_nee": "Nee"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "ja",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "event"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "dossiers"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1615542293
+}
