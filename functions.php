@@ -2786,7 +2786,7 @@ function rhswp_contactreactie_write_reactieform() {
 	$permalink              = get_the_permalink( $postid );
 	$size                   = 'thumbnail';
 	$querystring            = 'postid';
-	$contactformulier_titel = esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) );
+	$reactiemogelijkheid_titel = esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) );
 
 	if ( is_tax( RHSWP_CT_DOSSIER ) ) {
 		$postid      = get_queried_object()->term_id;
@@ -2808,11 +2808,11 @@ function rhswp_contactreactie_write_reactieform() {
 	if ( function_exists( 'get_field' ) ) {
 		$toon_reactieformulier        = get_field( 'toon_reactieformulier_post', $acfid );
 		$documenttypes                = get_field( 'contactformulier_documenttypes', 'option' );
-		$contactformulier_titel       = get_field( 'contactformulier_titel', 'option' );
-		$contactformulier_vrije_tekst = get_field( 'contactformulier_vrije_tekst', 'option' );
+		$reactiemogelijkheid_titel       = get_field( 'reactiemogelijkheid_titel', 'option' );
+		$reactiemogelijkheid_vrije_tekst = get_field( 'reactiemogelijkheid_vrije_tekst', 'option' );
 		$option_contactformulier      = get_field( 'option_contactformulier', 'option' );
-		$contactformulier_linktekst   = get_field( 'contactformulier_linktekst', 'option' );
-		$andere_diensten              = get_field( 'contactform_andere_overheidsdiensten', 'option' );
+		$option_contactformulier_linktekst   = get_field( 'option_contactformulier_linktekst', 'option' );
+		$andere_diensten              = get_field( 'reactiemogelijkheid_andere_overheidsdiensten', 'option' );
 
 		if ( is_tax( RHSWP_CT_DOSSIER ) ) {
 			$doctype_check = true;
@@ -2851,12 +2851,12 @@ function rhswp_contactreactie_write_reactieform() {
 
 		if ( ( RHSWP_YES == $toon_reactieformulier || 'anders' == $toon_reactieformulier ) && $doctype_check ) {
 
-			echo '<h2 id="ID_reactieformulier_title">' . $contactformulier_titel . '</h2>';
+			echo '<h2 id="ID_reactieformulier_title">' . $reactiemogelijkheid_titel . '</h2>';
 			echo '<div class="inleiding">';
-			echo wpautop( $contactformulier_vrije_tekst . ' <a href="' . $complete_url . '">' . $contactformulier_linktekst . '</a>' );
+			echo wpautop( $reactiemogelijkheid_vrije_tekst . ' <a href="' . $complete_url . '">' . $option_contactformulier_linktekst . '</a>' );
 			echo '</div>';
 		} else {
-			echo '<h2 id="ID_reactieformulier_title">' . $contactformulier_titel . '</h2>';
+			echo '<h2 id="ID_reactieformulier_title">' . $reactiemogelijkheid_titel . '</h2>';
 		}
 
 		if ( $andere_diensten ) {
@@ -2864,9 +2864,9 @@ function rhswp_contactreactie_write_reactieform() {
 			echo '<div class="related-content related-content--services">';
 
 			foreach ( $andere_diensten as $andere_dienst ) {
-				$image = $andere_dienst['contactform_andere_overheidsdienst_logo'];
-				$titel = $andere_dienst['contactform_andere_overheidsdienst_titel'];
-				$url   = $andere_dienst['contactform_andere_overheidsdienst_url'];
+				$image = $andere_dienst['reactiemogelijkheid_andere_overheidsdienst_logo'];
+				$titel = $andere_dienst['reactiemogelijkheid_andere_overheidsdienst_titel'];
+				$url   = $andere_dienst['reactiemogelijkheid_andere_overheidsdienst_url'];
 
 				if ( $image && filter_var( $url, FILTER_VALIDATE_URL ) ) {
 
