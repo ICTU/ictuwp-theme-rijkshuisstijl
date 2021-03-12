@@ -2713,7 +2713,36 @@ function rhswp_remove_external_styles() {
 
 //========================================================================================================
 
-// Deze functie checkt of een referrer op de juiste manier is doorgegeven
+// Deze functie checkt of een referrer op de juiste manier is doorgegeven en geeft de titel terug
+
+function rhswp_contacformulier_referrer_title( $atts ) {
+	global $post;
+	$return = '';
+
+	// de referrer kan een dossier zijn of een normaal contenttype
+	$dossierid = (int) $_GET['dossierid']; // een dossier
+	$postid    = (int) $_GET['postid']; // een normaal contenttype
+
+	if ( wp_verify_nonce( $_REQUEST['referrersource'], 'postid_' . $postid ) ) {
+		// de verificatie klopt voor een normaal contenttype
+		$return = get_the_title( $postid );
+	} elseif ( wp_verify_nonce( $_REQUEST['referrersource'], 'dossierid_' . $dossierid ) ) {
+		// de verificatie klopt voor een dossier
+		$termname = get_term_by( 'ID', $dossierid );
+		if ( $termname && ! is_wp_error( $termname ) ) {
+			$return = $termname->name;
+		}
+	}
+
+	return esc_html( $return );
+
+}
+
+add_shortcode( 'contacformulier_referrer_title', 'rhswp_contacformulier_referrer_title' );
+
+//========================================================================================================
+
+// Deze functie checkt of een referrer op de juiste manier is doorgegeven en geeft de URL terug
 
 function rhswp_contacformulier_referrer( $atts ) {
 	global $post;
