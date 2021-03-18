@@ -2778,14 +2778,14 @@ add_action( 'genesis_before_footer', 'rhswp_contactreactie_write_reactieform', 1
 function rhswp_contactreactie_write_reactieform() {
 
 	global $post;
-	$posttype               = '';
-	$toon_reactieformulier  = 'default';
-	$documenttypes          = array( 'post', 'page' );
-	$doctype_check          = false;
-	$postid                 = isset( $post->ID ) ? $post->ID : 0;
-	$permalink              = get_the_permalink( $postid );
-	$size                   = 'thumbnail';
-	$querystring            = 'postid';
+	$posttype                  = '';
+	$toon_reactieformulier     = 'default';
+	$documenttypes             = array( 'post', 'page' );
+	$doctype_check             = false;
+	$postid                    = isset( $post->ID ) ? $post->ID : 0;
+	$permalink                 = get_the_permalink( $postid );
+	$size                      = 'thumbnail';
+	$querystring               = 'postid';
 	$reactiemogelijkheid_titel = esc_html( _x( "Questions, ideas, suggestions?", 'reactieformulier', 'wp-rijkshuisstijl' ) );
 
 	if ( is_tax( RHSWP_CT_DOSSIER ) ) {
@@ -2806,13 +2806,13 @@ function rhswp_contactreactie_write_reactieform() {
 
 
 	if ( function_exists( 'get_field' ) ) {
-		$toon_reactieformulier        = get_field( 'toon_reactieformulier_post', $acfid );
-		$documenttypes                = get_field( 'contactformulier_documenttypes', 'option' );
-		$reactiemogelijkheid_titel       = get_field( 'reactiemogelijkheid_titel', 'option' );
-		$reactiemogelijkheid_vrije_tekst = get_field( 'reactiemogelijkheid_vrije_tekst', 'option' );
-		$option_contactformulier      = get_field( 'option_contactformulier', 'option' );
-		$option_contactformulier_linktekst   = get_field( 'option_contactformulier_linktekst', 'option' );
-		$andere_diensten              = get_field( 'reactiemogelijkheid_andere_overheidsdiensten', 'option' );
+		$toon_reactieformulier             = get_field( 'toon_reactieformulier_post', $acfid );
+		$documenttypes                     = get_field( 'contactformulier_documenttypes', 'option' );
+		$reactiemogelijkheid_titel         = get_field( 'reactiemogelijkheid_titel', 'option' );
+		$reactiemogelijkheid_vrije_tekst   = get_field( 'reactiemogelijkheid_vrije_tekst', 'option' );
+		$option_contactformulier           = get_field( 'option_contactformulier', 'option' );
+		$option_contactformulier_linktekst = get_field( 'option_contactformulier_linktekst', 'option' );
+		$andere_diensten                   = get_field( 'reactiemogelijkheid_andere_overheidsdiensten', 'option' );
 
 		if ( is_tax( RHSWP_CT_DOSSIER ) ) {
 			$doctype_check = true;
@@ -2838,10 +2838,10 @@ function rhswp_contactreactie_write_reactieform() {
 
 
 	if ( $option_contactformulier->ID && ( ( $post->ID === $option_contactformulier->ID ) || ( ( RHSWP_YES == $toon_reactieformulier || 'anders' == $toon_reactieformulier ) && $doctype_check ) ) ) {
-        // als er een contactformulier is ingevoerd via de site-instellingen
-        // en een van deze twee is waar:
-        // - dit is die pagina met het contactformulier
-        // - dit is van een documenttype waarop een reactieformulier getoond mag worden
+		// als er een contactformulier is ingevoerd via de site-instellingen
+		// en een van deze twee is waar:
+		// - dit is die pagina met het contactformulier
+		// - dit is van een documenttype waarop een reactieformulier getoond mag worden
 
 		$link_contactformulier = get_permalink( $option_contactformulier->ID ) . '?' . $querystring . '=' . $postid;
 		$complete_url          = wp_nonce_url( $link_contactformulier, $querystring . '_' . $postid, 'referrersource' );
