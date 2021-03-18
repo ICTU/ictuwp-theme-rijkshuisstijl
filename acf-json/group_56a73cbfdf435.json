@@ -1,11 +1,11 @@
 {
     "key": "group_56a73cbfdf435",
-    "title": "Instellingen voor reactiemogelijkheid",
+    "title": "Instellingen voor reactieformulier",
     "fields": [
         {
             "key": "field_6049dc2e961a8",
-            "label": "Titel boven reactiemogelijkheid",
-            "name": "reactiemogelijkheid_titel",
+            "label": "Titel boven contactformulier",
+            "name": "contactformulier_titel",
             "type": "text",
             "instructions": "",
             "required": 1,
@@ -24,7 +24,7 @@
         {
             "key": "field_6049dc68adefc",
             "label": "Toelichtende tekst",
-            "name": "reactiemogelijkheid_vrije_tekst",
+            "name": "contactformulier_vrije_tekst",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -43,7 +43,7 @@
         {
             "key": "field_6049016a5e3bc",
             "label": "Pagina met contactformulier",
-            "name": "option_contactformulier",
+            "name": "contactformulier_post",
             "type": "post_object",
             "instructions": "",
             "required": 1,
@@ -65,7 +65,7 @@
         {
             "key": "field_6049dc504992e",
             "label": "Linktekst naar pagina met contactformulier",
-            "name": "option_contactformulier_linktekst",
+            "name": "contactformulier_linktekst",
             "type": "text",
             "instructions": "",
             "required": 1,
@@ -84,7 +84,7 @@
         {
             "key": "field_6049dafa7ee02",
             "label": "Andere overheidsdiensten",
-            "name": "reactiemogelijkheid_andere_overheidsdiensten",
+            "name": "contactform_andere_overheidsdiensten",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -103,7 +103,7 @@
                 {
                     "key": "field_6049db277ee03",
                     "label": "Logo",
-                    "name": "reactiemogelijkheid_andere_overheidsdienst_logo",
+                    "name": "contactform_andere_overheidsdienst_logo",
                     "type": "image",
                     "instructions": "Upload een vierkant logo.",
                     "required": 1,
@@ -114,7 +114,7 @@
                         "id": ""
                     },
                     "return_format": "array",
-                    "preview_size": "medium",
+                    "preview_size": "thumbnail",
                     "library": "all",
                     "min_width": "",
                     "min_height": "",
@@ -127,7 +127,7 @@
                 {
                     "key": "field_6049db787ee04",
                     "label": "Titel",
-                    "name": "reactiemogelijkheid_andere_overheidsdienst_titel",
+                    "name": "contactform_andere_overheidsdienst_titel",
                     "type": "text",
                     "instructions": "",
                     "required": 1,
@@ -146,8 +146,8 @@
                 {
                     "key": "field_6049db8b7ee05",
                     "label": "URL",
-                    "name": "reactiemogelijkheid_andere_overheidsdienst_url",
-                    "type": "url",
+                    "name": "contactform_andere_overheidsdienst_url",
+                    "type": "text",
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -157,7 +157,10 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -285,5 +288,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1615478027
+    "modified": 1616086635
 }
