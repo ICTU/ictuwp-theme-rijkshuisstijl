@@ -2875,6 +2875,7 @@ function rhswp_contactreactie_write_reactieform() {
 					$height   = $image['sizes'][ $size . '-height' ];
 					$url_name = preg_replace( '|https://|i', '', $url );
 					$url_name = preg_replace( '|http://|i', '', $url_name );
+					$url_name = preg_replace( '|mailto:|i', '', $url_name );
 					$url_name = preg_replace( '|www.|i', '', $url_name );
 					$url_name = rtrim( $url_name, '/' );
 
