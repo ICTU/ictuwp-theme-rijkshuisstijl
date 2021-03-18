@@ -148,7 +148,7 @@
                     "label": "URL",
                     "name": "reactiemogelijkheid_andere_overheidsdienst_url",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "Voer een complete URL in (bijv: https:\/\/voorbeeld.nl of http:\/\/voorbeeld.nl). Of als je een mailadres gebruikt: mailto:mail@voorbeeld.nl",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -284,9 +284,9 @@
     "position": "normal",
     "style": "default",
     "label_placement": "top",
-    "instruction_placement": "label",
+    "instruction_placement": "field",
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1616088803
+    "modified": 1616089859
 }
