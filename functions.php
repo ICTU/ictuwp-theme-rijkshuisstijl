@@ -2728,7 +2728,7 @@ function rhswp_contacformulier_referrer_title( $atts ) {
 		$return = get_the_title( $postid );
 	} elseif ( wp_verify_nonce( $_REQUEST['referrersource'], 'dossierid_' . $dossierid ) ) {
 		// de verificatie klopt voor een dossier
-		$termname = get_term_by( 'ID', $dossierid );
+		$termname = get_term_by( 'ID', $dossierid, RHSWP_CT_DOSSIER );
 		if ( $termname && ! is_wp_error( $termname ) ) {
 			$return = $termname->name;
 		}
