@@ -1543,7 +1543,7 @@ function rhswp_document_add_extra_info() {
 					$linktext                = preg_replace( '|   |i', ' - ', $linktext );
 					$rhswp_document_linktext = sprintf( _x( 'Bekijk "%s"', 'download document', 'wp-rijkshuisstijl' ), $linktext );
 				}
-				echo '<a href="' . $rhswp_document_url . '" class="download ' . RHSWP_CPT_DOCUMENT . '">' . $rhswp_document_linktext . '</a>';
+				echo '<p><a href="' . $rhswp_document_url . '" class="download ' . RHSWP_CPT_DOCUMENT . '">' . $rhswp_document_linktext . '</a></p>';
 			} else {
 				if ( $file ) {
 					$filetype = strtoupper( $file['subtype'] );
@@ -1551,7 +1551,7 @@ function rhswp_document_add_extra_info() {
 					if ( $filesize_user ) {
 						$filesize = $filesize_user;
 					}
-					echo '<a href="' . $file['url'] . '" class="download ' . RHSWP_CPT_DOCUMENT . '">' . sprintf( _x( "Download '%s'", 'download document', 'wp-rijkshuisstijl' ), $file['title'] );
+					echo '<p><a href="' . $file['url'] . '" class="download ' . RHSWP_CPT_DOCUMENT . '">' . sprintf( _x( "Download '%s'", 'download document', 'wp-rijkshuisstijl' ), $file['title'] );
 					if ( $filetype || $filesize ) {
 						echo ' (';
 						if ( $filetype && $filesize ) {
@@ -1561,7 +1561,7 @@ function rhswp_document_add_extra_info() {
 						}
 						echo ')';
 					}
-					echo '</a>';
+					echo '</a></p>';
 				}
 			}
 		}

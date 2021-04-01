@@ -7042,12 +7042,6 @@ Media Queries
 .block article a h3 {
   color: #01689b;
 }
-.block section .meta,
-.block article .meta {
-  color: #696969;
-  margin: 0.5em 0;
-  font-size: 90%;
-}
 .block section .article-container,
 .block article .article-container {
   padding: 0;
@@ -12241,6 +12235,12 @@ details[open] summary:hover {
 }
 details + .button-container {
   margin-top: -0.5rem;
+}
+.meta {
+  color: #696969 !important;
+  margin: 0.5em 0;
+  font-size: 90%;
+  overflow: hidden;
 }
 .page.full-width-content .entry-header,
 .single.full-width-content .entry-header {

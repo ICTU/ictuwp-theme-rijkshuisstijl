@@ -53,7 +53,9 @@ function rhswp_get_grid_item( $args = array() ) {
 	if ( $args['cssid'] ) {
 		$cssid = ' id="' . $args['cssid'] . '"';
 	}
-	if ( 'post' != get_post_type( $args['ID'] ) ) {
+	if ( RHSWP_CPT_DOCUMENT === get_post_type( $args['ID'] ) ) {
+		$args['type'] = 'posts_document';
+	} elseif ( 'post' != get_post_type( $args['ID'] ) ) {
 		$args['type'] = 'posts_manual';
 	}
 
@@ -74,7 +76,7 @@ function rhswp_get_grid_item( $args = array() ) {
 		}
 		$itemtitle .= '<' . $args['headerlevel'] . '>' . $contentblock_titel . '</' . $args['headerlevel'] . '>';
 
-		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . ' "' . $cssid . '>';
+		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . '"' . $cssid . '>';
 
 		if ( $imgcontainer ) {
 			$return .= '<div class="imgcontainer">';
@@ -89,6 +91,54 @@ function rhswp_get_grid_item( $args = array() ) {
 		$return .= '</a>';
 		$return .= '</div>'; // .txtcontainer
 		$return .= '</' . $args['tagcontainer'] . '>';
+	} elseif ( $args['type'] === 'posts_document' ) {
+
+		$file           = get_field( 'rhswp_document_upload', $args['ID'] );
+		$number_pages   = get_field( 'rhswp_document_number_pages', $args['ID'] );
+		$bestand_of_url = get_field( 'rhswp_document_file_or_url', $args['ID'] );
+		$filetype       = strtoupper( $file['subtype'] );
+		$documenttype   = get_the_date( '', $args['ID'] );
+		if ( 'bestand' === $bestand_of_url ) {
+			if ( $filetype ) {
+				$documenttype .= DO_SEPARATOR . $filetype;
+			}
+			if ( $file['filesize'] > 0 ) {
+				$documenttype .= ' (' . human_filesize( $file['filesize'] ) . ')';
+			}
+		} else {
+			// het is een link
+			$documenttype .= DO_SEPARATOR . _x( "external link", 'document is een link', 'wp-rijkshuisstijl' );
+		}
+		if ( $number_pages > 0 ) {
+			$documenttype .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );
+		}
+
+
+		if ( $contentblock_label ) {
+			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
+		}
+		$itemtitle .= '<' . $args['headerlevel'] . '><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></' . $args['headerlevel'] . '>';
+
+		$excerpt   .= '<p class="excerpt">';
+		$excerpt   .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
+		if ( WP_DEBUG_SHOWTEXTLENGTH ) {
+			// TODO
+			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) ) . '</span></span>';
+		}
+		$excerpt .= '</p>';
+
+		$meta = '<p class="entry-meta">' . $documenttype . '</p>';
+
+		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . '"' . $cssid . '>';
+		$return .= '<div class="txtcontainer">';
+		$return .= '<div class="text">';
+		$return .= $itemtitle;
+		$return .= $meta;
+		$return .= $excerpt;
+		$return .= '</div>'; // .text
+		$return .= '</div>'; // .txtcontainer
+		$return .= '</' . $args['tagcontainer'] . '>';
+
 
 	} elseif ( $args['type'] === 'posts_featured' ) {
 		if ( in_array( 'colspan-1', $cssclasses ) ) {
@@ -143,7 +193,7 @@ function rhswp_get_grid_item( $args = array() ) {
 		if ( $imgcontainer && $contentblock_url ) {
 			$imgcontainer = '<a tabindex="-1" aria-hidden="true" href="' . $contentblock_url . '">' . rhswp_check_alt_attribute( $imgcontainer, $contentblock_titel ) . '</a>';
 		}
-		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . ' "' . $cssid . '>';
+		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . '"' . $cssid . '>';
 		$return .= '<div class="imgcontainer">';
 		$return .= $imgcontainer;
 		$return .= '</div>'; // .imgcontainer
@@ -321,7 +371,7 @@ function rhswp_archive_loop() {
 			$current_post_id = isset( $post->ID ) ? $post->ID : 0;
 			$args2           = array(
 				'ID'        => $current_post_id,
-				'itemclass' => 'griditem griditem--post colspan-1',
+				'itemclass' => 'griditem griditem--post colspan-1 ' . get_post_type( $post->ID ),
 				'type'      => 'posts_normal'
 			);
 			echo rhswp_get_grid_item( $args2 );
