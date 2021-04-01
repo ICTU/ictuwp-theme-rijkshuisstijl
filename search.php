@@ -21,12 +21,9 @@ add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_c
 
 if ( class_exists( 'SearchWP' ) ) {
 
-	// add description
-	add_action( 'genesis_before_loop', 'rhswp_add_search_description', 15 );
-
 	/** Replace the standard loop with our custom loop */
 	remove_action( 'genesis_loop', 'genesis_do_loop' );
-	add_action( 'genesis_loop', 'rhswp_archive_custom_search_with_searchWP' );
+	add_action( 'genesis_after_header', 'rhswp_archive_custom_search_with_searchWP', 12 );
 
 } else {
 
@@ -42,14 +39,14 @@ if ( class_exists( 'SearchWP' ) ) {
 
 genesis();
 
+/*
+ * add_action( 'genesis_after_header', 'rhswp_dossier_title_checker', 24 );
 
+ */
 //========================================================================================================
 
 function rhswp_add_search_description() {
 
-	$search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', _x( 'Search this site', 'searchform', 'wp-rijkshuisstijl' ) . ' &#x02026;' );
-
-	echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "<span class="wordbreak">' . $search_text . '</span>"</h1>';
 
 }
 
@@ -78,6 +75,11 @@ function rhswp_archive_custom_search_with_searchWP() {
 	$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$page  = isset( $_GET['swppage'] ) ? absint( $_GET['swppage'] ) : $paged;
 
+	$search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', _x( 'Search this site', 'searchform', 'wp-rijkshuisstijl' ) . ' &#x02026;' );
+
+	echo '<div class="header">';
+	echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "<span class="wordbreak">' . $search_text . '</span>"</h1>';
+
 	if ( ! empty( $query ) ) :
 
 		$engine                 = SearchWP::instance();     // instatiate SearchWP
@@ -92,6 +94,7 @@ function rhswp_archive_custom_search_with_searchWP() {
 			echo '<p>' . $title . '</p>';
 
 			get_search_form();
+			echo '</div>'; // .header
 
 			echo '<div class="block">';
 
@@ -182,12 +185,12 @@ function rhswp_archive_custom_search_with_searchWP() {
 
 				$excerpt = wp_strip_all_tags( $excerpt );
 				printf( '<article %s>', $classattr );
-				printf( '<a href="%s"><h2>%s</h2><p>%s</p><p class="meta">%s</p></a>', $theurl, $thetitle, $excerpt, $documenttype );
+				printf( '<h2><a href="%s">%s</a></h2><p class="meta">%s</p><p>%s</p>', $theurl, $thetitle, $documenttype, $excerpt );
 				echo '</article>';
 
 			endforeach;
 
-			echo '</div>';
+			echo '</div>'; // .block
 
 			wp_reset_postdata();
 
@@ -207,6 +210,8 @@ function rhswp_archive_custom_search_with_searchWP() {
 			}
 
 			echo '</p>';
+
+			echo '</div>'; // .header
 
 		endif;
 
