@@ -2879,8 +2879,13 @@ function rhswp_contactreactie_write_reactieform() {
 					$url_name = preg_replace( '|www.|i', '', $url_name );
 					$url_name = rtrim( $url_name, '/' );
 
+					$maxwidth = 80; // 80px maximaal breed
+					$width_factor = ( $width / $maxwidth );
+
+					$height = round( ( $height / $width_factor), 0) ;
+
 					echo '<a href="' . $url . '" class="related-content__stroke">';
-					echo '<img src="' . $thumb . '" alt="Bekijk de pagina ' . $titel . '" width="' . $width . '" height="' . $height . '" />';
+					echo '<img src="' . $thumb . '" alt="Bekijk de pagina ' . $titel . '" width="' . $maxwidth . '" height="' . $height . '" />';
 					echo '<div class="">';
 					echo '<h3>' . $titel . '</h3>';
 					echo '<span>';

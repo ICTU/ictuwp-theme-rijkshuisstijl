@@ -1934,11 +1934,13 @@ img {
 }
 @media only screen and (min-width: 650px) {
   .post-type-archive-document .block article,
-  .document-overview .block article {
+  .document-overview .block article,
+  .search-results .block article {
     position: relative;
   }
   .post-type-archive-document .block article:before,
-  .document-overview .block article:before {
+  .document-overview .block article:before,
+  .search-results .block article:before {
     color: #01689b;
     display: inline-block;
     width: 1.5em;
@@ -1954,30 +1956,42 @@ img {
     background-repeat: no-repeat;
   }
   .post-type-archive-document .block article:before,
-  .document-overview .block article:before {
+  .document-overview .block article:before,
+  .search-results .block article:before {
     float: left;
     width: 14px;
   }
   .post-type-archive-document .block article.type-document:before,
-  .document-overview .block article.type-document:before {
+  .document-overview .block article.type-document:before,
+  .search-results .block article.type-document:before {
     top: 8px;
   }
   .post-type-archive-document .block article.taxonomy:before,
-  .document-overview .block article.taxonomy:before {
+  .document-overview .block article.taxonomy:before,
+  .search-results .block article.taxonomy:before {
     top: 22px;
   }
   .post-type-archive-document .block article h2,
   .document-overview .block article h2,
+  .search-results .block article h2,
   .post-type-archive-document .block article h3,
-  .document-overview .block article h3 {
+  .document-overview .block article h3,
+  .search-results .block article h3 {
     margin-top: 0;
   }
   .post-type-archive-document .block article a,
-  .document-overview .block article a {
+  .document-overview .block article a,
+  .search-results .block article a {
     float: right;
     width: calc(100% - 14px);
     margin-left: 0;
   }
+}
+.search-results.full-width-content .content {
+  max-width: 790px;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 /* Primary Sidebar */
 .sidebar-primary {
@@ -9371,12 +9385,6 @@ footer {
     margin-left: 1rem;
     margin-right: 1rem;
   }
-  .page-template-page_fullwidth #reactieformulier {
-    max-width: 770px;
-    max-width: 42.77777778rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
 .page .posts-for-dossier section a,
 .page-template-page_dossiersingleactueel .entry-content section a {
@@ -11923,8 +11931,8 @@ Footer Widgets
 }
 .related-content--services .related-content__stroke img {
   max-width: 80px;
-  height: auto;
-  margin-right: 1rem;
+  max-height: 80px;
+  margin: 0.5rem 1rem 0.5rem 0;
 }
 .related-content--services .related-content__stroke div {
   display: flex;
