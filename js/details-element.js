@@ -57,6 +57,8 @@ if (alledetailstags.length > 1) {
         currentElement = alledetailstags[i];
         parent_of_element = currentElement.parentNode
         var newNode = document.createElement("button");
+        var containerForButton = document.createElement("div");
+        containerForButton.classList.add('button-container');
 
         if (i == 0) {
 
@@ -75,26 +77,33 @@ if (alledetailstags.length > 1) {
 
             liveregion_detailsummary = document.querySelector('#liveregion_detailsummary');
 
-            // en vlak voor de eerste <details> een knop toevoegen
+            // en vlak voor de eerste <details> een container met de knop toevoegen
             newNode.innerHTML = detailssummarytranslate.open;
 
             // Handle button click event
             newNode.addEventListener('click', detailsbuttonListenFunc);
             newNode.classList.add('openbutton');
 
-            parent_of_element.insertBefore(newNode, currentElement);
+            containerForButton.appendChild(newNode);
+
+            parent_of_element.insertBefore(containerForButton, currentElement);
 
         }
 
         if (i == (alledetailstags.length - 1)) {
 
-            // na het laatste element de knop toevoegen
+            // na het laatste element een container met de knop toevoegen
+            var lastcontainerForButton = document.createElement("div");
+            lastcontainerForButton.classList.add('button-container');
+
             newNode.innerHTML = detailssummarytranslate.open;
             newNode.classList.add('openbutton');
 
             // Handle button click event
             newNode.addEventListener('click', detailsbuttonListenFunc);
-            parent_of_element.insertBefore(newNode, currentElement.nextSibling);
+            lastcontainerForButton.appendChild(newNode);
+
+            parent_of_element.insertBefore(lastcontainerForButton, currentElement.nextSibling);
 
         }
     }
