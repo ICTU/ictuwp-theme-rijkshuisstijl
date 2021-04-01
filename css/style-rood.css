@@ -5937,7 +5937,6 @@ nav li.selected span {
 }
 nav li.current-menu-parent > a,
 nav li.current-page-parent > a,
-nav li.current_page_parent > a,
 nav li.current_page_ancestor > a,
 nav li.current-page-ancestor > a,
 nav li.current-menu-item > a {
