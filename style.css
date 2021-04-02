@@ -5900,9 +5900,6 @@ nav li.selected span {
   font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
 }
 nav li.current-menu-parent > a,
-nav li.current-page-parent > a,
-nav li.current_page_ancestor > a,
-nav li.current-page-ancestor > a,
 nav li.current-menu-item > a {
   font-weight: bold;
   font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
