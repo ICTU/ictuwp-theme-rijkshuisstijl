@@ -524,6 +524,7 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
   }
   .initiatieven-taxonomylist section {
     flex: 1 0 50%;
+    padding-right: 1rem;
   }
 }
 .initiatieven-taxonomylist section ul {
