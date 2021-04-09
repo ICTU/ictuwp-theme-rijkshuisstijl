@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rijkshuisstijl (Digitale Overheid)\n"
 "POT-Creation-Date: 2021-04-02 09:39+0200\n"
-"PO-Revision-Date: 2021-04-02 09:39+0200\n"
+"PO-Revision-Date: 2021-04-07 10:24+0200\n"
 "Last-Translator: Paul van Buuren <poedit@wbvb.nl>\n"
 "Language-Team: paul@wbvb.nl\n"
 "Language: nl_NL\n"
@@ -703,17 +703,17 @@ msgstr "%s voor %s %s"
 #, php-format
 msgctxt "Posts for topic without category"
 msgid "Posts for %s %s"
-msgstr "Nieuwsberichten onder %s %s"
+msgstr "Nieuwsberichten voor %s %s"
 
 #: functions.php:4025
 #, php-format
 msgid "Events for %s %s"
-msgstr "Events onder %s %s"
+msgstr "Events voor %s %s"
 
 #: functions.php:4032
 #, php-format
 msgid "Documents for %s %s"
-msgstr "Documenten onder %s %s"
+msgstr "Documenten  voor %s %s"
 
 #: functions.php:4060
 msgid "ACF plugin is niet actief ("
