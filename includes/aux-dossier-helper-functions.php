@@ -397,7 +397,7 @@ function rhswp_dossier_title_checker() {
 			$titel     = sprintf( __( '%s for topic %s.', 'wp-rijkshuisstijl' ), $berichten, $term->name );
 			$threshold = get_field( 'dossier_post_overview_categor_threshold', 'option' );
 
-			// zijn er meer dan XX berichten in dit dossier? Dan checken of we aparte categorieen moeten tonen
+			// zijn er meer dan [$threshold] berichten in dit dossier? Dan checken of we aparte categorieen moeten tonen
 			if ( intval( $wp_queryposts->post_count ) >= intval( $threshold ) ) {
 
 				$categories = get_field( 'dossier_post_overview_categories', 'option' );
@@ -502,6 +502,7 @@ function rhswp_dossier_title_checker() {
 		$wp_queryposts = new WP_Query( $args );
 
 		if ( $wp_queryposts->post_count > 0 ) {
+			// er zijn documenten gevonden voor dit dossier
 
 			$berichten = sprintf( _n( '%s document', '%s documents', $wp_queryposts->post_count, 'wp-rijkshuisstijl' ), $wp_queryposts->post_count );
 			$titel     = sprintf( __( '%s for topic %s.', 'wp-rijkshuisstijl' ), $berichten, $term->name );
@@ -510,6 +511,7 @@ function rhswp_dossier_title_checker() {
 			$indicator  = '';
 
 			if ( trailingslashit( $current_url ) === trailingslashit( get_term_link( $term->term_id, RHSWP_CT_DOSSIER ) . RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW ) ) {
+				// de gebruiker heeft om het overzicht van documenten voor dit dossier gevraagd
 				$isselected = ' class="selected case05"';
 				$indicator  = $spancurrentpage_start;
 			}
