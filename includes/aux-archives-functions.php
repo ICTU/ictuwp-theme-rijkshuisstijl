@@ -98,19 +98,17 @@ function rhswp_get_grid_item( $args = array() ) {
 		$bestand_of_url = get_field( 'rhswp_document_file_or_url', $args['ID'] );
 		$filetype       = strtoupper( $file['subtype'] );
 		$documenttype   = get_the_date( '', $args['ID'] );
-		if ( 'bestand' === $bestand_of_url ) {
+
+		if ( $file ) {
 			if ( $filetype ) {
 				$documenttype .= DO_SEPARATOR . $filetype;
 			}
 			if ( $file['filesize'] > 0 ) {
 				$documenttype .= ' (' . human_filesize( $file['filesize'] ) . ')';
 			}
-		} else {
-			// het is een link
-			$documenttype .= DO_SEPARATOR . _x( "external link", 'document is een link', 'wp-rijkshuisstijl' );
-		}
-		if ( $number_pages > 0 ) {
-			$documenttype .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );
+			if ( $number_pages > 0 ) {
+				$documenttype .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );
+			}
 		}
 
 
@@ -119,8 +117,8 @@ function rhswp_get_grid_item( $args = array() ) {
 		}
 		$itemtitle .= '<' . $args['headerlevel'] . '><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></' . $args['headerlevel'] . '>';
 
-		$excerpt   .= '<p class="excerpt">';
-		$excerpt   .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
+		$excerpt .= '<p class="excerpt">';
+		$excerpt .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
 		if ( WP_DEBUG_SHOWTEXTLENGTH ) {
 			// TODO
 			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) ) . '</span></span>';
