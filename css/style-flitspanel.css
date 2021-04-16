@@ -6990,12 +6990,6 @@ Media Queries
 .block article a h3 {
   color: #01689b;
 }
-.block section .meta,
-.block article .meta {
-  color: #696969;
-  margin: 0.5em 0;
-  font-size: 90%;
-}
 .block section .article-container,
 .block article .article-container {
   padding: 0;
@@ -12190,6 +12184,47 @@ details[open] summary:hover {
 details + .button-container {
   margin-top: -0.5rem;
 }
+.meta {
+  color: #696969 !important;
+  margin: 0.5em 0;
+  font-size: 90%;
+}
+.dossier-labels dd,
+.dossier-labels dt {
+  display: inline;
+  max-width: none;
+  float: left;
+  width: auto;
+}
+.dossier-labels dt {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+.dossier-labels dd {
+  margin: 0;
+}
+.dossier-labels a {
+  display: block;
+  padding: 0 0.5rem;
+  margin: 0.1rem 0.75rem 0.75rem 0.1rem;
+  background: #f3f3f3;
+  text-decoration: none;
+  font-size: 90%;
+}
+.dossier-labels a:visited {
+  color: #535353;
+}
+.dossier-labels a:hover,
+.dossier-labels a:focus,
+.dossier-labels a:active {
+  text-decoration: underline;
+}
 .page.full-width-content .entry-header,
 .single.full-width-content .entry-header {
   max-width: 47.8125rem;
@@ -12369,7 +12404,7 @@ details + .button-container {
     font-size: 3rem;
   }
 }
-.share-bar {
+.aux-info-bar {
   max-width: 47.8125rem;
   margin-left: auto;
   margin-right: auto;
@@ -12377,7 +12412,7 @@ details + .button-container {
   margin-bottom: 2rem;
 }
 @media only screen and (min-width: 1200px) {
-  .share-bar {
+  .aux-info-bar {
     padding-left: 3rem;
     padding-right: 2rem;
   }

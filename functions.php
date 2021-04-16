@@ -1525,9 +1525,10 @@ function rhswp_overwrite_widget_settings() {
 }
 
 //========================================================================================================
-add_action( 'genesis_entry_content', 'rhswp_document_add_extra_info', 15 );
+
 function rhswp_document_add_extra_info() {
 	global $post;
+
 	if ( is_single() && ( RHSWP_CPT_DOCUMENT == get_post_type() ) ) {
 		if ( function_exists( 'get_field' ) ) {
 			$filesize_user           = get_field( 'rhswp_document_filesize', $post->ID );
@@ -1543,7 +1544,7 @@ function rhswp_document_add_extra_info() {
 					$linktext                = preg_replace( '|   |i', ' - ', $linktext );
 					$rhswp_document_linktext = sprintf( _x( 'Bekijk "%s"', 'download document', 'wp-rijkshuisstijl' ), $linktext );
 				}
-				echo '<a href="' . $rhswp_document_url . '" class="download ' . RHSWP_CPT_DOCUMENT . '">' . $rhswp_document_linktext . '</a>';
+				echo '<p><a href="' . $rhswp_document_url . '" class="' . RHSWP_CPT_DOCUMENT . '">' . $rhswp_document_linktext . '</a></p>';
 			} else {
 				if ( $file ) {
 					$filetype = strtoupper( $file['subtype'] );
@@ -1551,7 +1552,7 @@ function rhswp_document_add_extra_info() {
 					if ( $filesize_user ) {
 						$filesize = $filesize_user;
 					}
-					echo '<a href="' . $file['url'] . '" class="download ' . RHSWP_CPT_DOCUMENT . '">' . sprintf( _x( "Download '%s'", 'download document', 'wp-rijkshuisstijl' ), $file['title'] );
+					echo '<p><a href="' . $file['url'] . '" class="download ' . RHSWP_CPT_DOCUMENT . '">' . sprintf( _x( "Download '%s'", 'download document', 'wp-rijkshuisstijl' ), $file['title'] );
 					if ( $filetype || $filesize ) {
 						echo ' (';
 						if ( $filetype && $filesize ) {
@@ -1561,7 +1562,7 @@ function rhswp_document_add_extra_info() {
 						}
 						echo ')';
 					}
-					echo '</a>';
+					echo '</a></p>';
 				}
 			}
 		}
@@ -1597,8 +1598,9 @@ function rhswp_post_append_postinfo( $post_info ) {
 		} elseif ( RHSWP_CPT_DOCUMENT == get_post_type() ) {
 			// hiero
 			$return       = '[post_date]';
+			$file         = get_field( 'rhswp_document_upload', $post->ID );
 			$number_pages = get_field( 'rhswp_document_number_pages', $post->ID );
-			if ( $number_pages > 0 ) {
+			if ( $file && $number_pages > 0 ) {
 				$return .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );
 			}
 
@@ -2879,10 +2881,10 @@ function rhswp_contactreactie_write_reactieform() {
 					$url_name = preg_replace( '|www.|i', '', $url_name );
 					$url_name = rtrim( $url_name, '/' );
 
-					$maxwidth = 80; // 80px maximaal breed
+					$maxwidth     = 80; // 80px maximaal breed
 					$width_factor = ( $width / $maxwidth );
 
-					$height = round( ( $height / $width_factor), 0) ;
+					$height = round( ( $height / $width_factor ), 0 );
 
 					echo '<a href="' . $url . '" class="related-content__stroke">';
 					echo '<img src="' . $thumb . '" alt="Bekijk de pagina ' . $titel . '" width="' . $maxwidth . '" height="' . $height . '" />';
@@ -3911,55 +3913,18 @@ function rhswp_get_documents_for_dossier() {
 			$wp_query = new WP_Query( $args );
 			if ( $wp_query->have_posts() ) {
 				echo '<div class="document-overview">';
-				echo '<div class="block no-top">';
+				$actueel_row_number = $wp_query->post_count;
+				echo '<div class="grid itemcount-' . $actueel_row_number . '">';
+
 				while ( $wp_query->have_posts() ):
 					$wp_query->the_post();
-					if ( $currentsite && $currentpage ) {
-						$postpermalink = get_the_permalink();
-						$postname      = $post->post_name;
-						$postpermalink = str_replace( $currentsite, '', $postpermalink );
-						$postpermalink = '/' . $postname;
-						$crumb         = '/' . RHSWP_CT_DOSSIER . '/' . $term->slug . '/' . RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW;
-						$theurl        = $currentsite . $crumb . $postpermalink;
-					} else {
-						$theurl = get_the_permalink();
-					}
-					$excerpt        = wp_strip_all_tags( get_the_excerpt() );
-					$file           = get_field( 'rhswp_document_upload', $post->ID );
-					$number_pages   = get_field( 'rhswp_document_number_pages', $post->ID );
-					$bestand_of_url = get_field( 'rhswp_document_file_or_url', $post->ID );
-					$filetype       = strtoupper( $file['subtype'] );
-					$meta           = get_the_date( '', $post->ID );
-					if ( 'bestand' === $bestand_of_url ) {
-						if ( $filetype ) {
-							$meta .= DO_SEPARATOR . $filetype;
-						}
-						if ( $file['filesize'] > 0 ) {
-							$meta .= ' (' . human_filesize( $file['filesize'] ) . ')';
-						}
-					} else {
-						// het is een link
-						$meta .= DO_SEPARATOR . _x( "external link", 'document is een link', 'wp-rijkshuisstijl' );
-					}
-					if ( $number_pages > 0 ) {
-						$meta .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );
-					}
-					?>
-                    <article>
-                        <h2><a href="<?php echo trailingslashit( $theurl ) ?>"><?php the_title(); ?></a></h2>
-						<?php
-						if ( $excerpt ) {
-							echo '<p>' . $excerpt . '</p>';
-						}
-						if ( $meta ) {
-							echo '<p class="meta">' . $meta . '</p>';
-						}
-						if ( WP_DEBUG && SHOW_CSS_DEBUG ) {
-							the_category( ', ' );
-						}
-						?>
-                    </article>
-				<?php
+					$args2 = array(
+						'ID' => $post->ID,
+					);
+
+					echo rhswp_get_grid_item( $args2 );
+
+
 				endwhile;
 				genesis_posts_nav();
 				wp_reset_query();
@@ -4240,7 +4205,7 @@ function rhswp_append_socialbuttons( $doecho = true ) {
 
 	global $post;
 
-	if ( is_single() && 'post' == get_post_type() ) {
+	if ( is_single() && ( RHSWP_CPT_DOCUMENT === get_post_type() || 'post' == get_post_type() ) ) {
 
 		$thelink       = urlencode( get_permalink( $post->ID ) );
 		$thetitle      = urlencode( $post->post_title );
@@ -4253,7 +4218,7 @@ function rhswp_append_socialbuttons( $doecho = true ) {
 		$mailonderwerp = urlencode( sprintf( _x( 'Read this: %s', 'share buttons mail onderwerp', 'wp-rijkshuisstijl' ), $post->post_title ) );
 
 		if ( $thelink ) {
-			$return = '<div class="share-bar"><span class="cta">' . $cta . '</span>';
+			$return = '<div class="share-bar aux-info-bar"><span class="cta">' . $cta . '</span>';
 			$return .= '<ul>';
 			$return .= '<li><a href="mailto:' . $mailadres . '?subject=' . $mailonderwerp . '&body=' . $thetitle . ' - ' . $thelink . '" target="_blank"><span class="social-media-icon social-media--mail">&nbsp;</span><span class="visuallyhidden">' . _x( "Share via email", 'share buttons mail', 'wp-rijkshuisstijl' ) . '</span></a></li>';
 			$return .= '<li><a href="https://twitter.com/share?url=' . $thelink . '&via=digioverheid&text=' . $thetitle . '" data-url="' . $thelink . '" data-text="' . $thetitle . '" data-via="@digioverheid"' . $popup . '><span class="social-media-icon social-media--twitter">&nbsp;</span><span class="visuallyhidden">' . _x( "Share on Twitter", 'share buttons Twitter', 'wp-rijkshuisstijl' ) . '</span></a></li>';
@@ -4263,6 +4228,35 @@ function rhswp_append_socialbuttons( $doecho = true ) {
 		}
 
 		if ( $return ) {
+			echo $return;
+		}
+	}
+
+}
+
+//========================================================================================================
+
+function rhswp_append_terms_dossier( $doreturn = true ) {
+
+	global $post;
+
+	$return = '';
+
+	if ( is_single() && ( RHSWP_CPT_DOCUMENT == get_post_type() || 'post' == get_post_type()) ) {
+		// dossier-info toevoegen ALLEEN voor documenten / berichten
+		$terms = get_the_terms( $post->ID, RHSWP_CT_DOSSIER );
+		if ( $terms && ! is_wp_error( $terms ) ) {
+			$return = '<dl class="aux-info-bar dossier-labels">';
+			$return .= '<dt>' . sprintf( _n( 'Dossier', "Dossiers", count( $terms ), 'wp-rijkshuisstijl' ), count( $terms ) ) . '</dt>';
+			foreach ( $terms as $term ) {
+				$return .= '<dd><a href="' . get_term_link( $term->term_id ) . '">' . $term->name . '</a></dd> ';
+			}
+			$return .= '</dl>';
+		}
+
+		if ( $doreturn ) {
+			return $return;
+		} else {
 			echo $return;
 		}
 	}
