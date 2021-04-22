@@ -146,10 +146,18 @@ define( 'RHSWP_MIN_HERO_IMAGE_WIDTH', 1500 );
 define( 'RHSWP_MIN_HERO_IMAGE_HEIGHT', 400 );
 define( 'RHSWP_HERO_IMAGE_WIDTH_NAME', 'Carrousel (full width: ' . RHSWP_MIN_HERO_IMAGE_WIDTH . ' wide)' );
 define( 'RHSWP_HERO_IMAGE2_WIDTH_NAME', RHSWP_MIN_HERO_IMAGE_WIDTH . 'w' );
-define( 'RHSWP_DOSSIERCONTEXTPOSTOVERVIEW', 'dossier-berichten' );
-define( 'RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW', 'dossier-categorie' );
-define( 'RHSWP_DOSSIERCONTEXTEVENTOVERVIEW', 'dossier-events' );
-define( 'RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW', 'dossier-documenten' );
+if ( ! defined( 'RHSWP_DOSSIERCONTEXTPOSTOVERVIEW' ) ) {
+	define( 'RHSWP_DOSSIERCONTEXTPOSTOVERVIEW', 'dossier-berichten' );
+}
+if ( ! defined( 'RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW' ) ) {
+	define( 'RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW', 'dossier-categorie' );
+}
+if ( ! defined( 'RHSWP_DOSSIERCONTEXTEVENTOVERVIEW' ) ) {
+	define( 'RHSWP_DOSSIERCONTEXTEVENTOVERVIEW', 'dossier-events' );
+}
+if ( ! defined( 'RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW' ) ) {
+	define( 'RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW', 'dossier-documenten' );
+}
 if ( ! defined( 'DOPT__ACTIELIJN_CPT' ) ) {
 	define( 'DOPT__ACTIELIJN_CPT', "actielijn" );
 }
@@ -3912,24 +3920,49 @@ function rhswp_get_documents_for_dossier() {
 			);
 			$wp_query = new WP_Query( $args );
 			if ( $wp_query->have_posts() ) {
-				echo '<div class="document-overview">';
-				$actueel_row_number = $wp_query->post_count;
-				echo '<div class="grid itemcount-' . $actueel_row_number . '">';
+
+				$item_count  = $wp_query->post_count;
+				$columncount = 3;
+
+				if ( 1 === $item_count ) {
+					$columncount = 1;
+				} elseif ( 2 === $item_count ) {
+					$columncount = 2;
+				} elseif ( 4 === $item_count ) {
+					$columncount = 2;
+				}
+
+				echo '<div class="grid itemcount-' . $item_count . ' columncount-' . $columncount . '">';
 
 				while ( $wp_query->have_posts() ):
 					$wp_query->the_post();
+
+					$theurl = get_the_permalink();
+
+					if ( $currentsite && $currentpage ) {
+						$postpermalink = get_the_permalink();
+						$postname      = $post->post_name;
+						$postpermalink = '/' . $postname;
+						$crumb         = '/' . RHSWP_CT_DOSSIER . '/' . $term->slug . '/' . RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW;
+						$theurl        = $currentsite . $crumb . $postpermalink;
+					}
+
 					$args2 = array(
-						'ID' => $post->ID,
+						'ID'        => $post->ID,
+						'type'      => 'posts_document',
+						'permalink' => trailingslashit( $theurl ),
 					);
 
 					echo rhswp_get_grid_item( $args2 );
 
-
 				endwhile;
+
+				echo '</div>'; // .grid
+
 				genesis_posts_nav();
 				wp_reset_query();
-				echo '</div>'; // .block no-top
-				echo '</div>'; // .document-overview
+
+
 			} else {
 				echo '<p>';
 				echo sprintf( _x( 'No results for %s.', 'No results text', 'wp-rijkshuisstijl' ), $message );
@@ -4242,7 +4275,7 @@ function rhswp_append_terms_dossier( $doreturn = true ) {
 
 	$return = '';
 
-	if ( is_single() && ( RHSWP_CPT_DOCUMENT == get_post_type() || 'post' == get_post_type()) ) {
+	if ( is_single() && ( RHSWP_CPT_DOCUMENT == get_post_type() || 'post' == get_post_type() ) ) {
 		// dossier-info toevoegen ALLEEN voor documenten / berichten
 		$terms = get_the_terms( $post->ID, RHSWP_CT_DOSSIER );
 		if ( $terms && ! is_wp_error( $terms ) ) {
