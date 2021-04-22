@@ -3263,14 +3263,14 @@ function rhswp_add_simple_streamer_funcs() {
 }
 
 //========================================================================================================
-add_filter( 'media_buttons_context', 'rhswp_admin_insert_streamer_button' );
+//add_filter( 'media_buttons_context', 'rhswp_admin_insert_streamer_button' );
+add_action( 'media_buttons', 'rhswp_admin_insert_streamer_button' );
+
 /**
  * Append the 'Add streamer' button to selected admin pages
  */
-function rhswp_admin_insert_streamer_button( $context ) {
-	if ( ! current_user_can( 'edit_others_posts' ) ) {
-		return $context;
-	}
+function rhswp_admin_insert_streamer_button( ) {
+
 	global $pagenow;
 	$posttype = 'post';
 	if ( isset( $_GET['post'] ) ) {
@@ -3284,6 +3284,9 @@ function rhswp_admin_insert_streamer_button( $context ) {
 	foreach ( $available_post_types as $available_post_type ) {
 		array_push( $allowed_post_types, $available_post_type );
 	}
+
+	$context = '';
+
 	if ( ( in_array( $pagenow, array(
 			'post.php',
 			'page.php',
@@ -3308,7 +3311,7 @@ function rhswp_admin_insert_streamer_button( $context ) {
 		            '">' . _x( "Voeg kader toe", 'kader', 'wp-rijkshuisstijl' ) . '</a>';
 	}
 
-	return $context;
+	echo $context;
 }
 
 //========================================================================================================
