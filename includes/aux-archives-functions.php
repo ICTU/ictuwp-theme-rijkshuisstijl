@@ -39,7 +39,11 @@ function rhswp_get_grid_item( $args = array() ) {
 	$itemdate           = get_the_date( get_option( 'date_format' ), $args['ID'] );
 	$imgcontainer       = get_the_post_thumbnail( $args['ID'], IMAGESIZE_5x3_SMALL );
 	$contentblock_titel = ( $args['contentblock_title'] ) ? $args['contentblock_title'] : get_the_title( $args['ID'] );
-	$contentblock_url   = get_permalink( $args['ID'] );
+	if ( $args['permalink'] ) {
+		$contentblock_url = $args['permalink'];
+	} else {
+		$contentblock_url = get_permalink( $args['ID'] );
+	}
 	$cssid              = '';
 	$excerpt            = '';
 	$itemtitle          = "";
@@ -137,6 +141,54 @@ function rhswp_get_grid_item( $args = array() ) {
 		$return .= '</div>'; // .txtcontainer
 		$return .= '</' . $args['tagcontainer'] . '>';
 
+
+	} elseif ( $args['type'] === 'posts_document' ) {
+
+		$file           = get_field( 'rhswp_document_upload', $args['ID'] );
+		$number_pages   = get_field( 'rhswp_document_number_pages', $args['ID'] );
+		$bestand_of_url = get_field( 'rhswp_document_file_or_url', $args['ID'] );
+		$filetype       = strtoupper( $file['subtype'] );
+		$documenttype   = get_the_date( '', $args['ID'] );
+		if ( 'bestand' === $bestand_of_url ) {
+			if ( $filetype ) {
+				$documenttype .= DO_SEPARATOR . $filetype;
+			}
+			if ( $file['filesize'] > 0 ) {
+				$documenttype .= ' (' . human_filesize( $file['filesize'] ) . ')';
+			}
+		} else {
+			// het is een link
+			$documenttype .= DO_SEPARATOR . _x( "external link", 'document is een link', 'wp-rijkshuisstijl' );
+		}
+		if ( $number_pages > 0 ) {
+			$documenttype .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );
+		}
+
+
+		if ( $contentblock_label ) {
+			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
+		}
+		$itemtitle .= '<' . $args['headerlevel'] . '><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></' . $args['headerlevel'] . '>';
+
+		$excerpt .= '<p class="excerpt">';
+		$excerpt .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
+		if ( WP_DEBUG_SHOWTEXTLENGTH ) {
+			// TODO
+			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) ) . '</span></span>';
+		}
+		$excerpt .= '</p>';
+
+		$meta = '<p class="entry-meta">' . $documenttype . '</p>';
+
+		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . '"' . $cssid . '>';
+		$return .= '<div class="txtcontainer">';
+		$return .= '<div class="text">';
+		$return .= $itemtitle;
+		$return .= $meta;
+		$return .= $excerpt;
+		$return .= '</div>'; // .text
+		$return .= '</div>'; // .txtcontainer
+		$return .= '</' . $args['tagcontainer'] . '>';
 
 	} elseif ( $args['type'] === 'posts_featured' ) {
 		if ( in_array( 'colspan-1', $cssclasses ) ) {
