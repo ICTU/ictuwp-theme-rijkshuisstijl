@@ -2289,20 +2289,6 @@ function rhswp_add_touch_icons() {
 }
 
 //========================================================================================================
-add_action( 'send_headers', 'rhswp_set_hsts_policy' );
-/**
- * Enables the HTTP Strict Transport Security (HSTS) header.
- *
- * @since 1.0.0
- */
-function rhswp_set_hsts_policy() {
-	// 2 year expiration: 63072000
-	header( 'Strict-Transport-Security: max-age=63072000; includeSubDomains; preload' );
-//	header('Content-type: text/plain; charset=utf-8');
-	header( 'Content-type: text/html; charset=utf-8' );
-}
-
-//========================================================================================================
 add_action( 'wp_enqueue_scripts', 'rhswp_add_blog_archive_css' );
 function rhswp_add_blog_archive_css() {
 	global $imgbreakpoints;
