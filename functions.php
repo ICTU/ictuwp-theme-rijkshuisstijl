@@ -2716,8 +2716,12 @@ function rhswp_contacformulier_referrer_title( $atts ) {
 	$return = '';
 
 	// de referrer kan een dossier zijn of een normaal contenttype
-	$dossierid = (int) $_GET['dossierid']; // een dossier
-	$postid    = (int) $_GET['postid']; // een normaal contenttype
+    if ( isset( $_GET['dossierid'] )) {
+	    $dossierid = (int) $_GET['dossierid']; // een dossier
+    }
+	if ( isset( $_GET['postid'] )) {
+        $postid    = (int) $_GET['postid']; // een normaal contenttype
+	}
 
 	if ( wp_verify_nonce( $_REQUEST['referrersource'], 'postid_' . $postid ) ) {
 		// de verificatie klopt voor een normaal contenttype
@@ -2745,8 +2749,12 @@ function rhswp_contacformulier_referrer( $atts ) {
 	$return = '';
 
 	// de referrer kan een dossier zijn of een normaal contenttype
-	$dossierid = (int) $_GET['dossierid']; // een dossier
-	$postid    = (int) $_GET['postid']; // een normaal contenttype
+	if ( isset( $_GET['dossierid'] )) {
+		$dossierid = (int) $_GET['dossierid']; // een dossier
+	}
+	if ( isset( $_GET['postid'] )) {
+		$postid    = (int) $_GET['postid']; // een normaal contenttype
+	}
 
 	if ( wp_verify_nonce( $_REQUEST['referrersource'], 'postid_' . $postid ) ) {
 		// de verificatie klopt voor een normaal contenttype
