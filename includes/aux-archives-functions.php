@@ -406,13 +406,13 @@ function rhswp_archive_custom_loop() {
 		$postcounter = 0;
 		while ( have_posts() ) : the_post();
 			$postcounter ++;
-			$excerpt           = wp_strip_all_tags( get_the_excerpt( $post ) );
-			$classattr         = genesis_attr( 'entry' );
-			$contenttype       = get_post_type();
-			$current_post_id   = isset( $post->ID ) ? $post->ID : 0;
-			$documenttype      = rhswp_translateposttypes( $contenttype );
-			$toonitem = true;
-			$permalink = get_permalink();
+			$excerpt         = wp_strip_all_tags( get_the_excerpt( $post ) );
+			$classattr       = genesis_attr( 'entry' );
+			$contenttype     = get_post_type();
+			$current_post_id = isset( $post->ID ) ? $post->ID : 0;
+			$documenttype    = rhswp_translateposttypes( $contenttype );
+			$toonitem        = true;
+			$permalink       = get_permalink();
 
 			if ( is_tax( RHSWP_CT_DOSSIER ) ) {
 				$pagetemplateslug = basename( get_page_template_slug( $current_post_id ) );
