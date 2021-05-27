@@ -348,12 +348,19 @@ add_action( 'pre_get_posts', 'rhswp_modify_query_for_page_for_posts' );
  */
 function rhswp_modify_query_for_page_for_posts( $query ) {
 
-	if ( $query->is_main_query() && ! is_admin() && ( is_home() && 'page' == get_option( 'show_on_front' ) ) ) {
+	if ( $query->is_main_query() && ! is_admin() ) {
 
-		//* Force full-width-content layout
-		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+		if ( $query->is_search() ) {
+			// voor standaard (i.e. non-searchwp) zoekopdrachten, voeg events en documenten als
+			// doorzoekbare objecten toe
+			$query->set( 'post_type', array( 'post', RHSWP_CPT_EVENT, RHSWP_CPT_DOCUMENT, 'page' ) );
+		} elseif ( is_home() && 'page' == get_option( 'show_on_front' ) ) {
 
-		return $query;
+			//* Force full-width-content layout
+			add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
+			return $query;
+		}
 	}
 }
 
