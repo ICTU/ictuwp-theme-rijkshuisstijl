@@ -39,7 +39,7 @@ function rhswp_get_grid_item( $args = array() ) {
 	$itemdate           = get_the_date( get_option( 'date_format' ), $args['ID'] );
 	$imgcontainer       = get_the_post_thumbnail( $args['ID'], IMAGESIZE_5x3_SMALL );
 	$contentblock_titel = ( $args['contentblock_title'] ) ? $args['contentblock_title'] : get_the_title( $args['ID'] );
-	if ( $args['permalink'] ) {
+	if ( isset( $args['permalink'] ) ) {
 		$contentblock_url = $args['permalink'];
 	} else {
 		$contentblock_url = get_permalink( $args['ID'] );
