@@ -395,6 +395,9 @@ function rhswp_archive_loop() {
 
 /** Code for custom loop */
 
+
+/** Code for custom loop */
+
 function rhswp_archive_custom_loop() {
 	// code for a completely custom loop
 	global $post;
@@ -403,23 +406,14 @@ function rhswp_archive_custom_loop() {
 		$postcounter = 0;
 		while ( have_posts() ) : the_post();
 			$postcounter ++;
-			$permalink         = get_permalink();
 			$excerpt           = wp_strip_all_tags( get_the_excerpt( $post ) );
-			$postdate          = get_the_date();
-			$doimage           = false;
 			$classattr         = genesis_attr( 'entry' );
 			$contenttype       = get_post_type();
 			$current_post_id   = isset( $post->ID ) ? $post->ID : 0;
-			$cssid             = 'image_featured_image_post_' . $current_post_id;
-			$labelledbytitleid = sanitize_title( 'title_' . $contenttype . '_' . $current_post_id );
-			$labelledby        = ' aria-labelledby="' . $labelledbytitleid . '"';
-//			if ( $postcounter <= RHSWP_NR_FEAT_IMAGES && has_post_thumbnail( $post->ID ) ) {
-			if ( has_post_thumbnail( $post->ID ) ) {
-				$doimage = true;
-			} else {
-//				$classattr = str_replace( 'has-post-thumbnail', '', $classattr );
-			}
+			$documenttype      = rhswp_translateposttypes( $contenttype );
 			$toonitem = true;
+			$permalink = get_permalink();
+
 			if ( is_tax( RHSWP_CT_DOSSIER ) ) {
 				$pagetemplateslug = basename( get_page_template_slug( $current_post_id ) );
 				$selectposttype   = '';
@@ -477,92 +471,60 @@ function rhswp_archive_custom_loop() {
 				}
 			}
 			if ( $toonitem ) {
-				if ( is_search() || is_post_type_archive( RHSWP_CPT_DOCUMENT ) ) {
-					$theurl       = get_permalink();
-					$thetitle     = rhswp_filter_alternative_title( get_the_id(), get_the_title() );
-					$documenttype = rhswp_translateposttypes( $contenttype );
-					if ( 'post' == $contenttype ) {
-						$categories = get_the_category( get_the_id() );
-						if ( ! empty( $categories ) ) {
-							// show the categories / category
-							$documenttype = esc_html( $categories[0]->name );
-						} else {
-							// leave the translated post type
+
+				if ( 'page' == $contenttype ) {
+					$documenttype = '';
+				} elseif ( RHSWP_CPT_DOCUMENT == $contenttype ) {
+					$file           = get_field( 'rhswp_document_upload', get_the_id() );
+					$number_pages   = get_field( 'rhswp_document_number_pages', get_the_id() );
+					$bestand_of_url = get_field( 'rhswp_document_file_or_url', get_the_id() );
+					$filetype       = strtoupper( $file['subtype'] );
+					$documenttype   = '(' . $bestand_of_url . ')';
+
+					if ( 'URL' == $bestand_of_url ) {
+						$permalink = get_field( 'rhswp_document_url', get_the_id() );
+
+					} elseif ( $file ) {
+						$permalink = $file['url'];
+
+						if ( $filetype ) {
+							$documenttype = $filetype;
 						}
-						$documenttype .= ' - <span class="post-date">' . get_the_date() . '</span>';
-					}
-					if ( 'document' == $contenttype ) {
-						$file           = get_field( 'rhswp_document_upload', $post->ID );
-						$number_pages   = get_field( 'rhswp_document_number_pages', $post->ID );
-						$bestand_of_url = get_field( 'rhswp_document_file_or_url', $post->ID );
-						$filetype       = strtoupper( $file['subtype'] );
-						$documenttype   = get_the_date( '', $post->ID );
-						if ( 'bestand' === $bestand_of_url ) {
-							if ( $filetype ) {
-								$documenttype .= DO_SEPARATOR . $filetype;
-							}
-							if ( $file['filesize'] > 0 ) {
-								$documenttype .= ' (' . human_filesize( $file['filesize'] ) . ')';
-							}
-						} else {
-							// het is een link
-							$documenttype .= DO_SEPARATOR . _x( "external link", 'document is een link', 'wp-rijkshuisstijl' );
+						if ( $file['filesize'] > 0 ) {
+							$documenttype .= ' (' . human_filesize( $file['filesize'] ) . ')';
 						}
 						if ( $number_pages > 0 ) {
 							$documenttype .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );
 						}
 					}
-					if ( 'attachment' == $contenttype ) {
-						$theurl    = wp_get_attachment_url( $post->ID );
-						$parent_id = $post->post_parent;
-						$excerpt   = wp_strip_all_tags( get_the_excerpt( $parent_id ) );
-						$mimetype  = get_post_mime_type( $post->ID );
-						$thetitle  = rhswp_filter_alternative_title( $parent_id, get_the_title( $parent_id ) );
-						$filesize  = filesize( get_attached_file( $post->ID ) );
-						$file      = get_field( 'rhswp_document_upload', $parent_id );
-						$filetype  = strtoupper( $file['subtype'] );
-						if ( $mimetype ) {
-							$typeclass = explode( '/', $mimetype );
-							$classattr = str_replace( 'class="', 'class="attachment ' . $typeclass[1] . ' ', $classattr );
-							if ( $filesize ) {
-								$documenttype = rhswp_translatemimetypes( $mimetype ) . ' (' . human_filesize( $filesize ) . ')';
-							} else {
-								$documenttype = rhswp_translatemimetypes( $mimetype );
-							}
-						}
-					}
-					printf( '<article %s %s>', $classattr, $labelledby );
-					printf( '<a href="%s"><h2 id="%s">%s</h2><p>%s</p><p class="meta">%s</p></a>', $theurl, $labelledbytitleid, $thetitle, $excerpt, $documenttype );
-				} else {
-					// no search, not an archive for RHSWP_CPT_DOCUMENT
-					if ( 'post' == $contenttype ) {
-						$categories = get_the_category( get_the_id() );
-						if ( ! empty( $categories ) ) {
-							// show the categories / category
-							$documenttype = esc_html( $categories[0]->name );
-						} else {
-							// leave the translated post type
-						}
-						$documenttype .= ' - <span class="post-date">' . get_the_date() . '</span>';
-					}
-					if ( ! ( 'page' == get_post_type( $post->ID ) ) ) {
-						$thetitle = get_the_title( get_the_id() );
+
+				} elseif ( 'post' == $contenttype ) {
+					$categories = get_the_category( get_the_id() );
+					if ( ! empty( $categories ) ) {
+						// show the categories / category
+						$documenttype = esc_html( $categories[0]->name );
 					} else {
-						$thetitle = rhswp_filter_alternative_title( get_the_id(), get_the_title( get_the_id() ) );
+						// leave the translated post type
 					}
-					printf( '<article %s %s>', $classattr, $labelledby );
-					if ( $doimage ) {
-						printf( '<div class="article-container"><div class="article-visual" id="%s">&nbsp;</div>', $cssid );
-						printf( '<div class="article-excerpt"><a href="%s"><h2 id="%s">%s</h2><p class="meta">%s</p><p>%s</p></a></div></div>', get_permalink(), $labelledbytitleid, $thetitle, $postdate, $excerpt );
-					} else {
-						if ( ! ( 'post' == get_post_type( $post->ID ) ) ) {
-							printf( '<a href="%s"><h2 id="%s">%s</h2><p>%s</p></a>', get_permalink(), $labelledbytitleid, $thetitle, $excerpt );
-						} else {
-							printf( '<a href="%s"><h2 id="%s">%s</h2><p class="meta">%s</p><p>%s</p></a>', get_permalink(), $labelledbytitleid, $thetitle, $postdate, $excerpt );
-						}
-					}
+					$documenttype .= ' - <span class="post-date">' . get_the_date() . '</span>';
 				}
+				if ( ! ( 'page' == get_post_type( $post->ID ) ) ) {
+					$thetitle = get_the_title( get_the_id() );
+				} else {
+					$thetitle = rhswp_filter_alternative_title( get_the_id(), get_the_title( get_the_id() ) );
+				}
+
+				// geen plaatjes hier uberhaupt dus class mag weg
+				$classattr = str_replace( 'has-post-thumbnail', '', $classattr );
+
+				if ( $documenttype ) {
+					$documenttype = '<p class="meta">' . $documenttype . '</p>';
+				}
+				printf( '<article %s>', $classattr );
+				printf( '<h2><a href="%s">%s</a></h2>%s<p>%s</p>', $permalink, $thetitle, $documenttype, wp_strip_all_tags( $excerpt ) );
 				echo '</article>';
+
+
 			}
 			do_action( 'genesis_after_entry' );
 		endwhile;
@@ -570,6 +532,7 @@ function rhswp_archive_custom_loop() {
 		wp_reset_query();
 	}
 }
+
 
 //========================================================================================================
 /*
