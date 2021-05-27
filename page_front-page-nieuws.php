@@ -141,7 +141,7 @@ function rhswp_home_onderwerpen_dossiers() {
 			echo '<div class="griditem colspan-1 hide-on-mobile" id="uitgelicht">';
 			if ( $uitgelicht_image ) {
 				echo '<a href="' . $uitgelicht_url2 . '" tabindex="-1">';
-				echo $uitgelicht_image;
+				echo rhswp_check_alt_attribute( $uitgelicht_image, $uitgelicht_titel );
 				echo '</a>';
 			}
 			echo '<h2' . $uitgelicht_titel_class . '><a href="' . $uitgelicht_url2 . '">' . $uitgelicht_titel . '</a></h2>';
@@ -186,9 +186,14 @@ function rhswp_home_onderwerpen_dossiers() {
 
 						echo '<div class="' . $gridclass . '">';
 						foreach ( $row['home_row_freeform'] as $row2 ) {
+							$itemtitle = '';
 							$itemclass = 'griditem';
 							$excerpt   = $row2['home_row_freeform_text'];
-							$itemtitle = '<h2>' . $row2['home_row_freeform_title'] . '</h2>';
+
+							if ( $row2['home_row_freeform_title'] ) {
+								$itemtitle = '<h2>' . $row2['home_row_freeform_title'] . '</h2>';
+							}
+
 							if ( $row2['home_row_freeform_width'] ) {
 								$itemclass .= ' ' . $row2['home_row_freeform_width'];
 							} else {
@@ -211,13 +216,12 @@ function rhswp_home_onderwerpen_dossiers() {
 
 						if ( $row['home_row_readmore'] ) {
 							$more_text = $row['home_row_readmore'];
-						}
-						else {
-							$more_text = _x( "Alle evenementen", 'readmore home', 'wp-rijkshuisstijl' );
+						} else {
+							$more_text = _x( "All events", 'readmore home', 'wp-rijkshuisstijl' );
 						}
 						$events_link = em_get_link( $more_text );
 
-						$args        = array(
+						$args = array(
 							'scope' => 'future',
 							'limit' => $limit,
 							'array' => true
@@ -309,7 +313,7 @@ function rhswp_home_onderwerpen_dossiers() {
 						);
 
 						$cat_name  = get_cat_name( $slugs );
-						$more_text = _x( "Alle berichten onder %s", 'readmore home', 'wp-rijkshuisstijl' );
+						$more_text = _x( "All posts for %s", 'readmore home', 'wp-rijkshuisstijl' );
 						$more_url  = get_category_link( $slugs );
 						if ( $row['home_row_readmore'] ) {
 							$more_text = $row['home_row_readmore'];
@@ -347,11 +351,11 @@ function rhswp_home_onderwerpen_dossiers() {
 
 							if ( $row['home_row_type'] === 'posts_featured' ) {
 								$args2['type']      = 'posts_featured';
-								$args2['itemclass'] = 'griditem griditem--post colspan-1 griditem--post colspan-1 griditem--post colspan-1';
+								$args2['itemclass'] = 'griditem griditem--post colspan-1 griditem--post griditem--post colspan-1 itemcounter-' . $itemcounter;
 
 							} else {
-								$args2['itemclass'] = 'griditem griditem--post colspan-1';
 								$args2['type']      = 'posts_normal';
+								$args2['itemclass'] = 'griditem griditem--post colspan-1 itemcounter-' . $itemcounter;
 							}
 
 							echo rhswp_get_grid_item( $args2 );
@@ -370,11 +374,11 @@ function rhswp_home_onderwerpen_dossiers() {
 						if ( $uitgelicht_titel ) {
 							// een soort fallback: als er geen uitgelichte content is, dan tonen we de samenvatting van de etalage
 
-							echo '<div class="hide-on-larger-than-mobile" aria-hidden="true">';
+							echo '<div class="hide-on-larger-than-mobile has-border" aria-hidden="true">';
 							echo '<h2' . $uitgelicht_titel_class . '><a href="' . $uitgelicht_url2 . '">' . $uitgelicht_titel . '</a></h2>';
 							if ( $uitgelicht_image ) {
 								echo '<a href="' . $uitgelicht_url2 . '" tabindex="-1" class="featured-image-link">';
-								echo $uitgelicht_image;
+								echo rhswp_check_alt_attribute( $uitgelicht_image, $uitgelicht_titel );
 								echo '</a>';
 							}
 

@@ -138,6 +138,7 @@ function rhswp_pagelinks_replace_widget() {
 			$internal_other = array();
 			$external       = array();
 
+			$alle_links       = array();
 
 			foreach ( $links as $link ) {
 
@@ -151,9 +152,9 @@ function rhswp_pagelinks_replace_widget() {
 					// externe link dus
 					if ( $url_extern ) {
 						// TODO
-						$external[] = '<a href="' . $url_extern . '" class="extern">' . $linktekst_voor_externe_link . '</a>';
+						$alle_links[] = '<a href="' . $url_extern . '" class="extern">' . $linktekst_voor_externe_link . '</a>';
 					} else {
-						$external[] = '<a href="' . $url_extern . '" class="extern">' . $url_extern . '</a>';
+						$alle_links[] = '<a href="' . $url_extern . '" class="extern">' . $url_extern . '</a>';
 					}
 				} else {
 					// interne links zijn OF berichten of NIET-berichten
@@ -172,11 +173,11 @@ function rhswp_pagelinks_replace_widget() {
 
 						if ( 'post' != get_post_type( $linkobject->ID ) ) {
 							// dit is geen bericht (post)
-							$internal_other[] = '<a href="' . $post_url . '" class="intern ' . $post_type . '">' . $post_title . '</a>';
+							$alle_links[] = '<a href="' . $post_url . '" class="intern ' . $post_type . '">' . $post_title . '</a>';
 						} else {
 							// het is wel een bericht (post)
-//							$internal_posts[] = rhswp_get_grid_item( $args );
-							$internal_other[] = '<a href="' . $post_url . '" class="intern ' . $post_type . '">' . $post_title . '</a>';
+//							$alle_links[] = rhswp_get_grid_item( $args );
+							$alle_links[] = '<a href="' . $post_url . '" class="intern ' . $post_type . '">' . $post_title . '</a>';
 						}
 
 					}
@@ -184,7 +185,7 @@ function rhswp_pagelinks_replace_widget() {
 				echo $content;
 			}
 
-			if ( $internal_posts || $internal_other || $external ) {
+			if ( $internal_posts || $internal_other || $external || $alle_links ) {
 				echo '<section aria-labelledby="' . $title_id . '" class="related-content">';
 				echo '<h2 id="' . $title_id . '">' . $widgettitle . '</h2>';
 
@@ -234,19 +235,25 @@ function rhswp_pagelinks_replace_widget() {
 				echo '</div>';
 
 				*/
-				echo '<ul class="otherlinks">';
+				echo '<ul class="">';
+
+				foreach ( $alle_links as $content ) {
+					echo '<li>';
+					echo $content;
+					echo '</li>';
+				}
 				foreach ( $internal_posts as $content ) {
-					echo '<li class="griditem colspan-1">';
+					echo '<li>';
 					echo $content;
 					echo '</li>';
 				}
 				foreach ( $internal_other as $content ) {
-					echo '<li class="griditem colspan-1">';
+					echo '<li>';
 					echo $content;
 					echo '</li>';
 				}
 				foreach ( $external as $content ) {
-					echo '<li class="griditem colspan-1">';
+					echo '<li>';
 					echo $content;
 					echo '</li>';
 				}

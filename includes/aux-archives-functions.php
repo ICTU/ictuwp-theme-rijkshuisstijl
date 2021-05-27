@@ -39,7 +39,11 @@ function rhswp_get_grid_item( $args = array() ) {
 	$itemdate           = get_the_date( get_option( 'date_format' ), $args['ID'] );
 	$imgcontainer       = get_the_post_thumbnail( $args['ID'], IMAGESIZE_5x3_SMALL );
 	$contentblock_titel = ( $args['contentblock_title'] ) ? $args['contentblock_title'] : get_the_title( $args['ID'] );
-	$contentblock_url   = get_permalink( $args['ID'] );
+	if ( $args['permalink'] ) {
+		$contentblock_url = $args['permalink'];
+	} else {
+		$contentblock_url = get_permalink( $args['ID'] );
+	}
 	$cssid              = '';
 	$excerpt            = '';
 	$itemtitle          = "";
@@ -53,7 +57,9 @@ function rhswp_get_grid_item( $args = array() ) {
 	if ( $args['cssid'] ) {
 		$cssid = ' id="' . $args['cssid'] . '"';
 	}
-	if ( 'post' != get_post_type( $args['ID'] ) ) {
+	if ( RHSWP_CPT_DOCUMENT === get_post_type( $args['ID'] ) ) {
+		$args['type'] = 'posts_document';
+	} elseif ( 'post' != get_post_type( $args['ID'] ) ) {
 		$args['type'] = 'posts_manual';
 	}
 
@@ -74,7 +80,8 @@ function rhswp_get_grid_item( $args = array() ) {
 		}
 		$itemtitle .= '<' . $args['headerlevel'] . '>' . $contentblock_titel . '</' . $args['headerlevel'] . '>';
 
-		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . ' "' . $cssid . '>';
+		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . '"' . $cssid . '>';
+
 		if ( $imgcontainer ) {
 			$return .= '<div class="imgcontainer">';
 			$return .= $imgcontainer;
@@ -88,6 +95,100 @@ function rhswp_get_grid_item( $args = array() ) {
 		$return .= '</a>';
 		$return .= '</div>'; // .txtcontainer
 		$return .= '</' . $args['tagcontainer'] . '>';
+	} elseif ( $args['type'] === 'posts_document' ) {
+
+		$file           = get_field( 'rhswp_document_upload', $args['ID'] );
+		$number_pages   = get_field( 'rhswp_document_number_pages', $args['ID'] );
+		$bestand_of_url = get_field( 'rhswp_document_file_or_url', $args['ID'] );
+		$filetype       = strtoupper( $file['subtype'] );
+		$documenttype   = get_the_date( '', $args['ID'] );
+
+		if ( $file ) {
+			if ( $filetype ) {
+				$documenttype .= DO_SEPARATOR . $filetype;
+			}
+			if ( $file['filesize'] > 0 ) {
+				$documenttype .= ' (' . human_filesize( $file['filesize'] ) . ')';
+			}
+			if ( $number_pages > 0 ) {
+				$documenttype .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );
+			}
+		}
+
+
+		if ( $contentblock_label ) {
+			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
+		}
+		$itemtitle .= '<' . $args['headerlevel'] . '><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></' . $args['headerlevel'] . '>';
+
+		$excerpt .= '<p class="excerpt">';
+		$excerpt .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
+		if ( WP_DEBUG_SHOWTEXTLENGTH ) {
+			// TODO
+			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) ) . '</span></span>';
+		}
+		$excerpt .= '</p>';
+
+		$meta = '<p class="entry-meta">' . $documenttype . '</p>';
+
+		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . '"' . $cssid . '>';
+		$return .= '<div class="txtcontainer">';
+		$return .= '<div class="text">';
+		$return .= $itemtitle;
+		$return .= $meta;
+		$return .= $excerpt;
+		$return .= '</div>'; // .text
+		$return .= '</div>'; // .txtcontainer
+		$return .= '</' . $args['tagcontainer'] . '>';
+
+
+	} elseif ( $args['type'] === 'posts_document' ) {
+
+		$file           = get_field( 'rhswp_document_upload', $args['ID'] );
+		$number_pages   = get_field( 'rhswp_document_number_pages', $args['ID'] );
+		$bestand_of_url = get_field( 'rhswp_document_file_or_url', $args['ID'] );
+		$filetype       = strtoupper( $file['subtype'] );
+		$documenttype   = get_the_date( '', $args['ID'] );
+		if ( 'bestand' === $bestand_of_url ) {
+			if ( $filetype ) {
+				$documenttype .= DO_SEPARATOR . $filetype;
+			}
+			if ( $file['filesize'] > 0 ) {
+				$documenttype .= ' (' . human_filesize( $file['filesize'] ) . ')';
+			}
+		} else {
+			// het is een link
+			$documenttype .= DO_SEPARATOR . _x( "external link", 'document is een link', 'wp-rijkshuisstijl' );
+		}
+		if ( $number_pages > 0 ) {
+			$documenttype .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );
+		}
+
+
+		if ( $contentblock_label ) {
+			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
+		}
+		$itemtitle .= '<' . $args['headerlevel'] . '><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></' . $args['headerlevel'] . '>';
+
+		$excerpt .= '<p class="excerpt">';
+		$excerpt .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
+		if ( WP_DEBUG_SHOWTEXTLENGTH ) {
+			// TODO
+			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) ) . '</span></span>';
+		}
+		$excerpt .= '</p>';
+
+		$meta = '<p class="entry-meta">' . $documenttype . '</p>';
+
+		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . '"' . $cssid . '>';
+		$return .= '<div class="txtcontainer">';
+		$return .= '<div class="text">';
+		$return .= $itemtitle;
+		$return .= $meta;
+		$return .= $excerpt;
+		$return .= '</div>'; // .text
+		$return .= '</div>'; // .txtcontainer
+		$return .= '</' . $args['tagcontainer'] . '>';
 
 	} elseif ( $args['type'] === 'posts_featured' ) {
 		if ( in_array( 'colspan-1', $cssclasses ) ) {
@@ -98,6 +199,7 @@ function rhswp_get_grid_item( $args = array() ) {
 			// voor blokken die 2 kolommen breed zijn, gebruiken we een 16:9 plaatje
 			$imgcontainer = get_the_post_thumbnail( $args['ID'], IMAGESIZE_5x3 );
 		}
+
 		$cssclasses[] = 'griditem--textoverimage';
 		if ( $args['datefield'] ) {
 			$cssclasses[] = 'datefield';
@@ -137,10 +239,11 @@ function rhswp_get_grid_item( $args = array() ) {
 		}
 		$excerpt .= '</p>';
 
+
 		if ( $imgcontainer && $contentblock_url ) {
-			$imgcontainer = '<a tabindex="-1" href="' . $contentblock_url . '">' . $imgcontainer . '</a>';
+			$imgcontainer = '<a tabindex="-1" aria-hidden="true" href="' . $contentblock_url . '">' . rhswp_check_alt_attribute( $imgcontainer, $contentblock_titel ) . '</a>';
 		}
-		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . ' "' . $cssid . '>';
+		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . '"' . $cssid . '>';
 		$return .= '<div class="imgcontainer">';
 		$return .= $imgcontainer;
 		$return .= '</div>'; // .imgcontainer
@@ -318,7 +421,7 @@ function rhswp_archive_loop() {
 			$current_post_id = isset( $post->ID ) ? $post->ID : 0;
 			$args2           = array(
 				'ID'        => $current_post_id,
-				'itemclass' => 'griditem griditem--post colspan-1',
+				'itemclass' => 'griditem griditem--post colspan-1 ' . get_post_type( $post->ID ),
 				'type'      => 'posts_normal'
 			);
 			echo rhswp_get_grid_item( $args2 );
@@ -511,6 +614,31 @@ function rhswp_archive_custom_loop() {
 }
 
 //========================================================================================================
+/*
+functie om te checken dat een image die gebruikt wordt in een linke daadwerkelijk een gevuld alt-attribuut heeft
+zodat de link een linktekst heeft
+*/
+function rhswp_check_alt_attribute( $imagetag, $title ) {
+	global $post;
+	if ( ! $imagetag ) {
+		return;
+	}
+	if ( ! $title ) {
+		return;
+	}
+
+	if ( preg_match( '|alt=""|', $imagetag ) ) {
+		// alt-attribuut is dus leeg
+		// we vullen het met de titel
+		$alt_attr = sprintf( 'alt="Link naar %s"', wp_strip_all_tags( $title ) );
+		$imagetag = preg_replace( '|alt=""|', $alt_attr, $imagetag );
+	}
+
+	return $imagetag;
+
+}
+
+//========================================================================================================
 
 function rhswp_post_laatstgewijzigd( $atts ) {
 	global $post;
@@ -522,4 +650,5 @@ function rhswp_post_laatstgewijzigd( $atts ) {
 }
 
 add_shortcode( 'post_laatstgewijzigd', 'rhswp_post_laatstgewijzigd' );
+
 //========================================================================================================

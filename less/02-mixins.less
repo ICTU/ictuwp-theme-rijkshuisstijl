@@ -36,7 +36,8 @@
 @seachform_element_height_xlscreen: 25px;
 
 
-@menubreakpoint_760px: 760px;
+// 865px wordt ook gebruikt in menu.js; verander je het hier, dan moet je het daar ook veranderen.
+@menubreakpoint_865px: 865px;
 
 
 @widget-area: ( @break_650px - ( @logowidth + @padding + 5px ) );
@@ -249,15 +250,17 @@
 
 //=========================================================================================================
 
-.embed_error_icon(@src, @fill_new) {
+.embed_error_icon(@src, @fill_new, @fill_old: #000000) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-  @replace-default: escape('fill:#FF0000;');
-  @replace-new: escape('fill:@{fill_new}');
+//  @replace-default: escape('fill:#FF0000;');
+  @replace-default: escape('fill="@{fill_old}"');
+  @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
 
   background: e(@replacesrc1);
   background-repeat: no-repeat;
   padding-left: 2em;
+
 }
 
 //=========================================================================================================
@@ -318,7 +321,6 @@
     display: inline-block;
     vertical-align: middle;
     content: "";
-    speak: never;
     color: @itemcolor;
     font-size: @fontsize;
     line-height: @fontsize;
@@ -337,7 +339,6 @@
   position: relative;
 
   &:before {
-    speak: never;
     color: @itemcolor;
     display: inline-block;
     width: @width;
@@ -396,7 +397,6 @@
     content: ' ';
     display: inline-block;
     .mixin_iconaddfill('../images/icon-externe-link.svg', @blauw3);
-    speak: never;
     background-repeat: no-repeat;
     width: 20px;
     height: 20px;
@@ -563,34 +563,47 @@
 
 //=========================================================================================================
 
-.mixin_socmedicons( @replacewith: @txt, @replacewhat: #fff) {
+.mixin_socmedicons( @replacewith: @txt, @replacewhat: #fff, @hovercolor: @a_color_hover ) {
   .mixin_iconaddfill('../images/svg/icon-social.svg', @replacewith, @replacewhat);
 
   &.social-media--mail {
     .mixin_iconaddfill('../images/svg/icon-mail.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-mail.svg', @hovercolor, @replacewhat);
+    }
   }
 
   &.social-media--twitter {
     .mixin_iconaddfill('../images/svg/icon-twitter.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-twitter.svg', @hovercolor, @replacewhat);
+    }
   }
 
   &.social-media--linkedin {
     .mixin_iconaddfill('../images/svg/icon-linkedin.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-linkedin.svg', @hovercolor, @replacewhat);
+    }
   }
 
   &.social-media--rss {
     .mixin_iconaddfill('../images/svg/icon-rss.svg', @replacewith, @replacewhat);
+    &:hover {
+      .mixin_iconaddfill('../images/svg/icon-rss.svg', @hovercolor, @replacewhat);
+    }
   }
 
   a {
     color: @replacewith; // @txt;
+    text-decoration: none;
 
     &:visited {
       color: @replacewith;
     }
 
     &:hover {
-      color: @replacewith;
+      color: @hovercolor;
       text-decoration: underline;
     }
   }

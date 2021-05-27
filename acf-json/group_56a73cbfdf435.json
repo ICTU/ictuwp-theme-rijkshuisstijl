@@ -1,47 +1,15 @@
 {
     "key": "group_56a73cbfdf435",
-    "title": "00 Instellingen voor contactformulier",
+    "title": "Instellingen voor reactieformulier",
     "fields": [
         {
-            "key": "field_5eeb32aed7d4f",
-            "label": "Contactformulier via shortcode of selecteer uit lijst",
-            "name": "contactformulier_via_shortcode_of_selecteer_uit_lijst",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "shortcode": "Via een shortcode",
-                "lijst_selectie": "Selecteer uit lijst"
-            },
-            "allow_null": 0,
-            "other_choice": 0,
-            "default_value": "lijst_selectie",
-            "layout": "vertical",
-            "return_format": "value",
-            "save_other_choice": 0
-        },
-        {
-            "key": "field_5eeb3235f56e6",
-            "label": "Shortcode voor Gravity Forms",
-            "name": "shortcode_voor_gravity_forms",
+            "key": "field_6049dc2e961a8",
+            "label": "Titel boven reactiemogelijkheid",
+            "name": "reactiemogelijkheid_titel",
             "type": "text",
-            "instructions": "bijv: \r\n\t[gravityform id=\"3\" title=\"true\" description=\"true\" ajax=\"true\"]",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5eeb32aed7d4f",
-                        "operator": "==",
-                        "value": "shortcode"
-                    }
-                ]
-            ],
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -54,34 +22,147 @@
             "maxlength": ""
         },
         {
-            "key": "field_5acb5e1575f33",
-            "label": "Contact- \/ reactieformulier",
-            "name": "contactformulier",
-            "type": "post_object",
-            "instructions": "Dit formulier wordt onderaan een bericht of pagina getoond als reactiemogelijkheid.",
+            "key": "field_6049dc68adefc",
+            "label": "Toelichtende tekst",
+            "name": "reactiemogelijkheid_vrije_tekst",
+            "type": "textarea",
+            "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5eeb32aed7d4f",
-                        "operator": "==",
-                        "value": "lijst_selectie"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Werkt u aan de digitalisering van de overheid en heeft u een vraag of idee?",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_6049016a5e3bc",
+            "label": "Pagina met contactformulier",
+            "name": "option_contactformulier",
+            "type": "post_object",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "post_type": [
-                "wpcf7_contact_form"
+                "page"
             ],
             "taxonomy": "",
             "allow_null": 0,
             "multiple": 0,
             "return_format": "object",
             "ui": 1
+        },
+        {
+            "key": "field_6049dc504992e",
+            "label": "Linktekst naar pagina met contactformulier",
+            "name": "option_contactformulier_linktekst",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Reageer via het contactformulier",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6049dafa7ee02",
+            "label": "Andere overheidsdiensten",
+            "name": "reactiemogelijkheid_andere_overheidsdiensten",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_6049db787ee04",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "Andere overheidsdienst toevoegen",
+            "sub_fields": [
+                {
+                    "key": "field_6049db277ee03",
+                    "label": "Logo",
+                    "name": "reactiemogelijkheid_andere_overheidsdienst_logo",
+                    "type": "image",
+                    "instructions": "Upload een vierkant logo.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_6049db787ee04",
+                    "label": "Titel",
+                    "name": "reactiemogelijkheid_andere_overheidsdienst_titel",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_6049db8b7ee05",
+                    "label": "URL",
+                    "name": "reactiemogelijkheid_andere_overheidsdienst_url",
+                    "type": "text",
+                    "instructions": "Voer een complete URL in (bijv: https:\/\/voorbeeld.nl of http:\/\/voorbeeld.nl). Of als je een mailadres gebruikt: mailto:mail@voorbeeld.nl",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         },
         {
             "key": "field_5acb5e24804dc",
@@ -203,9 +284,9 @@
     "position": "normal",
     "style": "default",
     "label_placement": "top",
-    "instruction_placement": "label",
+    "instruction_placement": "field",
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608717326
+    "modified": 1616089859
 }

@@ -11,9 +11,10 @@
     display: list-item;
     float: none;
     padding-left: 2rem;
+    margin-bottom: 8px;
     background-position: left center;
     background-repeat: no-repeat;
-    .mixin_socmedicons(@txt, #fff);
+    .mixin_socmedicons(@a_color_default, #fff);
   }
 }
 
@@ -54,7 +55,7 @@ h2, h3, h4 {
   &.social-media-widget {
     .social-media {
       li {
-        .mixin_socmedicons(@wit, #fff);
+        .mixin_socmedicons(@wit, #fff, @wit);
       }
     }
   }

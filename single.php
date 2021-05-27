@@ -29,10 +29,25 @@ if ( WP_DEBUG_FULL_WIDTH ) {
 	// Ter vervanging van de vervallen widget-ruimte en de 'extra links'-widget daarin
 	add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 16 );
 
+
+	// download / link for document
+	add_action( 'genesis_entry_content', 'rhswp_document_add_extra_info', 14 );
+
+	// dossier info
+	add_action( 'genesis_entry_content', 'rhswp_append_terms_dossier', 16 );
+
 	// social media share buttons
-	add_action( 'genesis_entry_content', 'rhswp_append_socialbuttons', 14 );
+	add_action( 'genesis_entry_content', 'rhswp_append_socialbuttons', 18 );
+
 
 }
+
+if ( RHSWP_CPT_DOCUMENT == get_post_type() ) {
+	// titel en post info van plek laten wisselen
+	remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
+	add_action( 'genesis_entry_content', 'genesis_post_info', 8 );
+}
+
 
 //========================================================================================================
 

@@ -76,7 +76,7 @@ img {
 
 
 
-.60_structure();
+.mixin_60structure();
 
 /*
 Common Classes
@@ -215,7 +215,7 @@ Content Area
 }
 .entry-content {
 	// @since 2.12.16
-	overflow: auto;
+//	overflow: auto;
 }
 
 
@@ -295,19 +295,6 @@ Content Area
     	text-decoration: underline;
     }
   }
-
-	/*
-      .entry-categories {
-        &:after {
-          content: '|';
-          display: inline-block;
-          margin-left: .5em;
-          margin-right: .3em;
-          speak: never;
-        }
-      }
-
-     */
 }
 
 
@@ -424,13 +411,11 @@ Content Area
 		padding-left: 0;
 		&:before {
 			content: '< ';
-			speak: never;
 		}
 	}
 	.pagination-next a {
 		&:after {
 			content: ' >';
-			speak: never;
 		}
 	}
 	
@@ -827,8 +812,7 @@ Media Queries
 	.full-width-content {
 		.sharing.block,
 		.toolbox-introduction,
-		.toolbox-the-content,
-		#reactieformulier {
+		.toolbox-the-content {
 			margin-left: auto;
 			margin-right: auto;
 			.mixin_fullwidth_maxwidth();
@@ -1108,6 +1092,10 @@ CSS voor gravity forms, met name vanwege flitspanel, en hun aanmeldwidget
 @import "components/payoff.less";
 @import "components/related-content.less";
 @import "components/blockquote.less";
+@import "components/details-summary.less";
+@import "components/meta.less";
+@import "components/dossier-labels.less";
+
 
 // templates
 @import "templates/single-post.less";
@@ -1118,8 +1106,35 @@ CSS voor gravity forms, met name vanwege flitspanel, en hun aanmeldwidget
 // plugins
 @import "plugins/events-manager.less";
 
-
+/*
+// TODO WEGHALEN
+MEUK! WEG!
+---------------------------------------------------------------------------------------------------- */
 .test {
 	background: yellow;
 	padding: 0 2rem;
+}
+
+// TODO: weghalen tekstlengte
+.tekstlengte {
+	float: right;
+	border: 1px solid black;
+	border-radius: 50%;
+	display: block;
+	line-height: 1;
+	font-size: 1rem;
+	font-family: 'comic sans ms', cursive;
+	font-weight: bold;
+	color: black !important;
+	background: yellow;
+
+	span {
+		padding: .5rem;
+		display: block;
+		border-radius: 50%;
+		width: 100%;
+		height: 100%;
+		border: 1px solid yellow;
+		color: black !important;
+	}
 }

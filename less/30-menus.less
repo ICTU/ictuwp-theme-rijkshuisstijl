@@ -49,10 +49,10 @@
       }
 
       &.current-menu-parent,
-      &.current-page-parent,
-      &.current_page_parent,
-      &.current_page_ancestor,
-      &.current-page-ancestor,
+//      &.current-page-parent,
+//      &.current_page_parent,
+//      &.current_page_ancestor,
+//      &.current-page-ancestor,
       &.current-menu-item {
         & > a {
           font-weight: bold;
@@ -90,13 +90,20 @@
           padding-left: 1rem;
           font-size: 1rem;
           line-height: 2;
+          &:visited {
+            color: @a_color_default;
+          }
+          &:hover,
+          &:active {
+            color: @a_color_hover;
+          }
         }
       }
     }
 
   }
 
-  @media only screen and (max-width: ( @menubreakpoint_760px - 1 ) ) {
+  @media only screen and (max-width: ( @menubreakpoint_865px - 1 ) ) {
 
     #buttons-title {
       position: relative;
@@ -172,6 +179,13 @@
 
       }
 
+      #search_button,
+      #menu_button {
+        .icon {
+          background-size: 120% 120%;
+        }
+      }
+
       #menu_button {
         .icon {
           .mixin_iconaddfill('../images/svg/menu-open.svg', @wit);
@@ -232,14 +246,14 @@
 
 
   /* No greater than 900px, no less than 400px */
-  @media only screen and (min-width: ( @menubreakpoint_760px ) ) and (max-width: ( @break_1200px ) ) {
+  @media only screen and (min-width: ( @menubreakpoint_865px ) ) and (max-width: ( @break_1200px ) ) {
     #menu-container .wrap {
       padding-left: 1rem;
       padding-right: 1rem;
     }
   }
 
-  @media only screen and (min-width: ( @menubreakpoint_760px ) ) {
+  @media only screen and (min-width: ( @menubreakpoint_865px ) ) {
     nav.nav-primary {
       ul {
         margin: 0;
@@ -279,6 +293,10 @@
         padding-top: .75rem;
         padding-bottom: .75rem;
         flex: 1 1 368px;
+
+        form {
+          margin: 0;
+        }
       }
     }
 

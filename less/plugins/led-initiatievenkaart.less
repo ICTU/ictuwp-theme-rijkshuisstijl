@@ -1,0 +1,59 @@
+// 
+//**
+// * Rijkshuisstijl (Digitale Overheid) - plugins/led-initiatievenkaart.less
+// * ----------------------------------------------------------------------------------
+// * substitute for css of plugins/capthca
+// * ----------------------------------------------------------------------------------
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.10.5
+// * @desc.   Deregister CSS van plugins, overschreven met CSS in eigen style.css.
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// **
+
+.initiatieven-taxonomylist {
+  display: flex;
+  @media only screen and (min-width: ( @break_500px ) ) {
+    flex-direction: row;
+    section {
+      flex: 1 0 50%;
+      padding-right: 1rem;
+    }
+  }
+
+  section ul {
+    padding-left: 0;
+
+    &, li {
+      list-style: none;
+    }
+
+    li {
+      padding-left: 1.25em !important;
+      .listitem_arrow(@a_color_default, 10px, 9px); // done
+    }
+  }
+}
+
+
+dl.initiatieftype {
+
+  dt {
+    .visuallyhidden();
+  }
+  dd {
+    text-transform: uppercase;
+    display: block;
+    font-size: 1rem;
+    margin-left: 0;
+  }
+}
+
+.leaflet-popup-content-wrapper {
+  dl.initiatieftype {
+    dd {
+      font-size: .75rem;
+    }
+  }
+}

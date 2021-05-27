@@ -410,7 +410,7 @@
                     "label": "'Lees meer'-tekst",
                     "name": "home_row_readmore",
                     "type": "text",
-                    "instructions": "voorbeeld: 'alle berichten onder %s', waarbij %s zal worden vervangen door de naam van de categorie.",
+                    "instructions": "voorbeeld: 'alle berichten onder %s', waarbij %s zal worden vervangen door de naam van de categorie. Voor events voer je beter geen tekst met '%s' in.",
                     "required": 0,
                     "conditional_logic": [
                         [
@@ -448,7 +448,7 @@
                 },
                 {
                     "key": "field_5ff5fed42077c",
-                    "label": "Maximaal aantal berichten",
+                    "label": "Maximaal aantal",
                     "name": "home_row_max_nr",
                     "type": "select",
                     "instructions": "",
@@ -595,7 +595,7 @@
                             },
                             "default_value": "",
                             "tabs": "all",
-                            "toolbar": "basic",
+                            "toolbar": "full",
                             "media_upload": 0,
                             "delay": 0
                         },
@@ -649,5 +649,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1610124198
+    "modified": 1612201520
 }

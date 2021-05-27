@@ -528,7 +528,7 @@
 	}
 	
 	.gform_wrapper .gsection {
-		border-bottom: 1px solid #ccc;
+		border-bottom: 1px solid @bordercolor;
 		padding: 0 16px 8px 0;
 		margin: 28px 0 28px 0;
 		clear: both
@@ -1827,7 +1827,7 @@
 	
 	.gfield .html-active .switch-html,
 	.gfield .tmce-active .switch-tmce {
-		border-bottom-color: #f5f5f5
+		border-bottom-color: @grijs_1;
 	}
 	
 	.gfield .mce-edit-area iframe {
@@ -2434,7 +2434,7 @@
 	}
 	
 	@media only screen and (max-width:761px),
-	(min-device-width:768px) and (max-device-width:1023px) {
+	(min-width:768px) and (max-width:1023px) {
 		.gform_wrapper ul.gform_fields li.gfield.gfield_error+li.gfield.gfield_error {
 			margin-top: 32px
 		}

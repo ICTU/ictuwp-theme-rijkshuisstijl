@@ -16,8 +16,6 @@
   a {
     font-family: @fontstrong;
     display: inline-block;
-    margin-left: 1rem;
-    margin-right: 1rem;
     color: @a_color_default;
 
     &:hover,
@@ -28,9 +26,20 @@
 }
 
 
+.separator {
+  @media only screen and (max-width: ( @break_500px ) ) {
+    .visuallyhidden();
+  }
+  @media only screen and (min-width: ( @break_500px ) ) {
+    display: inline-block;
+    margin: 0 1rem;
+    width: 2px;
+  }
+}
+
 .page-template-page_showalldossiers-nieuwestyling {
   .dossier-list {
-    border-top: 1px solid #C0C0C0; // TODO GRIJSTINTEN UNIFORM
+
     & a, & li a {
       text-decoration: none;
 
@@ -47,7 +56,7 @@
     & > .cat-item {
       padding-bottom: 1rem;
       margin-bottom: 1rem;
-      border-bottom: 1px solid #C0C0C0; // TODO GRIJSTINTEN UNIFORM
+      border-bottom: 1px solid @bordercolor;
     }
   }
 

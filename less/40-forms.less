@@ -52,10 +52,7 @@
   input[type="date"],
   select,
   textarea {
-    border-top: 1px solid @wit;
-    border-right: 1px solid @wit;
-    border-left: 1px solid @wit;
-    border-bottom: 2px solid @communicatiekleur_vol;
+    border: 1px solid @grijs_5;
   }
 
   input:focus,
@@ -195,7 +192,6 @@
   }
 
 
-
   .screen-reader-response {
     position: absolute;
     overflow: hidden;
@@ -263,14 +259,13 @@
       textarea {
         &.wpcf7-not-valid-tip,
         &.wpcf7-not-valid {
-          border-bottom: 2px solid @warning;
-
+          border-color: @warning;
         }
       }
 
       .wpcf7-not-valid-tip {
-        //        .embed_error_icon('../images/svg/sprite-icons-messages.svg', @warning);
-        border: 2px solid @warning;
+        .embed_error_icon('../images/svg/sprite-icons-messages.svg', @warning, #f00);
+        border: 1px solid @warning;
         background-repeat: no-repeat;
         padding-left: 2em;
         display: block;
@@ -287,6 +282,10 @@
         background: @warning;
       }
 
+      &:empty {
+        display: none;
+      }
+
     }
 
   }
@@ -295,15 +294,9 @@
   form.wpcf7-form,
   .gform_wrapper form {
 
-    background: @grijs_2;
-
-    input[type=email], input[type=text], input[type=password], input[type=file], input[type=date], select, textarea {
-
-      border-top: 1px solid @grijs_3;
-      border-right: 1px solid @grijs_3;
-      border-left: 1px solid @grijs_3;
-      border-bottom: 4px solid @communicatiekleur_vol;
-    }
+    //    background: @grijs_1;
+    background: none;
+    padding: 0;
 
     button,
     .button {
@@ -347,11 +340,6 @@
   // from plugins/gravity-forms.less
   .gravityforms-css();
 
-
-  @media only screen and (max-width: ( @break_1200px  - 1 ) ) {
-
-  }
-
   @media only screen and (min-width: ( @break_650px ) ) {
 
     .entry-content {
@@ -376,32 +364,45 @@
 
     main {
       .wpcf7-form {
-        label,
         .wpcf7-form-control-wrap {
-          float: left;
           display: block;
-          clear: none;
+          clear: both;
           margin-bottom: 1em;
         }
 
-        label {
-          width: 20%;
-        }
+        /*
 
-        .wpcf7-form-control-wrap {
-          width: 79%;
-        }
+                label,
+                .wpcf7-form-control-wrap {
+                  float: left;
+                  display: block;
+                  clear: none;
+                  margin-bottom: 1em;
+                }
+
+                label {
+                  width: 20%;
+                }
+
+                .wpcf7-form-control-wrap {
+                  width: 79%;
+                }
+         */
 
         input[type="submit"] {
-          margin-left: 20%;
+          //          margin-left: 20%;
+          float: right;
         }
       }
     }
   }
 
-
   // components
   @import "components/search-form.less";
+  @import "components/referer-contactform.less";
 
+  // zie het formulier op:
+  // https://www.digitaleoverheid.nl/nieuwsbrief/
+  @import "components/mailinglijst-form.less";
 
 }

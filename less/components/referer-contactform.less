@@ -1,0 +1,40 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - referer-contactform.less
+// * ----------------------------------------------------------------------------------
+// * styling voor contactform
+// * ----------------------------------------------------------------------------------
+//
+
+
+//@grijs:                           @grijs_2;
+//@lichtgrijs:                      lighten( @txt, 80% );
+//@gboxshawow_grijs:                lighten( @txt, 60% );
+
+#referer_form {
+  border: 2px solid red;
+  background: none;
+}
+
+
+
+
+#reactieformulier {
+  background: @grijs_1;
+  padding: 2rem 0;
+
+  h2, .inleiding {
+    .mixin_fullwidth_padding();
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .inleiding + .related-content--services {
+    margin-top: 4rem;
+  }
+
+  .wrap {
+    .mixin_fullwidth_container();
+  }
+}

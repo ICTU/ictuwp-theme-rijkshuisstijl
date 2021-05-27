@@ -58,14 +58,15 @@ function rhswp_show_dossiers_sort_markering() {
 
 	$sortering = get_query_var( 'sortdossier' );
 	$permalink = get_the_permalink();
-	$alfabet   = _x( 'Gesorteerd op alfabet', 'sortering onderwerppagina', 'wp-rijkshuisstijl' );
-	$group     = _x( 'Gegroepeerd op thema', 'sortering onderwerppagina', 'wp-rijkshuisstijl' );
+	$separator = ' <span class="separator">&nbsp;</span> ';
+	$alfabet   = _x( 'Sorted alphabetically', 'sortering onderwerppagina', 'wp-rijkshuisstijl' );
+	$group     = _x( 'Grouped by topic', 'sortering onderwerppagina', 'wp-rijkshuisstijl' );
 	$markering = '<p class="dossier-sortering">';
 
 	if ( 'group' === $sortering ) {
-		$markering .= $group . '  <a href="' . $permalink . '?sortdossier=alfabet">' . _x( 'Sorteer alfabetisch', 'sortering onderwerppagina', 'wp-rijkshuisstijl' ) . '</a>';
+		$markering .= $group . $separator . ' <a href="' . $permalink . '?sortdossier=alfabet">' . _x( 'Sort alphabetically', 'sortering onderwerppagina link', 'wp-rijkshuisstijl' ) . '</a>';
 	} else {
-		$markering .= $alfabet . '  <a href="' . $permalink . '?sortdossier=group">' . _x( 'Groepeer per thema', 'sortering onderwerppagina', 'wp-rijkshuisstijl' ) . '</a>';
+		$markering .= $alfabet . $separator . ' <a href="' . $permalink . '?sortdossier=group">' . _x( 'Group by topic', 'sortering onderwerppagina link', 'wp-rijkshuisstijl' ) . '</a>';
 	}
 	$markering .= '</p>';
 
@@ -80,13 +81,10 @@ function rhswp_show_dossiers_by_alphabet() {
 	$taxonomy_name     = RHSWP_CT_DOSSIER;
 	$args              = array(
 		'taxonomy'           => RHSWP_CT_DOSSIER,
-		'hide_empty'         => false,
-		'orderby'            => 'name',
-		'order'              => 'ASC',
-		'ignore_custom_sort' => true,
+//		'parent'             => 0,
 		'echo'               => 0,
 		'hierarchical'       => false,
-		'title_li'           => ''
+		'title_li'           => '',
 	);
 	$hiddenonderwerpen = get_field( 'dossier_overzicht_hide_dossiers', $post->ID );
 	if ( $hiddenonderwerpen ) {
@@ -98,7 +96,7 @@ function rhswp_show_dossiers_by_alphabet() {
 	if ( $terms && ! is_wp_error( $terms ) ) {
 
 		$letter = '';
-		$tag = '';
+		$tag    = '';
 
 		echo '<div class="dossier-metainfo">';
 		echo rhswp_show_dossiers_sort_markering();
@@ -114,7 +112,7 @@ function rhswp_show_dossiers_by_alphabet() {
 		echo '</div>'; // .dossier-metainfo
 
 		$letter = '';
-		$tag = '';
+		$tag    = '';
 
 		echo '<div class="dossier-list column-layout">';
 		foreach ( $terms as $term ) {
@@ -123,7 +121,7 @@ function rhswp_show_dossiers_by_alphabet() {
 				echo $tag . '<h2 id="list_' . strtolower( $huidigeletter ) . '">' . strtoupper( $huidigeletter ) . '</h2>';
 				echo '<ul>';
 				$letter = $huidigeletter;
-				$tag = "</ul>\n\n\n";
+				$tag    = "</ul>\n\n\n";
 			}
 			echo '<li class="cat-item cat-item-' . $term->term_id . '">';
 			echo '<a href="' . get_term_link( $term, $taxonomy_name ) . '">';

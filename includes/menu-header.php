@@ -135,7 +135,7 @@ function rhswp_header_navigation() {
 			echo '</div>'; // #buttons_container
 			echo '</div>'; // #buttons-title
 
-			echo '<nav class="nav-primary init" role="navigation" id="' . $idmenu . '">';
+			echo '<nav class="nav-primary init" id="' . $idmenu . '">';
 			wp_nav_menu( array(
 				'theme_location'  => 'primary',
 				'menu_id'         => 'ul_nav_primary',
