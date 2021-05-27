@@ -30,6 +30,7 @@
       .mixin_fullwidth_container();
     }
 
+    & > .button-container,
     & > details {
       .mixin_fullwidth_maxwidth_no_padding();
     }
@@ -84,6 +85,7 @@
 
         &[style*="width:"] {
           // style attribute contains any value for 'width:'
+          max-width: 25% !important;
           img {
             width: 100%;
             height: auto;
@@ -92,10 +94,10 @@
       }
 
       .wp-caption.alignleft {
-        margin-left: 15rem;
+        margin-left: 20%;
       }
       .wp-caption.alignright {
-        margin-right: 15rem;
+        margin-right: 20%;
       }
 
     }
@@ -160,7 +162,7 @@
 }
 
 
-.share-bar {
+.aux-info-bar {
   .mixin_fullwidth_container();
   .mixin_fullwidth_padding();
   margin-top: 2rem;

@@ -1,0 +1,118 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - details-summary.less
+// * ----------------------------------------------------------------------------------
+// * Styling voor de uitklapblokken en de bijbehorende buttons
+// * ----------------------------------------------------------------------------------
+//
+
+ul,
+ol,
+table,
+p {
+  & + details {
+    margin-top: 1em;
+  }
+}
+
+details {
+  overflow: hidden;
+  margin-bottom: 1em;
+  border: 2px solid @communicatiekleur_vol;
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  blockquote,
+  p,
+  ul,
+  ol {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  li,
+  p {
+    &:first-child {
+      margin-top: 1em;
+    }
+  }
+  ul,
+  ol,
+  p {
+    &:last-child {
+      margin-bottom: 1em;
+    }
+  }
+
+
+  summary {
+
+    background-color: @communicatiekleur_vol;
+    background-image: url('@{base_url}images/icon-arrow-fat-down.svg');
+    .arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @wit );
+    color: @wit;
+    background-position: 98% center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    width: 100%;
+ //   padding-left: 1rem;
+    list-style: none;
+
+
+    &:hover {
+      background-color: @wit;
+      background-image: url('@{base_url}images/icon-arrow-fat-down.svg');
+      .arrow_up_and_down('../images/svg/icon-arrow-fat-down-replace.svg', @txt );
+      text-decoration: underline;
+      color: @txt;
+    }
+
+    &::-webkit-details-marker {
+      color: transparent;
+      display: none;
+    }
+
+    &, & h2, & h3, & h4, & h5, & h6 {
+      font-size: 1.35rem;
+      font-family: @headerfont;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    & h2, & h3, & h4, & h5, & h6 {
+      padding: .5rem 1rem .5rem 0;
+    }
+  }
+
+
+  &[open] {
+    summary {
+      background-image: url('@{base_url}images/icon-arrow-fat-up.svg');
+      .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @wit );
+
+      &:hover {
+        background-color: @txt;
+        background-image: url('@{base_url}images/icon-arrow-fat-up-white.svg');
+        .arrow_up_and_down('../images/svg/icon-arrow-fat-up-replace.svg', @wit );
+        text-decoration: underline;
+        color: white;
+      }
+
+    }
+  }
+
+}
+
+.button-container {
+  float: none;
+  clear: both;
+  overflow: hidden;
+  margin-bottom: .5rem;
+}
+
+details + .button-container {
+  margin-top: -.5rem;
+}
