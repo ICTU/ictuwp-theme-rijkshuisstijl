@@ -22,9 +22,10 @@ Dit theme functioneert niet zonder:
 * eh
 
 ## Current version:
-2.26.2 - Styling citaten en uitklapblokken.
+2.26.3 - .current-page-ancestor, font-grootte voor pagina, uitlijning titel onderwerppagina.
 
 ## Version history
+* 2.26.3 - .current-page-ancestor, font-grootte voor pagina, uitlijning titel onderwerppagina.
 * 2.26.2 - Styling citaten en uitklapblokken.
 * 2.25.1 - CSS-validatie en div. kleine accessibility correcties.
 * 2.24.2 - Reactieformulier verlost van block elements in een <a> en verdere styling.
