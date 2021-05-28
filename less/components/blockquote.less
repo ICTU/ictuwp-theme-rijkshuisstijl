@@ -12,6 +12,7 @@
 
 .simple-pullquote {
   &.align-none {
+    .mixin_fullwidth_container();
 
   }
 }
@@ -99,8 +100,6 @@ cite {
   }
 
 
-
-
 }
 
 .pullquote-with-image,
@@ -136,6 +135,7 @@ cite {
       .mixin_fullwidth_container();
 
       blockquote {
+        margin-left: 0;
         margin-right: 0;
       }
 
@@ -166,9 +166,6 @@ cite {
     @media only screen and (min-width: ( @break_650px ) ) {
       padding: 1rem 0;
     }
-
   }
 }
 
-
-//simple-pullquote align-none
