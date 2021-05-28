@@ -279,8 +279,9 @@ function rhswp_blog_page_add_title() {
 						$actueel_row_category_posts = new WP_query();
 						$actueel_row_category_posts->query( $args );
 						if ( $actueel_row_category_posts->have_posts() ) {
-							$cat_name = get_cat_name( $actueel_row_category );
-							$more_url = get_category_link( $actueel_row_category );
+							$postcounter = 0;
+							$cat_name    = get_cat_name( $actueel_row_category );
+							$more_url    = get_category_link( $actueel_row_category );
 							if ( ! $more_text ) {
 								$more_text = _x( "Alle berichten onder %s", 'readmore home', 'wp-rijkshuisstijl' );
 							}
