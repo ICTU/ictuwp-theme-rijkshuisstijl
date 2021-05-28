@@ -71,25 +71,36 @@ cite {
   flex-wrap: nowrap;
   align-items: center;
 
-  @media only screen and (min-width: ( @break_650px ) ) {
-    min-height: @img_pullquote_max_width;
-    .mixin_fullwidth_container();
-  }
-
   .pullquote-img {
-    flex: 0 0 @img_pullquote_max_width;
-    height: @img_pullquote_max_width;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     border-radius: 50%;
     border: 1px solid @grijs_1;
+    flex: 0 0 @img_pullquote_mobile_max_width;
+    height: @img_pullquote_mobile_max_width;
+
   }
 
   .quote {
     flex: 1 1 auto;
     padding-left: 1rem;
   }
+
+  @media only screen and (min-width: ( @break_650px ) ) {
+    .mixin_fullwidth_container();
+
+    .pullquote-img {
+
+      flex: 0 0 @img_pullquote_max_width;
+      height: @img_pullquote_max_width;
+
+    }
+  }
+
+
+
+
 }
 
 .pullquote-with-image,
