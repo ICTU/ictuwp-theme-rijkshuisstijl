@@ -334,9 +334,20 @@
 
 //=========================================================================================================
 
-.listitem_arrow( @itemcolor: @a_color_default, @fontsize: 1em, @topdistance: 4px, @leftdistance: 0, @width: 1.5em ) {
+.listitem_arrow_flex( @itemcolor: @a_color_default, @topdistance: .5rem, @leftdistance: 1rem ) {
 
-  position: relative;
+  .icon_socmed_icon('../images/svg/list-arrow.svg', @itemcolor);
+  background-repeat: no-repeat;
+  background-position: left @topdistance;
+  padding-left: @leftdistance;
+
+}
+
+//=========================================================================================================
+
+.listitem_arrow_absolute( @itemcolor: @a_color_default, @fontsize: 1em, @topdistance: 4px, @leftdistance: 0, @width: 1.5em ) {
+
+    position: relative;
 
   &:before {
     color: @itemcolor;
