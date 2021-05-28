@@ -2865,7 +2865,7 @@ function rhswp_contactreactie_write_reactieform() {
 
 		if ( $andere_diensten ) {
 
-			echo '<div class="related-content related-content--services">';
+			echo '<div class="reactieformulier--services">';
 
 			foreach ( $andere_diensten as $andere_dienst ) {
 				$image = $andere_dienst['reactiemogelijkheid_andere_overheidsdienst_logo'];
