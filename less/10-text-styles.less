@@ -1,5 +1,3 @@
-
-
 /*
  * Rijkshuisstijl (Digitale Overheid) - 10-text-styles.less
  * ----------------------------------------------------------------------------------
@@ -14,149 +12,152 @@
 */
 
 
-.10_basefont() {
+.mixin_10_basefont() {
   font-family: @bodyfont;
   font-weight: 300;
   font-weight: normal;
   font-size: 1.125rem;
   line-height: 1.625;
   font-size: 100%;
-//  -webkit-text-size-adjust: 100%;  
 }
 
-.10_textstyles() {
+.mixin_10_textstyles() {
 
-	a {
-		color: @a_color_default; // @txt;
+  a {
+    color: @a_color_default; // @txt;
 
-		&:visited {
-			color: @a_color_visited;
-          text-decoration: underline;
-		}
-		&:hover {
-          color: @a_color_hover;
-          text-decoration: underline;
-		}
-		&:active,
-		&:focus {
-			color: @a_color_active;
-		}
-      &:focus {
-        // kekke focus style: wit en zwart geblokt
-        outline: 2px dotted #000;
-        z-index: 1010;
-        outline-offset: 0;
-        -webkit-box-shadow: 0 0 0 2px #fff;
-        box-shadow: 0 0 0 2px #fff;
+    &:visited {
+      color: @a_color_visited;
+      text-decoration: underline;
+    }
+
+    &:hover {
+      color: @a_color_hover;
+      text-decoration: underline;
+    }
+
+    &:active,
+    &:focus {
+      color: @a_color_active;
+    }
+
+    &:focus {
+      // kekke focus style: wit en zwart geblokt
+      outline: 2px dotted #000;
+      z-index: 1010;
+      outline-offset: 0;
+      -webkit-box-shadow: 0 0 0 2px #fff;
+      box-shadow: 0 0 0 2px #fff;
+    }
+
+  }
+
+
+  a.extern {
+    .listitem_arrow_extern(@a_color_default, @a_color_hover, @a_color_active, @a_color_visited);
+  }
+
+  a.cta,
+  a.download {
+    display: inline-block;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    padding: .5em;
+    margin-right: 1em;
+    color: @wit;
+    background-color: @donkerblauw_vol;
+    border: 4px solid @donkerblauw_vol;
+    border-radius: 5px;
+  }
+
+  a.cta {
+    text-decoration: none;
+    font-family: @headerfont;
+    font-size: 120%;
+    background-image: none !important;
+    padding-right: .25rem !important;
+
+    &:after {
+      display: inline-block;
+      float: right;
+      .icon_socmed_icon('../images/svg/list-arrow.svg', @wit);
+      background-size: 1em 1em;
+      background-position: right center;
+      background-repeat: no-repeat;
+      content: ' ';
+      height: 1em;
+      width: 1.5rem;
+      margin-left: .25em;
+      margin-top: .25em;
+    }
+
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @wit;
+      text-decoration: underline;
+      color: @a_color_hover;
+      border-color: @a_color_hover;
+
+      &:after {
+        .icon_socmed_icon('../images/svg/list-arrow.svg', @a_color_hover);
       }
+    }
+  }
 
-	}
+  a.download {
+    padding-left: 2.25em;
+    .mixin_iconaddfill('../images/svg/icon-download.svg', @wit);
+    background-size: 1.5em 1.5em;
+    background-position: .25em center;
+    background-repeat: no-repeat;
+  }
 
+  .single .entry-content a.download {
+    .iconaddfill_important('../images/svg/icon-download.svg', @wit);
+    background-position: .25em center !important;
+    background-size: 1.5em 1.5em !important;
 
-	a.extern {
-		.listitem_arrow_extern( @a_color_default, @a_color_hover, @a_color_active, @a_color_visited );
-	}
-
-	a.cta,
-	a.download {
-		display: inline-block;
-		margin-top: .5em;
-		margin-bottom: .5em;
-		padding: .5em;
-		margin-right: 1em;
-		color: @wit;
-		background-color: @donkerblauw_vol;
-		border: 4px solid @donkerblauw_vol;
-		border-radius: 5px;
-	}
-
-	a.cta {
-		text-decoration: none;
-	    font-family: @headerfont;
-	    font-size: 120%;
-	    background-image: none !important;
-	    padding-right: .25rem !important;
-
-		&:after {
-			display: inline-block;
-			float: right;
-			.icon_socmed_icon('../images/svg/list-arrow.svg', @wit );
-			background-size: 1em 1em;
-			background-position: right center;
-			background-repeat: no-repeat;
-			content: ' ';
-			height: 1em;
-			width: 1.5rem;
-			margin-left: .25em;
-			margin-top: .25em;
-		}
-
-
-	    &:hover,
-	    &:focus,
-	    &:active {
-		    background-color: @wit;
-		    text-decoration: underline;
-		    color: @a_color_hover;
-		    border-color: @a_color_hover;
-
-			&:after {
-				.icon_socmed_icon('../images/svg/list-arrow.svg', @a_color_hover );
-			}
-	    }
-	}
-
-	a.download {
-		padding-left: 2.25em;
-		.mixin_iconaddfill('../images/svg/icon-download.svg', @wit );
-		background-size: 1.5em 1.5em;
-		background-position: .25em center;
-		background-repeat: no-repeat;
-	}
-
-	.single .entry-content a.download {
-		.iconaddfill_important('../images/svg/icon-download.svg', @wit );
-		background-position: .25em center !important;
-		background-size: 1.5em 1.5em !important;
-
-		&:focus,
-		&:hover {
-			.iconaddfill_important('../images/svg/icon-download.svg', @donkerblauw_vol );
-			background-color: @wit;
-			border-color: @donkerblauw_vol;
-			color: @txt;
-			text-decoration: underline;
-		}
-	}
+    &:focus,
+    &:hover {
+      .iconaddfill_important('../images/svg/icon-download.svg', @donkerblauw_vol);
+      background-color: @wit;
+      border-color: @donkerblauw_vol;
+      color: @txt;
+      text-decoration: underline;
+    }
+  }
 
   p {
-  	margin: 0 0 @padding 0;
-  	padding: 0;
+    margin: 0 0 @padding 0;
+    padding: 0;
   }
 
   strong, b {
-  	font-weight: 700;
-  	font-family: @fontstrong;
+    font-weight: 700;
+    font-family: @fontstrong;
   }
 
   em, i {
-  	font-family: @fontitalic;
+    font-family: @fontitalic;
   }
 
   ol,
   ul {
-  	padding: 0 0 0 1.5em;
+    padding: 0 0 0 1.5em;
   }
 
 
   .entry-content {
     pre,
     code {
-    	background-color: @grijs;
-    	padding: 0 .5em;
+      background-color: @grijs;
+      padding: 0 .5em;
     }
+
     pre {
-    	padding: .5em;
+      padding: .5em;
     }
   }
 
@@ -176,6 +177,7 @@
       max-width: 40%;
       float: left;
     }
+
     dd {
       display: inline-block;
       width: 55%;
@@ -193,7 +195,6 @@
   }
 
 
-
   p {
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
@@ -205,34 +206,32 @@
       text-decoration: underline;
     }
   }
-  b,strong {
-//      -webkit-hyphens: manual;
-      -moz-hyphens: manual;
-      -ms-hyphens: manual;
-      -o-hyphens: manual;
-      hyphens: manual;
+  b, strong {
+    //      -webkit-hyphens: manual;
+    -moz-hyphens: manual;
+    -ms-hyphens: manual;
+    -o-hyphens: manual;
+    hyphens: manual;
   }
 
   .attachment a,
   .gallery a {
-  	border: none;
+    border: none;
   }
 
 
   ol li {
-  	list-style-type: decimal;
+    list-style-type: decimal;
   }
 
   ul li {
-  	list-style-type: disc;
+    list-style-type: disc;
   }
 
   ol ol,
   ul ul {
-  	margin-bottom: 0;
+    margin-bottom: 0;
   }
-
-
 
 
   /* Headings
@@ -254,26 +253,26 @@
   h4,
   h5,
   h6 {
-	  a {
-		  text-decoration: none;
+    a {
+      text-decoration: none;
 
-		  &:hover,
-		  &:focus,
-		  &:active {
-			  text-decoration: underline;
-		  }
-	  }
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: underline;
+      }
+    }
   }
 
 
   h1 {
-  	.font-size( @fontsize_title_h1 );
+    .font-size(@fontsize_title_h1);
   }
 
   h2 {
     font-size: 1.35em;
     line-height: 1.2;
-  	margin: 2em 0 .2em 0;
+    margin: 2em 0 .2em 0;
   }
 
   h3 {
@@ -294,31 +293,30 @@
 
   @media only screen and (max-width: ( @break_650px ) ) {
     h1 {
-    	.font-size( @fontverkleiner * @fontsize_title_h1 );
+      .font-size(@fontverkleiner * @fontsize_title_h1);
     }
 
     h2 {
-    	.font-size( @fontverkleiner * @fontsize_title_h2 );
-    	margin: .952em 0 .2em 0;
+      .font-size(@fontverkleiner * @fontsize_title_h2);
+      margin: .952em 0 .2em 0;
     }
 
     h3 {
-    	.font-size( @fontverkleiner * @fontsize_title_h3 );
+      .font-size(@fontverkleiner * @fontsize_title_h3);
     }
 
     h4 {
-    	.font-size( @fontverkleiner * @fontsize_title_h4 );
+      .font-size(@fontverkleiner * @fontsize_title_h4);
     }
 
     h5 {
-    	.font-size( @fontverkleiner * @fontsize_title_h5 );
+      .font-size(@fontverkleiner * @fontsize_title_h5);
     }
 
     h6 {
-    	.font-size( @fontverkleiner * @fontsize_title_h6 );
+      .font-size(@fontverkleiner * @fontsize_title_h6);
     }
   }
-
 
 
   /* Tables
@@ -336,9 +334,11 @@
       width: 20%;
       min-width: 80px;
     }
+
     .topic, .presentor {
       width: 30%;
     }
+
     .topic {
       width: 45%;
     }
@@ -359,6 +359,7 @@
       font-weight: bold;
       font-family: @fontstrong;
     }
+
     td {
       p + p {
         margin-top: 0;
@@ -371,18 +372,22 @@
       & td {
         background: @wit;
       }
+
       & th,
       & td {
         font-size: 80%;
       }
+
       & th.time {
         min-width: 80px;
         width: 15%;
         background: @wit;
       }
+
       & th[scope="col"] {
         text-align: center;
       }
+
       & th[scope="row"] {
         text-align: right;
       }
@@ -398,38 +403,44 @@
     }
 
     ul, ol {
-    	margin-top: 0;
-    	margin-bottom: 1em;
-    	li {
-      	margin-bottom: .5em;
-      	a {
-        	text-decoration: underline;
-      	}
-    	}
+      margin-top: 0;
+      margin-bottom: 1em;
+
+      li {
+        margin-bottom: .5em;
+
+        a {
+          text-decoration: underline;
+        }
+      }
     }
 
     ol li {
-    	list-style-type: decimal;
+      list-style-type: decimal;
     }
 
     ul {
       padding-left: 0;
+
       ul {
         margin-left: 0;
       }
+
       &, li {
         list-style: none;
       }
+
       li {
         margin-left: 1em;
         list-style: outside;
         list-style-type: square;
 
         &.rss {
-          .icon_socmed_icon('../images/svg/icon-rss.svg', @donkerblauw_vol );
+          .icon_socmed_icon('../images/svg/icon-rss.svg', @donkerblauw_vol);
         }
+
         &.twitter {
-          .icon_socmed_icon('../images/svg/icon-twitter.svg', @donkerblauw_vol );
+          .icon_socmed_icon('../images/svg/icon-twitter.svg', @donkerblauw_vol);
         }
 
         &.rss,
@@ -450,8 +461,8 @@
 
     ul, ol {
       ul, ol {
-      	margin-top: .5em;
-      	margin-bottom: 0;
+        margin-top: .5em;
+        margin-bottom: 0;
       }
     }
 
@@ -472,31 +483,33 @@
       .toc_list {
 
         &, li, ul {
-	        margin-top: 0;
-	        margin-bottom: 0;
+          margin-top: 0;
+          margin-bottom: 0;
         }
 
         li {
-					padding-left: 0 !important;
+          padding-left: 0 !important;
 
           &:before {
             content: none !important;
           }
 
           & + li {
-	          padding-top: .35em;
+            padding-top: .35em;
           }
 
           a {
             background: none !important;
             padding-right: 0;
           }
-          ul {
-	          margin-left: .5em;
 
-	          li {
-		          padding-left: .75em;
-	          }
+          ul {
+            margin-left: .5em;
+
+            li {
+              padding-left: .75em;
+            }
+
             &, li {
               list-style: lower-alpha;
             }
@@ -507,13 +520,13 @@
   }
 
 
-
   .entry-content .block,
   .entry-content .pagination,
   .entry-content .rk-bouwsteen,
   .entry-content .stelselplaat {
     ul {
       padding-left: 0;
+
       li:before {
         content: '';
         display: none;
@@ -522,22 +535,21 @@
   }
 
 
-
   img.centered,
   .aligncenter {
-    	display: block;
-    	margin: 0 auto @padding;
+    display: block;
+    margin: 0 auto @padding;
   }
 
 
   .alignleft {
-    	float: left;
-    	text-align: left;
+    float: left;
+    text-align: left;
   }
 
   .alignright {
-    	float: right;
-    	text-align: right;
+    float: right;
+    text-align: right;
   }
 
   img,
@@ -553,16 +565,16 @@
     }
   }
 
-	.logged-in {
-		// @since 2.12.15
-		// voor redactieleden die ingelogd zijn:
-		img {
-			&:not([alt]) {
-				// een rode stippellijn als er geen alt-attribuut op een IMG zit
-				border: 10px dashed red;
-			}
-		}
-	}
+  .logged-in {
+    // @since 2.12.15
+    // voor redactieleden die ingelogd zijn:
+    img {
+      &:not([alt]) {
+        // een rode stippellijn als er geen alt-attribuut op een IMG zit
+        border: 10px dashed red;
+      }
+    }
+  }
 
   .wp-caption {
 
@@ -583,6 +595,7 @@
     &.alignleft {
       margin: 0 1em 1em 0;
     }
+
     &.alignright {
       margin: 0 0 1em 1em;
     }
@@ -601,6 +614,7 @@
         display: table;
         margin: 0 0 2.5em 0;
       }
+
       .wp-caption-text {
         clear: both;
         float: right;
@@ -615,219 +629,225 @@
   .featured {
     margin: 0 0 .25em 1em;
     padding-top: .25em;
-    &.toc-active {
-	    max-width: 25%;
-	    margin: .25em 1em 1em 0;
-	    padding-top: 0;
 
-	    & + #toc_container {
-		    max-width: 33%;
-	    }
+    &.toc-active {
+      max-width: 25%;
+      margin: .25em 1em 1em 0;
+      padding-top: 0;
+
+      & + #toc_container {
+        max-width: 33%;
+      }
     }
   }
 
 
-
   .gallery-caption {
-  	border-bottom: none;
+    border-bottom: none;
   }
 
-	.borderframe {
+  .borderframe {
 
-		border: 2px solid @grijs_4;
-		overflow: hidden;
+    border: 2px solid @grijs_4;
+    overflow: hidden;
 
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			&.blocktitle {
-				margin: 0 0 .25em 0;
-				padding: .75rem 1rem;
-				font-size: 1.2rem;
-			}
-			& + div {
-				margin-top: 0;
-			}
-		}
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &.blocktitle {
+        margin: 0 0 .25em 0;
+        padding: .75rem 1rem;
+        font-size: 1.2rem;
+      }
 
-		img {
-			&.alignleft,
-			&.alignright {
-				margin-top: 1rem;
-				margin-bottom: 1rem;
-				border: 1px solid @block_border_color;
-				max-width: 25%;
-				height: auto;
-			}
-			&.alignleft {
-				margin-right: 1rem;
-			}
-			&.alignright {
-				margin-left: 1rem;
-			}
-		}
+      & + div {
+        margin-top: 0;
+      }
+    }
 
+    img {
+      &.alignleft,
+      &.alignright {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid @block_border_color;
+        max-width: 25%;
+        height: auto;
+      }
 
-		&.gray {
-			background: @grijs_2;
-			border-color: @grijs_3;
+      &.alignleft {
+        margin-right: 1rem;
+      }
 
-			img {
-				border: 1px solid @grijs_4;
-			}
-		}
-
-		&.green {
-
-			border: 2px solid @communicatiekleur_vol;
-
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				&.blocktitle {
-					background-color: @communicatiekleur_vol;
-					color: @wit;
-				}
-			}
-		}
-
-		&.dataagendablue {
-
-			border: 2px solid @digibeter_blauw;
-			background: @dataagenda_blauw_0;
-
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				&.blocktitle {
-					background-color: @digibeter_blauw;
-					color: @wit;
-				}
-			}
-		}
-
-		&.dataagendaorange {
-
-			border: 2px solid @digibeter_oranje;
-			background: @wit;
-
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				&.blocktitle {
-					background-color: @digibeter_oranje;
-					color: @wit;
-				}
-			}
-		}
-
-		@break_aside: 380px;
-
-		&.asidegrey {
-			float: left;
-			border: 2px solid @grijs;
-			background: @grijs;
-			float: left;
-			margin: 1em 1em 1em 0;
-
-			@media only screen and (min-width: ( ( @break_aside * 2 ) ) ) {
-				max-width: @break_aside;
-			}
-
-		}
-
-		&.blue,
-		&.toolbox {
-
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				&.blocktitle {
-					background-repeat: no-repeat;
-					background-size: 34px 35px;
-					background-position: 16px 9px;
-					padding-left: 63px;
-					padding-top: 16px;
-					min-height: 50px;
-
-					background-image: url('@{base_url}images/toolbox/cyberincident/icon-toolbox-cyber.svg');
-				}
-			}
-		}
-
-		&.blue {
-
-			border: 2px solid @digibeter_blauw;
-
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				&.blocktitle {
-					background-color: @digibeter_blauw;
-					color: @wit;
-				}
-			}
-		}
-
-		&.toolbox {
-
-			border: 2px solid @grijs_6;
-
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				&.blocktitle {
-					background-color: @grijs_6;
-					color: @wit;
-				}
-			}
-		}
-
-		padding: 0;
-
-		.the-content,
-		div {
-			margin: 1rem;
-		}
-		.block-audio-video {
-			margin: 0;
-		}
+      &.alignright {
+        margin-left: 1rem;
+      }
+    }
 
 
-		p, ul, ol {
-			margin: 0;
-			padding: 0 .2rem;
+    &.gray {
+      background: @grijs_2;
+      border-color: @grijs_3;
 
-		}
-		ul, ol {
-			padding-left: 1em;
-			ul, ol {
-				padding: 0;
-			}
-		}
+      img {
+        border: 1px solid @grijs_4;
+      }
+    }
 
-		& + p,
-		& + ol,
-		& + ul,
-		& + details,
-		& + div {
-			margin-top: 1em;
-		}
-	}
+    &.green {
+
+      border: 2px solid @communicatiekleur_vol;
+
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        &.blocktitle {
+          background-color: @communicatiekleur_vol;
+          color: @wit;
+        }
+      }
+    }
+
+    &.dataagendablue {
+
+      border: 2px solid @digibeter_blauw;
+      background: @dataagenda_blauw_0;
+
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        &.blocktitle {
+          background-color: @digibeter_blauw;
+          color: @wit;
+        }
+      }
+    }
+
+    &.dataagendaorange {
+
+      border: 2px solid @digibeter_oranje;
+      background: @wit;
+
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        &.blocktitle {
+          background-color: @digibeter_oranje;
+          color: @wit;
+        }
+      }
+    }
+
+    @break_aside: 380px;
+
+    &.asidegrey {
+      float: left;
+      border: 2px solid @grijs;
+      background: @grijs;
+      float: left;
+      margin: 1em 1em 1em 0;
+
+      @media only screen and (min-width: ( ( @break_aside * 2 ) ) ) {
+        max-width: @break_aside;
+      }
+
+    }
+
+    &.blue,
+    &.toolbox {
+
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        &.blocktitle {
+          background-repeat: no-repeat;
+          background-size: 34px 35px;
+          background-position: 16px 9px;
+          padding-left: 63px;
+          padding-top: 16px;
+          min-height: 50px;
+
+          background-image: url('@{base_url}images/toolbox/cyberincident/icon-toolbox-cyber.svg');
+        }
+      }
+    }
+
+    &.blue {
+
+      border: 2px solid @digibeter_blauw;
+
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        &.blocktitle {
+          background-color: @digibeter_blauw;
+          color: @wit;
+        }
+      }
+    }
+
+    &.toolbox {
+
+      border: 2px solid @grijs_6;
+
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        &.blocktitle {
+          background-color: @grijs_6;
+          color: @wit;
+        }
+      }
+    }
+
+    padding: 0;
+
+    .the-content,
+    div {
+      margin: 1rem;
+    }
+
+    .block-audio-video {
+      margin: 0;
+    }
+
+
+    p, ul, ol {
+      margin: 0;
+      padding: 0 .2rem;
+
+    }
+
+    ul, ol {
+      padding-left: 1em;
+
+      ul, ol {
+        padding: 0;
+      }
+    }
+
+    & + p,
+    & + ol,
+    & + ul,
+    & + details,
+    & + div {
+      margin-top: 1em;
+    }
+  }
 
   p,
   ol,
@@ -852,289 +872,297 @@
     }
   }
 
-//========================================================================================================
+  //========================================================================================================
 
-	div.chapters {
-		background: @digibeter_oker;
-		display: flex;
-		margin-bottom: 1em;
+  div.chapters {
+    background: @digibeter_oker;
+    display: flex;
+    margin-bottom: 1em;
 
-		&, a {
-			color: @wit;
-		}
+    &, a {
+      color: @wit;
+    }
 
-		div {
-			flex: 1;
-			background-repeat: no-repeat;
-			padding: .5em .5em 0 .5em;
-		}
+    div {
+      flex: 1;
+      background-repeat: no-repeat;
+      padding: .5em .5em 0 .5em;
+    }
 
-		span {
-			display: block;
-		}
+    span {
+      display: block;
+    }
 
-		a {
-			text-decoration: none;
-			display: block;
+    a {
+      text-decoration: none;
+      display: block;
 
-			&:hover,
-			&:active,
-			&:focus {
+      &:hover,
+      &:active,
+      &:focus {
 
-				.chapter-number {
-					color: @wit;
-				}
-				.desc {
-					text-decoration: underline;
-				}
-			}
-		}
+        .chapter-number {
+          color: @wit;
+        }
 
-		.chapter-number {
-			font-family: @headerfont;
-			margin-bottom: 0;
-		}
+        .desc {
+          text-decoration: underline;
+        }
+      }
+    }
 
-		.digibeter-oranje {
-			// innovatie
-			background-color: @digibeter_oranje;
-			background-image: url('@{base_url}images/digibeter-icons/01-innovatie-illustratie-2020.svg');
-			.chapter-number {
-				color: @oranje_lichtst;
-			}
-		}
+    .chapter-number {
+      font-family: @headerfont;
+      margin-bottom: 0;
+    }
 
-		.digibeter-blauw {
-			// grondrechten
-			background-color: @digibeter_blauw;
-			background-image: url('@{base_url}images/digibeter-icons/02-beschermen-grondrechten-illustratie-2020.svg');
-			.chapter-number {
-				color: @lichtblauw_lichtst;
-			}
-		}
+    .digibeter-oranje {
+      // innovatie
+      background-color: @digibeter_oranje;
+      background-image: url('@{base_url}images/digibeter-icons/01-innovatie-illustratie-2020.svg');
 
-		.digibeter-groen {
-			// toegankelijkheid
-			background-color: @digibeter_groen;
-			background-image: url('@{base_url}images/digibeter-icons/03-toegankelijk-illustratie-2020.svg');
-			.chapter-number {
-				color: @groen_lichtst;
-			}
-		}
+      .chapter-number {
+        color: @oranje_lichtst;
+      }
+    }
 
-		.digibeter-violet {
-			// persoonlijke dienstverlening
-			background-color: @digibeter_violet;
-			background-image: url('@{base_url}images/digibeter-icons/04-persoonlijker-illustratie-2020.svg');
-			.chapter-number {
-				color: @violet_lichtst;
-			}
-		}
+    .digibeter-blauw {
+      // grondrechten
+      background-color: @digibeter_blauw;
+      background-image: url('@{base_url}images/digibeter-icons/02-beschermen-grondrechten-illustratie-2020.svg');
 
-		.digibeter-paars {
-			// toekomst
-			background-color: @digibeter_paars;
-			background-image: url('@{base_url}images/digibeter-icons/05-toekomst-illustratie-2020.svg');
-			.chapter-number {
-				color: @paars_lichtst;
-			}
-		}
+      .chapter-number {
+        color: @lichtblauw_lichtst;
+      }
+    }
 
-		.da-06,
-		.da-01-problemen-oplossen,
-		.da-02-wetgeving-publieke-waarden,
-		.da-03-overheidsdata-verbeteren,
-		.da-04-kennis-verzamelen-verbeteren,
-		.da-05-mensen-organisatie-cultuurverandering {
-			*, a {
-				color: @txt;
-			}
-			a {
-				&:hover,
-				&:active,
-				&:focus {
-					color: @txt;
-					.chapter-number {
-						color: @txt;
-					}
-				}
-			}
-			.chapter-number {
-				color: @digibeter_blauw;
-			}
-		}
+    .digibeter-groen {
+      // toegankelijkheid
+      background-color: @digibeter_groen;
+      background-image: url('@{base_url}images/digibeter-icons/03-toegankelijk-illustratie-2020.svg');
 
-		.da-01-problemen-oplossen {
-			// toekomst
-			background-color: @dataagenda_blauw_1;
-			background-image: url('@{base_url}images/digibeter-icons/da-01-problemen-oplossen-thumb.svg');
-		}
+      .chapter-number {
+        color: @groen_lichtst;
+      }
+    }
 
-		.da-02-wetgeving-publieke-waarden {
-			// toekomst
-			background-color: @dataagenda_blauw_2;
-			background-image: url('@{base_url}images/digibeter-icons/da-02-wetgeving-publieke-waarden-thumb.svg');
-		}
+    .digibeter-violet {
+      // persoonlijke dienstverlening
+      background-color: @digibeter_violet;
+      background-image: url('@{base_url}images/digibeter-icons/04-persoonlijker-illustratie-2020.svg');
 
-		.da-03-overheidsdata-verbeteren {
-			// toekomst
-			background-color: @dataagenda_blauw_1;
-			background-image: url('@{base_url}images/digibeter-icons/da-03-overheidsdata-verbeteren-thumb.svg');
-		}
+      .chapter-number {
+        color: @violet_lichtst;
+      }
+    }
 
-		.da-04-kennis-verzamelen-verbeteren {
-			// toekomst
-			background-color: @dataagenda_blauw_2;
-			background-image: url('@{base_url}images/digibeter-icons/da-04-kennis-verzamelen-verbeteren-thumb.svg');
-		}
+    .digibeter-paars {
+      // toekomst
+      background-color: @digibeter_paars;
+      background-image: url('@{base_url}images/digibeter-icons/05-toekomst-illustratie-2020.svg');
 
-		.da-05-mensen-organisatie-cultuurverandering {
-			// toekomst
-			background-color: @dataagenda_blauw_1;
-			background-image: url('@{base_url}images/digibeter-icons/da-05-mensen-organisatie-cultuurverandering-thumb.svg');
-		}
+      .chapter-number {
+        color: @paars_lichtst;
+      }
+    }
 
+    .da-06,
+    .da-01-problemen-oplossen,
+    .da-02-wetgeving-publieke-waarden,
+    .da-03-overheidsdata-verbeteren,
+    .da-04-kennis-verzamelen-verbeteren,
+    .da-05-mensen-organisatie-cultuurverandering {
+      *, a {
+        color: @txt;
+      }
 
-		@media only screen and (max-width: ( @menubreakpoint_865px ) ) {
-			flex-direction: column;
+      a {
+        &:hover,
+        &:active,
+        &:focus {
+          color: @txt;
 
-			div {
-				flex: 0 1 auto;
-			}
-			.chapter-number {
-				font-size: 2em;
-				float: left;
-				margin-right: .25em;
-			}
+          .chapter-number {
+            color: @txt;
+          }
+        }
+      }
 
-			.desc {
-				font-size: 90%;
-			}
+      .chapter-number {
+        color: @digibeter_blauw;
+      }
+    }
 
-			div {
-				background-size: contain;
-			}
+    .da-01-problemen-oplossen {
+      // toekomst
+      background-color: @dataagenda_blauw_1;
+      background-image: url('@{base_url}images/digibeter-icons/da-01-problemen-oplossen-thumb.svg');
+    }
 
-			.da-01-problemen-oplossen,
-			.da-03-overheidsdata-verbeteren,
-			.da-05-mensen-organisatie-cultuurverandering,
-				.digibeter-oranje {
-				// innovatie
-				background-position: 2em center;
+    .da-02-wetgeving-publieke-waarden {
+      // toekomst
+      background-color: @dataagenda_blauw_2;
+      background-image: url('@{base_url}images/digibeter-icons/da-02-wetgeving-publieke-waarden-thumb.svg');
+    }
 
-				.desc {
-					padding-left: 7em;
-				}
-			}
+    .da-03-overheidsdata-verbeteren {
+      // toekomst
+      background-color: @dataagenda_blauw_1;
+      background-image: url('@{base_url}images/digibeter-icons/da-03-overheidsdata-verbeteren-thumb.svg');
+    }
 
-			.da-02-wetgeving-publieke-waarden,
-			.da-04-kennis-verzamelen-verbeteren,
-			.digibeter-blauw {
-				// grondrechten
-				background-position: 99% center;
+    .da-04-kennis-verzamelen-verbeteren {
+      // toekomst
+      background-color: @dataagenda_blauw_2;
+      background-image: url('@{base_url}images/digibeter-icons/da-04-kennis-verzamelen-verbeteren-thumb.svg');
+    }
 
-				.desc {
-					padding-right: 3.5em;
-				}
-			}
-
-			.digibeter-groen {
-				// toegankelijkheid
-				background-position: 1.75em center;
-
-				.desc {
-					padding-left: 7em;
-				}
-			}
-
-			.digibeter-violet {
-				// persoonlijke dienstverlening
-				background-position: 98% center;
-
-				.desc {
-					padding-right: 3.5em;
-				}
-			}
-
-			.digibeter-paars {
-				// toekomst
-				background-position: 2em center;
-
-				.desc {
-					padding-left: 7em;
-				}
-			}
-		}
-
-		@media only screen and (min-width: ( @menubreakpoint_865px + 1 ) ) {
-
-			flex-direction: row;
-
-			div {
-				flex: 1;
-				background-repeat: no-repeat;
-				background-position: center 90%;
-				padding: .5em;
-				font-size: 125%;
-			}
-
-			.chapter-number {
-				text-align: center;
-				font-size: 6em;
-				line-height: 1;
-				line-height: 1;
-			}
-
-			span {
-				display: block;
-				float: none;
-				clear: both;
-			}
-
-			.digibeter-oranje {
-				// innovatie
-				background-image: url('@{base_url}images/digibeter-icons/01-innovatie-illustratie-2020.svg');
-			}
-
-			.da-02-wetgeving-publieke-waarden,
-			.da-04-kennis-verzamelen-verbeteren,
-			.digibeter-blauw,
-			.digibeter-violet {
-				background-position: center 1em;
-				padding-top: 8em;
-			}
-
-			.digibeter-blauw {
-				background-image: url('@{base_url}images/digibeter-icons/02-beschermen-grondrechten-illustratie-2020.svg');
-
-				.chapter-number {
-					text-align: right;
-					text-indent: .25em;
-				}
-
-			}
-
-			.digibeter-groen {
-				background-image: url('@{base_url}images/digibeter-icons/03-toegankelijk-illustratie-2020.svg');
-				background-position: center bottom;
-			}
-
-			.digibeter-violet {
-				background-image: url('@{base_url}images/digibeter-icons/04-persoonlijker-illustratie-2020.svg');
-
-				.chapter-number {
-					text-align: right;
-					text-indent: .25em;
-				}
-			}
-
-			.digibeter-paars {
-				background-image: url('@{base_url}images/digibeter-icons/05-toekomst-illustratie-2020.svg');
-			}
-		}
-	}
+    .da-05-mensen-organisatie-cultuurverandering {
+      // toekomst
+      background-color: @dataagenda_blauw_1;
+      background-image: url('@{base_url}images/digibeter-icons/da-05-mensen-organisatie-cultuurverandering-thumb.svg');
+    }
 
 
+    @media only screen and (max-width: ( @menubreakpoint_865px ) ) {
+      flex-direction: column;
+
+      div {
+        flex: 0 1 auto;
+      }
+
+      .chapter-number {
+        font-size: 2em;
+        float: left;
+        margin-right: .25em;
+      }
+
+      .desc {
+        font-size: 90%;
+      }
+
+      div {
+        background-size: contain;
+      }
+
+      .da-01-problemen-oplossen,
+      .da-03-overheidsdata-verbeteren,
+      .da-05-mensen-organisatie-cultuurverandering,
+      .digibeter-oranje {
+        // innovatie
+        background-position: 2em center;
+
+        .desc {
+          padding-left: 7em;
+        }
+      }
+
+      .da-02-wetgeving-publieke-waarden,
+      .da-04-kennis-verzamelen-verbeteren,
+      .digibeter-blauw {
+        // grondrechten
+        background-position: 99% center;
+
+        .desc {
+          padding-right: 3.5em;
+        }
+      }
+
+      .digibeter-groen {
+        // toegankelijkheid
+        background-position: 1.75em center;
+
+        .desc {
+          padding-left: 7em;
+        }
+      }
+
+      .digibeter-violet {
+        // persoonlijke dienstverlening
+        background-position: 98% center;
+
+        .desc {
+          padding-right: 3.5em;
+        }
+      }
+
+      .digibeter-paars {
+        // toekomst
+        background-position: 2em center;
+
+        .desc {
+          padding-left: 7em;
+        }
+      }
+    }
+
+    @media only screen and (min-width: ( @menubreakpoint_865px + 1 ) ) {
+
+      flex-direction: row;
+
+      div {
+        flex: 1;
+        background-repeat: no-repeat;
+        background-position: center 90%;
+        padding: .5em;
+        font-size: 125%;
+      }
+
+      .chapter-number {
+        text-align: center;
+        font-size: 6em;
+        line-height: 1;
+        line-height: 1;
+      }
+
+      span {
+        display: block;
+        float: none;
+        clear: both;
+      }
+
+      .digibeter-oranje {
+        // innovatie
+        background-image: url('@{base_url}images/digibeter-icons/01-innovatie-illustratie-2020.svg');
+      }
+
+      .da-02-wetgeving-publieke-waarden,
+      .da-04-kennis-verzamelen-verbeteren,
+      .digibeter-blauw,
+      .digibeter-violet {
+        background-position: center 1em;
+        padding-top: 8em;
+      }
+
+      .digibeter-blauw {
+        background-image: url('@{base_url}images/digibeter-icons/02-beschermen-grondrechten-illustratie-2020.svg');
+
+        .chapter-number {
+          text-align: right;
+          text-indent: .25em;
+        }
+
+      }
+
+      .digibeter-groen {
+        background-image: url('@{base_url}images/digibeter-icons/03-toegankelijk-illustratie-2020.svg');
+        background-position: center bottom;
+      }
+
+      .digibeter-violet {
+        background-image: url('@{base_url}images/digibeter-icons/04-persoonlijker-illustratie-2020.svg');
+
+        .chapter-number {
+          text-align: right;
+          text-indent: .25em;
+        }
+      }
+
+      .digibeter-paars {
+        background-image: url('@{base_url}images/digibeter-icons/05-toekomst-illustratie-2020.svg');
+      }
+    }
+  }
 
 
 }

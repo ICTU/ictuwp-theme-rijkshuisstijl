@@ -35,7 +35,7 @@ body {
   background-color: @wit;
   background-repeat: no-repeat;
   background-position: center top;
-  .10_basefont();
+  .mixin_10_basefont();
   margin: 0;
   padding: 0
 }
@@ -54,7 +54,7 @@ footer {
 /* Text styles, shared with admin CSS
 --------------------------------------------- */
 
-.10_textstyles();
+.mixin_10_textstyles();
 
 
 /* Objects
@@ -348,11 +348,11 @@ Content Area
 
 .em-pagination,
 .archive-pagination {
-	
+
 	border-top: 4px solid @donkerblauw_vol;
 	margin-top: 1em;
 	color: @donkerblauw_vol;
-	
+
 	ul, ol {
 		padding: 0;
 //		margin-left: 1em;
@@ -365,15 +365,15 @@ Content Area
 			float: left;
 		}
 	}
-	
+
 	.alignright {
 		margin-right: 0;
 	}
-	
+
 	ul li, ol li, div {
 		display: inline;
 		margin-right: .25em;
-		
+
 		a {
 			cursor: pointer;
 			display: inline-block;
@@ -388,7 +388,7 @@ Content Area
 				text-decoration: underline;
 			}
 		}
-		
+
 		&.active {
 			a {
 				background: @donkerblauw_vol;
@@ -398,7 +398,7 @@ Content Area
 			}
 		}
 	}
-	
+
 	.pagination-previous,
 	.pagination-next {
 		a {
@@ -418,7 +418,7 @@ Content Area
 			content: ' >';
 		}
 	}
-	
+
 }
 
 .single .archive-pagination {
@@ -596,10 +596,10 @@ input[type="text"] {
 		height: auto;
 	}
     img.alignleft {
-		margin-right: 1.5rem;	    
+		margin-right: 1.5rem;
     }
     img.alignright {
-		margin-left: 1.5rem;	    
+		margin-left: 1.5rem;
     }
 }
 
@@ -1042,7 +1042,7 @@ nav.nav-primary .menu-item.js-menu-open > ul.sub-menu {
 .subst_newsletter();
 
 
-// 
+//
 .passed-enddate {
 	background: @txt;
 	color: @wit;
@@ -1057,7 +1057,7 @@ CSS voor gravity forms, met name vanwege flitspanel, en hun aanmeldwidget
 ---------------------------------------------------------------------------------------------------- */
 .textwidget .gform_wrapper {
 	 .top_label {
-		input.medium, 
+		input.medium,
 		select.medium {
 			width: 100%;
 		}

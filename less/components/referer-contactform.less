@@ -23,7 +23,7 @@
   padding: 2rem 0;
 
   h2, .inleiding {
-    .mixin_fullwidth_padding();
+//    .mixin_fullwidth_padding();
   }
 
   h2 {
@@ -35,6 +35,54 @@
   }
 
   .wrap {
-    .mixin_fullwidth_container();
+//    .mixin_fullwidth_container();
   }
+
+  // de overige overheidsdiensten die genoemd worden in het reactieformulier
+  // zijn ook als .related-content opgezet
+  .reactieformulier--services {
+    .related-content__stroke {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 1rem;
+      text-decoration: none;
+
+      img {
+        max-width: 80px;
+        max-height: 80px;
+        margin: .5rem 1rem .5rem 0;
+        border: 1px solid @grijs_3;
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h3, span {
+          flex: 0 0 auto;
+        }
+      }
+
+      h3 {
+        color: @txt;
+        text-decoration: none;
+        margin: 0;
+      }
+
+      span {
+        color: @a_color_default;
+        text-decoration: underline;
+      }
+
+      &:hover {
+        h3,
+        span {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+
 }
