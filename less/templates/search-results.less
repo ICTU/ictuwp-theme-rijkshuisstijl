@@ -1,35 +1,35 @@
 //**
 // * Rijkshuisstijl (Digitale Overheid) - search-results.less
 // * ----------------------------------------------------------------------------------
-// * styling voor een enkel bericht
+// * styling voor de zoekresultaatpagina
 // * ----------------------------------------------------------------------------------
 //
 
-
+@padding_arrow_before_search: 1rem;
 
 .search-results {
 
+  .header {
+    background: @grijs_2;
+    padding: 1rem;
+  }
+
   .block article {
+
+    padding-top: 1rem;
+
+    & + article {
+      border-top: 1px solid @grijs_2;
+    }
 
     //========================================================================================================
     @media only screen and (min-width: ( @break_650px ) ) {
 
       .listitem_arrow_absolute(@a_color_default, 12px, 26px); // done
+
       &:before {
         float: left;
-        width: @padding_arrow_before;
-      }
-
-      &.type-document {
-        &:before {
-          top: 8px;
-        }
-      }
-
-      &.taxonomy {
-        &:before {
-          top: 22px;
-        }
+        width: @padding_arrow_before_search;
       }
 
       h2, h3 {
@@ -38,20 +38,27 @@
 
       a {
         float: right;
-        width: ~"calc(100% - @{padding_arrow_before})";
+        width: ~"calc(100% - @{padding_arrow_before_search})";
         margin-left: 0;
       }
     }
+
     //========================================================================================================
+
   }
 }
 
 
 .search-results {
-  &.full-width-content .content {
+  .header h1,
+  .header p,
+  .header form,
+  .pagination,
+  .block {
     max-width: 790px;
     float: none;
     margin-left: auto;
     margin-right: auto;
   }
 }
+

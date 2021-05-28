@@ -12,10 +12,10 @@
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
-.70_pagetypes() {
+.mixin_70_pagetypes() {
 
 	.entry-content {
-
+		
 		.dossieroverzicht {
 			p {
 				margin-bottom: 0;
@@ -25,7 +25,7 @@
 			p + p {
 				margin-top: 1em;
 			}
-
+			
 			a {
 				display: block;
 			}
@@ -38,17 +38,17 @@
 		.content {
 			section {
 				clear: both;
-
+				
 				img.attachment-featured-post-widget {
 					float: right;
 					display: inline;
-				}
+				}        
 			}
 		}
 	}
-
+	
 	//========================================================================================================
-
+	
 	@media only screen and (min-width: ( @break_650px ) ) {
 		.error404 .site-inner,
 		.page-template-page_sitemap .site-inner {
@@ -56,10 +56,10 @@
 			ul, ol {
 				li {
 					margin-bottom: 0;
-
+					
 					a {
 						text-decoration: none;
-
+						
 						&:hover,
 						&:focus,
 						&:active {
@@ -71,7 +71,7 @@
 					margin-top: 0;
 				}
 			}
-
+			
 			.category,
 			.dossiers {
 				display: flex;
@@ -86,87 +86,16 @@
 		}
 	}
 
-
 	//========================================================================================================
-
-	.page-template-page_search,
-	.search {
-
-	    .post-date {
-	      &:before {
-	        content: '|';
-	        display: inline-block;
-	        margin-left: .5em;
-	        margin-right: .3em;
-	      }
-	    }
-
-	    article {
-	      padding: .1em;
-
-	      a {
-	        margin: .1em;
-
-	        &:hover,
-	        &:focus,
-	        &:active {
-	          h2 {
-	            text-decoration: underline;
-	          }
-	        }
-	      }
-	      p {
-	        margin: 0;
-	      }
-	    }
-
-	    .document,
-	    .type-document {
-	    }
-	    .post {
-	  //      border-color: @communicatiekleur_vol;
-	    }
-
-	    .taxonomy {
-	      margin-top: 1em;
-	      border-bottom: 3px solid @communicatiekleur_vol;
-	      padding-bottom: 1em;
-
-	      h2 {
-	        font-size: 210%;
-	        margin: 0 0 .2em 0;
-	      }
-	      .dossiers {
-	        border-color: yellow;
-	      }
-	    }
-
-	    .attachment.pdf {
-
-	      a p {
-	        padding-left: 1.5em;
-	        background-image: url('@{base_url}images/icon-document.svg');
-	        background-position: left center;
-	        background-repeat: no-repeat;
-
-	        &.meta {
-	          padding-left: 0;
-	          background: none;
-	        }
-	      }
-	    }
-	}
-
-	//========================================================================================================
-
+	
 // Verwijderd 20210408	.digibeter_colors( digibeter-oker,    @digibeter_oker,    @txt, @txt, @digibeter_oker_licht   );
 // Verwijderd 20210408	.digibeter_colors( digibeter-oranje,  @digibeter_oranje,  @wit, @txt, @digibeter_oranje_licht );
 // Verwijderd 20210408	.digibeter_colors( digibeter-blauw,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
 // Verwijderd 20210408	.digibeter_colors( digibeter-groen,   @digibeter_groen,   @wit, @wit, @digibeter_groen_licht  );
 // Verwijderd 20210408	.digibeter_colors( digibeter-violet,  @digibeter_violet,  @wit, @wit, @digibeter_violet_licht );
 // Verwijderd 20210408	.digibeter_colors( digibeter-paars,   @digibeter_paars,   @wit, @wit, @digibeter_paars_licht  );
-
-
+																																		
+																																		
 // Verwijderd 20210408	.digibeter_colors( da-06,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
 // Verwijderd 20210408	.digibeter_colors( da-01-problemen-oplossen,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
 // Verwijderd 20210408	.digibeter_colors( da-02-wetgeving-publieke-waarden,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
@@ -175,25 +104,25 @@
 // Verwijderd 20210408	.digibeter_colors( da-05-mensen-organisatie-cultuurverandering,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
 
 	//========================================================================================================
-
+	
 	.page-template-page_fullwidth {
 		.entry-content {
-
+		
 			.wp-caption {
-				margin-top: .5em;
-				margin-bottom: .5em;
+				margin-top: .5em;          
+				margin-bottom: .5em;          
 			}
 		}
-	}
+	}  
 
 	.page-template-page_digibeter-home {
 		.entry-header {
-
+			
 			h1 {
 				font-family: @bodyfont;
 				font-weight: normal;
 				margin-bottom: .5em;
-
+				
 				.subtitle {
 					display: block;
 					overflow: hidden;
@@ -214,7 +143,7 @@
 					margin-bottom: .25em;
 				}
 			}
-
+			
 			& + h2 {
 				margin-top: .5rem;
 			}
@@ -258,13 +187,13 @@
 		}
 		details {
 			border-color: @digibeter_blauw;
-
+			
 			summary {
 				background-color: @digibeter_blauw;
 			}
-		}
+		}	  
 	}
-
+	
 //	.digibeter_colors( digibeter-violet,  @digibeter_violet,  @wit, @wit, @digibeter_violet_licht );
 
 	.cyberincident01-rapporteren-report,
@@ -303,14 +232,14 @@
 		}
 		details {
 			border-color: @digibeter_blauw;
-
+			
 			summary {
 				background-color: @digibeter_blauw;
 			}
-		}
+		}	  
 	}
-
-
+	
+	
 
 	@media only screen and (max-width: ( @break_1200px ) ) {
 		.page-template-page_fullwidth {
@@ -318,37 +247,37 @@
 				width: 100%;
 				margin-left: 0;
 				margin-right: 0;
-			}
-		}
-	}
+			}  
+		}  
+	}  
 
 	@media only screen and (min-width: ( @break_1200px ) ) {
-
+		
 		.page-template-page_fullwidth {
-
+			
 			.entry-header {
 				.fullwidth_content_with_padding();
-
+			
 				h1 {
 					padding-top: .5em;
 					padding-bottom: .5em;
 				}
 			}
-
+			
 			.entry-content {
 				p,
-				h2,
-				h3,
-				h4,
-				h5,
-				h6,
+				h2, 
+				h3, 
+				h4, 
+				h5, 
+				h6, 
 				ol,
 				ul,
 				.simple-pullquote,
 				.pullquote-with-image,
-				details,
+				details, 
 				.borderframe,
-				.detail-buttons {
+				.detail-buttons { 
 					.fullwidth_content_with_padding();
 				}
 
@@ -356,7 +285,7 @@
 				.simple-pullquote.align-right {
 					max-width: 40%;
 				}
-
+				
 				.pullquote-with-image.align-left,
 				.pullquote-with-image.align-right {
 					max-width: 45%;
@@ -369,32 +298,32 @@
 				.pullquote-with-image.align-right {
 					margin-right: 4em;
 				}
-
+				
 				.simple-pullquote {
 					margin-left: auto;
 					margin-right: auto;
 					clear: both;
 					float: none;
 				}
-
+				
 				.borderframe,
-				details {
+				details { 
 					p,
-					h2,
-					h3,
-					h4,
-					h5,
-					h6,
+					h2, 
+					h3, 
+					h4, 
+					h5, 
+					h6, 
 					ol,
 					ul {
-						max-width: 100%;
+						max-width: 100%;              
 					}
-
+					
 					p,
-					h3,
-					h4,
-					h5,
-					h6,
+					h3, 
+					h4, 
+					h5, 
+					h6, 
 					ol,
 					ul {
 						margin-left: 1rem;
@@ -404,35 +333,35 @@
 			}
 		}
 	}
-
+	
 	//========================================================================================================
-
+	
 	.page .posts-for-dossier,
 	.page-template-page_dossiersingleactueel .entry-content {
 		section a {
 			display: block;
-
+			
 			p {
 				color: @txt;
 				margin: 0;
-
+				
 				&.meta {
 					color: @grijs_6;
 					margin: .5em 0;
 					font-size: 90%;
 				}
 			}
-
+	
 			h2,
 			h3 {
 				color: @donkerblauw_vol;
 			}
-
+			
 			&:hover,
 			&:active,
 			&:focus {
 			text-decoration: none;
-
+			
 				h2,
 				h3 {
 					text-decoration: underline;
@@ -444,14 +373,14 @@
 	//========================================================================================================
 
 	.page-template-page_front-page,
-	.page-template-front-page {
+	.page-template-front-page {     
 
 		article.entry.type-page {
 			.entry-content,
 			.entry-header {
 				.visuallyhidden();
 			}
-
+			
 			.banner-widget-area {
 				display: block;
 				margin: 0;
@@ -464,21 +393,21 @@
 						max-width: 50%;
 						margin-left: auto;
 						margin-right: auto;
-
+						
 						.text + p {
 							text-align: center;
 						}
 					}
 				}
-
+				
 			}
-
+						
 			.post-edit-link {
 				display: none;
 				visibility: hidden;
 			}
 			.banner-widget-area {
-				// to be determined
+				// to be determined	
 			}
 		}
 
@@ -486,37 +415,39 @@
 			width: 100%;
 			max-width: none;
 			margin-top: 0;
-
+			
+			#reactieformulier,
 			.block,
+//			article,
 			.wrap {
 				margin: 0 auto;
 				max-width: @break_1200px;
 				overflow: visible;
 			}
-
+			
 			.linkblock {
 				text-decoration: none;
-
+				
 				p {
 					color: @txt;
 					margin: 0;
 				}
-
+				
 				h3 {
 					color: @donkerblauw_vol;
 				}
-
+				
 				&:hover,
 				&:active,
 				&:focus {
-
+				
 					h3 {
 						text-decoration: underline;
 						color: @txt;
 					}
 				}
 			}
-
+			
 			.vollebreedte,
 			.driekwart,
 			.home-widget-area {
@@ -524,7 +455,7 @@
 				overflow: hidden;
 				padding-bottom: 1em;
 			}
-
+			
 			.vollebreedte {
 				.linkblock {
 					&:last-of-type {
@@ -532,18 +463,18 @@
 					}
 				}
 			}
-
+			
 			.row {
 				border-spacing: 10px;
 			}
 
 			@media only screen and ( min-width: @break_650px ) {
-
+				
 				.driekwart {
 					width: 75%;
 					float: left;
-				}
-
+				}        
+				
 				.home-widget-area {
 					display: block;
 					overflow: hidden;
@@ -560,7 +491,7 @@
 					display: flex;
 					flex-direction: row;
 					flex-wrap: wrap;
-
+					
 					a {
 						padding-right: 1rem;
 						padding-bottom: 1rem;
@@ -569,14 +500,14 @@
 					}
 				}
 
-
+				
 			}
 
 			@media only screen and ( min-width: @break_1200px ) {
-
+				
 				section.home.topics {
-					padding: 1em;
-
+					padding: 1em;      
+					
 					.driekwart,
 					.vollebreedte {
 						display: flex;
@@ -594,22 +525,22 @@
 				}
 			}
 		}
-
+		
 		section.home.topics {
 			background-color: @grijs_1;
-
+			
 			a {
 				&:focus,
 				&:active,
 				&:hover {
-					color: @txt;
+					color: @txt;          
 				}
 			}
 		}
-	}
-
+	}  
+	
 	//========================================================================================================
-
+	
 	.no-cssgrid {
 		@media only screen and ( min-width: @break_650px ) {
 			.row.driekwart {
@@ -617,16 +548,16 @@
 					clear: left;
 				}
 			}
-		}
+		}  
 	}
-
+  
 }
 
 //========================================================================================================
 
 .toolboxillustrations() {
 
-	.floatingtoolbox {
+	.floatingtoolbox {  
 		animation-name: floatingtoolbox;
 		animation-duration: 3s;
 		animation-iteration-count: infinite;
@@ -634,33 +565,33 @@
 		margin-left: 30px;
 		margin-top: 5px;
 	}
-
+	
 	@keyframes vergroot {
 		from { transform: scale(1); }
-		to   { transform: scale(1.05); }
+		to   { transform: scale(1.05); }    
 	}
 
 	@keyframes floatingtoolbox {
 		from { transform: translate(0,  0px); }
 		65%  { transform: translate(0, 15px); }
-		to   { transform: translate(0, -0px); }
+		to   { transform: translate(0, -0px); }    
 	}
 
 
 	#toolbox-innovatie-illustrations,
 	#toolbox-datagedreven-werken-illustrations,
 	#toolbox-cyberincident-illustrations {
-
+	
 		.toolbox-img {
 			overflow: hidden;
-
+			
 			h2 {
 				margin-bottom: 0;
 			}
 		}
-
+		
 		@media only screen and ( max-width: @break_1200px ) {
-
+	
 			display: flex;
 			flex-direction: column;
 
@@ -674,20 +605,20 @@
 					display: flex;
 					flex-direction: row;
 					align-items: center;
-					justify-content: center;
-
+					justify-content: center;		
+					
 					.svg, h2 {
 						flex: 1;
 					}
 				}
-
+	
 				.svg {
 					max-width: 55px;
 					height: auto;
 					min-height: 52px;
 					float: left;
 					margin: .5rem .5rem .5rem 0;
-
+					
 					svg {
 						vertical-align: middle;
 						max-width: 55px;
@@ -696,7 +627,7 @@
 				}
 			}
 		}
-
+		
 		@media only screen and ( min-width: @break_1200px ) {
 			overflow: hidden;
 			background-image: url('@{base_url}images/toolbox/toolbox-background.svg');
@@ -712,7 +643,7 @@
 				.svg {
 					margin: 5px;
 				}
-
+				
 				&:hover,
 				&:focus,
 				&:active {
@@ -723,43 +654,43 @@
 					h2 {
 						text-decoration: underline !important;
 						text-shadow: none;
-					}
+					}					
 				}
 			}
-
+			
 			h2 {
 				font-size: 1.25rem;
 				display: inline-block;
 				padding-left: .5rem;
 				padding-right: .5rem;
 			}
-
+			
 			.toolbox-img {
 				position: absolute;
 				text-align: center;
-				transition: all .2s ease-in-out;
+				transition: all .2s ease-in-out; 
 
 				&.has-link {
-					&:hover {
+					&:hover { 
 						animation-name: vergroot;
 						animation-duration: 1s;
 						animation-iteration-count: 1;
 						animation-timing-function: ease;
-						transform: scale(1.05);
+						transform: scale(1.05); 
 						z-index: 8888;
-					}
+					}				
 				}
 			}
 		}
 	}
-
+	
 	#toolbox-cyberincident-illustrations {
-
+		
 		h2 {
 			color: @txt;
 			font-weight: bold;
 			text-align: left;
-
+			
 			span {
 				background: @oranje_vol;
 				color: @wit;
@@ -774,14 +705,14 @@
 				float: left;
 			}
 		}
-
+				
 		@media only screen and ( max-width: ( @break_1200px - 1 ) ) {
 
 
 			h2 {
 				position: relative;
 				padding-left: 32px;
-
+				
 				span {
 					font-size: 16px;
 					line-height: 25px;
@@ -801,7 +732,7 @@
 
 				.svg {
 					max-width: 110px;
-
+					
 					svg {
 						vertical-align: middle;
 						max-width: 90px;
@@ -813,7 +744,7 @@
 			}
 		}
 
-
+		
 		@media only screen and ( min-width: @break_1200px ) {
 
 			height: 750px;
@@ -828,10 +759,10 @@
 				.font-size( 32 );
 				line-height: 1.5;
 			}
-
+			
 			h2 {
 				background: @wit;
-
+				
 				span {
 					background: @toolbox_cyber_h2_span_bg;
 					color: @wit;
@@ -855,8 +786,8 @@
 				&:focus,
 				&:active {
 					border-color: @violet_vol;
-				}
-			}
+				}			
+			}			
 
 			#toolbox_stap_1 {
 				top: 191px;
@@ -883,14 +814,14 @@
 				left: 727px;
 				width: 300px;
 			}
-
+			
 		}
 	}
 
 	#toolbox-innovatie-illustrations {
 
 		.toolbox-img {
-
+			
 			h2 {
 				margin-top: 0;
 			}
@@ -943,10 +874,10 @@
 
 
 	#toolbox-datagedreven-werken-illustrations {
-
+		
 
 		.toolbox-img {
-
+			
 			h2 {
 				margin-top: 0;
 			}
@@ -955,19 +886,19 @@
 		@media only screen and ( max-width: ( @break_1200px - 1 ) ) {
 
 			.toolbox-img {
-				padding-left: 0;
-
+				padding-left: 0;				
+				
 				display: flex;
 				flex-direction: row;
 				flex-wrap: nowrap;
-
+				
 				img,
 				h2 {
 					flex-grow: 1;
 					flex-shrink: 1;
 					align-self: center;
-				}
-
+				}				
+				
 				img {
 					flex-basis: 110px;
 					max-width: 110px;
@@ -980,7 +911,7 @@
 					    .icon_socmed_icon('../images/svg/list-arrow.svg', red);
 					}
 				}
-
+	
 			}
 		}
 
@@ -993,7 +924,7 @@
 
 			h2 {
 				color: @violet_vol;
-
+				
 				span {
 					background: @wit;
 					padding-left: .25rem;
@@ -1006,14 +937,14 @@
 				&:focus,
 				&:active {
 					border-color: @toolbox_innov_lichtblauw;
-
+			
 					h2 {
 						text-decoration: underline !important;
 						text-shadow: none;
-					}
+					}					
 				}
 			}
-
+			
 			.toolbox-img {
 				width: 400px;
 			}
@@ -1029,7 +960,7 @@
 			#toolbox_principe_3 {
 				top: 10px;
 				left: 640px;
-
+				
 				a {
 					position: relative;
 					height: 240px;

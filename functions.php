@@ -7,8 +7,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.25.1
- * @desc.   CSS-validatie en div. kleine accessibility correcties.
+ * @version 2.26.1
+ * @desc.   Zoekfunctionaliteit aangepast n.a.v. redesign.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 //========================================================================================================
@@ -17,7 +17,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 //========================================================================================================
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
-define( 'CHILD_THEME_VERSION', "2.25.1" );
+define( 'CHILD_THEME_VERSION', "2.26.1" );
 
 // TODO
 define( 'WP_DEBUG_FULL_WIDTH', true );
@@ -619,7 +619,7 @@ function rhswp_breadcrumb_args( $args ) {
 	$separator  = __( '<span class="separator">&#8250;</span>', 'wp-rijkshuisstijl' );
 	$searchform = '';
 	if ( is_front_page() || is_search() ) {
-		// somehow the actueel pagina was marked as 'is_home()' (digitaleoverheid.nl/actueel)
+		// the actueel pagina was marked as 'is_home()' (digitaleoverheid.nl/actueel)
 	} else {
 		if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
 			// alleen als het zoekformulier expliciet op verborgen is gezet, verbergen

@@ -21,35 +21,35 @@ add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_c
 
 if ( class_exists( 'SearchWP' ) ) {
 
-	// add description
-	add_action( 'genesis_before_loop', 'rhswp_add_search_description', 15 );
-
 	/** Replace the standard loop with our custom loop */
 	remove_action( 'genesis_loop', 'genesis_do_loop' );
-	add_action( 'genesis_loop', 'rhswp_archive_custom_search_with_searchWP' );
+	add_action( 'genesis_after_header', 'rhswp_archive_custom_search_with_searchWP', 20 );
 
 } else {
 
 	// add description
-	add_action( 'genesis_before_loop', 'rhswp_add_search_description_without_searchwp', 15 );
+	add_action( 'genesis_after_header', 'rhswp_add_search_description_without_searchwp', 20 );
 
 	/** Replace the standard loop with our custom loop */
 	remove_action( 'genesis_loop', 'genesis_do_loop' );
 	add_action( 'genesis_loop', 'rhswp_archive_custom_loop' );
+
+	// post navigation verplaatsen tot buiten de flex-ruimte
+	add_action( 'genesis_after_loop', 'genesis_posts_nav', 3 );
 
 }
 
 
 genesis();
 
+/*
+ * add_action( 'genesis_after_header', 'rhswp_dossier_title_checker', 24 );
 
+ */
 //========================================================================================================
 
 function rhswp_add_search_description() {
 
-	$search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', _x( 'Search this site', 'searchform', 'wp-rijkshuisstijl' ) . ' &#x02026;' );
-
-	echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "<span class="wordbreak">' . $search_text . '</span>"</h1>';
 
 }
 
@@ -59,12 +59,14 @@ function rhswp_add_search_description_without_searchwp() {
 
 	$search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', _x( 'Search this site', 'searchform', 'wp-rijkshuisstijl' ) . ' &#x02026;' );
 
+	echo '<div class="header">';
 	echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "' . $search_text . '"</h1>';
 
 	dodebug_do( ' searchWP plugin wordt niet gebruikt ' );
 
 	get_search_form();
 
+	echo '</div>'; // .header
 }
 
 //========================================================================================================
@@ -77,6 +79,11 @@ function rhswp_archive_custom_search_with_searchWP() {
 	$query = isset( $_GET['s'] ) ? sanitize_text_field( $_GET['s'] ) : '';
 	$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$page  = isset( $_GET['swppage'] ) ? absint( $_GET['swppage'] ) : $paged;
+
+	$search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', _x( 'Search this site', 'searchform', 'wp-rijkshuisstijl' ) . ' &#x02026;' );
+
+	echo '<div class="header">';
+	echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "<span class="wordbreak">' . $search_text . '</span>"</h1>';
 
 	if ( ! empty( $query ) ) :
 
@@ -92,15 +99,14 @@ function rhswp_archive_custom_search_with_searchWP() {
 			echo '<p>' . $title . '</p>';
 
 			get_search_form();
+			echo '</div>'; // .header
 
-			echo '<div class="block">';
+			echo '<div class="block no-top">';
 
 			foreach ( $posts as $post ) :
 
-				$permalink    = get_permalink();
-				$excerpt      = wp_strip_all_tags( get_the_excerpt( $post ) );
+				$excerpt      = get_the_excerpt( $post );
 				$postdate     = get_the_date();
-				$doimage      = false;
 				$classattr    = genesis_attr( 'entry' );
 				$classattr    = str_replace( 'has-post-thumbnail', '', $classattr );
 				$contenttype  = get_post_type();
@@ -108,18 +114,19 @@ function rhswp_archive_custom_search_with_searchWP() {
 				$thetitle     = rhswp_filter_alternative_title( get_the_id(), get_the_title() );
 				$documenttype = rhswp_translateposttypes( $contenttype );
 
-				if ( 'voorzieningencpt' == $contenttype ) {
-					// to do: check op link naar planningspagina
+				if ( 'post' == $contenttype ) {
 
-					$documenttype = 'Releasekalender';
-
-					$hoofdpagina = intval( get_option( 'rijksreleasekalender_hoofdpagina' ) );
-					if ( is_int( $hoofdpagina ) && $hoofdpagina > 0 ) {
-					} else {
-						$hoofdpagina = 73;
+					$documenttype = '';
+					$counter = 0;
+					$post_categories = wp_get_post_categories( get_the_id() );
+					foreach($post_categories as $category){
+						$counter++;
+						$catinfo = get_category( $category );
+						if ( $counter > 1 ) {
+							$documenttype .= ', ';
+						}
+						$documenttype .= $catinfo->name;
 					}
-
-					$theurl = get_the_permalink( $hoofdpagina ) . 'voorziening/' . $post->post_name . '/';
 
 				} elseif ( 'producten' == $contenttype ) {
 					// to do: check op link naar planningspagina
@@ -142,7 +149,7 @@ function rhswp_archive_custom_search_with_searchWP() {
 
 					$theurl    = wp_get_attachment_url( $post->ID );
 					$parent_id = $post->post_parent;
-					$excerpt   = wp_strip_all_tags( get_the_excerpt( $parent_id ) );
+					$excerpt   = get_the_excerpt( $parent_id );
 
 
 					$mimetype = get_post_mime_type( $post->ID );
@@ -180,14 +187,13 @@ function rhswp_archive_custom_search_with_searchWP() {
 
 				endif;
 
-				$excerpt = wp_strip_all_tags( $excerpt );
 				printf( '<article %s>', $classattr );
-				printf( '<a href="%s"><h2>%s</h2><p>%s</p><p class="meta">%s</p></a>', $theurl, $thetitle, $excerpt, $documenttype );
+				printf( '<h2><a href="%s">%s</a></h2><p class="meta">%s</p><p>%s</p>', $theurl, $thetitle, $documenttype, wp_strip_all_tags( $excerpt ) );
 				echo '</article>';
 
 			endforeach;
 
-			echo '</div>';
+			echo '</div>'; // .block
 
 			wp_reset_postdata();
 
@@ -207,6 +213,8 @@ function rhswp_archive_custom_search_with_searchWP() {
 			}
 
 			echo '</p>';
+
+			echo '</div>'; // .header
 
 		endif;
 
