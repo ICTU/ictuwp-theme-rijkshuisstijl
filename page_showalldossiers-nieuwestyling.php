@@ -77,14 +77,14 @@ function rhswp_show_dossiers_sort_markering() {
 //========================================================================================================
 
 function rhswp_show_dossiers_by_alphabet() {
-
+	global $post;
 	$taxonomy_name     = RHSWP_CT_DOSSIER;
 	$args              = array(
-		'taxonomy'           => RHSWP_CT_DOSSIER,
+		'taxonomy'     => RHSWP_CT_DOSSIER,
 //		'parent'             => 0,
-		'echo'               => 0,
-		'hierarchical'       => false,
-		'title_li'           => '',
+		'echo'         => 0,
+		'hierarchical' => false,
+		'title_li'     => '',
 	);
 	$hiddenonderwerpen = get_field( 'dossier_overzicht_hide_dossiers', $post->ID );
 	if ( $hiddenonderwerpen ) {
