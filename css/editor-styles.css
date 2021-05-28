@@ -156,6 +156,18 @@ Webfonts voor andere css-bestanden
   font-style: normal;
   font-display: fallback;
 }
+@font-face {
+  font-family: "RO Serif";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/RO-SerifWeb-Regular.woff2") format("woff2"), url("../fonts/RO-SerifWeb-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "RO Serif";
+  font-weight: normal;
+  font-style: italic;
+  src: url("../fonts/RO-SerifWeb-Italic.woff2") format("woff2"), url("../fonts/RO-SerifWeb-Italic.woff") format("woff");
+}
 body {
   font-family: 'Rijksoverheid Sans regular', sans-serif;
 }
@@ -690,169 +702,6 @@ img .alignright,
 }
 .gallery-caption {
   border-bottom: none;
-}
-.borderframe {
-  border: 2px solid #b4b4b4;
-  overflow: hidden;
-  padding: 0;
-}
-.borderframe h2.blocktitle,
-.borderframe h3.blocktitle,
-.borderframe h4.blocktitle,
-.borderframe h5.blocktitle,
-.borderframe h6.blocktitle {
-  margin: 0 0 0.25em 0;
-  padding: 0.75rem 1rem;
-  font-size: 1.2rem;
-}
-.borderframe h2 + div,
-.borderframe h3 + div,
-.borderframe h4 + div,
-.borderframe h5 + div,
-.borderframe h6 + div {
-  margin-top: 0;
-}
-.borderframe img.alignleft,
-.borderframe img.alignright {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #e1e1e1;
-  max-width: 25%;
-  height: auto;
-}
-.borderframe img.alignleft {
-  margin-right: 1rem;
-}
-.borderframe img.alignright {
-  margin-left: 1rem;
-}
-.borderframe.gray {
-  background: #e6e6e6;
-  border-color: #cccccc;
-}
-.borderframe.gray img {
-  border: 1px solid #b4b4b4;
-}
-.borderframe.green {
-  border: 2px solid #007bc7;
-}
-.borderframe.green h2.blocktitle,
-.borderframe.green h3.blocktitle,
-.borderframe.green h4.blocktitle,
-.borderframe.green h5.blocktitle,
-.borderframe.green h6.blocktitle {
-  background-color: #007bc7;
-  color: #fff;
-}
-.borderframe.dataagendablue {
-  border: 2px solid #007BC7;
-  background: #F5F7FC;
-}
-.borderframe.dataagendablue h2.blocktitle,
-.borderframe.dataagendablue h3.blocktitle,
-.borderframe.dataagendablue h4.blocktitle,
-.borderframe.dataagendablue h5.blocktitle,
-.borderframe.dataagendablue h6.blocktitle {
-  background-color: #007BC7;
-  color: #fff;
-}
-.borderframe.dataagendaorange {
-  border: 2px solid #c25607;
-  background: #fff;
-}
-.borderframe.dataagendaorange h2.blocktitle,
-.borderframe.dataagendaorange h3.blocktitle,
-.borderframe.dataagendaorange h4.blocktitle,
-.borderframe.dataagendaorange h5.blocktitle,
-.borderframe.dataagendaorange h6.blocktitle {
-  background-color: #c25607;
-  color: #fff;
-}
-.borderframe.asidegrey {
-  border: 2px solid #e6e6e6;
-  background: #e6e6e6;
-  float: left;
-  margin: 1em 1em 1em 0;
-}
-@media only screen and (min-width: 760px) {
-  .borderframe.asidegrey {
-    max-width: 380px;
-  }
-}
-.borderframe.blue h2.blocktitle,
-.borderframe.toolbox h2.blocktitle,
-.borderframe.blue h3.blocktitle,
-.borderframe.toolbox h3.blocktitle,
-.borderframe.blue h4.blocktitle,
-.borderframe.toolbox h4.blocktitle,
-.borderframe.blue h5.blocktitle,
-.borderframe.toolbox h5.blocktitle,
-.borderframe.blue h6.blocktitle,
-.borderframe.toolbox h6.blocktitle {
-  background-repeat: no-repeat;
-  background-size: 34px 35px;
-  background-position: 16px 9px;
-  padding-left: 63px;
-  padding-top: 16px;
-  min-height: 50px;
-  background-image: url('images/toolbox/cyberincident/icon-toolbox-cyber.svg');
-}
-.borderframe.blue {
-  border: 2px solid #007BC7;
-}
-.borderframe.blue h2.blocktitle,
-.borderframe.blue h3.blocktitle,
-.borderframe.blue h4.blocktitle,
-.borderframe.blue h5.blocktitle,
-.borderframe.blue h6.blocktitle {
-  background-color: #007BC7;
-  color: #fff;
-}
-.borderframe.toolbox {
-  border: 2px solid #696969;
-}
-.borderframe.toolbox h2.blocktitle,
-.borderframe.toolbox h3.blocktitle,
-.borderframe.toolbox h4.blocktitle,
-.borderframe.toolbox h5.blocktitle,
-.borderframe.toolbox h6.blocktitle {
-  background-color: #696969;
-  color: #fff;
-}
-.borderframe .the-content,
-.borderframe div {
-  margin: 1rem;
-}
-.borderframe .block-audio-video {
-  margin: 0;
-}
-.borderframe p,
-.borderframe ul,
-.borderframe ol {
-  margin: 0;
-  padding: 0 0.2rem;
-}
-.borderframe ul,
-.borderframe ol {
-  padding-left: 1em;
-}
-.borderframe ul ul,
-.borderframe ol ul,
-.borderframe ul ol,
-.borderframe ol ol {
-  padding: 0;
-}
-.borderframe + p,
-.borderframe + ol,
-.borderframe + ul,
-.borderframe + details,
-.borderframe + div {
-  margin-top: 1em;
-}
-p + .borderframe,
-ol + .borderframe,
-ul + .borderframe {
-  margin-top: 1em;
 }
 @media only screen and (min-width: 650px) {
   .intro {

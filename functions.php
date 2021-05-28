@@ -7,8 +7,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.26.1
- * @desc.   Zoekfunctionaliteit aangepast n.a.v. redesign.
+ * @version 2.26.2
+ * @desc.   Styling citaten en uitklapblokken.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 //========================================================================================================
@@ -17,7 +17,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 //========================================================================================================
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
-define( 'CHILD_THEME_VERSION', "2.26.1" );
+define( 'CHILD_THEME_VERSION', "2.26.2" );
 
 // TODO
 define( 'WP_DEBUG_FULL_WIDTH', true );

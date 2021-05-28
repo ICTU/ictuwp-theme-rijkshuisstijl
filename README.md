@@ -22,10 +22,10 @@ Dit theme functioneert niet zonder:
 * eh
 
 ## Current version:
-2.26.1 - Zoekfunctionaliteit aangepast n.a.v. redesign.
+2.26.2 - Styling citaten en uitklapblokken.
 
 ## Version history
-* 2.26.1 - Zoekfunctionaliteit aangepast n.a.v. redesign.
+* 2.26.2 - Styling citaten en uitklapblokken.
 * 2.25.1 - CSS-validatie en div. kleine accessibility correcties.
 * 2.24.2 - Reactieformulier verlost van block elements in een <a> en verdere styling.
 * 2.24.1 - Styling voor nieuw soort reactieformulier.
