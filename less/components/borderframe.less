@@ -1,0 +1,327 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - borderframe.less
+// * ----------------------------------------------------------------------------------
+// * Alle blokken met een gekleurd kader
+// * ----------------------------------------------------------------------------------
+//
+
+.borderframe {
+
+  border: 2px solid @grijs_4;
+  overflow: hidden;
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &.blocktitle {
+      margin: 0 0 .25em 0;
+      padding: .75rem 1rem;
+      font-size: 1.2rem;
+    }
+
+    & + div {
+      margin-top: 0;
+    }
+  }
+
+  img {
+    &.alignleft,
+    &.alignright {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid @block_border_color;
+      max-width: 25%;
+      height: auto;
+    }
+
+    &.alignleft {
+      margin-right: 1rem;
+    }
+
+    &.alignright {
+      margin-left: 1rem;
+    }
+  }
+
+
+  &.gray {
+    background: @grijs_2;
+    border-color: @grijs_3;
+
+    img {
+      border: 1px solid @grijs_4;
+    }
+  }
+
+  &.green {
+
+    border: 2px solid @communicatiekleur_vol;
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &.blocktitle {
+        background-color: @communicatiekleur_vol;
+        color: @wit;
+      }
+    }
+  }
+
+  &.dataagendablue {
+
+    border: 2px solid @digibeter_blauw;
+    background: @dataagenda_blauw_0;
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &.blocktitle {
+        background-color: @digibeter_blauw;
+        color: @wit;
+      }
+    }
+  }
+
+  &.dataagendaorange {
+
+    border: 2px solid @digibeter_oranje;
+    background: @wit;
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &.blocktitle {
+        background-color: @digibeter_oranje;
+        color: @wit;
+      }
+    }
+  }
+
+  @break_aside: 380px;
+
+  &.asidegrey {
+    float: left;
+    border: 2px solid @grijs;
+    background: @grijs;
+    float: left;
+    margin: 1em 1em 1em 0;
+
+    @media only screen and (min-width: ( ( @break_aside * 2 ) ) ) {
+      max-width: @break_aside;
+    }
+
+  }
+
+  &.blue,
+  &.toolbox {
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &.blocktitle {
+        background-repeat: no-repeat;
+        background-size: 34px 35px;
+        background-position: 16px 9px;
+        padding-left: 63px;
+        padding-top: 16px;
+        min-height: 50px;
+
+        background-image: url('@{base_url}images/toolbox/cyberincident/icon-toolbox-cyber.svg');
+      }
+    }
+  }
+
+  &.blue {
+
+    border: 2px solid @digibeter_blauw;
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &.blocktitle {
+        background-color: @digibeter_blauw;
+        color: @wit;
+      }
+    }
+  }
+
+  &.toolbox {
+
+    border: 2px solid @grijs_6;
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &.blocktitle {
+        background-color: @grijs_6;
+        color: @wit;
+      }
+    }
+  }
+
+  padding: 0;
+
+  .the-content,
+  div {
+    margin: 1rem;
+  }
+
+  .block-audio-video {
+    margin: 0;
+  }
+
+
+  p, ul, ol {
+    margin: 0;
+    padding: 0 .2rem;
+
+  }
+
+  & > p:first-of-type {
+    margin-top: .75rem;
+  }
+
+  & > p,
+  & > ul,
+  & > ol {
+    padding-left: 1em;
+  }
+
+  ul, ol {
+
+    ul, ol {
+      padding: 0;
+    }
+  }
+
+  & + p,
+  & + ol,
+  & + ul,
+  & + details,
+  & + div {
+    margin-top: 1em;
+  }
+}
+
+p,
+ol,
+ul {
+  & + .borderframe {
+    margin-top: 1em;
+  }
+}
+
+
+.toolbox01-kwaliteit-van-data-algoritme-en-analyse,
+.toolbox02-belanghebbenden-betrekken,
+.toolbox03-transparantie-en-verantwoording,
+.toolbox04-wet-en-regelgeving-respecteren,
+.toolbox05-monitoren-en-evalueren,
+.toolbox06-veiligheid-borgen,
+.toolbox07-publieke-waarden-centraal {
+  .borderframe.blue,
+  .borderframe.toolbox {
+    background-color: @digibeter_blauw;
+
+    a {
+      text-decoration: underline !important;
+      color: @wit;
+
+      &:hover,
+      &:active,
+      &:focus {
+        &, span {
+          background-color: @wit;
+          color: @digibeter_blauw;
+        }
+      }
+    }
+
+    .blocktitle {
+      background-image: url('@{base_url}images/toolbox/icon-toolbox-innovatie.png'); // v2.12.17; tiepvaud?
+      background-repeat: no-repeat;
+      background-size: 34px 35px;
+      background-position: 16px 9px;
+      padding-left: 63px;
+      padding-top: 16px;
+      min-height: 50px;
+    }
+
+    &, * {
+      color: @wit;
+    }
+  }
+
+  details {
+    border-color: @digibeter_blauw;
+
+    summary {
+      background-color: @digibeter_blauw;
+    }
+  }
+}
+
+//	.digibeter_colors( digibeter-violet,  @digibeter_violet,  @wit, @wit, @digibeter_violet_licht );
+
+.cyberincident01-rapporteren-report,
+.cyberincident02-beoordelen-assess,
+.cyberincident03-bijeenroepen-convene,
+.cyberincident04-uitvoeren-execute,
+.cyberincident05-oplossen-resolve,
+.cyberincident06-voorbereid {
+  .borderframe.blue,
+  .borderframe.toolbox {
+    background-color: @digibeter_violet_licht;
+    border-color: @digibeter_violet;
+
+    a {
+      text-decoration: underline !important;
+      color: @txt;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: @wit;
+        color: @violet_vol;
+      }
+    }
+
+    .blocktitle {
+      background-color: @digibeter_violet;
+      background-image: url('@{base_url}images/toolbox/cyberincident/icon-toolbox-cyber.svg');
+      background-repeat: no-repeat;
+      background-size: 34px 35px;
+      background-position: 16px 9px;
+      padding-left: 63px;
+      padding-top: 16px;
+      min-height: 50px;
+    }
+
+    &, * {
+      color: @txt;
+    }
+  }
+
+  details {
+    border-color: @digibeter_blauw;
+
+    summary {
+      background-color: @digibeter_blauw;
+    }
+  }
+}
+
