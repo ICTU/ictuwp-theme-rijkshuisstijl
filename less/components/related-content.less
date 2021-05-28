@@ -7,109 +7,45 @@
 
 
 .related-content {
-  overflow: hidden;
-  // TODO implementeren nieuwe vormgeving
-
-  /*
-
-
-.otherlinks {
-
-  max-width: 700px;
-  margin: 0 auto;
-
-  ul & {
-    border-top: 5px solid @txt;
-    padding: 1rem 0 0 0;
-  }
-
-  &, li {
-    list-style: none;
-    margin: 0 0 1rem 0;
-  }
-
-  li {
-    padding: 0;
-  }
-  a {
-    display: block;
-    padding: .75rem;
-    background: @communicatiekleur_vol;
-    font-family: @fontstrong;
-    color: @wit;
-    text-decoration: none;
-    overflow: hidden;
-    min-height: 5.5rem;
-
-    &:visited {
-      color: @wit;
-    }
-
-    &:hover,
-    &:focus {
-      color: @wit;
-      text-decoration: underline;
-    }
-
-@icoonkleur: @wit;
-
-
-    &.page,
-    &.post,
-    &.event,
-    &.document {
-      &:before {
-        content: ' ';
-        display: block;
-        float: left;
-        margin-right: 1rem;
-        width: 3rem;
-        height: 3rem;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-      }
-    }
-    &.document {
-      &:before {
-        .mixin_iconaddfill('../images/svg/icon-pdf.svg', @icoonkleur, #fff);
-      }
-    }
-    &.page {
-      &:before {
-        .mixin_iconaddfill('../images/svg/icon-dossier.svg', @icoonkleur, #fff);
-      }
-    }
-    &.post {
-      &:before {
-        .mixin_iconaddfill('../images/svg/2051 electronische paraaf.svg', @icoonkleur, #000);
-      }
-    }
-    &.event {
-      &:before {
-        .mixin_iconaddfill('../images/svg/2001 kalender.svg', @icoonkleur, #000);
-      }
-    }
-
-  }
-
-  .griditem {
-    padding: .5rem;
-    flex-basis: 100%;
-  }
-}
-
-
-
- */
 
   .mixin_fullwidth_container();
   .mixin_fullwidth_padding();
 
   h2 {
     padding-top: 1rem;
-    border-top: 1px solid #979797;
+    margin-bottom: 1.5rem;
+
+    &:after {
+      content: ' ';
+      display: block;
+      background: @communicatiekleur_vol;
+      margin: .5rem 0 1rem 0;
+      width: 75px;
+      height: 4px;
+    }
+  }
+
+  ul li {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+    display: flex;
+
+    a {
+      flex: 1 0 auto;
+      color: @communicatiekleur_vol;
+      .listitem_arrow_flex(@communicatiekleur_vol);
+      padding-left: 1rem;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+    }
+
   }
 
 }
+
 
