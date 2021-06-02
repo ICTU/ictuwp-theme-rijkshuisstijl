@@ -1,6 +1,6 @@
 {
     "key": "group_57ff8c1326b24",
-    "title": "Extra links bij bericht of pagina",
+    "title": "Extra links bij bericht of pagina of event",
     "fields": [
         {
             "key": "field_57ff8c9ba3211",
@@ -178,6 +178,13 @@
                 "operator": "==",
                 "value": "page"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "event"
+            }
         ]
     ],
     "menu_order": 0,
@@ -188,5 +195,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1622627341
+    "modified": 1622653184
 }
