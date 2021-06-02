@@ -16,30 +16,29 @@
 
   .block article {
 
-    padding-top: 1rem;
+    padding: 1rem 0;
+
+    p, & {
+      margin-bottom: 0;
+    }
+    h2,
+    .meta {
+      margin-bottom: .25rem;
+    }
 
     & + article {
       border-top: 1px solid @grijs_2;
+    }
+    h2 a {
+      .listitem_arrow_flex(@communicatiekleur_vol);
+      padding-left: 1rem;
     }
 
     //========================================================================================================
     @media only screen and (min-width: ( @break_650px ) ) {
 
-      .listitem_arrow_absolute(@a_color_default, 12px, 26px); // done
-
-      &:before {
-        float: left;
-        width: @padding_arrow_before_search;
-      }
-
       h2, h3 {
         margin-top: 0;
-      }
-
-      a {
-        float: right;
-        width: ~"calc(100% - @{padding_arrow_before_search})";
-        margin-left: 0;
       }
     }
 

@@ -335,12 +335,20 @@
 
 //=========================================================================================================
 
-.listitem_arrow_flex( @itemcolor: @a_color_default, @topdistance: .5rem, @leftdistance: 1rem ) {
+.listitem_arrow_flex( @itemcolor: @a_color_default, @topdistance: .5rem, @leftdistance: 1rem, @itemcolor_visited: @a_color_visited, @itemcolor_focus: @a_color_focus, @itemcolor_active: @a_color_active ) {
 
-  .icon_socmed_icon('../images/svg/list-arrow.svg', @itemcolor);
   background-repeat: no-repeat;
   background-position: left @topdistance;
   padding-left: @leftdistance;
+  .icon_socmed_icon('../images/svg/list-arrow.svg', @itemcolor);
+
+  &:hover,
+  &:focus {
+    .icon_socmed_icon('../images/svg/list-arrow.svg', @itemcolor_focus);
+  }
+  &:active {
+    .icon_socmed_icon('../images/svg/list-arrow.svg', @itemcolor_active);
+  }
 
 }
 
