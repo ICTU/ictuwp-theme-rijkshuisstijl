@@ -91,6 +91,25 @@
             "return_format": "id",
             "multiple": 0,
             "allow_null": 0
+        },
+        {
+            "key": "field_60b740105d30c",
+            "label": "Standaard titel boven gerelateerde links",
+            "name": "standaard_titel_boven_gerelateerde_links",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Meer lezen hierover",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -110,5 +129,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1610636564
+    "modified": 1622626460
 }

@@ -27,33 +27,6 @@
             "save_other_choice": 0
         },
         {
-            "key": "field_57ff8c2b5809b",
-            "label": "Titel boven de linklijst",
-            "name": "rhswp_pagelinks_widget_widget_title",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_57ff8c9ba3211",
-                        "operator": "==",
-                        "value": "ja"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
             "key": "field_57ff8c6078e2d",
             "label": "Links",
             "name": "rhswp_pagelinks_widget_widget_links",
@@ -215,5 +188,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1611075733
+    "modified": 1622627341
 }
