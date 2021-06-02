@@ -4239,7 +4239,7 @@ function rhswp_append_socialbuttons( $doecho = true ) {
 
 	global $post;
 
-	if ( is_single() && ( RHSWP_CPT_DOCUMENT === get_post_type() || 'post' == get_post_type() ) ) {
+	if ( is_single() && ( RHSWP_CPT_EVENT === get_post_type() || RHSWP_CPT_DOCUMENT === get_post_type() || 'post' == get_post_type() ) ) {
 
 		$thelink       = urlencode( get_permalink( $post->ID ) );
 		$thetitle      = urlencode( $post->post_title );
