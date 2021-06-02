@@ -106,27 +106,60 @@ function rhswp_archive_custom_search_with_searchWP() {
 			foreach ( $posts as $post ) :
 
 				$excerpt      = get_the_excerpt( $post );
-				$postdate     = get_the_date();
+				$theid        = get_the_id();
 				$classattr    = genesis_attr( 'entry' );
 				$classattr    = str_replace( 'has-post-thumbnail', '', $classattr );
 				$contenttype  = get_post_type();
 				$theurl       = get_permalink();
-				$thetitle     = rhswp_filter_alternative_title( get_the_id(), get_the_title() );
+				$thetitle     = rhswp_filter_alternative_title( $theid, get_the_title() );
 				$documenttype = rhswp_translateposttypes( $contenttype );
+
 
 				if ( 'post' == $contenttype ) {
 
-					$documenttype = '';
-					$counter = 0;
-					$post_categories = wp_get_post_categories( get_the_id() );
-					foreach($post_categories as $category){
-						$counter++;
+					$documenttype    = '';
+					$counter         = 0;
+					$post_categories = wp_get_post_categories( $theid );
+					foreach ( $post_categories as $category ) {
+						$counter ++;
 						$catinfo = get_category( $category );
 						if ( $counter > 1 ) {
 							$documenttype .= ', ';
 						}
 						$documenttype .= $catinfo->name;
 					}
+
+				} elseif ( RHSWP_CPT_DOCUMENT == $contenttype ) {
+
+					$file           = get_field( 'rhswp_document_upload', $theid );
+					$number_pages   = get_field( 'rhswp_document_number_pages', $theid );
+					$bestand_of_url = get_field( 'rhswp_document_file_or_url', $theid );
+					$documenttype   = get_the_date( '', $theid );
+
+					if ( $bestand_of_url === 'URL' ) {
+						$rhswp_document_url = get_field( 'rhswp_document_url', $theid );
+						if ( $rhswp_document_url ) {
+							$theurl = $rhswp_document_url;
+						}
+					} else {
+						$filetype = strtoupper( $file['subtype'] );
+
+						if ( $file ) {
+							if ( $filetype ) {
+								$documenttype .= DO_SEPARATOR . $filetype;
+							}
+							if ( $file['url'] ) {
+								$theurl = $file['url'];
+							}
+							if ( $file['filesize'] > 0 ) {
+								$documenttype .= ' (' . human_filesize( $file['filesize'] ) . ')';
+							}
+							if ( $number_pages > 0 ) {
+								$documenttype .= DO_SEPARATOR . sprintf( _n( '%s page', "%s pages", $number_pages, 'wp-rijkshuisstijl' ), $number_pages );
+							}
+						}
+					}
+
 
 				} elseif ( 'producten' == $contenttype ) {
 					// to do: check op link naar planningspagina
@@ -140,7 +173,7 @@ function rhswp_archive_custom_search_with_searchWP() {
 						$hoofdpagina = 73;
 					}
 
-					$voorzieningslug = get_post_meta( get_the_ID(), 'product_voorziening_real_id_slug', true );
+					$voorzieningslug = get_post_meta( $theid, 'product_voorziening_real_id_slug', true );
 
 					$theurl = get_the_permalink( $hoofdpagina ) . 'voorziening/' . $voorzieningslug . '/product/' . $post->post_name . '/';
 
