@@ -42,17 +42,6 @@ if ( class_exists( 'SearchWP' ) ) {
 
 genesis();
 
-/*
- * add_action( 'genesis_after_header', 'rhswp_dossier_title_checker', 24 );
-
- */
-//========================================================================================================
-
-function rhswp_add_search_description() {
-
-
-}
-
 //========================================================================================================
 
 function rhswp_add_search_description_without_searchwp() {
@@ -117,16 +106,25 @@ function rhswp_archive_custom_search_with_searchWP() {
 
 				if ( 'post' == $contenttype ) {
 
-					$documenttype    = '';
+					if ( 'post' == $contenttype ) {
+						$documenttype .= '<span class="post-date">' . get_the_date() . '</span>';
+					}
+
+					$documenttype   = get_the_date( '', $theid );
 					$counter         = 0;
 					$post_categories = wp_get_post_categories( $theid );
+					if ( $post_categories ) {
+
 					foreach ( $post_categories as $category ) {
 						$counter ++;
 						$catinfo = get_category( $category );
 						if ( $counter > 1 ) {
 							$documenttype .= ', ';
+						} else {
+							$documenttype .= DO_SEPARATOR;
 						}
 						$documenttype .= $catinfo->name;
+					}
 					}
 
 				} elseif ( RHSWP_CPT_DOCUMENT == $contenttype ) {
@@ -214,9 +212,6 @@ function rhswp_archive_custom_search_with_searchWP() {
 
 				else : setup_postdata( $post );
 
-					if ( 'post' == $contenttype ) {
-						$documenttype .= '<span class="post-date">' . get_the_date() . '</span>';
-					}
 
 				endif;
 
@@ -234,20 +229,19 @@ function rhswp_archive_custom_search_with_searchWP() {
 
 
 		else:
-
+			$title = sprintf( _x( 'No results for %s.', 'No results text', 'wp-rijkshuisstijl' ), $query );
 			echo '<h2>' . _x( 'Sorry', 'Title, no results text', 'wp-rijkshuisstijl' ) . '</h2>';
-			echo '<p>';
-			echo sprintf( _x( 'No results for %s.', 'No results text', 'wp-rijkshuisstijl' ), $query );
+			echo '<p>' . $title . '</p>';
+			echo '</div>'; // .header
 
+
+			//	echo '<div class="header">';
 			if ( is_active_sidebar( RHSWP_NORESULT_WIDGET_AREA ) ) {
 
 				dynamic_sidebar( RHSWP_NORESULT_WIDGET_AREA );
 
 			}
 
-			echo '</p>';
-
-			echo '</div>'; // .header
 
 		endif;
 
