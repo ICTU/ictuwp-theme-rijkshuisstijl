@@ -5,43 +5,43 @@
 // * ----------------------------------------------------------------------------------
 //
 
-
 .related-content {
 
   .mixin_fullwidth_container();
   .mixin_fullwidth_padding();
 
   h2 {
-    padding-top: 1rem;
-    margin-bottom: 1.5rem;
-
-    &:after {
-      content: ' ';
-      display: block;
-      background: @communicatiekleur_vol;
-      margin: .5rem 0 1rem 0;
-      width: 75px;
-      height: 4px;
-    }
+    .add_header_decoration();
+  }
+  ul {
+    padding-left: 0;
+    margin-left: 0;
   }
 
   ul li {
     list-style: none;
     padding-left: 0;
     margin-left: 0;
-    display: flex;
 
     a {
-      flex: 1 1 auto;
       color: @communicatiekleur_vol;
       .listitem_arrow_flex(@communicatiekleur_vol);
       padding-left: 1rem;
       text-decoration: none;
 
       &:hover {
+        color: @a_color_hover;
         text-decoration: underline;
       }
+      &:active,
+      &:focus {
+        text-decoration: underline;
+        color: @a_color_active;
+      }
 
+      &.extern {
+        .external_link_icon( @communicatiekleur_vol );
+      }
     }
 
   }

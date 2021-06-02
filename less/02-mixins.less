@@ -335,7 +335,7 @@
 
 //=========================================================================================================
 
-.listitem_arrow_flex( @itemcolor: @a_color_default, @topdistance: .5rem, @leftdistance: 1rem, @itemcolor_visited: @a_color_visited, @itemcolor_focus: @a_color_focus, @itemcolor_active: @a_color_active ) {
+.listitem_arrow_flex( @itemcolor: @a_color_default, @topdistance: .3rem, @leftdistance: 1rem, @itemcolor_visited: @a_color_visited, @itemcolor_focus: @a_color_focus, @itemcolor_active: @a_color_active ) {
 
   background-repeat: no-repeat;
   background-position: left @topdistance;
@@ -352,6 +352,45 @@
   }
 
 }
+
+//=========================================================================================================
+
+.external_link_icon( @itemcolor: @a_color_default, @topdistance: .3rem, @leftdistance: 1rem, @itemcolor_visited: @a_color_visited, @itemcolor_focus: @a_color_focus, @itemcolor_active: @a_color_active ) {
+
+  background-repeat: no-repeat;
+  background-position: left @topdistance;
+  background-size: .75rem .75rem;
+  padding-left: @leftdistance;
+  .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemcolor);
+
+  &:hover,
+  &:focus {
+    .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemcolor_focus);
+  }
+  &:active {
+    .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemcolor_active);
+  }
+
+}
+
+//=========================================================================================================
+
+.add_header_decoration( @fillcolor: @communicatiekleur_vol, @fillheight: 4px, @fillwidth: 75px ) {
+
+  padding-top: 1rem;
+  margin-bottom: 1.5rem;
+
+  &:after {
+    content: ' ';
+    display: block;
+    background: @fillcolor;
+    margin: .5rem 0 1rem 0;
+    width: @fillwidth;
+    height: @fillheight;
+  }
+
+}
+
 
 //=========================================================================================================
 
