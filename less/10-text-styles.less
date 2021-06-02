@@ -55,6 +55,19 @@
   .entry-content {
     a {
       color: @a_color_content_default;
+
+      &:visited {
+        color: @a_color_visited;
+      }
+
+      &:hover {
+        color: @a_color_hover;
+      }
+
+      &:active,
+      &:focus {
+        color: @a_color_active;
+      }
     }
   }
 

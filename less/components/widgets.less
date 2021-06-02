@@ -7,7 +7,46 @@
 
 .widget {
   ul, ol {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 1rem 1rem 0;
+    padding-left: 0;
   }
+
+  ul li {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+
+    a {
+      color: @communicatiekleur_vol;
+      .listitem_arrow_flex(@communicatiekleur_vol);
+      padding-left: 1rem;
+      text-decoration: none;
+
+      &:hover {
+        color: @a_color_hover;
+        text-decoration: underline;
+      }
+
+      &:active,
+      &:focus {
+        text-decoration: underline;
+        color: @a_color_active;
+      }
+
+      &.extern {
+        .external_link_icon(@communicatiekleur_vol);
+      }
+    }
+  }
+
+
+  ul ul {
+    margin-top: .5em;
+    margin-left: 1em;
+
+    li {
+      margin-top: 0;
+    }
+  }
+
 }
