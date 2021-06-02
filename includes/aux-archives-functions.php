@@ -100,7 +100,9 @@ function rhswp_get_grid_item( $args = array() ) {
 		$file           = get_field( 'rhswp_document_upload', $args['ID'] );
 		$number_pages   = get_field( 'rhswp_document_number_pages', $args['ID'] );
 		$bestand_of_url = get_field( 'rhswp_document_file_or_url', $args['ID'] );
-		$filetype       = strtoupper( $file['subtype'] );
+		if ( isset( $file['subtype'] )) {
+			$filetype       = strtoupper( $file['subtype'] );
+		}
 		$documenttype   = get_the_date( '', $args['ID'] );
 
 		if ( $file ) {
