@@ -62,3 +62,21 @@
   float: right;
   padding: 1rem 0 1rem 1rem;
 }
+
+.widget-sidebar-alt,
+.aux-info-bar {
+  .widget {
+    &:not(.widget_newsletterwidget) {
+
+    padding-bottom: 1rem;
+
+    h2 {
+      .add_header_decoration();
+    }
+
+    & +.widget {
+      margin-top: 1rem;
+    }
+    }
+  }
+}

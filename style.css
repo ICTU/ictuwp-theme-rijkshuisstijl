@@ -538,10 +538,11 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 }
 .widget_newsletterwidget {
   background: #DDEFF8;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 .widget_newsletterwidget .widget-title {
   font-size: 1.8rem;
+  margin-top: 0;
 }
 .widget_newsletterwidget form {
   background: transparent;
@@ -2574,6 +2575,7 @@ input[type="reset"],
 input[type="submit"],
 .button,
 .entry-content .button {
+  font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
   background-color: #007bc7;
   box-shadow: none;
   color: #fff;
@@ -9425,8 +9427,10 @@ a.external:after {
 .tnp-widget select option {
   margin-right: 1rem;
 }
-.tnp-widget .tnp-field-button {
+.tnp-widget .tnp-field {
   padding-top: 1rem;
+}
+.tnp-widget .tnp-field-button {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -10373,6 +10377,28 @@ ul.events-table li a:focus {
   width: calc(50% - 25px);
   float: right;
   padding: 1rem 0 1rem 1rem;
+}
+.widget-sidebar-alt .widget:not(.widget_newsletterwidget),
+.aux-info-bar .widget:not(.widget_newsletterwidget) {
+  padding-bottom: 1rem;
+}
+.widget-sidebar-alt .widget:not(.widget_newsletterwidget) h2,
+.aux-info-bar .widget:not(.widget_newsletterwidget) h2 {
+  padding-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+.widget-sidebar-alt .widget:not(.widget_newsletterwidget) h2:after,
+.aux-info-bar .widget:not(.widget_newsletterwidget) h2:after {
+  content: ' ';
+  display: block;
+  background: #007bc7;
+  margin: 0.5rem 0 1rem 0;
+  width: 75px;
+  height: 4px;
+}
+.widget-sidebar-alt .widget:not(.widget_newsletterwidget) + .widget,
+.aux-info-bar .widget:not(.widget_newsletterwidget) + .widget {
+  margin-top: 1rem;
 }
 .social-media li {
   display: list-item;
