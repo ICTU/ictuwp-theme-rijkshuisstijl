@@ -111,6 +111,7 @@ function filter_rhswp_socialmedia_widget( $params ) {
 	// get widget vars
 	$widget_name = $params[0]['widget_name'];
 	$widget_id   = $params[0]['widget_id'];
+	$links       = null;
 
 	// bail early if this widget is not the right widget
 	if ( $widget_name != RHSWP_WIDGET_SOCIALMEDIA ) {
