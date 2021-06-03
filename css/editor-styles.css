@@ -201,7 +201,10 @@ a:focus {
   -webkit-box-shadow: 0 0 0 2px #fff;
   box-shadow: 0 0 0 2px #fff;
 }
-.entry-content a {
+.entry-content p a,
+.entry-content li a,
+.entry-content table a,
+.entry-content dl a {
   color: #007bc7;
 }
 a.extern:before {
