@@ -43,6 +43,15 @@
       .mixin_fullwidth_maxwidth_no_padding();
     }
 
+    // div. gutenberg blocks
+    .wp-block-tnp-minimal {
+      & > div,
+      & > p {
+        .mixin_fullwidth_container();
+        .mixin_fullwidth_padding();
+      }
+    }
+
     & > p,
     & > h2,
     & > h3,

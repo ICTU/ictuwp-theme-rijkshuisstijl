@@ -253,7 +253,7 @@
 
 .embed_error_icon(@src, @fill_new, @fill_old: #000000) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-//  @replace-default: escape('fill:#FF0000;');
+  //  @replace-default: escape('fill:#FF0000;');
   @replace-default: escape('fill="@{fill_old}"');
   @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
@@ -396,7 +396,7 @@
 
 .listitem_arrow_absolute( @itemcolor: @a_color_default, @fontsize: 1em, @topdistance: 4px, @leftdistance: 0, @width: 1.5em ) {
 
-    position: relative;
+  position: relative;
 
   &:before {
     color: @itemcolor;
