@@ -536,14 +536,17 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
     padding: 0;
   }
 }
+.wp-block-tnp-minimal > div,
 .widget_newsletterwidget {
   background: #DDEFF8;
   padding: 1.5rem;
 }
+.wp-block-tnp-minimal > div .widget-title,
 .widget_newsletterwidget .widget-title {
   font-size: 1.8rem;
   margin-top: 0;
 }
+.wp-block-tnp-minimal > div form,
 .widget_newsletterwidget form {
   background: transparent;
   padding: 0;
@@ -9518,25 +9521,32 @@ a.external:after {
     margin: 0;
   }
 }
+.tnp-widget-minimal,
 .tnp-widget {
   width: 100%;
   display: block;
   box-sizing: border-box;
 }
+.tnp-widget-minimal input[type=text],
 .tnp-widget input[type=text],
+.tnp-widget-minimal input[type=email],
 .tnp-widget input[type=email],
+.tnp-widget-minimal select,
 .tnp-widget select {
   width: 100%;
   line-height: normal;
   box-sizing: border-box;
   height: auto;
 }
+.tnp-widget-minimal select option,
 .tnp-widget select option {
   margin-right: 1rem;
 }
+.tnp-widget-minimal .tnp-field,
 .tnp-widget .tnp-field {
   padding-top: 1rem;
 }
+.tnp-widget-minimal .tnp-field-button,
 .tnp-widget .tnp-field-button {
   display: -webkit-flex;
   display: flex;
@@ -9545,89 +9555,13 @@ a.external:after {
   -webkit-justify-content: flex-end;
           justify-content: flex-end;
 }
+.tnp-widget-minimal .tnp-field-button [type=submit],
 .tnp-widget .tnp-field-button [type=submit],
+.tnp-widget-minimal .tnp-field-button button,
 .tnp-widget .tnp-field-button button {
   -webkit-flex: 0 1 auto;
           flex: 0 1 auto;
   clear: both;
-}
-/* Newsletter Widget Minimal */
-.tnp-widget-minimal {
-  width: 100%;
-}
-.tnp-widget-minimal form {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-.tnp-widget-minimal input.tnp-email {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px;
-  display: inline-block;
-  border: 1px solid #ddd;
-  background-color: #f4f4f4;
-  color: #444;
-  font-size: 14px;
-}
-.tnp-widget-minimal input.tnp-submit {
-  width: 100%;
-  padding: 10px;
-  display: inline-block;
-  border: 1px;
-  border-color: #ddd;
-  background-color: #444;
-  background-image: none;
-  text-shadow: none;
-  color: #fff;
-  font-size: 14px;
-  line-height: normal;
-  border-radius: 0px;
-  box-sizing: border-box;
-  height: auto;
-  margin: 0;
-}
-/* The minimal form */
-.tnp-subscription-minimal {
-  width: 100%;
-  box-sizing: border-box;
-}
-.tnp-subscription-minimal form {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-.tnp-subscription-minimal input.tnp-email {
-  width: 70%;
-  max-width: 300px;
-  box-sizing: border-box;
-  padding: 10px;
-  display: inline-block;
-  border: 1px solid #ddd;
-  background-color: #f4f4f4;
-  color: #444;
-  font-size: 14px;
-  line-height: 20px;
-  border-radius: 0px;
-}
-.tnp-subscription-minimal .tnp-privacy-field {
-  margin-top: 10px;
-}
-.tnp-subscription-minimal input.tnp-submit {
-  width: 29%;
-  display: inline-block;
-  padding: 10px;
-  border: 1px;
-  border-color: #ddd;
-  background-color: #444;
-  background-image: none;
-  text-shadow: none;
-  color: #fff;
-  font-size: 14px;
-  line-height: 20px;
-  box-sizing: border-box;
-  border-radius: 0px;
-  margin: 0;
 }
 /* Comments Extension */
 .tnp-comments {
@@ -11798,6 +11732,27 @@ ul + .borderframe {
   max-width: 41.8125rem;
   margin-left: auto;
   margin-right: auto;
+}
+.page-template-page_fullwidth .entry-content .wp-block-tnp-minimal > div,
+.single-event.full-width-content .entry-content .wp-block-tnp-minimal > div,
+.single-post.full-width-content .entry-content .wp-block-tnp-minimal > div,
+.page-template-page_fullwidth .entry-content .wp-block-tnp-minimal > p,
+.single-event.full-width-content .entry-content .wp-block-tnp-minimal > p,
+.single-post.full-width-content .entry-content .wp-block-tnp-minimal > p {
+  max-width: 47.8125rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media only screen and (min-width: 1200px) {
+  .page-template-page_fullwidth .entry-content .wp-block-tnp-minimal > div,
+  .single-event.full-width-content .entry-content .wp-block-tnp-minimal > div,
+  .single-post.full-width-content .entry-content .wp-block-tnp-minimal > div,
+  .page-template-page_fullwidth .entry-content .wp-block-tnp-minimal > p,
+  .single-event.full-width-content .entry-content .wp-block-tnp-minimal > p,
+  .single-post.full-width-content .entry-content .wp-block-tnp-minimal > p {
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .page-template-page_fullwidth .entry-content > p,
