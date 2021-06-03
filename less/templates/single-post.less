@@ -6,8 +6,9 @@
 //
 
 
-.page.full-width-content,
-.single.full-width-content {
+.page-template-page_fullwidth,
+.single-post.full-width-content {
+
   .entry-header {
     .mixin_fullwidth_container();
     .mixin_fullwidth_padding();
@@ -28,6 +29,12 @@
     & .gform_wrapper form,
     & > .borderframe {
       .mixin_fullwidth_container();
+    }
+
+    & > a {
+      .mixin_fullwidth_container();
+      .mixin_fullwidth_padding();
+      display: block;
     }
 
     & > .button-container,

@@ -22,10 +22,10 @@ Dit theme functioneert niet zonder:
 * eh
 
 ## Current version:
-2.27.1 - Vaste titel voor gerelateerde content; metadata voor document tonen op zoekresultaatpagina; bugfixes.
+2.27.2 - Styling voor los evenement aangepast.
 
 ## Version history
-* 2.27.1 - Vaste titel voor gerelateerde content; metadata voor document tonen op zoekresultaatpagina; bugfixes.
+* 2.27.2 - Styling voor los evenement aangepast.
 * 2.26.5 - CSS bugfix voor: onderwerppagina.
 * 2.26.4 - Bugfixes CSS: captions, citaten.
 * 2.26.3 - .current-page-ancestor, font-grootte voor pagina, uitlijning titel onderwerppagina.

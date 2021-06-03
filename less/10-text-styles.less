@@ -53,20 +53,22 @@
   }
 
   .entry-content {
-    a {
-      color: @a_color_content_default;
+    p, li, table, dl {
+      a {
+        color: @a_color_content_default;
 
-      &:visited {
-        color: @a_color_visited;
-      }
+        &:visited {
+          color: @a_color_visited;
+        }
 
-      &:hover {
-        color: @a_color_hover;
-      }
+        &:hover {
+          color: @a_color_hover;
+        }
 
-      &:active,
-      &:focus {
-        color: @a_color_active;
+        &:active,
+        &:focus {
+          color: @a_color_active;
+        }
       }
     }
   }
