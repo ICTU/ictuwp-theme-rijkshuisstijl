@@ -6,13 +6,13 @@
  *  voor als je niet weet waar je bent. Als je jezelf zoekt, of als je
  *  gewoon in z'n algemeenheid de site probeert stuk te maken.
  *  ----------------------------------------------------------------------------------
- * 
- *  @author  Paul van Buuren
- *  @license GPL-2.0+
- *  @package wp-rijkshuisstijl
- *  @version 2.0.11
- *  @desc.   Aanpassingen aan div. widgets + bugfix voor widet-banner
- *  @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+ *
+ * @author  Paul van Buuren
+ * @license GPL-2.0+
+ * @package wp-rijkshuisstijl
+ * @version 2.0.11
+ * @desc.   Aanpassingen aan div. widgets + bugfix voor widet-banner
+ * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 
 
@@ -54,26 +54,27 @@ class rhswp_page_widget extends WP_Widget {
 
 		?>
 
-        <p><label for="<?php echo $this->get_field_id( 'rhswp_page_widget-title' ); ?>">Titel: <input
-                        id="<?php echo $this->get_field_id( 'rhswp_page_widget-title' ); ?>"
-                        name="<?php echo $this->get_field_name( 'rhswp_page_widget_title' ); ?>" type="text"
-                        value="<?php echo esc_attr( $rhswp_page_widget_title ); ?>"/></label></p>
+		<p><label for="<?php echo $this->get_field_id( 'rhswp_page_widget-title' ); ?>">Titel: <input
+					id="<?php echo $this->get_field_id( 'rhswp_page_widget-title' ); ?>"
+					name="<?php echo $this->get_field_name( 'rhswp_page_widget_title' ); ?>" type="text"
+					value="<?php echo esc_attr( $rhswp_page_widget_title ); ?>"/></label></p>
 
-        <p>
-            <label for="<?php echo $this->get_field_id( 'rhswp_page_widget_short_text' ) ?>"><?php _e( "Vrije tekst in widget:", 'wp-rijkshuisstijl' ) ?>
-                <br/><textarea cols="33" rows="4"
-                               id="<?php echo $this->get_field_id( 'rhswp_page_widget_short_text' ); ?>"
-                               name="<?php echo $this->get_field_name( 'rhswp_page_widget_short_text' ); ?>"><?php echo esc_attr( $rhswp_page_widget_short_text ); ?></textarea></label>
-        </p>
-
-
-        <p><label for="<?php echo $this->get_field_id( 'rhswp_page_widget_page_linktext' ); ?>">Linktekst:<br><input
-                        id="<?php echo $this->get_field_id( 'rhswp_page_widget_page_linktext' ); ?>"
-                        name="<?php echo $this->get_field_name( 'rhswp_page_widget_page_linktext' ); ?>" type="text"
-                        value="<?php echo esc_attr( $rhswp_page_widget_page_linktext ); ?>"/></label></p>
+		<p>
+			<label
+				for="<?php echo $this->get_field_id( 'rhswp_page_widget_short_text' ) ?>"><?php _e( "Vrije tekst in widget:", 'wp-rijkshuisstijl' ) ?>
+				<br/><textarea cols="33" rows="4"
+							   id="<?php echo $this->get_field_id( 'rhswp_page_widget_short_text' ); ?>"
+							   name="<?php echo $this->get_field_name( 'rhswp_page_widget_short_text' ); ?>"><?php echo esc_attr( $rhswp_page_widget_short_text ); ?></textarea></label>
+		</p>
 
 
-        <label for="<?php echo $this->get_field_id( 'rhswp_page_widget_page_link' ) . '">' . __( "Linkt naar pagina:", 'wp-rijkshuisstijl' ) ?><br />
+		<p><label for="<?php echo $this->get_field_id( 'rhswp_page_widget_page_linktext' ); ?>">Linktekst:<br><input
+					id="<?php echo $this->get_field_id( 'rhswp_page_widget_page_linktext' ); ?>"
+					name="<?php echo $this->get_field_name( 'rhswp_page_widget_page_linktext' ); ?>" type="text"
+					value="<?php echo esc_attr( $rhswp_page_widget_page_linktext ); ?>"/></label></p>
+
+
+		<label for="<?php echo $this->get_field_id( 'rhswp_page_widget_page_link' ) . '">' . __( "Linkt naar pagina:", 'wp-rijkshuisstijl' ) ?><br />
         <?php
 		$args = array(
 			'depth'    => 0,
@@ -150,5 +151,5 @@ add_action( 'widgets_init', 'rhswp_page_widget_register' );
 
 
 
-	
-	
+
+

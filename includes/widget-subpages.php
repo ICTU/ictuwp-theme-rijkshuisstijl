@@ -128,7 +128,7 @@ class BE_Subpages_Widget extends WP_Widget {
 		}
 
 		global $post, $be_subpages_is_first;
-		// Build the page listing	
+		// Build the page listing
 		echo '<ul>';
 		foreach ( $subpages as $subpage ) {
 			$class = array();
@@ -219,41 +219,46 @@ class BE_Subpages_Widget extends WP_Widget {
 		);
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
-        <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Titel:', 'wp-rijkshuisstijl' ); ?></label>
-            <input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>"
-                   name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>"/>
-        </p>
+		<p>
+			<label
+				for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Titel:', 'wp-rijkshuisstijl' ); ?></label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>"
+				   name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>"/>
+		</p>
 
-        <p>
-            <input class="checkbox" type="checkbox" value="1" <?php checked( $instance['title_from_parent'], 1 ); ?>
-                   id="<?php echo $this->get_field_id( 'title_from_parent' ); ?>"
-                   name="<?php echo $this->get_field_name( 'title_from_parent' ); ?>"/>
-            <label for="<?php echo $this->get_field_id( 'title_from_parent' ); ?>"><?php _e( 'Gebruik hoofd-pagina als widget-titel', 'wp-rijkshuisstijl' ); ?></label>
-        </p>
+		<p>
+			<input class="checkbox" type="checkbox" value="1" <?php checked( $instance['title_from_parent'], 1 ); ?>
+				   id="<?php echo $this->get_field_id( 'title_from_parent' ); ?>"
+				   name="<?php echo $this->get_field_name( 'title_from_parent' ); ?>"/>
+			<label
+				for="<?php echo $this->get_field_id( 'title_from_parent' ); ?>"><?php _e( 'Gebruik hoofd-pagina als widget-titel', 'wp-rijkshuisstijl' ); ?></label>
+		</p>
 
-        <p>
-            <input class="checkbox" type="checkbox" value="1" <?php checked( $instance['title_link'], 1 ); ?>
-                   id="<?php echo $this->get_field_id( 'title_link' ); ?>"
-                   name="<?php echo $this->get_field_name( 'title_link' ); ?>"/>
-            <label for="<?php echo $this->get_field_id( 'title_link' ); ?>"><?php _e( 'Maak de titel klikbaar', 'wp-rijkshuisstijl' );
+		<p>
+			<input class="checkbox" type="checkbox" value="1" <?php checked( $instance['title_link'], 1 ); ?>
+				   id="<?php echo $this->get_field_id( 'title_link' ); ?>"
+				   name="<?php echo $this->get_field_name( 'title_link' ); ?>"/>
+			<label
+				for="<?php echo $this->get_field_id( 'title_link' ); ?>"><?php _e( 'Maak de titel klikbaar', 'wp-rijkshuisstijl' );
 				echo '<br /><em>(';
 				_e( "Alleen als 'Gebruik hoofd-pagina als widget-titel' is aangevinkt", 'wp-rijkshuisstijl' );
 				echo ')</em></label>'; ?>
-        </p>
+		</p>
 
-        <p>
-            <input class="checkbox" type="checkbox" value="1" <?php checked( $instance['deep_subpages'], 1 ); ?>
-                   id="<?php echo $this->get_field_id( 'deep_subpages' ); ?>"
-                   name="<?php echo $this->get_field_name( 'deep_subpages' ); ?>"/>
-            <label for="<?php echo $this->get_field_id( 'deep_subpages' ); ?>"><?php _e( "Toon ook de subpagina's van de huidige pagina", 'wp-rijkshuisstijl' ); ?></label>
-        </p>
+		<p>
+			<input class="checkbox" type="checkbox" value="1" <?php checked( $instance['deep_subpages'], 1 ); ?>
+				   id="<?php echo $this->get_field_id( 'deep_subpages' ); ?>"
+				   name="<?php echo $this->get_field_name( 'deep_subpages' ); ?>"/>
+			<label
+				for="<?php echo $this->get_field_id( 'deep_subpages' ); ?>"><?php _e( "Toon ook de subpagina's van de huidige pagina", 'wp-rijkshuisstijl' ); ?></label>
+		</p>
 
-        <p>
-            <input class="checkbox" type="checkbox" value="1" <?php checked( $instance['nest_subpages'], 1 ); ?>
-                   id="<?php echo $this->get_field_id( 'nest_subpages' ); ?>"
-                   name="<?php echo $this->get_field_name( 'nest_subpages' ); ?>"/>
-            <label for="<?php echo $this->get_field_id( 'nest_subpages' ); ?>"><?php _e( 'Toon subpagina &lt;ul&gt; in de parent &lt;li&gt;', 'wp-rijkshuisstijl' );
+		<p>
+			<input class="checkbox" type="checkbox" value="1" <?php checked( $instance['nest_subpages'], 1 ); ?>
+				   id="<?php echo $this->get_field_id( 'nest_subpages' ); ?>"
+				   name="<?php echo $this->get_field_name( 'nest_subpages' ); ?>"/>
+			<label
+				for="<?php echo $this->get_field_id( 'nest_subpages' ); ?>"><?php _e( 'Toon subpagina &lt;ul&gt; in de parent &lt;li&gt;', 'wp-rijkshuisstijl' );
 			echo '<br /><em>(';
 			_e( "Alleen als 'Toon ook de subpagina's van de huidige pagina' is aangevinkt", 'wp-rijkshuisstijl' );
 			echo ')</em></label>'; ?></p>

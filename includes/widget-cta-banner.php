@@ -52,17 +52,18 @@ class rhswp_cta_banner_widget extends WP_Widget {
 
 		?>
 
-        <p><label for="<?php echo $this->get_field_id( 'rhswp_cta_banner_widget-title' ); ?>">Titel: <input
-                        id="<?php echo $this->get_field_id( 'rhswp_cta_banner_widget-title' ); ?>"
-                        name="<?php echo $this->get_field_name( 'rhswp_cta_banner_widget_title' ); ?>" type="text"
-                        value="<?php echo esc_attr( $rhswp_cta_banner_widget_title ); ?>"/></label></p>
+		<p><label for="<?php echo $this->get_field_id( 'rhswp_cta_banner_widget-title' ); ?>">Titel: <input
+					id="<?php echo $this->get_field_id( 'rhswp_cta_banner_widget-title' ); ?>"
+					name="<?php echo $this->get_field_name( 'rhswp_cta_banner_widget_title' ); ?>" type="text"
+					value="<?php echo esc_attr( $rhswp_cta_banner_widget_title ); ?>"/></label></p>
 
-        <p>
-            <label for="<?php echo $this->get_field_id( 'rhswp_cta_banner_widget_short_text' ) ?>"><?php _e( "Vrije tekst in widget:", 'wp-rijkshuisstijl' ) ?>
-                <br/><textarea cols="33" rows="4"
-                               id="<?php echo $this->get_field_id( 'rhswp_cta_banner_widget_short_text' ); ?>"
-                               name="<?php echo $this->get_field_name( 'rhswp_cta_banner_widget_short_text' ); ?>"><?php echo esc_attr( $rhswp_cta_banner_widget_short_text ); ?></textarea></label>
-        </p>
+		<p>
+			<label
+				for="<?php echo $this->get_field_id( 'rhswp_cta_banner_widget_short_text' ) ?>"><?php _e( "Vrije tekst in widget:", 'wp-rijkshuisstijl' ) ?>
+				<br/><textarea cols="33" rows="4"
+							   id="<?php echo $this->get_field_id( 'rhswp_cta_banner_widget_short_text' ); ?>"
+							   name="<?php echo $this->get_field_name( 'rhswp_cta_banner_widget_short_text' ); ?>"><?php echo esc_attr( $rhswp_cta_banner_widget_short_text ); ?></textarea></label>
+		</p>
 
 		<?php
 
@@ -108,9 +109,9 @@ class rhswp_cta_banner_widget extends WP_Widget {
 		}
 
 		if ( $rhswp_cta_banner_widget_short_text ) {
-            echo '<div class="text">';
-            echo wpautop( esc_html( $rhswp_cta_banner_widget_short_text ) );
-            echo '</div>'; // class=text
+			echo '<div class="text">';
+			echo wpautop( esc_html( $rhswp_cta_banner_widget_short_text ) );
+			echo '</div>'; // class=text
 		}
 
 		echo $linkbefore . $linkafter;
@@ -129,47 +130,47 @@ function rhswp_cta_banner_widget_register() {
 add_action( 'widgets_init', 'rhswp_cta_banner_widget_register' );
 
 
-if( function_exists('acf_add_local_field_group') ):
+if ( function_exists( 'acf_add_local_field_group' ) ):
 
-	acf_add_local_field_group(array(
-		'key' => 'group_5f58d35680806',
-		'title' => 'Link in CTA widget',
-		'fields' => array(
+	acf_add_local_field_group( array(
+		'key'                   => 'group_5f58d35680806',
+		'title'                 => 'Link in CTA widget',
+		'fields'                => array(
 			array(
-				'key' => 'field_5f58d3771d999',
-				'label' => 'Link',
-				'name' => 'widget_acf_link',
-				'type' => 'link',
-				'instructions' => '',
-				'required' => 0,
+				'key'               => 'field_5f58d3771d999',
+				'label'             => 'Link',
+				'name'              => 'widget_acf_link',
+				'type'              => 'link',
+				'instructions'      => '',
+				'required'          => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'return_format' => 'array',
+				'return_format'     => 'array',
 			),
 		),
-		'location' => array(
+		'location'              => array(
 			array(
 				array(
-					'param' => 'widget',
+					'param'    => 'widget',
 					'operator' => '==',
-					'value' => 'rhswp_cta_banner_widget',
+					'value'    => 'rhswp_cta_banner_widget',
 				),
 			),
 		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
+		'menu_order'            => 0,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
+		'hide_on_screen'        => '',
+		'active'                => true,
+		'description'           => '',
+	) );
 
 endif;
-	
-	
+
+
