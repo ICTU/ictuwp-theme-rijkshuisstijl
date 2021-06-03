@@ -107,6 +107,9 @@ if ( ! defined( 'RHSWP_WIDGET_LINK_TO_SINGLE_PAGE' ) ) {
 if ( ! defined( 'RHSWP_CTA_WIDGET' ) ) {
 	define( 'RHSWP_CTA_WIDGET', '(DO) CTA - Call To Action widget' );
 }
+if ( ! defined( 'RHSWP_WIDGET_BANNER_MAILINGLIJST' ) ) {
+	define( 'RHSWP_WIDGET_BANNER_MAILINGLIJST', '(DO) Banner mailinglijst' );
+}
 if ( ! defined( 'RHSWP_WIDGET_SOCIALMEDIA' ) ) {
 	define( 'RHSWP_WIDGET_SOCIALMEDIA', '(DO) socialmedia-links' );
 }
@@ -312,6 +315,8 @@ require_once( RHSWP_FOLDER . '/includes/widget-events.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-navigation-menu.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-cta-banner.php' );
 require_once( RHSWP_FOLDER . '/includes/widget-socialmedia.php' );
+require_once( RHSWP_FOLDER . '/includes/widget-banner-mailinglijst.php' );
+
 // Add support for 2-column footer widgets
 add_theme_support( 'genesis-footer-widgets', 2 );
 // haal de footer widgets weg uit een aparte ruimte VOOR de footer
