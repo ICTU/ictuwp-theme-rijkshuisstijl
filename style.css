@@ -536,6 +536,17 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
     padding: 0;
   }
 }
+.widget_newsletterwidget {
+  background: #DDEFF8;
+  padding: 1rem;
+}
+.widget_newsletterwidget .widget-title {
+  font-size: 1.8rem;
+}
+.widget_newsletterwidget form {
+  background: transparent;
+  padding: 0;
+}
 .initiatieven-taxonomylist {
   display: -webkit-flex;
   display: flex;
@@ -9391,13 +9402,6 @@ a.external:after {
   left: auto;
   opacity: 1;
 }
-/*
-
-  THIS FILE IS OVERWRITTEN EVERY TIME YOU UPDATE THE PLUGIN.
-  USE THE CUSOTM CSS OPTION IN THE SUBSCRIPTION SETTING PANEL FOR YOUR
-  CUSTOM CSS RULES.
-
-  */
 .tnp-subscription form {
   display: -webkit-flex;
   display: flex;
@@ -9454,11 +9458,6 @@ a.external:after {
   width: 100%;
   display: block;
   box-sizing: border-box;
-}
-.tnp-subscription input[type=checkbox],
-.tnp-widget input[type=radio] {
-  max-width: 20px;
-  display: inline-block;
 }
 /* Antireset - http://www.satollo.net/css-and-select-space-between-the-options-and-the-arrow */
 .tnp-subscription select option {
@@ -9522,52 +9521,31 @@ a.external:after {
   display: block;
   box-sizing: border-box;
 }
-.tnp-widget .tnp-field {
-  margin-bottom: 10px;
-  border: 0;
-  padding: 0;
-}
-.tnp-widget label {
-  display: block;
-  color: inherit;
-  font-size: 14px;
-}
 .tnp-widget input[type=text],
 .tnp-widget input[type=email],
-.tnp-widget input[type=submit],
 .tnp-widget select {
   width: 100%;
-  padding: 10px;
-  display: block;
-  border: 1px solid #ddd;
-  border-color: #ddd;
-  background-color: #f4f4f4;
-  background-image: none;
-  text-shadow: none;
-  color: #444;
-  font-size: 14px;
   line-height: normal;
   box-sizing: border-box;
   height: auto;
 }
-.tnp-widget input[type=checkbox],
-.tnp-widget input[type=radio] {
-  width: auto;
-  display: inline-block;
-}
-/* Antireset - http://www.satollo.net/css-and-select-space-between-the-options-and-the-arrow */
 .tnp-widget select option {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
-.tnp-widget input.tnp-submit {
-  background-color: #444;
-  background-image: none;
-  text-shadow: none;
-  color: #fff;
-  margin: 0;
+.tnp-widget .tnp-field-button {
+  padding-top: 1rem;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: flex-end;
+          justify-content: flex-end;
 }
-.tnp-field input[type="submit"] {
-  position: inherit;
+.tnp-widget .tnp-field-button [type=submit],
+.tnp-widget .tnp-field-button button {
+  -webkit-flex: 0 1 auto;
+          flex: 0 1 auto;
+  clear: both;
 }
 /* Newsletter Widget Minimal */
 .tnp-widget-minimal {
@@ -10442,6 +10420,15 @@ ul.events-table li a:focus {
 .widget ol {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+.widget-banner-mailinglijst {
+  border: 10px solid red;
+}
+.header-widget-area {
+  width: 50%;
+  width: calc(50% - 25px);
+  float: right;
+  padding: 1rem 0 1rem 1rem;
 }
 .social-media li {
   display: list-item;
