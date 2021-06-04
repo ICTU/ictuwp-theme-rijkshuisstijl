@@ -215,9 +215,21 @@
 
 }
 
+/*
+@lichtblauw_vol:      #8fcae7;
+@lichtblauw_licht:    #ddeff8;
+@lichtblauw_lichtst:  #eef7fb;
+@lichtblauw_tekst:    black;
+
+@hemelblauw_vol:      #007bc7;
+@hemelblauw_licht:    #b2d7ee;
+@hemelblauw_lichtst:  #d9ebf7;
+@hemelblauw_tekst:    white;
+ */
+
 .wp-block-tnp-minimal > div,
 .widget_newsletterwidget {
-  background: #DDEFF8;
+  background: @hemelblauw_lichtst;
   padding: 1.5rem;
 
   .widget-title {
@@ -229,4 +241,39 @@
     background: transparent;
     padding: 0;
   }
+}
+
+// zie het formulier op:
+// https://www.digitaleoverheid.nl/nieuwsbrief/
+
+.mailinglijst-form {
+  display: flex;
+  background: @hemelblauw_lichtst;
+  flex-wrap: wrap;
+
+  @media only screen and (max-width: ( @break_650px ) ) {
+    padding: 1rem 0;
+    flex-direction: column;
+
+    .submit {
+      padding-top: .5rem;
+    }
+  }
+  @media only screen and (min-width: ( @break_650px ) ) {
+    flex-direction: row;
+
+    & > div {
+      align-self: flex-end;
+      flex: 1 0 100%;
+    }
+
+    .input {
+      flex: 1 0 auto;
+    }
+
+    [type="submit"] {
+      align-self: flex-end;
+    }
+  }
+
 }

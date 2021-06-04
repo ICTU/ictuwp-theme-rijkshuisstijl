@@ -536,9 +536,20 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
     padding: 0;
   }
 }
+/*
+@lichtblauw_vol:      #8fcae7;
+@lichtblauw_licht:    #ddeff8;
+@lichtblauw_lichtst:  #eef7fb;
+@lichtblauw_tekst:    black;
+
+@hemelblauw_vol:      #007bc7;
+@hemelblauw_licht:    #b2d7ee;
+@hemelblauw_lichtst:  #d9ebf7;
+@hemelblauw_tekst:    white;
+ */
 .wp-block-tnp-minimal > div,
 .widget_newsletterwidget {
-  background: #DDEFF8;
+  background: #d9ebf7;
   padding: 1.5rem;
 }
 .wp-block-tnp-minimal > div .widget-title,
@@ -550,6 +561,43 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 .widget_newsletterwidget form {
   background: transparent;
   padding: 0;
+}
+.mailinglijst-form {
+  display: -webkit-flex;
+  display: flex;
+  background: #d9ebf7;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+@media only screen and (max-width: 650px) {
+  .mailinglijst-form {
+    padding: 1rem 0;
+    -webkit-flex-direction: column;
+            flex-direction: column;
+  }
+  .mailinglijst-form .submit {
+    padding-top: 0.5rem;
+  }
+}
+@media only screen and (min-width: 650px) {
+  .mailinglijst-form {
+    -webkit-flex-direction: row;
+            flex-direction: row;
+  }
+  .mailinglijst-form > div {
+    -webkit-align-self: flex-end;
+            align-self: flex-end;
+    -webkit-flex: 1 0 100%;
+            flex: 1 0 100%;
+  }
+  .mailinglijst-form .input {
+    -webkit-flex: 1 0 auto;
+            flex: 1 0 auto;
+  }
+  .mailinglijst-form [type="submit"] {
+    -webkit-align-self: flex-end;
+            align-self: flex-end;
+  }
 }
 .initiatieven-taxonomylist {
   display: -webkit-flex;
@@ -5588,43 +5636,6 @@ main .no-results-widget.widget_search {
 #reactieformulier .reactieformulier--services .related-content__stroke:hover h3,
 #reactieformulier .reactieformulier--services .related-content__stroke:hover span {
   text-decoration: underline;
-}
-.mailinglijst-form {
-  display: -webkit-flex;
-  display: flex;
-}
-@media only screen and (max-width: 650px) {
-  .mailinglijst-form {
-    padding: 1rem 0;
-    -webkit-flex-direction: column;
-            flex-direction: column;
-  }
-  .mailinglijst-form .submit {
-    padding-top: 0.5rem;
-  }
-}
-@media only screen and (min-width: 650px) {
-  .mailinglijst-form {
-    -webkit-flex-direction: row;
-            flex-direction: row;
-  }
-  .mailinglijst-form div {
-    -webkit-align-self: flex-end;
-            align-self: flex-end;
-  }
-  .mailinglijst-form div input {
-    padding: 0.25rem 0.5rem;
-    line-height: 1.4;
-    font-size: 1.25rem;
-  }
-  .mailinglijst-form .input {
-    -webkit-flex: 1 0 auto;
-            flex: 1 0 auto;
-  }
-  .mailinglijst-form .submit {
-    -webkit-flex: 0 1 auto;
-            flex: 0 1 auto;
-  }
 }
 .site-header .wrap .title-area {
   display: -webkit-flex;
