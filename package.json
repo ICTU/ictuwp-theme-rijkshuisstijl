@@ -1,0 +1,26 @@
+{
+  "name": "ictu/ictuwp-theme-rijkshuisstijl",
+  "license": "GPL-3.0",
+  "description": "Theme voor o.m. digitaleoverheid.nl",
+  "homepage": "https://www.digitaleoverheid.nl",
+  "authors": [
+    {
+      "name": "Paul van Buuren",
+      "email": "paul@wbvb.nl",
+      "homepage": "https://wbvb.nl"
+    }
+  ],
+  "scripts": {
+    "build": "lessc less/style.less > style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ICTU/ictuwp-theme-rijkshuisstijl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ICTU/ictuwp-theme-rijkshuisstijl/issues"
+  },
+  "devDependencies": {
+    "less": "^4.1.1"
+  }
+}
