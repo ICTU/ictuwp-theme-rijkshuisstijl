@@ -111,3 +111,5 @@ images/1200px.jpg
 
 .idea/*
 
+# Ignore 3rd-party dependencies
+vendor/
