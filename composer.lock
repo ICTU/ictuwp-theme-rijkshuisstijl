@@ -1,0 +1,56 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "e0ddd9bf1f91df3924ffcbaa101c450d",
+    "packages": [
+        {
+            "name": "nl-design-system/rijkshuisstijl-design-tokens",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nl-design-system/rijkshuisstijl-design-tokens.git",
+                "reference": "18dca177be5c78d1ccd49555f4ae1eff096c3e4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nl-design-system/rijkshuisstijl-design-tokens/zipball/18dca177be5c78d1ccd49555f4ae1eff096c3e4c",
+                "reference": "18dca177be5c78d1ccd49555f4ae1eff096c3e4c",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Community for NL Design System",
+                    "email": "nldesignsystem@gebruikercentraal.nl",
+                    "homepage": "https://designsystem.gebruikercentraal.nl"
+                }
+            ],
+            "description": "Rijkshuisstijl design tokens. This project is not endorsed by the Dutch Ministry of General Affairs. Applying design elements from this project is strictly prohibited for organisations that are not part of the central Government of The Netherlands.",
+            "homepage": "https://github.com/nl-design-system/rijkshuisstijl-design-tokens",
+            "support": {
+                "issues": "https://github.com/nl-design-system/rijkshuisstijl-design-tokens/issues",
+                "source": "https://github.com/nl-design-system/rijkshuisstijl-design-tokens"
+            },
+            "time": "2021-06-06T09:23:26+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "nl-design-system/rijkshuisstijl-design-tokens": 20
+    },
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
+}
