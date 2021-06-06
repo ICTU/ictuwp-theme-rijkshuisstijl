@@ -10,5 +10,10 @@
       "email": "paul@wbvb.nl",
       "homepage": "https://wbvb.nl"
     }
-  ]
+  ],
+	"minimum-stability": "dev",
+	"prefer-stable" : true,
+  "require": {
+    "nl-design-system/rijkshuisstijl-design-tokens": "dev-main"
+  }
 }
