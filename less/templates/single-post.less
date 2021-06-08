@@ -195,11 +195,24 @@
 }
 
 
+.widget-sidebar-alt,
 .aux-info-bar {
   .mixin_fullwidth_container();
   .mixin_fullwidth_padding();
   margin-top: 2rem;
   margin-bottom: 2rem;
+
+  .widget {
+    padding-bottom: 1rem;
+
+    h2 {
+      margin-top: 0;
+    }
+
+    & +.widget {
+      margin-top: 1rem;
+    }
+  }
 }
 
 //========================================================================================================
