@@ -11918,24 +11918,27 @@ ul + .borderframe {
 .aux-info-bar .widget {
   padding-bottom: 1rem;
 }
+.widget-sidebar-alt .widget + .widget,
+.aux-info-bar .widget + .widget {
+  margin-top: 1rem;
+}
 .widget-sidebar-alt .widget h2,
 .aux-info-bar .widget h2 {
-  padding-top: 1rem;
-  margin-bottom: 1.5rem;
   margin-top: 0;
 }
-.widget-sidebar-alt .widget h2:after,
-.aux-info-bar .widget h2:after {
+.widget-sidebar-alt .widget:not(.widget_newsletterwidget) h2,
+.aux-info-bar .widget:not(.widget_newsletterwidget) h2 {
+  padding-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+.widget-sidebar-alt .widget:not(.widget_newsletterwidget) h2:after,
+.aux-info-bar .widget:not(.widget_newsletterwidget) h2:after {
   content: ' ';
   display: block;
   background: #007bc7;
   margin: 0.5rem 0 1rem 0;
   width: 75px;
   height: 4px;
-}
-.widget-sidebar-alt .widget + .widget,
-.aux-info-bar .widget + .widget {
-  margin-top: 1rem;
 }
 main .container {
   margin-top: 2rem;
