@@ -27,18 +27,20 @@ if ( WP_DEBUG_FULL_WIDTH ) {
 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
 	// download / link for document
-	add_action( 'genesis_entry_content', 'rhswp_document_add_extra_info', 14 );
+	add_action( 'genesis_entry_footer', 'rhswp_document_add_extra_info', 14 );
 
 	// dossier info
 	// zet dit aan voor het tonen van de labeltjes met de dossiernamen
-//	add_action( 'genesis_entry_content', 'rhswp_append_terms_dossier', 16 );
+//	add_action( 'genesis_entry_footer', 'rhswp_append_terms_dossier', 16 );
 
 	// social media share buttons
-	add_action( 'genesis_entry_content', 'rhswp_append_socialbuttons', 16 );
+	add_action( 'genesis_entry_footer', 'rhswp_append_socialbuttons', 16 );
+
+	// extra widget ruimte
+	add_action( 'genesis_entry_footer', 'extrafoeter', 18 );
 
 	// Ter vervanging van de vervallen widget-ruimte en de 'extra links'-widget daarin
-	add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 18 );
-
+	add_action( 'genesis_entry_footer', 'rhswp_pagelinks_replace_widget', 20 );
 
 
 }
@@ -60,3 +62,14 @@ genesis();
 
 //========================================================================================================
 
+
+function extrafoeter() {
+
+	if ( is_active_sidebar( RHSWP_SINGLE_FOOTER_WIDGET_AREA ) ) {
+		echo '<div class="widget-sidebar-alt">';
+		dynamic_sidebar( RHSWP_SINGLE_FOOTER_WIDGET_AREA );
+		echo '</div>';
+
+	}
+
+}

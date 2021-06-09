@@ -72,25 +72,6 @@
 			margin-bottom: 0;
 			padding-left: 0;
 		}
-		a {
-			padding-left: 1em;
-			.listitem_arrow_absolute( @a_color_default, 10px, 8px ); // done
-			display: block;
-
-			&:visited {
-				&:before {
-				color: @a_color_visited;
-				}
-			}
-			&:hover {
-				&:before {
-					color: @a_color_hover;
-				}
-			}
-		}
-		a.extern {
-			.listitem_arrow_extern( @a_color_default, @a_color_hover, @a_color_active, @a_color_visited );
-		}
 	}
 
 	.block .events-table {

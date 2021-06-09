@@ -137,8 +137,8 @@ function rhswp_pagelinks_replace_widget() {
 		}
 
 		if ( 'ja' == $toon_extra_links && $links ) {
-			$title_id = sanitize_title( $widgettitle );
 
+			$title_id       = sanitize_title( $widgettitle );
 			$internal_posts = array();
 			$internal_other = array();
 			$external       = array();

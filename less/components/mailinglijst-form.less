@@ -5,37 +5,3 @@
 // * ----------------------------------------------------------------------------------
 //
 
-.mailinglijst-form {
-  display: flex;
-
-  @media only screen and (max-width: ( @break_650px ) ) {
-    padding: 1rem 0;
-    flex-direction: column;
-
-    .submit {
-      padding-top: .5rem;
-    }
-  }
-  @media only screen and (min-width: ( @break_650px ) ) {
-    flex-direction: row;
-
-    div {
-      align-self: flex-end;
-
-      input {
-        padding: .25rem .5rem;
-        line-height: 1.4;
-        font-size: 1.25rem;
-      }
-    }
-
-    .input {
-      flex: 1 0 auto;
-    }
-
-    .submit {
-      flex: 0 1 auto;
-    }
-  }
-
-}
