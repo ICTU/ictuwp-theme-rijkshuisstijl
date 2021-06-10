@@ -238,6 +238,12 @@ function rhswp_archive_custom_search_with_searchWP() {
 			echo '<h2>' . _x( 'Sorry', 'Title, no results text', 'wp-rijkshuisstijl' ) . '</h2>';
 			echo '<p>';
 			echo sprintf( _x( 'No results for %s.', 'No results text', 'wp-rijkshuisstijl' ), $query );
+			echo '</p>';
+
+			get_search_form();
+			echo '</div>'; // .header
+
+			echo '<div class="block no-top">';
 
 			if ( is_active_sidebar( RHSWP_NORESULT_WIDGET_AREA ) ) {
 
@@ -245,9 +251,8 @@ function rhswp_archive_custom_search_with_searchWP() {
 
 			}
 
-			echo '</p>';
 
-			echo '</div>'; // .header
+			echo '</div>'; // .block
 
 		endif;
 
