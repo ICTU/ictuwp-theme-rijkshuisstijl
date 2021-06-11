@@ -82,6 +82,8 @@ function rhswp_archive_custom_search_with_searchWP() {
 
 	$search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', _x( 'Search this site', 'searchform', 'wp-rijkshuisstijl' ) . ' &#x02026;' );
 
+
+	echo '<main class="content">';
 	echo '<div class="header">';
 	echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "<span class="wordbreak">' . $search_text . '</span>"</h1>';
 
@@ -238,6 +240,12 @@ function rhswp_archive_custom_search_with_searchWP() {
 			echo '<h2>' . _x( 'Sorry', 'Title, no results text', 'wp-rijkshuisstijl' ) . '</h2>';
 			echo '<p>';
 			echo sprintf( _x( 'No results for %s.', 'No results text', 'wp-rijkshuisstijl' ), $query );
+			echo '</p>';
+
+			get_search_form();
+			echo '</div>'; // .header
+
+			echo '<div class="block no-top">';
 
 			if ( is_active_sidebar( RHSWP_NORESULT_WIDGET_AREA ) ) {
 
@@ -245,13 +253,13 @@ function rhswp_archive_custom_search_with_searchWP() {
 
 			}
 
-			echo '</p>';
 
-			echo '</div>'; // .header
+			echo '</div>'; // .block
 
 		endif;
 
 	endif;
+	echo '</main>'; // .block
 
 }
 
