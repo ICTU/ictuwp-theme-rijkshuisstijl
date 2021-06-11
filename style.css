@@ -5521,8 +5521,9 @@ main .search-form input[type="search"],
 main .search-form input[itemprop="query-input"] {
   border: 2px solid #999999;
 }
-main .no-results-widget.widget_search {
-  max-width: 650px;
+.widget_search .search-form {
+  padding: 0;
+  background: none;
 }
 #rhswp-searchform-onderwerpen {
   background: #007bc7;
