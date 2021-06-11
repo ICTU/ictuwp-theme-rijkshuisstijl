@@ -86,13 +86,8 @@
 
 
 main .search-form {
-  padding: 1em;
+  padding: 1em 0;
   background: @grijs;
-
-  input[type="search"] {
-    border-bottom: 2px solid @communicatiekleur_vol;
-    padding-left: 5px;
-  }
 
   button,
   input[type="submit"] {
@@ -108,6 +103,12 @@ main .search-form {
       .mixin_iconaddfill('../images/svg/looking-glass.svg', @txt);
     }
   }
+
+  input[type="search"],
+  input[itemprop="query-input"] {
+    border: 2px solid @grijs_5;
+  }
+
 }
 
 main .no-results-widget.widget_search {
@@ -184,3 +185,4 @@ main .no-results-widget.widget_search {
     }
   }
 }
+

@@ -82,6 +82,8 @@ function rhswp_archive_custom_search_with_searchWP() {
 
 	$search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', _x( 'Search this site', 'searchform', 'wp-rijkshuisstijl' ) . ' &#x02026;' );
 
+
+	echo '<main class="content">';
 	echo '<div class="header">';
 	echo '<h1>' . _x( "Search result for ", 'breadcrumb', 'wp-rijkshuisstijl' ) . ' "<span class="wordbreak">' . $search_text . '</span>"</h1>';
 
@@ -257,6 +259,7 @@ function rhswp_archive_custom_search_with_searchWP() {
 		endif;
 
 	endif;
+	echo '</main>'; // .block
 
 }
 
