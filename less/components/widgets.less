@@ -48,7 +48,19 @@
       margin-top: 0;
     }
   }
+}
 
+.site-footer {
+  .widget {
+    ul li {
+      a {
+        .listitem_arrow_flex(@wit);
+        &:hover {
+          color: @wit;
+        }
+      }
+    }
+  }
 }
 
 
@@ -80,3 +92,6 @@
     }
   }
 }
+
+// styling voor social media widget
+.socialmedia_styling();
