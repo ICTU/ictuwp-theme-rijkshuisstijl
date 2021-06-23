@@ -1277,6 +1277,7 @@ table.timetable th[scope="row"] {
 }
 .entry-content ol li {
   list-style-type: decimal;
+  margin-left: 1em;
 }
 .entry-content ul {
   padding-left: 0;
@@ -11913,8 +11914,8 @@ ul + .borderframe {
   .page-template-page_fullwidth .entry-content > ol,
   .single-event.full-width-content .entry-content > ol,
   .single-post.full-width-content .entry-content > ol {
-    padding-left: 5rem;
     padding-right: 2rem;
+    padding-left: 3rem;
   }
   .page-template-page_fullwidth .entry-content > .borderframe,
   .single-event.full-width-content .entry-content > .borderframe,
