@@ -102,6 +102,8 @@ cite {
 
 }
 
+
+.wp-block-quote,
 .pullquote-with-image,
 .simple-pullquote {
 
@@ -111,17 +113,14 @@ cite {
       word-break: normal;
       hyphens: none;
     }
-
-    @media only screen and (min-width: ( @break_650px ) ) {
-      font-size: 1.9rem;
-      line-height: 1.4;
-
-      cite {
-        font-size: 1rem;
-      }
-    }
+    .blockquote_largefont();
   }
 }
+
+.wp-block-quote {
+  .blockquote_largefont();
+}
+
 
 .simple-pullquote {
 
@@ -167,5 +166,19 @@ cite {
       padding: 1rem 0;
     }
   }
+}
+
+// -------------------------------------------------------------------------
+
+.blockquote_largefont() {
+  @media only screen and (min-width: ( @break_650px ) ) {
+    font-size: 1.9rem;
+    line-height: 1.4;
+
+    cite {
+      font-size: 1rem;
+    }
+  }
+
 }
 

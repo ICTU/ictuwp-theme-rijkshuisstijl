@@ -10943,12 +10943,16 @@ cite a {
     height: 165px;
   }
 }
+.wp-block-quote q,
 .pullquote-with-image q,
 .simple-pullquote q,
+.wp-block-quote blockquote,
 .pullquote-with-image blockquote,
 .simple-pullquote blockquote,
+.wp-block-quote q *,
 .pullquote-with-image q *,
 .simple-pullquote q *,
+.wp-block-quote blockquote *,
 .pullquote-with-image blockquote *,
 .simple-pullquote blockquote * {
   word-break: normal;
@@ -10957,17 +10961,30 @@ cite a {
           hyphens: none;
 }
 @media only screen and (min-width: 650px) {
+  .wp-block-quote q,
   .pullquote-with-image q,
   .simple-pullquote q,
+  .wp-block-quote blockquote,
   .pullquote-with-image blockquote,
   .simple-pullquote blockquote {
     font-size: 1.9rem;
     line-height: 1.4;
   }
+  .wp-block-quote q cite,
   .pullquote-with-image q cite,
   .simple-pullquote q cite,
+  .wp-block-quote blockquote cite,
   .pullquote-with-image blockquote cite,
   .simple-pullquote blockquote cite {
+    font-size: 1rem;
+  }
+}
+@media only screen and (min-width: 650px) {
+  .wp-block-quote {
+    font-size: 1.9rem;
+    line-height: 1.4;
+  }
+  .wp-block-quote cite {
     font-size: 1rem;
   }
 }
@@ -11682,6 +11699,9 @@ ul + .borderframe {
 .page-template-page_fullwidth .entry-content > .block-audio-video,
 .single-event.full-width-content .entry-content > .block-audio-video,
 .single-post.full-width-content .entry-content > .block-audio-video,
+.page-template-page_fullwidth .entry-content > .wp-block-quote,
+.single-event.full-width-content .entry-content > .wp-block-quote,
+.single-post.full-width-content .entry-content > .wp-block-quote,
 .page-template-page_fullwidth .entry-content .gform_wrapper form,
 .single-event.full-width-content .entry-content .gform_wrapper form,
 .single-post.full-width-content .entry-content .gform_wrapper form,
@@ -11789,6 +11809,19 @@ ul + .borderframe {
 .single-event.full-width-content .entry-content > p img.alignright,
 .single-post.full-width-content .entry-content > p img.alignright {
   margin: 0 0 2rem 2rem;
+}
+.page-template-page_fullwidth .entry-content > .wp-block-image figure,
+.single-event.full-width-content .entry-content > .wp-block-image figure,
+.single-post.full-width-content .entry-content > .wp-block-image figure {
+  border: 1px solid #ececec;
+  max-width: 41.8125rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-template-page_fullwidth .entry-content > .wp-block-image .aligncenter,
+.single-event.full-width-content .entry-content > .wp-block-image .aligncenter,
+.single-post.full-width-content .entry-content > .wp-block-image .aligncenter {
+  border: 1px solid #ececec;
 }
 @media only screen and (min-width: 1200px) {
   .page-template-page_fullwidth .entry-content > ul,
