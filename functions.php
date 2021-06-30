@@ -4255,7 +4255,7 @@ function rhswp_get_sublabel( $post_id ) {
 			}
 		} elseif ( 'post' === get_post_type( $post_id ) ) {
 			$return = 'Geen label gevonden';
-		} elseif ( 'actielijn' === get_post_type( $post_id ) ) {
+		} elseif ( RHSWP_CPT_VERWIJZING === get_post_type( $post_id ) || 'actielijn' === get_post_type( $post_id ) ) {
 			$return = '';
 		} else {
 			$return = get_post_type( $post_id );
