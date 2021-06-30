@@ -67,8 +67,6 @@ function rhswp_get_grid_item( $args = array() ) {
 		$args['type'] = 'posts_manual';
 	}
 
-//	echo 'gaan we weer: ' . $args['type'] . '<br>';
-
 	if ( $args['type'] === 'posts_manual' ) {
 		// dit is bijv. het uitgelicht block op de homepage
 		if ( $args['contentblock_imgid'] ) {
