@@ -1548,6 +1548,8 @@ function rhswp_document_add_extra_info() {
 			$file_or_url             = get_field( 'rhswp_document_file_or_url', $post->ID );
 			$rhswp_document_url      = get_field( 'rhswp_document_url', $post->ID );
 			$rhswp_document_linktext = get_field( 'rhswp_document_linktext', $post->ID );
+
+			echo '<p>';
 			if ( 'URL' === $file_or_url && $rhswp_document_url ) {
 				if ( ! $rhswp_document_linktext ) {
 					$arr_linktext            = explode( '/', $rhswp_document_url );
@@ -1577,6 +1579,8 @@ function rhswp_document_add_extra_info() {
 					echo '</a></p>';
 				}
 			}
+			echo '</p>';
+
 		}
 	}
 }
@@ -3697,18 +3701,23 @@ function rhswp_use_page_template( $query ) {
 			);
 			add_filter( 'genesis_post_title_text', 'rhswp_custom_page_title_for_overviewpage', 15 );  // filter normal <h1> title
 			add_filter( 'pre_get_document_title', 'rhswp_custom_page_title_for_overviewpage', 20 );  // Yoast hooks on #15
+
 			if ( RHSWP_DOSSIERCONTEXTPOSTOVERVIEW == get_query_var( 'pagename' ) ) {
 				// posts
 				add_action( 'genesis_entry_content', 'rhswp_get_page_dossiersingleactueel', 15 );
+
 			} elseif ( RHSWP_DOSSIERCONTEXTEVENTOVERVIEW == get_query_var( 'pagename' ) ) {
 				// events
 				add_action( 'genesis_entry_content', 'rhswp_get_events_for_dossier', 15 );
+
 			} elseif ( RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW == get_query_var( 'pagename' ) ) {
 				// documents
 				add_action( 'genesis_entry_content', 'rhswp_get_documents_for_dossier', 15 );
+
 			} else {
 				// filter the main template page
 				add_filter( 'the_content', 'get_template_hoofdpagina_kalender' );
+
 			}
 		}
 	}
@@ -3897,15 +3906,24 @@ function rhswp_get_page_dossiersingleactueel() {
 }
 
 //========================================================================================================
+
 function rhswp_get_documents_for_dossier() {
+
 	global $post;
 	global $wp_query;
+
 	$message     = 'Alle documenten';
 	$currentpage = get_permalink();
 	$currentsite = get_site_url();
 	$postname    = $post->post_name;
 	$paged       = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$term        = '';
+
+	if ( is_single() && ( RHSWP_CPT_DOCUMENT == get_post_type() ) ) {
+		return true;
+	}
+
+
 	if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
 		if ( get_query_var( RHSWP_CT_DOSSIER ) ) {
 			$term = get_term_by( 'slug', get_query_var( RHSWP_CT_DOSSIER ), RHSWP_CT_DOSSIER );
