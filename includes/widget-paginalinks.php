@@ -60,16 +60,26 @@ class rhswp_pagelinks_widget extends WP_Widget {
 		if ( is_page() || is_single() ) {
 			extract( $args, EXTR_SKIP );
 			$toon_extra_links = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_show_extra_links', $post->ID );
-			$widgettitle      = get_field( 'standaard_titel_boven_gerelateerde_links', 'option' );
-			if ( ! $widgettitle ) {
-				$widgettitle = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_title', $post->ID );
+
+
+			$type_title = get_field( 'rhswp_pagelinks_widget_type_title', $post->ID );
+			if ( 'eigen' === $type_title ) {
+				// auteur heeft zelf een titel verzonnen
+				$widgettitle = get_field( 'rhswp_pagelinks_widget_titel_boven_gerelateerde_links', $post->ID );
+			} else {
+				// titel uit widgetinstellingen
+				$widgettitle = $instance['rhswp_pagelinks_widget_title'];
 			}
 			if ( ! $widgettitle ) {
-				if ( $instance['rhswp_pagelinks_widget_title'] !== '' ) {
-					$widgettitle = $instance['rhswp_pagelinks_widget_title'];
+				// nou nou, geen titel uberhaupt ingevoerd
+				if ( get_field( 'standaard_titel_boven_gerelateerde_links', 'option' ) ) {
+					// dan titel ophalen uit theme instellingen (weergave > Theme instellingen)
+					$widgettitle = get_field( 'standaard_titel_boven_gerelateerde_links', 'option' );
 				} else {
+					// dan maar een standaard titel
 					$widgettitle = _x( 'Extra links voor ', 'paginalinkswidget', 'wp-rijkshuisstijl' ) . get_the_title();
 				}
+
 			}
 
 			if ( 'ja' == $toon_extra_links ) {
@@ -126,15 +136,21 @@ function rhswp_pagelinks_replace_widget() {
 	global $post;
 
 	if ( ( ! is_home() && ! is_front_page() ) && ( is_page() || is_single() ) ) {
-		$toon_extra_links = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_show_extra_links', $post->ID );
-		$links            = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_links', $post->ID );
-		$widgettitle      = get_field( 'standaard_titel_boven_gerelateerde_links', 'option' );
-		if ( ! $widgettitle ) {
-			$widgettitle = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_title', $post->ID );
+
+
+		$type_title = get_field( 'rhswp_pagelinks_widget_type_title', $post->ID );
+		if ( 'eigen' === $type_title ) {
+			$widgettitle = get_field( 'rhswp_pagelinks_widget_titel_boven_gerelateerde_links', $post->ID );
+		} else {
+			$widgettitle = get_field( 'standaard_titel_boven_gerelateerde_links', 'option' );
 		}
 		if ( ! $widgettitle ) {
 			$widgettitle = _x( 'Extra links voor ', 'paginalinkswidget', 'wp-rijkshuisstijl' ) . get_the_title();
 		}
+
+		$toon_extra_links = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_show_extra_links', $post->ID );
+		$links            = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_links', $post->ID );
+
 
 		if ( 'ja' == $toon_extra_links && $links ) {
 

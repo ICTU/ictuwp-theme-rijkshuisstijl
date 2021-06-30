@@ -27,6 +27,7 @@
     & > h6,
     & > h6,
     & > .wpcf7,
+    & > .block-audio-video,
     & .gform_wrapper form,
     & > .borderframe {
       .mixin_fullwidth_container();
@@ -58,6 +59,7 @@
     & > h5,
     & > h6,
     & > .wpcf7,
+    & > .block-audio-video,
     & > h6 {
       .mixin_fullwidth_padding();
     }
@@ -84,7 +86,7 @@
     @media only screen and (min-width: ( @break_1200px ) ) {
       & > ul,
       & > ol {
-        .fullwidth_listpadding();
+        .mixin_fullwidth_listpadding();
       }
 
       & > .borderframe {
@@ -250,7 +252,6 @@
 //========================================================================================================
 // mixin mixin_fullwidth_maxwidth()
 .mixin_fullwidth_padding() {
-  //  border: 2px solid green;
   @media only screen and (min-width: ( @break_1200px ) ) {
     padding-left: 3rem;
     padding-right: 2rem;
@@ -259,8 +260,8 @@
 
 //========================================================================================================
 // mixin mixin_fullwidth_maxwidth()
-.fullwidth_listpadding() {
-  padding-left: 5rem;
+.mixin_fullwidth_listpadding() {
   padding-right: 2rem;
+  padding-left: 3rem;
 }
 

@@ -2684,7 +2684,7 @@ function rhswp_remove_external_styles() {
 		$handle = 'minerva-kb/css';
 		wp_deregister_style( $handle );
 		wp_dequeue_style( $handle );
-		echo $handle . '<br>';
+//		echo $handle . '<br>';
 	}
 
 
