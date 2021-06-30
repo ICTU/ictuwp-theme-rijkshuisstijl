@@ -9126,41 +9126,6 @@ a.external:after {
     right: 100px;
   }
 }
-.toolbox01-kwaliteit-van-data-algoritme-en-analyse .sidebar-primary .widget:not(.banner),
-.toolbox02-belanghebbenden-betrekken .sidebar-primary .widget:not(.banner),
-.toolbox03-transparantie-en-verantwoording .sidebar-primary .widget:not(.banner),
-.toolbox04-wet-en-regelgeving-respecteren .sidebar-primary .widget:not(.banner),
-.toolbox05-monitoren-en-evalueren .sidebar-primary .widget:not(.banner),
-.toolbox06-veiligheid-borgen .sidebar-primary .widget:not(.banner),
-.toolbox07-publieke-waarden-centraal .sidebar-primary .widget:not(.banner),
-.cyberincident01-rapporteren-report .sidebar-primary .widget:not(.banner),
-.cyberincident02-beoordelen-assess .sidebar-primary .widget:not(.banner),
-.cyberincident03-bijeenroepen-convene .sidebar-primary .widget:not(.banner),
-.cyberincident04-uitvoeren-execute .sidebar-primary .widget:not(.banner),
-.cyberincident05-oplossen-resolve .sidebar-primary .widget:not(.banner),
-.cyberincident06-voorbereid .sidebar-primary .widget:not(.banner) {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 0.5rem;
-}
-.toolbox01-kwaliteit-van-data-algoritme-en-analyse .sidebar-primary .widget:not(.banner),
-.toolbox02-belanghebbenden-betrekken .sidebar-primary .widget:not(.banner),
-.toolbox03-transparantie-en-verantwoording .sidebar-primary .widget:not(.banner),
-.toolbox04-wet-en-regelgeving-respecteren .sidebar-primary .widget:not(.banner),
-.toolbox05-monitoren-en-evalueren .sidebar-primary .widget:not(.banner),
-.toolbox06-veiligheid-borgen .sidebar-primary .widget:not(.banner),
-.toolbox07-publieke-waarden-centraal .sidebar-primary .widget:not(.banner) {
-  background: #eef7fb;
-}
-.cyberincident01-rapporteren-report .sidebar-primary .widget:not(.banner),
-.cyberincident02-beoordelen-assess .sidebar-primary .widget:not(.banner),
-.cyberincident03-bijeenroepen-convene .sidebar-primary .widget:not(.banner),
-.cyberincident04-uitvoeren-execute .sidebar-primary .widget:not(.banner),
-.cyberincident05-oplossen-resolve .sidebar-primary .widget:not(.banner),
-.cyberincident06-voorbereid .sidebar-primary .widget:not(.banner) {
-  border-top-color: #A90061;
-  background: #faf0f5;
-}
 .cptch_ajax_wrap {
   color: red;
 }
@@ -11181,7 +11146,7 @@ details + .button-container {
   text-decoration: underline;
 }
 .borderframe {
-  border: 2px solid #b4b4b4;
+  border: 2px solid #007bc7;
   overflow: hidden;
   padding: 0;
 }
@@ -11287,25 +11252,25 @@ details + .button-container {
   background-image: url('images/toolbox/cyberincident/icon-toolbox-cyber.svg');
 }
 .borderframe.blue {
-  border: 2px solid #007BC7;
+  border: 2px solid #007bc7;
 }
 .borderframe.blue h2.blocktitle,
 .borderframe.blue h3.blocktitle,
 .borderframe.blue h4.blocktitle,
 .borderframe.blue h5.blocktitle,
 .borderframe.blue h6.blocktitle {
-  background-color: #007BC7;
+  background-color: #007bc7;
   color: #fff;
 }
 .borderframe.toolbox {
-  border: 2px solid #696969;
+  border: 2px solid #007bc7;
 }
 .borderframe.toolbox h2.blocktitle,
 .borderframe.toolbox h3.blocktitle,
 .borderframe.toolbox h4.blocktitle,
 .borderframe.toolbox h5.blocktitle,
 .borderframe.toolbox h6.blocktitle {
-  background-color: #696969;
+  background-color: #007bc7;
   color: #fff;
 }
 .borderframe .the-content,
@@ -11361,7 +11326,7 @@ ul + .borderframe {
 .toolbox05-monitoren-en-evalueren .borderframe.toolbox,
 .toolbox06-veiligheid-borgen .borderframe.toolbox,
 .toolbox07-publieke-waarden-centraal .borderframe.toolbox {
-  background-color: #007BC7;
+  background-color: #007bc7;
 }
 .toolbox01-kwaliteit-van-data-algoritme-en-analyse .borderframe.blue a,
 .toolbox02-belanghebbenden-betrekken .borderframe.blue a,
@@ -11465,7 +11430,7 @@ ul + .borderframe {
 .toolbox06-veiligheid-borgen .borderframe.toolbox a:focus span,
 .toolbox07-publieke-waarden-centraal .borderframe.toolbox a:focus span {
   background-color: #fff;
-  color: #007BC7;
+  color: #007bc7;
 }
 .toolbox01-kwaliteit-van-data-algoritme-en-analyse .borderframe.blue .blocktitle,
 .toolbox02-belanghebbenden-betrekken .borderframe.blue .blocktitle,
@@ -11526,7 +11491,7 @@ ul + .borderframe {
 .toolbox05-monitoren-en-evalueren details,
 .toolbox06-veiligheid-borgen details,
 .toolbox07-publieke-waarden-centraal details {
-  border-color: #007BC7;
+  border-color: #007bc7;
 }
 .toolbox01-kwaliteit-van-data-algoritme-en-analyse details summary,
 .toolbox02-belanghebbenden-betrekken details summary,
@@ -11535,7 +11500,7 @@ ul + .borderframe {
 .toolbox05-monitoren-en-evalueren details summary,
 .toolbox06-veiligheid-borgen details summary,
 .toolbox07-publieke-waarden-centraal details summary {
-  background-color: #007BC7;
+  background-color: #007bc7;
 }
 .cyberincident01-rapporteren-report .borderframe.blue,
 .cyberincident02-beoordelen-assess .borderframe.blue,
@@ -11549,8 +11514,8 @@ ul + .borderframe {
 .cyberincident04-uitvoeren-execute .borderframe.toolbox,
 .cyberincident05-oplossen-resolve .borderframe.toolbox,
 .cyberincident06-voorbereid .borderframe.toolbox {
-  background-color: #f2d9e7;
-  border-color: #A90061;
+  background-color: #fff;
+  border-color: #007bc7;
 }
 .cyberincident01-rapporteren-report .borderframe.blue a,
 .cyberincident02-beoordelen-assess .borderframe.blue a,
@@ -11604,7 +11569,7 @@ ul + .borderframe {
 .cyberincident05-oplossen-resolve .borderframe.toolbox a:focus,
 .cyberincident06-voorbereid .borderframe.toolbox a:focus {
   background-color: #fff;
-  color: #a90061;
+  color: #007bc7;
 }
 .cyberincident01-rapporteren-report .borderframe.blue .blocktitle,
 .cyberincident02-beoordelen-assess .borderframe.blue .blocktitle,
@@ -11618,7 +11583,7 @@ ul + .borderframe {
 .cyberincident04-uitvoeren-execute .borderframe.toolbox .blocktitle,
 .cyberincident05-oplossen-resolve .borderframe.toolbox .blocktitle,
 .cyberincident06-voorbereid .borderframe.toolbox .blocktitle {
-  background-color: #A90061;
+  background-color: #007bc7;
   background-image: url('images/toolbox/cyberincident/icon-toolbox-cyber.svg');
   background-repeat: no-repeat;
   background-size: 34px 35px;
