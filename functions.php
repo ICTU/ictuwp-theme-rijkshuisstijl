@@ -7,8 +7,8 @@
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
- * @version 2.27.2
- * @desc.   Styling voor los evenement aangepast.
+ * @version 2.28.1
+ * @desc.   Contentblok voor berichten in een net grid.
  * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
  */
 //========================================================================================================
@@ -17,7 +17,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 //========================================================================================================
 // Constants
 define( 'CHILD_THEME_NAME', "Rijkshuisstijl (Digitale Overheid)" );
-define( 'CHILD_THEME_VERSION', "2.27.2" );
+define( 'CHILD_THEME_VERSION', "2.28.1" );
 
 // TODO
 define( 'WP_DEBUG_FULL_WIDTH', true );

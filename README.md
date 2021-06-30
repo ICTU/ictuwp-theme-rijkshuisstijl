@@ -22,9 +22,10 @@ Dit theme functioneert niet zonder:
 * eh
 
 ## Current version:
-2.27.2 - Styling voor los evenement aangepast.
+2.28.1 - Contentblok voor berichten in een net grid.
 
 ## Version history
+* 2.28.1 - Contentblok voor berichten in een net grid.
 * 2.27.2 - Styling voor los evenement aangepast.
 * 2.26.5 - CSS bugfix voor: onderwerppagina.
 * 2.26.4 - Bugfixes CSS: captions, citaten.
