@@ -3952,14 +3952,15 @@ function rhswp_get_documents_for_dossier() {
 			if ( $wp_query->have_posts() ) {
 
 				$item_count  = $wp_query->post_count;
-				$columncount = 3;
+//				$columncount = 3;
+				$columncount = 2;
 
 				if ( 1 === $item_count ) {
 					$columncount = 1;
-				} elseif ( 2 === $item_count ) {
-					$columncount = 2;
-				} elseif ( 4 === $item_count ) {
-					$columncount = 2;
+//				} elseif ( 2 === $item_count ) {
+//					$columncount = 2;
+//				} elseif ( 4 === $item_count ) {
+//					$columncount = 2;
 				}
 
 				echo '<div class="grid itemcount-' . $item_count . ' columncount-' . $columncount . '">';
