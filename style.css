@@ -272,147 +272,6 @@ normalize.css v2.1.2 | MIT License | git.io/normalize
 .uitgelicht {
   overflow: hidden;
 }
-.grid {
-  display: grid;
-}
-.flex {
-  display: -webkit-flex;
-  display: flex;
-  padding: 0.5rem;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-flex-wrap: wrap;
-          flex-wrap: wrap;
-}
-.flex__block {
-  -webkit-flex: 1 0 100%;
-          flex: 1 0 100%;
-}
-#reactie_verwijzingen {
-  background: #e6e6e6;
-}
-#reactie_verwijzingen h2 {
-  margin: 0;
-}
-#reactie_verwijzingen.contact-pagina {
-  padding: 1rem;
-  margin: 2rem auto;
-}
-#reactie_verwijzingen .flex {
-  padding: 0;
-}
-#reactie_verwijzingen #verwijzing-digid a,
-#reactie_verwijzingen #verwijzing-eherkenning a,
-#reactie_verwijzingen #verwijzing-mijnoverheid a,
-#reactie_verwijzingen #verwijzing-berichtenbox-bedrijven a {
-  background-image: url('images/logos/logo-digid.png');
-  background-color: #fff;
-  padding-left: 0.5rem;
-  padding-top: 60px;
-  padding-right: 0.5rem;
-  padding-bottom: 1rem;
-  background-size: 100px 60px;
-  background-repeat: no-repeat;
-  background-position: center top;
-}
-#reactie_verwijzingen #verwijzing-mijnoverheid a {
-  background-image: url('images/logos/logo-mijnoverheid-berichtenbox.png');
-}
-#reactie_verwijzingen #verwijzing-eherkenning a {
-  background-image: url('images/logos/logo-eherkenning.png');
-}
-#reactie_verwijzingen #verwijzing-eherkenning a {
-  background-image: url('images/logos/logo-eherkenning.png');
-}
-#reactie_verwijzingen #verwijzing-berichtenbox-bedrijven a {
-  background-image: url('images/logos/logo-mijnoverheid-berichtenbox-bedrijven.png');
-}
-#reactie_verwijzingen a {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  overflow: hidden;
-  height: 100%;
-  line-height: 1.5;
-  text-align: center;
-}
-#reactie_verwijzingen a h3,
-#reactie_verwijzingen a h4 {
-  color: #000;
-}
-#reactie_verwijzingen a *,
-#reactie_verwijzingen a {
-  text-decoration: none;
-}
-#reactie_verwijzingen a .url {
-  text-decoration: underline;
-}
-#reactie_verwijzingen a .title {
-  font-family: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
-  color: #000;
-}
-#reactie_verwijzingen a:hover,
-#reactie_verwijzingen a:active,
-#reactie_verwijzingen a:focus {
-  outline: 2px dotted #01689b;
-}
-#reactie_verwijzingen a:hover h3,
-#reactie_verwijzingen a:active h3,
-#reactie_verwijzingen a:focus h3,
-#reactie_verwijzingen a:hover h4,
-#reactie_verwijzingen a:active h4,
-#reactie_verwijzingen a:focus h4 {
-  color: #000;
-  text-decoration: underline;
-}
-@media only screen and (max-width: 650px) {
-  #reactie_verwijzingen .flex__block + .flex__block {
-    margin-top: 1rem;
-  }
-}
-@media only screen and (min-width: 650px) {
-  #reactie_verwijzingen .flex {
-    -webkit-flex-direction: row;
-            flex-direction: row;
-    margin-left: -1rem;
-    margin-right: -1rem;
-    padding: 0.5rem 0.5rem 0 0.5rem;
-  }
-  #reactie_verwijzingen .flex .flex__block {
-    -webkit-flex-basis: 33.33333333%;
-            flex-basis: 33.33333333%;
-  }
-  #reactie_verwijzingen .flex.cols4 .flex__block {
-    -webkit-flex-basis: calc(25% - 1rem);
-            flex-basis: calc(25% - 1rem);
-  }
-  #reactie_verwijzingen .flex__block {
-    padding: 0.5rem;
-    padding-bottom: 0;
-  }
-  #reactie_verwijzingen #verwijzing-digid a,
-  #reactie_verwijzingen #verwijzing-eherkenning a,
-  #reactie_verwijzingen #verwijzing-berichtenbox-bedrijven a,
-  #reactie_verwijzingen #verwijzing-mijnoverheid a {
-    padding-top: 150px;
-    background-size: contain;
-  }
-  #reactie_verwijzingen a h3,
-  #reactie_verwijzingen a h4,
-  #reactie_verwijzingen a .url {
-    -webkit-flex-grow: 1;
-            flex-grow: 1;
-    -webkit-flex-shrink: 0;
-            flex-shrink: 0;
-    -webkit-flex-basis: 1.5rem;
-            flex-basis: 1.5rem;
-  }
-  #reactie_verwijzingen a .url {
-    word-break: break-word;
-    text-overflow: ellipsis;
-  }
-}
 .no-svg #logotype {
   width: 160px;
   height: 120px;
@@ -9549,6 +9408,19 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
+.flex {
+  display: -webkit-flex;
+  display: flex;
+  padding: 0.5rem;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.flex__block {
+  -webkit-flex: 1 0 100%;
+          flex: 1 0 100%;
+}
 .grid {
   display: -webkit-flex;
   display: flex;
@@ -9651,23 +9523,28 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   }
 }
 @media only screen and (min-width: 900px) {
-  .grid .griditem.colspan-1 {
+  .grid.columncount-3 .griditem.colspan-1,
+  .grid:not(.columncount-2) .griditem.colspan-1 {
     -webkit-flex: 0 1 calc(33.3% - 2rem);
             flex: 0 1 calc(33.3% - 2rem);
   }
-  .grid .griditem.colspan-2 {
+  .grid.columncount-3 .griditem.colspan-2,
+  .grid:not(.columncount-2) .griditem.colspan-2 {
     -webkit-flex: 1 1 calc(66.6% - 2rem);
             flex: 1 1 calc(66.6% - 2rem);
   }
-  .grid .griditem.colspan-3 {
+  .grid.columncount-3 .griditem.colspan-3,
+  .grid:not(.columncount-2) .griditem.colspan-3 {
     -webkit-flex: 1 1 calc(100% - 2rem);
             flex: 1 1 calc(100% - 2rem);
   }
-  .grid.columns-2 .griditem.colspan-1 {
+  .grid.columncount-3.columns-2 .griditem.colspan-1,
+  .grid:not(.columncount-2).columns-2 .griditem.colspan-1 {
     -webkit-flex-basis: calc(50% - 2rem);
             flex-basis: calc(50% - 2rem);
   }
-  .grid.itemcount-3 .griditem.colspan-1 {
+  .grid.columncount-3.itemcount-3 .griditem.colspan-1,
+  .grid:not(.columncount-2).itemcount-3 .griditem.colspan-1 {
     -webkit-flex: 0 1 calc(33.3% - 2rem);
             flex: 0 1 calc(33.3% - 2rem);
   }
@@ -10027,6 +9904,13 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
     font-size: 2.75rem;
   }
 }
+.griditem--textoverimage,
+.griditem--post {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
 .griditem--textoverimage h1,
 .griditem--post h1,
 .griditem--textoverimage h2,
@@ -10048,17 +9932,111 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 .griditem--post:hover .tekstlengte {
   opacity: 1;
 }
+.griditem--textoverimage .text {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.griditem--textoverimage .text .label {
+  -webkit-order: 0;
+          order: 0;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 0 0.5rem;
+  border-left: 5px solid black;
+  border-right: 5px solid black;
+}
+.griditem--textoverimage .text h1,
+.griditem--textoverimage .text h2,
+.griditem--textoverimage .text h3 {
+  -webkit-order: 1;
+          order: 1;
+}
+.griditem--textoverimage .meta {
+  color: black;
+}
+.griditem--post .imgcontainer {
+  -webkit-order: 1;
+          order: 1;
+  margin-bottom: 0.5rem;
+}
+.griditem--post .txtcontainer {
+  -webkit-order: 2;
+          order: 2;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.griditem--post .txtcontainer .excerpt,
+.griditem--post .txtcontainer .meta,
+.griditem--post .txtcontainer .label,
+.griditem--post .txtcontainer h3 {
+  margin: 0.25rem 0;
+  padding: 0;
+}
+.griditem--post .txtcontainer .label {
+  -webkit-order: 0;
+          order: 0;
+}
+.griditem--post .txtcontainer h3 {
+  -webkit-order: 1;
+          order: 1;
+  min-height: 3.4rem;
+}
+.griditem--post .txtcontainer .meta {
+  -webkit-order: 2;
+          order: 2;
+  color: black;
+}
+.griditem--post .txtcontainer .excerpt {
+  -webkit-order: 3;
+          order: 3;
+}
+.griditem--post .text {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.griditem--post .text .label {
+  -webkit-order: 0;
+          order: 0;
+}
+.griditem--post .text h3 {
+  -webkit-order: 1;
+          order: 1;
+}
+.griditem--post .text .entry-meta {
+  -webkit-order: 2;
+          order: 2;
+}
 .entry-content .event-meta li {
   margin-left: 0;
 }
+.widget_em_widget ul > li > ul {
+  margin: 0 0 1rem 0;
+}
+.widget_em_widget ul ul,
 .event-meta {
   padding-left: 0;
   margin-left: 0;
 }
+.widget_em_widget ul ul li:empty,
+.event-meta li:empty {
+  display: none;
+}
+.widget_em_widget ul ul,
 .event-meta,
+.widget_em_widget ul ul li,
 .event-meta li {
   list-style: none !important;
 }
+.widget_em_widget ul ul li,
 .event-meta li {
   margin-top: 0;
   margin-bottom: 0;
@@ -10069,32 +10047,41 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   background-position: left center;
   background-size: 1.1rem 1.1rem;
 }
+.widget_em_widget ul ul li:before,
 .event-meta li:before {
   content: none;
 }
+.widget_em_widget ul ul li.event-date,
 .event-meta li.event-date {
   background-image: url('images/rhs-icons/2001-kalender.svg');
 }
+.widget_em_widget ul ul li.event-time,
 .event-meta li.event-time {
   background-image: url('images/rhs-icons/2010-klok.svg');
 }
+.widget_em_widget ul ul li.event-town,
 .event-meta li.event-town {
   background-image: url('images/rhs-icons/1007-locatie-marker.svg');
 }
+.widget_em_widget ul ul li.event-online,
 .event-meta li.event-online {
   background-image: url('images/rhs-icons/2050-videovergaderen.svg');
 }
+.widget_em_widget ul ul li.started-not-ended,
 .event-meta li.started-not-ended {
   background-image: none;
   padding-left: 0;
   font-style: italic;
 }
+.widget_em_widget ul ul li + li,
 .event-meta li + li {
   margin-top: 0.5em;
 }
+.widget_em_widget ul ul li.passed-enddate,
 .event-meta li.passed-enddate {
   background-image: url('images/rhs-icons/3915-waarschuwing.svg');
 }
+.widget_em_widget ul ul li:empty,
 .event-meta li:empty {
   display: none;
 }
@@ -11121,7 +11108,7 @@ details + .button-container {
   margin-top: -0.5rem;
 }
 .meta {
-  color: #696969 !important;
+  color: #696969;
   margin: 0.5em 0;
   font-size: 90%;
 }
