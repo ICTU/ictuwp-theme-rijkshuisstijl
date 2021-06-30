@@ -120,10 +120,10 @@ function rhswp_get_grid_item( $args = array() ) {
 		}
 
 
+		$itemtitle .= '<' . $args['headerlevel'] . '><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></' . $args['headerlevel'] . '>';
 		if ( $contentblock_label ) {
 			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
 		}
-		$itemtitle .= '<' . $args['headerlevel'] . '><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></' . $args['headerlevel'] . '>';
 
 		$excerpt .= '<p class="excerpt">';
 		$excerpt .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
