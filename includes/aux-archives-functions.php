@@ -36,7 +36,7 @@ function rhswp_get_grid_item( $args = array() ) {
 		return;
 	}
 	$return             = "\n";
-	$itemdate           = get_the_date( get_option( 'date_format' ), $args['ID'] );
+	$itemdate           = sprintf( "<span class=\"visuallyhidden\">%s</span> %s", _x( "Publish date", 'publicatiedatum', 'wp-rijkshuisstijl' ), get_the_date( get_option( 'date_format' ), $args['ID'] ) );
 	$imgcontainer       = get_the_post_thumbnail( $args['ID'], IMAGESIZE_5x3_SMALL );
 	$contentblock_titel = ( $args['contentblock_title'] ) ? $args['contentblock_title'] : get_the_title( $args['ID'] );
 	if ( isset( $args['permalink'] ) ) {
@@ -82,16 +82,18 @@ function rhswp_get_grid_item( $args = array() ) {
 
 		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . '"' . $cssid . '>';
 
-		if ( $imgcontainer ) {
-			$return .= '<div class="imgcontainer">';
-			$return .= $imgcontainer;
-			$return .= '</div>'; // .imgcontainer
-		}
 		$return .= '<div class="txtcontainer">';
 		$return .= '<a href="' . $contentblock_url . '">';
 		$return .= '<div class="text">';
 		$return .= $itemtitle;
 		$return .= '</div>'; // .text
+
+		if ( $imgcontainer ) {
+			$return .= '<div class="imgcontainer">';
+			$return .= $imgcontainer;
+			$return .= '</div>'; // .imgcontainer
+		}
+
 		$return .= '</a>';
 		$return .= '</div>'; // .txtcontainer
 		$return .= '</' . $args['tagcontainer'] . '>';
@@ -100,10 +102,10 @@ function rhswp_get_grid_item( $args = array() ) {
 		$file           = get_field( 'rhswp_document_upload', $args['ID'] );
 		$number_pages   = get_field( 'rhswp_document_number_pages', $args['ID'] );
 		$bestand_of_url = get_field( 'rhswp_document_file_or_url', $args['ID'] );
-		if ( isset( $file['subtype'] )) {
-			$filetype       = strtoupper( $file['subtype'] );
+		if ( isset( $file['subtype'] ) ) {
+			$filetype = strtoupper( $file['subtype'] );
 		}
-		$documenttype   = get_the_date( '', $args['ID'] );
+		$documenttype = get_the_date( '', $args['ID'] );
 
 		if ( $file ) {
 			if ( $filetype ) {
@@ -157,32 +159,38 @@ function rhswp_get_grid_item( $args = array() ) {
 		if ( $args['datefield'] ) {
 			$cssclasses[] = 'datefield';
 		}
-		if ( $contentblock_label ) {
-			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
-		}
 		$itemtitle .= '<' . $args['headerlevel'] . '>' . $contentblock_titel . '</' . $args['headerlevel'] . '>';
+		if ( $contentblock_label ) {
+			$itemtitle .= '<span class="label">' . $contentblock_label . '</span>';
+		}
+
 		// het hele blok klikbaar maken
 		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . ' "' . $cssid . '>';
-		$return .= '<div class="imgcontainer">';
-		$return .= $imgcontainer;
-		$return .= '</div>'; // .imgcontainer
 		$return .= '<div class="txtcontainer">';
 		$return .= '<a href="' . $contentblock_url . '">';
 		$return .= '<div class="text">';
 		$return .= $itemtitle;
 		$return .= '</div>'; // .text
 		$return .= '</a>';
+		$return .= '</div>'; // .txtcontainer
+
+		$return .= '<div class="imgcontainer">';
+		$return .= $imgcontainer;
 		if ( $args['datefield'] ) {
 			$return .= '<p class="meta">' . $itemdate . '</p>';
 		}
-		$return .= '</div>'; // .txtcontainer
+		$return .= '</div>'; // .imgcontainer
+
+
 		$return .= '</' . $args['tagcontainer'] . '>';
 	} else {
 		// $args['type'] === 'posts_plain'
+		$itemtitle .= '<' . $args['headerlevel'] . '><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></' . $args['headerlevel'] . '>';
+
 		if ( $contentblock_label ) {
 			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
 		}
-		$itemtitle .= '<' . $args['headerlevel'] . '><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></' . $args['headerlevel'] . '>';
+
 		$itemtitle .= '<p class="meta">' . $itemdate . '</p>';
 		$excerpt   .= '<p class="excerpt">';
 		$excerpt   .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
@@ -197,13 +205,14 @@ function rhswp_get_grid_item( $args = array() ) {
 			$imgcontainer = '<a tabindex="-1" aria-hidden="true" href="' . $contentblock_url . '">' . rhswp_check_alt_attribute( $imgcontainer, $contentblock_titel ) . '</a>';
 		}
 		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . '"' . $cssid . '>';
-		$return .= '<div class="imgcontainer">';
-		$return .= $imgcontainer;
-		$return .= '</div>'; // .imgcontainer
 		$return .= '<div class="txtcontainer">';
 		$return .= $itemtitle;
 		$return .= $excerpt;
 		$return .= '</div>'; // .txtcontainer
+		$return .= '<div class="imgcontainer">';
+		$return .= $imgcontainer;
+		$return .= '</div>'; // .imgcontainer
+
 		$return .= '</' . $args['tagcontainer'] . '>'; // .$args['ID']
 	}
 
