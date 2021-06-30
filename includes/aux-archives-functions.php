@@ -59,11 +59,16 @@ function rhswp_get_grid_item( $args = array() ) {
 	}
 	if ( RHSWP_CPT_DOCUMENT === get_post_type( $args['ID'] ) ) {
 		$args['type'] = 'posts_document';
+	} elseif ( 'page' === get_post_type( $args['ID'] ) ) {
+		$args['type'] = 'posts_plain';
+	} elseif ( RHSWP_CPT_VERWIJZING === get_post_type( $args['ID'] ) ) {
+		$args['type'] = 'posts_plain';
 	} elseif ( 'post' != get_post_type( $args['ID'] ) ) {
 		$args['type'] = 'posts_manual';
 	}
 
 	if ( $args['type'] === 'posts_manual' ) {
+		// dit is bijv. het uitgelicht block op de homepage
 		if ( $args['contentblock_imgid'] ) {
 			if ( in_array( 'colspan-1', $cssclasses ) ) {
 				// voor blokken die 1 kolom breed zijn, gebruiken we een vierkant plaatje
@@ -97,8 +102,9 @@ function rhswp_get_grid_item( $args = array() ) {
 		$return .= '</a>';
 		$return .= '</div>'; // .txtcontainer
 		$return .= '</' . $args['tagcontainer'] . '>';
-	} elseif ( $args['type'] === 'posts_document' ) {
 
+	} elseif ( $args['type'] === 'posts_document' ) {
+		// document
 		$file           = get_field( 'rhswp_document_upload', $args['ID'] );
 		$number_pages   = get_field( 'rhswp_document_number_pages', $args['ID'] );
 		$bestand_of_url = get_field( 'rhswp_document_file_or_url', $args['ID'] );
@@ -191,9 +197,17 @@ function rhswp_get_grid_item( $args = array() ) {
 			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
 		}
 
-		$itemtitle .= '<p class="meta">' . $itemdate . '</p>';
+		if ( ( get_post_type( $args['ID'] ) != 'page' ) && ( get_post_type( $args['ID'] ) != RHSWP_CPT_VERWIJZING ) ) {
+			$itemtitle .= '<p class="meta">' . $itemdate . '</p>';
+		}
 		$excerpt   .= '<p class="excerpt">';
-		$excerpt   .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
+
+		if ( get_post_type( $args['ID'] ) === RHSWP_CPT_VERWIJZING ) {
+			$excerpt   .= get_field( 'verwijzing_beschrijving', $args['ID'] );
+		} else {
+			$excerpt   .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
+		}
+
 		if ( WP_DEBUG_SHOWTEXTLENGTH ) {
 			// TODO
 			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) ) . '</span></span>';

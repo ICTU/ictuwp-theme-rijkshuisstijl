@@ -4190,7 +4190,8 @@ function rhswp_filter_strange_characters( $content ) {
 }
 
 //========================================================================================================
-// ervoor zorgen dat voor het veld 'home_row_1_cell_1_post' dat alleen *gepubliceerde* content te selecteren is
+// ACF filter om ervoor zorgen dat via deze relatie-velden alleen *gepubliceerde* content te selecteren is
+add_filter( 'acf/fields/relationship/query/name=interne_link', 'acf_relationshipfield_only_use_published_content', 10, 3 );
 add_filter( 'acf/fields/relationship/query/name=select_berichten_paginas', 'acf_relationshipfield_only_use_published_content', 10, 3 );
 add_filter( 'acf/fields/relationship/query/name=selecteer_uitgelichte_paginas_of_berichten', 'acf_relationshipfield_only_use_published_content', 10, 3 );
 add_filter( 'acf/fields/relationship/query/name=home_row_1_cell_1_post', 'acf_relationshipfield_only_use_published_content', 10, 3 );
@@ -4255,7 +4256,7 @@ function rhswp_get_sublabel( $post_id ) {
 			}
 		} elseif ( 'post' === get_post_type( $post_id ) ) {
 			$return = 'Geen label gevonden';
-		} elseif ( 'actielijn' === get_post_type( $post_id ) ) {
+		} elseif ( RHSWP_CPT_VERWIJZING === get_post_type( $post_id ) || 'actielijn' === get_post_type( $post_id ) ) {
 			$return = '';
 		} else {
 			$return = get_post_type( $post_id );

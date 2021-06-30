@@ -448,7 +448,7 @@ function rhswp_write_extra_contentblokken() {
 											)
 										);
 									}
-								} // if ( $chosen_category ) 
+								} // if ( $chosen_category )
 							}
 
 							// Assign predefined $args to your query
@@ -457,21 +457,20 @@ function rhswp_write_extra_contentblokken() {
 
 							if ( $contentblockposts->have_posts() ) {
 
-								$count = $contentblockposts->post_count;
+								$item_count = $contentblockposts->post_count;
 
 								$columncount = 3;
 
-								if ( 1 === $count ) {
+								if ( 1 === $item_count ) {
 									$columncount = 1;
-								} elseif ( 2 === $count ) {
+								} elseif ( 2 === $item_count ) {
 									$columncount = 2;
-								} elseif ( 4 === $count ) {
+								} elseif ( 4 === $item_count ) {
 									$columncount = 2;
 								}
 
 								echo '<section class="flexbox contentblocks"' . $blockidattribute . '>';
 								echo '<div class="wrap">';
-//								echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '">';
 
 								if ( $titel ) {
 									echo '<h2>' . $titel . '</h2>';
@@ -483,12 +482,11 @@ function rhswp_write_extra_contentblokken() {
 								if ( is_singular( 'post' ) ) {
 									// een bericht heeft inmiddels full width, dus lekker 3 kolommen
 									echo '<div class="grid">';
-								}
-								elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
+								} elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
 									// een dossier full width, dus lekker 3 kolommen
 									echo '<div class="grid">';
 								} else {
-									echo '<div class="grid columns-2">';
+									echo '<div class="grid itemcount-' . $item_count . ' columncount-' . $columncount . '">';
 								}
 
 								$postcounter = 0;
@@ -709,16 +707,16 @@ function rhswp_write_extra_contentblokken() {
 							}
 
 							$columncount = 3;
-							if ( 1 === count( $selecteer_uitgelichte_paginas_of_berichten ) ) {
+							$item_count  = count( $selecteer_uitgelichte_paginas_of_berichten );
+							if ( 1 === $item_count ) {
 								$columncount = 1;
-							} elseif ( 2 === count( $selecteer_uitgelichte_paginas_of_berichten ) ) {
+							} elseif ( 2 === $item_count ) {
 								$columncount = 2;
-							} elseif ( 4 === count( $selecteer_uitgelichte_paginas_of_berichten ) ) {
+							} elseif ( 4 === $item_count ) {
 								$columncount = 2;
 							}
 
-
-							echo '<div class="flexcontainer no-top columncount-' . $columncount . '">';
+							echo '<div class="grid itemcount-' . $item_count . ' columncount-' . $columncount . '">';
 
 							$postcounter = 0;
 
@@ -727,126 +725,19 @@ function rhswp_write_extra_contentblokken() {
 								setup_postdata( $post );
 
 								$postcounter ++;
-
-								$classattr        = genesis_attr( 'entry' );
-								$permalink        = '';
-								$permalink_start  = '';
-								$permalink_end    = '';
-								$permalink_start2 = '';
-								$permalink_end2   = '';
-								$excerpt          = '';
-								$excerpt          = '';
-								$link             = '';
-
-								do_action( 'genesis_before_entry' );
-
-								$classattr = str_replace( 'has-post-thumbnail', '', $classattr );
-
-								if ( get_post_type() === RHSWP_CPT_VERWIJZING ) {
-//									$excerpt   = wp_strip_all_tags( get_the_content( $post ) );
-									$excerpt = get_field( 'verwijzing_beschrijving', $post->ID );
-									if ( get_field( 'verwijzing_url', $post->ID ) ) {
-										$link = get_field( 'verwijzing_url', $post->ID );
-										if ( is_array( $link ) ) {
-											$permalink = $link['url'];
-										} else {
-											$permalink = $link;
-										}
-									}
-								} else {
-									$permalink = get_permalink();
-									$excerpt   = wp_strip_all_tags( get_the_excerpt( $post ) );
-								}
-
-								if ( ! $excerpt ) {
-									$excerpt = get_the_title();
-								}
-
-								if ( $permalink ) {
-									$permalink_start = sprintf( '<a href="%s">', $permalink );
-									$permalink_end   = '</a>';
-								}
-
-								if ( has_post_thumbnail( $post ) ) {
-									$classattr = preg_replace( '|class="|i', 'class="has-post-thumbnail ', $classattr );
-								} else {
-									$classattr = preg_replace( '|class="|i', 'class="no-post-thumbnail ', $classattr );
-								}
-
-
-								$postdate = '';
-								if ( 'post' == get_post_type() ) {
-									$postdate = '<p class="meta">' . get_the_date() . '</p>';
-								}
-
-
-								if ( 'citaat_of_verwijzing_citaat' === get_field( 'citaat_of_verwijzing', $post->ID ) ) {
-
-									$citaat_en_auteur = get_field( 'citaat_en_auteur', $post->ID );
-
-
-									if ( $citaat_en_auteur ) {
-
-										echo '<section class="' . RHSWP_CPT_VERWIJZING . '">';
-										if ( has_post_thumbnail( $post ) ) {
-											echo '<div class="has-thumbnail">';
-											echo get_the_post_thumbnail( $post->ID, 'widget-image-top' );
-											echo '</div>';
-										}
-										echo '<div class="blockquote">';
-										printf( '<blockquote cite="%s">', $permalink );
-										printf( '<p>%s</p>', $citaat_en_auteur['verwijzing_citaat'] );
-										printf( '<footer>%s</footer>', $citaat_en_auteur['verwijzing_citaat_auteur'] );
-										echo '</blockquote>';
-										if ( $link ) {
-											$title = '';
-
-											if ( ! $link['title'] ) {
-
-												$title      = $link['url'];
-												$title      = preg_replace( '|https://|i', '', $title );
-												$title      = preg_replace( '|http://|i', '', $title );
-												$titlearray = explode( '/', $title );
-												if ( $titlearray[0] ) {
-													$title = $titlearray[0];
-												}
-
-											} else {
-												$title = $link['title'];
-											}
-											printf( '<p class="more"><a href="%s">%s</a></p>', $link['url'], $title );
-										}
-										echo '</div>';
-										echo '</section>';
-
-									}
-
-								} elseif ( has_post_thumbnail( $post ) ) {
-									printf( '<article %s>', $classattr );
-									echo '<div class="article-container">';
-
-
-//									$permalink_start2 = str_replace( '<a href=', '<a tabindex="-1" href=', $permalink_start );
-//									$permalink_end2 = $permalink_end;
-									printf( '<div class="article-visual">%s%s%s</div>', $permalink_start2, get_the_post_thumbnail( $post->ID, 'article-visual-big' ), $permalink_end2 );
-									printf( '<div class="article-excerpt"><%s>%s%s%s</%s>%s<p>%s</p></div>', $headertag, $permalink_start, get_the_title(), $permalink_end, $headertag, $postdate, $excerpt );
-									echo '</div>';
-									echo '</article>';
-								} else {
-									printf( '<article %s>', $classattr );
-									printf( '<%s>%s%s%s</%s>%s<p>%s</p>', $headertag, $permalink_start, get_the_title(), $permalink_end, $headertag, $postdate, $excerpt );
-									echo '</article>';
-								}
-
-								// RESET THE QUERY
-								wp_reset_query();
-
-								do_action( 'genesis_after_entry' );
+								$current_post_id = isset( $post->ID ) ? $post->ID : 0;
+								$args2           = array(
+									'ID'          => $current_post_id,
+									'itemclass'   => 'griditem griditem--post colspan-1 ' . get_post_type( $post->ID ),
+									'type'        => 'posts_normal',
+									'headerlevel' => $headertag
+								);
+								echo rhswp_get_grid_item( $args2 );
 
 							}
 
 
-							echo '</div>'; // class="flex
+							echo '</div>'; // class="grid
 							echo '</div>'; // class="wrap
 							echo '</section>'; // class="uitgelicht
 

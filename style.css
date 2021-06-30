@@ -72,7 +72,7 @@ html.css.version {
   display: flex;
 }
 .hide-on-larger-than-mobile.has-border {
-  border-top: 1px solid #C2C2C2;
+  border-top: 1px solid #f3f3f3;
 }
 @media only screen and (max-width: 900px) {
   .hide-on-larger-than-mobile {
@@ -809,12 +809,6 @@ a:focus {
   z-index: 1010;
   outline-offset: 0;
   box-shadow: 0 0 0 2px #fff;
-}
-.entry-content p a,
-.entry-content li a,
-.entry-content table a,
-.entry-content dl a {
-  color: #007bc7;
 }
 .entry-content p a:visited,
 .entry-content li a:visited,
@@ -3145,7 +3139,7 @@ body .gform_wrapper ul li.field_description_below div.ginput_container_radio {
   margin-bottom: 16px;
 }
 .gform_wrapper .gsection {
-  border-bottom: 1px solid #C2C2C2;
+  border-bottom: 1px solid #f3f3f3;
   padding: 0 16px 8px 0;
   margin: 28px 0 28px 0;
   clear: both;
@@ -6542,19 +6536,19 @@ Media Queries
   padding: 0 0.5em;
 }
 /*
-  @keyframes fadeOutAgain {
+    @keyframes fadeOutAgain {
 
-    0% {
-      z-index: 100000;
-      opacity: 1;
+      0% {
+        z-index: 100000;
+        opacity: 1;
+      }
+      100% {
+        z-index: 1000;
+        opacity: .1;
+      }
     }
-    100% {
-      z-index: 1000;
-      opacity: .1;
-    }
-  }
 
-*/
+  */
 .block {
   clear: both;
 }
@@ -7759,8 +7753,8 @@ noscript {
   }
 }
 /*
-	Timeline plugin
-	-------------------------------------------------------------------------------------------------- */
+  Timeline plugin
+  -------------------------------------------------------------------------------------------------- */
 .timeline-main {
   background-color: #f3f3f3;
 }
@@ -7771,8 +7765,8 @@ noscript {
   color: #000;
 }
 /*
-	Inklapblokken
-	-------------------------------------------------------------------------------------------------- */
+  Inklapblokken
+  -------------------------------------------------------------------------------------------------- */
 .collapsible {
   overflow: hidden;
   padding: 1rem;
@@ -7782,7 +7776,7 @@ noscript {
   background-image: none !important;
 }
 .collapsetoggle {
-  background: #e6e6e6;
+  background-color: #f3f3f3;
   color: #000;
   display: block;
   width: 100%;
@@ -7793,7 +7787,7 @@ noscript {
 }
 .collapsetoggle button {
   text-align: left;
-  background: #e6e6e6;
+  background-color: #f3f3f3;
   color: #01689b;
   display: block;
   width: 100%;
@@ -9556,7 +9550,7 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 }
 .griditem img {
   display: block;
-  border: 1px solid #ececec;
+  border: 1px solid #f3f3f3;
 }
 .griditem a h1,
 .griditem a h2,
@@ -9811,7 +9805,7 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
     width: 100%;
     height: 0;
     padding-bottom: 60%;
-    background-color: #ececec;
+    background-color: #f3f3f3;
   }
   .griditem.griditem--post.colspan-1 .imgcontainer a {
     display: block;
@@ -9986,7 +9980,6 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 .griditem--post .txtcontainer h3 {
   -webkit-order: 1;
           order: 1;
-  min-height: 3.4rem;
 }
 .griditem--post .txtcontainer .meta {
   -webkit-order: 2;
@@ -11779,7 +11772,7 @@ ul + .borderframe {
 .page-template-page_fullwidth .entry-content > p img.alignright,
 .single-event.full-width-content .entry-content > p img.alignright,
 .single-post.full-width-content .entry-content > p img.alignright {
-  border: 1px solid #ececec;
+  border: 1px solid #f3f3f3;
 }
 .page-template-page_fullwidth .entry-content > h3 img.alignleft,
 .single-event.full-width-content .entry-content > h3 img.alignleft,
@@ -11800,7 +11793,7 @@ ul + .borderframe {
 .page-template-page_fullwidth .entry-content > .wp-block-image figure,
 .single-event.full-width-content .entry-content > .wp-block-image figure,
 .single-post.full-width-content .entry-content > .wp-block-image figure {
-  border: 1px solid #ececec;
+  border: 1px solid #f3f3f3;
   max-width: 41.8125rem;
   margin-left: auto;
   margin-right: auto;
@@ -11808,7 +11801,7 @@ ul + .borderframe {
 .page-template-page_fullwidth .entry-content > .wp-block-image .aligncenter,
 .single-event.full-width-content .entry-content > .wp-block-image .aligncenter,
 .single-post.full-width-content .entry-content > .wp-block-image .aligncenter {
-  border: 1px solid #ececec;
+  border: 1px solid #f3f3f3;
 }
 @media only screen and (min-width: 1200px) {
   .page-template-page_fullwidth .entry-content > ul,
@@ -11976,7 +11969,7 @@ ul + .borderframe {
 main .container {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  border-top: 1px solid #C2C2C2;
+  border-top: 1px solid #f3f3f3;
   padding-top: 1rem;
 }
 main .container > h2,
@@ -12073,7 +12066,7 @@ main .container > h3 {
 .page-template-page_showalldossiers-nieuwestyling .dossier-list > .cat-item {
   padding-bottom: 1rem;
   margin-bottom: 1rem;
-  border-bottom: 1px solid #C2C2C2;
+  border-bottom: 1px solid #f3f3f3;
 }
 .page-template-page_showalldossiers-nieuwestyling h2 {
   margin-top: 0;
