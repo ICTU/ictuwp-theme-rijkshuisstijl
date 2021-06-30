@@ -66,7 +66,7 @@ html.css.version {
   display: flex;
 }
 .hide-on-larger-than-mobile.has-border {
-  border-top: 1px solid #C2C2C2;
+  border-top: 1px solid #f3f3f3;
 }
 @media only screen and (max-width: 900px) {
   .hide-on-larger-than-mobile {
@@ -201,20 +201,26 @@ a:focus {
   -webkit-box-shadow: 0 0 0 2px #fff;
   box-shadow: 0 0 0 2px #fff;
 }
-.entry-content p a,
-.entry-content li a,
-.entry-content table a,
-.entry-content dl a {
-  color: #007bc7;
-}
-.entry-content a:visited {
+.entry-content p a:visited,
+.entry-content li a:visited,
+.entry-content table a:visited,
+.entry-content dl a:visited {
   color: #848;
 }
-.entry-content a:hover {
+.entry-content p a:hover,
+.entry-content li a:hover,
+.entry-content table a:hover,
+.entry-content dl a:hover {
   color: #A02F1D;
 }
-.entry-content a:active,
-.entry-content a:focus {
+.entry-content p a:active,
+.entry-content li a:active,
+.entry-content table a:active,
+.entry-content dl a:active,
+.entry-content p a:focus,
+.entry-content li a:focus,
+.entry-content table a:focus,
+.entry-content dl a:focus {
   color: #A02F1D;
 }
 a.extern:before {
