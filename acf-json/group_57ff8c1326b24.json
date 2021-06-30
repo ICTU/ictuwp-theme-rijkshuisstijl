@@ -1,6 +1,6 @@
 {
     "key": "group_57ff8c1326b24",
-    "title": "Extra links bij bericht of pagina",
+    "title": "Extra links bij bericht of pagina of event",
     "fields": [
         {
             "key": "field_57ff8c9ba3211",
@@ -25,6 +25,65 @@
             "layout": "horizontal",
             "return_format": "value",
             "save_other_choice": 0
+        },
+        {
+            "key": "field_60d5d9c95bd6c",
+            "label": "Standaard of eigen titel gebruiken?",
+            "name": "rhswp_pagelinks_widget_type_title",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_57ff8c9ba3211",
+                        "operator": "==",
+                        "value": "ja"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "standaard": "Gebruik de standaard titel uit de widget",
+                "eigen": "Gebruik de titel die ik hieronder invoer"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "standaard",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_60d5d9c25bd6b",
+            "label": "Titel",
+            "name": "rhswp_pagelinks_widget_titel_boven_gerelateerde_links",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_60d5d9c95bd6c",
+                        "operator": "==",
+                        "value": "eigen"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Gerelateerde links",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_57ff8c6078e2d",
@@ -178,6 +237,13 @@
                 "operator": "==",
                 "value": "page"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "event"
+            }
         ]
     ],
     "menu_order": 0,
@@ -188,5 +254,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1622627341
+    "modified": 1624628108
 }

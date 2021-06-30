@@ -57,6 +57,7 @@ define( 'CTAX_contentsoort', 'contentsoort' );
 define( 'CTAX_thema', 'CTAX_thema' );
 define( 'RHSWP_HOME_WIDGET_AREA', 'home-widget-area' );
 define( 'RHSWP_NORESULT_WIDGET_AREA', 'noresult-widget-area' );
+define( 'RHSWP_SINGLE_FOOTER_WIDGET_AREA', 'sidebar-alt' );
 define( 'RHSWP_SITEMAP_WIDGET_AREA', 'sitemap-widget-area' );
 define( 'RHSWP_PREFIX_TAG_CAT', 'rhswp_dossier_select_tag_category' );
 define( 'RHSWP_CMB2_TAG_FIELD', 'select_tag' );
@@ -1476,6 +1477,8 @@ function rhswp_overwrite_widget_settings() {
 	//Gets rid of the default Primary Sidebar
 	unregister_sidebar( 'sidebar' );
 	unregister_sidebar( 'sidebar-alt' );
+	unregister_sidebar( 'header-right' );
+
 	genesis_register_sidebar(
 		array(
 			'name'          => _x( 'Widgetruimte algemeen', 'Title of primary sidebar', 'wp-rijkshuisstijl' ),
@@ -1487,15 +1490,16 @@ function rhswp_overwrite_widget_settings() {
 			'after_title'   => "</h3>\n"
 		)
 	);
+
 	genesis_register_sidebar(
 		array(
 			'name'          => _x( 'Widgets in de footer', 'Title of footer widget', 'wp-rijkshuisstijl' ),
 			'description'   => _x( "Ruimte voor extra menus's onder de hoofdcontent", 'Description of footer widget space', 'wp-rijkshuisstijl' ),
-			'id'            => 'sidebar-footer',
-			'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
-			'after_widget'  => "</div></div>\n",
-			'before_title'  => '<h3 class="widgettitle">',
-			'after_title'   => "</h3>\n"
+			'id'            => RHSWP_SINGLE_FOOTER_WIDGET_AREA,
+			'before_widget' => '<section id="%1$s" class="%2$s widget"><div class="widget-wrap">',
+			'after_widget'  => "</div></section>\n",
+			'before_title'  => '<h2 class="widgettitle">',
+			'after_title'   => "</h2>\n"
 		)
 	);
 	genesis_register_sidebar(
