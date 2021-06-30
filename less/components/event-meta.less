@@ -11,10 +11,19 @@
   }
 }
 
+.widget_em_widget ul > li > ul {
+  margin: 0 0 1rem 0;
+}
+
+.widget_em_widget ul ul,
 .event-meta {
 
   padding-left: 0;
   margin-left: 0;
+
+  li:empty {
+    display: none;
+  }
 
   &, li {
     list-style: none !important;
