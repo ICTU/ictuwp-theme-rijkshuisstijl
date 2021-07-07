@@ -93,13 +93,21 @@
         flex-basis: calc(50% - 2rem);
       }
     }
+
+    &.itemcount-1 {
+      .griditem {
+        flex-basis: 100%;
+      }
+    }
+
   }
 
 
   &.columncount-2 {
   }
 
-  &.columncount-3, &:not(.columncount-2) {
+  &.columncount-3,
+  &:not(.columncount-1):not(.columncount-2) {
 
     @media only screen and (min-width: ( @break_900px ) ) {
       .griditem {
