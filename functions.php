@@ -2339,7 +2339,6 @@ function rhswp_add_blog_archive_css() {
   background-image: url('" . RHSWP_THEMEFOLDER . "/images/icon-external-link-white.svg');
 }
 .entry-content a:not([href]),
-.entry-content .links li a,
 .entry-content a[href^=\"/\"],
 .entry-content a[href^=\"#\"],
 .entry-content a[href*=\"tel:\"],
@@ -2431,6 +2430,7 @@ function rhswp_add_blog_archive_css() {
 			$thecounter = 0;
 			foreach ( $contentblokken as $row ) {
 				$thecounter ++;
+				$args            = null;
 				$chosen_category = $row['extra_contentblok_chosen_category'];
 				$categoriefilter = $row['extra_contentblok_categoriefilter'];
 				$maxnr_posts     = $row['extra_contentblok_maxnr_posts'];
@@ -2449,24 +2449,28 @@ function rhswp_add_blog_archive_css() {
 					$toonlinksindossiercontext = false;
 					if ( $dossier_in_content_block ) {
 						// we zijn op een dossieroverzicht
-						$term                      = get_term( $dossier_in_content_block, RHSWP_CT_DOSSIER );
-						$currentterm               = $term->term_id;
-						$currenttermname           = $term->name;
-						$currenttermslug           = $term->slug;
-						$toonlinksindossiercontext = $term;
-						$args                      = array(
-							'post_type'      => 'post',
-							'post_status'    => 'publish',
-							'posts_per_page' => $maxnr_posts,
-							'tax_query'      => array(
-								array(
-									'taxonomy' => RHSWP_CT_DOSSIER,
-									'field'    => 'term_id',
-									'terms'    => $currentterm
-								),
-							)
-						);
-						$overviewlinktext          = $dossier_in_content_block;
+						$term = get_term( $dossier_in_content_block, RHSWP_CT_DOSSIER );
+						if ( is_object( $term ) ) {
+
+							$currentterm = $term->term_id;
+//							$currenttermname           = $term->name;
+//							$currenttermslug           = $term->slug;
+//							$toonlinksindossiercontext = $term;
+							$args = array(
+								'post_type'      => 'post',
+								'post_status'    => 'publish',
+								'posts_per_page' => $maxnr_posts,
+								'tax_query'      => array(
+									array(
+										'taxonomy' => RHSWP_CT_DOSSIER,
+										'field'    => 'term_id',
+										'terms'    => $currentterm
+									),
+								)
+							);
+						}
+
+						$overviewlinktext = $dossier_in_content_block;
 					} else {
 						// niet op een dossieroverzicht
 						$args = array(
@@ -4191,11 +4195,13 @@ function rhswp_filter_strange_characters( $content ) {
 
 //========================================================================================================
 // ACF filter om ervoor zorgen dat via deze relatie-velden alleen *gepubliceerde* content te selecteren is
+add_filter( 'acf/fields/relationship/query/name=menu_pages', 'acf_relationshipfield_only_use_published_content', 10, 3 );
 add_filter( 'acf/fields/relationship/query/name=interne_link', 'acf_relationshipfield_only_use_published_content', 10, 3 );
 add_filter( 'acf/fields/relationship/query/name=select_berichten_paginas', 'acf_relationshipfield_only_use_published_content', 10, 3 );
 add_filter( 'acf/fields/relationship/query/name=selecteer_uitgelichte_paginas_of_berichten', 'acf_relationshipfield_only_use_published_content', 10, 3 );
 add_filter( 'acf/fields/relationship/query/name=home_row_1_cell_1_post', 'acf_relationshipfield_only_use_published_content', 10, 3 );
 add_filter( 'acf/fields/relationship/query/name=home_row_1_cell_2_post', 'acf_relationshipfield_only_use_published_content', 10, 3 );
+
 function acf_relationshipfield_only_use_published_content( $options, $field, $post_id ) {
 	$options['post_status'] = [ 'publish' ];
 
