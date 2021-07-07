@@ -97,7 +97,7 @@ function rhswp_write_extra_contentblokken() {
 								$columncount = 2;
 							}
 
-							echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '"' . $blockidattribute . '>';
+							echo '<div class="contentblock ' . $type_block . ' columncount-' . $columncount . '"' . $blockidattribute . '>';
 
 							if ( $titel ) {
 								echo '<h2>' . $titel . '</h2>';
@@ -132,7 +132,7 @@ function rhswp_write_extra_contentblokken() {
 							$slug = $termname->slug;
 						}
 
-						echo '<div class="block ' . $type_block . '"' . $blockidattribute . '>';
+						echo '<div class="contentblock ' . $type_block . '"' . $blockidattribute . '>';
 
 						if ( $titel ) {
 							echo '<h2>' . $titel . '</h2>';
@@ -156,6 +156,7 @@ function rhswp_write_extra_contentblokken() {
 								// er zijn dus geen evenementen
 								echo get_option( 'dbem_no_events_message' );
 							} else {
+								$eventlist = str_replace('columncount-3',  'columncount-2', $eventlist);
 								echo $eventlist;
 								if ( $events_link ) {
 									echo '<p class="more">' . $events_link . '</p>';
@@ -167,18 +168,18 @@ function rhswp_write_extra_contentblokken() {
 
 					} elseif ( 'berichten_paginas' == $type_block ) {
 
-						$columncount = 3;
+						$columncount = 2;
+						$itemcount   = count( $selected_content );
 
-						if ( 1 === count( $selected_content ) ) {
+						if ( 1 === $itemcount ) {
 							$columncount = 1;
-						} elseif ( 2 === count( $selected_content ) ) {
+						} elseif ( 2 === $itemcount ) {
 							$columncount = 2;
-						} elseif ( 4 === count( $selected_content ) ) {
+						} elseif ( 4 === $itemcount ) {
 							$columncount = 2;
 						}
 
-						echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '"' . $blockidattribute . '>';
-						echo '<div class="wrap">';
+						echo '<div class="contentblock ' . $type_block . '"' . $blockidattribute . '>';
 
 						if ( $titel ) {
 							echo '<h2>' . $titel . '</h2>';
@@ -214,54 +215,25 @@ function rhswp_write_extra_contentblokken() {
 
 							$postcounter = 0;
 
+							echo '<div class="grid columncount-' . $columncount . ' itemcount-' . $itemcount . '">';
+
 							foreach ( $selected_content as $post ) {
 
 								setup_postdata( $post );
 
 								$postcounter ++;
+								$args2 = array(
+									'ID'   => get_the_ID(),
+									'type' => 'posts_plain',
+								);
 
-								$doimage = false;
-
-								$classattr = genesis_attr( 'entry' );
-
-								do_action( 'genesis_before_entry' );
-
-								$classattr = str_replace( 'has-post-thumbnail', '', $classattr );
-
-								$permalink = get_permalink();
-								$excerpt   = wp_strip_all_tags( get_the_excerpt( $post ) );
-
-								if ( ! $excerpt ) {
-									$excerpt = get_the_title();
-								}
-
-								$postdate = '';
-								if ( 'post' == get_post_type() ) {
-									$postdate = '<p class="meta">' . get_the_date() . '</p>';
-								}
-
-								if ( has_post_thumbnail( $post ) ) {
-									printf( '<article %s>', $classattr );
-									echo '<div class="article-container">';
-									printf( '<div class="article-visual">%s</div>', get_the_post_thumbnail( $post->ID, 'article-visual' ) );
-									printf( '<div class="article-excerpt"><h3><a href="%s">%s</a></h3>%s<p>%s</p></div>', get_permalink(), get_the_title(), $postdate, $excerpt );
-									echo '</div>';
-									echo '</article>';
-								} else {
-									printf( '<article %s>', $classattr );
-									printf( '<h3><a href="%s">%s</a></h3>%s<p>%s</p>', get_permalink(), get_the_title(), $postdate, $excerpt );
-									echo '</article>';
-								}
-
-								// RESET THE QUERY
-								wp_reset_query();
-
-								do_action( 'genesis_after_entry' );
-
+								echo rhswp_get_grid_item( $args2 );
 							}
+
+							echo '</div>'; // .grid
+
 						}
 
-						echo '</div>'; //  class="wrap"
 						echo '</div>';
 
 					} elseif ( 'berichten' == $type_block ) {
@@ -631,11 +603,9 @@ function rhswp_write_extra_contentblokken() {
 
 						}
 
-					} elseif
-					( 'select_dossiers' == $type_block ) {
+					} elseif ( 'select_dossiers' == $type_block ) {
 
 						if ( $select_dossiers_list ) {
-
 
 							$terms = get_terms( RHSWP_CT_DOSSIER, array(
 								'hide_empty' => false,
@@ -645,42 +615,40 @@ function rhswp_write_extra_contentblokken() {
 							if ( $terms && ! is_wp_error( $terms ) ) {
 
 								$columncount = 3;
-								if ( 1 === count( $terms ) ) {
+								$headerlevel = 'h2';
+								$itemcount   = count( $terms );
+								if ( 1 === $itemcount ) {
 									$columncount = 1;
-								} elseif ( 2 === count( $terms ) ) {
+								} elseif ( 2 === $itemcount ) {
 									$columncount = 2;
-								} elseif ( 4 === count( $terms ) ) {
+								} elseif ( 4 === $itemcount ) {
 									$columncount = 2;
 								}
 
 								echo '<section class="uitgelicht flexbox"' . $blockidattribute . '>';
-								echo '<div class="wrap">';
-								echo '<div class="block ' . $type_block . ' columncount-' . $columncount . '">';
+								echo '<div class="contentblock ' . $type_block . ' itemcount-' . $itemcount . '">';
 
 								if ( $titel ) {
+//									$headerlevel = 'h3';
 									echo '<h2>' . $titel . '</h2>';
 								}
 
 								foreach ( $terms as $term ) {
 
 									$excerpt     = '';
-									$classattr   = 'class="dossieroverzicht"';
 									$kortebeschr = get_field( 'dossier_korte_beschrijving_voor_dossieroverzicht', RHSWP_CT_DOSSIER . '_' . $term->term_id );
+									$dossierlink = '<p class="dossierlink"><a href="' . get_term_link( $term->term_id, RHSWP_CT_DOSSIER ) . '">' . $term->name . '</a></p>';
 
 									if ( $kortebeschr ) {
 										$excerpt = $kortebeschr;
 									} elseif ( $term->description ) {
 										$excerpt = $term->description;;
 									}
-									$href    = get_term_link( $term->term_id, RHSWP_CT_DOSSIER );
-									$excerpt = wp_strip_all_tags( $excerpt );
 
-									printf( '<article %s>', $classattr );
-									printf( '<a href="%s"><h3>%s</h3><p>%s</p></a>', $href, $term->name, $excerpt );
-									echo '</article>';
+									echo '<details><summary><' . $headerlevel . '>' . $term->name . '</' . $headerlevel . '></summary><p>' . wp_strip_all_tags( $excerpt ) . '</p>' . $dossierlink . '</details>';
+
 								}
 
-								echo '</div>';
 								echo '</div>';
 								echo '</section>';
 
@@ -766,488 +734,3 @@ function rhswp_write_extra_contentblokken() {
 
 
 //====================================================================================================
-// contentblocks onderaan een pagina.
-// - of vrij ingevoerde links
-// - of berichten (algemeen of gefilterd op categorie)
-
-if ( function_exists( 'acf_add_local_field_group' ) ):
-
-	acf_add_local_field_group( array(
-		'key'                   => 'group_5804cc93cxac6',
-		'title'                 => 'Contentblokken',
-		'fields'                => array(
-			array(
-				'key'               => 'field_5804cd3ef7829',
-				'label'             => 'Voeg 1 of meer blokken toe',
-				'name'              => 'extra_contentblokken',
-				'type'              => 'repeater',
-				'instructions'      => 'Deze blokken bestaan uit berichten, pagina\'s of uit links. Berichten worden automatisch geselecteerd. Links moet je handmatig toevoegen.',
-				'required'          => 0,
-				'conditional_logic' => 0,
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id'    => '',
-				),
-				'collapsed'         => 'field_5804cd67f782a',
-				'min'               => 0,
-				'max'               => 0,
-				'layout'            => 'block',
-				'button_label'      => 'Nieuw blok toevoegen',
-				'sub_fields'        => array(
-					array(
-						'key'               => 'field_5804cd67f782a',
-						'label'             => 'Titel boven contentblok',
-						'name'              => 'extra_contentblok_title',
-						'type'              => 'text',
-						'instructions'      => '',
-						'required'          => 1,
-						'conditional_logic' => 0,
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'default_value'     => '',
-						'placeholder'       => '',
-						'prepend'           => '',
-						'append'            => '',
-						'maxlength'         => '',
-					),
-					array(
-						'key'               => 'field_5804cde25e99a',
-						'label'             => 'Wat wil je tonen in dit contentblok?',
-						'name'              => 'extra_contentblok_type_block',
-						'type'              => 'radio',
-						'instructions'      => '',
-						'required'          => 1,
-						'conditional_logic' => 0,
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'choices'           => array(
-							'berichten'          => 'Automatische lijst van berichten',
-							'berichten_paginas'  => 'Berichten of pagina\'s',
-							'algemeen'           => 'Vrije invoer: links in de volgorde die ik bepaal',
-							'select_dossiers'    => 'Een selectie van dossiers',
-							'events'             => 'Automatische lijst van evenementen',
-							'uitgelichtecontent' => 'Uitgelichte pagina\'s of berichten',
-						),
-						'allow_null'        => 0,
-						'other_choice'      => 0,
-						'default_value'     => 'berichten_paginas',
-						'layout'            => 'vertical',
-						'return_format'     => 'value',
-						'save_other_choice' => 0,
-					),
-					array(
-						'key'               => 'field_5804cd7bf782b',
-						'label'             => 'Links in je contentblok',
-						'name'              => 'extra_contentblok_algemeen_links',
-						'type'              => 'repeater',
-						'instructions'      => '',
-						'required'          => 1,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field'    => 'field_5804cde25e99a',
-									'operator' => '==',
-									'value'    => 'algemeen',
-								),
-							),
-						),
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'collapsed'         => '',
-						'min'               => 0,
-						'max'               => 0,
-						'layout'            => 'row',
-						'button_label'      => 'Nieuwe regel',
-						'sub_fields'        => array(
-							array(
-								'key'               => 'field_580ddadb4597b',
-								'label'             => 'Linktekst',
-								'name'              => 'extra_contentblok_algemeen_links_linktekst',
-								'type'              => 'text',
-								'instructions'      => '',
-								'required'          => 1,
-								'conditional_logic' => 0,
-								'wrapper'           => array(
-									'width' => '',
-									'class' => '',
-									'id'    => '',
-								),
-								'default_value'     => '',
-								'placeholder'       => '',
-								'prepend'           => '',
-								'append'            => '',
-								'maxlength'         => '',
-							),
-							array(
-								'key'               => 'field_580ddb0e4597c',
-								'label'             => 'Link',
-								'name'              => 'extra_contentblok_algemeen_links_url',
-								'type'              => 'url',
-								'instructions'      => '',
-								'required'          => 1,
-								'conditional_logic' => 0,
-								'wrapper'           => array(
-									'width' => '',
-									'class' => '',
-									'id'    => '',
-								),
-								'default_value'     => '',
-								'placeholder'       => '',
-							),
-						),
-					),
-					array(
-						'key'               => 'field_5804d01355657',
-						'label'             => 'Wil je de berichten filteren op categorie?',
-						'name'              => 'extra_contentblok_categoriefilter',
-						'type'              => 'radio',
-						'instructions'      => '',
-						'required'          => 1,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field'    => 'field_5804cde25e99a',
-									'operator' => '==',
-									'value'    => 'berichten',
-								),
-							),
-						),
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'choices'           => array(
-							'ja'  => 'Ja, toon alleen berichten uit een bepaalde categorie.',
-							'nee' => 'Neen, toon alle berichten die bij deze pagina horen.',
-						),
-						'allow_null'        => 0,
-						'other_choice'      => 0,
-						'save_other_choice' => 0,
-						'default_value'     => 'nee',
-						'layout'            => 'vertical',
-						'return_format'     => 'value',
-					),
-					array(
-						'key'               => 'field_5804d0ae7e521',
-						'label'             => 'Kies de categorie (extra_contentblok_chosen_category)',
-						'name'              => 'extra_contentblok_chosen_category',
-						'type'              => 'taxonomy',
-						'instructions'      => '',
-						'required'          => 1,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field'    => 'field_5804cde25e99a',
-									'operator' => '==',
-									'value'    => 'berichten',
-								),
-								array(
-									'field'    => 'field_5804d01355657',
-									'operator' => '==',
-									'value'    => 'ja',
-								),
-							),
-						),
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'taxonomy'          => 'category',
-						'field_type'        => 'radio',
-						'allow_null'        => 0,
-						'add_term'          => 1,
-						'save_terms'        => 0,
-						'load_terms'        => 0,
-						'return_format'     => 'id',
-						'multiple'          => 0,
-					),
-					array(
-						'key'               => 'field_5804d1f49c89c',
-						'label'             => 'Maximum aantal berichten',
-						'name'              => 'extra_contentblok_maxnr_posts',
-						'type'              => 'select',
-						'instructions'      => '',
-						'required'          => 1,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field'    => 'field_5804cde25e99a',
-									'operator' => '==',
-									'value'    => 'berichten',
-								),
-							),
-						),
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'choices'           => array(
-							1  => '1',
-							2  => '2',
-							3  => '3',
-							4  => '4',
-							5  => '5',
-							6  => '6',
-							7  => '7',
-							8  => '8',
-							9  => '9',
-							10 => '10',
-							11 => '11',
-							12 => '12',
-							13 => '13',
-							14 => '14',
-							15 => '15',
-							16 => '16',
-							17 => '17',
-							18 => '18',
-							19 => '19',
-							20 => '20',
-						),
-						'default_value'     => array(
-							0 => 8,
-						),
-						'allow_null'        => 0,
-						'multiple'          => 0,
-						'ui'                => 0,
-						'ajax'              => 0,
-						'return_format'     => 'value',
-						'placeholder'       => '',
-					),
-					array(
-						'key'               => 'field_5804d943474a9',
-						'label'             => 'Hoeveel evenementen maximaal?',
-						'name'              => 'extra_contentblok_maxnr_events',
-						'type'              => 'select',
-						'instructions'      => '',
-						'required'          => 0,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field'    => 'field_5804cde25e99a',
-									'operator' => '==',
-									'value'    => 'events',
-								),
-							),
-						),
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'choices'           => array(
-							1  => '1',
-							2  => '2',
-							3  => '3',
-							4  => '4',
-							5  => '5',
-							6  => '6',
-							9  => '9',
-							12 => '12',
-							15 => '15',
-							18 => '18',
-							21 => '21',
-							24 => '24',
-						),
-						'default_value'     => array(),
-						'allow_null'        => 0,
-						'multiple'          => 0,
-						'ui'                => 0,
-						'return_format'     => 'value',
-						'ajax'              => 0,
-						'placeholder'       => '',
-					),
-					array(
-						'key'               => 'field_68247045955b10',
-						'label'             => 'Geselecteerde dossiers',
-						'name'              => 'select_dossiers_list',
-						'type'              => 'taxonomy',
-						'instructions'      => 'De dossiers die je hier kiest worden bovenaan de pagina getoond met speciale layout.',
-						'required'          => 0,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field'    => 'field_5804cde25e99a',
-									'operator' => '==',
-									'value'    => 'select_dossiers',
-								),
-							),
-						),
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'taxonomy'          => 'dossiers',
-						'field_type'        => 'checkbox',
-						'add_term'          => 0,
-						'save_terms'        => 0,
-						'load_terms'        => 0,
-						'return_format'     => 'id',
-						'multiple'          => 0,
-						'allow_null'        => 0,
-					),
-					array(
-						'key'               => 'field_58247045955a9',
-						'label'             => 'Berichten, documenten en pagina\'s',
-						'name'              => 'select_berichten_paginas',
-						'type'              => 'relationship',
-						'instructions'      => '',
-						'required'          => 1,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field'    => 'field_5804cde25e99a',
-									'operator' => '==',
-									'value'    => 'berichten_paginas',
-								),
-							),
-						),
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'post_type'         => array(),
-						'taxonomy'          => array(),
-						'filters'           => array(
-							0 => 'search',
-							1 => 'post_type',
-							2 => 'taxonomy',
-						),
-						'elements'          => '',
-						'min'               => '',
-						'max'               => '',
-						'return_format'     => 'object',
-					),
-					array(
-						'key'               => 'field_58247630e21bb',
-						'label'             => 'Toon samenvattingen?',
-						'name'              => 'select_berichten_paginas_toon_samenvatting',
-						'type'              => 'radio',
-						'instructions'      => '',
-						'required'          => 1,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field'    => 'field_5804cde25e99a',
-									'operator' => '==',
-									'value'    => 'berichten_paginas',
-								),
-							),
-						),
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'choices'           => array(
-							'ja'  => 'Ja, toon samenvattingen onder de link.',
-							'nee' => 'Nee, toon alleen de link',
-						),
-						'allow_null'        => 0,
-						'other_choice'      => 0,
-						'save_other_choice' => 0,
-						'default_value'     => 'nee',
-						'layout'            => 'horizontal',
-						'return_format'     => 'value',
-					),
-					array(
-						'key'               => 'field_5e99dbe4ee2b0',
-						'label'             => 'Selecteer uitgelichte pagina\'s of berichten',
-						'name'              => 'selecteer_uitgelichte_paginas_of_berichten',
-						'type'              => 'relationship',
-						'instructions'      => '',
-						'required'          => 0,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field'    => 'field_5804cde25e99a',
-									'operator' => '==',
-									'value'    => 'uitgelichtecontent',
-								),
-							),
-						),
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'post_type'         => array(
-							0 => 'post',
-							1 => 'page',
-							2 => RHSWP_CPT_VERWIJZING,
-
-						),
-						'taxonomy'          => '',
-						'filters'           => array(
-							0 => 'search',
-							1 => 'post_type',
-							2 => 'taxonomy',
-						),
-						'elements'          => array(
-							0 => 'featured_image',
-						),
-						'min'               => 2,
-						'max'               => 6,
-						'return_format'     => 'object',
-					),
-				),
-			),
-		),
-		'location'              => array(
-			array(
-				array(
-					'param'    => 'post_type',
-					'operator' => '==',
-					'value'    => 'page',
-				),
-			),
-			array(
-				array(
-					'param'    => 'taxonomy',
-					'operator' => '==',
-					'value'    => 'dossiers',
-				),
-			),
-			array(
-				array(
-					'param'    => 'taxonomy',
-					'operator' => '==',
-					'value'    => 'category',
-				),
-			),
-
-			array(
-				array(
-					'param'    => 'post_type',
-					'operator' => '==',
-					'value'    => 'post',
-				),
-			),
-
-		),
-		'menu_order'            => 0,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen'        => '',
-		'active'                => true,
-		'description'           => '',
-	) );
-
-endif;
-
