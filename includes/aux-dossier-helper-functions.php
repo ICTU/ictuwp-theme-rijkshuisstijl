@@ -221,37 +221,26 @@ function rhswp_dossier_title_checker() {
 		if ( $dossier_overzichtpagina ) {
 			// de overzichtspagina is bekend
 
-			// check of we deze pagina wel of niet nu al moeten tonen
-			$tonen = get_field( 'toon_overzichtspagina_in_het_menu', $term );
-
 			$parentID = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
 
-			if ( $tonen !== 'nee' ) {
-				// niet leeg of gelijk aan ja
-				// we mogen de inhoudspagina tonen
+			// we mogen de inhoudspagina tonen
+			$shownalready                    = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
+			$parentID                        = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
+			$args['dossier_overzichtpagina'] = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
 
-				$shownalready                    = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
-				$parentID                        = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
-				$args['dossier_overzichtpagina'] = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
-
-				if ( is_tax( RHSWP_CT_DOSSIER ) ) {
-					$args['currentpageid'] = $term->term_id;
-				}
-
-				$alttitel = get_field( 'dossier_overzichtpagina_alt_titel', $term );
-				if ( 'Inhoud' !== $alttitel ) {
-					$args['preferedtitle'] = sanitize_text_field( $alttitel );
-				} else {
-					$args['preferedtitle'] = _x( 'Inhoud', 'Standaardlabel voor het 2de item in het dossiermenu', 'wp-rijkshuisstijl' );
-				}
-
-				$subpaginas .= rhswp_dossier_get_pagelink( $dossier_overzichtpagina, $args );
-
+			if ( is_tax( RHSWP_CT_DOSSIER ) ) {
+				$args['currentpageid'] = $term->term_id;
 			}
-			else {
-				// leeg of 'nee'
+
+			$alttitel = get_field( 'dossier_overzichtpagina_alt_titel', $term );
+			if ( 'Inhoud' !== $alttitel ) {
+				$args['preferedtitle'] = sanitize_text_field( $alttitel );
+			} else {
 				$args['preferedtitle'] = _x( 'Inhoud', 'Standaardlabel voor het 2de item in het dossiermenu', 'wp-rijkshuisstijl' );
 			}
+
+			$subpaginas .= rhswp_dossier_get_pagelink( $dossier_overzichtpagina, $args );
+
 		}
 
 		// reset the page title
