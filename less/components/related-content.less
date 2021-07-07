@@ -7,45 +7,29 @@
 
 .related-content {
 
-  .mixin_fullwidth_container();
-  .mixin_fullwidth_padding();
-
   h2 {
     .add_header_decoration();
   }
+
   ul {
     padding-left: 0;
     margin-left: 0;
   }
 
-  ul li {
-    list-style: none;
-    padding-left: 0;
-    margin-left: 0;
-
-    a {
-      color: @communicatiekleur_vol;
-      .listitem_arrow_flex(@communicatiekleur_vol,.45rem);
-      padding-left: 1rem;
-      text-decoration: none;
-
-      &:hover {
-        color: @a_color_hover;
-        text-decoration: underline;
-      }
-      &:active,
-      &:focus {
-        text-decoration: underline;
-        color: @a_color_active;
-      }
-
-      &.extern {
-        .external_link_icon( @communicatiekleur_vol );
-      }
+  ul {
+    li {
+      .mixin_listitem_link_styling();
     }
+  }
+}
+
+.full-width-content {
+
+  .related-content {
+
+    .mixin_fullwidth_container();
+    .mixin_fullwidth_padding();
 
   }
 
 }
-
-
