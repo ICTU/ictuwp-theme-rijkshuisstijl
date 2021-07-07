@@ -1,0 +1,142 @@
+{
+    "key": "group_57f90d0a441e4",
+    "title": "Dossier-informatie !!!!!",
+    "fields": [
+        {
+            "key": "field_57f90d20c2fdf",
+            "label": "Overzichtpagina",
+            "name": "dossier_overzichtpagina",
+            "type": "post_object",
+            "instructions": "Welke pagina is de overzichtspagina die hoort bij dit dossier?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_57fa70f9fe7a3",
+            "label": "Toon overzichtspagina in het menu?",
+            "name": "toon_overzichtspagina_in_het_menu",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "ja": "Toon wel",
+                "nee": "Toon niet"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "default_value": "ja",
+            "layout": "vertical",
+            "return_format": "value"
+        },
+        {
+            "key": "field_5e99949047da5",
+            "label": "Titel voor overzichtspagina",
+            "name": "dossier_overzichtpagina_alt_titel",
+            "type": "text",
+            "instructions": "Met welke tekst linken we in het menu naar de overzichtspagina? Standaard is dat 'Inhoud', hier kun je een alternatieve titel invoeren.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_57fa70f9fe7a3",
+                        "operator": "==",
+                        "value": "ja"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Inhoud",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_57f90f281dcfb",
+            "label": "Andere pagina's in het menu",
+            "name": "menu_pages",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_58da406ee63df",
+            "label": "Korte beschrijving voor dossieroverzicht",
+            "name": "dossier_korte_beschrijving_voor_dossieroverzicht",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "dossiers"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1625671302
+}
