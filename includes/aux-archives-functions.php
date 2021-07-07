@@ -50,6 +50,25 @@ function rhswp_get_grid_item( $args = array() ) {
 	$cssclasses         = explode( ' ', $args['itemclass'] );
 	$contentblock_label = rhswp_get_sublabel( $args['ID'] );
 
+
+	if ( get_post_type( $args['ID'] ) === RHSWP_CPT_VERWIJZING ) {
+		$excerpttext = get_field( 'verwijzing_beschrijving', $args['ID'] );
+	} else {
+		$excerpttext = wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
+		if ( ! $excerpttext ) {
+			$excerpttext = '[...]';
+		}
+	}
+	if ( $excerpttext ) {
+		$excerpt = '<p class="excerpt">' . $excerpttext;
+		if ( WP_DEBUG_SHOWTEXTLENGTH ) {
+			// TODO
+			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) ) . '</span></span>';
+		}
+		$excerpt .= '</p>';
+	}
+
+
 	if ( WP_DEBUG_SHOWTEXTLENGTH ) {
 		// TODO: weghalen tekstlengte
 		$contentblock_titel .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( $contentblock_titel ) ) . '</span></span>';
@@ -59,11 +78,15 @@ function rhswp_get_grid_item( $args = array() ) {
 	}
 	if ( RHSWP_CPT_DOCUMENT === get_post_type( $args['ID'] ) ) {
 		$args['type'] = 'posts_document';
-	} elseif ( 'page' === get_post_type( $args['ID'] ) ) {
+	} elseif ( ( 'post' === get_post_type( $args['ID'] ) ) ||
+	           ( 'page' === get_post_type( $args['ID'] ) ) ||
+	           ( RHSWP_CPT_EVENT === get_post_type( $args['ID'] ) ) ||
+	           ( RHSWP_CPT_VERWIJZING === get_post_type( $args['ID'] ) ) ||
+	           ( DOPT__GEBEURTENIS_CPT === get_post_type( $args['ID'] ) ) ||
+	           ( DOPT__ACTIELIJN_CPT === get_post_type( $args['ID'] ) )
+	) {
 		$args['type'] = 'posts_plain';
-	} elseif ( RHSWP_CPT_VERWIJZING === get_post_type( $args['ID'] ) ) {
-		$args['type'] = 'posts_plain';
-	} elseif ( 'post' != get_post_type( $args['ID'] ) ) {
+	} else {
 		$args['type'] = 'posts_manual';
 	}
 
@@ -131,14 +154,6 @@ function rhswp_get_grid_item( $args = array() ) {
 			$itemtitle .= '<div class="label">' . $contentblock_label . '</div>';
 		}
 
-		$excerpt .= '<p class="excerpt">';
-		$excerpt .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
-		if ( WP_DEBUG_SHOWTEXTLENGTH ) {
-			// TODO
-			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) ) . '</span></span>';
-		}
-		$excerpt .= '</p>';
-
 		$meta = '<p class="entry-meta">' . $documenttype . '</p>';
 
 		$return .= '<' . $args['tagcontainer'] . ' class="' . implode( " ", array_unique( $cssclasses ) ) . '"' . $cssid . '>';
@@ -190,7 +205,7 @@ function rhswp_get_grid_item( $args = array() ) {
 
 		$return .= '</' . $args['tagcontainer'] . '>';
 	} else {
-		// $args['type'] === 'posts_plain'
+		// dus $args['type'] === 'posts_plain'
 		$itemtitle .= '<' . $args['headerlevel'] . '><a href="' . $contentblock_url . '">' . $contentblock_titel . '</a></' . $args['headerlevel'] . '>';
 
 		if ( $contentblock_label ) {
@@ -200,20 +215,6 @@ function rhswp_get_grid_item( $args = array() ) {
 		if ( ( get_post_type( $args['ID'] ) != 'page' ) && ( get_post_type( $args['ID'] ) != RHSWP_CPT_VERWIJZING ) ) {
 			$itemtitle .= '<p class="meta">' . $itemdate . '</p>';
 		}
-		$excerpt   .= '<p class="excerpt">';
-
-		if ( get_post_type( $args['ID'] ) === RHSWP_CPT_VERWIJZING ) {
-			$excerpt   .= get_field( 'verwijzing_beschrijving', $args['ID'] );
-		} else {
-			$excerpt   .= wp_strip_all_tags( get_the_excerpt( $args['ID'] ) );
-		}
-
-		if ( WP_DEBUG_SHOWTEXTLENGTH ) {
-			// TODO
-			$excerpt .= ' <span class="tekstlengte"><span>' . strlen( utf8_decode( wp_strip_all_tags( get_the_excerpt( $args['ID'] ) ) ) ) . '</span></span>';
-		}
-		$excerpt .= '</p>';
-
 
 		if ( $imgcontainer && $contentblock_url ) {
 			$imgcontainer = '<a tabindex="-1" aria-hidden="true" href="' . $contentblock_url . '">' . rhswp_check_alt_attribute( $imgcontainer, $contentblock_titel ) . '</a>';
@@ -223,9 +224,11 @@ function rhswp_get_grid_item( $args = array() ) {
 		$return .= $itemtitle;
 		$return .= $excerpt;
 		$return .= '</div>'; // .txtcontainer
-		$return .= '<div class="imgcontainer">';
-		$return .= $imgcontainer;
-		$return .= '</div>'; // .imgcontainer
+		if ( $imgcontainer ) {
+			$return .= '<div class="imgcontainer">';
+			$return .= $imgcontainer;
+			$return .= '</div>'; // .imgcontainer
+		}
 
 		$return .= '</' . $args['tagcontainer'] . '>'; // .$args['ID']
 	}
