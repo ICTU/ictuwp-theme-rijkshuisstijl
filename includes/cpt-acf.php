@@ -668,60 +668,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 endif;
 
 //========================================================================================================
-/*
-if ( function_exists( 'acf_add_local_field_group' ) ):
-
-	acf_add_local_field_group( array(
-		'key'                   => 'group_58da405ecc1c5',
-		'title'                 => ' Korte beschrijving',
-		'fields'                => array(
-			array(
-				'default_value'     => '',
-				'maxlength'         => '',
-				'placeholder'       => '',
-				'prepend'           => '',
-				'append'            => '',
-				'key'               => 'field_58da406ee63df',
-				'label'             => 'Korte beschrijving voor dossieroverzicht',
-				'name'              => 'dossier_korte_beschrijving_voor_dossieroverzicht',
-				'type'              => 'textarea',
-				'instructions'      => '',
-				'required'          => 0,
-				'conditional_logic' => 0,
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id'    => '',
-				),
-			),
-		),
-		'location'              => array(
-			array(
-				array(
-					'param'    => 'taxonomy',
-					'operator' => '==',
-					'value'    => 'dossiers',
-				),
-			),
-		),
-		'menu_order'            => 0,
-		'position'              => 'acf_after_title',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen'        => '',
-		'active'                => 1,
-		'description'           => '',
-	) );
-
-
-endif;
-
- *
- */
-
-
-//========================================================================================================
 
 add_action( 'init', 'cptui_register_my_cpts' );
 
