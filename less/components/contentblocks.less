@@ -1,10 +1,22 @@
 //**
 // * Rijkshuisstijl (Digitale Overheid) - contentblocks.less
 // * ----------------------------------------------------------------------------------
-// * styling voor contentblocks
+// * styling voor div types contentblock
 // * ----------------------------------------------------------------------------------
 //
 
-.contentblocks {
-  overflow: hidden;
+.contentblock {
+  ul.links {
+    padding-left: 0;
+    li {
+      .mixin_listitem_link_styling();
+    }
+  }
+
+  h2, h3 {
+    & + .links {
+      margin-top: 0;
+    }
+  }
+
 }
