@@ -5,6 +5,8 @@
 // * ----------------------------------------------------------------------------------
 //
 
+
+
 .widget {
   ul, ol {
     margin: 1rem 1rem 1rem 0;
@@ -12,31 +14,7 @@
   }
 
   ul li {
-    list-style: none;
-    padding-left: 0;
-    margin-left: 0;
-
-    a {
-      color: @a_color_default;
-      .listitem_arrow_flex(@a_color_default);
-      padding-left: 1rem;
-      text-decoration: none;
-
-      &:hover {
-        color: @a_color_hover;
-        text-decoration: underline;
-      }
-
-      &:active,
-      &:focus {
-        text-decoration: underline;
-        color: @a_color_active;
-      }
-
-      &.extern {
-        .external_link_icon(@a_color_default);
-      }
-    }
+    .mixin_listitem_link_styling();
   }
 
 
@@ -56,7 +34,8 @@
       a {
         .listitem_arrow_flex(@wit, .3rem, 1rem, @wit, @wit, @wit);
 
-        &:hover {
+        &:visited,
+          &:hover {
           color: @wit;
         }
       }

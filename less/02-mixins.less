@@ -671,4 +671,46 @@
 
 //=========================================================================================================
 
+.mixin_listitem_link_styling( @linkcolor_default:@a_color_default, @linkcolor_visited:@a_color_visited, @linkcolor_hover:@a_color_hover, @linkcolor_active:@a_color_active ) {
+
+  // deze styling is voor een <li> met direct daarin een link
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+
+  a {
+    color: @linkcolor_default;
+    .listitem_arrow_flex(@linkcolor_default);
+    padding-left: 1rem;
+    text-decoration: none;
+
+    &:visited {
+      color: @linkcolor_visited;
+      .listitem_arrow_flex(@linkcolor_visited);
+    }
+
+    &:hover {
+      color: @linkcolor_hover;
+      text-decoration: underline;
+    }
+
+    &:active,
+    &:focus {
+      text-decoration: underline;
+      color: @linkcolor_active;
+    }
+
+    &.extern {
+      .external_link_icon(@linkcolor_default);
+    }
+  }
+
+  & + li {
+    margin-top: .25rem;
+  }
+
+}
+
+//=========================================================================================================
+
 
