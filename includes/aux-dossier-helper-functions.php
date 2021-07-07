@@ -142,11 +142,11 @@ function rhswp_dossier_title_checker() {
 			$standaardpaginanaam = $term->name;
 		}
 	} else {
-		// het is iets heeeeeeel anders		
+		// het is iets heeeeeeel anders
 
 		if ( is_singular( 'page' ) || ( is_singular( 'post' ) && ( isset( $wp_query->query_vars['category_name'] ) ) && ( get_query_var( RHSWP_CT_DOSSIER ) ) ) ) {
 
-			// dus: 
+			// dus:
 			// of: het is een pagina maar we kunnen niks uit de queryvar halen
 			// of: het is een single bericht en we kunnen iets uit category_name EN iets met de queryvar voor het dossier
 			// get the dossier for pages OR for posts for which a context was provided
@@ -265,7 +265,7 @@ function rhswp_dossier_title_checker() {
 			$dossierinhoudpagina = '<li class="selected case01"><span>' . $spancurrentpage_start . _x( 'Overzicht', 'Standaardlabel voor het menu in de dossiers', 'wp-rijkshuisstijl' ) . '</span></li>';
 
 		} else {
-			// dit is een andere pagina, 
+			// dit is een andere pagina,
 			$args['currentpageid'] = get_the_id();
 
 			$dossierinhoudpagina = '<li><a href="' . get_term_link( $term ) . '">' . _x( 'Overzicht', 'Standaardlabel voor het menu in de dossiers', 'wp-rijkshuisstijl' ) . '</a></li>';
@@ -612,12 +612,12 @@ function rhswp_dossier_get_pagelink( $theobject, $args ) {
 			//dodebug_do('rhswp_dossier_get_pagelink: ELSE PAGE set \$pagerequestedbyuser: to get_the_id() / pagerequestedbyuser=' . $pagerequestedbyuser . ' / slug=' . $slug );
 		} else {
 			$pagerequestedbyuser = get_the_id();
-			//dodebug_do('rhswp_dossier_get_pagelink: ELSE set \$pagerequestedbyuser: to get_the_id()' );  
+			//dodebug_do('rhswp_dossier_get_pagelink: ELSE set \$pagerequestedbyuser: to get_the_id()' );
 		}
 
 	}
 
-	// use alternative title? 
+	// use alternative title?
 	if ( isset( $args['preferedtitle'] ) && $args['preferedtitle'] ) {
 		$maxposttitle = $args['preferedtitle'];
 	} else {
@@ -764,7 +764,7 @@ function rhswp_dossier_get_pagelink( $theobject, $args ) {
 	// haal de ancestors op voor de huidige pagina
 	$ancestors = get_post_ancestors( $pagerequestedbyuser );
 
-	// check of the parent niet al ergens in het menu voorkomt  
+	// check of the parent niet al ergens in het menu voorkomt
 	$postparent = wp_get_post_parent_id( $pagerequestedbyuser );
 
 	$komtvoorinderestvanmenu_en_isnietdehuidigepagina = false;
