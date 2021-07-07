@@ -363,7 +363,9 @@ function rhswp_customizer_register( $wp_customize ) {
 }
 
 add_action( 'customize_register', 'rhswp_customizer_register' );
+
 //========================================================================================================
+
 // add tag support to pages
 add_action( 'init', 'rhswp_page_tag_support' );
 function rhswp_page_tag_support() {
@@ -371,6 +373,7 @@ function rhswp_page_tag_support() {
 }
 
 //========================================================================================================
+
 // ensure all tags are included in queries
 add_action( 'pre_get_posts', 'rhswp_page_tag_support_query' );
 function rhswp_page_tag_support_query( $wp_query ) {
@@ -380,10 +383,13 @@ function rhswp_page_tag_support_query( $wp_query ) {
 }
 
 //========================================================================================================
+
 add_action( 'init', 'rhswp_add_excerpts_to_pages' );
 function rhswp_add_excerpts_to_pages() {
 	add_post_type_support( 'page', 'excerpt' );
 }
+
+//========================================================================================================
 
 // Add Read More Link to Excerpts
 add_filter( 'excerpt_more', 'rhswp_get_read_more_link' );
@@ -410,8 +416,10 @@ function rhswp_get_read_more_link( $thepermalink ) {
 }
 
 //========================================================================================================
+
 add_action( 'genesis_after_header', 'rhswp_check_caroussel_or_featured_img', 22 );
 add_action( 'genesis_after_header', 'rhswp_dossier_title_checker', 24 );
+
 //========================================================================================================
 // thumbnails even for pages
 add_theme_support( 'post-thumbnails' );
@@ -4282,17 +4290,33 @@ function rhswp_append_socialbuttons( $doecho = true ) {
 
 	global $post;
 
-	if ( is_single() && ( RHSWP_CPT_EVENT === get_post_type() || RHSWP_CPT_DOCUMENT === get_post_type() || 'post' == get_post_type() ) ) {
+	$append_socialbuttons = false;
 
-		$thelink       = urlencode( get_permalink( $post->ID ) );
-		$thetitle      = urlencode( $post->post_title );
-		$sitetitle     = urlencode( get_bloginfo( 'name' ) );
-		$summary       = urlencode( $post->post_excerpt );
+	if ( taxonomy_exists( RHSWP_CT_DOSSIER ) && is_tax( RHSWP_CT_DOSSIER ) ) {
+		$append_socialbuttons = true;
+		$queried_object       = get_queried_object();
+		$thelink              = get_term_link( $queried_object->term_id );
+		$thetitle             = $queried_object->name;
+		$summary              = $queried_object->description;
+
+	} elseif ( is_single() && ( RHSWP_CPT_EVENT === get_post_type() || RHSWP_CPT_DOCUMENT === get_post_type() || 'post' == get_post_type() ) ) {
+		$append_socialbuttons = true;
+		$thelink              = get_permalink( $post->ID );
+		$thetitle             = $post->post_title;
+		$summary              = $post->post_excerpt;
+	}
+
+	if ( $append_socialbuttons ) {
+
 		$popup         = ' onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"';
 		$cta           = _x( 'Share this post', 'share buttons CTA', 'wp-rijkshuisstijl' );
 		$mailadres     = urlencode( 'geaddresseerd@voorbeeld.nl' );
 		$return        = '';
-		$mailonderwerp = urlencode( sprintf( _x( 'Read this: %s', 'share buttons mail onderwerp', 'wp-rijkshuisstijl' ), $post->post_title ) );
+		$mailonderwerp = urlencode( sprintf( _x( 'Read this: %s', 'share buttons mail onderwerp', 'wp-rijkshuisstijl' ), $thetitle ) );
+		$thelink       = urlencode( $thelink );
+		$thetitle      = urlencode( $thetitle );
+		$sitetitle     = urlencode( get_bloginfo( 'name' ) );
+		$summary       = urlencode( $summary );
 
 		if ( $thelink ) {
 			$return = '<div class="share-bar aux-info-bar"><span class="cta">' . $cta . '</span>';
