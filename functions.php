@@ -3951,7 +3951,7 @@ function rhswp_get_documents_for_dossier() {
 			$wp_query = new WP_Query( $args );
 			if ( $wp_query->have_posts() ) {
 
-				$item_count  = $wp_query->post_count;
+				$item_count = $wp_query->post_count;
 //				$columncount = 3;
 				$columncount = 2;
 
@@ -4254,9 +4254,13 @@ function rhswp_get_sublabel( $post_id ) {
 			if ( $categories ) {
 				$return = $categories[0]->name;
 			}
-		} elseif ( 'post' === get_post_type( $post_id ) ) {
-			$return = 'Geen label gevonden';
-		} elseif ( RHSWP_CPT_VERWIJZING === get_post_type( $post_id ) || 'actielijn' === get_post_type( $post_id ) ) {
+		} elseif ( ( 'post' === get_post_type( $post_id ) ) ||
+				   ( 'page' === get_post_type( $post_id ) ) ||
+				   ( RHSWP_CPT_EVENT === get_post_type( $post_id ) ) ||
+				   ( RHSWP_CPT_VERWIJZING === get_post_type( $post_id ) ) ||
+				   ( DOPT__GEBEURTENIS_CPT === get_post_type( $post_id ) ) ||
+				   ( DOPT__ACTIELIJN_CPT === get_post_type( $post_id ) )
+		) {
 			$return = '';
 		} else {
 			$return = get_post_type( $post_id );
