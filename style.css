@@ -11996,21 +11996,6 @@ XXX.dossier-overview nav li:before {
     font-size: 3rem;
   }
 }
-.widget-sidebar-alt,
-.aux-info-bar {
-  max-width: 47.8125rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-@media only screen and (min-width: 1200px) {
-  .widget-sidebar-alt,
-  .aux-info-bar {
-    padding-left: 3rem;
-    padding-right: 2rem;
-  }
-}
 .widget-sidebar-alt .widget,
 .aux-info-bar .widget {
   padding-bottom: 1rem;
@@ -12036,6 +12021,21 @@ XXX.dossier-overview nav li:before {
   margin: 0.5rem 0 1rem 0;
   width: 75px;
   height: 4px;
+}
+.full-width-content .widget-sidebar-alt,
+.full-width-content .aux-info-bar {
+  max-width: 47.8125rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+@media only screen and (min-width: 1200px) {
+  .full-width-content .widget-sidebar-alt,
+  .full-width-content .aux-info-bar {
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
 }
 main .container {
   margin-top: 2rem;
