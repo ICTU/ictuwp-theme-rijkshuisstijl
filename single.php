@@ -4,7 +4,7 @@
 // ----------------------------------------------------------------------------------
 // Toont een bericht
 // ----------------------------------------------------------------------------------
-// 
+//
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @package wp-rijkshuisstijl
@@ -27,7 +27,7 @@ if ( WP_DEBUG_FULL_WIDTH ) {
 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
 	// Ter vervanging van de vervallen widget-ruimte en de 'extra links'-widget daarin
-	add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 16 );
+//	add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 16 );
 
 	// social media share buttons
 	add_action( 'genesis_entry_content', 'rhswp_append_socialbuttons', 14 );
