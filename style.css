@@ -12049,12 +12049,10 @@ main .container > h3 {
 #etalage .imgcontainer {
   -webkit-flex: 1 0 100%;
           flex: 1 0 100%;
-  bordeR: 2px solid red;
 }
 #etalage .imgcontainer {
   -webkit-order: 1;
           order: 1;
-  margin-bottom: 0.5rem;
 }
 #etalage .txtcontainer {
   -webkit-order: 2;

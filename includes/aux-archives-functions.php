@@ -85,7 +85,9 @@ function rhswp_get_grid_item( $args = array() ) {
 	           ( DOPT__GEBEURTENIS_CPT === get_post_type( $args['ID'] ) ) ||
 	           ( DOPT__ACTIELIJN_CPT === get_post_type( $args['ID'] ) )
 	) {
-		$args['type'] = 'posts_plain';
+		if ( 'posts_featured' !== $args['type'] ) {
+			$args['type'] = 'posts_plain';
+		}
 	} else {
 		$args['type'] = 'posts_manual';
 	}
