@@ -7715,7 +7715,6 @@ footer {
 .site-inner {
   color: #000;
   margin-top: 1em;
-  overflow: hidden;
   padding-bottom: 60px;
 }
 .header-dossier {
@@ -11628,41 +11627,50 @@ ul + .borderframe {
 .cyberincident06-voorbereid details summary {
   background-color: #007BC7;
 }
-.in-dossier-context {
-  border: 20px solid red;
+.in-dossier-context .content {
+  background: #fff;
+}
+@media only screen and (min-width: 1200px) {
+  .in-dossier-context .content {
+    -webkit-transform: translateY(-150px);
+            transform: translateY(-150px);
+    padding: 2rem;
+    z-index: 300;
+  }
 }
 .dossier-overview {
-  background: #f3f3f3;
   max-width: 1600px;
-  border: 2px solid red;
   margin-left: auto;
   margin-right: auto;
 }
-.dossier-overview a {
+.dossier-overview img {
+  display: block;
+}
+XXX.dossier-overview a {
   color: #000;
 }
-.dossier-overview a:hover,
-.dossier-overview a:active,
-.dossier-overview a:focus {
+XXX.dossier-overview a:hover,
+XXX.dossier-overview a:active,
+XXX.dossier-overview a:focus {
   color: #000;
   text-decoration: underline;
 }
-.dossier-overview .wrap {
+XXX.dossier-overview .wrap {
   padding-top: 1em;
   padding-bottom: 1em;
 }
 @media only screen and (max-width: 1200px) {
-  .dossier-overview nav,
-  .dossier-overview .entry-title,
-  .dossier-overview .taxonomy-title {
+  XXX.dossier-overview nav,
+  XXX.dossier-overview .entry-title,
+  XXX.dossier-overview .taxonomy-title {
     padding-left: 1em;
   }
 }
-.dossier-overview nav li {
+XXX.dossier-overview nav li {
   padding-left: 1.25em !important;
   position: relative;
 }
-.dossier-overview nav li:before {
+XXX.dossier-overview nav li:before {
   color: #000;
   display: inline-block;
   width: 1.5em;
@@ -11678,7 +11686,7 @@ ul + .borderframe {
   background-repeat: no-repeat;
 }
 @media only screen and (min-width: 650px) {
-  .dossier-overview nav ul {
+  XXX.dossier-overview nav ul {
     width: 95%;
     float: left;
     display: block;
@@ -11688,7 +11696,7 @@ ul + .borderframe {
   }
 }
 @media only screen and (min-width: 1200px) {
-  .dossier-overview nav ul {
+  XXX.dossier-overview nav ul {
     -webkit-column-count: 3;
        -moz-column-count: 3;
             column-count: 3;

@@ -7,16 +7,32 @@
 
 
 .in-dossier-context {
-  border: 20px solid red;
+
+
+  .content {
+//    border: 2px solid red;
+    background: @wit;
+    @media only screen and (min-width: ( @break_1200px ) ) {
+      transform: translateY(-150px);
+      padding: 2rem;
+      z-index: 300;
+    }
+  }
 }
 
 .dossier-overview {
 
-  background: @grijs_1;
   max-width: 1600px;
-  border: 2px solid red;
   margin-left: auto;
   margin-right: auto;
+
+  img {
+    display: block;
+  }
+
+}
+
+XXX.dossier-overview {
 
   a {
     color: @txt;
