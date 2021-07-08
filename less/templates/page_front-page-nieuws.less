@@ -18,24 +18,6 @@ main .container {
   }
 }
 
-#etalage {
-  display: flex;
-  flex-direction: column;
-
-  .txtcontainer,
-  .imgcontainer {
-    flex: 1 0 100%;
-  }
-
-  .imgcontainer {
-    order: 1;
-  }
-
-  .txtcontainer {
-    order: 2;
-  }
-}
-
 @media only screen and (max-width: 350px ) {
   #etalage {
     background: @wit;
@@ -47,7 +29,6 @@ main .container {
     }
     a {
       h2, & {
-        color: @a_color_default;
       }
     }
     .label {

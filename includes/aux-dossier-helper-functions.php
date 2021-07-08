@@ -142,11 +142,11 @@ function rhswp_dossier_title_checker() {
 			$standaardpaginanaam = $term->name;
 		}
 	} else {
-		// het is iets heeeeeeel anders
+		// het is iets heeeeeeel anders		
 
 		if ( is_singular( 'page' ) || ( is_singular( 'post' ) && ( isset( $wp_query->query_vars['category_name'] ) ) && ( get_query_var( RHSWP_CT_DOSSIER ) ) ) ) {
 
-			// dus:
+			// dus: 
 			// of: het is een pagina maar we kunnen niks uit de queryvar halen
 			// of: het is een single bericht en we kunnen iets uit category_name EN iets met de queryvar voor het dossier
 			// get the dossier for pages OR for posts for which a context was provided
@@ -221,26 +221,37 @@ function rhswp_dossier_title_checker() {
 		if ( $dossier_overzichtpagina ) {
 			// de overzichtspagina is bekend
 
+			// check of we deze pagina wel of niet nu al moeten tonen
+			$tonen = get_field( 'toon_overzichtspagina_in_het_menu', $term );
+
 			$parentID = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
 
-			// we mogen de inhoudspagina tonen
-			$shownalready                    = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
-			$parentID                        = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
-			$args['dossier_overzichtpagina'] = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
+			if ( $tonen !== 'nee' ) {
+				// niet leeg of gelijk aan ja
+				// we mogen de inhoudspagina tonen
 
-			if ( is_tax( RHSWP_CT_DOSSIER ) ) {
-				$args['currentpageid'] = $term->term_id;
+				$shownalready                    = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
+				$parentID                        = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
+				$args['dossier_overzichtpagina'] = is_object( $dossier_overzichtpagina ) ? $dossier_overzichtpagina->ID : 0;
+
+				if ( is_tax( RHSWP_CT_DOSSIER ) ) {
+					$args['currentpageid'] = $term->term_id;
+				}
+
+				$alttitel = get_field( 'dossier_overzichtpagina_alt_titel', $term );
+				if ( 'Inhoud' !== $alttitel ) {
+					$args['preferedtitle'] = sanitize_text_field( $alttitel );
+				} else {
+					$args['preferedtitle'] = _x( 'Inhoud', 'Standaardlabel voor het 2de item in het dossiermenu', 'wp-rijkshuisstijl' );
+				}
+
+				$subpaginas .= rhswp_dossier_get_pagelink( $dossier_overzichtpagina, $args );
+
 			}
-
-			$alttitel = get_field( 'dossier_overzichtpagina_alt_titel', $term );
-			if ( 'Inhoud' !== $alttitel ) {
-				$args['preferedtitle'] = sanitize_text_field( $alttitel );
-			} else {
+			else {
+				// leeg of 'nee'
 				$args['preferedtitle'] = _x( 'Inhoud', 'Standaardlabel voor het 2de item in het dossiermenu', 'wp-rijkshuisstijl' );
 			}
-
-			$subpaginas .= rhswp_dossier_get_pagelink( $dossier_overzichtpagina, $args );
-
 		}
 
 		// reset the page title
@@ -254,7 +265,7 @@ function rhswp_dossier_title_checker() {
 			$dossierinhoudpagina = '<li class="selected case01"><span>' . $spancurrentpage_start . _x( 'Overzicht', 'Standaardlabel voor het menu in de dossiers', 'wp-rijkshuisstijl' ) . '</span></li>';
 
 		} else {
-			// dit is een andere pagina,
+			// dit is een andere pagina, 
 			$args['currentpageid'] = get_the_id();
 
 			$dossierinhoudpagina = '<li><a href="' . get_term_link( $term ) . '">' . _x( 'Overzicht', 'Standaardlabel voor het menu in de dossiers', 'wp-rijkshuisstijl' ) . '</a></li>';
@@ -386,7 +397,7 @@ function rhswp_dossier_title_checker() {
 			$titel     = sprintf( __( '%s for topic %s.', 'wp-rijkshuisstijl' ), $berichten, $term->name );
 			$threshold = get_field( 'dossier_post_overview_categor_threshold', 'option' );
 
-			// zijn er meer dan [$threshold] berichten in dit dossier? Dan checken of we aparte categorieen moeten tonen
+			// zijn er meer dan XX berichten in dit dossier? Dan checken of we aparte categorieen moeten tonen
 			if ( intval( $wp_queryposts->post_count ) >= intval( $threshold ) ) {
 
 				$categories = get_field( 'dossier_post_overview_categories', 'option' );
@@ -491,7 +502,6 @@ function rhswp_dossier_title_checker() {
 		$wp_queryposts = new WP_Query( $args );
 
 		if ( $wp_queryposts->post_count > 0 ) {
-			// er zijn documenten gevonden voor dit dossier
 
 			$berichten = sprintf( _n( '%s document', '%s documents', $wp_queryposts->post_count, 'wp-rijkshuisstijl' ), $wp_queryposts->post_count );
 			$titel     = sprintf( __( '%s for topic %s.', 'wp-rijkshuisstijl' ), $berichten, $term->name );
@@ -500,7 +510,6 @@ function rhswp_dossier_title_checker() {
 			$indicator  = '';
 
 			if ( trailingslashit( $current_url ) === trailingslashit( get_term_link( $term->term_id, RHSWP_CT_DOSSIER ) . RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW ) ) {
-				// de gebruiker heeft om het overzicht van documenten voor dit dossier gevraagd
 				$isselected = ' class="selected case05"';
 				$indicator  = $spancurrentpage_start;
 			}
@@ -601,12 +610,12 @@ function rhswp_dossier_get_pagelink( $theobject, $args ) {
 			//dodebug_do('rhswp_dossier_get_pagelink: ELSE PAGE set \$pagerequestedbyuser: to get_the_id() / pagerequestedbyuser=' . $pagerequestedbyuser . ' / slug=' . $slug );
 		} else {
 			$pagerequestedbyuser = get_the_id();
-			//dodebug_do('rhswp_dossier_get_pagelink: ELSE set \$pagerequestedbyuser: to get_the_id()' );
+			//dodebug_do('rhswp_dossier_get_pagelink: ELSE set \$pagerequestedbyuser: to get_the_id()' );  
 		}
 
 	}
 
-	// use alternative title?
+	// use alternative title? 
 	if ( isset( $args['preferedtitle'] ) && $args['preferedtitle'] ) {
 		$maxposttitle = $args['preferedtitle'];
 	} else {
@@ -753,7 +762,7 @@ function rhswp_dossier_get_pagelink( $theobject, $args ) {
 	// haal de ancestors op voor de huidige pagina
 	$ancestors = get_post_ancestors( $pagerequestedbyuser );
 
-	// check of the parent niet al ergens in het menu voorkomt
+	// check of the parent niet al ergens in het menu voorkomt  
 	$postparent = wp_get_post_parent_id( $pagerequestedbyuser );
 
 	$komtvoorinderestvanmenu_en_isnietdehuidigepagina = false;

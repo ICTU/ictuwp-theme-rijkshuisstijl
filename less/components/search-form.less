@@ -86,8 +86,13 @@
 
 
 main .search-form {
-  padding: 1em 0;
+  padding: 1em;
   background: @grijs;
+
+  input[type="search"] {
+    border-bottom: 2px solid @communicatiekleur_vol;
+    padding-left: 5px;
+  }
 
   button,
   input[type="submit"] {
@@ -103,17 +108,10 @@ main .search-form {
       .mixin_iconaddfill('../images/svg/looking-glass.svg', @txt);
     }
   }
-
-  input[type="search"],
-  input[itemprop="query-input"] {
-    border: 2px solid @grijs_5;
-  }
-
 }
 
-.widget_search .search-form {
-  padding: 0;
-  background: none;
+main .no-results-widget.widget_search {
+  max-width: @break_650px;
 }
 
 
@@ -186,4 +184,3 @@ main .search-form {
     }
   }
 }
-

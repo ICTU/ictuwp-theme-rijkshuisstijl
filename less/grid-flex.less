@@ -1,0 +1,176 @@
+//**
+// * Rijkshuisstijl (Digitale Overheid) - grid-flex.less
+// * ----------------------------------------------------------------------------------
+// * Styling voor elementen in flex of grid blokken
+// * ----------------------------------------------------------------------------------
+// * @author  Paul van Buuren
+// * @license GPL-2.0+
+// * @package wp-rijkshuisstijl
+// * @version 2.24.2
+// * @desc.   Reactieformulier verlost van block elements in een <a> en verdere styling.
+// * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
+// **
+
+
+//=========================================================================================================
+
+.grid {
+  display: grid;
+}
+
+
+.flex {
+  display: flex;
+  padding: .5rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.flex__block {
+  flex: 1 0 100%;
+}
+
+//=========================================================================================================
+
+#reactie_verwijzingen {
+  background: @grijs_2;
+
+  h2 {
+    margin: 0;
+  }
+
+  &.contact-pagina {
+    padding: 1rem;
+    margin: 2rem auto;
+  }
+
+  .flex {
+    padding: 0;
+  }
+
+  #verwijzing-digid,
+  #verwijzing-eherkenning,
+  #verwijzing-mijnoverheid,
+  #verwijzing-berichtenbox-bedrijven {
+    a {
+      background-image: url('images/logos/logo-digid.png');
+      background-color: @wit;
+      padding-left: .5rem;
+      padding-top: 60px;
+      padding-right: .5rem;
+      padding-bottom: 1rem;
+      background-size: 100px 60px;
+      background-repeat: no-repeat;
+      background-position: center top;
+    }
+  }
+
+  #verwijzing-mijnoverheid a {
+    background-image: url('images/logos/logo-mijnoverheid-berichtenbox.png');
+  }
+
+  #verwijzing-eherkenning a {
+    background-image: url('images/logos/logo-eherkenning.png');
+  }
+
+  #verwijzing-eherkenning a {
+    background-image: url('images/logos/logo-eherkenning.png');
+  }
+
+  #verwijzing-berichtenbox-bedrijven a {
+    background-image: url('images/logos/logo-mijnoverheid-berichtenbox-bedrijven.png');
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    line-height: 1.4;
+    text-align: center;
+
+    h3, h4 {
+      color: @txt;
+    }
+
+    *, & {
+      text-decoration: none;
+    }
+
+    .url {
+      text-decoration: underline;
+    }
+
+    .title {
+      font-family: @fontstrong;
+      color: @txt;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: 2px dotted @a_color_default;
+
+      h3, h4 {
+        color: @txt;
+        text-decoration: underline;
+      }
+    }
+
+  }
+
+  @media only screen and (max-width: ( @break_650px ) ) {
+    .flex__block + .flex__block {
+      margin-top: 1rem;
+    }
+  }
+
+
+  @media only screen and (min-width: ( @break_650px ) ) {
+    .flex {
+      flex-direction: row;
+      margin-left: -1rem;
+      margin-right: -1rem;
+      padding: .5rem .5rem 0 .5rem;
+
+      .flex__block {
+        flex-basis: ( 100% / 3 );
+      }
+
+      &.cols4 {
+        .flex__block {
+          flex-basis: calc(25% - 1rem);
+        }
+      }
+    }
+
+    .flex__block {
+      padding: .5rem;
+      padding-bottom: 0;
+    }
+
+    #verwijzing-digid,
+    #verwijzing-eherkenning,
+    #verwijzing-berichtenbox-bedrijven,
+    #verwijzing-mijnoverheid {
+      a {
+        padding-top: 150px;
+        background-size: contain;
+      }
+    }
+
+    a {
+
+      h3, h4, .url {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 1.5rem;
+      }
+
+      .url {
+        word-break: break-word;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

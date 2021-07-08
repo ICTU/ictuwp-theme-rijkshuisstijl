@@ -22,15 +22,9 @@ Dit theme functioneert niet zonder:
 * eh
 
 ## Current version:
-2.28.1 - Contentblok voor berichten in een net grid.
+2.25.1 - CSS-validatie en div. kleine accessibility correcties.
 
 ## Version history
-* 2.28.1 - Contentblok voor berichten in een net grid.
-* 2.27.2 - Styling voor los evenement aangepast.
-* 2.26.5 - CSS bugfix voor: onderwerppagina.
-* 2.26.4 - Bugfixes CSS: captions, citaten.
-* 2.26.3 - .current-page-ancestor, font-grootte voor pagina, uitlijning titel onderwerppagina.
-* 2.26.2 - Styling citaten en uitklapblokken.
 * 2.25.1 - CSS-validatie en div. kleine accessibility correcties.
 * 2.24.2 - Reactieformulier verlost van block elements in een <a> en verdere styling.
 * 2.24.1 - Styling voor nieuw soort reactieformulier.

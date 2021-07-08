@@ -36,23 +36,20 @@ $site_show_rijkshuisstijlruimelpadmenu = true;
 $site_hide_genesis_breadcrumb          = false;
 $site_show_searchform                  = true;
 
-if ( function_exists( 'get_field' ) ) {
 
-	if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
-		$site_show_searchform = false;
+if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
+	$site_show_searchform = false;
+}
+
+if ( 'toon_menu' === get_field( 'siteoption_kruimelpadmenu', 'option' ) ) {
+	// - in plaats van een kruimelpad tonen we het menu
+	$site_show_rijkshuisstijlruimelpadmenu = false;
+
+	// kijken of we onder het menu wel of geen kruimelpad willen tonen?
+	if ( 'hide_breadcrumb' === get_field( 'siteoption_kruimelpadmenu_hide_breadcrumb', 'option' ) ) {
+		// nee, we willen geen kruimelpad tonen
+		$site_hide_genesis_breadcrumb = true;
 	}
-
-	if ( 'toon_menu' === get_field( 'siteoption_kruimelpadmenu', 'option' ) ) {
-		// - in plaats van een kruimelpad tonen we het menu
-		$site_show_rijkshuisstijlruimelpadmenu = false;
-
-		// kijken of we onder het menu wel of geen kruimelpad willen tonen?
-		if ( 'hide_breadcrumb' === get_field( 'siteoption_kruimelpadmenu_hide_breadcrumb', 'option' ) ) {
-			// nee, we willen geen kruimelpad tonen
-			$site_hide_genesis_breadcrumb = true;
-		}
-	}
-
 }
 
 // Reposition the breadcrumbs
@@ -112,18 +109,11 @@ function rhswp_header_navigation() {
 	global $site_show_searchform;
 
 
-	$title                     = rhswp_clean_site_title( get_bloginfo( 'name' ) );
-	$idmenu                    = 'menu_container';
-	$idsearch                  = 'search_container';
-	$anchorstart               = '<a href="' . get_bloginfo( 'url' ) . '">';
-	$anchorend                 = '</a>';
-	$siteoption_kruimelpadmenu = '';
-	$siteoption_hide_searchbox = '';
-
-	if ( function_exists( 'get_field' ) ) {
-		$siteoption_kruimelpadmenu = get_field( 'siteoption_kruimelpadmenu', 'option' );
-		$siteoption_hide_searchbox = get_field( 'siteoption_hide_searchbox', 'option' );
-	}
+	$title       = rhswp_clean_site_title( get_bloginfo( 'name' ) );
+	$idmenu      = 'menu_container';
+	$idsearch    = 'search_container';
+	$anchorstart = '<a href="' . get_bloginfo( 'url' ) . '">';
+	$anchorend   = '</a>';
 
 	if ( is_front_page() ) {
 		$anchorstart = '';
@@ -131,7 +121,7 @@ function rhswp_header_navigation() {
 	}
 
 
-	if ( is_front_page() || ( 'toon_menu' === $siteoption_kruimelpadmenu ) ) {
+	if ( is_front_page() || ( 'toon_menu' === get_field( 'siteoption_kruimelpadmenu', 'option' ) ) ) {
 		// - in plaats van een kruimelpad tonen we het menu
 		$site_show_rijkshuisstijlruimelpadmenu = false;
 
@@ -159,7 +149,7 @@ function rhswp_header_navigation() {
 
 			$search = get_search_form( $args );
 
-			if ( 'hide' === $siteoption_hide_searchbox ) {
+			if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
 				// zoekdoos hoeft nergens getoond te worden
 				$search = '';
 			}
@@ -200,11 +190,8 @@ add_filter( 'genesis_seo_title', 'rhswp_filter_site_title' );
 // filtering long strings and hide site title visually if necessary
 function rhswp_filter_site_title( $title = '' ) {
 
-	$title      = rhswp_clean_site_title( get_bloginfo( 'name' ) );
-	$showpayoff = true;
-	if ( function_exists( 'get_field' ) ) {
-		$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
-	}
+	$title       = rhswp_clean_site_title( get_bloginfo( 'name' ) );
+	$showpayoff  = get_field( 'siteoption_show_payoff_in_header', 'option' );
 	$anchorstart = '<a href="' . get_bloginfo( 'url' ) . '">';
 	$anchorend   = '</a>';
 	$titletag    = 'p';
@@ -266,16 +253,10 @@ function rhswp_clean_site_title( $title = '' ) {
 
 function rhswp_append_search_box_to_menu( $menu, $args ) {
 
-	if ( function_exists( 'get_field' ) ) {
-		if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
-			// zoekdoos hoeft nergens getoond te worden
-			return $menu;
-		}
-	}
-	else {
+	if ( 'hide' === get_field( 'siteoption_hide_searchbox', 'option' ) ) {
+		// zoekdoos hoeft nergens getoond te worden
 		return $menu;
 	}
-
 
 	if ( is_search() ) {
 		// geen extra zoekdoos op zoekresultaatpagina

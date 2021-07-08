@@ -35,7 +35,7 @@ body {
   background-color: @wit;
   background-repeat: no-repeat;
   background-position: center top;
-  .mixin_10_basefont();
+  .10_basefont();
   margin: 0;
   padding: 0
 }
@@ -54,7 +54,7 @@ footer {
 /* Text styles, shared with admin CSS
 --------------------------------------------- */
 
-.mixin_10_textstyles();
+.10_textstyles();
 
 
 /* Objects
@@ -215,7 +215,7 @@ Content Area
 }
 .entry-content {
 	// @since 2.12.16
-//	overflow: auto;
+	overflow: auto;
 }
 
 
@@ -348,11 +348,11 @@ Content Area
 
 .em-pagination,
 .archive-pagination {
-
+	
 	border-top: 4px solid @donkerblauw_vol;
 	margin-top: 1em;
 	color: @donkerblauw_vol;
-
+	
 	ul, ol {
 		padding: 0;
 //		margin-left: 1em;
@@ -365,15 +365,15 @@ Content Area
 			float: left;
 		}
 	}
-
+	
 	.alignright {
 		margin-right: 0;
 	}
-
+	
 	ul li, ol li, div {
 		display: inline;
 		margin-right: .25em;
-
+		
 		a {
 			cursor: pointer;
 			display: inline-block;
@@ -388,7 +388,7 @@ Content Area
 				text-decoration: underline;
 			}
 		}
-
+		
 		&.active {
 			a {
 				background: @donkerblauw_vol;
@@ -398,7 +398,7 @@ Content Area
 			}
 		}
 	}
-
+	
 	.pagination-previous,
 	.pagination-next {
 		a {
@@ -418,7 +418,7 @@ Content Area
 			content: ' >';
 		}
 	}
-
+	
 }
 
 .single .archive-pagination {
@@ -596,10 +596,10 @@ input[type="text"] {
 		height: auto;
 	}
     img.alignleft {
-		margin-right: 1.5rem;
+		margin-right: 1.5rem;	    
     }
     img.alignright {
-		margin-left: 1.5rem;
+		margin-left: 1.5rem;	    
     }
 }
 
@@ -889,8 +889,9 @@ Media Queries
 
 .structure();
 
-.mixin_70_pagetypes();
+.70_pagetypes();
 
+.socialmedia_styling();
 
 .80_print();
 
@@ -1041,6 +1042,14 @@ nav.nav-primary .menu-item.js-menu-open > ul.sub-menu {
 .subst_newsletter();
 
 
+// 
+.passed-enddate {
+	background: @txt;
+	color: @wit;
+	display: inline-block;
+	padding: .25rem .5rem;
+	margin-right: .5rem;
+}
 
 
 /*
@@ -1048,7 +1057,7 @@ CSS voor gravity forms, met name vanwege flitspanel, en hun aanmeldwidget
 ---------------------------------------------------------------------------------------------------- */
 .textwidget .gform_wrapper {
 	 .top_label {
-		input.medium,
+		input.medium, 
 		select.medium {
 			width: 100%;
 		}
@@ -1084,18 +1093,11 @@ CSS voor gravity forms, met name vanwege flitspanel, en hun aanmeldwidget
 @import "components/related-content.less";
 @import "components/blockquote.less";
 @import "components/details-summary.less";
-@import "components/meta.less";
-@import "components/dossier-labels.less";
-@import "components/borderframe.less";
-@import "components/dossier-overview.less";
-
-
 
 // templates
 @import "templates/single-post.less";
 @import "templates/page_front-page-nieuws.less";
 @import "templates/page_showalldossiers-nieuwestyling.less";
-@import "templates/search-results.less";
 
 // plugins
 @import "plugins/events-manager.less";

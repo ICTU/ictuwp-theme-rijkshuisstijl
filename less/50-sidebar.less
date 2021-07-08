@@ -18,7 +18,7 @@
 
 
 .sidebar_css() {
-
+	
 
 	// animatie voor banner
 	@keyframes bzzzzzt {
@@ -31,11 +31,49 @@
 	    96% { transform: rotate(3deg); }
 	    98% { transform: rotate(-3deg); }
 	    100% { transform: scale(1.02, 0.98); }
+	}	
+	
+
+
+	.widget {
+		
+		ul, li {
+			padding-left: 0;
+			margin-left: 0;
+			list-style: none;
+		}		
+		li {
+			margin-top: .2em;
+			margin-bottom: .5em;
+			
+			a {
+				text-decoration: none;
+				&:hover,
+				&:active,
+				&:focus {
+					text-decoration: underline;
+				}
+			}
+		}
+		
+		ul ul {
+			margin-top: .5em;
+			margin-left: 1em;
+			li {
+				margin-top: 0;
+			}
+		}	
+		h2,
+		h2,
+		h4,
+		h5,
+		h6 {
+			font-size: 99%;
+			color: @txt;
+			margin-top: .3em;  		
+			margin-bottom: .1em;  		
+		}
 	}
-
-
-
-
 
 
 	  // event manager widget
@@ -61,70 +99,70 @@
 			margin-top: 1em;
 			border-top: 3px solid @block_border_color;
 		}
-
+		
 		.widget + .widget {
 			margin-top: 2em;
 		}
-
+		
 		.widget.banner {
 			border-top-style: none;
 			max-width: 400px;
-
+			
 			.widget-wrap {
 				overflow: hidden;
 				text-align: left;
-
+				
 				&:hover {
 					border-color: @grijs_4 !important;
 				}
-
+				
 				&.plaatje-link-notitel {
 					border: 3px solid @grijs_1;
-
+					
 					.widgettitle,
 					.text {
 						.visuallyhidden();
 					}
 				}
-
+				
 				&.standaard {
 					border: 3px solid @grijs_1;
-
+					
 					h2, h3 {
 						color: @donkerblauw_vol;
 					}
-
+					
 					a {
 						text-decoration: none;
-
+						
 						h2, h3 {
 							color: @donkerblauw_vol !important;
 						}
-
+						
 						&, &:visited {
 							h2, h3 {
 								color: @donkerblauw_vol !important;
 							}
 						}
-
+						
 						&:hover,
 						&:active,
 						&:focus {
 							color: @donkerblauw_vol;
 							text-decoration: underline;
-
+														
 							h2, h3 {
 								color: @donkerblauw_vol !important;
 							}
 						}
 					}
 				}
-
+				
 				&.do-groen {
 					border: 3px solid @communicatiekleur_vol;
 					color: @wit;
 					background: @communicatiekleur_vol;
-
+					
 					a {
 						background: @communicatiekleur_vol;
 						display: block;
@@ -133,7 +171,7 @@
 							text-decoration: underline;
 						}
 					}
-
+					
 					a:hover,
 					a:active,
 					a:focus {
@@ -142,52 +180,52 @@
 						background: @wit;
 					}
 				}
-
+				
 				&.do-groen-light {
 					border: 3px solid @communicatiekleur_licht;
 					color: @txt;
 					background: @communicatiekleur_lichtst;
-
+					
 					a {
 						background: @communicatiekleur_lichtst;
 						display: block;
 					}
-
+					
 					a:hover,
 					a:active,
 					a:focus {
 						background: @wit;
 					}
 				}
-
+				
 				&.text-over-plaatje {
 					border: 3px solid @grijs_3;
 					background: @communicatiekleur_licht;
 					color: @txt;
 					position: relative;
-
+					
 					img {
 						width: 100%;
 						height: auto;
 					}
-
+					
 					a {
 						display: block;
 					}
-
+					
 					.text {
 //						.semitransbackground();
 
 						background-color: @txt;
 						background-color: rgba(256,256,256,.9);
-						background: linear-gradient(180deg, rgba(255,255,255,0) 6%, rgba(2,0,36,0.7) 29%);
+						background: linear-gradient(180deg, rgba(255,255,255,0) 6%, rgba(2,0,36,0.7) 29%);							
 
 						position: absolute;
 						left: 0;
 						right: 0;
 						bottom: 0;
 						padding: 1em .5em .25em .5em;
-
+						
 						h2, h3, a, & {
 							color: @wit;
 						}
@@ -207,15 +245,15 @@
 							filter: grayscale(100%);
 							filter: gray;
 						}
-
+						
 						.text {
 							background-color: @txt;
 							background-color: rgba(256,256,256,.9);
-							background: linear-gradient(180deg, rgba(255,255,255,0) 6%, rgba(0,0,0,0.7) 29%);
+							background: linear-gradient(180deg, rgba(255,255,255,0) 6%, rgba(0,0,0,0.7) 29%);							
 						}
 					}
 				}
-
+				
 				&.text-align-right {
 					text-align: right;
 				}
@@ -228,7 +266,7 @@
 					margin-bottom: 0;
 					display: table-cell;
 				}
-
+				
 				h2, h3 {
 					margin-top: 0;
 				}
@@ -242,18 +280,18 @@
 					width: 100%;
 					height: auto;
 				}
-
+				
 				ul, ol {
 					margin: 0 0 0 .5em;
 				}
-
+				
 				a {
 					color: inherit;
 
 					.text {
 						text-decoration: none;
 					}
-
+					
 					&:hover,
 					&:active,
 					&:focus {
@@ -262,10 +300,10 @@
 						}
 					}
 
-
-				}
+					
+				} 
 			}
-
+			
 			.widgettitle {
 				margin-bottom: 0;
 			}
@@ -274,12 +312,12 @@
 
 	.sidebar {
 		overflow: hidden;
-
+		
 		h2 {
 			.visuallyhidden();
 		}
 	}
-
+	
 	.banner-widget-area {
 		margin: 1rem 0;
 		h2 {
@@ -290,14 +328,14 @@
 	.page-link-widget.widget {
 		background: @grijs_1;
 	}
-
+	
 	.widget_subpages  {
 		.widget_subpages_current_page {
 			font-weight: bold;
 			font-family: @fontstrong;
 		}
 	}
-
+	
 	.news-widget {
 		h4 a {
 			&, &:visited {
@@ -309,12 +347,12 @@
 		}
 		p {
 			margin-bottom: 0;
-		}
+		}    
 		.flex-block + .flex-block {
 			margin-top: 3em;
-		}
+		}    
 	}
-
+	
 	.event-widget {
 		section + section {
 			margin-top: 1em;
@@ -325,57 +363,57 @@
 			color: @txt;
 			text-decoration: none;
 			display: block;
-			overflow: hidden;
-
+			overflow: hidden; 
+			
 			&:hover,
 			&:focus,
 			&:active {
 				text-decoration: none;
-
+				
 				h4 {
 					text-decoration: underline;
 				}
 			}
-
+			
 			h4 {
 				color: @a_color_default;
 			}
 		}
-
+		
 		.tijdenplaats {
 			overflow: hidden;
 			margin-bottom: .3em;
 			font-size: 85%;
-
+			
 			.date-badge {
 				display: inline-block;
 				padding-right: .75em;
 			}
 		}
-
+		
 		.excerpt {
 			clear: both;
 			float: none;
 		}
 	}
-
+	
 	.page-link-widget {
 		border: 3px solid @block_border_color;
 		padding: @padding;
-
+		
 		.read-more {
 			margin-bottom: 0;
-		}
-
+		}  	
+		
 		h2, h3 {
 			font-family: @headerfont;
 			.font-size( @fontsize_title_h3 );
 			text-transform: none;
 			margin-top: 0;
-
+			
 			a {
 				text-decoration: none;
-
+				
 				&:hover,
 				&:active,
 				&:focus {
@@ -384,11 +422,11 @@
 			}
 		}
 	}
-
-
+	
+	
 	.cta-widget {
 		background-color: @geel_vol;
-
+		
 		.widgettitle {
 			margin-top: 0;
 		}
@@ -397,7 +435,7 @@
 		}
 		.text {
 			min-height: 68px;
-
+			
 			&:before {
 				content: ' ';
 				display: inline-block;
@@ -409,20 +447,20 @@
 				background-position: top left;
 				background-size: contain;
 				animation: bzzzzzt 3s infinite;
-
+				
 			}
 		}
-
+		
 		margin-bottom: 1rem !important;
 		border-top-style: none !important;
-
+		
 		p {
 			margin: 0;
 		}
 		a.cta, a.download {
 			margin: 1rem 0 0 0;
 		}
-
+		
 	}
 
 	/* Tone down the animation to avoid vestibular motion triggers like scaling or panning large objects. */
@@ -432,30 +470,28 @@
 				&:before {
 				    animation-name: dissolve;
 				}
-			}
-		}
-	}
-
-
+			}	
+		}	
+	}	
+	
+	
 	.home-widget-area {
 		&.widget_custom_html,
-		&.widget_rhswp_navigationmenu_widget,
+		&.widget_rhswp_navigationmenu_widget, 
 		&.widget_nav_menu {
 			li {
 				padding-left: 1em;
-				.listitem_arrow_absolute( @a_color_default, 10px, 8px ); // done
+				.listitem_arrow( @a_color_default, 10px, 8px ); // done
 				display: block;
 			}
 		}
 	}
-
+	
 }
 
 //========================================================================================================
-.toolboxwidgets() {
-}
 
-.xxx_toolboxwidgets() {
+.toolboxwidgets() {
 
 	.toolbox01-kwaliteit-van-data-algoritme-en-analyse,
 	.toolbox02-belanghebbenden-betrekken,

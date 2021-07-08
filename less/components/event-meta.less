@@ -5,35 +5,22 @@
 // * ----------------------------------------------------------------------------------
 //
 
-.entry-content .event-meta {
-  li {
-    margin-left: 0;
-  }
-}
 
-.widget_em_widget ul > li > ul {
-  margin: 0 0 1rem 0;
-}
-
-.widget_em_widget ul ul,
 .event-meta {
 
   padding-left: 0;
   margin-left: 0;
 
-  li:empty {
-    display: none;
-  }
-
   &, li {
     list-style: none !important;
   }
+
 
   li {
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 1.5rem;
-    padding-right: .5rem;
+
     background-image: url('@{base_url}images/rhs-icons/1007-locatie-marker.svg');
     background-repeat: no-repeat;
     background-position: left center;
@@ -46,66 +33,27 @@
     &.event-date {
       background-image: url('@{base_url}images/rhs-icons/2001-kalender.svg');
     }
-
     &.event-time {
       background-image: url('@{base_url}images/rhs-icons/2010-klok.svg');
     }
-
     &.event-town {
       background-image: url('@{base_url}images/rhs-icons/1007-locatie-marker.svg');
     }
-
     &.event-online {
       background-image: url('@{base_url}images/rhs-icons/2050-videovergaderen.svg');
-    }
-
-    &.started-not-ended {
-      background-image: none;
-      padding-left: 0;
-      font-style: italic;
     }
 
     & + li {
       margin-top: .5em;
     }
 
-    //
-    &.passed-enddate {
-      background-image: url('@{base_url}images/rhs-icons/3915-waarschuwing.svg');
-//      background-color: @communicatiekleur_vol;
-//      color: @wit;
-    }
-
-
-    &:empty {
-      display: none;
-    }
-
   }
-
-
-}
-
-.single.full-width-content .entry-content .event-meta {
-  @media only screen and (min-width: ( @break_1200px ) ) {
-    padding-left: 3rem;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    li {
-      flex: 0 0 auto;
-      margin: .25rem 1.5rem .25rem 0;
-    }
-  }
-
 }
 
 ul.events-table {
 
   li {
-    //			.listitem_arrow_absolute( @a_color_default, 10px, 9px ); // done
+    //			.listitem_arrow( @a_color_default, 10px, 9px ); // done
     padding-left: 1.5rem;
     margin-left: 0;
 

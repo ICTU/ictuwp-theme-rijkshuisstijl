@@ -50,9 +50,6 @@ if ( rhswp_extra_contentblokken_checker() ) {
 
 }
 
-// social media share buttons
-add_action( 'genesis_after_loop', 'rhswp_append_socialbuttons', 14 );
-
 //========================================================================================================
 
 genesis();
@@ -77,5 +74,5 @@ function rhswp_write_contentblok_waarschuwing() {
 
 		}
 	}
-}
+}    
 

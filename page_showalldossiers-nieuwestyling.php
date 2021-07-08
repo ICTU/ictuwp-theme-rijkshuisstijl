@@ -77,13 +77,14 @@ function rhswp_show_dossiers_sort_markering() {
 //========================================================================================================
 
 function rhswp_show_dossiers_by_alphabet() {
-	global $post;
+
+	$taxonomy_name     = RHSWP_CT_DOSSIER;
 	$args              = array(
-		'taxonomy'     => RHSWP_CT_DOSSIER,
+		'taxonomy'           => RHSWP_CT_DOSSIER,
 //		'parent'             => 0,
-		'echo'         => 0,
-		'hierarchical' => false,
-		'title_li'     => '',
+		'echo'               => 0,
+		'hierarchical'       => false,
+		'title_li'           => '',
 	);
 	$hiddenonderwerpen = get_field( 'dossier_overzicht_hide_dossiers', $post->ID );
 	if ( $hiddenonderwerpen ) {
@@ -116,36 +117,21 @@ function rhswp_show_dossiers_by_alphabet() {
 		echo '<div class="dossier-list column-layout">';
 		foreach ( $terms as $term ) {
 			$huidigeletter = substr( strtolower( $term->name ), 0, 1 );
-			$termlink      = rhswp_get_pagelink_for_dossier( $term );
-			if ( $termlink ) {
-				// alleen dossiers met een geldige pagina tonen
-				if ( $huidigeletter !== $letter ) {
-					echo $tag . '<h2 id="list_' . strtolower( $huidigeletter ) . '">' . strtoupper( $huidigeletter ) . '</h2>';
-					echo '<ul>';
-					$letter = $huidigeletter;
-					$tag    = "</ul>\n\n\n";
-				}
-				echo '<li class="cat-item cat-item-' . $term->term_id . '">';
-				echo '<a href="' . rhswp_get_pagelink_for_dossier( $term ) . '">';
-				echo $term->name;
-				echo '</a>';
-				echo '</li>';
+			if ( $huidigeletter !== $letter ) {
+				echo $tag . '<h2 id="list_' . strtolower( $huidigeletter ) . '">' . strtoupper( $huidigeletter ) . '</h2>';
+				echo '<ul>';
+				$letter = $huidigeletter;
+				$tag    = "</ul>\n\n\n";
 			}
+			echo '<li class="cat-item cat-item-' . $term->term_id . '">';
+			echo '<a href="' . get_term_link( $term, $taxonomy_name ) . '">';
+			echo $term->name;
+			echo '</a>';
+			echo '</li>';
 		}
 		echo $tag;
 		echo '</div>'; // .dossier-list column-layout
 	}
-}
-
-//========================================================================================================
-
-function rhswp_get_pagelink_for_dossier( $term ) {
-	$return                  = '';
-	$dossier_overzichtpagina = get_field( 'dossier_overzichtpagina', $term );
-	if ( $dossier_overzichtpagina ) {
-		$return = get_the_permalink( $dossier_overzichtpagina->ID );
-	}
-	return $return;
 }
 
 //========================================================================================================
@@ -193,53 +179,48 @@ function rhswp_show_dossiers_by_group() {
 
 			$term_id       = $term->term_id;
 			$taxonomy_name = RHSWP_CT_DOSSIER;
-			$termlink      = rhswp_get_pagelink_for_dossier( $term );
-			if ( $termlink ) {
-				// alleen dossiers met een geldige pagina tonen
+			$termchildren  = get_term_children( $term_id, $taxonomy_name );
+			$permalink     = get_term_link( $term->term_id, RHSWP_CT_DOSSIER );
+			$title         = $term->name;
+			$headline      = get_term_meta( $term->term_id, 'headline', true );
 
-				$termchildren = get_term_children( $term_id, $taxonomy_name );
-				$permalink    = get_term_link( $term->term_id, RHSWP_CT_DOSSIER );
-				$title        = $term->name;
-				$headline     = get_term_meta( $term->term_id, 'headline', true );
-
-				if ( isset( $headline[0] ) && ( strlen( $headline[0] ) > 0 ) ) {
-					if ( is_array( $headline ) ) {
-						$headline = strval( $headline[0] );
-					} else {
-						$headline = strval( $headline );
-					}
-					$title .= ' - ' . wp_strip_all_tags( $headline );
-				}
-
-				if ( ! empty( $termchildren ) && ! is_wp_error( $termchildren ) ) {
-					$classattr = 'class="term-children cat-item cat-item-' . $term_id . '"';
+			if ( isset( $headline[0] ) && ( strlen( $headline[0] ) > 0 ) ) {
+				if ( is_array( $headline ) ) {
+					$headline = strval( $headline[0] );
 				} else {
-					$classattr = 'class="cat-item cat-item-' . $term_id . '"';
+					$headline = strval( $headline );
 				}
-
-				printf( '<div %s>', $classattr );
-				printf( '<a href="%s"><h3>%s</h3></a>', $permalink, $title );
-
-				if ( ! empty( $termchildren ) && ! is_wp_error( $termchildren ) ) {
-					echo '<ul class="children column-layout">';
-
-					$listcounter = 0;
-
-					foreach ( $termchildren as $child ) {
-						$listcounter ++;
-						$term = get_term_by( 'id', $child, $taxonomy_name );
-						echo '<li class="cat-item cat-item-' . $term->term_id . '">';
-						echo '<a href="' . get_term_link( $child, $taxonomy_name ) . '">';
-						echo $term->name;
-						echo '</a>';
-						echo '</li>';
-					}
-
-					echo '</ul>';
-				}
-
-				echo '</div>';
+				$title .= ' - ' . wp_strip_all_tags( $headline );
 			}
+
+			if ( ! empty( $termchildren ) && ! is_wp_error( $termchildren ) ) {
+				$classattr = 'class="term-children cat-item cat-item-' . $term_id . '"';
+			} else {
+				$classattr = 'class="cat-item cat-item-' . $term_id . '"';
+			}
+
+			printf( '<div %s>', $classattr );
+			printf( '<a href="%s"><h3>%s</h3></a>', $permalink, $title );
+
+			if ( ! empty( $termchildren ) && ! is_wp_error( $termchildren ) ) {
+				echo '<ul class="children column-layout">';
+
+				$listcounter = 0;
+
+				foreach ( $termchildren as $child ) {
+					$listcounter ++;
+					$term = get_term_by( 'id', $child, $taxonomy_name );
+					echo '<li class="cat-item cat-item-' . $term->term_id . '">';
+					echo '<a href="' . get_term_link( $child, $taxonomy_name ) . '">';
+					echo $term->name;
+					echo '</a>';
+					echo '</li>';
+				}
+
+				echo '</ul>';
+			}
+
+			echo '</div>';
 
 		}
 		echo '</div>'; // .dossier-list

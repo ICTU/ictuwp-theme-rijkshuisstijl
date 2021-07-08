@@ -159,6 +159,135 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'description'           => '',
 	) );
 
+
+	//======================================================================================================
+	// metadata voor CT RHSWP_CT_DOSSIER
+	//======================================================================================================
+
+	acf_add_local_field_group( array(
+		'key'                   => 'group_57f90d0a441e4',
+		'title'                 => 'Dossier-informatie',
+		'fields'                => array(
+			array(
+				'key'               => 'field_57f90d20c2fdf',
+				'label'             => __( 'Inhoudspagina', 'wp-rijkshuisstijl' ),
+				'name'              => 'dossier_overzichtpagina',
+				'type'              => 'post_object',
+				'instructions'      => __( 'Welke pagina beschrijft de inhoud van dit dossier? Deze pagina is belangrijk, omdat we hiermee de verdere structuur van het dossier kunnen bepalen.', 'wp-rijkshuisstijl' ),
+				'required'          => 0,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'post_type'         => array(
+					0 => 'page',
+				),
+				'taxonomy'          => array(),
+				'allow_null'        => 0,
+				'multiple'          => 0,
+				'return_format'     => 'object',
+				'ui'                => 1,
+			),
+			array(
+				'key'               => 'field_57fa70f9fe7a3',
+				'label'             => __( 'Toon inhoudspagina in het menu?', 'wp-rijkshuisstijl' ),
+				'name'              => 'toon_overzichtspagina_in_het_menu',
+				'type'              => 'radio',
+				'instructions'      => '',
+				'required'          => 1,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'choices'           => array(
+					'ja'  => 'Toon wel',
+					'nee' => 'Toon niet',
+				),
+				'allow_null'        => 0,
+				'other_choice'      => 0,
+				'save_other_choice' => 0,
+				'default_value'     => 'ja',
+				'layout'            => 'vertical',
+				'return_format'     => 'value',
+			),
+			array(
+				'key'               => 'field_5e99949047da5',
+				'label'             => 'Titel voor overzichtspagina',
+				'name'              => 'dossier_overzichtpagina_alt_titel',
+				'type'              => 'text',
+				'instructions'      => 'Met welke tekst linken we in het menu naar de overzichtspagina? Standaard is dat \'Inhoud\', hier kun je een alternatieve titel invoeren.',
+				'required'          => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field'    => 'field_57fa70f9fe7a3',
+							'operator' => '==',
+							'value'    => 'ja',
+						),
+					),
+				),
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'default_value'     => 'Inhoud',
+				'placeholder'       => '',
+				'prepend'           => '',
+				'append'            => '',
+				'maxlength'         => '',
+			),
+			array(
+				'key'               => 'field_57f90f281dcfb',
+				'label'             => 'Andere pagina\'s in het menu',
+				'name'              => 'menu_pages',
+				'type'              => 'relationship',
+				'instructions'      => '',
+				'required'          => 0,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'post_type'         => array(
+					0 => 'page',
+				),
+				'taxonomy'          => array(),
+				'filters'           => array(
+					0 => 'search',
+					1 => 'taxonomy',
+				),
+				'elements'          => '',
+				'min'               => '',
+				'max'               => '',
+				'return_format'     => 'object',
+			),
+		),
+		'location'              => array(
+			array(
+				array(
+					'param'    => 'taxonomy',
+					'operator' => '==',
+					'value'    => 'dossiers',
+				),
+			),
+		),
+		'menu_order'            => 0,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen'        => '',
+		'active'                => true,
+		'description'           => '',
+	) );
+
+
 	//======================================================================================================
 	// metadata voor page_dossiersingleactueel.php
 	//======================================================================================================
@@ -172,7 +301,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'name'         => 'wil_je_filteren_op_categorie_op_deze_pagina',
 				'type'         => 'radio',
 				'instructions' => __( 'Als je niet filtert worden alle berichten getoond die aan dit dossier gekoppeld zijn. Als je wilt filteren, kun je kiezen voor een categorie. Dan worden dus alleen die berichten getoond die:
-  - zowel aan dit dossier gekoppeld zijn
+  - zowel aan dit dossier gekoppeld zijn 
   - als aan de door jou gekozen categorie', 'wp-rijkshuisstijl' ),
 
 				'required'          => 1,
@@ -663,6 +792,56 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'description'           => '',
 	) );
 
+
+
+endif;
+
+//========================================================================================================
+
+if ( function_exists( 'acf_add_local_field_group' ) ):
+
+	acf_add_local_field_group( array(
+		'key'                   => 'group_58da405ecc1c5',
+		'title'                 => ' Korte beschrijving',
+		'fields'                => array(
+			array(
+				'default_value'     => '',
+				'maxlength'         => '',
+				'placeholder'       => '',
+				'prepend'           => '',
+				'append'            => '',
+				'key'               => 'field_58da406ee63df',
+				'label'             => 'Korte beschrijving voor dossieroverzicht',
+				'name'              => 'dossier_korte_beschrijving_voor_dossieroverzicht',
+				'type'              => 'textarea',
+				'instructions'      => '',
+				'required'          => 0,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+			),
+		),
+		'location'              => array(
+			array(
+				array(
+					'param'    => 'taxonomy',
+					'operator' => '==',
+					'value'    => 'dossiers',
+				),
+			),
+		),
+		'menu_order'            => 0,
+		'position'              => 'acf_after_title',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen'        => '',
+		'active'                => 1,
+		'description'           => '',
+	) );
 
 
 endif;
@@ -2954,7 +3133,7 @@ function acf_populate_gf_forms_ids( $field ) {
 		error_log( 'acf_populate_gf_forms_ids / key: ' . $key . ', value = ' . $value );
 	}
 
-
+	
 	$choices['12345678'] = 'Meh';
 
 	if ( class_exists( 'GFFormsModel' ) ) {
@@ -2972,13 +3151,13 @@ function acf_populate_gf_forms_ids( $field ) {
 	}
 	else {
 		error_log( 'acf_populate_gf_forms_ids: GF NIET actief ' );
-
+		
 	}
 
 	$field['choices'] = $choices;
 
 	return $field;
-
+	
 }
 
 //add_filter( 'acf/load_field/name=contactformulier', 'acf_populate_gf_forms_ids' );
