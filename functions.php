@@ -177,6 +177,7 @@ define( 'IMAGESIZE_10x3', 'image-4x3' );
 define( 'IMAGESIZE_10x3_SMALL', 'image-4x3-small' );
 define( 'IMAGESIZE_SQUARE', 'image-square' );
 define( 'IMAGESIZE_SQUARE_SMALL', 'image-square-small' );
+define( 'IMAGESIZE_DOSSIER_HEADER', 'image-dossierheader' );
 
 
 //========================================================================================================
@@ -193,6 +194,8 @@ add_image_size( 'widget-image', 100, 100, false );
 add_image_size( 'widget-image-top', 400, 1200, false );
 add_image_size( 'nieuwsbriefthumb', 88, 88, false );
 add_image_size( 'article-visual-big', 600, 600, true );
+add_image_size( IMAGESIZE_DOSSIER_HEADER, 1600, 500, true );
+
 $docrop     = true;
 $base_width = 900;
 add_image_size( IMAGESIZE_SQUARE, $base_width, $base_width, $docrop );
@@ -1828,7 +1831,9 @@ function rhswp_dossiercontext_add_query_vars( $vars ) {
 }
 
 //========================================================================================================
+
 function rhswp_extra_contentblokken_checker() {
+
 	global $post;
 	$debugstring = '';
 	$returnvalue = false;
@@ -1851,9 +1856,10 @@ function rhswp_extra_contentblokken_checker() {
 	} else {
 		$debugstring .= '. Helaas geen contentblokkken voor ' . $theid;
 	}
-	if ( $debugstring ) {
-		dodebug_do( $debugstring );
-	}
+
+//	if ( $debugstring ) {
+//		dodebug_do( $debugstring );
+//	}
 
 	return $returnvalue;
 }
