@@ -6,7 +6,47 @@ function rhswp_dossier_title_checker() {
 	$dossier = rhswp_dossier_get_dossiercontext();
 
 	if ( $dossier ) {
-		echo 'rhswp_dossier_title_checker';
+		// tonen header image voor dossier
+		echo '<div class="dossier-overview">';
+		echo rhswp_dossier_get_dossier_headerimage( $dossier );
+		echo '</div>';
+
+	}
+}
+
+//========================================================================================================
+
+/*
+ * Toon de headerimage voor een dossier
+ */
+function rhswp_dossier_get_default_image() {
+
+	$default_image = get_field( 'site_settings_default_dossier_image', 'option' );
+	return $default_image;
+
+}
+
+//========================================================================================================
+
+/*
+ * Toon de headerimage voor een dossier
+ */
+function rhswp_dossier_get_dossier_headerimage( $dossier ) {
+
+	$uitgelicht_image = '';
+	$image_size       = 'full';
+	$acfid            = RHSWP_CT_DOSSIER . '_' . $dossier->term_id;
+
+	if ( get_field( 'dossier_header_image', $acfid ) ) {
+		$uitgelicht_image = get_field( 'dossier_header_image', $acfid );
+	} else {
+		$uitgelicht_image = rhswp_dossier_get_default_image();
+	}
+
+	if ( $uitgelicht_image ) {
+
+		echo wp_get_attachment_image( $uitgelicht_image['ID'], $image_size );
+
 	}
 }
 
@@ -25,7 +65,7 @@ function rhswp_dossier_append_bodyclass( $classes ) {
 
 }
 
-add_filter( 'body_class','rhswp_dossier_append_bodyclass' );
+add_filter( 'body_class', 'rhswp_dossier_append_bodyclass' );
 
 //========================================================================================================
 
@@ -39,29 +79,29 @@ function rhswp_dossier_get_dossiercontext() {
 
 	$is_dossier = true;
 	$dossier    = '';
-	dodebug_do( ' rhswp_dossier_get_dossiercontext check ' );
+//	dodebug_do( ' rhswp_dossier_get_dossiercontext check ' );
 
 	if ( ! taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
 		// niks doen, want dossier bestaat niet
-		dodebug_do( RHSWP_CT_DOSSIER . ' bestaat niet ' );
+//		dodebug_do( RHSWP_CT_DOSSIER . ' bestaat niet ' );
 		$is_dossier = false;
 	}
 
 	if ( ! is_object( $post ) ) {
 		// niks doen, want dit is geen post (bijv. 404 page)
-		dodebug_do( ' Dit is geen post ' );
+//		dodebug_do( ' Dit is geen post ' );
 		$is_dossier = false;
 	}
 	if ( is_posts_page() || is_search() ) {
 		// niks doen, voor search-pagina, voor berichten-pagina
-		dodebug_do( ' Dit is post of search ' );
+//		dodebug_do( ' Dit is post of search ' );
 		$is_dossier = false;
 	}
 
 	if ( ! has_term( '', RHSWP_CT_DOSSIER, get_the_id() ) ) {
 		// post / page zit in een dossier EN heeft een beleidskleur, dus toon plaatje van beleidskleur
 		// zie functie rhswp_check_caroussel_or_featured_img, waar het plaatje getoond wordt
-		dodebug_do( ' Deze post heeft geen dossier ' );
+//		dodebug_do( ' Deze post heeft geen dossier ' );
 		$is_dossier = false;
 	}
 
@@ -71,10 +111,10 @@ function rhswp_dossier_get_dossiercontext() {
 		( 'page_showalldossiers-nieuwestyling.php' == get_page_template_slug( get_the_ID() ) ) ||
 		( 'page_toolbox-cyberincident.php' == get_page_template_slug( get_the_ID() ) ) ) {
 		// toolbox layout: dus geen plaatje tonen
-		dodebug_do( ' Verkeerde template' );
+//		dodebug_do( ' Verkeerde template' );
 		$is_dossier = false;
 	}
-	dodebug_do( ' rhswp_dossier_get_dossiercontext result "' . $is_dossier . '"' );
+//	dodebug_do( ' rhswp_dossier_get_dossiercontext result "' . $is_dossier . '"' );
 
 	if ( ! $is_dossier ) {
 		return false;
@@ -116,16 +156,16 @@ function rhswp_dossier_get_dossiercontext() {
 		} // ( 'page' == $loop && get_query_var( RHSWP_CT_DOSSIER ) ) {
 		elseif ( RHSWP_CPT_EVENT == $posttype && 'single' == $loop ) {
 			// niks doen voor een single event
-			return;
+			return false;
 		} elseif ( 'archive' == $loop ) {
 			// niks doen voor een archive
-			return;
+			return false;
 		} elseif ( 'category' == $loop ) {
 			// niks doen voor een category archive
-			return;
+			return false;
 		} elseif ( 'tag' == $loop ) {
 			// niks doen voor een tag archive
-			return;
+			return false;
 		} elseif ( 'tax' == $loop ) {
 			// het is een andersoortige taxonomie
 
@@ -157,13 +197,17 @@ function rhswp_dossier_get_dossiercontext() {
 					dodebug_do( 'ja, is single en post' );
 				}
 			} else {
-				dodebug_do( 'ja, is single en post maar geen cat noch dossier' );
+//				dodebug_do( 'ja, is single en post maar geen cat noch dossier' );
 			}
 		}
 
 	}
 
-	return $dossier;
+	if ( ! $is_dossier ) {
+		return false;
+	} else {
+		return $dossier;
+	}
 
 }
 
