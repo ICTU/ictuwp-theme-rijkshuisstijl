@@ -156,7 +156,7 @@ function rhswp_write_extra_contentblokken() {
 								// er zijn dus geen evenementen
 								echo get_option( 'dbem_no_events_message' );
 							} else {
-								$eventlist = str_replace('columncount-3',  'columncount-2', $eventlist);
+								$eventlist = str_replace( 'columncount-3', 'columncount-2', $eventlist );
 								echo $eventlist;
 								if ( $events_link ) {
 									echo '<p class="more">' . $events_link . '</p>';
@@ -628,23 +628,12 @@ function rhswp_write_extra_contentblokken() {
 								echo '<div class="contentblock ' . $type_block . ' itemcount-' . $itemcount . '">';
 
 								if ( $titel ) {
-//									$headerlevel = 'h3';
+									$headerlevel = 'h3';
 									echo '<h2>' . $titel . '</h2>';
 								}
-
 								foreach ( $terms as $term ) {
 
-									$excerpt     = '';
-									$kortebeschr = get_field( 'dossier_korte_beschrijving_voor_dossieroverzicht', RHSWP_CT_DOSSIER . '_' . $term->term_id );
-									$dossierlink = '<p class="dossierlink"><a href="' . get_term_link( $term->term_id, RHSWP_CT_DOSSIER ) . '">' . $term->name . '</a></p>';
-
-									if ( $kortebeschr ) {
-										$excerpt = $kortebeschr;
-									} elseif ( $term->description ) {
-										$excerpt = $term->description;;
-									}
-
-									echo '<details><summary><' . $headerlevel . '>' . $term->name . '</' . $headerlevel . '></summary><p>' . wp_strip_all_tags( $excerpt ) . '</p>' . $dossierlink . '</details>';
+									echo rhswp_dossier_get_detailssummary( $term, $headerlevel );
 
 								}
 
@@ -731,5 +720,5 @@ function rhswp_write_extra_contentblokken() {
 
 }
 
-
 //====================================================================================================
+

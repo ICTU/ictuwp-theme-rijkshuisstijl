@@ -4402,5 +4402,34 @@ function rhswp_get_pagelink_for_dossier( $term ) {
 	return $return;
 }
 
+//====================================================================================================
+
+function rhswp_dossier_get_detailssummary( $term, $headerlevel = 'h2' ) {
+
+	$return = '';
+
+	if ( $term ) {
+
+		$excerpt           = '';
+		$dossierlink       = '';
+		$kortebeschr       = get_field( 'dossier_korte_beschrijving_voor_dossieroverzicht', RHSWP_CT_DOSSIER . '_' . $term->term_id );
+		$dossier_permalink = rhswp_get_pagelink_for_dossier( $term );
+		if ( $dossier_permalink ) {
+			$dossierlink = '<p class="dossierlink"><a href="' . $dossier_permalink . '">' . $term->name . '</a></p>';
+		}
+
+		if ( $kortebeschr ) {
+			$excerpt = $kortebeschr;
+		} elseif ( $term->description ) {
+			$excerpt = $term->description;;
+		}
+
+		$return = '<details><summary><' . $headerlevel . '>' . $term->name . '</' . $headerlevel . '></summary><p>' . wp_strip_all_tags( $excerpt ) . '</p>' . $dossierlink . '</details>';
+
+	}
+
+	return $return;
+}
+
 //========================================================================================================
 
