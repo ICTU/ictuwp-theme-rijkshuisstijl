@@ -147,6 +147,10 @@ define( 'RHSWP_MIN_HERO_IMAGE_WIDTH', 1500 );
 define( 'RHSWP_MIN_HERO_IMAGE_HEIGHT', 400 );
 define( 'RHSWP_HERO_IMAGE_WIDTH_NAME', 'Carrousel (full width: ' . RHSWP_MIN_HERO_IMAGE_WIDTH . ' wide)' );
 define( 'RHSWP_HERO_IMAGE2_WIDTH_NAME', RHSWP_MIN_HERO_IMAGE_WIDTH . 'w' );
+
+if ( ! defined( 'DOPT__ACTIELIJN_CPT' ) ) {
+	define( 'DOPT__ACTIELIJN_CPT', "actielijn" );
+}
 if ( ! defined( 'RHSWP_DOSSIERCONTEXTPOSTOVERVIEW' ) ) {
 	define( 'RHSWP_DOSSIERCONTEXTPOSTOVERVIEW', 'dossier-berichten' );
 }
@@ -155,12 +159,10 @@ if ( ! defined( 'RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW' ) ) {
 }
 if ( ! defined( 'RHSWP_DOSSIERCONTEXTEVENTOVERVIEW' ) ) {
 	define( 'RHSWP_DOSSIERCONTEXTEVENTOVERVIEW', 'dossier-events' );
+	define( 'RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW', 'dossier-documenten' );
 }
 if ( ! defined( 'RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW' ) ) {
 	define( 'RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW', 'dossier-documenten' );
-}
-if ( ! defined( 'DOPT__ACTIELIJN_CPT' ) ) {
-	define( 'DOPT__ACTIELIJN_CPT', "actielijn" );
 }
 // @since 2.12.17
 define( 'ID_DOSSIER_DIV', "dossier-overview" );

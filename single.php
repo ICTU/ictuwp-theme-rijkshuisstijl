@@ -26,7 +26,10 @@ if ( WP_DEBUG_FULL_WIDTH ) {
 	// full width
 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
-	// download / link for document
+	// Ter vervanging van de vervallen widget-ruimte en de 'extra links'-widget daarin
+//	add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 16 );
+
+  // download / link for document
 	add_action( 'genesis_entry_footer', 'rhswp_document_add_extra_info', 14 );
 
 	// dossier info
@@ -38,9 +41,6 @@ if ( WP_DEBUG_FULL_WIDTH ) {
 
 	// extra widget ruimte
 	add_action( 'genesis_entry_footer', 'extrafoeter', 18 );
-
-	// Ter vervanging van de vervallen widget-ruimte en de 'extra links'-widget daarin
-	add_action( 'genesis_entry_footer', 'rhswp_pagelinks_replace_widget', 20 );
 
 
 }

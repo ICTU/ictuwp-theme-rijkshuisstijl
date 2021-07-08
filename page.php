@@ -5,7 +5,7 @@
  * ----------------------------------------------------------------------------------
  * Toont alle dossiers
  * ----------------------------------------------------------------------------------
- * 
+ *
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
@@ -26,7 +26,7 @@ add_action( 'genesis_entry_content', 'rhswp_append_socialbuttons', 14 );
 
 
 // Ter vervanging van de vervallen widget-ruimte en de 'extra links'-widget daarin
-add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 16 );
+//add_action( 'genesis_entry_content', 'rhswp_pagelinks_replace_widget', 16 );
 
 //========================================================================================================
 
