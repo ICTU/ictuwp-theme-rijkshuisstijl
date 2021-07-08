@@ -77,7 +77,14 @@ function rhswp_show_dossiers_sort_markering() {
 //========================================================================================================
 
 function rhswp_show_dossiers_by_alphabet() {
+
 	global $post;
+	$iseditor = false;
+	$user     = wp_get_current_user();
+	if ( in_array( 'manage_categories', (array) $user->allcaps ) ) {
+		$iseditor = true;
+	}
+
 	$args              = array(
 		'taxonomy'     => RHSWP_CT_DOSSIER,
 //		'parent'             => 0,
@@ -117,35 +124,32 @@ function rhswp_show_dossiers_by_alphabet() {
 		foreach ( $terms as $term ) {
 			$huidigeletter = substr( strtolower( $term->name ), 0, 1 );
 			$termlink      = rhswp_get_pagelink_for_dossier( $term );
+			// alleen dossiers met een geldige pagina tonen
+			if ( $huidigeletter !== $letter ) {
+				echo $tag . '<h2 id="list_' . strtolower( $huidigeletter ) . '">' . strtoupper( $huidigeletter ) . '</h2>';
+				echo '<ul>';
+				$letter = $huidigeletter;
+				$tag    = "</ul>\n\n\n";
+			}
+			echo '<li class="cat-item cat-item-' . $term->term_id . '">';
 			if ( $termlink ) {
-				// alleen dossiers met een geldige pagina tonen
-				if ( $huidigeletter !== $letter ) {
-					echo $tag . '<h2 id="list_' . strtolower( $huidigeletter ) . '">' . strtoupper( $huidigeletter ) . '</h2>';
-					echo '<ul>';
-					$letter = $huidigeletter;
-					$tag    = "</ul>\n\n\n";
-				}
-				echo '<li class="cat-item cat-item-' . $term->term_id . '">';
-				echo '<a href="' . rhswp_get_pagelink_for_dossier( $term ) . '">';
+				echo '<a href="' . $termlink . '">';
 				echo $term->name;
 				echo '</a>';
-				echo '</li>';
+			} else {
+				if ( $iseditor ) {
+					echo '<a href="' . get_term_link( $term ) . '">';
+					echo '<strong style="background: red; color: white;">' . $term->name . ' (heeft geen overzichtspagina)</strong>';
+					echo '</a>';
+				} else {
+					echo $term->name;
+				}
 			}
+			echo '</li>';
 		}
 		echo $tag;
 		echo '</div>'; // .dossier-list column-layout
 	}
-}
-
-//========================================================================================================
-
-function rhswp_get_pagelink_for_dossier( $term ) {
-	$return                  = '';
-	$dossier_overzichtpagina = get_field( 'dossier_overzichtpagina', $term );
-	if ( $dossier_overzichtpagina ) {
-		$return = get_the_permalink( $dossier_overzichtpagina->ID );
-	}
-	return $return;
 }
 
 //========================================================================================================
@@ -198,7 +202,7 @@ function rhswp_show_dossiers_by_group() {
 				// alleen dossiers met een geldige pagina tonen
 
 				$termchildren = get_term_children( $term_id, $taxonomy_name );
-				$permalink    = get_term_link( $term->term_id, RHSWP_CT_DOSSIER );
+				$permalink    = rhswp_get_pagelink_for_dossier( $term );
 				$title        = $term->name;
 				$headline     = get_term_meta( $term->term_id, 'headline', true );
 
@@ -229,7 +233,7 @@ function rhswp_show_dossiers_by_group() {
 						$listcounter ++;
 						$term = get_term_by( 'id', $child, $taxonomy_name );
 						echo '<li class="cat-item cat-item-' . $term->term_id . '">';
-						echo '<a href="' . get_term_link( $child, $taxonomy_name ) . '">';
+						echo '<a href="' . rhswp_get_pagelink_for_dossier( $term ) . '">';
 						echo $term->name;
 						echo '</a>';
 						echo '</li>';
