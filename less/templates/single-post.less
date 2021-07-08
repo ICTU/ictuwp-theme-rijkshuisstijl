@@ -88,6 +88,7 @@
         border: 1px solid @bordercolor;
         .mixin_fullwidth_maxwidth_no_padding();
       }
+
       .aligncenter {
         border: 1px solid @bordercolor;
       }
@@ -199,26 +200,22 @@
   .page-template-page_fullwidth,
   .single-event,
   .single-post {
-  .entry-header {
-    .entry-title {
-      font-size: 3rem;
+    .entry-header {
+      .entry-title {
+        font-size: 3rem;
+      }
     }
-  }
   }
 }
 
 
 .widget-sidebar-alt,
 .aux-info-bar {
-  .mixin_fullwidth_container();
-  .mixin_fullwidth_padding();
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 
   .widget {
     padding-bottom: 1rem;
 
-    & +.widget {
+    & + .widget {
       margin-top: 1rem;
     }
 
@@ -232,6 +229,16 @@
         .add_header_decoration();
       }
     }
+  }
+}
+
+.full-width-content {
+  .widget-sidebar-alt,
+  .aux-info-bar {
+    .mixin_fullwidth_container();
+    .mixin_fullwidth_padding();
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 }
 
