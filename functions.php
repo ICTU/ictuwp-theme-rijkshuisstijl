@@ -1750,13 +1750,15 @@ function rhswp_site_description() {
 			$needle      = 'Digitale overheid';
 			$replacer    = '<strong>Digitale overheid</strong>';
 			$description = str_replace( $needle, $replacer, $description );
-//<strong>Digitale overheid</strong>: betrouwbaar, veilig, betaalbaar
 			echo '<div class="site-description"><div class="wrap">' . $description . '</div></div>';
 		}
 	}
 }
 
 //========================================================================================================
+/*
+ * Provide info about what type of content we are viewing.
+*/
 function rhswp_get_context_info() {
 	global $wp_query;
 	if ( $wp_query->is_page ) {
