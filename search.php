@@ -42,10 +42,6 @@ if ( class_exists( 'SearchWP' ) ) {
 
 genesis();
 
-/*
- * add_action( 'genesis_after_header', 'rhswp_dossier_title_checker', 24 );
-
- */
 //========================================================================================================
 
 function rhswp_add_search_description() {

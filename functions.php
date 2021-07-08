@@ -227,7 +227,8 @@ include_once( RHSWP_FOLDER . '/includes/metadata-boxes.php' );
 // Include for admin functions
 include_once( RHSWP_FOLDER . '/includes/aux-admin-helper-functions.php' );
 // Include for dossier functions
-include_once( RHSWP_FOLDER . '/includes/aux-dossier-helper-functions.php' );
+//include_once( RHSWP_FOLDER . '/includes/aux-dossier-helper-functions.php' );
+include_once( RHSWP_FOLDER . '/includes/aux-dossier-helper-functions-herzien.php' );
 // Include for contact form 7 validation
 include_once( RHSWP_FOLDER . '/includes/contact-form7-validation.php' );
 // Include for event manager
@@ -396,16 +397,12 @@ add_filter( 'excerpt_more', 'rhswp_get_read_more_link' );
 add_filter( 'the_content_more_link', 'rhswp_get_read_more_link' );
 add_filter( 'get_the_content_more_link', 'rhswp_get_read_more_link' ); // Genesis Framework only
 add_filter( 'excerpt_more', 'rhswp_get_read_more_link' );
+
 function rhswp_get_read_more_link( $thepermalink ) {
 	if ( ! is_archive() ) {
 		return;
 	}
-	if ( ! $thepermalink ) {
-		$thepermalink = get_permalink();
-	}
-	if ( $thepermalink == ' […]' ) {
-		$thepermalink = get_permalink();
-	}
+
 	$thepermalink  = get_permalink();
 	$postpagetitle = get_the_title();
 	if ( $postpagetitle ) {
@@ -686,21 +683,7 @@ function rhswp_breadcrumb_args( $args ) {
 }
 
 //========================================================================================================
-// js filter functie
-function rhswp_add_defer_to_javascripts( $url ) {
-	if ( // comment the following line out add 'defer' to all scripts
-//    FALSE === strpos( $url, 'contact-form-7' ) or
-		false === strpos( $url, '.js' )
-	) { // not our file
-		return $url;
-	}
 
-	// Must be a ', not "!
-	return "$url' defer='defer";
-}
-
-//add_filter( 'clean_url', 'rhswp_add_defer_to_javascripts', 11, 1 );
-//========================================================================================================
 function rhswp_add_taxonomy_description() {
 	global $wp_query;
 	if ( ! is_category() && ! is_tag() && ! is_tax() && ! is_post_type_archive( RHSWP_CPT_DOCUMENT ) ) {
