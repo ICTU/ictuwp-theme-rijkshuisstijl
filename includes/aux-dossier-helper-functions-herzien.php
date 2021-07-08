@@ -16,12 +16,68 @@ function rhswp_dossier_title_checker() {
 
 //========================================================================================================
 
+function rhswp_dossier_title_show_menu() {
+
+	global $post;
+
+	$dossier = rhswp_dossier_get_dossiercontext();
+
+	if ( $dossier ) {
+
+		$current_post_id = isset( $post->ID ) ? $post->ID : 0;
+		echo '<p style="background: yellow; padding: 1rem;border: 1px solid black; color: black;">';
+		echo '<strong>rhswp_dossier_title_show_menu!</strong><br>Dit dossier heet: ' . $dossier->name . '<br>';
+		$dossier_overzichtpagina = get_field( 'dossier_overzichtpagina', $dossier );
+
+		if ( $dossier_overzichtpagina->ID == $current_post_id ) {
+			echo 'Je kijkt nu naar de overzichtspagina voor het dossier.<br>';
+			echo '<a href="' . get_term_link( $dossier ) . '">bekijk de taxonomie-info ' . $dossier->name . '</a><br>';
+		} else {
+			echo '<a href="' . get_the_permalink( $dossier_overzichtpagina ) . '">Bekijk ' . get_the_title( $dossier_overzichtpagina ) . ', de overzichtspagina van ' . $dossier->name . '</a><br>';
+		}
+
+//		echo 'DossierID: ' . $dossier->term_id . '<br>';
+
+		$args = array(
+			'taxonomy'     => RHSWP_CT_DOSSIER,
+			'parent'       => $dossier->term_id,
+			'hide_empty'   => true,
+			'echo'         => 0,
+			'hierarchical' => true,
+			'title_li'     => '',
+		);
+
+		$termchildren = get_terms( RHSWP_CT_DOSSIER, $args );
+
+		if ( ! empty( $termchildren ) && ! is_wp_error( $termchildren ) ) {
+
+			echo '<h2>Onderwerpen bij dit thema</h2>';
+
+			foreach ( $termchildren as $child ) {
+
+				$term = get_term_by( 'id', $child->term_id, RHSWP_CT_DOSSIER );
+				echo rhswp_dossier_get_detailssummary( $term, 'h2' );
+
+			}
+
+		}
+
+		echo '</p>';
+
+	}
+}
+
+add_action( 'genesis_before_entry_content', 'rhswp_dossier_title_show_menu', 12 );
+
+//========================================================================================================
+
 /*
  * Toon de headerimage voor een dossier
  */
 function rhswp_dossier_get_default_image() {
 
 	$default_image = get_field( 'site_settings_default_dossier_image', 'option' );
+
 	return $default_image;
 
 }

@@ -4389,3 +4389,18 @@ add_shortcode( 'nieuwsbriefreferrer', 'rhswp_nieuwsbrief_get_referrer' );
 
 //========================================================================================================
 
+function rhswp_get_pagelink_for_dossier( $term ) {
+	$return                  = '';
+	$dossier_overzichtpagina = get_field( 'dossier_overzichtpagina', $term );
+	if ( $dossier_overzichtpagina ) {
+		$return = get_the_permalink( $dossier_overzichtpagina->ID );
+	}
+//	else {
+//		$return = get_term_link( $term->term_id, RHSWP_CT_DOSSIER );
+//	}
+
+	return $return;
+}
+
+//========================================================================================================
+
