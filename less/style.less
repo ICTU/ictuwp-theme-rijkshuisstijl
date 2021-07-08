@@ -4,8 +4,8 @@
   Description: Theme voor digitaleoverheid.nl
   Author: Paul van Buuren
   Author URI: https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl/
-  Version: 2.25.1
-  Version description: CSS-validatie en div. kleine accessibility correcties.
+  Version: 2.28.1
+  Version description: Contentblok voor berichten in een net grid.
   Text Domain: wp-rijkshuisstijl
 
   Template: genesis
@@ -56,20 +56,18 @@
 /*
 Imports
 ---------------------------------------------------------------------------------------------------- */
-@import "variables/variables-default.less";       
-@import "variables/colors-default.less";       
-@import "02-mixins.less";       /* mixins, sizes */
-@import "03-fonts.less";        /* fonts */
-@import "04-normalize.less";    /* normalize */
-@import "10-text-styles.less";  /* font-styles, shared with admin editor-styles.less */
-@import "20-elements.less";     /* assorted elements */
-@import "21-header.less";       /* all things related to the site header */
-@import "30-menus.less";        /* all things related to navigation menus */
-@import "40-forms.less";        /* forms */
-@import "50-sidebar.less";      /* sidebar styling */
+@import "variables/variables-default.less";
+@import "variables/colors-default.less";
+@import "02-mixins.less";
+@import "03-fonts.less";
+@import "04-normalize.less";
+@import "10-text-styles.less";
+@import "20-elements.less";
+@import "21-header.less";
+@import "30-menus.less";
+@import "40-forms.less";
+@import "50-sidebar.less";
 @import "60-structure.less";
-@import "grid-flex.less";
-@import "grid-flex.less";
 @import "70-pagetypes.less";
 @import "80-print.less";
 @import "99-browserhacks.less";
@@ -81,7 +79,7 @@ Imports
 @import "plugins/gravity-forms.less";
 @import "plugins/led-initiatievenkaart.less";
 
-.03_fonts_get_webfonts();
+.fonts_get_webfonts();
 
 
 // put it all together

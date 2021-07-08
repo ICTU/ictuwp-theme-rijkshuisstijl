@@ -5,7 +5,7 @@
  * ----------------------------------------------------------------------------------
  * Toont de aanwezige content
  * ----------------------------------------------------------------------------------
- * 
+ *
  * @author  Paul van Buuren
  * @license GPL-2.0+
  * @package wp-rijkshuisstijl
@@ -34,6 +34,8 @@ add_action( 'genesis_loop', 'rhswp_archive_loop' );
 // full width
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
+// social media share buttons
+add_action( 'genesis_after_loop', 'rhswp_append_socialbuttons', 14 );
 
 //========================================================================================================
 

@@ -115,9 +115,10 @@ function filter_rhswp_socialmedia_widget( $params ) {
 		return $params;
 	}
 
+	$links = array();
+
 	if ( have_rows( 'widget_socmed_links', 'widget_' . $widget_id ) ):
 
-		$links = array();
 
 		// Loop through rows.
 		while ( have_rows( 'widget_socmed_links', 'widget_' . $widget_id ) ) : the_row();

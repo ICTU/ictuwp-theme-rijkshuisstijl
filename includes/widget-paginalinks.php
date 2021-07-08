@@ -39,11 +39,11 @@ class rhswp_pagelinks_widget extends WP_Widget {
 
 		echo '<p>' . _x( 'Dit widget doet pas iets als je op pagina- of berichtniveau links hebt toegevoegd. Die links worden dan op deze plaats getoond.</p><p>De titel hieronder wordt getoond als op pagina-niveau geen titel is ingevoerd.', 'paginalinkswidget', 'wp-rijkshuisstijl' );
 		?>
-        <br><label
-                for="<?php echo $this->get_field_id( 'rhswp_pagelinks_widget-title' ); ?>"><?php echo _x( 'Titel', 'paginalinkswidget', 'wp-rijkshuisstijl' ) ?>
-            <input id="<?php echo $this->get_field_id( 'rhswp_pagelinks_widget-title' ); ?>"
-                   name="<?php echo $this->get_field_name( 'rhswp_pagelinks_widget_title' ); ?>" type="text"
-                   value="<?php echo esc_attr( $rhswp_pagelinks_widget_title ); ?>"/></label></p>
+		<br><label
+			for="<?php echo $this->get_field_id( 'rhswp_pagelinks_widget-title' ); ?>"><?php echo _x( 'Titel', 'paginalinkswidget', 'wp-rijkshuisstijl' ) ?>
+			<input id="<?php echo $this->get_field_id( 'rhswp_pagelinks_widget-title' ); ?>"
+				   name="<?php echo $this->get_field_name( 'rhswp_pagelinks_widget_title' ); ?>" type="text"
+				   value="<?php echo esc_attr( $rhswp_pagelinks_widget_title ); ?>"/></label></p>
 		<?php
 	}
 
@@ -55,18 +55,31 @@ class rhswp_pagelinks_widget extends WP_Widget {
 	}
 
 	function widget( $args, $instance ) {
+		global $post;
+
 		if ( is_page() || is_single() ) {
 			extract( $args, EXTR_SKIP );
-			global $post;
 			$toon_extra_links = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_show_extra_links', $post->ID );
-			$widgettitle      = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_title', $post->ID );
 
+
+			$type_title = get_field( 'rhswp_pagelinks_widget_type_title', $post->ID );
+			if ( 'eigen' === $type_title ) {
+				// auteur heeft zelf een titel verzonnen
+				$widgettitle = get_field( 'rhswp_pagelinks_widget_titel_boven_gerelateerde_links', $post->ID );
+			} else {
+				// titel uit widgetinstellingen
+				$widgettitle = $instance['rhswp_pagelinks_widget_title'];
+			}
 			if ( ! $widgettitle ) {
-				if ( $instance['rhswp_pagelinks_widget_title'] !== '' ) {
-					$widgettitle = $instance['rhswp_pagelinks_widget_title'];
+				// nou nou, geen titel uberhaupt ingevoerd
+				if ( get_field( 'standaard_titel_boven_gerelateerde_links', 'option' ) ) {
+					// dan titel ophalen uit theme instellingen (weergave > Theme instellingen)
+					$widgettitle = get_field( 'standaard_titel_boven_gerelateerde_links', 'option' );
 				} else {
+					// dan maar een standaard titel
 					$widgettitle = _x( 'Extra links voor ', 'paginalinkswidget', 'wp-rijkshuisstijl' ) . get_the_title();
 				}
+
 			}
 
 			if ( 'ja' == $toon_extra_links ) {
@@ -123,22 +136,29 @@ function rhswp_pagelinks_replace_widget() {
 	global $post;
 
 	if ( ( ! is_home() && ! is_front_page() ) && ( is_page() || is_single() ) ) {
-		$toon_extra_links = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_show_extra_links', $post->ID );
-		$widgettitle      = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_title', $post->ID );
-		$links            = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_links', $post->ID );
+
+
+		$type_title = get_field( 'rhswp_pagelinks_widget_type_title', $post->ID );
+		if ( 'eigen' === $type_title ) {
+			$widgettitle = get_field( 'rhswp_pagelinks_widget_titel_boven_gerelateerde_links', $post->ID );
+		} else {
+			$widgettitle = get_field( 'standaard_titel_boven_gerelateerde_links', 'option' );
+		}
 		if ( ! $widgettitle ) {
 			$widgettitle = _x( 'Extra links voor ', 'paginalinkswidget', 'wp-rijkshuisstijl' ) . get_the_title();
 		}
 
+		$toon_extra_links = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_show_extra_links', $post->ID );
+		$links            = get_field( RHSWP_WIDGET_PAGELINKS_ID . '_widget_links', $post->ID );
+
+
 		if ( 'ja' == $toon_extra_links && $links ) {
-			$title_id = sanitize_title( $widgettitle );
 
-
+			$title_id       = sanitize_title( $widgettitle );
 			$internal_posts = array();
 			$internal_other = array();
 			$external       = array();
-
-			$alle_links       = array();
+			$alle_links     = array();
 
 			foreach ( $links as $link ) {
 
@@ -162,10 +182,10 @@ function rhswp_pagelinks_replace_widget() {
 
 					foreach ( $interne_link as $linkobject ) {
 
-						$post_url         = get_the_permalink( $linkobject->ID );
-						$post_type        = get_post_type( $linkobject->ID );
-						$post_title       = get_the_title( $linkobject->ID );
-						$args = array(
+						$post_url   = get_the_permalink( $linkobject->ID );
+						$post_type  = get_post_type( $linkobject->ID );
+						$post_title = get_the_title( $linkobject->ID );
+						$args       = array(
 							'ID'        => $linkobject->ID,
 							'type'      => 'posts_plain',
 							'itemclass' => 'griditem griditem--post colspan-1',

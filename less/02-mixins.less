@@ -71,6 +71,7 @@
 
 
 @bodyfont: 'Rijksoverheid Sans regular', Helvetica, Arial, sans-serif;
+@fontserif: 'RO Serif', Helvetica, Arial, sans-serif;
 @fontstrong: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
 @fontitalic: 'Rijksoverheid Sans italic', Helvetica, Arial, sans-serif;
 @headerfont: 'Rijksoverheid Sans bold', Helvetica, Arial, sans-serif;
@@ -252,7 +253,7 @@
 
 .embed_error_icon(@src, @fill_new, @fill_old: #000000) {
   @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-//  @replace-default: escape('fill:#FF0000;');
+  //  @replace-default: escape('fill:#FF0000;');
   @replace-default: escape('fill="@{fill_old}"');
   @replace-new: escape('fill="@{fill_new}"');
   @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
@@ -334,7 +335,66 @@
 
 //=========================================================================================================
 
-.listitem_arrow( @itemcolor: @a_color_default, @fontsize: 1em, @topdistance: 4px, @leftdistance: 0, @width: 1.5em ) {
+.listitem_arrow_flex( @itemcolor: @a_color_default, @topdistance: .3rem, @leftdistance: 1rem, @itemcolor_visited: @a_color_visited, @itemcolor_focus: @a_color_focus, @itemcolor_active: @a_color_active ) {
+
+  background-repeat: no-repeat;
+  background-position: left @topdistance;
+  background-size: .75rem .75rem;
+  padding-left: @leftdistance;
+  .icon_socmed_icon('../images/svg/list-arrow.svg', @itemcolor);
+
+  &:hover,
+  &:focus {
+    .icon_socmed_icon('../images/svg/list-arrow.svg', @itemcolor_focus);
+  }
+  &:active {
+    .icon_socmed_icon('../images/svg/list-arrow.svg', @itemcolor_active);
+  }
+
+}
+
+//=========================================================================================================
+
+.external_link_icon( @itemcolor: @a_color_default, @topdistance: .3rem, @leftdistance: 1rem, @itemcolor_visited: @a_color_visited, @itemcolor_focus: @a_color_focus, @itemcolor_active: @a_color_active ) {
+
+  background-repeat: no-repeat;
+  background-position: left @topdistance;
+  background-size: .75rem .75rem;
+  padding-left: @leftdistance;
+  .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemcolor);
+
+  &:hover,
+  &:focus {
+    .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemcolor_focus);
+  }
+  &:active {
+    .icon_socmed_icon('../images/svg/icon-list-external-link.svg', @itemcolor_active);
+  }
+
+}
+
+//=========================================================================================================
+
+.add_header_decoration( @fillcolor: @communicatiekleur_vol, @fillheight: 4px, @fillwidth: 75px ) {
+
+  padding-top: 1rem;
+  margin-bottom: 1.5rem;
+
+  &:after {
+    content: ' ';
+    display: block;
+    background: @fillcolor;
+    margin: .5rem 0 1rem 0;
+    width: @fillwidth;
+    height: @fillheight;
+  }
+
+}
+
+
+//=========================================================================================================
+
+.listitem_arrow_absolute( @itemcolor: @a_color_default, @fontsize: 1em, @topdistance: 4px, @leftdistance: 0, @width: 1.5em ) {
 
   position: relative;
 
@@ -607,6 +667,48 @@
       text-decoration: underline;
     }
   }
+}
+
+//=========================================================================================================
+
+.mixin_listitem_link_styling( @linkcolor_default:@a_color_default, @linkcolor_visited:@a_color_visited, @linkcolor_hover:@a_color_hover, @linkcolor_active:@a_color_active ) {
+
+  // deze styling is voor een <li> met direct daarin een link
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+
+  a {
+    color: @linkcolor_default;
+    .listitem_arrow_flex(@linkcolor_default);
+    padding-left: 1rem;
+    text-decoration: none;
+
+    &:visited {
+      color: @linkcolor_visited;
+      .listitem_arrow_flex(@linkcolor_visited);
+    }
+
+    &:hover {
+      color: @linkcolor_hover;
+      text-decoration: underline;
+    }
+
+    &:active,
+    &:focus {
+      text-decoration: underline;
+      color: @linkcolor_active;
+    }
+
+    &.extern {
+      .external_link_icon(@linkcolor_default);
+    }
+  }
+
+  & + li {
+    margin-top: .25rem;
+  }
+
 }
 
 //=========================================================================================================

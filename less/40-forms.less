@@ -17,17 +17,6 @@
   form {
     padding: 1em;
     background: @grijs_1;
-
-    a {
-      color: @txt;
-
-      &:focus,
-      &:hover {
-        color: @txt;
-
-      }
-    }
-
   }
 
   input[type="text"],
@@ -39,8 +28,6 @@
   textarea {
     background-color: @wit;
     box-shadow: 1px 1px 3px #eee inset;
-    // color: @txt;
-    .font-size(14);
     .inputpadding();
     width: 100%;
   }
@@ -74,6 +61,7 @@
   input[type="submit"],
   .button,
   .entry-content .button {
+    font-family: @fontstrong;
     background-color: @button_bg_default;
     box-shadow: none;
     color: @button_color_default;
@@ -163,28 +151,6 @@
     [type="text"] {
       margin-bottom: 1rem;
     }
-  }
-
-  .openbutton {
-    background: none;
-    border: 1px solid @txt;
-    display: block;
-    color: @txt;
-    float: right;
-    clear: both;
-    text-align: right;
-    margin: .25rem 0;
-
-    & + details {
-      clear: both;
-      float: none;
-    }
-  }
-
-  .detail-buttons {
-    display: block;
-    clear: both;
-    float: none;
   }
 
   a.gform_save_link {
@@ -400,9 +366,5 @@
   // components
   @import "components/search-form.less";
   @import "components/referer-contactform.less";
-
-  // zie het formulier op:
-  // https://www.digitaleoverheid.nl/nieuwsbrief/
-  @import "components/mailinglijst-form.less";
 
 }

@@ -91,6 +91,49 @@
             "return_format": "id",
             "multiple": 0,
             "allow_null": 0
+        },
+        {
+            "key": "field_60b740105d30c",
+            "label": "Standaard titel boven gerelateerde links",
+            "name": "standaard_titel_boven_gerelateerde_links",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Meer lezen hierover",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60e6ec376df84",
+            "label": "Default illustratie voor dossier",
+            "name": "site_settings_default_dossier_image",
+            "type": "image",
+            "instructions": "Dit plaatje zal worden gebruikt als je nog geen plaatje hebt ingevoerd voor een dossier.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "image-dossierheader",
+            "library": "all",
+            "min_width": 1600,
+            "min_height": 500,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
         }
     ],
     "location": [
@@ -110,5 +153,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1610636564
+    "modified": 1625746589
 }

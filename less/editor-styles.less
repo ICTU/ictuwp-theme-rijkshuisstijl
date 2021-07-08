@@ -47,15 +47,15 @@
 <!--                                                            -->
 <!-- ========================================================   -->
 <!--                                                            -->
-	
- 
+
+
  */
 
 
 
 
-@import "variables/variables-default.less";       
-@import "variables/colors-default.less";       
+@import "variables/variables-default.less";
+@import "variables/colors-default.less";
 @import "02-mixins.less";       /* mixins, sizes */
 @import "03-fonts.less";        /* fonts */
 @import "10-text-styles.less";     /* font-styles, shared with admin editor-styles.less */
@@ -68,37 +68,37 @@
 @w_divtag:      'Er zitten <div>-tags in deze tekst. Misschien is dat je bedoeling, maar vaak levert dit ongewenste layout op. Probeer de tekst zonder extra layout in te voeren, bijvoorbeeld via het "tekst"-tabje.';
 
 
-.03_fonts_get_webfonts_relative();
+.fonts_get_webfonts_relative();
 
 
 * {
-    .10_basefont();
+    .mixin_10_basefont();
 }
 
-.10_textstyles();
+.mixin_10_textstyles();
 
 .cmb-type-text {
   border: 10px solid @warning;
 }
 
 
-span[style*="font"], 
-span[style*="underline"], 
+span[style*="font"],
+span[style*="underline"],
 u {
   background: red !important;
   color: white !important;
   padding: .1em;
 }
-span[style*="color"], 
-span[style*="font"], 
+span[style*="color"],
+span[style*="font"],
 span[style*="underline"], u  {
-  
+
   background: red !important;
   color: white !important;
   padding: .1em;
   display: inline-block;
-  
-  &:before { 
+
+  &:before {
     background: yellow url('@{base_url}images/opmaak-verwijderen.png') no-repeat .4em .4em !important;
     content: @w_layout;
     display: block;
@@ -112,10 +112,10 @@ span[style*="underline"], u  {
     color: black !important;
   }
 }
-span[style*="color"]:before { 
+span[style*="color"]:before {
   content: @w_fonttag;
 }
-span[style*="font"]:before { 
+span[style*="font"]:before {
   content: @w_layout;
 }
 span[style*="underline"]:before, u:before {
@@ -131,8 +131,8 @@ h1 {
   color: white !important;
   padding: .1em;
   display: inline-block;
-  
-  &:before { 
+
+  &:before {
     background: yellow url('@{base_url}images/waarschuwing.svg') no-repeat .4em .4em !important;
     content: @w_headertag;
     display: block;
@@ -160,10 +160,10 @@ h1 {
     -moz-box-sizing: content-box;
     box-sizing: content-box;
   }
-  
+
   #TB_ajaxContent {
-    min-width: 90% !important;    
-    min-height: 90% !important;    
+    min-width: 90% !important;
+    min-height: 90% !important;
   }
   .cmb-th,
   .cmb-td {
@@ -171,23 +171,23 @@ h1 {
     margin: 0 0 1em 0;
   }
   .cmb-th {
-    width: 24%;  
+    width: 24%;
   }
   .cmb-td {
-    width: 75%;  
+    width: 75%;
   }
-  
+
   .cmb2-wrap textarea {
-    width: 100%;    
-  }  
+    width: 100%;
+  }
 
   .error {
     border: 3px solid red;
     color: red;
     font-weight: bold;
   }
-  
-  
+
+
   #insert_cta_form_errormessages {
     border: 3px solid white;
     padding: 0;
@@ -204,34 +204,34 @@ h1 {
     color: @wit;
     margin-left: 20%;
   }
-  
+
   div.divider {
     overflow: hidden;
     width: 680px;
     margin-bottom: 1em;
-    
+
     label {
       width: 20%;
       font-weight: bold;
-    }  
+    }
     input,
     textarea {
       width: 75%;
-    }  
+    }
     input,
     textarea {
       height: 32px;
-    }  
+    }
     textarea {
       height: 150px;
-    }  
+    }
     input,
     textarea,
     small,
     label {
       display: inline-block;
       float: left;
-    }  
+    }
     small {
       padding-left: 20%;
       clear: both;

@@ -5,9 +5,73 @@
 // * ----------------------------------------------------------------------------------
 //
 
+
+
 .widget {
   ul, ol {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 1rem 1rem 0;
+    padding-left: 0;
+  }
+
+  ul li {
+    .mixin_listitem_link_styling();
+  }
+
+
+  ul ul {
+    margin-top: .5em;
+    margin-left: 1em;
+
+    li {
+      margin-top: 0;
+    }
   }
 }
+
+.site-footer {
+  .widget {
+    ul li {
+      a {
+        .listitem_arrow_flex(@wit, .3rem, 1rem, @wit, @wit, @wit);
+
+        &:visited,
+          &:hover {
+          color: @wit;
+        }
+      }
+    }
+  }
+}
+
+
+.widget-banner-mailinglijst {
+  border: 10px solid red;
+}
+
+.header-widget-area {
+  width: 50%;
+  width: calc(50% - 25px);
+  float: right;
+  padding: 1rem 0 1rem 1rem;
+}
+
+.widget-sidebar-alt,
+.aux-info-bar {
+  .widget {
+    &:not(.widget_newsletterwidget) {
+
+      padding-bottom: 1rem;
+
+      h2 {
+        .add_header_decoration();
+      }
+
+      & + .widget {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+// styling voor social media widget
+.socialmedia_styling();

@@ -1,4 +1,3 @@
-
 //**
 // * Rijkshuisstijl (Digitale Overheid) - 70-pagetypes.less
 // * ----------------------------------------------------------------------------------
@@ -12,1057 +11,941 @@
 // * @link    https://github.com/ICTU/digitale-overheid-wordpress-theme-rijkshuisstijl
 // **
 
-.70_pagetypes() {
+.mixin_70_pagetypes() {
 
-	.entry-content {
-		
-		.dossieroverzicht {
-			p {
-				margin-bottom: 0;
-			}
-			ul + p,
-			ol + p,
-			p + p {
-				margin-top: 1em;
-			}
-			
-			a {
-				display: block;
-			}
-		}
-	}
+  .entry-content {
 
-	//========================================================================================================
+    .dossieroverzicht {
+      p {
+        margin-bottom: 0;
+      }
 
-	.page-template-page_show-child-pages {
-		.content {
-			section {
-				clear: both;
-				
-				img.attachment-featured-post-widget {
-					float: right;
-					display: inline;
-				}        
-			}
-		}
-	}
-	
-	//========================================================================================================
-	
-	@media only screen and (min-width: ( @break_650px ) ) {
-		.error404 .site-inner,
-		.page-template-page_sitemap .site-inner {
+      ul + p,
+      ol + p,
+      p + p {
+        margin-top: 1em;
+      }
 
-			ul, ol {
-				li {
-					margin-bottom: 0;
-					
-					a {
-						text-decoration: none;
-						
-						&:hover,
-						&:focus,
-						&:active {
-							text-decoration: underline;
-						}
-					}
-				}
-				ul, ol {
-					margin-top: 0;
-				}
-			}
-			
-			.category,
-			.dossiers {
-				display: flex;
-				flex-wrap: wrap;
+      a {
+        display: block;
+      }
+    }
+  }
 
-				li {
-					flex-basis: 50%;
-					padding-right: 1em;
-					padding-bottom: .5em;
-				}
-			}
-		}
-	}
+  //========================================================================================================
+
+  .page-template-page_show-child-pages {
+    .content {
+      section {
+        clear: both;
+
+        img.attachment-featured-post-widget {
+          float: right;
+          display: inline;
+        }
+      }
+    }
+  }
+
+  //========================================================================================================
+
+  @media only screen and (min-width: ( @break_650px ) ) {
+    .error404 .site-inner,
+    .page-template-page_sitemap .site-inner {
+
+      ul, ol {
+        li {
+          margin-bottom: 0;
+
+          a {
+            text-decoration: none;
+
+            &:hover,
+            &:focus,
+            &:active {
+              text-decoration: underline;
+            }
+          }
+        }
+
+        ul, ol {
+          margin-top: 0;
+        }
+      }
+
+      .category,
+      .dossiers {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+          flex-basis: 50%;
+          padding-right: 1em;
+          padding-bottom: .5em;
+        }
+      }
+    }
+  }
+
+  //========================================================================================================
+
+  // Verwijderd 20210408	.digibeter_colors( digibeter-oker,    @digibeter_oker,    @txt, @txt, @digibeter_oker_licht   );
+  // Verwijderd 20210408	.digibeter_colors( digibeter-oranje,  @digibeter_oranje,  @wit, @txt, @digibeter_oranje_licht );
+  // Verwijderd 20210408	.digibeter_colors( digibeter-blauw,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+  // Verwijderd 20210408	.digibeter_colors( digibeter-groen,   @digibeter_groen,   @wit, @wit, @digibeter_groen_licht  );
+  // Verwijderd 20210408	.digibeter_colors( digibeter-violet,  @digibeter_violet,  @wit, @wit, @digibeter_violet_licht );
+  // Verwijderd 20210408	.digibeter_colors( digibeter-paars,   @digibeter_paars,   @wit, @wit, @digibeter_paars_licht  );
 
 
-	//========================================================================================================
-	
-	.page-template-page_search,
-	.search {
-		
-	    .post-date {
-	      &:before {
-	        content: '|';
-	        display: inline-block;
-	        margin-left: .5em;
-	        margin-right: .3em;
-	      }
-	    }
-	    
-	    article {
-	      padding: .1em;
-	      
-	      a {
-	        margin: .1em;
-	  
-	        &:hover,
-	        &:focus,
-	        &:active {
-	          h2 {
-	            text-decoration: underline;
-	          }
-	        }
-	      }
-	      p {
-	        margin: 0;        
-	      }
-	    }
-	  
-	    .document,
-	    .type-document {
-	    }  
-	    .post {
-	  //      border-color: @communicatiekleur_vol;      
-	    }  
-	  
-	    .taxonomy {
-	      margin-top: 1em;
-	      border-bottom: 3px solid @communicatiekleur_vol;
-	      padding-bottom: 1em;    
-	      
-	      h2 {
-	        font-size: 210%;
-	        margin: 0 0 .2em 0;
-	      }
-	      .dossiers {
-	        border-color: yellow;
-	      }   
-	    }   
-	  
-	    .attachment.pdf {
-	  
-	      a p {
-	        padding-left: 1.5em;
-	        background-image: url('@{base_url}images/icon-document.svg');
-	        background-position: left center;
-	        background-repeat: no-repeat;
-	        
-	        &.meta {
-	          padding-left: 0;
-	          background: none;
-	        }
-	      }
-	    }
-	}
+  // Verwijderd 20210408	.digibeter_colors( da-06,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+  // Verwijderd 20210408	.digibeter_colors( da-01-problemen-oplossen,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+  // Verwijderd 20210408	.digibeter_colors( da-02-wetgeving-publieke-waarden,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+  // Verwijderd 20210408	.digibeter_colors( da-03-overheidsdata-verbeteren,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+  // Verwijderd 20210408	.digibeter_colors( da-04-kennis-verzamelen-verbeteren,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+  // Verwijderd 20210408	.digibeter_colors( da-05-mensen-organisatie-cultuurverandering,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
 
-	//========================================================================================================
-	
-	.digibeter_colors( digibeter-oker,    @digibeter_oker,    @txt, @txt, @digibeter_oker_licht   );
-	.digibeter_colors( digibeter-oranje,  @digibeter_oranje,  @wit, @txt, @digibeter_oranje_licht );
-	.digibeter_colors( digibeter-blauw,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-	.digibeter_colors( digibeter-groen,   @digibeter_groen,   @wit, @wit, @digibeter_groen_licht  );
-	.digibeter_colors( digibeter-violet,  @digibeter_violet,  @wit, @wit, @digibeter_violet_licht );
-	.digibeter_colors( digibeter-paars,   @digibeter_paars,   @wit, @wit, @digibeter_paars_licht  );
-	
-	
-	.digibeter_colors( da-06,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-	.digibeter_colors( da-01-problemen-oplossen,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-	.digibeter_colors( da-02-wetgeving-publieke-waarden,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-	.digibeter_colors( da-03-overheidsdata-verbeteren,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-	.digibeter_colors( da-04-kennis-verzamelen-verbeteren,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
-	.digibeter_colors( da-05-mensen-organisatie-cultuurverandering,   @digibeter_blauw,   @wit, @wit, @digibeter_blauw_licht  );
+  //========================================================================================================
 
-	//========================================================================================================
-	
-	.page-template-page_fullwidth {
-		.entry-content {
-		
-			.wp-caption {
-				margin-top: .5em;          
-				margin-bottom: .5em;          
-			}
-		}
-	}  
+  .page-template-page_fullwidth {
+    .entry-content {
 
-	.page-template-page_digibeter-home {
-		.entry-header {
-			
-			h1 {
-				font-family: @bodyfont;
-				font-weight: normal;
-				margin-bottom: .5em;
-				
-				.subtitle {
-					display: block;
-					overflow: hidden;
-					font-family: @fontitalic;
-				}
-				.logo,
-				.logo-en {
-					display: block;
-					background:  url('@{base_url}images/digibeter-icons/nl-digibeter.svg');
-					max-width: 403px;
-					height: 60px;
-					background-position: left top;
-					background-repeat: no-repeat;
-					background-size: contain;
-					text-indent: -9999em;
-					overflow: hidden;
-					font-family: @fontitalic;
-					margin-bottom: .25em;
-				}
-			}
-			
-			& + h2 {
-				margin-top: .5rem;
-			}
-		}
-	}
+      .wp-caption {
+        margin-top: .5em;
+        margin-bottom: .5em;
+      }
+    }
+  }
 
-	.toolbox01-kwaliteit-van-data-algoritme-en-analyse,
-	.toolbox02-belanghebbenden-betrekken,
-	.toolbox03-transparantie-en-verantwoording,
-	.toolbox04-wet-en-regelgeving-respecteren,
-	.toolbox05-monitoren-en-evalueren,
-	.toolbox06-veiligheid-borgen,
-	.toolbox07-publieke-waarden-centraal {
-		.borderframe.blue,
-		.borderframe.toolbox {
-			background-color: @digibeter_blauw;
-			a {
-				text-decoration: underline !important;
-				color: @wit;
-				&:hover,
-				&:active,
-				&:focus {
-					&, span {
-						background-color: @wit;
-						color: @digibeter_blauw;
-					}
-				}
-			}
-			.blocktitle {
-				background-image: url('@{base_url}images/toolbox/icon-toolbox-innovatie.png'); // v2.12.17; tiepvaud?
-				background-repeat: no-repeat;
-				background-size: 34px 35px;
-				background-position: 16px 9px;
-				padding-left: 63px;
-				padding-top: 16px;
-				min-height: 50px;
-			}
-			&, * {
-				color: @wit;
-			}
-		}
-		details {
-			border-color: @digibeter_blauw;
-			
-			summary {
-				background-color: @digibeter_blauw;
-			}
-		}	  
-	}
-	
-//	.digibeter_colors( digibeter-violet,  @digibeter_violet,  @wit, @wit, @digibeter_violet_licht );
+  .page-template-page_digibeter-home {
+    .entry-header {
 
-	.cyberincident01-rapporteren-report,
-	.cyberincident02-beoordelen-assess,
-	.cyberincident03-bijeenroepen-convene,
-	.cyberincident04-uitvoeren-execute,
-	.cyberincident05-oplossen-resolve,
-	.cyberincident06-voorbereid {
-		.borderframe.blue,
-		.borderframe.toolbox {
-			background-color: @digibeter_violet_licht;
-			border-color: @digibeter_violet;
-			a {
-				text-decoration: underline !important;
-				color: @txt;
-				&:hover,
-				&:active,
-				&:focus {
-					background-color: @wit;
-					color: @violet_vol;
-				}
-			}
-			.blocktitle {
-				background-color: @digibeter_violet;
-				background-image: url('@{base_url}images/toolbox/cyberincident/icon-toolbox-cyber.svg');
-				background-repeat: no-repeat;
-				background-size: 34px 35px;
-				background-position: 16px 9px;
-				padding-left: 63px;
-				padding-top: 16px;
-				min-height: 50px;
-			}
-			&, * {
-				color: @txt;
-			}
-		}
-		details {
-			border-color: @digibeter_blauw;
-			
-			summary {
-				background-color: @digibeter_blauw;
-			}
-		}	  
-	}
-	
-	
+      h1 {
+        font-family: @bodyfont;
+        font-weight: normal;
+        margin-bottom: .5em;
 
-	@media only screen and (max-width: ( @break_1200px ) ) {
-		.page-template-page_fullwidth {
-			.entry-header {
-				width: 100%;
-				margin-left: 0;
-				margin-right: 0;
-			}  
-		}  
-	}  
+        .subtitle {
+          display: block;
+          overflow: hidden;
+          font-family: @fontitalic;
+        }
 
-	@media only screen and (min-width: ( @break_1200px ) ) {
-		
-		.page-template-page_fullwidth {
-			
-			.entry-header {
-				.fullwidth_content_with_padding();
-			
-				h1 {
-					padding-top: .5em;
-					padding-bottom: .5em;
-				}
-			}
-			
-			.entry-content {
-				p,
-				h2, 
-				h3, 
-				h4, 
-				h5, 
-				h6, 
-				ol,
-				ul,
-				.simple-pullquote,
-				.pullquote-with-image,
-				details, 
-				.borderframe,
-				.detail-buttons { 
-					.fullwidth_content_with_padding();
-				}
+        .logo,
+        .logo-en {
+          display: block;
+          background: url('@{base_url}images/digibeter-icons/nl-digibeter.svg');
+          max-width: 403px;
+          height: 60px;
+          background-position: left top;
+          background-repeat: no-repeat;
+          background-size: contain;
+          text-indent: -9999em;
+          overflow: hidden;
+          font-family: @fontitalic;
+          margin-bottom: .25em;
+        }
+      }
 
-				.simple-pullquote.align-left,
-				.simple-pullquote.align-right {
-					max-width: 40%;
-				}
-				
-				.pullquote-with-image.align-left,
-				.pullquote-with-image.align-right {
-					max-width: 45%;
-					margin-top: 1.5em;
-					margin-bottom: 1.5em;
-				}
-				.pullquote-with-image.align-left {
-					margin-left: 4em;
-				}
-				.pullquote-with-image.align-right {
-					margin-right: 4em;
-				}
-				
-				.simple-pullquote {
-					margin-left: auto;
-					margin-right: auto;
-					clear: both;
-					float: none;
-				}
-				
-				.borderframe,
-				details { 
-					p,
-					h2, 
-					h3, 
-					h4, 
-					h5, 
-					h6, 
-					ol,
-					ul {
-						max-width: 100%;              
-					}
-					
-					p,
-					h3, 
-					h4, 
-					h5, 
-					h6, 
-					ol,
-					ul {
-						margin-left: 1rem;
-						margin-right: 1rem;
-					}
-				}
-			}
-		}
-	}
-	
-	//========================================================================================================
-	
-	.page .posts-for-dossier,
-	.page-template-page_dossiersingleactueel .entry-content {
-		section a {
-			display: block;
-			
-			p {
-				color: @txt;
-				margin: 0;
-				
-				&.meta {
-					color: @grijs_6;
-					margin: .5em 0;
-					font-size: 90%;
-				}
-			}
-	
-			h2,
-			h3 {
-				color: @donkerblauw_vol;
-			}
-			
-			&:hover,
-			&:active,
-			&:focus {
-			text-decoration: none;
-			
-				h2,
-				h3 {
-					text-decoration: underline;
-				}
-			}
-		}
-	}
+      & + h2 {
+        margin-top: .5rem;
+      }
+    }
+  }
 
-	//========================================================================================================
 
-	.page-template-page_front-page,
-	.page-template-front-page {     
+  @media only screen and (max-width: ( @break_1200px ) ) {
+    .page-template-page_fullwidth {
+      .entry-header {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
 
-		article.entry.type-page {
-			.entry-content,
-			.entry-header {
-				.visuallyhidden();
-			}
-			
-			.banner-widget-area {
-				display: block;
-				margin: 0;
-				padding: 1rem 0;
-				background: @geel_vol;
-				.widget {
-					margin-bottom: 0 !important;
-					&.cta-widget {
-						background: @geel_vol;
-						max-width: 50%;
-						margin-left: auto;
-						margin-right: auto;
-						
-						.text + p {
-							text-align: center;
-						}
-					}
-				}
-				
-			}
-						
-			.post-edit-link {
-				display: none;
-				visibility: hidden;
-			}
-			.banner-widget-area {
-				// to be determined	
-			}
-		}
+  @media only screen and (min-width: ( @break_1200px ) ) {
 
-		.site-inner {
-			width: 100%;
-			max-width: none;
-			margin-top: 0;
-			
-			#reactieformulier,
-			.block,
-//			article,
-			.wrap {
-				margin: 0 auto;
-				max-width: @break_1200px;
-				overflow: visible;
-			}
-			
-			.linkblock {
-				text-decoration: none;
-				
-				p {
-					color: @txt;
-					margin: 0;
-				}
-				
-				h3 {
-					color: @donkerblauw_vol;
-				}
-				
-				&:hover,
-				&:active,
-				&:focus {
-				
-					h3 {
-						text-decoration: underline;
-						color: @txt;
-					}
-				}
-			}
-			
-			.vollebreedte,
-			.driekwart,
-			.home-widget-area {
-				width: 100%;
-				overflow: hidden;
-				padding-bottom: 1em;
-			}
-			
-			.vollebreedte {
-				.linkblock {
-					&:last-of-type {
-						padding-right: 0;
-					}
-				}
-			}
-			
-			.row {
-				border-spacing: 10px;
-			}
+    .page-template-page_fullwidth {
 
-			@media only screen and ( min-width: @break_650px ) {
-				
-				.driekwart {
-					width: 75%;
-					float: left;
-				}        
-				
-				.home-widget-area {
-					display: block;
-					overflow: hidden;
-					clear: none;
-					float: left;
-					width: 25%;
-					padding-left: .3em;
-					padding-right: 0;
-				}
+      .entry-header {
+        .fullwidth_content_with_padding();
 
-				.driekwart,
-				.vollebreedte {
+        h1 {
+          padding-top: .5em;
+          padding-bottom: .5em;
+        }
+      }
 
-					display: flex;
-					flex-direction: row;
-					flex-wrap: wrap;
-					
-					a {
-						padding-right: 1rem;
-						padding-bottom: 1rem;
-						margin: 2px;
-						flex: 0 0 45%;
-					}
-				}
+      .entry-content {
+        p,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ol,
+        ul,
+        .pullquote-with-image,
+        details,
+        .borderframe,
+        .detail-buttons {
+          .fullwidth_content_with_padding();
+        }
 
-				
-			}
+        .simple-pullquote.align-left,
+        .simple-pullquote.align-right {
+          max-width: 40%;
+        }
 
-			@media only screen and ( min-width: @break_1200px ) {
-				
-				section.home.topics {
-					padding: 1em;      
-					
-					.driekwart,
-					.vollebreedte {
-						display: flex;
-						flex-direction: row;
-						flex-wrap: wrap;
-					}
-					a {
-					}
-					.driekwart a {
-						flex: 0 0 32.6%;
-					}
-					.vollebreedte a {
-						flex: 0 0 24.6%;
-					}
-				}
-			}
-		}
-		
-		section.home.topics {
-			background-color: @grijs_1;
-			
-			a {
-				&:focus,
-				&:active,
-				&:hover {
-					color: @txt;          
-				}
-			}
-		}
-	}  
-	
-	//========================================================================================================
-	
-	.no-cssgrid {
-		@media only screen and ( min-width: @break_650px ) {
-			.row.driekwart {
-				.linkblock:nth-child(3n+1) {
-					clear: left;
-				}
-			}
-		}  
-	}
-  
+        .pullquote-with-image.align-left,
+        .pullquote-with-image.align-right {
+          max-width: 45%;
+          margin-top: 1.5em;
+          margin-bottom: 1.5em;
+        }
+
+        .pullquote-with-image.align-left {
+          margin-left: 4em;
+        }
+
+        .pullquote-with-image.align-right {
+          margin-right: 4em;
+        }
+
+        .simple-pullquote {
+          margin-left: auto;
+          margin-right: auto;
+          clear: both;
+          float: none;
+          .mixin_fullwidth_container();
+
+          p {
+            max-width: none;
+          }
+        }
+
+        .borderframe,
+        details {
+          p,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          ol,
+          ul {
+            max-width: 100%;
+          }
+
+          p,
+          h3,
+          h4,
+          h5,
+          h6,
+          ol,
+          ul {
+            margin-left: 1rem;
+            margin-right: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  //========================================================================================================
+
+  .page .posts-for-dossier,
+  .page-template-page_dossiersingleactueel .entry-content {
+    section a {
+      display: block;
+
+      p {
+        color: @txt;
+        margin: 0;
+
+        &.meta {
+          color: @grijs_6;
+          margin: .5em 0;
+          font-size: 90%;
+        }
+      }
+
+      h2,
+      h3 {
+        color: @donkerblauw_vol;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: none;
+
+        h2,
+        h3 {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  //========================================================================================================
+
+  .page-template-page_front-page,
+  .page-template-front-page {
+
+    article.entry.type-page {
+      .entry-content,
+      .entry-header {
+        .visuallyhidden();
+      }
+
+      .banner-widget-area {
+        display: block;
+        margin: 0;
+        padding: 1rem 0;
+        background: @geel_vol;
+
+        .widget {
+          margin-bottom: 0 !important;
+
+          &.cta-widget {
+            background: @geel_vol;
+            max-width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+
+            .text + p {
+              text-align: center;
+            }
+          }
+        }
+
+      }
+
+      .post-edit-link {
+        display: none;
+        visibility: hidden;
+      }
+
+      .banner-widget-area {
+        // to be determined
+      }
+    }
+
+    .site-inner {
+      width: 100%;
+      max-width: none;
+      margin-top: 0;
+
+      #reactieformulier,
+      .wrap {
+        margin: 0 auto;
+        max-width: @break_1200px;
+        overflow: visible;
+      }
+
+      .linkblock {
+        text-decoration: none;
+
+        p {
+          color: @txt;
+          margin: 0;
+        }
+
+        h3 {
+          color: @donkerblauw_vol;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+
+          h3 {
+            text-decoration: underline;
+            color: @txt;
+          }
+        }
+      }
+
+      .vollebreedte,
+      .driekwart,
+      .home-widget-area {
+        width: 100%;
+        overflow: hidden;
+        padding-bottom: 1em;
+      }
+
+      .vollebreedte {
+        .linkblock {
+          &:last-of-type {
+            padding-right: 0;
+          }
+        }
+      }
+
+      .row {
+        border-spacing: 10px;
+      }
+
+      @media only screen and ( min-width: @break_650px ) {
+
+        .driekwart {
+          width: 75%;
+          float: left;
+        }
+
+        .home-widget-area {
+          display: block;
+          overflow: hidden;
+          clear: none;
+          float: left;
+          width: 25%;
+          padding-left: .3em;
+          padding-right: 0;
+        }
+
+        .driekwart,
+        .vollebreedte {
+
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          a {
+            padding-right: 1rem;
+            padding-bottom: 1rem;
+            margin: 2px;
+            flex: 0 0 45%;
+          }
+        }
+
+
+      }
+
+      @media only screen and ( min-width: @break_1200px ) {
+
+        section.home.topics {
+          padding: 1em;
+
+          .driekwart,
+          .vollebreedte {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+
+          a {
+          }
+
+          .driekwart a {
+            flex: 0 0 32.6%;
+          }
+
+          .vollebreedte a {
+            flex: 0 0 24.6%;
+          }
+        }
+      }
+    }
+
+    section.home.topics {
+      background-color: @grijs_1;
+
+      a {
+        &:focus,
+        &:active,
+        &:hover {
+          color: @txt;
+        }
+      }
+    }
+  }
+
+  //========================================================================================================
+
+  .no-cssgrid {
+    @media only screen and ( min-width: @break_650px ) {
+      .row.driekwart {
+        .linkblock:nth-child(3n+1) {
+          clear: left;
+        }
+      }
+    }
+  }
+
 }
 
 //========================================================================================================
 
 .toolboxillustrations() {
 
-	.floatingtoolbox {  
-		animation-name: floatingtoolbox;
-		animation-duration: 3s;
-		animation-iteration-count: infinite;
-		animation-timing-function: ease-in-out;
-		margin-left: 30px;
-		margin-top: 5px;
-	}
-	
-	@keyframes vergroot {
-		from { transform: scale(1); }
-		to   { transform: scale(1.05); }    
-	}
+  .floatingtoolbox {
+    animation-name: floatingtoolbox;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+  }
 
-	@keyframes floatingtoolbox {
-		from { transform: translate(0,  0px); }
-		65%  { transform: translate(0, 15px); }
-		to   { transform: translate(0, -0px); }    
-	}
+  @keyframes vergroot {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
 
-
-	#toolbox-innovatie-illustrations,
-	#toolbox-datagedreven-werken-illustrations,
-	#toolbox-cyberincident-illustrations {
-	
-		.toolbox-img {
-			overflow: hidden;
-			
-			h2 {
-				margin-bottom: 0;
-			}
-		}
-		
-		@media only screen and ( max-width: @break_1200px ) {
-	
-			display: flex;
-			flex-direction: column;
-
-			.toolbox-img {
-				flex: 1 1 auto;
-				padding: 0 1em;
-				margin-bottom: .5rem;
-				background: @toolbox_innov_lichtblauw;
-
-				a {
-					display: flex;
-					flex-direction: row;
-					align-items: center;
-					justify-content: center;		
-					
-					.svg, h2 {
-						flex: 1;
-					}
-				}
-	
-				.svg {
-					max-width: 55px;
-					height: auto;
-					min-height: 52px;
-					float: left;
-					margin: .5rem .5rem .5rem 0;
-					
-					svg {
-						vertical-align: middle;
-						max-width: 55px;
-						height: auto !important;
-					}
-				}
-			}
-		}
-		
-		@media only screen and ( min-width: @break_1200px ) {
-			overflow: hidden;
-			background-image: url('@{base_url}images/toolbox/toolbox-background.svg');
-			background-repeat: no-repeat;
-			background-size: contain;
-			position: relative;
-			height: 900px;
-
-			a {
-				display: block;
-				border: 1px solid transparent;
-
-				.svg {
-					margin: 5px;
-				}
-				
-				&:hover,
-				&:focus,
-				&:active {
-					border-color: @toolbox_innov_lichtblauw;
-					background: @wit !important;
-					background: rgba( 256, 256, 256, .8 ) !important;
-
-					h2 {
-						text-decoration: underline !important;
-						text-shadow: none;
-					}					
-				}
-			}
-			
-			h2 {
-				font-size: 1.25rem;
-				display: inline-block;
-				padding-left: .5rem;
-				padding-right: .5rem;
-			}
-			
-			.toolbox-img {
-				position: absolute;
-				text-align: center;
-				transition: all .2s ease-in-out; 
-
-				&.has-link {
-					&:hover { 
-						animation-name: vergroot;
-						animation-duration: 1s;
-						animation-iteration-count: 1;
-						animation-timing-function: ease;
-						transform: scale(1.05); 
-						z-index: 8888;
-					}				
-				}
-			}
-		}
-	}
-	
-	#toolbox-cyberincident-illustrations {
-		
-		h2 {
-			color: @txt;
-			font-weight: bold;
-			text-align: left;
-			
-			span {
-				background: @oranje_vol;
-				color: @wit;
-				display: inline-block;
-				float: left;
-				border-radius: 50%;
-				text-align: center;
-				margin-right: 1rem;
-			}
-			em {
-				font-weight: normal;
-				float: left;
-			}
-		}
-				
-		@media only screen and ( max-width: ( @break_1200px - 1 ) ) {
+  @keyframes floatingtoolbox {
+    from {
+      transform: translate(0, 0px);
+    }
+    65% {
+      transform: translate(0, 15px);
+    }
+    to {
+      transform: translate(0, -0px);
+    }
+  }
 
 
-			h2 {
-				position: relative;
-				padding-left: 32px;
-				
-				span {
-					font-size: 16px;
-					line-height: 25px;
-					height: 24px;
-					width: 24px;
-					position: absolute;
-					top: 3px;
-					left: 0;
-				}
-			}
+  #toolbox-innovatie-illustrations,
+  #toolbox-datagedreven-werken-illustrations,
+  #toolbox-cyberincident-illustrations {
 
-			.toolbox-img {
-				background: @grijs_2;
-				h2 {
-					margin-top: 0;
-				}
+    .toolbox-img {
+      overflow: hidden;
 
-				.svg {
-					max-width: 110px;
-					
-					svg {
-						vertical-align: middle;
-						max-width: 90px;
-					}
-				}
-			}
-			.toolbox-introduction {
-				.visuallyhidden();
-			}
-		}
+      h2 {
+        margin-bottom: 0;
+      }
+    }
 
-		
-		@media only screen and ( min-width: @break_1200px ) {
+    @media only screen and ( max-width: @break_1200px ) {
 
-			height: 750px;
-			background-image: url('@{base_url}images/toolbox/cyberincident/background-violet.svg');
+      display: flex;
+      flex-direction: column;
 
-			.toolbox-introduction {
-				color: @digibeter_blauw;
-				position: absolute;
-				top: 2rem;
-				left: 2rem;
-				max-width: 30rem;
-				.font-size( 32 );
-				line-height: 1.5;
-			}
-			
-			h2 {
-				background: @wit;
-				
-				span {
-					background: @toolbox_cyber_h2_span_bg;
-					color: @wit;
-					display: inline-block;
-					float: left;
-					border-radius: 50%;
-					line-height: 50px;
-					text-align: center;
-					height: 50px;
-					width: 50px;
-					margin-right: 1rem;
-				}
-				em {
-					font-weight: normal;
-					float: left;
-				}
-			}
+      .toolbox-img {
+        flex: 1 1 auto;
+        padding: 0 1em;
+        margin-bottom: .5rem;
+        background: @toolbox_innov_lichtblauw;
 
-			a {
-				&:hover,
-				&:focus,
-				&:active {
-					border-color: @violet_vol;
-				}			
-			}			
+        a {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
 
-			#toolbox_stap_1 {
-				top: 191px;
-				left: 40px;
-				width: 225px;
-			}
-			#toolbox_stap_2 {
-				top: 20px;
-				left: 604px;
-				width: 256px;
-			}
-			#toolbox_stap_3 {
-				top: 140px;
-				left: 900px;
-				width: 271px;
-			}
-			#toolbox_stap_4 {
-				top: 336px;
-				left: 353px;
-				width: 255px;
-			}
-			#toolbox_stap_5 {
-				top: 377px;
-				left: 727px;
-				width: 300px;
-			}
-			
-		}
-	}
+          .svg, h2 {
+            flex: 1;
+          }
+        }
 
-	#toolbox-innovatie-illustrations {
+        .svg {
+          max-width: 55px;
+          height: auto;
+          min-height: 52px;
+          float: left;
+          margin: .5rem .5rem .5rem 0;
 
-		.toolbox-img {
-			
-			h2 {
-				margin-top: 0;
-			}
-		}
+          svg {
+            vertical-align: middle;
+            max-width: 55px;
+            height: auto !important;
+          }
+        }
+      }
+    }
 
-		@media only screen and ( min-width: @break_1200px ) {
+    @media only screen and ( min-width: @break_1200px ) {
+      overflow: hidden;
+      background-image: url('@{base_url}images/toolbox/toolbox-background.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: relative;
+      height: 900px;
 
-			h2 {
-				color: @oranje_vol;
-				text-shadow: 4px 4px 3px @wit,  -4px -4px 3px @wit,  4px -4px 3px @wit,  -4px 4px 3px @wit;
-			}
+      a {
+        display: block;
+        border: 1px solid transparent;
 
-			#toolbox_principe_1 {
-				top: 78px;
-				left: 40px;
-				width: 225px;
-			}
-			#toolbox_principe_2 {
-				top: 10px;
-				left: 764px;
-				width: 256px;
-			}
-			#toolbox_principe_3 {
-				top: 494px;
-				left: 10px;
-				width: 271px;
-			}
-			#toolbox_principe_4 {
-				top: 568px;
-				left: 445px;
-				width: 255px;
-			}
-			#toolbox_principe_5 {
-				top: 477px;
-				left: 867px;
-				width: 251px;
-			}
-			#toolbox_principe_6 {
-				top: 218px;
-				right: 10px;
-				width: 225px;
-			}
-			#toolbox_principe_7 {
-				top: 192px;
-				left: 445px;
-				width: 279px;
-			}
-		}
-	}
+        .svg {
+          margin: 5px;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+          border-color: @toolbox_innov_lichtblauw;
+          background: @wit !important;
+          background: rgba(256, 256, 256, .8) !important;
+
+          h2 {
+            text-decoration: underline !important;
+            text-shadow: none;
+          }
+        }
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        display: inline-block;
+        padding-left: .5rem;
+        padding-right: .5rem;
+      }
+
+      .toolbox-img {
+        position: absolute;
+        text-align: center;
+        transition: all .2s ease-in-out;
+
+        &.has-link {
+          &:hover {
+            animation-name: vergroot;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+            animation-timing-function: ease;
+            transform: scale(1.05);
+            z-index: 8888;
+          }
+        }
+      }
+    }
+  }
+
+  #toolbox-cyberincident-illustrations {
+
+    h2 {
+      color: @txt;
+      font-weight: bold;
+      text-align: left;
+
+      span {
+        background: @oranje_vol;
+        color: @wit;
+        display: inline-block;
+        float: left;
+        border-radius: 50%;
+        text-align: center;
+        margin-right: 1rem;
+      }
+
+      em {
+        font-weight: normal;
+        float: left;
+      }
+    }
+
+    @media only screen and ( max-width: ( @break_1200px - 1 ) ) {
 
 
-	#toolbox-datagedreven-werken-illustrations {
-		
+      h2 {
+        position: relative;
+        padding-left: 32px;
 
-		.toolbox-img {
-			
-			h2 {
-				margin-top: 0;
-			}
-		}
+        span {
+          font-size: 16px;
+          line-height: 25px;
+          height: 24px;
+          width: 24px;
+          position: absolute;
+          top: 3px;
+          left: 0;
+        }
+      }
 
-		@media only screen and ( max-width: ( @break_1200px - 1 ) ) {
+      .toolbox-img {
+        background: @grijs_2;
 
-			.toolbox-img {
-				padding-left: 0;				
-				
-				display: flex;
-				flex-direction: row;
-				flex-wrap: nowrap;
-				
-				img,
-				h2 {
-					flex-grow: 1;
-					flex-shrink: 1;
-					align-self: center;
-				}				
-				
-				img {
-					flex-basis: 110px;
-					max-width: 110px;
-					float: left;
-				}
-				h2 {
-					font-size: 1.1rem;
+        h2 {
+          margin-top: 0;
+        }
 
-					a {
-					    .icon_socmed_icon('../images/svg/list-arrow.svg', red);
-					}
-				}
-	
-			}
-		}
+        .svg {
+          max-width: 110px;
 
-		@media only screen and ( min-width: @break_1200px ) {
+          svg {
+            vertical-align: middle;
+            max-width: 90px;
+          }
+        }
+      }
 
-			height: 790px;
-			background-image: url('@{base_url}images/toolbox/datagedreven-werken/bg-blue.svg?asdasd');
-			padding-top: 2rem;
-			padding-bottom: 2rem;
+      .toolbox-introduction {
+        .visuallyhidden();
+      }
+    }
 
-			h2 {
-				color: @violet_vol;
-				
-				span {
-					background: @wit;
-					padding-left: .25rem;
-					padding-right: .25rem;
-				}
-			}
 
-			a {
-				&:hover,
-				&:focus,
-				&:active {
-					border-color: @toolbox_innov_lichtblauw;
-			
-					h2 {
-						text-decoration: underline !important;
-						text-shadow: none;
-					}					
-				}
-			}
-			
-			.toolbox-img {
-				width: 400px;
-			}
+    @media only screen and ( min-width: @break_1200px ) {
 
-			#toolbox_principe_1 {
-				top: 170px;
-				left: 290px;
-			}
-			#toolbox_principe_2 {
-				top: 20px;
-				left: 0;
-			}
-			#toolbox_principe_3 {
-				top: 10px;
-				left: 640px;
-				
-				a {
-					position: relative;
-					height: 240px;
+      height: 750px;
+      background-image: url('@{base_url}images/toolbox/cyberincident/background-violet.svg');
 
-					img, h2 {
-						position: absolute;
-					}
-					img {
-						left: 0;
-					}
-					h2 {
-						top: 50%;
-						right: 0;
-						max-width: 12rem;
-					}
-				}
-			}
-			#toolbox_principe_4 {
-				top: 350px;
-				left: 10px;
-			}
-			#toolbox_principe_5 {
-				top: 470px;
-				left: 380px;
-			}
-			#toolbox_principe_6 {
-				top: 260px;
-				right: 100px;
-			}
-		}
-	}
+      .toolbox-introduction {
+        color: @digibeter_blauw;
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        max-width: 30rem;
+        .font-size(32);
+        line-height: 1.5;
+      }
+
+      h2 {
+        background: @wit;
+
+        span {
+          background: @toolbox_cyber_h2_span_bg;
+          color: @wit;
+          display: inline-block;
+          float: left;
+          border-radius: 50%;
+          line-height: 50px;
+          text-align: center;
+          height: 50px;
+          width: 50px;
+          margin-right: 1rem;
+        }
+
+        em {
+          font-weight: normal;
+          float: left;
+        }
+      }
+
+      a {
+        &:hover,
+        &:focus,
+        &:active {
+          border-color: @violet_vol;
+        }
+      }
+
+      #toolbox_stap_1 {
+        top: 191px;
+        left: 40px;
+        width: 225px;
+      }
+
+      #toolbox_stap_2 {
+        top: 20px;
+        left: 604px;
+        width: 256px;
+      }
+
+      #toolbox_stap_3 {
+        top: 140px;
+        left: 900px;
+        width: 271px;
+      }
+
+      #toolbox_stap_4 {
+        top: 336px;
+        left: 353px;
+        width: 255px;
+      }
+
+      #toolbox_stap_5 {
+        top: 377px;
+        left: 727px;
+        width: 300px;
+      }
+
+    }
+  }
+
+  #toolbox-innovatie-illustrations {
+
+    .toolbox-img {
+
+      h2 {
+        margin-top: 0;
+      }
+    }
+
+    @media only screen and ( min-width: @break_1200px ) {
+
+      h2 {
+        color: @oranje_vol;
+        text-shadow: 4px 4px 3px @wit,  -4px -4px 3px @wit,  4px -4px 3px @wit, -4px 4px 3px @wit;
+      }
+
+      #toolbox_principe_1 {
+        top: 78px;
+        left: 40px;
+        width: 225px;
+      }
+
+      #toolbox_principe_2 {
+        top: 10px;
+        left: 764px;
+        width: 256px;
+      }
+
+      #toolbox_principe_3 {
+        top: 494px;
+        left: 10px;
+        width: 271px;
+      }
+
+      #toolbox_principe_4 {
+        top: 568px;
+        left: 445px;
+        width: 255px;
+      }
+
+      #toolbox_principe_5 {
+        top: 477px;
+        left: 867px;
+        width: 251px;
+      }
+
+      #toolbox_principe_6 {
+        top: 218px;
+        right: 10px;
+        width: 225px;
+      }
+
+      #toolbox_principe_7 {
+        top: 192px;
+        left: 445px;
+        width: 279px;
+      }
+    }
+  }
+
+
+  #toolbox-datagedreven-werken-illustrations {
+
+
+    .toolbox-img {
+
+      h2 {
+        margin-top: 0;
+      }
+    }
+
+    @media only screen and ( max-width: ( @break_1200px - 1 ) ) {
+
+      .toolbox-img {
+        padding-left: 0;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        img,
+        h2 {
+          flex-grow: 1;
+          flex-shrink: 1;
+          align-self: center;
+        }
+
+        img {
+          flex-basis: 110px;
+          max-width: 110px;
+          float: left;
+        }
+
+        h2 {
+          font-size: 1.1rem;
+
+          a {
+            .icon_socmed_icon('../images/svg/list-arrow.svg', red);
+          }
+        }
+
+      }
+    }
+
+    @media only screen and ( min-width: @break_1200px ) {
+
+      height: 790px;
+      background-image: url('@{base_url}images/toolbox/datagedreven-werken/bg-blue.svg?asdasd');
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+
+      h2 {
+        color: @violet_vol;
+
+        span {
+          background: @wit;
+          padding-left: .25rem;
+          padding-right: .25rem;
+        }
+      }
+
+      a {
+        &:hover,
+        &:focus,
+        &:active {
+          border-color: @toolbox_innov_lichtblauw;
+
+          h2 {
+            text-decoration: underline !important;
+            text-shadow: none;
+          }
+        }
+      }
+
+      .toolbox-img {
+        width: 400px;
+      }
+
+      #toolbox_principe_1 {
+        top: 170px;
+        left: 290px;
+      }
+
+      #toolbox_principe_2 {
+        top: 20px;
+        left: 0;
+      }
+
+      #toolbox_principe_3 {
+        top: 10px;
+        left: 640px;
+
+        a {
+          position: relative;
+          height: 240px;
+
+          img, h2 {
+            position: absolute;
+          }
+
+          img {
+            left: 0;
+          }
+
+          h2 {
+            top: 50%;
+            right: 0;
+            max-width: 12rem;
+          }
+        }
+      }
+
+      #toolbox_principe_4 {
+        top: 350px;
+        left: 10px;
+      }
+
+      #toolbox_principe_5 {
+        top: 470px;
+        left: 380px;
+      }
+
+      #toolbox_principe_6 {
+        top: 260px;
+        right: 100px;
+      }
+    }
+  }
 
 }
 
