@@ -18,6 +18,8 @@
 
 //Removes Title and Description on CPT Archive
 remove_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description' );
+add_action( 'genesis_before_loop', 'rhswp_dossier_title_show_menu' );
+
 
 //Removes Title and Description on Blog Archive
 remove_action( 'genesis_before_loop', 'genesis_do_posts_page_heading' );
