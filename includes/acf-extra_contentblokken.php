@@ -431,7 +431,7 @@ function rhswp_write_extra_contentblokken() {
 
 								$item_count = $contentblockposts->post_count;
 
-								$columncount = 3;
+								$columncount = 2;
 
 								if ( 1 === $item_count ) {
 									$columncount = 1;
@@ -450,16 +450,15 @@ function rhswp_write_extra_contentblokken() {
 									echo '<h2>' . __( 'No titel found for post', 'wp-rijkshuisstijl' ) . '</h2>';
 								}
 
-//								echo '<div class="flexcontainer ' . $type_block . ' no-top columncount-' . $columncount . '">';
 								if ( is_singular( 'post' ) ) {
 									// een bericht heeft inmiddels full width, dus lekker 3 kolommen
-									echo '<div class="grid">';
 								} elseif ( is_tax( RHSWP_CT_DOSSIER ) ) {
 									// een dossier full width, dus lekker 3 kolommen
-									echo '<div class="grid">';
 								} else {
-									echo '<div class="grid itemcount-' . $item_count . ' columncount-' . $columncount . '">';
+									//
 								}
+
+								echo '<div class="grid itemcount-' . $item_count . ' columncount-' . $columncount . '">';
 
 								$postcounter = 0;
 
