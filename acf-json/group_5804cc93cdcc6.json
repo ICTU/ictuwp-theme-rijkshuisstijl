@@ -120,9 +120,9 @@
     "location": [
         [
             {
-                "param": "taxonomy",
+                "param": "page_template",
                 "operator": "==",
-                "value": "dossiers"
+                "value": "stelselplaat-template.php"
             }
         ],
         [
@@ -159,16 +159,9 @@
                 "operator": "==",
                 "value": "page_showalldossiers-nieuwestyling.php"
             }
-        ],
-        [
-            {
-                "param": "page_template",
-                "operator": "==",
-                "value": "stelselplaat-template.php"
-            }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 20,
     "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
@@ -176,5 +169,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608674086
+    "modified": 1625835804
 }
