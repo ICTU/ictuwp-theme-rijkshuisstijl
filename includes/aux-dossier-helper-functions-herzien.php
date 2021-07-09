@@ -31,11 +31,14 @@ function my_last_updated_date( $post ) {
 
 //========================================================================================================
 
-function rhswp_dossier_title_show_menu() {
+function rhswp_dossier_title_show_menu( $args = '' ) {
 
 	global $post;
 
 	$dossier = rhswp_dossier_get_dossiercontext();
+
+	// hide-on-mobile
+	// hide-on-larger-than-mobile {
 
 	if ( $dossier ) {
 
@@ -46,16 +49,12 @@ function rhswp_dossier_title_show_menu() {
 
 
 		echo '<div class="testdemotest">';
-//		echo '<p><strong>rhswp_dossier_title_show_menu!</strong><br>Dit dossier heet: ' . $dossier->name . '. De landingspagina heet ' . $thetitle . '</p>';
-//		echo '<p>Dit dossier heet: ' . $dossier->name . '. De landingspagina heet ' . $thetitle . '</p>';
 
-		echo '<p class="laatste-wijziging">';
 		if ( $datum_laatste_wijziging ) {
+			echo '<p class="laatste-wijziging">';
 			echo 'Dossier laatst gewijzigd op ' . $datum_laatste_wijziging . '<br>';
-		} else {
-			echo 'Landingspagina laatst gewijzigd op ' . my_last_updated_date( $dossier_overzichtpagina ) . '<br>';
+			echo '</p>';
 		}
-		echo '</p>';
 
 		if ( $dossier_overzichtpagina->ID == $current_post_id ) {
 			echo 'Je kijkt nu naar de landingspagina voor het dossier.<br>';
@@ -66,11 +65,21 @@ function rhswp_dossier_title_show_menu() {
 
 		echo '</div>';
 
-		echo rhswp_dossier_get_pagesmenu( $dossier );
 
 		echo rhswp_dossier_get_onderwerpenblock( $dossier );
 
-		echo rhswp_dossier_get_berichtenmenu( $dossier );
+
+		//	.hide-on-mobile {
+		//	.hide-on-larger-than-mobile {
+		$args = array(
+			'cssclasses'  => 'block hide-on-larger-than-mobile',
+			'headerlevel' => 'h2',
+			'headertekst' => 'pagesmenu verberg op desktop',
+		);
+		echo rhswp_dossier_get_pagesmenu( $dossier, $args );
+
+		$args['headertekst'] = 'berichtenmenu verberg op desktop';
+		echo rhswp_dossier_get_berichtenmenu( $dossier, $args );
 
 
 	}
@@ -99,7 +108,8 @@ function rhswp_dossier_get_default_image() {
 function rhswp_dossier_get_dossier_headerimage( $dossier ) {
 
 	$uitgelicht_image = '';
-	$image_size       = 'full';
+	$image_size       = IMAGESIZE_DOSSIER_HEADER;
+//	$image_size       = RHSWP_HERO_IMAGE_WIDTH_NAME;
 	$acfid            = RHSWP_CT_DOSSIER . '_' . $dossier->term_id;
 
 	if ( get_field( 'dossier_header_image', $acfid ) ) {
@@ -167,11 +177,11 @@ function rhswp_dossier_get_dossiercontext() {
 		( RHSWP_DOSSIERCONTEXTEVENTOVERVIEW == get_query_var( 'pagename' ) ) ||
 		( RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW == get_query_var( 'pagename' ) )
 	) {
-		dodebug_do( 'Zo\'n bijzonder geval <a href="' . get_permalink( $post->ID) . '">' . get_query_var( 'pagename' ) . '</a>' );
+		dodebug_do( 'Zo\'n bijzonder geval <a href="' . get_permalink( $post->ID ) . '">' . get_query_var( 'pagename' ) . '</a>' );
 	} elseif ( ( is_singular( 'post' ) || is_singular( 'page' ) ) && ( ! has_term( '', RHSWP_CT_DOSSIER, $post->ID ) ) ) {
 		// post / page zit in een dossier EN heeft een beleidskleur, dus toon plaatje van beleidskleur
 		// zie functie rhswp_check_caroussel_or_featured_img, waar het plaatje getoond wordt
-		dodebug_do( ' Deze post heeft geen dossier ( en ik denk dat dit <a href="' . get_permalink( $post->ID) . '">' . get_the_title( $post->ID) . '</a>' );
+		dodebug_do( ' Deze post heeft geen dossier ( en ik denk dat dit <a href="' . get_permalink( $post->ID ) . '">' . get_the_title( $post->ID ) . '</a>' );
 		$is_dossier = false;
 	}
 
@@ -567,22 +577,30 @@ function rhswp_dossier_get_onderwerpenblock( $dossier, $headerlevel = 'h3', $hea
 
 //========================================================================================================
 
-function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $headertekst = 'Berichten en events voor dossier' ) {
+function rhswp_dossier_get_berichtenmenu( $dossier, $args ) {
 
 	global $post;
 	global $wp;
 
-	$return     = '';
-	$isselected = '';
-	// $current_url = home_url( add_query_arg( array(), $wp->request ) );
+//	.hide-on-mobile {
+//	.hide-on-larger-than-mobile {
+
+
+	$defaults = array(
+		'cssclasses'  => 'widget widget_nav_menu hide-on-mobile',
+		'headerlevel' => 'h3',
+		'headertekst' => 'Berichten en events voor dossier',
+	);
+	// Parse incoming $args into an array and merge it with $defaults
+	$args                    = wp_parse_args( $args, $defaults );
+	$return                  = '';
+	$isselected              = '';
 	$dossier_overzichtpagina = get_field( 'dossier_overzichtpagina', $dossier );
 	$current_url             = get_permalink( $dossier_overzichtpagina );
 
 	if ( $dossier ) {
-		$return = '<div class="widget widget_nav_menu testdemotest" >';
-		$return .= '<' . $headerlevel . '>' . $headertekst . '</' . $headerlevel . '>';
-
-		//------------------
+		$return = '<div class="' . $args['cssclasses'] . '">';
+		$return .= '<' . $args['headerlevel'] . '>' . $args['headertekst'] . '</' . $args['headerlevel'] . '>';
 
 
 		// check for posts -------------------------------------------------------------------------------
@@ -604,7 +622,7 @@ function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $header
 
 		if ( $wp_queryposts->post_count > 0 ) {
 
-			$return .= '<p>Er zijn berichten voor dit dossier</p>';
+//			$return .= '<p>Er zijn berichten voor dit dossier</p>';
 			$return .= '<ul>';
 
 			// er zijn niet meer dan 10 berichten
@@ -623,7 +641,7 @@ function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $header
 
 //					$return .= '<p>Muhu 1 -> a</p>';
 
-					dodebug_do( "rhswp_dossier_title_checker: 'We gaan de loop in.'" );
+//					dodebug_do( "rhswp_dossier_title_checker: 'We gaan de loop in.'" );
 
 					// er zijn categorieen ingesteld, dus deze categorieen aflopen en een link maken
 					foreach ( $categories as $category ) {
@@ -679,21 +697,12 @@ function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $header
 
 						} else {
 
-//							echo '<pre>';
-//							var_dump($args);
-//							echo '</pre>';
-
-
 							$return .= '<li' . $isselected . '>maar geen berichten onder "' . $decategorie->name . '" en "' . $dossier->name . '"</li>';
 
-
-//							$return .= '<p>Muhu 1 -> a -> 1 -> b (' . $wp_queryposts->post_count  . ')</p>';
 						}
 					}
 				} else {
 					// er zijn geen categorieen ingesteld
-//					$return .= '<p>Muhu 2</p>';
-
 					$isselected = '';
 					$indicator  = '';
 
@@ -721,9 +730,8 @@ function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $header
 			}
 
 			$return .= '</ul>';
-		}
-		else {
-			$return .= '<p>Er zijn geen berichten beschikbaar voor dit dossier</p>';
+		} else {
+//			$return .= '<p>Er zijn geen berichten beschikbaar voor dit dossier</p>';
 		}
 
 
@@ -763,11 +771,9 @@ function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $header
 			$return .= '<ul>';
 			$return .= '<li' . $isselected . '><a href="' . get_term_link( $dossier->term_id, RHSWP_CT_DOSSIER ) . RHSWP_DOSSIERCONTEXTDOCUMENTOVERVIEW . '/">' . $indicator . _x( 'Documents', 'post types', 'wp-rijkshuisstijl' ) . '</a></li>';
 			$return .= '</ul>';
+		} else {
+//			$return .= '<p>Er zijn geen documenten beschikbaar voor dit dossier</p>';
 		}
-		else {
-			$return .= '<p>Er zijn geen documenten beschikbaar voor dit dossier</p>';
-		}
-
 
 
 		// check for events ------------------------------------------------------------------------------
@@ -784,7 +790,7 @@ function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $header
 			     || $eventlist == get_option( 'dbem_tag_no_events_message' ) ) {
 
 				// no events
-				$return .= '<p>Er zijn geen evenementen aanwezig voor dit dossier</p>';
+//				$return .= '<p>Er zijn geen evenementen aanwezig voor dit dossier</p>';
 
 			} else {
 				// some events
@@ -817,8 +823,18 @@ function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $header
 
 //========================================================================================================
 
-function rhswp_dossier_get_pagesmenu( $dossier, $headerlevel = 'h3', $headertekst = 'Menu voor dossier' ) {
+function rhswp_dossier_get_pagesmenu( $dossier, $args = '' ) {
 
+	global $post;
+	global $wp;
+
+	$defaults = array(
+		'cssclasses'  => 'widget widget_nav_menu hide-on-mobile',
+		'headerlevel' => 'h3',
+		'headertekst' => 'Menu voor dossier',
+	);
+	// Parse incoming $args into an array and merge it with $defaults
+	$args   = wp_parse_args( $args, $defaults );
 	$return = '';
 
 	if ( $dossier ) {
@@ -828,8 +844,8 @@ function rhswp_dossier_get_pagesmenu( $dossier, $headerlevel = 'h3', $headerteks
 
 		// als een menu is ingevoerd, sorteer de pagina's
 		if ( $menu_voor_dossier ) {
-			$return = '<div class="widget widget_nav_menu testdemotest" >';
-			$return .= '<' . $headerlevel . '>' . $headertekst . '</' . $headerlevel . '>';
+			$return = '<div class="' . $args['cssclasses'] . '">';
+			$return .= '<' . $args['headerlevel'] . '>' . $args['headertekst'] . '</' . $args['headerlevel'] . '>';
 			$return .= '<p>Dit menu stel je in onder de taxonomie-info</p>';
 			$return .= '<ul>';
 

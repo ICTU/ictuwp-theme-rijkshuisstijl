@@ -825,9 +825,17 @@ function rhswp_sidebar_context_taxonomies() {
 function rhswp_sidebar_context_widgets() {
 
 	$dossier = rhswp_dossier_get_dossiercontext();
+
 	if ( $dossier ) {
-		echo rhswp_dossier_get_pagesmenu( $dossier );
-		echo rhswp_dossier_get_berichtenmenu( $dossier );
+
+		$args = array(
+			'cssclasses'  => 'widget widget_nav_menu hide-on-mobile',
+			'headerlevel' => 'h3',
+			'headertekst' => 'pagesmenu verberg op mobiel',
+		);
+		echo rhswp_dossier_get_pagesmenu( $dossier, $args );
+		$args['headertekst'] = 'berichtenmenu verberg op mobiel';
+		echo rhswp_dossier_get_berichtenmenu( $dossier, $args );
 	}
 
 
@@ -4422,19 +4430,19 @@ function rhswp_dossier_get_detailssummary( $term, $headerlevel = 'h2' ) {
 
 	if ( $term ) {
 
-		$excerpt           = '';
-		$dossierlink       = '';
-		$kortebeschr       = get_field( 'dossier_korte_beschrijving_voor_dossieroverzicht', RHSWP_CT_DOSSIER . '_' . $term->term_id );
+//		$excerpt           = '';
+		$dossierlink = '';
+//		$kortebeschr       = get_field( 'dossier_korte_beschrijving_voor_dossieroverzicht', RHSWP_CT_DOSSIER . '_' . $term->term_id );
 		$dossier_permalink = rhswp_get_pagelink_for_dossier( $term );
 		if ( $dossier_permalink ) {
 			$dossierlink = '<p class="dossierlink"><a href="' . $dossier_permalink . '">' . $term->name . '</a></p>';
 		}
 
-		if ( $kortebeschr ) {
-			$excerpt = $kortebeschr;
-		} elseif ( $term->description ) {
-			$excerpt = $term->description;;
-		}
+//		if ( $kortebeschr ) {
+//			$excerpt = $kortebeschr;
+//		} elseif ( $term->description ) {
+		$excerpt = $term->description;;
+//		}
 
 		$return = '<details><summary><' . $headerlevel . '>' . $term->name . '</' . $headerlevel . '></summary><p>' . wp_strip_all_tags( $excerpt ) . '</p>' . $dossierlink . '</details>';
 
