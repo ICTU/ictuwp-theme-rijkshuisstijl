@@ -4,10 +4,10 @@
     "fields": [
         {
             "key": "field_57f90d20c2fdf",
-            "label": "Overzichtpagina",
+            "label": "Landingspagina",
             "name": "dossier_overzichtpagina",
             "type": "post_object",
-            "instructions": "Welke pagina is de overzichtspagina die hoort bij dit dossier?",
+            "instructions": "Op welke pagina kom je als eerste terecht als je dit onderwerp \/ dossier gaat bekijken.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -18,42 +18,15 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [],
+            "taxonomy": "",
             "allow_null": 0,
             "multiple": 0,
             "return_format": "object",
             "ui": 1
         },
         {
-            "key": "field_5e99949047da5",
-            "label": "Titel voor overzichtspagina",
-            "name": "dossier_overzichtpagina_alt_titel",
-            "type": "text",
-            "instructions": "Met welke tekst linken we in het menu naar de overzichtspagina? Standaard is dat 'Inhoud', hier kun je een alternatieve titel invoeren.",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_57fa70f9fe7a3",
-                        "operator": "==",
-                        "value": "ja"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Inhoud",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
             "key": "field_57f90f281dcfb",
-            "label": "Andere pagina's in het menu",
+            "label": "Menu voor dossier",
             "name": "menu_pages",
             "type": "relationship",
             "instructions": "Let op: je kunt hier <span style=\"background: red;color: white\">alleen pagina's die gepubliceerd <\/span> (!) zijn selecteren. Als de pagina nog op concept staat, zie je 'm niet in de lijst hier.",
@@ -76,25 +49,6 @@
             "min": "",
             "max": "",
             "return_format": "object"
-        },
-        {
-            "key": "field_58da406ee63df",
-            "label": "Korte beschrijving voor dossieroverzicht",
-            "name": "dossier_korte_beschrijving_voor_dossieroverzicht",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
         },
         {
             "key": "field_60e5ca385c62f",
@@ -155,5 +109,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1625672393
+    "modified": 1625835681
 }
