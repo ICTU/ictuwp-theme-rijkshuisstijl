@@ -32,7 +32,7 @@ if ( WP_DEBUG ) {
 }
 if ( WP_DEBUG ) {
 	define( 'WP_LOCAL_DEV', false );
-//	define( 'WP_LOCAL_DEV', true );
+///	define( 'WP_LOCAL_DEV', true );
 	define( 'SHOW_CSS_DEBUG', false );
 //	define( 'SHOW_CSS_DEBUG', true );
 	define( 'WP_DEBUG_SHOWTEXTLENGTH', false );
@@ -786,10 +786,13 @@ remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_open', 5 );
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_close', 15 );
 //========================================================================================================
+
 // action for writing extra info in the alt-sidebar
 add_action( 'rhswp_primary_sidebar_first_action', 'rhswp_sidebar_context_widgets' );
+
 function rhswp_sidebar_context_taxonomies() {
 	global $post;
+
 	if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
 		$terms = get_the_terms( $post->ID, RHSWP_CT_DOSSIER );
 		if ( $terms && ! is_wp_error( $terms ) ) {
@@ -818,7 +821,16 @@ function rhswp_sidebar_context_taxonomies() {
 }
 
 //========================================================================================================
+
 function rhswp_sidebar_context_widgets() {
+
+	$dossier = rhswp_dossier_get_dossiercontext();
+	if ( $dossier ) {
+		echo rhswp_dossier_get_pagesmenu( $dossier );
+		echo rhswp_dossier_get_berichtenmenu( $dossier );
+	}
+
+
 	if ( WP_DEBUG && WP_LOCAL_DEV ) {
 		global $post;
 		rhswp_admin_display_wpquery_in_context();

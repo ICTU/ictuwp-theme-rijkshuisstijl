@@ -11639,6 +11639,7 @@ ul + .borderframe {
   }
 }
 .dossier-overview {
+  background: #b4b4b4;
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
@@ -12274,9 +12275,13 @@ main .container > h3 {
 // TODO WEGHALEN
 MEUK! WEG!
 ---------------------------------------------------------------------------------------------------- */
+.testdemotest,
 .test {
   background: yellow;
-  padding: 0 2rem;
+  padding: 1rem;
+  color: black;
+  border: 1px solid black !important;
+  margin: 0 auto 1rem auto;
 }
 .tekstlengte {
   float: right;
