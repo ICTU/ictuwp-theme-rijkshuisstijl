@@ -46,13 +46,14 @@ function rhswp_dossier_title_show_menu() {
 
 
 		echo '<div class="testdemotest">';
-		echo '<p><strong>rhswp_dossier_title_show_menu!</strong><br>Dit dossier heet: ' . $dossier->name . '. De landingspagina heet ' . $thetitle . '</p>';
+//		echo '<p><strong>rhswp_dossier_title_show_menu!</strong><br>Dit dossier heet: ' . $dossier->name . '. De landingspagina heet ' . $thetitle . '</p>';
+//		echo '<p>Dit dossier heet: ' . $dossier->name . '. De landingspagina heet ' . $thetitle . '</p>';
 
-		echo '<p class="laatste-ijziging">';
+		echo '<p class="laatste-wijziging">';
 		if ( $datum_laatste_wijziging ) {
-			echo 'dossier is laatst gewijzigd op ' . $datum_laatste_wijziging . '<br>';
+			echo 'Dossier laatst gewijzigd op ' . $datum_laatste_wijziging . '<br>';
 		} else {
-			echo 'landingspagina laatst gewijzigd op ' . my_last_updated_date( $dossier_overzichtpagina ) . '<br>';
+			echo 'Landingspagina laatst gewijzigd op ' . my_last_updated_date( $dossier_overzichtpagina ) . '<br>';
 		}
 		echo '</p>';
 
@@ -616,11 +617,11 @@ function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $header
 
 				$categories = get_field( 'dossier_post_overview_categories', 'option' );
 
-				$return .= '<p>Muhu 1</p>';
+//				$return .= '<p>Muhu 1</p>';
 
 				if ( $categories ) {
 
-					$return .= '<p>Muhu 1 -> a</p>';
+//					$return .= '<p>Muhu 1 -> a</p>';
 
 					dodebug_do( "rhswp_dossier_title_checker: 'We gaan de loop in.'" );
 
@@ -628,7 +629,7 @@ function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $header
 					foreach ( $categories as $category ) {
 
 						$decategorie = get_term( $category, 'category' );
-						$return .= '<p>Muhu 1 -> a -> 1: ' . $decategorie->name . '</p>';
+//						$return .= '<p>Muhu 1 -> a -> 1: ' . $decategorie->name . '</p>';
 
 						$args          = array(
 							'post_type'      => 'post',
@@ -652,7 +653,7 @@ function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $header
 
 						if ( $wp_queryposts->post_count > 0 ) {
 
-							$return .= '<p>Muhu 1 -> a -> 1 -> a</p>';
+//							$return .= '<p>Muhu 1 -> a -> 1 -> a</p>';
 
 							$berichten  = sprintf( _n( '%s post', '%s posts', $wp_queryposts->post_count, 'wp-rijkshuisstijl' ), $wp_queryposts->post_count );
 							$titel      = sprintf( __( '%s for topic %s and category %s.', 'wp-rijkshuisstijl' ), $berichten, $dossier->name, $decategorie->name );
@@ -678,16 +679,20 @@ function rhswp_dossier_get_berichtenmenu( $dossier, $headerlevel = 'h3', $header
 
 						} else {
 
-							echo '<pre>';
-							var_dump($args);
-							echo '</pre>';
+//							echo '<pre>';
+//							var_dump($args);
+//							echo '</pre>';
 
-							$return .= '<p>Muhu 1 -> a -> 1 -> b (' . $wp_queryposts->post_count  . ')</p>';
+
+							$return .= '<li' . $isselected . '>maar geen berichten onder "' . $decategorie->name . '" en "' . $dossier->name . '"</li>';
+
+
+//							$return .= '<p>Muhu 1 -> a -> 1 -> b (' . $wp_queryposts->post_count  . ')</p>';
 						}
 					}
 				} else {
 					// er zijn geen categorieen ingesteld
-					$return .= '<p>Muhu 2</p>';
+//					$return .= '<p>Muhu 2</p>';
 
 					$isselected = '';
 					$indicator  = '';
@@ -825,6 +830,7 @@ function rhswp_dossier_get_pagesmenu( $dossier, $headerlevel = 'h3', $headerteks
 		if ( $menu_voor_dossier ) {
 			$return = '<div class="widget widget_nav_menu testdemotest" >';
 			$return .= '<' . $headerlevel . '>' . $headertekst . '</' . $headerlevel . '>';
+			$return .= '<p>Dit menu stel je in onder de taxonomie-info</p>';
 			$return .= '<ul>';
 
 			if ( is_array( $menu_voor_dossier ) ) {
