@@ -104,6 +104,14 @@ html.css.version {
     display: none;
   }
 }
+.testdemotest,
+.test {
+  background: yellow;
+  padding: 1rem;
+  color: black;
+  border: 1px solid black !important;
+  margin: 0 auto 1rem auto;
+}
 /* mixins, sizes */
 /*
 Webfonts voor style.css
