@@ -291,6 +291,7 @@ include_once( RHSWP_FOLDER . '/includes/cpt-acf.php' );
 //========================================================================================================
 //* Remove Genesis in-post SEO Settings
 remove_action( 'admin_menu', 'genesis_add_inpost_seo_box' );
+
 //* Remove content/sidebar layout
 //genesis_unregister_layout( 'content-sidebar' );
 //* Remove sidebar/content layout
@@ -301,6 +302,8 @@ genesis_unregister_layout( 'content-sidebar-sidebar' );
 genesis_unregister_layout( 'sidebar-sidebar-content' );
 //* Remove sidebar/content/sidebar layout
 genesis_unregister_layout( 'sidebar-content-sidebar' );
+//* Unregister full-width content layout setting
+//genesis_unregister_layout( 'full-width-content' );
 //========================================================================================================
 // REMOVE WP EMOJI
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
@@ -722,7 +725,9 @@ function rhswp_add_taxonomy_description() {
 	if ( is_post_type_archive( RHSWP_CPT_DOCUMENT ) ) {
 		$headline   = sprintf( '<h1 class="archive-title">%s</h1>', rhswp_translateposttypes( RHSWP_CPT_DOCUMENT, true ) );
 		$intro_text = sprintf( '<p>' . _x( "All documents on %s.", "beschrijving op documentpagina", 'wp-rijkshuisstijl' ) . '</p>', get_bloginfo( 'name' ) );
-
+	} elseif ( $tax == RHSWP_CT_DOSSIER ) {
+		// alle dossier info wordt geleverd door functie 'rhswp_write_overzichtspagina'
+		return;
 	} else {
 		if ( $term->name ) {
 			$headline = sprintf( '<h1 class="archive-title">%s</h1>', $prefix . strip_tags( strval( $term->name ) ) );
@@ -3907,8 +3912,29 @@ function rhswp_get_page_dossiersingleactueel() {
 
 				$postcounter ++;
 				$current_post_id = isset( $post->ID ) ? $post->ID : 0;
+				$theurl = 'jemoeder';
+
+				if ( $currentsite && $currentpage ) {
+					$postpermalink = get_the_permalink();
+					$postpermalink = str_replace( $currentsite, '', $postpermalink );
+					$postpermalink = '/' . $post->post_name;
+					$crumb         = str_replace( $currentsite, '', $currentpage );
+					if ( $dossierfilter ) {
+						$crumb = '/' . RHSWP_CT_DOSSIER . '/' . $dossierfilter . '/' . RHSWP_DOSSIERCONTEXTPOSTOVERVIEW;
+						if ( $categoryfilter ) {
+							$crumb .= '/' . RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW . '/' . $categoryfilter;
+						}
+						$theurl = $currentsite . $crumb . $postpermalink . '/';
+					} else {
+						$theurl = $currentsite . $crumb . RHSWP_DOSSIERPOSTCONTEXT . $postpermalink . '/';
+					}
+				} else {
+					$theurl = get_the_permalink();
+				}
+
 				$args2           = array(
 					'ID'        => $current_post_id,
+					'permalink' => trailingslashit( $theurl ),
 					'itemclass' => 'griditem griditem--post colspan-1 ' . get_post_type( $post->ID ),
 					'type'      => 'posts_normal'
 				);
