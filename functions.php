@@ -4302,18 +4302,19 @@ add_filter( 'query_vars', 'rhswp_append_query_vars' );
  */
 
 function rhswp_nieuwsbrief_get_referrer( $atts ) {
-
+	$return = '';
 	if ( $_SERVER['HTTP_REFERER'] ) {
 		$referer = $_SERVER['HTTP_REFERER'];
-		echo esc_url_raw( $referer ) . '<br>';
-		$referer = preg_replace( '|https://|i', '', $referer );
-		$referer = preg_replace( '|http://|i', '', $referer );
-		echo esc_url_raw( $referer ) . '<br>';
-
-		return '<' . '!-' . '- HTTP_REFERER (' . esc_url_raw( $referer ) . ') --' . '>' . '<input type="hidden" name="nr" value="' . esc_url_raw( $referer ) . '">';
+		$referer = str_replace( 'https://', '', $referer );
+		$referer = str_replace( 'http://', '', $referer );
+		$arr = explode('/', $referer);
+		if ( $arr[0] ) {
+			$referer = $arr[0];
+		}
+		$return .= '<' . '!-' . '- HTTP_REFERER (' . esc_attr( $referer ) . ') --' . '>' . '<input type="hidden" name="nr" value="' . esc_attr( $referer ) . '">';
 	}
 
-	return '';
+	return $return;
 }
 
 add_shortcode( 'nieuwsbriefreferrer', 'rhswp_nieuwsbrief_get_referrer' );
