@@ -54,17 +54,20 @@
             "key": "field_60e5ca385c62f",
             "label": "Illustratie \/ header-image",
             "name": "dossier_header_image",
-            "type": "image",
+            "type": "image_aspect_ratio_crop",
             "instructions": "zorg voor een plaatje dat 1600px breed is en 500px hoog.",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
+            "crop_type": "pixel_size",
+            "aspect_ratio_width": 1600,
+            "aspect_ratio_height": 500,
             "return_format": "array",
-            "preview_size": "featured-post-widget",
+            "preview_size": "image-5x3",
             "library": "all",
             "min_width": 1600,
             "min_height": 500,
@@ -109,5 +112,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1625835681
+    "modified": 1626163990
 }

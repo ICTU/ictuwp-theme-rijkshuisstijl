@@ -115,7 +115,7 @@
             "key": "field_60e6ec376df84",
             "label": "Default illustratie voor dossier",
             "name": "site_settings_default_dossier_image",
-            "type": "image",
+            "type": "image_aspect_ratio_crop",
             "instructions": "Dit plaatje zal worden gebruikt als je nog geen plaatje hebt ingevoerd voor een dossier.",
             "required": 1,
             "conditional_logic": 0,
@@ -124,8 +124,11 @@
                 "class": "",
                 "id": ""
             },
+            "crop_type": "pixel_size",
+            "aspect_ratio_width": 1600,
+            "aspect_ratio_height": 500,
             "return_format": "array",
-            "preview_size": "image-dossierheader",
+            "preview_size": "image-5x3-small",
             "library": "all",
             "min_width": 1600,
             "min_height": 500,
@@ -153,5 +156,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1625746589
+    "modified": 1626163843
 }
