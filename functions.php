@@ -4168,7 +4168,9 @@ function rhswp_filter_site_description( $description, $inside, $wrap ) {
 }
 
 //========================================================================================================
+
 add_action( 'genesis_header', 'rhswp_append_site_logo' );
+
 function rhswp_append_site_logo() {
 	// @since 2.14.1
 	// flavor checken.
@@ -4177,9 +4179,10 @@ function rhswp_append_site_logo() {
 	$show_payoff_in_header = '';
 	$anchorstart           = '<a href="' . get_bloginfo( 'url' ) . '">';
 	$anchorend             = '</a>';
-//	$title = '<p class="site-title" id="menu_site_description">' . $anchorstart . $title . $anchorend . '</p>';
+	$anchortext            = sprintf( _x( 'To the homepage of %s', 'Linktekst logo in header', 'wp-rijkshuisstijl' ), get_bloginfo( 'name' ) );
+
 	if ( $flavor_select == "flitspanel" ) {
-		$anchorstart = '<a href="' . get_home_url() . '" aria-label="Naar de homepage van Flitspanel">';
+		$anchorstart = '<a href="' . get_home_url() . '">';
 	}
 	$showpayoff = get_field( 'siteoption_show_payoff_in_header', 'option' );
 	if ( 'show_payoff_in_header_no' === $showpayoff ) {
@@ -4188,15 +4191,17 @@ function rhswp_append_site_logo() {
 	if ( is_front_page() ) {
 		$anchorstart = '<span class="container">';
 		$anchorend   = '</span>';
+		$anchortext  = get_bloginfo( 'name' );
 	}
 	if ( $flavor_select == "flitspanel" ) {
-		echo '<span id="logotype" class="flitspanel' . $show_payoff_in_header . '">' . $anchorstart . '<img src="' . RHSWP_THEMEFOLDER . '/images/logos/flitspanel-logo.png" alt="Logo van Flitspanel, met als ondertekst: het medwerkerspanel van en voor de publieke sector" width="300" height="123">' . $anchorend . '</span>';
+		echo '<span id="logotype" class="flitspanel' . $show_payoff_in_header . '">' . $anchorstart . '<img src="' . RHSWP_THEMEFOLDER . '/images/logos/flitspanel-logo.png" alt="' . $anchortext . '" width="300" height="123">' . $anchorend . '</span>';
 	} else {
-		echo '<span id="logotype" class="' . $show_payoff_in_header . '">' . $anchorstart . '<img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitale-overheid.svg" alt="Logo Rijksoverheid">' . $anchorend . '</span>';
+		echo '<span id="logotype" class="' . $show_payoff_in_header . '">' . $anchorstart . '<img src="' . RHSWP_THEMEFOLDER . '/images/svg/logo-digitale-overheid.svg" alt="' . $anchortext . '">' . $anchorend . '</span>';
 	}
 }
 
 //========================================================================================================
+
 add_filter( 'the_content', 'rhswp_filter_strange_characters', 1 );
 /*
  * CSS-validatie en div. kleine accessibility correcties.
