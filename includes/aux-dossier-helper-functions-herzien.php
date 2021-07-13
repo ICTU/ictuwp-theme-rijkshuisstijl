@@ -873,7 +873,12 @@ function rhswp_dossier_get_pagesmenu( $dossier, $args = '' ) {
 					foreach ( $menu_voor_dossier as $menuitem ):
 						// this is an object
 						$itemsinmenu[] = intval( $menuitem->ID );
-						$return        .= '<li><a href="' . get_the_permalink( $menuitem ) . '">' . get_the_title( $menuitem ) . '</a></li>';
+						if ( 'publish' === $menuitem->post_status) {
+							$return .= '<li><a href="' . get_the_permalink( $menuitem ) . '">' . get_the_title( $menuitem ) . '</a></li>';
+						}
+						else {
+							$return .= '<li title="nog niet gepubliceerd"><em class="unpublished">' . get_the_title( $menuitem ) . '</em></li>';
+						}
 					endforeach;
 				}
 			}
