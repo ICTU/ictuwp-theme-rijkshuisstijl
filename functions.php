@@ -4304,7 +4304,11 @@ add_filter( 'query_vars', 'rhswp_append_query_vars' );
 function rhswp_nieuwsbrief_get_referrer( $atts ) {
 
 	if ( $_SERVER['HTTP_REFERER'] ) {
-		return '<' . '!-' . '- HTTP_REFERER --' . '>' . '<input type="hidden" name="nr" value="' . esc_url_raw( $_SERVER['HTTP_REFERER'] ) . '">';
+		$referer = $_SERVER['HTTP_REFERER'];
+		$referer = preg_replace( '|https://|i', '', $referer );
+		$referer = preg_replace( '|http://|i', '', $referer );
+
+		return '<' . '!-' . '- HTTP_REFERER (' . esc_url_raw( $referer ) . ') --' . '>' . '<input type="hidden" name="nr" value="' . esc_url_raw( $referer ) . '">';
 	}
 
 	return '';
