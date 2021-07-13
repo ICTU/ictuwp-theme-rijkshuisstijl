@@ -3872,54 +3872,32 @@ function rhswp_get_page_dossiersingleactueel() {
 		}
 		$wp_query = new WP_Query( $args );
 		if ( $wp_query->have_posts() ) {
-			echo '<div class="posts-for-dossier flexcontainer page-dossiersingleactueel">';
-			echo '<div class="block no-top">';
+
+			$item_count = $wp_query->post_count;
+			$columncount = 2;
+
+			if ( 1 === $item_count ) {
+				$columncount = 1;
+			}
+
+			echo '<div class="grid itemcount-' . $item_count . ' columncount-' . $columncount . '">';
 			$postcounter = 0;
-//			$with_featured_image = 2;
 			while ( $wp_query->have_posts() ) {
 				$wp_query->the_post();
+
 				$postcounter ++;
-				$doimage  = false;
-				$posttype = 'type-' . get_post_type();
-//				if ( ( $postcounter <= $with_featured_image ) && has_post_thumbnail() ) {
-				if ( has_post_thumbnail() ) {
-					$doimage = true;
-				}
-				if ( $currentsite && $currentpage ) {
-					$postpermalink = get_the_permalink();
-					$postpermalink = str_replace( $currentsite, '', $postpermalink );
-					$postpermalink = '/' . $post->post_name;
-					$crumb         = str_replace( $currentsite, '', $currentpage );
-					if ( $dossierfilter ) {
-						$crumb = '/' . RHSWP_CT_DOSSIER . '/' . $dossierfilter . '/' . RHSWP_DOSSIERCONTEXTPOSTOVERVIEW;
-						if ( $categoryfilter ) {
-							$crumb .= '/' . RHSWP_DOSSIERCONTEXTCATEGORYPOSTOVERVIEW . '/' . $categoryfilter;
-						}
-						$theurl = $currentsite . $crumb . $postpermalink . '/';
-					} else {
-						$theurl = $currentsite . $crumb . RHSWP_DOSSIERPOSTCONTEXT . $postpermalink . '/';
-					}
-				} else {
-					$theurl = get_the_permalink();
-				}
-				$title          = rhswp_filter_alternative_title( get_the_id(), get_the_title() );
-				$excerpt        = get_the_excerpt();
-				$postdate       = get_the_date();
-				$categorielinks = '';
-				if ( $doimage ) {
-					echo '<article class="has-post-thumbnail ' . $posttype . '"><div class="article-container">';
-					printf( '
-					<div class="article-visual">%s</div>
-					<div class="article-excerpt">
-					<a href="%s"><h2>%s</h2><p class="meta">%s</p><p>%s</p></a>
-					</div>', get_the_post_thumbnail( $post->ID, 'article-visual' ), $theurl, $title, $postdate, $excerpt );
-					echo '</div></article>';
-				} else {
-					printf( '<section><a href="%s"><h2>%s</h2><p class="meta">%s</p><p>%s</p>%s</a></section>', $theurl, $title, $postdate, wp_strip_all_tags( $excerpt ), $categorielinks );
-				}
+				$current_post_id = isset( $post->ID ) ? $post->ID : 0;
+				$args2           = array(
+					'ID'        => $current_post_id,
+					'itemclass' => 'griditem griditem--post colspan-1 ' . get_post_type( $post->ID ),
+					'type'      => 'posts_normal'
+				);
+				echo rhswp_get_grid_item( $args2 );
+
+				do_action( 'genesis_after_entry' );
 			}
-			echo '</div>'; // class="block">';
-			echo '</div>'; // class="posts-for-dossier flexcontainer">';
+			echo '</div>';
+
 		} else {
 			echo '<p>';
 			echo sprintf( _x( 'No results for %s.', 'No results text', 'wp-rijkshuisstijl' ), $message );
