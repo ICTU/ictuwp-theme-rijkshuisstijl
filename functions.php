@@ -4307,7 +4307,7 @@ function rhswp_nieuwsbrief_get_referrer( $atts ) {
 		$referer = $_SERVER['HTTP_REFERER'];
 		$referer = preg_replace( '|https://|i', '', $referer );
 		$referer = preg_replace( '|http://|i', '', $referer );
-
+echo esc_url_raw( $referer ) . '<br>';
 		return '<' . '!-' . '- HTTP_REFERER (' . esc_url_raw( $referer ) . ') --' . '>' . '<input type="hidden" name="nr" value="' . esc_url_raw( $referer ) . '">';
 	}
 
